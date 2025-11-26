@@ -18,11 +18,6 @@ MIN_INFOBOX_HEIGHT = 80
 # Item title placement inside the infobox (relative to infobox size)
 TITLE_HEIGHT_REL = 0.18
 
-# Action rows (Split Stack, Move to Backpack, Inspect, Sell, Recycle)
-ACTION_START_REL = 0.24
-ACTION_LINE_HEIGHT_REL = 0.11
-ACTION_PADDING_X_REL = 0.05
-
 # Confirmation buttons (window-normalized rectangles)
 SELL_CONFIRM_RECT_NORM = (0.5047, 0.6941, 0.1791, 0.0531)
 RECYCLE_CONFIRM_RECT_NORM = (0.5058, 0.6274, 0.1777, 0.0544)
@@ -78,6 +73,7 @@ def find_infobox(bgr_image: np.ndarray) -> Optional[Tuple[int, int, int, int]]:
         return rect
 
     # Fallback to tolerance-based mask
+    print("[vision_ocr] infobox exact color match not found; falling back to tolerance mask.", flush=True)
     lower = np.clip(INFOBOX_COLOR_BGR - INFOBOX_TOLERANCE, 0, 255).astype(np.uint8)
     upper = np.clip(INFOBOX_COLOR_BGR + INFOBOX_TOLERANCE, 0, 255).astype(np.uint8)
     mask_tol = cv2.inRange(bgr_image, lower, upper)
@@ -246,7 +242,12 @@ def find_action_bbox_by_ocr(
     processed = preprocess_for_ocr(infobox_bgr)
     try:
         data = pytesseract.image_to_data(processed, config="--psm 6", output_type=pytesseract.Output.DICT)
-    except Exception:
+    except Exception as exc:
+        print(
+            f"[vision_ocr] pytesseract image_to_data failed for target={target}; falling back to no bbox. "
+            f"error={exc}",
+            flush=True,
+        )
         return None, processed
 
     bbox = _extract_action_line_bbox(data, target)
