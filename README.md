@@ -11,6 +11,8 @@ Walks through each inventory item and applies Sell/Recycle decisions using only 
 1) Install dependencies: `pip install -r requirements.txt`.
 
 ## Usage
+Main entrypoint: run `inventory_scanner.py` from the repo root.
+
 1) In Arc Raiders, open your inventory (ideally the “Crafting Materials” tab). Make sure you are scrolled all the way up.
 2) Run: `python3 inventory_scanner.py`
 3) Alt-tab back into Arc Raiders; after a few seconds the script will start processing.
