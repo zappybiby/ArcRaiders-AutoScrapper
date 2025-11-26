@@ -1,0 +1,242 @@
+from __future__ import annotations
+
+import re
+from typing import Dict, List, Literal, Optional, Tuple
+
+import cv2
+import numpy as np
+import pytesseract
+
+from inventory_domain import clean_ocr_text
+
+# Infobox visual characteristics
+INFOBOX_COLOR_BGR = np.array([223, 238, 249], dtype=np.uint8)  # #f9eedf in BGR
+INFOBOX_TOLERANCE = 8
+MIN_INFOBOX_WIDTH = 230
+MIN_INFOBOX_HEIGHT = 80
+
+# Item title placement inside the infobox (relative to infobox size)
+TITLE_HEIGHT_REL = 0.18
+
+# Action rows (Split Stack, Move to Backpack, Inspect, Sell, Recycle)
+ACTION_START_REL = 0.24
+ACTION_LINE_HEIGHT_REL = 0.11
+ACTION_PADDING_X_REL = 0.05
+
+# Confirmation buttons (window-normalized rectangles)
+SELL_CONFIRM_RECT_NORM = (0.5047, 0.6941, 0.1791, 0.0531)
+RECYCLE_CONFIRM_RECT_NORM = (0.5058, 0.6274, 0.1777, 0.0544)
+
+
+def find_infobox(bgr_image: np.ndarray) -> Optional[Tuple[int, int, int, int]]:
+    """
+    Locate the largest rectangle that matches the infobox background color.
+    Returns (x, y, w, h) relative to the provided image, or None if not found.
+    """
+    kernel = np.ones((3, 3), np.uint8)
+
+    def _find_from_mask(mask: np.ndarray) -> Optional[Tuple[int, int, int, int]]:
+        contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        candidates: List[Tuple[int, Tuple[int, int, int, int]]] = []
+        for contour in contours:
+            x, y, w, h = cv2.boundingRect(contour)
+            if w >= MIN_INFOBOX_WIDTH and h >= MIN_INFOBOX_HEIGHT:
+                candidates.append((w * h, (x, y, w, h)))
+        if not candidates:
+            return None
+        _, best_rect = max(candidates, key=lambda item: item[0])
+        return best_rect
+
+    # First try exact color match
+    mask_exact = (np.all(bgr_image == INFOBOX_COLOR_BGR, axis=2)).astype(np.uint8) * 255
+    mask_exact = cv2.morphologyEx(mask_exact, cv2.MORPH_CLOSE, kernel, iterations=1)
+    rect = _find_from_mask(mask_exact)
+    if rect:
+        return rect
+
+    # Fallback to tolerance-based mask
+    lower = np.clip(INFOBOX_COLOR_BGR - INFOBOX_TOLERANCE, 0, 255).astype(np.uint8)
+    upper = np.clip(INFOBOX_COLOR_BGR + INFOBOX_TOLERANCE, 0, 255).astype(np.uint8)
+    mask_tol = cv2.inRange(bgr_image, lower, upper)
+    mask_tol = cv2.morphologyEx(mask_tol, cv2.MORPH_CLOSE, kernel, iterations=1)
+    return _find_from_mask(mask_tol)
+
+
+def title_roi(infobox_rect: Tuple[int, int, int, int]) -> Tuple[int, int, int, int]:
+    """
+    Compute the ROI for the title text within the infobox.
+    """
+    x, y, w, h = infobox_rect
+    title_h = int(TITLE_HEIGHT_REL * h)
+    return x, y, w, max(1, title_h)
+
+
+def rect_center(rect: Tuple[int, int, int, int]) -> Tuple[int, int]:
+    """
+    Center (cx, cy) of a rectangle.
+    """
+    x, y, w, h = rect
+    return x + w // 2, y + h // 2
+
+
+def normalized_rect_to_window(
+    norm_rect: Tuple[float, float, float, float],
+    window_width: int,
+    window_height: int,
+) -> Tuple[int, int, int, int]:
+    """
+    Scale a normalized rectangle (x,y,w,h in [0,1]) to window-relative pixels.
+    """
+    nx, ny, nw, nh = norm_rect
+    x = int(round(nx * window_width))
+    y = int(round(ny * window_height))
+    w = max(1, int(round(nw * window_width)))
+    h = max(1, int(round(nh * window_height)))
+    return x, y, w, h
+
+
+def window_relative_to_screen(
+    rect: Tuple[int, int, int, int],
+    window_left: int,
+    window_top: int,
+) -> Tuple[int, int, int, int]:
+    """
+    Convert a window-relative rectangle to absolute screen coordinates.
+    """
+    x, y, w, h = rect
+    return window_left + x, window_top + y, w, h
+
+
+def sell_confirm_button_rect(
+    window_left: int,
+    window_top: int,
+    window_width: int,
+    window_height: int,
+) -> Tuple[int, int, int, int]:
+    """
+    Absolute screen rectangle for the Sell confirmation button.
+    """
+    rel_rect = normalized_rect_to_window(SELL_CONFIRM_RECT_NORM, window_width, window_height)
+    return window_relative_to_screen(rel_rect, window_left, window_top)
+
+
+def recycle_confirm_button_rect(
+    window_left: int,
+    window_top: int,
+    window_width: int,
+    window_height: int,
+) -> Tuple[int, int, int, int]:
+    """
+    Absolute screen rectangle for the Recycle confirmation button.
+    """
+    rel_rect = normalized_rect_to_window(RECYCLE_CONFIRM_RECT_NORM, window_width, window_height)
+    return window_relative_to_screen(rel_rect, window_left, window_top)
+
+
+def sell_confirm_button_center(
+    window_left: int,
+    window_top: int,
+    window_width: int,
+    window_height: int,
+) -> Tuple[int, int]:
+    """
+    Center of the Sell confirmation button (absolute screen coords).
+    """
+    return rect_center(sell_confirm_button_rect(window_left, window_top, window_width, window_height))
+
+
+def recycle_confirm_button_center(
+    window_left: int,
+    window_top: int,
+    window_width: int,
+    window_height: int,
+) -> Tuple[int, int]:
+    """
+    Center of the Recycle confirmation button (absolute screen coords).
+    """
+    return rect_center(recycle_confirm_button_rect(window_left, window_top, window_width, window_height))
+
+
+def preprocess_for_ocr(roi_bgr: np.ndarray) -> np.ndarray:
+    gray = cv2.cvtColor(roi_bgr, cv2.COLOR_BGR2GRAY)
+    _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+    return binary
+
+
+def _extract_action_line_bbox(
+    ocr_data: Dict[str, List],
+    target: Literal["sell", "recycle"],
+) -> Optional[Tuple[int, int, int, int]]:
+    """
+    Given pytesseract image_to_data output, return a bbox (left, top, w, h) for
+    the line containing the target action (infobox-relative coords).
+    """
+    groups: Dict[Tuple[int, int, int, int], List[int]] = {}
+    texts = ocr_data.get("text", [])
+    n = len(texts)
+    for i in range(n):
+        raw_text = texts[i] or ""
+        cleaned = re.sub(r"[^a-z]", "", raw_text.lower())
+        if not cleaned or target not in cleaned:
+            continue
+        key = (
+            int(ocr_data["page_num"][i]),
+            int(ocr_data["block_num"][i]),
+            int(ocr_data["par_num"][i]),
+            int(ocr_data["line_num"][i]),
+        )
+        groups.setdefault(key, []).append(i)
+
+    if not groups:
+        return None
+
+    def _group_score(indices: List[int]) -> float:
+        confs = []
+        for idx in indices:
+            conf_str = ocr_data["conf"][idx]
+            try:
+                confs.append(float(conf_str))
+            except Exception:
+                continue
+        return sum(confs) / len(confs) if confs else -1.0
+
+    best_key = max(groups.keys(), key=lambda k: _group_score(groups[k]))
+    indices = groups[best_key]
+    lefts = [int(ocr_data["left"][i]) for i in indices]
+    tops = [int(ocr_data["top"][i]) for i in indices]
+    rights = [int(ocr_data["left"][i]) + int(ocr_data["width"][i]) for i in indices]
+    bottoms = [int(ocr_data["top"][i]) + int(ocr_data["height"][i]) for i in indices]
+
+    x1, y1 = min(lefts), min(tops)
+    x2, y2 = max(rights), max(bottoms)
+    return x1, y1, max(1, x2 - x1), max(1, y2 - y1)
+
+
+def find_action_bbox_by_ocr(
+    infobox_bgr: np.ndarray,
+    target: Literal["sell", "recycle"],
+) -> Tuple[Optional[Tuple[int, int, int, int]], np.ndarray]:
+    """
+    Run OCR over the full infobox to locate the line containing the target
+    action. Returns (bbox, processed_image) where bbox is infobox-relative.
+    """
+    processed = preprocess_for_ocr(infobox_bgr)
+    try:
+        data = pytesseract.image_to_data(processed, config="--psm 6", output_type=pytesseract.Output.DICT)
+    except Exception:
+        return None, processed
+
+    bbox = _extract_action_line_bbox(data, target)
+    return bbox, processed
+
+
+def ocr_item_name(roi_bgr: np.ndarray) -> str:
+    """
+    OCR the item name from the pre-cropped title ROI.
+    """
+    if roi_bgr.size == 0:
+        return ""
+
+    processed = preprocess_for_ocr(roi_bgr)
+    raw = pytesseract.image_to_string(processed, config="--psm 6")
+    return clean_ocr_text(raw)
