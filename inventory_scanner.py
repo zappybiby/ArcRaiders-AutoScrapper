@@ -183,9 +183,7 @@ def scan_inventory(
     window = wait_for_target_window(timeout=window_timeout)
     win_left, win_top, win_width, win_height = window_rect(window)
 
-    actions: ActionMap = {}
-    if apply_actions:
-        actions = actions_override if actions_override is not None else load_item_actions(actions_path)
+    actions: ActionMap = actions_override if actions_override is not None else load_item_actions(actions_path)
 
     grid = Grid()
     cells = list(grid)
@@ -270,48 +268,51 @@ def scan_inventory(
 
             decision: Optional[Decision] = None
             decision_note: Optional[str] = None
-            action_taken = "SCAN_ONLY" if not apply_actions else ("SKIP_NO_ACTION_MAP" if not actions else "SKIP_UNLISTED")
+            action_taken = "SCAN_ONLY"
 
-            if apply_actions:
-                if actions and item_name:
-                    decision, decision_note = choose_decision(item_name, actions)
-                    if decision is None:
-                        action_taken = "SKIP_UNLISTED"
-                    elif decision in {"KEEP", "CRAFTING MATERIAL"}:
-                        action_taken = decision
-                    elif decision == "SELL":
-                        if infobox_rect is not None and infobox_crop is not None:
-                            sell_bbox_rel, _ = find_action_bbox_by_ocr(infobox_crop, "sell")
-                            if sell_bbox_rel is None:
-                                action_taken = "SKIP_NO_ACTION_BBOX"
-                            else:
-                                _perform_sell(infobox_rect, sell_bbox_rel, win_left, win_top, win_width, win_height)
-                                action_taken = "SELL"
-                        else:
-                            action_taken = "SKIP_NO_INFOBOX"
-                    elif decision == "RECYCLE":
-                        if infobox_rect is not None and infobox_crop is not None:
-                            recycle_bbox_rel, _ = find_action_bbox_by_ocr(infobox_crop, "recycle")
-                            if recycle_bbox_rel is None:
-                                action_taken = "SKIP_NO_ACTION_BBOX"
-                            else:
-                                _perform_recycle(
-                                    infobox_rect,
-                                    recycle_bbox_rel,
-                                    win_left,
-                                    win_top,
-                                    win_width,
-                                    win_height,
-                                )
-                                action_taken = "RECYCLE"
-                        else:
-                            action_taken = "SKIP_NO_INFOBOX"
-                elif not item_name:
+            if actions and item_name:
+                decision, decision_note = choose_decision(item_name, actions)
+
+            if decision is None:
+                if not item_name:
                     action_taken = "SKIP_NO_NAME"
                 elif not actions:
                     action_taken = "SKIP_NO_ACTION_MAP"
-            elif not item_name:
-                action_taken = "SKIP_NO_NAME"
+                else:
+                    action_taken = "SKIP_UNLISTED"
+            elif decision in {"KEEP", "CRAFTING MATERIAL"}:
+                action_taken = decision
+            elif decision == "SELL":
+                if infobox_rect is not None and infobox_crop is not None:
+                    sell_bbox_rel, _ = find_action_bbox_by_ocr(infobox_crop, "sell")
+                    if sell_bbox_rel is None:
+                        action_taken = "SKIP_NO_ACTION_BBOX"
+                    elif apply_actions:
+                        _perform_sell(infobox_rect, sell_bbox_rel, win_left, win_top, win_width, win_height)
+                        action_taken = "SELL"
+                    else:
+                        action_taken = "DRY_RUN_SELL"
+                else:
+                    action_taken = "SKIP_NO_INFOBOX"
+            elif decision == "RECYCLE":
+                if infobox_rect is not None and infobox_crop is not None:
+                    recycle_bbox_rel, _ = find_action_bbox_by_ocr(infobox_crop, "recycle")
+                    if recycle_bbox_rel is None:
+                        action_taken = "SKIP_NO_ACTION_BBOX"
+                    elif apply_actions:
+                        _perform_recycle(
+                            infobox_rect,
+                            recycle_bbox_rel,
+                            win_left,
+                            win_top,
+                            win_width,
+                            win_height,
+                        )
+                        action_taken = "RECYCLE"
+                    else:
+                        action_taken = "DRY_RUN_RECYCLE"
+                else:
+                    action_taken = "SKIP_NO_INFOBOX"
 
             note_suffix = f" note={decision_note}" if decision_note else ""
             infobox_status = "found" if infobox_rect else "missing"
@@ -423,7 +424,7 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="Scan only; do not click sell/recycle actions.",
+        help="Scan only; log planned actions without clicking sell/recycle.",
     )
 
     args = parser.parse_args(list(argv) if argv is not None else None)

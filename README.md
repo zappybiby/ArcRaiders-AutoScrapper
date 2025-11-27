@@ -20,7 +20,7 @@ Main entrypoint: run `inventory_scanner.py` from the repo root.
 4) Press Escape to abort (may need to press a few times).
 
 ### Dry run
-Log decisions without clicking Sell/Recycle:
+See what the script would do without clicking Sell/Recycle (logs planned decisions such as `SELL`/`RECYCLE`):
 
 ```bash
 python3 inventory_scanner.py --dry-run
