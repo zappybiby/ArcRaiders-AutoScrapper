@@ -77,7 +77,7 @@ from vision_ocr import (
 # Configuration
 # ---------------------------------------------------------------------------
 
-MENU_APPEAR_DELAY = 0.3
+MENU_APPEAR_DELAY = 0.05
 INFOBOX_RETRY_DELAY = 0.05
 INFOBOX_RETRIES = 3
 

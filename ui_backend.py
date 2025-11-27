@@ -37,7 +37,7 @@ LAST_ROW_SAFE_Y_RATIO = 0.2
 # Alternate 19/20 downward scroll clicks to advance between 6x4 grids.
 SCROLL_CLICKS_PER_PAGE = 19
 SCROLL_MOVE_DURATION = 0.5
-SCROLL_INTERVAL = 0.02
+SCROLL_INTERVAL = 0.04
 SCROLL_SETTLE_DELAY = 0.05
 
 # Keyboard
@@ -229,10 +229,12 @@ def scroll_to_next_grid_at(
     gx, gy = grid_center_abs
     scroll_clicks = -abs(clicks)
 
-    # Match the working standalone script: slow move into position, then vertical scroll.
+    # Match the working standalone script: slow move into position, click, then vertical scroll.
     pdi.moveTo(gx, gy, duration=SCROLL_MOVE_DURATION, _pause=False)
     pause_action()
     abort_if_escape_pressed()
+    pdi.leftClick(gx, gy, _pause=False)
+    pause_action()
 
     print(f"[scroll] vscroll clicks={scroll_clicks} interval={SCROLL_INTERVAL} at=({gx},{gy})", flush=True)
     pdi.vscroll(clicks=scroll_clicks, interval=SCROLL_INTERVAL, _pause=False)
