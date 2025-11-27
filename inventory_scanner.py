@@ -210,29 +210,30 @@ def scan_inventory(
             global_idx = page * cells_per_page + cell.index
 
             if page != current_page:
-                if current_page != -1:
-                    scroll_to_next_grid(scroll_clicks_per_page)
-                empty_idx = _detect_first_empty_cell(
-                    page,
-                    cells,
-                    win_left,
-                    win_top,
-                    win_width,
-                    win_height,
-                )
-                if empty_idx is not None and (stop_at_global_idx is None or empty_idx < stop_at_global_idx):
-                    stop_at_global_idx = empty_idx
-                    detected_page = empty_idx // cells_per_page
-                    detected_cell = empty_idx % cells_per_page
-                    print(
-                        f"[empty] empty cell detected at idx={empty_idx:03d} "
-                        f"page={detected_page + 1:02d} cell={detected_cell:02d}"
-                    )
-                if stop_at_global_idx is not None and global_idx >= stop_at_global_idx:
-                    print(f"[empty] reached empty cell idx={stop_at_global_idx:03d}; stopping scan.")
-                    break
-                open_cell_menu(cell, win_left, win_top)
-                current_page = page
+        if current_page != -1:
+            scroll_to_next_grid(scroll_clicks_per_page)
+        # TODO: Re-enable empty-cell detection once the heuristic is fixed.
+        # empty_idx = _detect_first_empty_cell(
+        #     page,
+        #     cells,
+        #     win_left,
+        #     win_top,
+        #     win_width,
+        #     win_height,
+        # )
+        # if empty_idx is not None and (stop_at_global_idx is None or empty_idx < stop_at_global_idx):
+        #     stop_at_global_idx = empty_idx
+        #     detected_page = empty_idx // cells_per_page
+        #     detected_cell = empty_idx % cells_per_page
+        #     print(
+        #         f"[empty] empty cell detected at idx={empty_idx:03d} "
+        #         f"page={detected_page + 1:02d} cell={detected_cell:02d}"
+        #     )
+        # if stop_at_global_idx is not None and global_idx >= stop_at_global_idx:
+        #     print(f"[empty] reached empty cell idx={stop_at_global_idx:03d}; stopping scan.")
+        #     break
+        open_cell_menu(cell, win_left, win_top)
+        current_page = page
 
             if stop_at_global_idx is not None and global_idx >= stop_at_global_idx:
                 print(f"[empty] reached empty cell idx={stop_at_global_idx:03d}; stopping scan.")
