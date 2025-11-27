@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import sys
 import time
+from collections import Counter
 from pathlib import Path
 from typing import Iterable, List, Optional, Tuple
 
@@ -19,6 +20,17 @@ try:
     from tqdm.auto import tqdm  # type: ignore
 except ImportError:  # pragma: no cover - optional dependency
     tqdm = None
+
+try:
+    from rich import box
+    from rich.console import Console
+    from rich.table import Table
+    from rich.text import Text
+except ImportError:  # pragma: no cover - optional dependency
+    Console = None
+    Table = None
+    Text = None
+    box = None
 
 from grid_navigation import (
     Cell,
@@ -431,6 +443,149 @@ def _detect_first_empty_cell(
 
 
 # ---------------------------------------------------------------------------
+# Output formatting
+# ---------------------------------------------------------------------------
+
+_SKIP_REASONS = {
+    "SKIP_NO_NAME": "missing OCR name",
+    "SKIP_NO_ACTION_MAP": "no action map loaded",
+    "SKIP_UNLISTED": "no configured decision",
+    "SKIP_NO_ACTION_BBOX": "action not found in menu",
+    "SKIP_NO_INFOBOX": "infobox missing",
+}
+
+
+def _describe_action(action_taken: str) -> Tuple[str, List[str]]:
+    """
+    Normalize the action label (for display) and attach human-readable details.
+    """
+    details: List[str] = []
+    if action_taken.startswith("SKIP_"):
+        reason = _SKIP_REASONS.get(action_taken, action_taken.replace("SKIP_", "").replace("_", " ").lower())
+        details.append(reason)
+        return "SKIP", details
+
+    if action_taken.startswith("DRY_RUN_"):
+        base = action_taken[len("DRY_RUN_") :]
+        details.append("dry run")
+        return f"DRY-{base}", details
+
+    return action_taken, details
+
+
+def _outcome_style(label: str) -> str:
+    base = label.replace("DRY-", "")
+    return {
+        "KEEP": "green",
+        "CRAFTING MATERIAL": "bright_blue",
+        "RECYCLE": "cyan",
+        "SELL": "magenta",
+        "SKIP": "red",
+    }.get(base, "white")
+
+
+def _summarize_results(results: List[ItemActionResult]) -> Counter:
+    summary = Counter()
+    for result in results:
+        label, _ = _describe_action(result.action_taken)
+        summary[label] += 1
+    return summary
+
+
+def _render_summary(summary: Counter, console: Optional["Console"]) -> None:
+    ordered_keys = [k for k in ("KEEP", "CRAFTING MATERIAL", "RECYCLE", "SELL") if k in summary]
+    ordered_keys += [k for k in ("DRY-KEEP", "DRY-RECYCLE", "DRY-SELL") if k in summary]
+    if "SKIP" in summary:
+        ordered_keys.append("SKIP")
+    ordered_keys += sorted(set(summary.keys()) - set(ordered_keys))
+
+    parts = [f"{k}={summary[k]}" for k in ordered_keys]
+    if console is None:
+        print("Summary: " + ", ".join(parts))
+        return
+
+    table = Table(
+        title="Summary",
+        box=box.SIMPLE,
+        show_header=True,
+        header_style="bold",
+        show_lines=False,
+        padding=(0, 1),
+    )
+    table.add_column("Outcome", justify="left", style="cyan", no_wrap=True)
+    table.add_column("Count", justify="right", style="white", no_wrap=True)
+    for key in ordered_keys:
+        label = Text(key, style=_outcome_style(key))
+        table.add_row(label, str(summary[key]))
+    console.print(table)
+
+
+def _render_results(results: List[ItemActionResult], cells_per_page: int) -> None:
+    if not results:
+        print("No results to display.")
+        return
+
+    console = Console() if Console is not None and Table is not None and Text is not None and box is not None else None
+    summary = _summarize_results(results)
+
+    if console is None:
+        for result in results:
+            label = result.item_name or "<unreadable>"
+            global_idx = result.page * cells_per_page + result.cell.index
+            outcome_label, details = _describe_action(result.action_taken)
+            if result.decision and not outcome_label.startswith(result.decision):
+                details.append(f"plan {result.decision}")
+            if result.note:
+                details.append(result.note)
+            notes = f" | {'; '.join(details)}" if details else ""
+            print(
+                f"p{result.page + 1:02d} idx={global_idx:03d} r{result.cell.row}c{result.cell.col} "
+                f"| {label} | {outcome_label}{notes}"
+            )
+        _render_summary(summary, None)
+        return
+
+    console.print()
+    table = Table(
+        title="Inventory Scan Results",
+        box=box.SIMPLE_HEAVY,
+        show_header=True,
+        header_style="bold",
+        show_lines=False,
+        pad_edge=False,
+    )
+    table.add_column("Pg", justify="right", style="cyan", width=2, no_wrap=True)
+    table.add_column("Idx", justify="right", style="cyan", width=3, no_wrap=True)
+    table.add_column("Cell", justify="left", style="cyan", width=6, no_wrap=True)
+    table.add_column("Item", justify="left", style="white", overflow="fold")
+    table.add_column("Outcome", justify="center", style="white", no_wrap=True)
+    table.add_column("Notes", justify="left", style="dim", overflow="fold")
+
+    for result in results:
+        label = result.item_name or "<unreadable>"
+        global_idx = result.page * cells_per_page + result.cell.index
+        outcome_label, details = _describe_action(result.action_taken)
+        if result.decision and not outcome_label.startswith(result.decision):
+            details.append(f"plan {result.decision}")
+        if result.note:
+            details.append(result.note)
+        notes = "; ".join(details)
+
+        outcome_text = Text(outcome_label, style=_outcome_style(outcome_label))
+        table.add_row(
+            f"{result.page + 1:02d}",
+            f"{global_idx:03d}",
+            f"r{result.cell.row}c{result.cell.col}",
+            label,
+            outcome_text,
+            notes,
+        )
+
+    console.print(table)
+    _render_summary(summary, console)
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -488,17 +643,7 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
         return 1
 
     cells_per_page = Grid.COLS * Grid.ROWS
-    for result in results:
-        label = result.item_name or "<unreadable>"
-        global_idx = result.page * cells_per_page + result.cell.index
-        decision_label = result.decision or result.action_taken
-        action_suffix = f" ({result.action_taken})" if result.action_taken != decision_label else ""
-        note_suffix = f" {result.note}" if result.note else ""
-        print(
-            f"[page {result.page + 1:02d}] global_idx={global_idx:03d} "
-            f"Cell r{result.cell.row} c{result.cell.col} idx={result.cell.index:02d}: "
-            f"{label} -> {decision_label}{action_suffix}{note_suffix}"
-        )
+    _render_results(results, cells_per_page)
 
     return 0
 

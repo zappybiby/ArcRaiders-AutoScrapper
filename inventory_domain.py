@@ -87,8 +87,7 @@ def choose_decision(item_name: str, actions: ActionMap) -> Tuple[Optional[Decisi
     note = None
     if len(decision_list) > 1:
         note = (
-            f"Multiple decisions {decision_list}; chose {decision} "
-            "(TODO: revisit multi-decision handling)."
+            f"Multiple decisions {decision_list}; chose {decision}."
         )
 
     return decision, note
