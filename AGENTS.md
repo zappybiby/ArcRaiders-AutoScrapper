@@ -28,6 +28,7 @@ Concise guide for contributing to the Arc Raiders inventory auto-scrapper. Keep 
   - Full run on a small inventory page; verify infobox placement on bottom row and correct Sell/Recycle.
   - Remember the game slides items up after Sell/Recycle (vacated cell is filled by the next item); ensure grid traversal or pagination logic still aligns.
 - If adding vision logic, capture before/after screenshots for sanity checks.
+- This WSL-based environment cannot run the game automation; plan and review code here, then test on a Windows machine with Arc Raiders open.
 
 ## Commit & Pull Request Guidelines
 - Always commit after a change; push only when requested.
