@@ -34,8 +34,8 @@ SELL_RECYCLE_MOVE_DURATION = MOVE_DURATION * SELL_RECYCLE_SPEED_MULT
 SELL_RECYCLE_ACTION_DELAY = ACTION_DELAY * SELL_RECYCLE_SPEED_MULT
 
 # Scrolling
-# 16 downward scroll clicks advances the list by exactly one 6x4 grid of items.
-SCROLL_CLICKS_PER_PAGE = 16
+# Alternate 19/20 downward scroll clicks to advance between 6x4 grids.
+SCROLL_CLICKS_PER_PAGE = 19
 SCROLL_INTERVAL = 0.0
 SCROLL_SETTLE_DELAY = 0.05
 
@@ -209,14 +209,36 @@ def scroll_to_next_grid(scroll_clicks_per_page: int = SCROLL_CLICKS_PER_PAGE) ->
     """
     Scroll quickly to reveal the next 6x4 grid of items.
     """
+    raise RuntimeError(
+        "scroll_to_next_grid now requires explicit grid/safe coordinates. "
+        "Use scroll_to_next_grid_at instead."
+    )
+
+
+def scroll_to_next_grid_at(
+    clicks: int,
+    grid_center_abs: Tuple[int, int],
+    safe_point_abs: Optional[Tuple[int, int]] = None,
+) -> None:
+    """
+    Scroll with the cursor positioned inside the grid to ensure the carousel moves.
+    Optionally park the cursor back at a safe point afterwards.
+    """
     abort_if_escape_pressed()
-    clicks = -abs(scroll_clicks_per_page)
-    timed_action("scroll", pdi.scroll, clicks, _pause=False, interval=SCROLL_INTERVAL)
+    gx, gy = grid_center_abs
+    move_absolute(gx, gy, label="move to grid center before scroll")
+
+    scroll_clicks = -abs(clicks)
+    timed_action("scroll", pdi.scroll, scroll_clicks, _pause=False, interval=SCROLL_INTERVAL)
     sleep_with_abort(SCROLL_SETTLE_DELAY)
+
+    if safe_point_abs is not None:
+        sx, sy = safe_point_abs
+        move_absolute(sx, sy, label="move to safe area after scroll")
 
 
 def _cell_screen_center(cell: Cell, window_left: int, window_top: int) -> Tuple[int, int]:
-    cx, cy = cell.center
+    cx, cy = cell.safe_center
     # Game quirk: on the last row the infobox can render off-screen when we click dead-center,
     # hiding Sell/Recycle. Nudge down slightly to keep the infobox fully visible.
     if cell.row == Grid.ROWS - 1:

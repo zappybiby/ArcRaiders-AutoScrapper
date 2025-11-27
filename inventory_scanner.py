@@ -20,7 +20,13 @@ try:
 except ImportError:  # pragma: no cover - optional dependency
     tqdm = None
 
-from grid_navigation import Cell, Grid
+from grid_navigation import (
+    Cell,
+    Grid,
+    grid_center_point,
+    inventory_roi_rect,
+    safe_mouse_point,
+)
 from inventory_domain import (
     ActionMap,
     Decision,
@@ -42,7 +48,7 @@ from ui_backend import (
     move_window_relative,
     open_cell_menu,
     pause_action,
-    scroll_to_next_grid,
+    scroll_to_next_grid_at,
     sleep_with_abort,
     wait_for_target_window,
     window_rect,
@@ -66,19 +72,6 @@ from vision_ocr import (
 MENU_APPEAR_DELAY = 0.05
 INFOBOX_RETRY_DELAY = 0.05
 INFOBOX_RETRIES = 3
-
-
-# ---------------------------------------------------------------------------
-# Navigation + scanning
-# ---------------------------------------------------------------------------
-
-def _progress(seq: Iterable[Cell], enabled: bool, total: int) -> Iterable[Cell]:
-    """
-    Wrap an iterable with tqdm when available and enabled.
-    """
-    if enabled and tqdm is not None:
-        return tqdm(seq, total=total, desc="Scanning grid")
-    return seq
 
 
 def _perform_sell(
@@ -163,6 +156,18 @@ def _perform_recycle(
     click_absolute(cx, cy, label="recycle confirm", pause=SELL_RECYCLE_ACTION_DELAY)
 
 
+def _scroll_clicks_sequence(start_clicks: int) -> Iterable[int]:
+    """
+    Yield alternating scroll counts: start_clicks, start_clicks + 1, repeat.
+    """
+    base = abs(start_clicks)
+    alt = base + 1
+    use_alt = False
+    while True:
+        yield alt if use_alt else base
+        use_alt = not use_alt
+
+
 def scan_inventory(
     window_timeout: float = WINDOW_TIMEOUT,
     infobox_retries: int = INFOBOX_RETRIES,
@@ -177,6 +182,9 @@ def scan_inventory(
     Walk each 6x4 grid (top-to-bottom, left-to-right), OCR each cell's item
     title, and apply the configured keep/recycle/sell decision when possible.
     Decisions come from items_actions.json unless an override map is provided.
+    Cells are detected via contours inside a normalized ROI, and scrolling
+    alternates between `scroll_clicks_per_page` and `scroll_clicks_per_page + 1`
+    to handle the carousel offset.
     """
     if pages < 1:
         raise ValueError("pages must be >= 1")
@@ -187,170 +195,209 @@ def scan_inventory(
 
     actions: ActionMap = actions_override if actions_override is not None else load_item_actions(actions_path)
 
-    grid = Grid(window_size=(win_width, win_height))
+    grid_roi = inventory_roi_rect(win_width, win_height)
+    safe_point = safe_mouse_point(win_width, win_height)
+    safe_point_abs = (win_left + safe_point[0], win_top + safe_point[1])
+    grid_center = grid_center_point(win_width, win_height)
+    grid_center_abs = (win_left + grid_center[0], win_top + grid_center[1])
+
+    def _detect_grid() -> Grid:
+        """
+        Move the cursor out of the grid, capture the ROI, and detect cells.
+        """
+        move_absolute(safe_point_abs[0], safe_point_abs[1], label="move to safe area for detection")
+        pause_action()
+        roi_left = win_left + grid_roi[0]
+        roi_top = win_top + grid_roi[1]
+        inv_bgr = capture_region((roi_left, roi_top, grid_roi[2], grid_roi[3]))
+        grid = Grid.detect(inv_bgr, grid_roi, win_width, win_height)
+        expected_cells = Grid.COLS * Grid.ROWS
+        if len(grid) < expected_cells:
+            print(
+                f"[warning] detected {len(grid)} cells inside the grid ROI (expected {expected_cells}); "
+                "grid may be partially obscured or ROI misaligned.",
+                flush=True,
+            )
+        return grid
+
+    grid = _detect_grid()
     cells = list(grid)
-    cells_per_page = len(cells)
+    cells_per_page = Grid.COLS * Grid.ROWS
     total_cells = cells_per_page * pages
-    page_cells = [(page, cell) for page in range(pages) for cell in cells]
     results: List[ItemActionResult] = []
 
     abort_if_escape_pressed()
 
-    if not cells:
-        return results
-
     progress = tqdm(total=total_cells, desc="Scanning grid") if show_progress and tqdm is not None else None
-    current_page = -1
-    idx = 0
     stop_at_global_idx: Optional[int] = None
+    scroll_sequence = _scroll_clicks_sequence(scroll_clicks_per_page)
+    stop_scan = False
 
     try:
-        while idx < len(page_cells):
-            page, cell = page_cells[idx]
-            global_idx = page * cells_per_page + cell.index
+        for page in range(pages):
+            if page > 0:
+                clicks = next(scroll_sequence)
+                scroll_to_next_grid_at(clicks, grid_center_abs, safe_point_abs)
+                grid = _detect_grid()
+                cells = list(grid)
 
-            if page != current_page:
-                if current_page != -1:
-                    scroll_to_next_grid(scroll_clicks_per_page)
-                empty_idx = _detect_first_empty_cell(
-                    page,
-                    cells,
-                    win_left,
-                    win_top,
-                    win_width,
-                    win_height,
-                )
-                if empty_idx is not None and (stop_at_global_idx is None or empty_idx < stop_at_global_idx):
-                    stop_at_global_idx = empty_idx
-                    detected_page = empty_idx // cells_per_page
-                    detected_cell = empty_idx % cells_per_page
-                    print(
-                        f"[empty] empty cell detected at idx={empty_idx:03d} "
-                        f"page={detected_page + 1:02d} cell={detected_cell:02d}"
-                    )
-                if stop_at_global_idx is not None and global_idx >= stop_at_global_idx:
-                    print(f"[empty] reached empty cell idx={stop_at_global_idx:03d}; stopping scan.")
-                    break
-                open_cell_menu(cell, win_left, win_top)
-                current_page = page
-
-            if stop_at_global_idx is not None and global_idx >= stop_at_global_idx:
-                print(f"[empty] reached empty cell idx={stop_at_global_idx:03d}; stopping scan.")
+            page_base_idx = page * cells_per_page
+            if stop_at_global_idx is not None and page_base_idx >= stop_at_global_idx:
                 break
 
-            abort_if_escape_pressed()
-            if hasattr(window, "isAlive") and not window.isAlive:  # type: ignore[attr-defined]
-                raise RuntimeError("Target window closed during scan")
-
-            time.sleep(MENU_APPEAR_DELAY)
-            pause_action()
-
-            infobox_rect: Optional[Tuple[int, int, int, int]] = None
-            window_bgr = None
-
-            for _ in range(infobox_retries):
-                abort_if_escape_pressed()
-                window_bgr = capture_region((win_left, win_top, win_width, win_height))
-                infobox_rect = find_infobox(window_bgr)
-                if infobox_rect:
-                    break
-                time.sleep(INFOBOX_RETRY_DELAY)
-                pause_action()
-
-            item_name = ""
-            infobox_crop = None
-            if infobox_rect and window_bgr is not None:
-                pause_action()
-                title_x, title_y, title_w, title_h = title_roi(infobox_rect)
-                title_crop = window_bgr[title_y:title_y + title_h, title_x:title_x + title_w]
-                item_name = ocr_item_name(title_crop)
-                x, y, w, h = infobox_rect
-                infobox_crop = window_bgr[y:y + h, x:x + w]
-
-            decision: Optional[Decision] = None
-            decision_note: Optional[str] = None
-            action_taken = "SCAN_ONLY"
-
-            if actions and item_name:
-                decision, decision_note = choose_decision(item_name, actions)
-
-            if decision is None:
-                if not item_name:
-                    action_taken = "SKIP_NO_NAME"
-                elif not actions:
-                    action_taken = "SKIP_NO_ACTION_MAP"
-                else:
-                    action_taken = "SKIP_UNLISTED"
-            elif decision in {"KEEP", "CRAFTING MATERIAL"}:
-                action_taken = decision
-            elif decision == "SELL":
-                if infobox_rect is not None and infobox_crop is not None:
-                    sell_bbox_rel, _ = find_action_bbox_by_ocr(infobox_crop, "sell")
-                    if sell_bbox_rel is None:
-                        action_taken = "SKIP_NO_ACTION_BBOX"
-                    elif apply_actions:
-                        _perform_sell(infobox_rect, sell_bbox_rel, win_left, win_top, win_width, win_height)
-                        action_taken = "SELL"
-                    else:
-                        action_taken = "DRY_RUN_SELL"
-                else:
-                    action_taken = "SKIP_NO_INFOBOX"
-            elif decision == "RECYCLE":
-                if infobox_rect is not None and infobox_crop is not None:
-                    recycle_bbox_rel, _ = find_action_bbox_by_ocr(infobox_crop, "recycle")
-                    if recycle_bbox_rel is None:
-                        action_taken = "SKIP_NO_ACTION_BBOX"
-                    elif apply_actions:
-                        _perform_recycle(
-                            infobox_rect,
-                            recycle_bbox_rel,
-                            win_left,
-                            win_top,
-                            win_width,
-                            win_height,
-                        )
-                        action_taken = "RECYCLE"
-                    else:
-                        action_taken = "DRY_RUN_RECYCLE"
-                else:
-                    action_taken = "SKIP_NO_INFOBOX"
-
-            note_suffix = f" note={decision_note}" if decision_note else ""
-            infobox_status = "found" if infobox_rect else "missing"
-            action_label = "SKIPPED" if action_taken.startswith("SKIP") else action_taken
-            detail_suffix = f" detail={action_taken}" if action_label != action_taken else ""
-            item_label = item_name or "<unreadable>"
-            print(
-                f"[item] idx={global_idx:03d} page={page + 1:02d} cell={cell.index:02d} "
-                f"item='{item_label}' action={action_label}{detail_suffix} "
-                f"infobox={infobox_status}{note_suffix}"
+            empty_idx = _detect_first_empty_cell(
+                page,
+                cells,
+                cells_per_page,
+                win_left,
+                win_top,
+                win_width,
+                win_height,
+                safe_point_abs,
             )
-
-            results.append(
-                ItemActionResult(
-                    page=page,
-                    cell=cell,
-                    item_name=item_name,
-                    decision=decision,
-                    action_taken=action_taken,
-                    note=decision_note,
+            if empty_idx is not None and (stop_at_global_idx is None or empty_idx < stop_at_global_idx):
+                stop_at_global_idx = empty_idx
+                detected_page = empty_idx // cells_per_page
+                detected_cell = empty_idx % cells_per_page
+                print(
+                    f"[empty] empty cell detected at idx={empty_idx:03d} "
+                    f"page={detected_page + 1:02d} cell={detected_cell:02d}"
                 )
-            )
 
-            destructive_action = action_taken in {"SELL", "RECYCLE"}
-            if destructive_action:
-                open_cell_menu(cell, win_left, win_top)
+            if not cells:
                 continue
 
-            if progress:
-                progress.update(1)
+            idx_in_page = 0
+            open_cell_menu(cells[0], win_left, win_top)
 
-            idx += 1
-            if idx < len(page_cells):
-                next_page, next_cell = page_cells[idx]
-                next_global_idx = next_page * cells_per_page + next_cell.index
-                if next_page == page and (stop_at_global_idx is None or next_global_idx < stop_at_global_idx):
-                    open_cell_menu(next_cell, win_left, win_top)
+            while idx_in_page < len(cells):
+                cell = cells[idx_in_page]
+                global_idx = page * cells_per_page + cell.index
+
+                if stop_at_global_idx is not None and global_idx >= stop_at_global_idx:
+                    print(f"[empty] reached empty cell idx={stop_at_global_idx:03d}; stopping scan.")
+                    stop_scan = True
+                    break
+
+                abort_if_escape_pressed()
+                if hasattr(window, "isAlive") and not window.isAlive:  # type: ignore[attr-defined]
+                    raise RuntimeError("Target window closed during scan")
+
+                time.sleep(MENU_APPEAR_DELAY)
+                pause_action()
+
+                infobox_rect: Optional[Tuple[int, int, int, int]] = None
+                window_bgr = None
+
+                for _ in range(infobox_retries):
+                    abort_if_escape_pressed()
+                    window_bgr = capture_region((win_left, win_top, win_width, win_height))
+                    infobox_rect = find_infobox(window_bgr)
+                    if infobox_rect:
+                        break
+                    time.sleep(INFOBOX_RETRY_DELAY)
+                    pause_action()
+
+                item_name = ""
+                infobox_crop = None
+                if infobox_rect and window_bgr is not None:
+                    pause_action()
+                    title_x, title_y, title_w, title_h = title_roi(infobox_rect)
+                    title_crop = window_bgr[title_y:title_y + title_h, title_x:title_x + title_w]
+                    item_name = ocr_item_name(title_crop)
+                    x, y, w, h = infobox_rect
+                    infobox_crop = window_bgr[y:y + h, x:x + w]
+
+                decision: Optional[Decision] = None
+                decision_note: Optional[str] = None
+                action_taken = "SCAN_ONLY"
+
+                if actions and item_name:
+                    decision, decision_note = choose_decision(item_name, actions)
+
+                if decision is None:
+                    if not item_name:
+                        action_taken = "SKIP_NO_NAME"
+                    elif not actions:
+                        action_taken = "SKIP_NO_ACTION_MAP"
+                    else:
+                        action_taken = "SKIP_UNLISTED"
+                elif decision in {"KEEP", "CRAFTING MATERIAL"}:
+                    action_taken = decision
+                elif decision == "SELL":
+                    if infobox_rect is not None and infobox_crop is not None:
+                        sell_bbox_rel, _ = find_action_bbox_by_ocr(infobox_crop, "sell")
+                        if sell_bbox_rel is None:
+                            action_taken = "SKIP_NO_ACTION_BBOX"
+                        elif apply_actions:
+                            _perform_sell(infobox_rect, sell_bbox_rel, win_left, win_top, win_width, win_height)
+                            action_taken = "SELL"
+                        else:
+                            action_taken = "DRY_RUN_SELL"
+                    else:
+                        action_taken = "SKIP_NO_INFOBOX"
+                elif decision == "RECYCLE":
+                    if infobox_rect is not None and infobox_crop is not None:
+                        recycle_bbox_rel, _ = find_action_bbox_by_ocr(infobox_crop, "recycle")
+                        if recycle_bbox_rel is None:
+                            action_taken = "SKIP_NO_ACTION_BBOX"
+                        elif apply_actions:
+                            _perform_recycle(
+                                infobox_rect,
+                                recycle_bbox_rel,
+                                win_left,
+                                win_top,
+                                win_width,
+                                win_height,
+                            )
+                            action_taken = "RECYCLE"
+                        else:
+                            action_taken = "DRY_RUN_RECYCLE"
+                    else:
+                        action_taken = "SKIP_NO_INFOBOX"
+
+                note_suffix = f" note={decision_note}" if decision_note else ""
+                infobox_status = "found" if infobox_rect else "missing"
+                action_label = "SKIPPED" if action_taken.startswith("SKIP") else action_taken
+                detail_suffix = f" detail={action_taken}" if action_label != action_taken else ""
+                item_label = item_name or "<unreadable>"
+                print(
+                    f"[item] idx={global_idx:03d} page={page + 1:02d} cell={cell.index:02d} "
+                    f"item='{item_label}' action={action_label}{detail_suffix} "
+                    f"infobox={infobox_status}{note_suffix}"
+                )
+
+                results.append(
+                    ItemActionResult(
+                        page=page,
+                        cell=cell,
+                        item_name=item_name,
+                        decision=decision,
+                        action_taken=action_taken,
+                        note=decision_note,
+                    )
+                )
+
+                destructive_action = action_taken in {"SELL", "RECYCLE"}
+                if destructive_action:
+                    # Item removed; the next item collapses into this slot. Re-open the same cell.
+                    open_cell_menu(cell, win_left, win_top)
+                    continue
+
+                if progress:
+                    progress.update(1)
+
+                idx_in_page += 1
+                if idx_in_page < len(cells):
+                    next_global_idx = page * cells_per_page + cells[idx_in_page].index
+                    if stop_at_global_idx is not None and next_global_idx >= stop_at_global_idx:
+                        print(f"[empty] reached empty cell idx={stop_at_global_idx:03d}; stopping scan.")
+                        stop_scan = True
+                        break
+                    open_cell_menu(cells[idx_in_page], win_left, win_top)
+
+            if stop_scan:
+                break
     finally:
         if progress:
             progress.close()
@@ -365,10 +412,12 @@ def scan_inventory(
 def _detect_first_empty_cell(
     page: int,
     cells: List[Cell],
+    cells_per_page: int,
     window_left: int,
     window_top: int,
     window_width: int,
     window_height: int,
+    safe_point_abs: Tuple[int, int],
 ) -> Optional[int]:
     """
     Capture the current page and return the global index of the first empty cell.
@@ -376,19 +425,19 @@ def _detect_first_empty_cell(
     abort_if_escape_pressed()
 
     # Keep the cursor out of the grid so it doesn't occlude cells.
-    move_absolute(window_left + 10, window_top + 10, label="clear for empty detection")
+    move_absolute(safe_point_abs[0], safe_point_abs[1], label="clear for empty detection")
     pause_action()
 
     window_bgr = capture_region((window_left, window_top, window_width, window_height))
 
     for cell in cells:
         abort_if_escape_pressed()
-        x, y, w, h = cell.rect
+        x, y, w, h = cell.safe_rect
         slot_bgr = window_bgr[y:y + h, x:x + w]
         if slot_bgr.size == 0:
             continue
         if is_slot_empty(slot_bgr):
-            return page * len(cells) + cell.index
+            return page * cells_per_page + cell.index
 
     return None
 
@@ -409,7 +458,7 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
         "--scroll-clicks",
         type=int,
         default=SCROLL_CLICKS_PER_PAGE,
-        help="Scroll clicks to reach the next grid (negative scrolls downward).",
+        help="Initial scroll clicks to reach the next grid (alternates with +1 on following page).",
     )
     parser.add_argument(
         "--no-progress",
