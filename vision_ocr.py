@@ -106,8 +106,9 @@ def find_infobox(bgr_image: np.ndarray) -> Optional[Tuple[int, int, int, int]]:
         return best_rect
 
     # Use tolerance-based mask around the expected infobox color
-    lower = np.clip(INFOBOX_COLOR_BGR - INFOBOX_TOLERANCE, 0, 255).astype(np.uint8)
-    upper = np.clip(INFOBOX_COLOR_BGR + INFOBOX_TOLERANCE, 0, 255).astype(np.uint8)
+    color = INFOBOX_COLOR_BGR.astype(np.int16)  # promote to avoid uint8 overflow when adding tolerance
+    lower = np.clip(color - INFOBOX_TOLERANCE, 0, 255).astype(np.uint8)
+    upper = np.clip(color + INFOBOX_TOLERANCE, 0, 255).astype(np.uint8)
     mask_tol = cv2.inRange(bgr_image, lower, upper)
     mask_tol = cv2.morphologyEx(mask_tol, cv2.MORPH_CLOSE, kernel, iterations=1)
     return _find_from_mask(mask_tol)
