@@ -33,6 +33,9 @@ SELL_RECYCLE_SPEED_MULT = 1.5  # extra slack vs default pacing (MOVE_DURATION/AC
 SELL_RECYCLE_MOVE_DURATION = MOVE_DURATION * SELL_RECYCLE_SPEED_MULT
 SELL_RECYCLE_ACTION_DELAY = ACTION_DELAY * SELL_RECYCLE_SPEED_MULT
 
+# Cell click positioning
+LAST_ROW_SAFE_Y_RATIO = 0.85
+
 # Scrolling
 # Alternate 19/20 downward scroll clicks to advance between 6x4 grids.
 SCROLL_CLICKS_PER_PAGE = 19
@@ -240,7 +243,9 @@ def scroll_to_next_grid_at(
 def _cell_screen_center(cell: Cell, window_left: int, window_top: int) -> Tuple[int, int]:
     cx, cy = cell.safe_center
     # Game quirk: on the last row the infobox can render off-screen when we click dead-center,
-    # hiding Sell/Recycle. Nudge down slightly to keep the infobox fully visible.
+    # hiding Sell/Recycle. Bias toward the bottom of the safe area to keep the infobox visible.
     if cell.row == Grid.ROWS - 1:
-        cy += 2
+        x1, y1, x2, y2 = cell.safe_bounds
+        safe_height = y2 - y1
+        cy = y1 + safe_height * LAST_ROW_SAFE_Y_RATIO
     return int(window_left + cx), int(window_top + cy)
