@@ -13,6 +13,8 @@ import time
 from pathlib import Path
 from typing import Iterable, List, Optional, Tuple
 
+from detect_tesseract import configure_pytesseract
+
 try:
     from tqdm.auto import tqdm  # type: ignore
 except ImportError:  # pragma: no cover - optional dependency
@@ -430,6 +432,8 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
     args = parser.parse_args(list(argv) if argv is not None else None)
 
     try:
+        tesseract_cmd = configure_pytesseract()
+        print(f"[tesseract] using {tesseract_cmd}", flush=True)
         results = scan_inventory(
             show_progress=not args.no_progress,
             pages=args.pages,

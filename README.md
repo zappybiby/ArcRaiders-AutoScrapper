@@ -9,7 +9,14 @@ Walks through each inventory item and applies Sell/Recycle decisions using only 
 
 ## Setup
 1) Install dependencies: `pip install -r requirements.txt`.
-2) You need [Tesseract](https://github.com/UB-Mannheim/tesseract/wiki#tesseract-installer-for-windows) installed
+2) You need [Tesseract](https://github.com/UB-Mannheim/tesseract/wiki#tesseract-installer-for-windows) installed. The script auto-detects common Windows install paths and the PATH entry; set `TESSERACT_CMD` to the full `tesseract.exe` path if you installed it elsewhere.
+
+## Tesseract detection
+- On startup the script tries, in order: `TESSERACT_CMD` env var (if set), `tesseract.exe`/`tesseract` on `PATH`, registry hints, and common install folders such as `C:\Program Files\Tesseract-OCR\tesseract.exe`, `C:\Program Files (x86)\Tesseract-OCR\tesseract.exe`, and `%LOCALAPPDATA%\Tesseract-OCR\tesseract.exe`.
+- To override manually (per-shell session):
+  - Windows Terminal / PowerShell: `$env:TESSERACT_CMD = 'C:\Program Files\Tesseract-OCR\tesseract.exe'`
+  - cmd.exe: `set TESSERACT_CMD=C:\Program Files\Tesseract-OCR\tesseract.exe`
+- Keep the full path in quotes if it contains spaces.
 
 ## Usage
 Main entrypoint: run `inventory_scanner.py` from the repo root.
