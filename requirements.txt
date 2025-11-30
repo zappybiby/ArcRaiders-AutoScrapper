@@ -1,8 +1,7 @@
-mss
+dxcam
 numpy
 opencv-python
 Pillow
-pyautogui
 pydirectinput-rgx
 pywinctl
 rich

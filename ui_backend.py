@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 import ctypes
+import sys
 import time
-from typing import Optional, Tuple
+from typing import Optional, Tuple, TYPE_CHECKING
 
 import cv2
 import numpy as np
@@ -10,14 +11,12 @@ import pywinctl as pwc
 import pydirectinput as pdi
 
 try:
-    import mss  # type: ignore
-except ImportError:  # pragma: no cover - optional dependency
-    mss = None
+    import dxcam  # type: ignore
+except ImportError as exc:
+    raise ImportError("dxcam is required for screen capture; install it via requirements.txt.") from exc
 
-try:
-    import pyautogui  # type: ignore
-except ImportError:  # pragma: no cover - optional dependency
-    pyautogui = None
+if TYPE_CHECKING:
+    from dxcam import DXCamera
 
 from grid_navigation import Cell, Grid
 
@@ -51,6 +50,9 @@ try:
     _USER32 = ctypes.windll.user32  # type: ignore[attr-defined]
 except Exception:  # pragma: no cover - platform dependent
     _USER32 = None
+
+_DX_OUTPUT_COLOR = "BGR"
+_DXCAM: Optional["DXCamera"] = None
 
 
 def escape_pressed() -> bool:
@@ -100,37 +102,50 @@ def window_rect(win: pwc.Window) -> Tuple[int, int, int, int]:
     return int(win.left), int(win.top), int(win.width), int(win.height)
 
 
-def _capture_with_mss(region: Tuple[int, int, int, int]) -> np.ndarray:
-    left, top, width, height = region
-    with mss.mss() as sct:
-        raw = np.array(
-            sct.grab(
-                {
-                    "left": left,
-                    "top": top,
-                    "width": width,
-                    "height": height,
-                }
-            )
-        )
-    return cv2.cvtColor(raw, cv2.COLOR_BGRA2BGR)
+def window_display_info(win: pwc.Window) -> Tuple[str, Tuple[int, int], Tuple[int, int, int, int]]:
+    """
+    Return (display name, display size, work area) and enforce that the window is on a single monitor.
+    """
+    display_names = win.getDisplay()
+    if not display_names:
+        raise RuntimeError("Unable to determine which monitor the target window is on.")
+    if len(display_names) > 1:
+        joined = ", ".join(display_names)
+        raise RuntimeError(f"Target window spans multiple monitors ({joined}); move it fully onto one display.")
+
+    display_name = display_names[0]
+    size = pwc.getScreenSize(display_name)
+    work_area = pwc.getWorkArea(display_name)
+    return display_name, size, work_area
 
 
-def _capture_with_pyautogui(region: Tuple[int, int, int, int]) -> np.ndarray:
-    left, top, width, height = region
-    img = pyautogui.screenshot(region=(left, top, width, height))
-    return cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
+def _get_dxcam() -> "DXCamera":
+    """
+    Lazily create a dxcam instance for DirectX capture.
+    """
+    global _DXCAM
+    if sys.platform != "win32":
+        raise RuntimeError("DirectX capture requires Windows; this project is Windows-only.")
+
+    if _DXCAM is None:
+        _DXCAM = dxcam.create(output_color=_DX_OUTPUT_COLOR)
+        if _DXCAM is None:
+            raise RuntimeError("dxcam failed to initialize; ensure DirectX 11+ and GPU drivers are available.")
+    return _DXCAM
 
 
 def capture_region(region: Tuple[int, int, int, int]) -> np.ndarray:
     """
     Capture a BGR screenshot of the given region (left, top, width, height).
     """
-    if mss is not None:
-        return _capture_with_mss(region)
-    if pyautogui is not None:
-        return _capture_with_pyautogui(region)
-    raise RuntimeError("Install either 'mss' or 'pyautogui' for screenshots")
+    left, top, width, height = region
+    camera = _get_dxcam()
+    frame = camera.grab(region=(left, top, left + width, top + height))
+    if frame is None:
+        raise RuntimeError("dxcam failed to capture the requested region.")
+    if frame.shape[2] == 4:
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGRA2BGR)
+    return frame
 
 
 def sleep_with_abort(duration: float) -> None:

@@ -61,6 +61,7 @@ from ui_backend import (
     scroll_to_next_grid_at,
     sleep_with_abort,
     wait_for_target_window,
+    window_display_info,
     window_rect,
 )
 from ocr_backend import initialize_ocr
@@ -201,7 +202,27 @@ def scan_inventory(
 
     print("waiting for Arc Raiders to be active window...", flush=True)
     window = wait_for_target_window(timeout=window_timeout)
+    display_name, display_size, work_area = window_display_info(window)
     win_left, win_top, win_width, win_height = window_rect(window)
+    win_right = win_left + win_width
+    win_bottom = win_top + win_height
+    work_left, work_top, work_right, work_bottom = work_area
+
+    print(
+        f"[display] {display_name} size={display_size[0]}x{display_size[1]} "
+        f"work_area=({work_left},{work_top},{work_right},{work_bottom})",
+        flush=True,
+    )
+    print(
+        f"[window] pos=({win_left},{win_top}) size={win_width}x{win_height}",
+        flush=True,
+    )
+    if win_left < work_left or win_top < work_top or win_right > work_right or win_bottom > work_bottom:
+        print(
+            "[warning] target window extends beyond its display's work area; "
+            "ensure it is fully visible on a single monitor.",
+            flush=True,
+        )
 
     actions: ActionMap = actions_override if actions_override is not None else load_item_actions(actions_path)
 
