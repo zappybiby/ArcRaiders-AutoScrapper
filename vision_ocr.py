@@ -32,6 +32,7 @@ RECYCLE_CONFIRM_RECT_NORM = (0.5058, 0.6274, 0.1777, 0.0544)
 @dataclass
 class InfoboxOcrResult:
     item_name: str
+    raw_item_text: str
     sell_bbox: Optional[Tuple[int, int, int, int]]
     recycle_bbox: Optional[Tuple[int, int, int, int]]
     processed: np.ndarray
@@ -243,13 +244,13 @@ def _extract_title_from_data(
     ocr_data: Dict[str, List],
     image_height: int,
     top_fraction: float = 0.22,
-) -> str:
+) -> Tuple[str, str]:
     """
     Choose the best-confidence line near the top of the infobox as the title.
     """
     texts = ocr_data.get("text", [])
     if not texts:
-        return ""
+        return "", ""
 
     cutoff = max(1.0, float(image_height) * top_fraction)
     groups: Dict[Tuple[int, int, int, int], List[int]] = {}
@@ -275,7 +276,7 @@ def _extract_title_from_data(
         groups.setdefault(key, []).append(i)
 
     if not groups:
-        return ""
+        return "", ""
 
     def _group_score(indices: List[int]) -> float:
         confs = []
@@ -288,8 +289,11 @@ def _extract_title_from_data(
 
     best_key = max(groups.keys(), key=lambda k: _group_score(groups[k]))
     ordered_indices = sorted(groups[best_key])
-    parts = [clean_ocr_text(texts[i] or "") for i in ordered_indices if texts[i]]
-    return " ".join(p for p in parts if p).strip()
+    cleaned_parts = [clean_ocr_text(texts[i] or "") for i in ordered_indices if texts[i]]
+    raw_parts = [(texts[i] or "").strip() for i in ordered_indices if texts[i]]
+    cleaned = " ".join(p for p in cleaned_parts if p).strip()
+    raw = " ".join(p for p in raw_parts if p).strip()
+    return cleaned, raw
 
 
 def _extract_action_line_bbox(
@@ -385,6 +389,7 @@ def ocr_infobox(infobox_bgr: np.ndarray) -> InfoboxOcrResult:
         )
         return InfoboxOcrResult(
             item_name="",
+            raw_item_text="",
             sell_bbox=None,
             recycle_bbox=None,
             processed=processed,
@@ -392,11 +397,12 @@ def ocr_infobox(infobox_bgr: np.ndarray) -> InfoboxOcrResult:
             ocr_time=ocr_time,
         )
 
-    item_name = _extract_title_from_data(data, processed.shape[0])
+    item_name, raw_item_text = _extract_title_from_data(data, processed.shape[0])
     sell_bbox = _extract_action_line_bbox(data, "sell")
     recycle_bbox = _extract_action_line_bbox(data, "recycle")
     return InfoboxOcrResult(
         item_name=item_name,
+        raw_item_text=raw_item_text,
         sell_bbox=sell_bbox,
         recycle_bbox=recycle_bbox,
         processed=processed,

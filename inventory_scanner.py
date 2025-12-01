@@ -329,6 +329,7 @@ def scan_inventory(
                 find_time = 0.0
                 capture_attempts = 0
                 found_on_attempt = 0
+                raw_item_text = ""
 
                 for attempt in range(1, infobox_retries + 1):
                     capture_attempts += 1
@@ -353,6 +354,7 @@ def scan_inventory(
                     preprocess_time += infobox_ocr.preprocess_time
                     ocr_time += infobox_ocr.ocr_time
                     item_name = infobox_ocr.item_name
+                    raw_item_text = infobox_ocr.raw_item_text
                     sell_bbox_rel = infobox_ocr.sell_bbox
                     recycle_bbox_rel = infobox_ocr.recycle_bbox
 
@@ -406,7 +408,7 @@ def scan_inventory(
                 infobox_status = "found" if infobox_rect else "missing"
                 action_label = "SKIPPED" if action_taken.startswith("SKIP") else action_taken
                 detail_suffix = f" detail={action_taken}" if action_label != action_taken else ""
-                item_label = item_name or "<unreadable>"
+                item_label = item_name or raw_item_text or "<unreadable>"
                 print(
                     f"[item] idx={global_idx:03d} page={page + 1:02d} cell={cell.index:02d} "
                     f"item='{item_label}' action={action_label}{detail_suffix} "
@@ -420,6 +422,7 @@ def scan_inventory(
                         item_name=item_name,
                         decision=decision,
                         action_taken=action_taken,
+                        raw_item_text=raw_item_text or None,
                         note=decision_note,
                     )
                 )
@@ -576,6 +579,13 @@ def _render_summary(summary: Counter, console: Optional["Console"]) -> None:
     console.print(table)
 
 
+def _item_label(result: ItemActionResult) -> str:
+    """
+    Prefer cleaned OCR text, then raw OCR text, then fallback label.
+    """
+    return result.item_name or result.raw_item_text or "<unreadable>"
+
+
 def _render_results(results: List[ItemActionResult], cells_per_page: int) -> None:
     if not results:
         print("No results to display.")
@@ -586,7 +596,7 @@ def _render_results(results: List[ItemActionResult], cells_per_page: int) -> Non
 
     if console is None:
         for result in results:
-            label = result.item_name or "<unreadable>"
+            label = _item_label(result)
             global_idx = result.page * cells_per_page + result.cell.index
             outcome_label, details = _describe_action(result.action_taken)
             if result.decision and not outcome_label.startswith(result.decision):
@@ -618,7 +628,7 @@ def _render_results(results: List[ItemActionResult], cells_per_page: int) -> Non
     table.add_column("Notes", justify="left", style="dim", overflow="fold")
 
     for result in results:
-        label = result.item_name or "<unreadable>"
+        label = _item_label(result)
         global_idx = result.page * cells_per_page + result.cell.index
         outcome_label, details = _describe_action(result.action_taken)
         if result.decision and not outcome_label.startswith(result.decision):

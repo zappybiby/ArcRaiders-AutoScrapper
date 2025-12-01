@@ -20,6 +20,7 @@ class ItemActionResult:
     item_name: str
     decision: Optional[Decision]
     action_taken: str
+    raw_item_text: Optional[str] = None
     note: Optional[str] = None
 
 
