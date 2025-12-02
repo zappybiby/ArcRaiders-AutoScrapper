@@ -29,6 +29,10 @@ TITLE_HEIGHT_REL = 0.18
 SELL_CONFIRM_RECT_NORM = (0.5047, 0.6941, 0.1791, 0.0531)
 RECYCLE_CONFIRM_RECT_NORM = (0.5058, 0.6274, 0.1777, 0.0544)
 
+# Inventory count ROI (window-normalized rectangle)
+# Matches the always-visible "items in stash" label near the top-left.
+INVENTORY_COUNT_RECT_NORM = (0.0734, 0.1583, 0.0380, 0.0231)
+
 _OCR_DEBUG_DIR: Optional[Path] = None
 
 
@@ -185,6 +189,13 @@ def window_relative_to_screen(
     """
     x, y, w, h = rect
     return window_left + x, window_top + y, w, h
+
+
+def inventory_count_rect(window_width: int, window_height: int) -> Tuple[int, int, int, int]:
+    """
+    Window-relative rectangle for the always-visible inventory count label.
+    """
+    return normalized_rect_to_window(INVENTORY_COUNT_RECT_NORM, window_width, window_height)
 
 
 def sell_confirm_button_rect(
@@ -456,3 +467,33 @@ def ocr_item_name(roi_bgr: np.ndarray) -> str:
     processed = preprocess_for_ocr(roi_bgr)
     raw = image_to_string(processed)
     return clean_ocr_text(raw)
+
+
+def ocr_inventory_count(roi_bgr: np.ndarray) -> Tuple[Optional[int], str]:
+    """
+    OCR the "items in stash" label and return (count, raw_text).
+    """
+    if roi_bgr.size == 0:
+        return None, ""
+
+    _save_debug_image("inventory_count_raw", roi_bgr)
+    processed = preprocess_for_ocr(roi_bgr)
+    _save_debug_image("inventory_count_processed", processed)
+
+    try:
+        raw = image_to_string(processed)
+    except Exception as exc:
+        print(f"[vision_ocr] ocr_backend image_to_string failed for inventory count: {exc}", flush=True)
+        return None, ""
+
+    cleaned = (raw or "").replace("\n", " ").strip()
+    digits = re.findall(r"\d+", cleaned)
+    if not digits:
+        return None, cleaned
+
+    try:
+        count = max(int(d) for d in digits)
+    except Exception:
+        count = None
+
+    return count, cleaned
