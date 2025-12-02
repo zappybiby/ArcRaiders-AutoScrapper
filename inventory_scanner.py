@@ -8,9 +8,11 @@ menu, locating the light infobox (#f9eedf), and OCR-ing the item title.
 from __future__ import annotations
 
 import argparse
+import math
 import sys
 import time
 from collections import Counter
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, List, Optional, Tuple
 
@@ -68,7 +70,9 @@ from ocr_backend import initialize_ocr
 from vision_ocr import (
     enable_ocr_debug,
     find_infobox,
+    inventory_count_rect,
     ocr_infobox,
+    ocr_inventory_count,
     recycle_confirm_button_center,
     rect_center,
     sell_confirm_button_center,
@@ -83,6 +87,18 @@ from vision_ocr import (
 MENU_APPEAR_DELAY = 0.05
 INFOBOX_RETRY_DELAY = 0.05
 INFOBOX_RETRIES = 3
+
+
+@dataclass
+class ScanStats:
+    """
+    Aggregate metrics for the scan useful for reporting.
+    """
+    items_in_stash: Optional[int]
+    stash_count_text: str
+    pages_planned: int
+    pages_scanned: int
+    processing_seconds: float
 
 
 def _perform_sell(
@@ -183,23 +199,27 @@ def scan_inventory(
     window_timeout: float = WINDOW_TIMEOUT,
     infobox_retries: int = INFOBOX_RETRIES,
     show_progress: bool = True,
-    pages: int = 1,
+    pages: Optional[int] = None,
     scroll_clicks_per_page: int = SCROLL_CLICKS_PER_PAGE,
     apply_actions: bool = True,
     actions_path: Path = ITEM_ACTIONS_PATH,
     actions_override: Optional[ActionMap] = None,
     profile_timing: bool = False,
-) -> List[ItemActionResult]:
+) -> Tuple[List[ItemActionResult], ScanStats]:
     """
     Walk each 6x4 grid (top-to-bottom, left-to-right), OCR each cell's item
     title, and apply the configured keep/recycle/sell decision when possible.
     Decisions come from items_actions.json unless an override map is provided.
     Cells are detected via contours inside a normalized ROI, and scrolling
     alternates between `scroll_clicks_per_page` and `scroll_clicks_per_page + 1`
-    to handle the carousel offset.
+    to handle the carousel offset. If `pages` is not provided, the script will
+    OCR the always-visible stash count label to automatically determine how
+    many 6x4 grids to scan.
     """
-    if pages < 1:
+    if pages is not None and pages < 1:
         raise ValueError("pages must be >= 1")
+
+    scan_start = time.perf_counter()
 
     print("waiting for Arc Raiders to be active window...", flush=True)
     window = wait_for_target_window(timeout=window_timeout)
@@ -232,6 +252,36 @@ def scan_inventory(
     safe_point_abs = (win_left + safe_point[0], win_top + safe_point[1])
     grid_center = grid_center_point(win_width, win_height)
     grid_center_abs = (win_left + grid_center[0], win_top + grid_center[1])
+    cells_per_page = Grid.COLS * Grid.ROWS
+
+    def _detect_inventory_count() -> Tuple[Optional[int], str]:
+        """
+        Capture the stash count label while the cursor is in a safe spot.
+        """
+        try:
+            move_absolute(safe_point_abs[0], safe_point_abs[1], label="move to safe area for stash count")
+            pause_action()
+            count_roi_rel = inventory_count_rect(win_width, win_height)
+            count_left = win_left + count_roi_rel[0]
+            count_top = win_top + count_roi_rel[1]
+            count_bgr = capture_region((count_left, count_top, count_roi_rel[2], count_roi_rel[3]))
+            return ocr_inventory_count(count_bgr)
+        except Exception as exc:
+            print(f"[warning] failed to read stash count: {exc}", flush=True)
+            return None, ""
+
+    stash_items, stash_count_text = _detect_inventory_count()
+    auto_pages = math.ceil(stash_items / cells_per_page) if stash_items is not None else None
+    pages_to_scan = pages if pages is not None else auto_pages or 1
+    pages_to_scan = max(1, pages_to_scan)
+    pages_source = "cli" if pages is not None else "auto"
+    items_label = stash_items if stash_items is not None else "?"
+    count_label = f" raw='{stash_count_text}'" if stash_count_text else ""
+    print(
+        f"[count] items_in_stash={items_label} pages_to_scan={pages_to_scan} "
+        f"(cells/page={cells_per_page}) source={pages_source}{count_label}",
+        flush=True,
+    )
 
     def _detect_grid() -> Grid:
         """
@@ -254,9 +304,9 @@ def scan_inventory(
 
     grid = _detect_grid()
     cells = list(grid)
-    cells_per_page = Grid.COLS * Grid.ROWS
-    total_cells = cells_per_page * pages
+    total_cells = cells_per_page * pages_to_scan
     results: List[ItemActionResult] = []
+    pages_scanned = 0
 
     abort_if_escape_pressed()
 
@@ -266,16 +316,17 @@ def scan_inventory(
     stop_scan = False
 
     try:
-        for page in range(pages):
+        for page in range(pages_to_scan):
+            page_base_idx = page * cells_per_page
+            if stop_at_global_idx is not None and page_base_idx >= stop_at_global_idx:
+                break
+
+            pages_scanned += 1
             if page > 0:
                 clicks = next(scroll_sequence)
                 scroll_to_next_grid_at(clicks, grid_center_abs, safe_point_abs)
                 grid = _detect_grid()
                 cells = list(grid)
-
-            page_base_idx = page * cells_per_page
-            if stop_at_global_idx is not None and page_base_idx >= stop_at_global_idx:
-                break
 
             empty_idx = _detect_first_empty_cell(
                 page,
@@ -462,7 +513,16 @@ def scan_inventory(
         if progress:
             progress.close()
 
-    return results
+    processing_seconds = time.perf_counter() - scan_start
+    stats = ScanStats(
+        items_in_stash=stash_items,
+        stash_count_text=stash_count_text,
+        pages_planned=pages_to_scan,
+        pages_scanned=pages_scanned,
+        processing_seconds=processing_seconds,
+    )
+
+    return results, stats
 
 
 # ---------------------------------------------------------------------------
@@ -552,6 +612,48 @@ def _summarize_results(results: List[ItemActionResult]) -> Counter:
     return summary
 
 
+def _render_scan_overview(
+    results: List[ItemActionResult],
+    stats: ScanStats,
+    console: Optional["Console"],
+) -> None:
+    """
+    Display high-level scan metrics (stash total, processed count, pages, time).
+    """
+    items_processed = len(results)
+    stash_label = str(stats.items_in_stash) if stats.items_in_stash is not None else "?"
+    duration_label = f"{stats.processing_seconds:.1f}s"
+    planned_suffix = f" (planned {stats.pages_planned})" if stats.pages_planned != stats.pages_scanned else ""
+    raw_suffix = f" raw='{stats.stash_count_text}'" if stats.stash_count_text and stats.items_in_stash is None else ""
+
+    if console is None:
+        print(
+            f"Overview: stash_items={stash_label} processed={items_processed} "
+            f"pages_run={stats.pages_scanned}{planned_suffix} duration={duration_label}{raw_suffix}"
+        )
+        return
+
+    table = Table(
+        title="Inventory Overview",
+        box=box.SIMPLE,
+        show_header=False,
+        show_lines=False,
+        padding=(0, 1),
+    )
+    table.add_column("Metric", justify="left", style="cyan", no_wrap=True)
+    table.add_column("Value", justify="left", style="white")
+    table.add_row("Items in stash", stash_label)
+    table.add_row("Items processed", str(items_processed))
+    pages_value = f"{stats.pages_scanned}"
+    if planned_suffix:
+        pages_value = f"{pages_value}{planned_suffix}"
+    table.add_row("6x4 pages run", pages_value)
+    table.add_row("Processing time", duration_label)
+    if stats.items_in_stash is None and stats.stash_count_text:
+        table.add_row("Count OCR", stats.stash_count_text)
+    console.print(table)
+
+
 def _render_summary(summary: Counter, console: Optional["Console"]) -> None:
     ordered_keys = [k for k in ("KEEP", "CRAFTING MATERIAL", "RECYCLE", "SELL") if k in summary]
     ordered_keys += [k for k in ("DRY-KEEP", "DRY-RECYCLE", "DRY-SELL") if k in summary]
@@ -587,13 +689,19 @@ def _item_label(result: ItemActionResult) -> str:
     return result.item_name or result.raw_item_text or "<unreadable>"
 
 
-def _render_results(results: List[ItemActionResult], cells_per_page: int) -> None:
-    if not results:
-        print("No results to display.")
-        return
-
+def _render_results(results: List[ItemActionResult], cells_per_page: int, stats: ScanStats) -> None:
     console = Console() if Console is not None and Table is not None and Text is not None and box is not None else None
     summary = _summarize_results(results)
+
+    _render_scan_overview(results, stats, console)
+
+    if not results:
+        if console is None:
+            print("No results to display.")
+        else:
+            console.print()
+            console.print("No results to display.")
+        return
 
     if console is None:
         for result in results:
@@ -661,8 +769,8 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
     parser.add_argument(
         "--pages",
         type=int,
-        default=1,
-        help="Number of 6x4 grids to scan by scrolling down between pages.",
+        default=None,
+        help="Override auto-detected page count; number of 6x4 grids to scan.",
     )
     parser.add_argument(
         "--scroll-clicks",
@@ -713,7 +821,7 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
 
     try:
         initialize_ocr()
-        results = scan_inventory(
+        results, stats = scan_inventory(
             show_progress=not args.no_progress,
             pages=args.pages,
             scroll_clicks_per_page=args.scroll_clicks,
@@ -732,7 +840,7 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
         return 1
 
     cells_per_page = Grid.COLS * Grid.ROWS
-    _render_results(results, cells_per_page)
+    _render_results(results, cells_per_page, stats)
 
     return 0
 
