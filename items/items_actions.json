@@ -225,7 +225,7 @@
     "index": 31,
     "name": "Cat Bed",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
@@ -632,7 +632,7 @@
     "index": 87,
     "name": "Light Bulb",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
@@ -1212,7 +1212,7 @@
     "index": 166,
     "name": "Very Comfortable Pillow",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
@@ -1256,6 +1256,174 @@
     "name": "Wires",
     "decision": [
       "KEEP"
+    ]
+  },
+  {
+    "index": 173,
+    "name": "Faded Photograph",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 174,
+    "name": "Torn Book",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 175,
+    "name": "Bloated Tuna Can",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 176,
+    "name": "Coffee Pot",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 177,
+    "name": "Empty Wine Bottle",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 178,
+    "name": "Expired Pasta",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 179,
+    "name": "Rubber Duck",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 180,
+    "name": "Air Freshener",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 181,
+    "name": "Dart Board",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 182,
+    "name": "Film Reel",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 183,
+    "name": "Poster of Natural Wonders",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 184,
+    "name": "Painted Box",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 185,
+    "name": "Pottery",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 186,
+    "name": "Rosary",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 187,
+    "name": "Fine Wristwatch",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 188,
+    "name": "Music Album",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 189,
+    "name": "Silver Teaspoon Set",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 190,
+    "name": "Statuette",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 191,
+    "name": "Vase",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 192,
+    "name": "Music Box",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 193,
+    "name": "Playing Cards",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 194,
+    "name": "Red Coral Jewelry",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 195,
+    "name": "Breathtaking Snow Globe",
+    "decision": [
+      "SELL"
+    ]
+  },
+  {
+    "index": 196,
+    "name": "Lance's Mixtape (5th Edition)",
+    "decision": [
+      "SELL"
     ]
   }
 ]
