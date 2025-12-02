@@ -37,4 +37,4 @@ Manage the keep/recycle/sell rules stored in `items/items_actions.json`:
 python items/rules_cli.py
 ```
 
-You can view all rules, view a specific item by name or index, add new items, edit existing ones, or remove entries. The CLI is menu-driven with Rich output.*** End Patch" }﻿
+You can view all rules, view a specific item by name or index, add new items, edit existing ones, or remove entries.
