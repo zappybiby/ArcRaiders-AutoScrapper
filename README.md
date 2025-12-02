@@ -29,3 +29,12 @@ See what the script would do without clicking Sell/Recycle (logs planned decisio
 ```bash
 python inventory_scanner.py --dry-run
 ```
+
+## Item rules CLI
+Manage the keep/recycle/sell rules stored in `items/items_actions.json`:
+
+```bash
+python items/rules_cli.py
+```
+
+You can view all rules, view a specific item by name or index, add new items, edit existing ones, or remove entries. The CLI is menu-driven with Rich output.*** End Patch" }﻿
