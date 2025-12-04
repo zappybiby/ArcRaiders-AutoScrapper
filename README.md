@@ -15,7 +15,6 @@ Windows 10/11 is required (MSS capture only). Use Python 3.10–3.13. Keep Arc R
    - `python -m venv .venv`
    - PowerShell: `.\\.venv\\Scripts\\Activate.ps1`
    - Command Prompt: `.\\.venv\\Scripts\\activate.bat`
-   - Bash: `source .venv/bin/activate`
 2) Install tesserocr for your Python/Windows build:
    - Download the matching 64-bit wheel (e.g. `tesserocr-2.9.1-cp313-cp313-win_amd64.whl`) from https://github.com/simonflueckiger/tesserocr-windows_build/releases
    - Install it with `pip install <wheel_filename>.whl`
