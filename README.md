@@ -9,7 +9,7 @@ Walks through each inventory item and applies Sell/Recycle decisions using only 
 - Press Escape to cancel (may need a couple presses)
 
 ## Setup
-Windows 10/11 is required (MSS capture only). Keep Arc Raiders fully on a single monitor; PyWinCtl will log the detected display name and geometry automatically.
+Windows 10/11 is required (MSS capture only). Use Python 3.10–3.13. Keep Arc Raiders fully on a single monitor; PyWinCtl will log the detected display name and geometry automatically.
 
 1) (Optional) Create/activate a virtualenv for the project.
 2) Install tesserocr for your Python/Windows build:
