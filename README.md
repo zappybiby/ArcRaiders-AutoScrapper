@@ -15,11 +15,24 @@ Windows 10/11 is required (MSS capture only). Keep Arc Raiders fully on a single
 2) Install tesserocr for your Python/Windows build:
    - Download the matching 64-bit wheel (e.g. `tesserocr-2.9.1-cp313-cp313-win_amd64.whl`) from https://github.com/simonflueckiger/tesserocr-windows_build/releases
    - Install it with `pip install <wheel_filename>.whl`
+3) Ensure Python can find the `src/autoscrapper` package (run these in the repo root):
+   - PowerShell: `$env:PYTHONPATH="src"`
+   - Command Prompt: `set PYTHONPATH=src`
 
 ## Usage
 
+Launch options (run from the repo root after setting `PYTHONPATH`):
+
+```
+python -m autoscrapper           # Interactive menu
+python -m autoscrapper scan      # Start the inventory scan directly
+python -m autoscrapper rules     # Open the item rules editor
+python -m autoscrapper progress  # Stub for future progress editing
+```
+
+Typical scan flow:
 1) In Arc Raiders, open your inventory (ideally the “Crafting Materials” tab). Make sure you are scrolled all the way up and the game window is entirely on one monitor.
-2) Run: `python inventory_scanner.py`
+2) Run: `python -m autoscrapper scan`
 3) Alt-tab back into Arc Raiders quickly; after a few seconds the script will log the display it detected and start processing.
 4) Press Escape to abort (may need to press a few times).
 
@@ -27,14 +40,14 @@ Windows 10/11 is required (MSS capture only). Keep Arc Raiders fully on a single
 See what the script would do without clicking Sell/Recycle (logs planned decisions such as `SELL`/`RECYCLE`):
 
 ```bash
-python inventory_scanner.py --dry-run
+python -m autoscrapper scan --dry-run
 ```
 
 ## Item rules CLI
-Manage the keep/recycle/sell rules stored in `items/items_actions.json`:
+Manage the keep/recycle/sell rules stored in `src/autoscrapper/items/items_actions.json`:
 
 ```bash
-python items/rules_cli.py
+python -m autoscrapper rules
 ```
 
 You can view all rules, view a specific item by name or index, add new items, edit existing ones, or remove entries.

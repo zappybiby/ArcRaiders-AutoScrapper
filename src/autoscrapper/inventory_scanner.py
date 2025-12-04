@@ -32,22 +32,22 @@ except ImportError:  # pragma: no cover - optional dependency
     Text = None
     box = None
 
-from grid_navigation import (
+from .interaction.grid import (
     Cell,
     Grid,
     grid_center_point,
     inventory_roi_rect,
     safe_mouse_point,
 )
-from inventory_domain import (
+from .core.inventory import (
     ActionMap,
     Decision,
-    ItemActionResult,
     ITEM_ACTIONS_PATH,
+    ItemActionResult,
     choose_decision,
     load_item_actions,
 )
-from ui_backend import (
+from .interaction.ui_windows import (
     SCROLL_CLICKS_PER_PAGE,
     SELL_RECYCLE_ACTION_DELAY,
     SELL_RECYCLE_MOVE_DURATION,
@@ -66,17 +66,17 @@ from ui_backend import (
     window_display_info,
     window_rect,
 )
-from ocr_backend import initialize_ocr
-from vision_ocr import (
+from .ocr.tesseract import initialize_ocr
+from .ocr.arc_inventory import (
     enable_ocr_debug,
     find_infobox,
     inventory_count_rect,
+    is_slot_empty,
     ocr_infobox,
     ocr_inventory_count,
     recycle_confirm_button_center,
     rect_center,
     sell_confirm_button_center,
-    is_slot_empty,
 )
 
 

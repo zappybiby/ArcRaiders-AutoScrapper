@@ -1,6 +1,6 @@
 """
 Interactive CLI for managing item rules in items_actions.json.
-Uses Rich for output styling. Intended to be run with `python items/rules_cli.py`.
+Uses Rich for output styling. Intended to be run with `python -m autoscrapper rules`.
 """
 import json
 from pathlib import Path

@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Literal, Optional, Tuple, cast
 
-from grid_navigation import Cell
+from ..interaction.grid import Cell
 
 Decision = Literal["KEEP", "RECYCLE", "SELL", "CRAFTING MATERIAL"]
 DecisionList = List[Decision]
@@ -25,7 +25,7 @@ class ItemActionResult:
 
 
 VALID_DECISIONS = {"KEEP", "RECYCLE", "SELL", "CRAFTING MATERIAL"}
-ITEM_ACTIONS_PATH = Path(__file__).resolve().parent / "items" / "items_actions.json"
+ITEM_ACTIONS_PATH = Path(__file__).resolve().parent.parent / "items" / "items_actions.json"
 
 
 def normalize_item_name(name: str) -> str:

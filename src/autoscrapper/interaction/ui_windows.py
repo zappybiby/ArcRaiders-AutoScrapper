@@ -3,17 +3,14 @@ from __future__ import annotations
 import ctypes
 import sys
 import time
-from typing import Optional, Tuple, TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional, Tuple
 
-import numpy as np
-import pywinctl as pwc
-import pydirectinput as pdi
 import mss
+import numpy as np
+import pydirectinput as pdi
+import pywinctl as pwc
 
-if TYPE_CHECKING:
-    from mss.base import MSSBase
-
-from grid_navigation import Cell, Grid
+from .grid import Cell, Grid
 
 # Target window
 TARGET_APP = "PioneerGame.exe"

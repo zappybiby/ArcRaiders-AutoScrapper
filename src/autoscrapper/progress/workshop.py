@@ -1,0 +1,3 @@
+"""
+Workshop progress tracking placeholders.
+"""
