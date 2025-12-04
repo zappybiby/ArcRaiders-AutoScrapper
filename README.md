@@ -11,17 +11,16 @@ Walks through each inventory item and applies Sell/Recycle decisions using only 
 ## Setup
 Windows 10/11 is required (MSS capture only). Keep Arc Raiders fully on a single monitor; PyWinCtl will log the detected display name and geometry automatically.
 
-1) Install dependencies: `pip install -r requirements.txt`.
+1) (Optional) Create/activate a virtualenv for the project.
 2) Install tesserocr for your Python/Windows build:
    - Download the matching 64-bit wheel (e.g. `tesserocr-2.9.1-cp313-cp313-win_amd64.whl`) from https://github.com/simonflueckiger/tesserocr-windows_build/releases
    - Install it with `pip install <wheel_filename>.whl`
-3) Ensure Python can find the `src/autoscrapper` package (run these in the repo root):
-   - PowerShell: `$env:PYTHONPATH="src"`
-   - Command Prompt: `set PYTHONPATH=src`
+3) Install the package (and all other dependencies) in editable mode from the repo root:
+   - `pip install -e .`
 
 ## Usage
 
-Launch options (run from the repo root after setting `PYTHONPATH`):
+Launch options (after the editable install):
 
 ```
 python -m autoscrapper           # Interactive menu
