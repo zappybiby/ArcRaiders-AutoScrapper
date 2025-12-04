@@ -50,3 +50,13 @@ python -m autoscrapper rules
 ```
 
 You can view all rules, view a specific item by name or index, add new items, edit existing ones, or remove entries.
+
+## CLI options (scan)
+- `--pages INT` override auto-detected 6x4 page count to scan.
+- `--scroll-clicks INT` initial scroll clicks between grids (alternates with +1 on the next page).
+- `--no-progress` disable the tqdm progress bar.
+- `--actions-file PATH` path to `items_actions.json` to load decisions from.
+- `--dry-run` log planned actions without clicking Sell/Recycle.
+- `--profile` log per-item timing (capture, OCR, total).
+- `--debug` / `--debug-ocr` save OCR debug images to `./ocr_debug`.
+- `--debug-dir PATH` set a custom OCR debug directory (implies `--debug`).
