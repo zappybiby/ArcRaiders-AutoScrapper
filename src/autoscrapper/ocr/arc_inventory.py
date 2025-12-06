@@ -1,16 +1,16 @@
 from __future__ import annotations
 
 import re
+import time
 from dataclasses import dataclass
 from pathlib import Path
-import time
 from typing import Dict, List, Literal, Optional, Tuple
 
 import cv2
 import numpy as np
 
-from inventory_domain import clean_ocr_text
-from ocr_backend import image_to_data, image_to_string
+from ..core.inventory import clean_ocr_text
+from .tesseract import image_to_data, image_to_string
 
 # Infobox visual characteristics
 INFOBOX_COLOR_BGR = np.array([223, 238, 249], dtype=np.uint8)  # #f9eedf in BGR
