@@ -29,6 +29,15 @@ ITEM_ACTIONS_PATH = Path(__file__).resolve().parent.parent / "items" / "items_ac
 
 
 def normalize_item_name(name: str) -> str:
+    """
+    Normalize an item name by removing surrounding whitespace and converting all characters to lowercase.
+    
+    Parameters:
+        name (str): The item name to normalize.
+    
+    Returns:
+        str: The trimmed, lowercased item name.
+    """
     return name.strip().lower()
 
 
