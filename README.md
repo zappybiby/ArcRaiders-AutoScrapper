@@ -1,15 +1,15 @@
 # Arc Raiders Inventory Auto Scrapper
 
-Walks through each inventory item and applies Sell/Recycle decisions using only screenshots and OCR. It never hooks the game process, memory, or network; everything is MSS screen capture plus simulated mouse input.
+Walks through each inventory item and applies Sell/Recycle decisions using only screenshots and OCR. It never hooks the game process, memory, or network; everything is screen capture plus simulated mouse input.
 
 ## How it works
 - Captures the active Arc Raiders window via MSS and PyWinCtl auto-detects which monitor the game is on (windowed, borderless, or fullscreen).
-- Finds the item infobox, OCRs the title, and looks up the decision from `items/items_actions.json`.
+- Finds the item infobox, OCRs the title, and looks up the decision from your rules file (`src/autoscrapper/items/items_actions.json` in this repo).
 - Executes Sell/Recycle depending on the recommended action.
-- Press Escape to cancel (may need a couple presses)
+- Press Escape to cancel (may need a couple presses).
 
 ## Setup
-Windows 10/11 is required (MSS capture only). Use Python 3.10–3.13. Keep Arc Raiders fully on a single monitor; PyWinCtl will log the detected display name and geometry automatically.
+Windows 10/11 is required (window detection + input automation rely on Windows APIs). Python 3.10 - 3.13 recommended.
 
 1) Create and activate a virtualenv in the repo root:
    - `python -m venv .venv`
@@ -30,6 +30,7 @@ python -m autoscrapper           # Interactive menu
 python -m autoscrapper scan      # Start the inventory scan directly
 python -m autoscrapper rules     # Open the item rules editor
 python -m autoscrapper progress  # Stub for future progress editing
+python -m autoscrapper config    # Edit scan configuration (persisted)
 ```
 
 Typical scan flow:
@@ -45,6 +46,13 @@ See what the script would do without clicking Sell/Recycle (logs planned decisio
 python -m autoscrapper scan --dry-run
 ```
 
+## Scan configuration
+The interactive menu includes **Scan configuration** to persist scan defaults for future runs (pages, scroll clicks, debug OCR, profiling).
+
+You can also run it directly: `python -m autoscrapper config`. CLI flags always override the saved defaults for that run.
+
+Settings are stored at `%APPDATA%\\AutoScrapper\\config.json` on Windows.
+
 ## Item rules CLI
 Manage the keep/recycle/sell rules stored in `src/autoscrapper/items/items_actions.json`:
 
@@ -57,9 +65,8 @@ You can view all rules, view a specific item by name or index, add new items, ed
 ## CLI options (scan)
 - `--pages INT` override auto-detected 6x4 page count to scan.
 - `--scroll-clicks INT` initial scroll clicks between grids (alternates with +1 on the next page).
-- `--no-progress` disable the tqdm progress bar.
-- `--actions-file PATH` path to `items_actions.json` to load decisions from.
 - `--dry-run` log planned actions without clicking Sell/Recycle.
-- `--profile` log per-item timing (capture, OCR, total).
+- `--profile` enable per-item timing logs (capture, OCR, total).
+- `--no-profile` disable per-item timing logs (overrides saved scan configuration).
 - `--debug` / `--debug-ocr` save OCR debug images to `./ocr_debug`.
-- `--debug-dir PATH` set a custom OCR debug directory (implies `--debug`).
+- `--no-debug` disable OCR debug images (overrides saved scan configuration).
