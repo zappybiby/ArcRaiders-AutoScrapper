@@ -765,6 +765,25 @@ def _render_results(results: List[ItemActionResult], cells_per_page: int, stats:
 # CLI
 # ---------------------------------------------------------------------------
 
+def _positive_int_arg(value: str) -> int:
+    try:
+        parsed = int(value)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError("must be an integer") from exc
+    if parsed < 1:
+        raise argparse.ArgumentTypeError("must be >= 1")
+    return parsed
+
+
+def _non_negative_int_arg(value: str) -> int:
+    try:
+        parsed = int(value)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError("must be an integer") from exc
+    if parsed < 0:
+        raise argparse.ArgumentTypeError("must be >= 0")
+    return parsed
+
 def main(argv: Optional[Iterable[str]] = None) -> int:
     settings = load_scan_settings()
     pages_default = settings.pages if settings.pages_mode == "manual" else None
@@ -777,13 +796,13 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
     parser = argparse.ArgumentParser(description="Scan the ARC Raiders inventory grid(s).")
     parser.add_argument(
         "--pages",
-        type=int,
+        type=_positive_int_arg,
         default=pages_default,
         help="Override auto-detected page count; number of 6x4 grids to scan.",
     )
     parser.add_argument(
         "--scroll-clicks",
-        type=int,
+        type=_non_negative_int_arg,
         default=scroll_clicks_default,
         help="Initial scroll clicks to reach the next grid (alternates with +1 on following page).",
     )
@@ -842,6 +861,9 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
     except KeyboardInterrupt:
         print("Aborted by Escape key.")
         return 0
+    except ValueError as exc:
+        print(f"Error: {exc}")
+        return 1
     except TimeoutError as exc:
         print(exc)
         return 1

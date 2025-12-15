@@ -30,26 +30,30 @@ def main(argv=None) -> int:
 
 
 def _menu() -> int:
-    print("Autoscrapper\n")
-    print("  1) Scan inventory now")
-    print("  2) Dry run scan (no clicks)")
-    print("  3) Edit / view rules")
-    print("  4) Edit game progress (coming soon)")
-    print("  5) Scan configuration")
-    print("  q) Quit\n")
+    while True:
+        print("Autoscrapper\n")
+        print("  1) Scan inventory now")
+        print("  2) Dry run scan (no clicks)")
+        print("  3) Edit / view rules")
+        print("  4) Edit game progress (coming soon)")
+        print("  5) Scan configuration")
+        print("  q) Quit\n")
 
-    choice = input("Select an option: ").strip().lower()
-    if choice == "1":
-        return scan_cli.main([])
-    if choice == "2":
-        return scan_cli.main(["--dry-run"])
-    if choice == "3":
-        return rules_cli.main([])
-    if choice == "4":
-        return progress_cli.main([])
-    if choice == "5":
-        return config_cli.main([])
-    return 0
+        choice = input("Select an option: ").strip().lower()
+        if choice == "1":
+            return scan_cli.main([])
+        if choice == "2":
+            return scan_cli.main(["--dry-run"])
+        if choice == "3":
+            return rules_cli.main([])
+        if choice == "4":
+            return progress_cli.main([])
+        if choice == "5":
+            return config_cli.main([])
+        if choice in {"q", "quit", "exit"}:
+            return 0
+
+        print("\nInvalid choice. Please try again.\n")
 
 
 if __name__ == "__main__":
