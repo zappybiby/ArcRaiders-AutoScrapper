@@ -337,7 +337,7 @@ def scan_inventory(
                 grid = _detect_grid()
                 cells = list(grid)
 
-            empty_idx = _detect_first_empty_cell(
+            empty_idx = _detect_consecutive_empty_stop_idx(
                 page,
                 cells,
                 cells_per_page,
@@ -349,10 +349,11 @@ def scan_inventory(
             )
             if empty_idx is not None and (stop_at_global_idx is None or empty_idx < stop_at_global_idx):
                 stop_at_global_idx = empty_idx
+                first_empty_idx = max(0, empty_idx - 1)
                 detected_page = empty_idx // cells_per_page
                 detected_cell = empty_idx % cells_per_page
                 print(
-                    f"[empty] empty cell detected at idx={empty_idx:03d} "
+                    f"[empty] 2 consecutive empty cells detected at idx={first_empty_idx:03d},{empty_idx:03d} "
                     f"page={detected_page + 1:02d} cell={detected_cell:02d}"
                 )
 
@@ -553,7 +554,7 @@ def scan_inventory(
 # Empty cell detection
 # ---------------------------------------------------------------------------
 
-def _detect_first_empty_cell(
+def _detect_consecutive_empty_stop_idx(
     page: int,
     cells: List[Cell],
     cells_per_page: int,
@@ -564,7 +565,12 @@ def _detect_first_empty_cell(
     safe_point_abs: Tuple[int, int],
 ) -> Optional[int]:
     """
-    Capture the current page and return the global index of the first empty cell.
+    Capture the current page and return the global index of the *second* empty cell
+    in the first run of two consecutive empty cells (row-major order).
+
+    This is a pragmatic compromise: a single empty cell can be a transient gap
+    (e.g., during item removal/collapse), but two empties in a row is a strong
+    signal that we've reached the end of items.
     """
     abort_if_escape_pressed()
 
@@ -574,14 +580,18 @@ def _detect_first_empty_cell(
 
     window_bgr = capture_region((window_left, window_top, window_width, window_height))
 
+    prev_empty = False
     for cell in cells:
         abort_if_escape_pressed()
         x, y, w, h = cell.safe_rect
         slot_bgr = window_bgr[y:y + h, x:x + w]
         if slot_bgr.size == 0:
+            prev_empty = False
             continue
-        if is_slot_empty(slot_bgr):
+        is_empty = is_slot_empty(slot_bgr)
+        if is_empty and prev_empty:
             return page * cells_per_page + cell.index
+        prev_empty = is_empty
 
     return None
 
