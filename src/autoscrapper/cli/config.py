@@ -13,12 +13,16 @@ def _format_settings(settings: ScanSettings) -> list[str]:
         if settings.scroll_clicks_per_page is None
         else f"Custom ({settings.scroll_clicks_per_page})"
     )
+    ocr_retries_label = str(settings.ocr_unreadable_retries)
+    ocr_delay_label = f"{settings.ocr_unreadable_retry_delay_ms}ms"
     debug_label = "On" if settings.debug_ocr else "Off"
     profile_label = "On" if settings.profile else "Off"
 
     return [
         f"Pages: {pages_label}",
         f"Scroll clicks/page: {scroll_label}",
+        f"OCR retries (if unreadable): {ocr_retries_label}",
+        f"OCR retry delay: {ocr_delay_label}",
         f"Debug OCR: {debug_label}",
         f"Profile timing: {profile_label}",
     ]
@@ -45,7 +49,7 @@ def main(argv=None) -> int:
         print("\nScan Configuration (persists across sessions)\n")
         for idx, line in enumerate(_format_settings(settings), start=1):
             print(f"  {idx}) {line}")
-        print("  5) Reset all to defaults")
+        print("  7) Reset all to defaults")
         print("  b) Back\n")
         print(f"Config file: {config_path()}\n")
 
@@ -78,14 +82,24 @@ def main(argv=None) -> int:
             continue
 
         if choice == "3":
-            save_scan_settings(replace(settings, debug_ocr=not settings.debug_ocr))
+            retries = _prompt_int("OCR retries when unreadable (0 disables): ", min_value=0)
+            save_scan_settings(replace(settings, ocr_unreadable_retries=retries))
             continue
 
         if choice == "4":
-            save_scan_settings(replace(settings, profile=not settings.profile))
+            delay_ms = _prompt_int("OCR retry delay (ms): ", min_value=0)
+            save_scan_settings(replace(settings, ocr_unreadable_retry_delay_ms=delay_ms))
             continue
 
         if choice == "5":
+            save_scan_settings(replace(settings, debug_ocr=not settings.debug_ocr))
+            continue
+
+        if choice == "6":
+            save_scan_settings(replace(settings, profile=not settings.profile))
+            continue
+
+        if choice == "7":
             reset_scan_settings()
             continue
 

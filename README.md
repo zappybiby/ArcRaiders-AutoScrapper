@@ -48,6 +48,7 @@ python -m autoscrapper scan --dry-run
 
 ## Scan configuration
 The interactive menu includes **Scan configuration** to persist scan defaults for future runs (pages, scroll clicks, debug OCR, profiling).
+By default, if an item title OCR is unreadable, the scanner retries once after 100ms; you can change this in **Scan configuration**.
 
 You can also run it directly: `python -m autoscrapper config`. CLI flags always override the saved defaults for that run.
 

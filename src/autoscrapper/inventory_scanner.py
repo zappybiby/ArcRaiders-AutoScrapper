@@ -199,6 +199,8 @@ def _scroll_clicks_sequence(start_clicks: int) -> Iterable[int]:
 def scan_inventory(
     window_timeout: float = WINDOW_TIMEOUT,
     infobox_retries: int = INFOBOX_RETRIES,
+    ocr_unreadable_retries: int = 1,
+    ocr_unreadable_retry_delay_ms: int = 100,
     show_progress: bool = True,
     pages: Optional[int] = None,
     scroll_clicks_per_page: int = SCROLL_CLICKS_PER_PAGE,
@@ -217,6 +219,12 @@ def scan_inventory(
     OCR the always-visible stash count label to automatically determine how
     many 6x4 grids to scan.
     """
+    if infobox_retries < 1:
+        raise ValueError("infobox_retries must be >= 1")
+    if ocr_unreadable_retries < 0:
+        raise ValueError("ocr_unreadable_retries must be >= 0")
+    if ocr_unreadable_retry_delay_ms < 0:
+        raise ValueError("ocr_unreadable_retry_delay_ms must be >= 0")
     if pages is not None and pages < 1:
         raise ValueError("pages must be >= 1")
 
@@ -403,13 +411,28 @@ def scan_inventory(
                 if infobox_rect and window_bgr is not None:
                     pause_action()
                     x, y, w, h = infobox_rect
-                    infobox_ocr = ocr_infobox(window_bgr[y:y + h, x:x + w])
-                    preprocess_time += infobox_ocr.preprocess_time
-                    ocr_time += infobox_ocr.ocr_time
-                    item_name = infobox_ocr.item_name
-                    raw_item_text = infobox_ocr.raw_item_text
-                    sell_bbox_rel = infobox_ocr.sell_bbox
-                    recycle_bbox_rel = infobox_ocr.recycle_bbox
+                    delay_seconds = ocr_unreadable_retry_delay_ms / 1000.0
+
+                    for ocr_attempt in range(ocr_unreadable_retries + 1):
+                        if ocr_attempt > 0:
+                            sleep_with_abort(delay_seconds)
+                            try:
+                                infobox_bgr = capture_region((win_left + x, win_top + y, w, h))
+                            except Exception:
+                                window_bgr = capture_region((win_left, win_top, win_width, win_height))
+                                infobox_bgr = window_bgr[y:y + h, x:x + w]
+                        else:
+                            infobox_bgr = window_bgr[y:y + h, x:x + w]
+
+                        infobox_ocr = ocr_infobox(infobox_bgr)
+                        preprocess_time += infobox_ocr.preprocess_time
+                        ocr_time += infobox_ocr.ocr_time
+                        item_name = infobox_ocr.item_name
+                        raw_item_text = infobox_ocr.raw_item_text
+                        sell_bbox_rel = infobox_ocr.sell_bbox
+                        recycle_bbox_rel = infobox_ocr.recycle_bbox
+                        if item_name:
+                            break
 
                 decision: Optional[Decision] = None
                 decision_note: Optional[str] = None
@@ -857,6 +880,8 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
             apply_actions=not args.dry_run,
             actions_path=ITEM_ACTIONS_PATH,
             profile_timing=args.profile,
+            ocr_unreadable_retries=settings.ocr_unreadable_retries,
+            ocr_unreadable_retry_delay_ms=settings.ocr_unreadable_retry_delay_ms,
         )
     except KeyboardInterrupt:
         print("Aborted by Escape key.")

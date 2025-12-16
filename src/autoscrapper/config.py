@@ -20,6 +20,8 @@ class ScanSettings:
     pages_mode: PagesMode = "auto"
     pages: Optional[int] = None
     scroll_clicks_per_page: Optional[int] = None
+    ocr_unreadable_retries: int = 1
+    ocr_unreadable_retry_delay_ms: int = 100
     debug_ocr: bool = False
     profile: bool = False
 
@@ -59,6 +61,8 @@ def _from_raw_scan_settings(raw: Any) -> ScanSettings:
     pages_mode_raw = raw.get("pages_mode")
     pages_raw = raw.get("pages")
     scroll_clicks_raw = raw.get("scroll_clicks_per_page")
+    ocr_unreadable_retries_raw = raw.get("ocr_unreadable_retries")
+    ocr_unreadable_retry_delay_ms_raw = raw.get("ocr_unreadable_retry_delay_ms")
 
     pages = _coerce_positive_int(pages_raw)
     pages_mode: PagesMode
@@ -74,10 +78,20 @@ def _from_raw_scan_settings(raw: Any) -> ScanSettings:
 
     scroll_clicks_per_page = _coerce_non_negative_int(scroll_clicks_raw)
 
+    ocr_unreadable_retries = _coerce_non_negative_int(ocr_unreadable_retries_raw)
+    if ocr_unreadable_retries is None:
+        ocr_unreadable_retries = ScanSettings.ocr_unreadable_retries
+
+    ocr_unreadable_retry_delay_ms = _coerce_non_negative_int(ocr_unreadable_retry_delay_ms_raw)
+    if ocr_unreadable_retry_delay_ms is None:
+        ocr_unreadable_retry_delay_ms = ScanSettings.ocr_unreadable_retry_delay_ms
+
     return ScanSettings(
         pages_mode=pages_mode,
         pages=pages,
         scroll_clicks_per_page=scroll_clicks_per_page,
+        ocr_unreadable_retries=ocr_unreadable_retries,
+        ocr_unreadable_retry_delay_ms=ocr_unreadable_retry_delay_ms,
         debug_ocr=_coerce_bool(raw.get("debug_ocr"), False),
         profile=_coerce_bool(raw.get("profile"), False),
     )
