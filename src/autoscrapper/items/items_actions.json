@@ -31,7 +31,6 @@
     "index": 5,
     "name": "Alarm Clock",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -68,14 +67,13 @@
     "index": 10,
     "name": "ARC Coolant",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
     "index": 11,
     "name": "ARC Flex Rubber",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -90,7 +88,6 @@
     "index": 13,
     "name": "ARC Performance Steel",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -98,14 +95,13 @@
     "index": 14,
     "name": "ARC Powercell",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
     "index": 15,
     "name": "ARC Synthetic Resin",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -113,7 +109,6 @@
     "index": 16,
     "name": "ARC Thermo Lining",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -121,7 +116,7 @@
     "index": 17,
     "name": "Assorted Seeds",
     "decision": [
-      "CRAFTING MATERIAL"
+      "SELL"
     ]
   },
   {
@@ -142,7 +137,6 @@
     "index": 20,
     "name": "Bicycle Pump",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -157,7 +151,6 @@
     "index": 22,
     "name": "Broken Flashlight",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -165,14 +158,13 @@
     "index": 23,
     "name": "Broken Guidance System",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
     "index": 24,
     "name": "Broken Handheld Radio",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -180,7 +172,6 @@
     "index": 25,
     "name": "Broken Taser",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -195,14 +186,13 @@
     "index": 27,
     "name": "Burned Arc Circuitry",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
     "index": 28,
     "name": "Camera Lens",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -210,7 +200,6 @@
     "index": 29,
     "name": "Candle Holder",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -225,7 +214,7 @@
     "index": 31,
     "name": "Cat Bed",
     "decision": [
-      "SELL"
+      "KEEP"
     ]
   },
   {
@@ -246,7 +235,6 @@
     "index": 34,
     "name": "Coolant",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -254,7 +242,7 @@
     "index": 35,
     "name": "Cooling Coil",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
@@ -268,7 +256,7 @@
     "index": 37,
     "name": "Cracked Bioscanner",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
@@ -282,7 +270,6 @@
     "index": 39,
     "name": "Crumpled Plastic Bottle",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -290,7 +277,6 @@
     "index": 40,
     "name": "Damaged ARC Motion Core",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -298,7 +284,6 @@
     "index": 41,
     "name": "Damaged ARC Powercell",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -306,21 +291,20 @@
     "index": 42,
     "name": "Damaged Fireball Burner",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
     "index": 43,
     "name": "Damaged Heat Sink",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
     "index": 44,
     "name": "Damaged Hornet Driver",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -328,7 +312,6 @@
     "index": 45,
     "name": "Damaged Rocketeer Driver",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -357,7 +340,6 @@
     "index": 49,
     "name": "Deflated Football",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -365,7 +347,6 @@
     "index": 50,
     "name": "Degraded ARC Rubber",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -373,21 +354,21 @@
     "index": 51,
     "name": "Diving Goggles",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
     "index": 52,
     "name": "Dog Collar",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
     "index": 53,
     "name": "Dried-Out ARC Resin",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
@@ -422,7 +403,6 @@
     "index": 58,
     "name": "Expired Respirator",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -444,28 +424,28 @@
     "index": 61,
     "name": "Fabric",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
     "index": 62,
     "name": "Fertilizer",
     "decision": [
-      "CRAFTING MATERIAL"
+      "SELL"
     ]
   },
   {
     "index": 63,
     "name": "Fireball Burner",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
     "index": 64,
     "name": "Fireball Burner",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
@@ -500,7 +480,6 @@
     "index": 69,
     "name": "Frying Pan",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -508,7 +487,6 @@
     "index": 70,
     "name": "Garlic Press",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -523,14 +501,13 @@
     "index": 72,
     "name": "Great Mullein",
     "decision": [
-      "CRAFTING MATERIAL"
+      "SELL"
     ]
   },
   {
     "index": 73,
     "name": "Headphones",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -545,14 +522,14 @@
     "index": 75,
     "name": "Hornet Driver",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
     "index": 76,
     "name": "Household Cleaner",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
@@ -566,7 +543,6 @@
     "index": 78,
     "name": "Ice Cream Scooper",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -574,7 +550,7 @@
     "index": 79,
     "name": "Impure ARC Coolant",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
@@ -588,7 +564,6 @@
     "index": 81,
     "name": "Industrial Charger",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -596,7 +571,6 @@
     "index": 82,
     "name": "Industrial Magnet",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -632,7 +606,7 @@
     "index": 87,
     "name": "Light Bulb",
     "decision": [
-      "SELL"
+      "KEEP"
     ]
   },
   {
@@ -660,7 +634,6 @@
     "index": 91,
     "name": "Magnetron",
     "decision": [
-      "KEEP",
       "SELL"
     ]
   },
@@ -668,7 +641,7 @@
     "index": 92,
     "name": "Matriarch Reactor",
     "decision": [
-      "SELL"
+      "KEEP"
     ]
   },
   {
@@ -689,7 +662,6 @@
     "index": 95,
     "name": "Metal Brackets",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -739,7 +711,6 @@
     "index": 102,
     "name": "Number Plate",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -768,7 +739,6 @@
     "index": 106,
     "name": "Polluted Air Filter",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -776,14 +746,13 @@
     "index": 107,
     "name": "Pop Trigger",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
     "index": 108,
     "name": "Portable TV",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -791,7 +760,6 @@
     "index": 109,
     "name": "Power Bank",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -799,7 +767,6 @@
     "index": 110,
     "name": "Power Cable",
     "decision": [
-      "KEEP",
       "SELL"
     ]
   },
@@ -828,7 +795,6 @@
     "index": 114,
     "name": "Projector",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -836,15 +802,14 @@
     "index": 115,
     "name": "Queen Reactor",
     "decision": [
-      "RECYCLE",
-      "SELL"
+      "KEEP"
     ]
   },
   {
     "index": 116,
     "name": "Radio",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
@@ -858,7 +823,6 @@
     "index": 118,
     "name": "Remote Control",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -866,21 +830,20 @@
     "index": 119,
     "name": "Resin",
     "decision": [
-      "CRAFTING MATERIAL"
+      "SELL"
     ]
   },
   {
     "index": 120,
     "name": "Ripped Safety Vest",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
     "index": 121,
     "name": "Rocket Thruster",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -895,7 +858,7 @@
     "index": 123,
     "name": "Roots",
     "decision": [
-      "CRAFTING MATERIAL"
+      "SELL"
     ]
   },
   {
@@ -909,7 +872,6 @@
     "index": 125,
     "name": "Rotary Encoder",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -917,7 +879,6 @@
     "index": 126,
     "name": "Rubber Pad",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -932,7 +893,6 @@
     "index": 128,
     "name": "Ruined Accordion",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -940,28 +900,27 @@
     "index": 129,
     "name": "Ruined Baton",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
     "index": 130,
     "name": "Ruined Handcuffs",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
     "index": 131,
     "name": "Ruined Parachute",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
     "index": 132,
     "name": "Ruined Riot Shield",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -969,14 +928,13 @@
     "index": 133,
     "name": "Ruined Tactical Vest",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
     "index": 134,
     "name": "Rusted Bolts",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -998,14 +956,14 @@
     "index": 137,
     "name": "Rusted Tools",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
     "index": 138,
     "name": "Rusty ARC Steel",
     "decision": [
-      "RECYCLE"
+      "SELL"
     ]
   },
   {
@@ -1047,7 +1005,6 @@
     "index": 144,
     "name": "Shredder Gyro",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -1069,7 +1026,7 @@
     "index": 147,
     "name": "Snitch Scanner",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
@@ -1083,7 +1040,6 @@
     "index": 149,
     "name": "Spectrometer",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -1091,7 +1047,6 @@
     "index": 150,
     "name": "Spotter Relay",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -1106,7 +1061,6 @@
     "index": 152,
     "name": "Spring Cushion",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -1128,7 +1082,7 @@
     "index": 155,
     "name": "Synthesized Fuel",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
@@ -1142,7 +1096,6 @@
     "index": 157,
     "name": "Tattered Arc Lining",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -1150,7 +1103,6 @@
     "index": 158,
     "name": "Tattered Clothes",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -1158,7 +1110,6 @@
     "index": 159,
     "name": "Telemetry Transceiver",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -1166,7 +1117,6 @@
     "index": 160,
     "name": "Thermostat",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -1174,21 +1124,20 @@
     "index": 161,
     "name": "Tick Pod",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
     "index": 162,
     "name": "Toaster",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
     "index": 163,
     "name": "Torn Blanket",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -1196,7 +1145,6 @@
     "index": 164,
     "name": "Turbo Pump",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -1212,14 +1160,14 @@
     "index": 166,
     "name": "Very Comfortable Pillow",
     "decision": [
-      "SELL"
+      "KEEP"
     ]
   },
   {
     "index": 167,
     "name": "Volcanic Rock",
     "decision": [
-      "CRAFTING MATERIAL"
+      "SELL"
     ]
   },
   {
@@ -1233,14 +1181,13 @@
     "index": 169,
     "name": "Wasp Driver",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
     "index": 170,
     "name": "Water Filter",
     "decision": [
-      "RECYCLE",
       "SELL"
     ]
   },
@@ -1248,7 +1195,7 @@
     "index": 171,
     "name": "Water Pump",
     "decision": [
-      "KEEP"
+      "SELL"
     ]
   },
   {
