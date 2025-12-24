@@ -51,6 +51,7 @@ from .interaction.ui_windows import (
     SCROLL_CLICKS_PER_PAGE,
     SELL_RECYCLE_ACTION_DELAY,
     SELL_RECYCLE_MOVE_DURATION,
+    SELL_RECYCLE_POST_DELAY,
     WINDOW_TIMEOUT,
     abort_if_escape_pressed,
     capture_region,
@@ -141,6 +142,7 @@ def _perform_sell(
         pause=SELL_RECYCLE_ACTION_DELAY,
     )
     click_absolute(cx, cy, label="sell confirm", pause=SELL_RECYCLE_ACTION_DELAY)
+    sleep_with_abort(SELL_RECYCLE_POST_DELAY)
 
 
 def _perform_recycle(
@@ -182,6 +184,7 @@ def _perform_recycle(
         pause=SELL_RECYCLE_ACTION_DELAY,
     )
     click_absolute(cx, cy, label="recycle confirm", pause=SELL_RECYCLE_ACTION_DELAY)
+    sleep_with_abort(SELL_RECYCLE_POST_DELAY)
 
 
 def _scroll_clicks_sequence(start_clicks: int) -> Iterable[int]:
