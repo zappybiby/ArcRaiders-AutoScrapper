@@ -32,14 +32,14 @@ except ImportError:  # pragma: no cover - optional dependency
     Text = None
     box = None
 
-from .interaction.grid import (
+from .interaction.inventory_grid import (
     Cell,
     Grid,
     grid_center_point,
     inventory_roi_rect,
     safe_mouse_point,
 )
-from .core.inventory import (
+from .core.item_actions import (
     ActionMap,
     Decision,
     ITEM_ACTIONS_PATH,
@@ -68,7 +68,7 @@ from .interaction.ui_windows import (
     window_rect,
 )
 from .ocr.tesseract import initialize_ocr
-from .ocr.arc_inventory import (
+from .ocr.inventory_vision import (
     enable_ocr_debug,
     find_infobox,
     inventory_count_rect,
@@ -447,7 +447,14 @@ def scan_inventory(
 
                 if decision is None:
                     if not item_name:
-                        action_taken = "SKIP_NO_NAME"
+                        if infobox_rect is None:
+                            action_taken = "UNREADABLE_NO_INFOBOX"
+                        elif infobox_ocr is None:
+                            action_taken = "UNREADABLE_NO_OCR"
+                        elif infobox_ocr.ocr_failed:
+                            action_taken = "UNREADABLE_OCR_FAILED"
+                        else:
+                            action_taken = "UNREADABLE_TITLE"
                     elif not actions:
                         action_taken = "SKIP_NO_ACTION_MAP"
                     else:
@@ -486,8 +493,10 @@ def scan_inventory(
 
                 note_suffix = f" note={decision_note}" if decision_note else ""
                 infobox_status = "found" if infobox_rect else "missing"
-                action_label = "SKIPPED" if action_taken.startswith("SKIP") else action_taken
-                detail_suffix = f" detail={action_taken}" if action_label != action_taken else ""
+                action_label, details = _describe_action(action_taken)
+                if action_label == "SKIP":
+                    action_label = "SKIPPED"
+                detail_suffix = f" detail={'; '.join(details)}" if details else ""
                 item_label = item_name or raw_item_text or "<unreadable>"
                 print(
                     f"[item] idx={global_idx:03d} page={page + 1:02d} cell={cell.index:02d} "
@@ -603,6 +612,13 @@ def _detect_consecutive_empty_stop_idx(
 # Output formatting
 # ---------------------------------------------------------------------------
 
+_UNREADABLE_REASONS = {
+    "UNREADABLE_NO_INFOBOX": "infobox missing",
+    "UNREADABLE_NO_OCR": "ocr not run",
+    "UNREADABLE_OCR_FAILED": "ocr failed",
+    "UNREADABLE_TITLE": "title unreadable",
+}
+
 _SKIP_REASONS = {
     "SKIP_NO_NAME": "missing OCR name",
     "SKIP_NO_ACTION_MAP": "no action map loaded",
@@ -622,6 +638,14 @@ def _describe_action(action_taken: str) -> Tuple[str, List[str]]:
         details.append(reason)
         return "SKIP", details
 
+    if action_taken.startswith("UNREADABLE_"):
+        reason = _UNREADABLE_REASONS.get(
+            action_taken,
+            action_taken.replace("UNREADABLE_", "").replace("_", " ").lower(),
+        )
+        details.append(reason)
+        return "UNREADABLE", details
+
     if action_taken.startswith("DRY_RUN_"):
         base = action_taken[len("DRY_RUN_") :]
         details.append("dry run")
@@ -637,6 +661,7 @@ def _outcome_style(label: str) -> str:
         "CRAFTING MATERIAL": "bright_blue",
         "RECYCLE": "cyan",
         "SELL": "magenta",
+        "UNREADABLE": "yellow",
         "SKIP": "red",
     }.get(base, "white")
 
@@ -694,6 +719,8 @@ def _render_scan_overview(
 def _render_summary(summary: Counter, console: Optional["Console"]) -> None:
     ordered_keys = [k for k in ("KEEP", "CRAFTING MATERIAL", "RECYCLE", "SELL") if k in summary]
     ordered_keys += [k for k in ("DRY-KEEP", "DRY-RECYCLE", "DRY-SELL") if k in summary]
+    if "UNREADABLE" in summary:
+        ordered_keys.append("UNREADABLE")
     if "SKIP" in summary:
         ordered_keys.append("SKIP")
     ordered_keys += sorted(set(summary.keys()) - set(ordered_keys))

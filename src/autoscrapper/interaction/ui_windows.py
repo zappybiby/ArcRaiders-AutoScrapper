@@ -10,7 +10,7 @@ import numpy as np
 import pydirectinput as pdi
 import pywinctl as pwc
 
-from .grid import Cell, Grid
+from .inventory_grid import Cell, Grid
 
 # Target window
 TARGET_APP = "PioneerGame.exe"
