@@ -9,7 +9,7 @@ from typing import Dict, List, Literal, Optional, Tuple
 import cv2
 import numpy as np
 
-from ..core.inventory import clean_ocr_text
+from ..core.item_actions import clean_ocr_text
 from .tesseract import image_to_data, image_to_string
 
 # Infobox visual characteristics
@@ -45,6 +45,7 @@ class InfoboxOcrResult:
     processed: np.ndarray
     preprocess_time: float
     ocr_time: float
+    ocr_failed: bool = False
 
 
 def is_empty_cell(bright_fraction: float, gray_var: float, edge_fraction: float) -> bool:
@@ -441,6 +442,7 @@ def ocr_infobox(infobox_bgr: np.ndarray) -> InfoboxOcrResult:
             processed=processed,
             preprocess_time=preprocess_time,
             ocr_time=ocr_time,
+            ocr_failed=True,
         )
 
     item_name, raw_item_text = _extract_title_from_data(data, processed.shape[0])

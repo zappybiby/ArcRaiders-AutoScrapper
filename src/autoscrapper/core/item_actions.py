@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Literal, Optional, Tuple, cast
 
-from ..interaction.grid import Cell
+from ..interaction.inventory_grid import Cell
 
 Decision = Literal["KEEP", "RECYCLE", "SELL", "CRAFTING MATERIAL"]
 DecisionList = List[Decision]

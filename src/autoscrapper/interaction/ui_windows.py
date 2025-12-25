@@ -10,7 +10,7 @@ import numpy as np
 import pydirectinput as pdi
 import pywinctl as pwc
 
-from .grid import Cell, Grid
+from .inventory_grid import Cell, Grid
 
 # Target window
 TARGET_APP = "PioneerGame.exe"
@@ -23,7 +23,8 @@ MOVE_DURATION = 0.05
 SELL_RECYCLE_SPEED_MULT = 1.5  # extra slack vs default pacing (MOVE_DURATION/ACTION_DELAY)
 SELL_RECYCLE_MOVE_DURATION = MOVE_DURATION * SELL_RECYCLE_SPEED_MULT
 SELL_RECYCLE_ACTION_DELAY = ACTION_DELAY * SELL_RECYCLE_SPEED_MULT
-LAST_ROW_MENU_DELAY_MULT = 4.0  # extra pause between left/right clicks on bottom row to keep infobox on-screen
+SELL_RECYCLE_POST_DELAY = 0.1  # seconds to allow item collapse after confirm
+LAST_ROW_MENU_DELAY_MULT = 5.0  # extra pause between left/right clicks on bottom row to keep infobox on-screen
 
 # Cell click positioning
 LAST_ROW_SAFE_Y_RATIO = 0.05
