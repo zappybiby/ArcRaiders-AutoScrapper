@@ -95,7 +95,10 @@ def _log_init(api: PyTessBaseAPI) -> None:
     version = api.Version() if hasattr(api, "Version") else ""
     langs = api.GetAvailableLanguages() or []
     langs_desc = ",".join(sorted(langs))
-    print(f"[ocr_backend] tesseract={version.strip()} tessdata={_tessdata_dir} langs={langs_desc}", flush=True)
+    print(
+        f"[ocr_backend] tesseract={version.strip()} tessdata={_tessdata_dir} langs={langs_desc}",
+        flush=True,
+    )
     _logged_init = True
 
 

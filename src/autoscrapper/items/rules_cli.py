@@ -2,6 +2,7 @@
 Interactive CLI for managing item rules in items_actions.json.
 Uses Rich for output styling. Intended to be run with `python -m autoscrapper rules`.
 """
+
 import json
 from pathlib import Path
 from typing import List, Optional
@@ -45,7 +46,9 @@ def parse_decisions(default: Optional[List[str]] = None) -> List[str]:
             "Enter decisions (comma-separated)",
             default=default_text if default else None,
         )
-        entries = [part.strip() for part in raw.replace(";", ",").split(",") if part.strip()]
+        entries = [
+            part.strip() for part in raw.replace(";", ",").split(",") if part.strip()
+        ]
         if entries:
             return entries
         console.print("[yellow]Please provide at least one decision.[/yellow]")
@@ -176,7 +179,9 @@ def main() -> None:
         for key, (label, _) in actions.items():
             table.add_row(f"[cyan]{key}[/cyan]", label)
         console.print(table)
-        choice = Prompt.ask("Choose an action", choices=list(actions.keys()), default="q")
+        choice = Prompt.ask(
+            "Choose an action", choices=list(actions.keys()), default="q"
+        )
         if choice == "q":
             console.print("[green]Goodbye![/green]")
             break

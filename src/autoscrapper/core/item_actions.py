@@ -25,7 +25,9 @@ class ItemActionResult:
 
 
 VALID_DECISIONS = {"KEEP", "RECYCLE", "SELL", "CRAFTING MATERIAL"}
-ITEM_ACTIONS_PATH = Path(__file__).resolve().parent.parent / "items" / "items_actions.json"
+ITEM_ACTIONS_PATH = (
+    Path(__file__).resolve().parent.parent / "items" / "items_actions.json"
+)
 
 
 def normalize_item_name(name: str) -> str:
@@ -42,14 +44,20 @@ def load_item_actions(path: Path = ITEM_ACTIONS_PATH) -> ActionMap:
     try:
         raw = json.loads(path.read_text(encoding="utf-8"))
     except FileNotFoundError:
-        print(f"[warn] Item actions file not found at {path}; defaulting to skip actions.")
+        print(
+            f"[warn] Item actions file not found at {path}; defaulting to skip actions."
+        )
         return {}
     except json.JSONDecodeError as exc:
-        print(f"[warn] Could not parse item actions file {path}: {exc}; defaulting to skip actions.")
+        print(
+            f"[warn] Could not parse item actions file {path}: {exc}; defaulting to skip actions."
+        )
         return {}
 
     if not isinstance(raw, list):
-        print(f"[warn] Item actions file {path} must be a JSON array; defaulting to skip actions.")
+        print(
+            f"[warn] Item actions file {path} must be a JSON array; defaulting to skip actions."
+        )
         return {}
 
     actions: ActionMap = {}
@@ -75,7 +83,9 @@ def load_item_actions(path: Path = ITEM_ACTIONS_PATH) -> ActionMap:
     return actions
 
 
-def choose_decision(item_name: str, actions: ActionMap) -> Tuple[Optional[Decision], Optional[str]]:
+def choose_decision(
+    item_name: str, actions: ActionMap
+) -> Tuple[Optional[Decision], Optional[str]]:
     normalized = normalize_item_name(item_name)
     if not normalized:
         return None, None
@@ -87,8 +97,6 @@ def choose_decision(item_name: str, actions: ActionMap) -> Tuple[Optional[Decisi
     decision = decision_list[0]
     note = None
     if len(decision_list) > 1:
-        note = (
-            f"Multiple decisions {decision_list}; chose {decision}."
-        )
+        note = f"Multiple decisions {decision_list}; chose {decision}."
 
     return decision, note

@@ -16,8 +16,8 @@ import numpy as np
 # Configuration
 # ---------------------------------------------------------------------------
 
-GRID_COLS = 4   # 4 across
-GRID_ROWS = 6   # 6 down
+GRID_COLS = 4  # 4 across
+GRID_ROWS = 6  # 6 down
 
 # Reference window size (the layout was captured at 1920x1080)
 REF_WIDTH = 1920
@@ -47,16 +47,18 @@ CELL_SIZE_TOLERANCE = 0.3
 # Data structures
 # ---------------------------------------------------------------------------
 
+
 @dataclass(frozen=True)
 class Cell:
     """Represents a single grid cell."""
-    index: int          # 0..(GRID_ROWS*GRID_COLS-1), row-major
-    row: int            # 0..GRID_ROWS-1 (top to bottom)
-    col: int            # 0..GRID_COLS-1 (left to right)
-    x: int              # top-left x in pixels (window-relative)
-    y: int              # top-left y in pixels (window-relative)
-    width: int          # visible width
-    height: int         # visible height
+
+    index: int  # 0..(GRID_ROWS*GRID_COLS-1), row-major
+    row: int  # 0..GRID_ROWS-1 (top to bottom)
+    col: int  # 0..GRID_COLS-1 (left to right)
+    x: int  # top-left x in pixels (window-relative)
+    y: int  # top-left y in pixels (window-relative)
+    width: int  # visible width
+    height: int  # visible height
     safe_bounds: Tuple[int, int, int, int]  # (x1, y1, x2, y2) window-relative
 
     @property
@@ -90,6 +92,7 @@ class Cell:
 # ---------------------------------------------------------------------------
 # Grid helper
 # ---------------------------------------------------------------------------
+
 
 class Grid:
     COLS = GRID_COLS
@@ -184,6 +187,7 @@ class Grid:
 # Geometry helpers
 # ---------------------------------------------------------------------------
 
+
 def normalized_rect_to_window(
     norm_rect: Tuple[float, float, float, float],
     window_width: int,
@@ -200,7 +204,9 @@ def normalized_rect_to_window(
     return x, y, w, h
 
 
-def inventory_roi_rect(window_width: int, window_height: int) -> Tuple[int, int, int, int]:
+def inventory_roi_rect(
+    window_width: int, window_height: int
+) -> Tuple[int, int, int, int]:
     """
     Window-relative rectangle for the inventory grid ROI.
     """
@@ -211,7 +217,9 @@ def safe_mouse_point(window_width: int, window_height: int) -> Tuple[int, int]:
     """
     Window-relative point to park the mouse while detecting cells.
     """
-    sx, sy, sw, sh = normalized_rect_to_window(SAFE_MOUSE_RECT_NORM, window_width, window_height)
+    sx, sy, sw, sh = normalized_rect_to_window(
+        SAFE_MOUSE_RECT_NORM, window_width, window_height
+    )
     return sx + sw // 2, sy + sh // 2
 
 
@@ -226,6 +234,7 @@ def grid_center_point(window_width: int, window_height: int) -> Tuple[int, int]:
 # ---------------------------------------------------------------------------
 # Detection
 # ---------------------------------------------------------------------------
+
 
 def _scaled_cell_size(window_width: int, window_height: int) -> int:
     """

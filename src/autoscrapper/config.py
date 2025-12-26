@@ -82,7 +82,9 @@ def _from_raw_scan_settings(raw: Any) -> ScanSettings:
     if ocr_unreadable_retries is None:
         ocr_unreadable_retries = ScanSettings.ocr_unreadable_retries
 
-    ocr_unreadable_retry_delay_ms = _coerce_non_negative_int(ocr_unreadable_retry_delay_ms_raw)
+    ocr_unreadable_retry_delay_ms = _coerce_non_negative_int(
+        ocr_unreadable_retry_delay_ms_raw
+    )
     if ocr_unreadable_retry_delay_ms is None:
         ocr_unreadable_retry_delay_ms = ScanSettings.ocr_unreadable_retry_delay_ms
 

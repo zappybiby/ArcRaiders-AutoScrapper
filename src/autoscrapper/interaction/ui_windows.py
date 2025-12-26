@@ -20,11 +20,15 @@ WINDOW_POLL_INTERVAL = 0.05
 # Click pacing
 ACTION_DELAY = 0.05
 MOVE_DURATION = 0.05
-SELL_RECYCLE_SPEED_MULT = 1.5  # extra slack vs default pacing (MOVE_DURATION/ACTION_DELAY)
+SELL_RECYCLE_SPEED_MULT = (
+    1.5  # extra slack vs default pacing (MOVE_DURATION/ACTION_DELAY)
+)
 SELL_RECYCLE_MOVE_DURATION = MOVE_DURATION * SELL_RECYCLE_SPEED_MULT
 SELL_RECYCLE_ACTION_DELAY = ACTION_DELAY * SELL_RECYCLE_SPEED_MULT
 SELL_RECYCLE_POST_DELAY = 0.1  # seconds to allow item collapse after confirm
-LAST_ROW_MENU_DELAY_MULT = 5.0  # extra pause between left/right clicks on bottom row to keep infobox on-screen
+LAST_ROW_MENU_DELAY_MULT = (
+    5.0  # extra pause between left/right clicks on bottom row to keep infobox on-screen
+)
 
 # Cell click positioning
 LAST_ROW_SAFE_Y_RATIO = 0.05
@@ -95,7 +99,9 @@ def window_rect(win: pwc.Window) -> Tuple[int, int, int, int]:
     return int(win.left), int(win.top), int(win.width), int(win.height)
 
 
-def window_display_info(win: pwc.Window) -> Tuple[str, Tuple[int, int], Tuple[int, int, int, int]]:
+def window_display_info(
+    win: pwc.Window,
+) -> Tuple[str, Tuple[int, int], Tuple[int, int, int, int]]:
     """
     Return (display name, display size, work area) and enforce that the window is on a single monitor.
     """
@@ -104,7 +110,9 @@ def window_display_info(win: pwc.Window) -> Tuple[str, Tuple[int, int], Tuple[in
         raise RuntimeError("Unable to determine which monitor the target window is on.")
     if len(display_names) > 1:
         joined = ", ".join(display_names)
-        raise RuntimeError(f"Target window spans multiple monitors ({joined}); move it fully onto one display.")
+        raise RuntimeError(
+            f"Target window spans multiple monitors ({joined}); move it fully onto one display."
+        )
 
     display_name = display_names[0]
     size = pwc.getScreenSize(display_name)
@@ -118,7 +126,9 @@ def _get_mss() -> "MSSBase":
     """
     global _MSS
     if sys.platform != "win32":
-        raise RuntimeError("Screen capture requires Windows; this project is Windows-only.")
+        raise RuntimeError(
+            "Screen capture requires Windows; this project is Windows-only."
+        )
 
     if _MSS is None:
         _MSS = mss.mss()
@@ -134,12 +144,19 @@ def capture_region(region: Tuple[int, int, int, int]) -> np.ndarray:
         raise ValueError(f"Invalid capture region size: width={width}, height={height}")
 
     sct = _get_mss()
-    bbox = {"left": int(left), "top": int(top), "width": int(width), "height": int(height)}
+    bbox = {
+        "left": int(left),
+        "top": int(top),
+        "width": int(width),
+        "height": int(height),
+    }
 
     try:
         shot = sct.grab(bbox)
     except Exception as exc:
-        raise RuntimeError(f"mss failed to capture the requested region {bbox}: {exc}") from exc
+        raise RuntimeError(
+            f"mss failed to capture the requested region {bbox}: {exc}"
+        ) from exc
 
     frame = np.asarray(shot)
     if frame.shape[2] == 4:
@@ -170,7 +187,9 @@ def timed_action(label: str, func, *args, **kwargs) -> None:
     func(*args, **kwargs)
 
 
-def click_absolute(x: int, y: int, label: str = "click", pause: float = ACTION_DELAY) -> None:
+def click_absolute(
+    x: int, y: int, label: str = "click", pause: float = ACTION_DELAY
+) -> None:
     timed_action(label, pdi.leftClick, x, y, _pause=False)
     pause_action(pause)
 
@@ -206,7 +225,9 @@ def move_window_relative(
     duration: float = MOVE_DURATION,
     pause: float = ACTION_DELAY,
 ) -> None:
-    move_absolute(int(window_left + x), int(window_top + y), label, duration=duration, pause=pause)
+    move_absolute(
+        int(window_left + x), int(window_top + y), label, duration=duration, pause=pause
+    )
 
 
 def open_cell_menu(cell: Cell, window_left: int, window_top: int) -> None:
@@ -254,7 +275,10 @@ def scroll_to_next_grid_at(
     pdi.leftClick(gx, gy, _pause=False)
     pause_action()
 
-    print(f"[scroll] vscroll clicks={scroll_clicks} interval={SCROLL_INTERVAL} at=({gx},{gy})", flush=True)
+    print(
+        f"[scroll] vscroll clicks={scroll_clicks} interval={SCROLL_INTERVAL} at=({gx},{gy})",
+        flush=True,
+    )
     pdi.vscroll(clicks=scroll_clicks, interval=SCROLL_INTERVAL, _pause=False)
     sleep_with_abort(SCROLL_SETTLE_DELAY)
 
@@ -263,7 +287,9 @@ def scroll_to_next_grid_at(
         move_absolute(sx, sy, label="move to safe area after scroll")
 
 
-def _cell_screen_center(cell: Cell, window_left: int, window_top: int) -> Tuple[int, int]:
+def _cell_screen_center(
+    cell: Cell, window_left: int, window_top: int
+) -> Tuple[int, int]:
     cx, cy = cell.safe_center
     # Game quirk: on the last row the infobox can render off-screen when we click dead-center,
     # hiding Sell/Recycle. Bias toward the top of the safe area to keep the infobox visible.

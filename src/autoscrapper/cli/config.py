@@ -2,12 +2,20 @@ from __future__ import annotations
 
 from dataclasses import replace
 
-from ..config import ScanSettings, config_path, load_scan_settings, reset_scan_settings, save_scan_settings
+from ..config import (
+    ScanSettings,
+    config_path,
+    load_scan_settings,
+    reset_scan_settings,
+    save_scan_settings,
+)
 from ..interaction.ui_windows import SCROLL_CLICKS_PER_PAGE
 
 
 def _format_settings(settings: ScanSettings) -> list[str]:
-    pages_label = "Auto-detect" if settings.pages_mode == "auto" else f"Manual ({settings.pages})"
+    pages_label = (
+        "Auto-detect" if settings.pages_mode == "auto" else f"Manual ({settings.pages})"
+    )
     scroll_label = (
         f"Default ({SCROLL_CLICKS_PER_PAGE})"
         if settings.scroll_clicks_per_page is None
@@ -82,13 +90,17 @@ def main(argv=None) -> int:
             continue
 
         if choice == "3":
-            retries = _prompt_int("OCR retries when unreadable (0 disables): ", min_value=0)
+            retries = _prompt_int(
+                "OCR retries when unreadable (0 disables): ", min_value=0
+            )
             save_scan_settings(replace(settings, ocr_unreadable_retries=retries))
             continue
 
         if choice == "4":
             delay_ms = _prompt_int("OCR retry delay (ms): ", min_value=0)
-            save_scan_settings(replace(settings, ocr_unreadable_retry_delay_ms=delay_ms))
+            save_scan_settings(
+                replace(settings, ocr_unreadable_retry_delay_ms=delay_ms)
+            )
             continue
 
         if choice == "5":

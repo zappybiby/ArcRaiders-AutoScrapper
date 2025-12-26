@@ -48,7 +48,9 @@ class InfoboxOcrResult:
     ocr_failed: bool = False
 
 
-def is_empty_cell(bright_fraction: float, gray_var: float, edge_fraction: float) -> bool:
+def is_empty_cell(
+    bright_fraction: float, gray_var: float, edge_fraction: float
+) -> bool:
     """
     Decide if a slot is empty based on precomputed metrics.
 
@@ -107,7 +109,9 @@ def is_slot_empty(
     """
     Decide if an inventory slot is visually empty using slot metrics.
     """
-    bright_fraction, gray_var, edge_fraction = slot_metrics(slot_bgr, v_thresh, canny1, canny2)
+    bright_fraction, gray_var, edge_fraction = slot_metrics(
+        slot_bgr, v_thresh, canny1, canny2
+    )
     return is_empty_cell(bright_fraction, gray_var, edge_fraction)
 
 
@@ -118,7 +122,9 @@ def find_infobox(bgr_image: np.ndarray) -> Optional[Tuple[int, int, int, int]]:
     """
     kernel = np.ones((3, 3), np.uint8)
 
-    def _meets_min_infobox_size(w: int, h: int, window_width: int, window_height: int) -> bool:
+    def _meets_min_infobox_size(
+        w: int, h: int, window_width: int, window_height: int
+    ) -> bool:
         if window_width <= 0 or window_height <= 0:
             return False
         norm_w = w / float(window_width)
@@ -139,7 +145,9 @@ def find_infobox(bgr_image: np.ndarray) -> Optional[Tuple[int, int, int, int]]:
         return best_rect
 
     # Use tolerance-based mask around the expected infobox color
-    color = INFOBOX_COLOR_BGR.astype(np.int16)  # promote to avoid uint8 overflow when adding tolerance
+    color = INFOBOX_COLOR_BGR.astype(
+        np.int16
+    )  # promote to avoid uint8 overflow when adding tolerance
     lower = np.clip(color - INFOBOX_TOLERANCE, 0, 255).astype(np.uint8)
     upper = np.clip(color + INFOBOX_TOLERANCE, 0, 255).astype(np.uint8)
     mask_tol = cv2.inRange(bgr_image, lower, upper)
@@ -192,11 +200,15 @@ def window_relative_to_screen(
     return window_left + x, window_top + y, w, h
 
 
-def inventory_count_rect(window_width: int, window_height: int) -> Tuple[int, int, int, int]:
+def inventory_count_rect(
+    window_width: int, window_height: int
+) -> Tuple[int, int, int, int]:
     """
     Window-relative rectangle for the always-visible inventory count label.
     """
-    return normalized_rect_to_window(INVENTORY_COUNT_RECT_NORM, window_width, window_height)
+    return normalized_rect_to_window(
+        INVENTORY_COUNT_RECT_NORM, window_width, window_height
+    )
 
 
 def sell_confirm_button_rect(
@@ -208,7 +220,9 @@ def sell_confirm_button_rect(
     """
     Absolute screen rectangle for the Sell confirmation button.
     """
-    rel_rect = normalized_rect_to_window(SELL_CONFIRM_RECT_NORM, window_width, window_height)
+    rel_rect = normalized_rect_to_window(
+        SELL_CONFIRM_RECT_NORM, window_width, window_height
+    )
     return window_relative_to_screen(rel_rect, window_left, window_top)
 
 
@@ -221,7 +235,9 @@ def recycle_confirm_button_rect(
     """
     Absolute screen rectangle for the Recycle confirmation button.
     """
-    rel_rect = normalized_rect_to_window(RECYCLE_CONFIRM_RECT_NORM, window_width, window_height)
+    rel_rect = normalized_rect_to_window(
+        RECYCLE_CONFIRM_RECT_NORM, window_width, window_height
+    )
     return window_relative_to_screen(rel_rect, window_left, window_top)
 
 
@@ -234,7 +250,9 @@ def sell_confirm_button_center(
     """
     Center of the Sell confirmation button (absolute screen coords).
     """
-    return rect_center(sell_confirm_button_rect(window_left, window_top, window_width, window_height))
+    return rect_center(
+        sell_confirm_button_rect(window_left, window_top, window_width, window_height)
+    )
 
 
 def recycle_confirm_button_center(
@@ -246,7 +264,11 @@ def recycle_confirm_button_center(
     """
     Center of the Recycle confirmation button (absolute screen coords).
     """
-    return rect_center(recycle_confirm_button_rect(window_left, window_top, window_width, window_height))
+    return rect_center(
+        recycle_confirm_button_rect(
+            window_left, window_top, window_width, window_height
+        )
+    )
 
 
 def preprocess_for_ocr(roi_bgr: np.ndarray) -> np.ndarray:
@@ -333,7 +355,9 @@ def _extract_title_from_data(
 
     best_key = max(groups.keys(), key=lambda k: _group_score(groups[k]))
     ordered_indices = sorted(groups[best_key])
-    cleaned_parts = [clean_ocr_text(texts[i] or "") for i in ordered_indices if texts[i]]
+    cleaned_parts = [
+        clean_ocr_text(texts[i] or "") for i in ordered_indices if texts[i]
+    ]
     raw_parts = [(texts[i] or "").strip() for i in ordered_indices if texts[i]]
     cleaned = " ".join(p for p in cleaned_parts if p).strip()
     raw = " ".join(p for p in raw_parts if p).strip()
@@ -485,7 +509,10 @@ def ocr_inventory_count(roi_bgr: np.ndarray) -> Tuple[Optional[int], str]:
     try:
         raw = image_to_string(processed)
     except Exception as exc:
-        print(f"[vision_ocr] ocr_backend image_to_string failed for inventory count: {exc}", flush=True)
+        print(
+            f"[vision_ocr] ocr_backend image_to_string failed for inventory count: {exc}",
+            flush=True,
+        )
         return None, ""
 
     cleaned = (raw or "").replace("\n", " ").strip()

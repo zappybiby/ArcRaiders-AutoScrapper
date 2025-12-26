@@ -96,6 +96,7 @@ class ScanStats:
     """
     Aggregate metrics for the scan useful for reporting.
     """
+
     items_in_stash: Optional[int]
     stash_count_text: str
     pages_planned: int
@@ -133,7 +134,9 @@ def _perform_sell(
     )
     sleep_with_abort(MENU_APPEAR_DELAY)
 
-    cx, cy = sell_confirm_button_center(window_left, window_top, window_width, window_height)
+    cx, cy = sell_confirm_button_center(
+        window_left, window_top, window_width, window_height
+    )
     move_absolute(
         cx,
         cy,
@@ -175,7 +178,9 @@ def _perform_recycle(
     )
     sleep_with_abort(MENU_APPEAR_DELAY)
 
-    cx, cy = recycle_confirm_button_center(window_left, window_top, window_width, window_height)
+    cx, cy = recycle_confirm_button_center(
+        window_left, window_top, window_width, window_height
+    )
     move_absolute(
         cx,
         cy,
@@ -250,14 +255,23 @@ def scan_inventory(
         f"[window] pos=({win_left},{win_top}) size={win_width}x{win_height}",
         flush=True,
     )
-    if win_left < work_left or win_top < work_top or win_right > work_right or win_bottom > work_bottom:
+    if (
+        win_left < work_left
+        or win_top < work_top
+        or win_right > work_right
+        or win_bottom > work_bottom
+    ):
         print(
             "[warning] target window extends beyond its display's work area; "
             "ensure it is fully visible on a single monitor.",
             flush=True,
         )
 
-    actions: ActionMap = actions_override if actions_override is not None else load_item_actions(actions_path)
+    actions: ActionMap = (
+        actions_override
+        if actions_override is not None
+        else load_item_actions(actions_path)
+    )
 
     grid_roi = inventory_roi_rect(win_width, win_height)
     safe_point = safe_mouse_point(win_width, win_height)
@@ -271,19 +285,27 @@ def scan_inventory(
         Capture the stash count label while the cursor is in a safe spot.
         """
         try:
-            move_absolute(safe_point_abs[0], safe_point_abs[1], label="move to safe area for stash count")
+            move_absolute(
+                safe_point_abs[0],
+                safe_point_abs[1],
+                label="move to safe area for stash count",
+            )
             pause_action()
             count_roi_rel = inventory_count_rect(win_width, win_height)
             count_left = win_left + count_roi_rel[0]
             count_top = win_top + count_roi_rel[1]
-            count_bgr = capture_region((count_left, count_top, count_roi_rel[2], count_roi_rel[3]))
+            count_bgr = capture_region(
+                (count_left, count_top, count_roi_rel[2], count_roi_rel[3])
+            )
             return ocr_inventory_count(count_bgr)
         except Exception as exc:
             print(f"[warning] failed to read stash count: {exc}", flush=True)
             return None, ""
 
     stash_items, stash_count_text = _detect_inventory_count()
-    auto_pages = math.ceil(stash_items / cells_per_page) if stash_items is not None else None
+    auto_pages = (
+        math.ceil(stash_items / cells_per_page) if stash_items is not None else None
+    )
     pages_to_scan = pages if pages is not None else auto_pages or 1
     pages_to_scan = max(1, pages_to_scan)
     pages_source = "cli" if pages is not None else "auto"
@@ -299,7 +321,11 @@ def scan_inventory(
         """
         Move the cursor out of the grid, capture the ROI, and detect cells.
         """
-        move_absolute(safe_point_abs[0], safe_point_abs[1], label="move to safe area for detection")
+        move_absolute(
+            safe_point_abs[0],
+            safe_point_abs[1],
+            label="move to safe area for detection",
+        )
         pause_action()
         roi_left = win_left + grid_roi[0]
         roi_top = win_top + grid_roi[1]
@@ -322,7 +348,11 @@ def scan_inventory(
 
     abort_if_escape_pressed()
 
-    progress = tqdm(total=total_cells, desc="Scanning grid") if show_progress and tqdm is not None else None
+    progress = (
+        tqdm(total=total_cells, desc="Scanning grid")
+        if show_progress and tqdm is not None
+        else None
+    )
     stop_at_global_idx: Optional[int] = None
     scroll_sequence = _scroll_clicks_sequence(scroll_clicks_per_page)
     stop_scan = False
@@ -350,7 +380,9 @@ def scan_inventory(
                 win_height,
                 safe_point_abs,
             )
-            if empty_idx is not None and (stop_at_global_idx is None or empty_idx < stop_at_global_idx):
+            if empty_idx is not None and (
+                stop_at_global_idx is None or empty_idx < stop_at_global_idx
+            ):
                 stop_at_global_idx = empty_idx
                 first_empty_idx = max(0, empty_idx - 1)
                 detected_page = empty_idx // cells_per_page
@@ -372,7 +404,9 @@ def scan_inventory(
                 cell_start = time.perf_counter()
 
                 if stop_at_global_idx is not None and global_idx >= stop_at_global_idx:
-                    print(f"[empty] reached empty cell idx={stop_at_global_idx:03d}; stopping scan.")
+                    print(
+                        f"[empty] reached empty cell idx={stop_at_global_idx:03d}; stopping scan."
+                    )
                     stop_scan = True
                     break
 
@@ -400,7 +434,9 @@ def scan_inventory(
                     capture_attempts += 1
                     abort_if_escape_pressed()
                     capture_start = time.perf_counter()
-                    window_bgr = capture_region((win_left, win_top, win_width, win_height))
+                    window_bgr = capture_region(
+                        (win_left, win_top, win_width, win_height)
+                    )
                     capture_time += time.perf_counter() - capture_start
                     find_start = time.perf_counter()
                     infobox_rect = find_infobox(window_bgr)
@@ -421,12 +457,16 @@ def scan_inventory(
                         if ocr_attempt > 0:
                             sleep_with_abort(delay_seconds)
                             try:
-                                infobox_bgr = capture_region((win_left + x, win_top + y, w, h))
+                                infobox_bgr = capture_region(
+                                    (win_left + x, win_top + y, w, h)
+                                )
                             except Exception:
-                                window_bgr = capture_region((win_left, win_top, win_width, win_height))
-                                infobox_bgr = window_bgr[y:y + h, x:x + w]
+                                window_bgr = capture_region(
+                                    (win_left, win_top, win_width, win_height)
+                                )
+                                infobox_bgr = window_bgr[y : y + h, x : x + w]
                         else:
-                            infobox_bgr = window_bgr[y:y + h, x:x + w]
+                            infobox_bgr = window_bgr[y : y + h, x : x + w]
 
                         infobox_ocr = ocr_infobox(infobox_bgr)
                         preprocess_time += infobox_ocr.preprocess_time
@@ -466,7 +506,14 @@ def scan_inventory(
                         if sell_bbox_rel is None:
                             action_taken = "SKIP_NO_ACTION_BBOX"
                         elif apply_actions:
-                            _perform_sell(infobox_rect, sell_bbox_rel, win_left, win_top, win_width, win_height)
+                            _perform_sell(
+                                infobox_rect,
+                                sell_bbox_rel,
+                                win_left,
+                                win_top,
+                                win_width,
+                                win_height,
+                            )
                             action_taken = "SELL"
                         else:
                             action_taken = "DRY_RUN_SELL"
@@ -538,8 +585,13 @@ def scan_inventory(
                 idx_in_page += 1
                 if idx_in_page < len(cells):
                     next_global_idx = page * cells_per_page + cells[idx_in_page].index
-                    if stop_at_global_idx is not None and next_global_idx >= stop_at_global_idx:
-                        print(f"[empty] reached empty cell idx={stop_at_global_idx:03d}; stopping scan.")
+                    if (
+                        stop_at_global_idx is not None
+                        and next_global_idx >= stop_at_global_idx
+                    ):
+                        print(
+                            f"[empty] reached empty cell idx={stop_at_global_idx:03d}; stopping scan."
+                        )
                         stop_scan = True
                         break
                     open_cell_menu(cells[idx_in_page], win_left, win_top)
@@ -566,6 +618,7 @@ def scan_inventory(
 # Empty cell detection
 # ---------------------------------------------------------------------------
 
+
 def _detect_consecutive_empty_stop_idx(
     page: int,
     cells: List[Cell],
@@ -587,7 +640,9 @@ def _detect_consecutive_empty_stop_idx(
     abort_if_escape_pressed()
 
     # Keep the cursor out of the grid so it doesn't occlude cells.
-    move_absolute(safe_point_abs[0], safe_point_abs[1], label="clear for empty detection")
+    move_absolute(
+        safe_point_abs[0], safe_point_abs[1], label="clear for empty detection"
+    )
     pause_action()
 
     window_bgr = capture_region((window_left, window_top, window_width, window_height))
@@ -596,7 +651,7 @@ def _detect_consecutive_empty_stop_idx(
     for cell in cells:
         abort_if_escape_pressed()
         x, y, w, h = cell.safe_rect
-        slot_bgr = window_bgr[y:y + h, x:x + w]
+        slot_bgr = window_bgr[y : y + h, x : x + w]
         if slot_bgr.size == 0:
             prev_empty = False
             continue
@@ -634,7 +689,9 @@ def _describe_action(action_taken: str) -> Tuple[str, List[str]]:
     """
     details: List[str] = []
     if action_taken.startswith("SKIP_"):
-        reason = _SKIP_REASONS.get(action_taken, action_taken.replace("SKIP_", "").replace("_", " ").lower())
+        reason = _SKIP_REASONS.get(
+            action_taken, action_taken.replace("SKIP_", "").replace("_", " ").lower()
+        )
         details.append(reason)
         return "SKIP", details
 
@@ -685,8 +742,16 @@ def _render_scan_overview(
     items_processed = len(results)
     stash_label = str(stats.items_in_stash) if stats.items_in_stash is not None else "?"
     duration_label = f"{stats.processing_seconds:.1f}s"
-    planned_suffix = f" (planned {stats.pages_planned})" if stats.pages_planned != stats.pages_scanned else ""
-    raw_suffix = f" raw='{stats.stash_count_text}'" if stats.stash_count_text and stats.items_in_stash is None else ""
+    planned_suffix = (
+        f" (planned {stats.pages_planned})"
+        if stats.pages_planned != stats.pages_scanned
+        else ""
+    )
+    raw_suffix = (
+        f" raw='{stats.stash_count_text}'"
+        if stats.stash_count_text and stats.items_in_stash is None
+        else ""
+    )
 
     if console is None:
         print(
@@ -717,7 +782,9 @@ def _render_scan_overview(
 
 
 def _render_summary(summary: Counter, console: Optional["Console"]) -> None:
-    ordered_keys = [k for k in ("KEEP", "CRAFTING MATERIAL", "RECYCLE", "SELL") if k in summary]
+    ordered_keys = [
+        k for k in ("KEEP", "CRAFTING MATERIAL", "RECYCLE", "SELL") if k in summary
+    ]
     ordered_keys += [k for k in ("DRY-KEEP", "DRY-RECYCLE", "DRY-SELL") if k in summary]
     if "UNREADABLE" in summary:
         ordered_keys.append("UNREADABLE")
@@ -753,8 +820,17 @@ def _item_label(result: ItemActionResult) -> str:
     return result.item_name or result.raw_item_text or "<unreadable>"
 
 
-def _render_results(results: List[ItemActionResult], cells_per_page: int, stats: ScanStats) -> None:
-    console = Console() if Console is not None and Table is not None and Text is not None and box is not None else None
+def _render_results(
+    results: List[ItemActionResult], cells_per_page: int, stats: ScanStats
+) -> None:
+    console = (
+        Console()
+        if Console is not None
+        and Table is not None
+        and Text is not None
+        and box is not None
+        else None
+    )
     summary = _summarize_results(results)
 
     _render_scan_overview(results, stats, console)
@@ -828,6 +904,7 @@ def _render_results(results: List[ItemActionResult], cells_per_page: int, stats:
 # CLI
 # ---------------------------------------------------------------------------
 
+
 def _positive_int_arg(value: str) -> int:
     try:
         parsed = int(value)
@@ -847,6 +924,7 @@ def _non_negative_int_arg(value: str) -> int:
         raise argparse.ArgumentTypeError("must be >= 0")
     return parsed
 
+
 def main(argv: Optional[Iterable[str]] = None) -> int:
     settings = load_scan_settings()
     pages_default = settings.pages if settings.pages_mode == "manual" else None
@@ -856,7 +934,9 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
         else SCROLL_CLICKS_PER_PAGE
     )
 
-    parser = argparse.ArgumentParser(description="Scan the ARC Raiders inventory grid(s).")
+    parser = argparse.ArgumentParser(
+        description="Scan the ARC Raiders inventory grid(s)."
+    )
     parser.add_argument(
         "--pages",
         type=_positive_int_arg,
