@@ -73,4 +73,6 @@ You can view all rules, view a specific item by name or index, add new items, ed
 - `--no-debug` disable OCR debug images (overrides saved scan configuration).
 
 ## Contributing
-- Black is used for formatting.
+Black is the formatter for this codebase and should be used for all contributions.
+- Install: `python -m pip install black`
+- Format a file: `python -m black path/to/file.py`
