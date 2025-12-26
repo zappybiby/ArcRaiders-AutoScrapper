@@ -71,3 +71,6 @@ You can view all rules, view a specific item by name or index, add new items, ed
 - `--no-profile` disable per-item timing logs (overrides saved scan configuration).
 - `--debug` / `--debug-ocr` save OCR debug images to `./ocr_debug`.
 - `--no-debug` disable OCR debug images (overrides saved scan configuration).
+
+## Contributing
+- Black is used for formatting.
