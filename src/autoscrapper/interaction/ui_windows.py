@@ -1,19 +1,25 @@
 from __future__ import annotations
 
-import ctypes
+import os
 import sys
 import time
-from typing import TYPE_CHECKING, Optional, Tuple
+from typing import Optional, Tuple
 
 import mss
 import numpy as np
-import pydirectinput as pdi
 import pywinctl as pwc
 
 from .inventory_grid import Cell, Grid
+from . import input_driver as pdi
 
 # Target window
-TARGET_APP = "PioneerGame.exe"
+def _default_target_app() -> str:
+    if sys.platform.startswith("linux"):
+        return "Arc Raiders"
+    return "PioneerGame.exe"
+
+
+TARGET_APP = os.environ.get("AUTOSCRAPPER_TARGET_APP") or _default_target_app()
 WINDOW_TIMEOUT = 30.0
 WINDOW_POLL_INTERVAL = 0.05
 
@@ -40,25 +46,14 @@ SCROLL_MOVE_DURATION = 0.5
 SCROLL_INTERVAL = 0.04
 SCROLL_SETTLE_DELAY = 0.05
 
-# Keyboard
-VK_ESCAPE = 0x1B
-
-# Optional user32 handle for escape detection (Windows only)
-try:
-    _USER32 = ctypes.windll.user32  # type: ignore[attr-defined]
-except Exception:  # pragma: no cover - platform dependent
-    _USER32 = None
-
 _MSS: Optional["MSSBase"] = None
 
 
 def escape_pressed() -> bool:
     """
-    Detect whether Escape is currently pressed (Windows).
+    Detect whether Escape is currently pressed.
     """
-    if _USER32 is None:
-        return False
-    return bool(_USER32.GetAsyncKeyState(VK_ESCAPE) & 0x8000)
+    return pdi.escape_pressed()
 
 
 def abort_if_escape_pressed() -> None:
@@ -85,7 +80,16 @@ def wait_for_target_window(
         win = pwc.getActiveWindow()
         if win is not None:
             app = (win.getAppName() or "").lower()
-            if app == target_lower:
+            title = ""
+            if hasattr(win, "title"):
+                title = getattr(win, "title") or ""
+            if not title and hasattr(win, "getTitle"):
+                try:
+                    title = win.getTitle() or ""
+                except Exception:
+                    title = ""
+            title_lower = title.lower()
+            if target_lower in app or (title_lower and target_lower in title_lower):
                 return win
         time.sleep(poll_interval)
 
@@ -125,9 +129,9 @@ def _get_mss() -> "MSSBase":
     Lazily create an MSS instance for screen capture.
     """
     global _MSS
-    if sys.platform != "win32":
+    if sys.platform not in ("win32", "linux"):
         raise RuntimeError(
-            "Screen capture requires Windows; this project is Windows-only."
+            "Screen capture requires Windows or Linux; this build targets X11/XWayland."
         )
 
     if _MSS is None:

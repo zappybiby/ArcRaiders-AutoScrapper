@@ -9,8 +9,9 @@ Walks through each inventory item and applies Sell/Recycle decisions using only 
 - Press Escape to cancel (may need a couple presses).
 
 ## Setup
-Windows 10/11 is required (window detection + input automation rely on Windows APIs). Python 3.10 - 3.13 recommended.
+Windows 10/11 and Ubuntu (native X11/XWayland) are supported. WSL is not supported. Python 3.10 - 3.13 recommended.
 
+### Windows 10/11
 1) Create and activate a virtualenv in the repo root:
    - `python -m venv .venv`
    - PowerShell: `.\\.venv\\Scripts\\Activate.ps1`
@@ -19,6 +20,17 @@ Windows 10/11 is required (window detection + input automation rely on Windows A
    - Download the matching 64-bit wheel (e.g. `tesserocr-2.9.1-cp313-cp313-win_amd64.whl`) from https://github.com/simonflueckiger/tesserocr-windows_build/releases
    - Install it with `pip install <wheel_filename>.whl`
 3) Install the package (and all other dependencies) in editable mode from the repo root:
+   - `pip install -e .`
+
+### Ubuntu (native X11/XWayland)
+1) Create and activate a virtualenv in the repo root:
+   - `python -m venv .venv`
+   - `source .venv/bin/activate`
+2) Install tesserocr system dependencies:
+   - `apt-get install tesseract-ocr libtesseract-dev libleptonica-dev pkg-config`
+3) Install tesserocr:
+   - `pip install tesserocr`
+4) Install the package (and all other dependencies) in editable mode from the repo root:
    - `pip install -e .`
 
 ## Usage
@@ -39,6 +51,9 @@ Typical scan flow:
 3) Alt-tab back into Arc Raiders quickly; after a few seconds the script will log the display it detected and start processing.
 4) Press Escape to abort (may need to press a few times).
 
+Linux note: this assumes a native Ubuntu desktop with the game window running under X11/XWayland (Proton is fine). Pure Wayland sessions may not support window detection or input injection.
+The Linux default target is the window title `Arc Raiders`. You can override it with `AUTOSCRAPPER_TARGET_APP` if needed.
+
 ### Dry run
 See what the script would do without clicking Sell/Recycle (logs planned decisions such as `SELL`/`RECYCLE`):
 
@@ -52,7 +67,7 @@ By default, if an item title OCR is unreadable, the scanner retries once after 1
 
 You can also run it directly: `python -m autoscrapper config`. CLI flags always override the saved defaults for that run.
 
-Settings are stored at `%APPDATA%\\AutoScrapper\\config.json` on Windows.
+Settings are stored at `%APPDATA%\\AutoScrapper\\config.json` on Windows, and `~/.autoscrapper/config.json` on Linux.
 
 ## Item rules CLI
 Manage the keep/recycle/sell rules stored in `src/autoscrapper/items/items_actions.json`:

@@ -2,7 +2,7 @@ mss
 numpy
 opencv-python
 Pillow
-pydirectinput-rgx
+pynput
 pywinctl
 rich
 tessdata.fast-eng
