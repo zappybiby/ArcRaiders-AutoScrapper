@@ -2,7 +2,7 @@
 name = "ArcRaiders-AutoScrapper"
 version = "0.1.0"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.10,<3.14"
 dependencies = [
     "mss>=10.1.0",
     "numpy>=2.4.0",
