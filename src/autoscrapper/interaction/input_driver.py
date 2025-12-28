@@ -4,6 +4,14 @@ import sys
 import time
 from typing import Optional
 
+PAUSE = 0.0
+
+
+def _maybe_pause(pause: bool) -> None:
+    if pause and PAUSE > 0:
+        time.sleep(PAUSE)
+
+
 if sys.platform == "win32":
     import ctypes
     from ctypes import wintypes
@@ -21,16 +29,20 @@ if sys.platform == "win32":
     _VK_ESCAPE = 0x1B
 
     def escape_pressed() -> bool:
-        return bool(_GetAsyncKeyState(_VK_ESCAPE) & 0x8000)
+        state = _GetAsyncKeyState(_VK_ESCAPE)
+        return bool(state & 0x8000) or bool(state & 0x0001)
 
     def moveTo(x: int, y: int, duration: float = 0.0, _pause: bool = True) -> None:
-        _pydirectinput.moveTo(x, y, duration=duration)
+        _pydirectinput.moveTo(int(x), int(y), duration=duration)
+        _maybe_pause(_pause)
 
     def leftClick(x: int, y: int, _pause: bool = True) -> None:
-        _pydirectinput.click(x=x, y=y, button="left")
+        _pydirectinput.click(x=int(x), y=int(y), button="left")
+        _maybe_pause(_pause)
 
     def rightClick(x: int, y: int, _pause: bool = True) -> None:
-        _pydirectinput.click(x=x, y=y, button="right")
+        _pydirectinput.click(x=int(x), y=int(y), button="right")
+        _maybe_pause(_pause)
 
     def vscroll(clicks: int, interval: float = 0.0, _pause: bool = True) -> None:
         if clicks == 0:
@@ -40,6 +52,7 @@ if sys.platform == "win32":
             _pydirectinput.scroll(step)
             if interval > 0:
                 time.sleep(interval)
+        _maybe_pause(_pause)
 
 elif sys.platform.startswith("linux"):
     import threading
@@ -48,6 +61,7 @@ elif sys.platform.startswith("linux"):
 
     _MOUSE = mouse.Controller()
     _KEY_STATE: set[object] = set()
+    _ESCAPE_PRESSED = threading.Event()
     _LISTENER: Optional[keyboard.Listener] = None
     _LISTENER_LOCK = threading.Lock()
 
@@ -61,6 +75,8 @@ elif sys.platform.startswith("linux"):
 
             def on_press(key) -> None:
                 _KEY_STATE.add(key)
+                if key == keyboard.Key.esc:
+                    _ESCAPE_PRESSED.set()
 
             def on_release(key) -> None:
                 _KEY_STATE.discard(key)
@@ -72,11 +88,19 @@ elif sys.platform.startswith("linux"):
 
     def escape_pressed() -> bool:
         _ensure_key_listener()
-        return keyboard.Key.esc in _KEY_STATE
+        if keyboard.Key.esc in _KEY_STATE:
+            return True
+        if _ESCAPE_PRESSED.is_set():
+            _ESCAPE_PRESSED.clear()
+            return True
+        return False
 
     def moveTo(x: int, y: int, duration: float = 0.0, _pause: bool = True) -> None:
+        x = int(x)
+        y = int(y)
         if duration <= 0:
             _MOUSE.position = (x, y)
+            _maybe_pause(_pause)
             return
 
         start_x, start_y = _MOUSE.position
@@ -87,14 +111,17 @@ elif sys.platform.startswith("linux"):
             ny = start_y + (y - start_y) * (i / steps)
             _MOUSE.position = (int(nx), int(ny))
             time.sleep(sleep_time)
+        _maybe_pause(_pause)
 
     def leftClick(x: int, y: int, _pause: bool = True) -> None:
-        _MOUSE.position = (x, y)
+        _MOUSE.position = (int(x), int(y))
         _MOUSE.click(mouse.Button.left, 1)
+        _maybe_pause(_pause)
 
     def rightClick(x: int, y: int, _pause: bool = True) -> None:
-        _MOUSE.position = (x, y)
+        _MOUSE.position = (int(x), int(y))
         _MOUSE.click(mouse.Button.right, 1)
+        _maybe_pause(_pause)
 
     def vscroll(clicks: int, interval: float = 0.0, _pause: bool = True) -> None:
         if clicks == 0:
@@ -104,6 +131,7 @@ elif sys.platform.startswith("linux"):
             _MOUSE.scroll(0, step)
             if interval > 0:
                 time.sleep(interval)
+        _maybe_pause(_pause)
 
 else:
     raise RuntimeError(f"Unsupported platform for input driver: {sys.platform}")
