@@ -27,12 +27,9 @@ From a terminal (PowerShell/CMD on Windows, bash on Linux):
 - `cd ArcRaiders-AutoScrapper`
 
 ### Windows 10/11 (64-bit)
-From the repo root:
-- PowerShell: `powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1`
-- CMD: `powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup-windows.ps1`
-- Optional (use a different supported Python):
-  - PowerShell: add `-PythonVersion 3.12`
-  - CMD: add `-PythonVersion 3.12`
+From the repo root (PowerShell or CMD):
+- `powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup-windows.ps1`
+- Optional (use a different supported Python): `powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup-windows.ps1 -PythonVersion 3.12`
 
 ### Linux (experimental/untested)
 Ubuntu/Debian (apt-get) on a native X11/XWayland desktop only. WSL is not supported.
