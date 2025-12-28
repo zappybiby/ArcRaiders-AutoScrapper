@@ -16,6 +16,7 @@ Python 3.10–3.13 is supported (3.13 recommended). Python 3.14 is not supported
 This repo uses `uv` to manage Python + dependencies. `tesserocr` is a required dependency:
 - Windows installs `tesserocr` via the matching prebuilt wheel from GitHub (handled automatically by `uv`).
 - Linux installs `tesserocr` from PyPI and requires system `tesseract`/`leptonica` dev packages (the Linux setup script installs them).
+- Input injection uses `pydirectinput-rgx` on Windows and `pynput` on Linux.
 
 ### Clone the repo
 From a terminal (PowerShell/CMD on Windows, bash on Linux):
