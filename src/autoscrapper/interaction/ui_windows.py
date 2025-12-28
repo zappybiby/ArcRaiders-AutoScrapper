@@ -12,6 +12,7 @@ import pywinctl as pwc
 from .inventory_grid import Cell, Grid
 from . import input_driver as pdi
 
+
 # Target window
 def _default_target_app() -> str:
     if sys.platform.startswith("linux"):
