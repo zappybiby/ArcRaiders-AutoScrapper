@@ -28,7 +28,6 @@ fi
 $SUDO apt-get update
 $SUDO apt-get install -y \
   build-essential \
-  python3-dev \
   linux-headers-$(uname -r) \
   pkg-config \
   tesseract-ocr \
