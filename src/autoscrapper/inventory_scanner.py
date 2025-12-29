@@ -1,7 +1,7 @@
 """
 inventory_scanner.py
 
-Scan the 4x6 inventory grid by hovering each cell, opening the context
+Scan the 4x5 inventory grid by hovering each cell, opening the context
 menu, locating the light infobox (#f9eedf), and OCR-ing the item title.
 """
 
@@ -218,14 +218,14 @@ def scan_inventory(
     profile_timing: bool = False,
 ) -> Tuple[List[ItemActionResult], ScanStats]:
     """
-    Walk each 6x4 grid (top-to-bottom, left-to-right), OCR each cell's item
+    Walk each 4x5 grid (top-to-bottom, left-to-right), OCR each cell's item
     title, and apply the configured keep/recycle/sell decision when possible.
     Decisions come from items_actions.json unless an override map is provided.
     Cells are detected via contours inside a normalized ROI, and scrolling
     alternates between `scroll_clicks_per_page` and `scroll_clicks_per_page + 1`
     to handle the carousel offset. If `pages` is not provided, the script will
     OCR the always-visible stash count label to automatically determine how
-    many 6x4 grids to scan.
+    many 4x5 grids to scan.
     """
     if infobox_retries < 1:
         raise ValueError("infobox_retries must be >= 1")
@@ -774,7 +774,7 @@ def _render_scan_overview(
     pages_value = f"{stats.pages_scanned}"
     if planned_suffix:
         pages_value = f"{pages_value}{planned_suffix}"
-    table.add_row("6x4 pages run", pages_value)
+    table.add_row("4x5 pages run", pages_value)
     table.add_row("Processing time", duration_label)
     if stats.items_in_stash is None and stats.stash_count_text:
         table.add_row("Count OCR", stats.stash_count_text)
@@ -941,7 +941,7 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
         "--pages",
         type=_positive_int_arg,
         default=pages_default,
-        help="Override auto-detected page count; number of 6x4 grids to scan.",
+        help="Override auto-detected page count; number of 4x5 grids to scan.",
     )
     parser.add_argument(
         "--scroll-clicks",

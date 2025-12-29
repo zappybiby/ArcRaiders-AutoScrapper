@@ -57,7 +57,7 @@ Linux notes (experimental):
 
 ## CLI options (scan)
 Run `uv run autoscrapper scan --help` for the full list.
-- `--pages INT` override auto-detected 6x4 page count to scan.
+- `--pages INT` override auto-detected 4x5 page count to scan.
 - `--scroll-clicks INT` initial scroll clicks between grids (alternates with +1 on the next page).
 - `--dry-run` log planned actions without clicking Sell/Recycle.
 - `--profile` enable per-item timing logs (capture, OCR, total).

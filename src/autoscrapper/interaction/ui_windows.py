@@ -9,7 +9,7 @@ import mss
 import numpy as np
 import pywinctl as pwc
 
-from .inventory_grid import Cell, Grid
+from .inventory_grid import Cell
 from . import input_driver as pdi
 
 
@@ -33,16 +33,10 @@ SELL_RECYCLE_SPEED_MULT = (
 SELL_RECYCLE_MOVE_DURATION = MOVE_DURATION * SELL_RECYCLE_SPEED_MULT
 SELL_RECYCLE_ACTION_DELAY = ACTION_DELAY * SELL_RECYCLE_SPEED_MULT
 SELL_RECYCLE_POST_DELAY = 0.1  # seconds to allow item collapse after confirm
-LAST_ROW_MENU_DELAY_MULT = (
-    5.0  # extra pause between left/right clicks on bottom row to keep infobox on-screen
-)
-
-# Cell click positioning
-LAST_ROW_SAFE_Y_RATIO = 0.05
 
 # Scrolling
-# Alternate 19/20 downward scroll clicks to advance between 6x4 grids.
-SCROLL_CLICKS_PER_PAGE = 19
+# Alternate 16/17 downward scroll clicks to advance between 4x5 grids.
+SCROLL_CLICKS_PER_PAGE = 16
 SCROLL_MOVE_DURATION = 0.5
 SCROLL_INTERVAL = 0.04
 SCROLL_SETTLE_DELAY = 0.05
@@ -240,19 +234,18 @@ def open_cell_menu(cell: Cell, window_left: int, window_top: int) -> None:
     Hover the cell, then left-click and right-click to open its context menu.
     """
     abort_if_escape_pressed()
-    is_last_row = cell.row == Grid.ROWS - 1
     cx, cy = _cell_screen_center(cell, window_left, window_top)
     timed_action("moveTo", pdi.moveTo, cx, cy, duration=MOVE_DURATION)
     pause_action()
     timed_action("leftClick", pdi.leftClick, cx, cy, _pause=False)
-    pause_action(ACTION_DELAY * (LAST_ROW_MENU_DELAY_MULT if is_last_row else 1.0))
+    pause_action()
     timed_action("rightClick", pdi.rightClick, cx, cy, _pause=False)
     pause_action()
 
 
 def scroll_to_next_grid(scroll_clicks_per_page: int = SCROLL_CLICKS_PER_PAGE) -> None:
     """
-    Scroll quickly to reveal the next 6x4 grid of items.
+    Scroll quickly to reveal the next 4x5 grid of items.
     """
     raise RuntimeError(
         "scroll_to_next_grid now requires explicit grid/safe coordinates. "
@@ -296,10 +289,4 @@ def _cell_screen_center(
     cell: Cell, window_left: int, window_top: int
 ) -> Tuple[int, int]:
     cx, cy = cell.safe_center
-    # Game quirk: on the last row the infobox can render off-screen when we click dead-center,
-    # hiding Sell/Recycle. Bias toward the top of the safe area to keep the infobox visible.
-    if cell.row == Grid.ROWS - 1:
-        x1, y1, x2, y2 = cell.safe_bounds
-        safe_height = y2 - y1
-        cy = y1 + safe_height * LAST_ROW_SAFE_Y_RATIO
     return int(window_left + cx), int(window_top + cy)
