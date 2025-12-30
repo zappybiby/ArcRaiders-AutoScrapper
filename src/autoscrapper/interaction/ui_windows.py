@@ -189,7 +189,7 @@ def timed_action(label: str, func, *args, **kwargs) -> None:
 def click_absolute(
     x: int, y: int, label: str = "click", pause: float = ACTION_DELAY
 ) -> None:
-    timed_action(label, pdi.leftClick, x, y, _pause=False)
+    timed_action(label, pdi.leftClick, x, y)
     pause_action(pause)
 
 
@@ -237,9 +237,9 @@ def open_cell_menu(cell: Cell, window_left: int, window_top: int) -> None:
     cx, cy = _cell_screen_center(cell, window_left, window_top)
     timed_action("moveTo", pdi.moveTo, cx, cy, duration=MOVE_DURATION)
     pause_action()
-    timed_action("leftClick", pdi.leftClick, cx, cy, _pause=False)
+    timed_action("leftClick", pdi.leftClick, cx, cy)
     pause_action()
-    timed_action("rightClick", pdi.rightClick, cx, cy, _pause=False)
+    timed_action("rightClick", pdi.rightClick, cx, cy)
     pause_action()
 
 
@@ -267,17 +267,17 @@ def scroll_to_next_grid_at(
     scroll_clicks = -abs(clicks)
 
     # Match the working standalone script: slow move into position, click, then vertical scroll.
-    pdi.moveTo(gx, gy, duration=SCROLL_MOVE_DURATION, _pause=False)
+    pdi.moveTo(gx, gy, duration=SCROLL_MOVE_DURATION)
     pause_action()
     abort_if_escape_pressed()
-    pdi.leftClick(gx, gy, _pause=False)
+    pdi.leftClick(gx, gy)
     pause_action()
 
     print(
         f"[scroll] vscroll clicks={scroll_clicks} interval={SCROLL_INTERVAL} at=({gx},{gy})",
         flush=True,
     )
-    pdi.vscroll(clicks=scroll_clicks, interval=SCROLL_INTERVAL, _pause=False)
+    pdi.vscroll(clicks=scroll_clicks, interval=SCROLL_INTERVAL)
     sleep_with_abort(SCROLL_SETTLE_DELAY)
 
     if safe_point_abs is not None:
