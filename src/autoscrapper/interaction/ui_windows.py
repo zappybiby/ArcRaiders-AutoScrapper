@@ -238,16 +238,6 @@ def open_cell_menu(cell: Cell, window_left: int, window_top: int) -> None:
     pause_action()
 
 
-def scroll_to_next_grid(scroll_clicks_per_page: int = SCROLL_CLICKS_PER_PAGE) -> None:
-    """
-    Scroll quickly to reveal the next 4x5 grid of items.
-    """
-    raise RuntimeError(
-        "scroll_to_next_grid now requires explicit grid/safe coordinates. "
-        "Use scroll_to_next_grid_at instead."
-    )
-
-
 def scroll_to_next_grid_at(
     clicks: int,
     grid_center_abs: Tuple[int, int],
