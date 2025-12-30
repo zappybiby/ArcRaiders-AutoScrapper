@@ -86,7 +86,7 @@ def wait_for_target_window(
             title_lower = title.lower()
             if target_lower in app or (title_lower and target_lower in title_lower):
                 return win
-        time.sleep(poll_interval)
+        sleep_with_abort(poll_interval)
 
     raise TimeoutError(f"Timed out waiting for active window {target_app!r}")
 
@@ -178,7 +178,7 @@ def pause_action(duration: float = ACTION_DELAY) -> None:
     sleep_with_abort(duration)
 
 
-def timed_action(label: str, func, *args, **kwargs) -> None:
+def timed_action(func, *args, **kwargs) -> None:
     """
     Run an input action while checking for Escape.
     """
@@ -186,10 +186,8 @@ def timed_action(label: str, func, *args, **kwargs) -> None:
     func(*args, **kwargs)
 
 
-def click_absolute(
-    x: int, y: int, label: str = "click", pause: float = ACTION_DELAY
-) -> None:
-    timed_action(label, pdi.leftClick, x, y)
+def click_absolute(x: int, y: int, pause: float = ACTION_DELAY) -> None:
+    timed_action(pdi.leftClick, x, y)
     pause_action(pause)
 
 
@@ -198,20 +196,18 @@ def click_window_relative(
     y: int,
     window_left: int,
     window_top: int,
-    label: str = "click",
     pause: float = ACTION_DELAY,
 ) -> None:
-    click_absolute(int(window_left + x), int(window_top + y), label, pause=pause)
+    click_absolute(int(window_left + x), int(window_top + y), pause=pause)
 
 
 def move_absolute(
     x: int,
     y: int,
-    label: str = "move",
     duration: float = MOVE_DURATION,
     pause: float = ACTION_DELAY,
 ) -> None:
-    timed_action(f"{label} moveTo", pdi.moveTo, x, y, duration=duration)
+    timed_action(pdi.moveTo, x, y, duration=duration)
     pause_action(pause)
 
 
@@ -220,12 +216,11 @@ def move_window_relative(
     y: int,
     window_left: int,
     window_top: int,
-    label: str = "move",
     duration: float = MOVE_DURATION,
     pause: float = ACTION_DELAY,
 ) -> None:
     move_absolute(
-        int(window_left + x), int(window_top + y), label, duration=duration, pause=pause
+        int(window_left + x), int(window_top + y), duration=duration, pause=pause
     )
 
 
@@ -235,11 +230,11 @@ def open_cell_menu(cell: Cell, window_left: int, window_top: int) -> None:
     """
     abort_if_escape_pressed()
     cx, cy = _cell_screen_center(cell, window_left, window_top)
-    timed_action("moveTo", pdi.moveTo, cx, cy, duration=MOVE_DURATION)
+    timed_action(pdi.moveTo, cx, cy, duration=MOVE_DURATION)
     pause_action()
-    timed_action("leftClick", pdi.leftClick, cx, cy)
+    timed_action(pdi.leftClick, cx, cy)
     pause_action()
-    timed_action("rightClick", pdi.rightClick, cx, cy)
+    timed_action(pdi.rightClick, cx, cy)
     pause_action()
 
 
@@ -282,7 +277,7 @@ def scroll_to_next_grid_at(
 
     if safe_point_abs is not None:
         sx, sy = safe_point_abs
-        move_absolute(sx, sy, label="move to safe area after scroll")
+        move_absolute(sx, sy)
 
 
 def _cell_screen_center(
