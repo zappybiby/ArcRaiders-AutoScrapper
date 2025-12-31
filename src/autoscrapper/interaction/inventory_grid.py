@@ -24,7 +24,8 @@ REF_WIDTH = 1920
 REF_HEIGHT = 1080
 
 # Inventory grid ROI normalized to the window (x, y, w, h)
-GRID_ROI_NORM = (0.0745, 0.2444, 0.2208, 0.6380)
+# Ref @ 1920x1080: x=146, y=262, w=423, h=545
+GRID_ROI_NORM = (0.0760, 0.2426, 0.2203, 0.5046)
 
 # Mouse-safe ROI outside the grid to avoid occluding cells during detection
 SAFE_MOUSE_RECT_NORM = (0.1646, 0.1370, 0.0411, 0.0509)
