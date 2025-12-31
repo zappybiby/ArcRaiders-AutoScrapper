@@ -9,7 +9,7 @@ import mss
 import numpy as np
 import pywinctl as pwc
 
-from .inventory_grid import Cell, Grid
+from .inventory_grid import Cell
 from . import input_driver as pdi
 
 
@@ -33,16 +33,10 @@ SELL_RECYCLE_SPEED_MULT = (
 SELL_RECYCLE_MOVE_DURATION = MOVE_DURATION * SELL_RECYCLE_SPEED_MULT
 SELL_RECYCLE_ACTION_DELAY = ACTION_DELAY * SELL_RECYCLE_SPEED_MULT
 SELL_RECYCLE_POST_DELAY = 0.1  # seconds to allow item collapse after confirm
-LAST_ROW_MENU_DELAY_MULT = (
-    5.0  # extra pause between left/right clicks on bottom row to keep infobox on-screen
-)
-
-# Cell click positioning
-LAST_ROW_SAFE_Y_RATIO = 0.05
 
 # Scrolling
-# Alternate 19/20 downward scroll clicks to advance between 6x4 grids.
-SCROLL_CLICKS_PER_PAGE = 19
+# Alternate 16/17 downward scroll clicks to advance between 4x5 grids.
+SCROLL_CLICKS_PER_PAGE = 16
 SCROLL_MOVE_DURATION = 0.5
 SCROLL_INTERVAL = 0.04
 SCROLL_SETTLE_DELAY = 0.05
@@ -92,7 +86,7 @@ def wait_for_target_window(
             title_lower = title.lower()
             if target_lower in app or (title_lower and target_lower in title_lower):
                 return win
-        time.sleep(poll_interval)
+        sleep_with_abort(poll_interval)
 
     raise TimeoutError(f"Timed out waiting for active window {target_app!r}")
 
@@ -184,7 +178,7 @@ def pause_action(duration: float = ACTION_DELAY) -> None:
     sleep_with_abort(duration)
 
 
-def timed_action(label: str, func, *args, **kwargs) -> None:
+def timed_action(func, *args, **kwargs) -> None:
     """
     Run an input action while checking for Escape.
     """
@@ -192,10 +186,8 @@ def timed_action(label: str, func, *args, **kwargs) -> None:
     func(*args, **kwargs)
 
 
-def click_absolute(
-    x: int, y: int, label: str = "click", pause: float = ACTION_DELAY
-) -> None:
-    timed_action(label, pdi.leftClick, x, y, _pause=False)
+def click_absolute(x: int, y: int, pause: float = ACTION_DELAY) -> None:
+    timed_action(pdi.leftClick, x, y)
     pause_action(pause)
 
 
@@ -204,20 +196,18 @@ def click_window_relative(
     y: int,
     window_left: int,
     window_top: int,
-    label: str = "click",
     pause: float = ACTION_DELAY,
 ) -> None:
-    click_absolute(int(window_left + x), int(window_top + y), label, pause=pause)
+    click_absolute(int(window_left + x), int(window_top + y), pause=pause)
 
 
 def move_absolute(
     x: int,
     y: int,
-    label: str = "move",
     duration: float = MOVE_DURATION,
     pause: float = ACTION_DELAY,
 ) -> None:
-    timed_action(f"{label} moveTo", pdi.moveTo, x, y, duration=duration)
+    timed_action(pdi.moveTo, x, y, duration=duration)
     pause_action(pause)
 
 
@@ -226,12 +216,11 @@ def move_window_relative(
     y: int,
     window_left: int,
     window_top: int,
-    label: str = "move",
     duration: float = MOVE_DURATION,
     pause: float = ACTION_DELAY,
 ) -> None:
     move_absolute(
-        int(window_left + x), int(window_top + y), label, duration=duration, pause=pause
+        int(window_left + x), int(window_top + y), duration=duration, pause=pause
     )
 
 
@@ -240,24 +229,13 @@ def open_cell_menu(cell: Cell, window_left: int, window_top: int) -> None:
     Hover the cell, then left-click and right-click to open its context menu.
     """
     abort_if_escape_pressed()
-    is_last_row = cell.row == Grid.ROWS - 1
     cx, cy = _cell_screen_center(cell, window_left, window_top)
-    timed_action("moveTo", pdi.moveTo, cx, cy, duration=MOVE_DURATION)
+    timed_action(pdi.moveTo, cx, cy, duration=MOVE_DURATION)
     pause_action()
-    timed_action("leftClick", pdi.leftClick, cx, cy, _pause=False)
-    pause_action(ACTION_DELAY * (LAST_ROW_MENU_DELAY_MULT if is_last_row else 1.0))
-    timed_action("rightClick", pdi.rightClick, cx, cy, _pause=False)
+    timed_action(pdi.leftClick, cx, cy)
     pause_action()
-
-
-def scroll_to_next_grid(scroll_clicks_per_page: int = SCROLL_CLICKS_PER_PAGE) -> None:
-    """
-    Scroll quickly to reveal the next 6x4 grid of items.
-    """
-    raise RuntimeError(
-        "scroll_to_next_grid now requires explicit grid/safe coordinates. "
-        "Use scroll_to_next_grid_at instead."
-    )
+    timed_action(pdi.rightClick, cx, cy)
+    pause_action()
 
 
 def scroll_to_next_grid_at(
@@ -274,32 +252,26 @@ def scroll_to_next_grid_at(
     scroll_clicks = -abs(clicks)
 
     # Match the working standalone script: slow move into position, click, then vertical scroll.
-    pdi.moveTo(gx, gy, duration=SCROLL_MOVE_DURATION, _pause=False)
+    pdi.moveTo(gx, gy, duration=SCROLL_MOVE_DURATION)
     pause_action()
     abort_if_escape_pressed()
-    pdi.leftClick(gx, gy, _pause=False)
+    pdi.leftClick(gx, gy)
     pause_action()
 
     print(
         f"[scroll] vscroll clicks={scroll_clicks} interval={SCROLL_INTERVAL} at=({gx},{gy})",
         flush=True,
     )
-    pdi.vscroll(clicks=scroll_clicks, interval=SCROLL_INTERVAL, _pause=False)
+    pdi.vscroll(clicks=scroll_clicks, interval=SCROLL_INTERVAL)
     sleep_with_abort(SCROLL_SETTLE_DELAY)
 
     if safe_point_abs is not None:
         sx, sy = safe_point_abs
-        move_absolute(sx, sy, label="move to safe area after scroll")
+        move_absolute(sx, sy)
 
 
 def _cell_screen_center(
     cell: Cell, window_left: int, window_top: int
 ) -> Tuple[int, int]:
     cx, cy = cell.safe_center
-    # Game quirk: on the last row the infobox can render off-screen when we click dead-center,
-    # hiding Sell/Recycle. Bias toward the top of the safe area to keep the infobox visible.
-    if cell.row == Grid.ROWS - 1:
-        x1, y1, x2, y2 = cell.safe_bounds
-        safe_height = y2 - y1
-        cy = y1 + safe_height * LAST_ROW_SAFE_Y_RATIO
     return int(window_left + cx), int(window_top + cy)

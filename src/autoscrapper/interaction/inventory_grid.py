@@ -1,5 +1,5 @@
 """
-Contour-based grid detection for the 4x6 ARC Raiders inventory UI.
+Contour-based grid detection for the 4x5 ARC Raiders inventory UI.
 
 Slots are detected inside a normalized ROI so positions scale to any
 resolution, and contours are used to allow partially visible cells
@@ -17,7 +17,7 @@ import numpy as np
 # ---------------------------------------------------------------------------
 
 GRID_COLS = 4  # 4 across
-GRID_ROWS = 6  # 6 down
+GRID_ROWS = 5  # 5 down
 
 # Reference window size (the layout was captured at 1920x1080)
 REF_WIDTH = 1920

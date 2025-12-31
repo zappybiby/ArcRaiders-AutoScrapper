@@ -1,7 +1,7 @@
 """
 inventory_scanner.py
 
-Scan the 4x6 inventory grid by hovering each cell, opening the context
+Scan the 4x5 inventory grid by hovering each cell, opening the context
 menu, locating the light infobox (#f9eedf), and OCR-ing the item title.
 """
 
@@ -120,7 +120,6 @@ def _perform_sell(
         sy,
         window_left,
         window_top,
-        label="sell",
         duration=SELL_RECYCLE_MOVE_DURATION,
         pause=SELL_RECYCLE_ACTION_DELAY,
     )
@@ -129,7 +128,6 @@ def _perform_sell(
         sy,
         window_left,
         window_top,
-        label="sell",
         pause=SELL_RECYCLE_ACTION_DELAY,
     )
     sleep_with_abort(MENU_APPEAR_DELAY)
@@ -140,11 +138,10 @@ def _perform_sell(
     move_absolute(
         cx,
         cy,
-        label="sell confirm",
         duration=SELL_RECYCLE_MOVE_DURATION,
         pause=SELL_RECYCLE_ACTION_DELAY,
     )
-    click_absolute(cx, cy, label="sell confirm", pause=SELL_RECYCLE_ACTION_DELAY)
+    click_absolute(cx, cy, pause=SELL_RECYCLE_ACTION_DELAY)
     sleep_with_abort(SELL_RECYCLE_POST_DELAY)
 
 
@@ -164,7 +161,6 @@ def _perform_recycle(
         ry,
         window_left,
         window_top,
-        label="recycle",
         duration=SELL_RECYCLE_MOVE_DURATION,
         pause=SELL_RECYCLE_ACTION_DELAY,
     )
@@ -173,7 +169,6 @@ def _perform_recycle(
         ry,
         window_left,
         window_top,
-        label="recycle",
         pause=SELL_RECYCLE_ACTION_DELAY,
     )
     sleep_with_abort(MENU_APPEAR_DELAY)
@@ -184,11 +179,10 @@ def _perform_recycle(
     move_absolute(
         cx,
         cy,
-        label="recycle confirm",
         duration=SELL_RECYCLE_MOVE_DURATION,
         pause=SELL_RECYCLE_ACTION_DELAY,
     )
-    click_absolute(cx, cy, label="recycle confirm", pause=SELL_RECYCLE_ACTION_DELAY)
+    click_absolute(cx, cy, pause=SELL_RECYCLE_ACTION_DELAY)
     sleep_with_abort(SELL_RECYCLE_POST_DELAY)
 
 
@@ -218,14 +212,14 @@ def scan_inventory(
     profile_timing: bool = False,
 ) -> Tuple[List[ItemActionResult], ScanStats]:
     """
-    Walk each 6x4 grid (top-to-bottom, left-to-right), OCR each cell's item
+    Walk each 4x5 grid (top-to-bottom, left-to-right), OCR each cell's item
     title, and apply the configured keep/recycle/sell decision when possible.
     Decisions come from items_actions.json unless an override map is provided.
     Cells are detected via contours inside a normalized ROI, and scrolling
     alternates between `scroll_clicks_per_page` and `scroll_clicks_per_page + 1`
     to handle the carousel offset. If `pages` is not provided, the script will
     OCR the always-visible stash count label to automatically determine how
-    many 6x4 grids to scan.
+    many 4x5 grids to scan.
     """
     if infobox_retries < 1:
         raise ValueError("infobox_retries must be >= 1")
@@ -288,7 +282,6 @@ def scan_inventory(
             move_absolute(
                 safe_point_abs[0],
                 safe_point_abs[1],
-                label="move to safe area for stash count",
             )
             pause_action()
             count_roi_rel = inventory_count_rect(win_width, win_height)
@@ -324,7 +317,6 @@ def scan_inventory(
         move_absolute(
             safe_point_abs[0],
             safe_point_abs[1],
-            label="move to safe area for detection",
         )
         pause_action()
         roi_left = win_left + grid_roi[0]
@@ -414,7 +406,7 @@ def scan_inventory(
                 if hasattr(window, "isAlive") and not window.isAlive:  # type: ignore[attr-defined]
                     raise RuntimeError("Target window closed during scan")
 
-                time.sleep(MENU_APPEAR_DELAY)
+                sleep_with_abort(MENU_APPEAR_DELAY)
                 pause_action()
 
                 infobox_rect: Optional[Tuple[int, int, int, int]] = None
@@ -444,7 +436,7 @@ def scan_inventory(
                     if infobox_rect:
                         found_on_attempt = attempt
                         break
-                    time.sleep(INFOBOX_RETRY_DELAY)
+                    sleep_with_abort(INFOBOX_RETRY_DELAY)
                     pause_action()
 
                 item_name = ""
@@ -640,9 +632,7 @@ def _detect_consecutive_empty_stop_idx(
     abort_if_escape_pressed()
 
     # Keep the cursor out of the grid so it doesn't occlude cells.
-    move_absolute(
-        safe_point_abs[0], safe_point_abs[1], label="clear for empty detection"
-    )
+    move_absolute(safe_point_abs[0], safe_point_abs[1])
     pause_action()
 
     window_bgr = capture_region((window_left, window_top, window_width, window_height))
@@ -774,7 +764,7 @@ def _render_scan_overview(
     pages_value = f"{stats.pages_scanned}"
     if planned_suffix:
         pages_value = f"{pages_value}{planned_suffix}"
-    table.add_row("6x4 pages run", pages_value)
+    table.add_row("4x5 pages run", pages_value)
     table.add_row("Processing time", duration_label)
     if stats.items_in_stash is None and stats.stash_count_text:
         table.add_row("Count OCR", stats.stash_count_text)
@@ -941,7 +931,7 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
         "--pages",
         type=_positive_int_arg,
         default=pages_default,
-        help="Override auto-detected page count; number of 6x4 grids to scan.",
+        help="Override auto-detected page count; number of 4x5 grids to scan.",
     )
     parser.add_argument(
         "--scroll-clicks",
