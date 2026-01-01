@@ -26,6 +26,12 @@ dependencies = [
     "tqdm",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "black==24.10.0",
+    "pre-commit",
+]
+
 [project.scripts]
 autoscrapper = "autoscrapper.__main__:main"
 
