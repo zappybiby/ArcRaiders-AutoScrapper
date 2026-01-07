@@ -1,6 +1,40 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+abort() {
+  echo "Aborted."
+  exit 1
+}
+
+confirm() {
+  local prompt="$1"
+  local reply=""
+
+  if ! read -r -p "${prompt} [Y/n] " reply; then
+    echo
+    return 1
+  fi
+
+  case "${reply,,}" in
+    "") return 0 ;;
+    y|yes) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+confirm_or_abort() {
+  local prompt="$1"
+  if ! confirm "$prompt"; then
+    abort
+  fi
+}
+
+print_step() {
+  local title="$1"
+  echo
+  echo "==> ${title}"
+}
+
 # Run from repo root
 if [[ ! -f "pyproject.toml" ]]; then
   echo "ERROR: Run this from the repo root (pyproject.toml not found)."
@@ -25,10 +59,19 @@ fi
 # 1) System prerequisites
 # - build-essential/linux-headers: commonly needed when a dependency must compile (e.g., evdev via pynput)
 # - tesseract/leptonica/pkg-config: required to build/link tesserocr on Linux
+KERNEL_HEADERS_PKG="linux-headers-$(uname -r)"
+print_step "Step 1: Install system prerequisites (apt)"
+echo "Command to run:"
+echo "  $SUDO apt-get update"
+confirm_or_abort "Run apt-get update?"
 $SUDO apt-get update
+
+echo "Command to run:"
+echo "  $SUDO apt-get install -y build-essential ${KERNEL_HEADERS_PKG} pkg-config tesseract-ocr libtesseract-dev libleptonica-dev"
+confirm_or_abort "Run apt-get install?"
 $SUDO apt-get install -y \
   build-essential \
-  linux-headers-$(uname -r) \
+  "$KERNEL_HEADERS_PKG" \
   pkg-config \
   tesseract-ocr \
   libtesseract-dev \
@@ -36,11 +79,23 @@ $SUDO apt-get install -y \
 
 # 2) Install uv (if missing)
 if ! command -v uv >/dev/null 2>&1; then
-  echo "Installing uv..."
+  print_step "Step 2: Install uv (required)"
+  UV_INSTALL_URL="https://astral.sh/uv/install.sh"
+
   if command -v curl >/dev/null 2>&1; then
-    curl -LsSf https://astral.sh/uv/install.sh | sh
+    echo "This will download and run the uv installer from:"
+    echo "  ${UV_INSTALL_URL}"
+    echo "Command to run:"
+    echo "  curl -LsSf \"${UV_INSTALL_URL}\" | sh"
+    confirm_or_abort "Proceed with Step 2?"
+    curl -LsSf "$UV_INSTALL_URL" | sh
   elif command -v wget >/dev/null 2>&1; then
-    wget -qO- https://astral.sh/uv/install.sh | sh
+    echo "This will download and run the uv installer from:"
+    echo "  ${UV_INSTALL_URL}"
+    echo "Command to run:"
+    echo "  wget -qO- \"${UV_INSTALL_URL}\" | sh"
+    confirm_or_abort "Proceed with Step 2?"
+    wget -qO- "$UV_INSTALL_URL" | sh
   else
     echo "ERROR: Need curl or wget to install uv."
     exit 1
@@ -63,10 +118,22 @@ case "$PYTHON_VERSION" in
     ;;
 esac
 
+print_step "Step 3: Install and pin Python ${PYTHON_VERSION} (uv)"
+echo "Command to run:"
+echo "  uv python install \"${PYTHON_VERSION}\""
+confirm_or_abort "Run: uv python install \"${PYTHON_VERSION}\"?"
 uv python install "$PYTHON_VERSION"
+
+echo "Command to run:"
+echo "  uv python pin \"${PYTHON_VERSION}\""
+confirm_or_abort "Run: uv python pin \"${PYTHON_VERSION}\"?"
 uv python pin "$PYTHON_VERSION"
 
 # 4) Install project dependencies with uv
+print_step "Step 4: Install project dependencies (uv sync)"
+echo "Command to run:"
+echo "  uv sync"
+confirm_or_abort "Proceed with Step 4?"
 uv sync
 
 echo "Setup finished. Run:"
