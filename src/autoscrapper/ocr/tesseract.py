@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import threading
+from dataclasses import dataclass
 from pathlib import Path
 import sys
 from typing import Dict, List
@@ -14,7 +15,14 @@ from tesserocr import PSM, PyTessBaseAPI, RIL, iterate_level
 _api_lock = threading.Lock()
 _api: PyTessBaseAPI | None = None
 _tessdata_dir: str | None = None
-_logged_init = False
+_backend_info: "OcrBackendInfo | None" = None
+
+
+@dataclass(frozen=True)
+class OcrBackendInfo:
+    tesseract_version: str
+    tessdata_dir: str | None
+    languages: list[str]
 
 
 def _has_eng(path: Path) -> bool:
@@ -87,19 +95,18 @@ def _create_api() -> PyTessBaseAPI:
     )
 
 
-def _log_init(api: PyTessBaseAPI) -> None:
-    global _logged_init
-    if _logged_init:
+def _record_backend_info(api: PyTessBaseAPI) -> None:
+    global _backend_info
+    if _backend_info is not None:
         return
 
     version = api.Version() if hasattr(api, "Version") else ""
     langs = api.GetAvailableLanguages() or []
-    langs_desc = ",".join(sorted(langs))
-    print(
-        f"[ocr_backend] tesseract={version.strip()} tessdata={_tessdata_dir} langs={langs_desc}",
-        flush=True,
+    _backend_info = OcrBackendInfo(
+        tesseract_version=version.strip(),
+        tessdata_dir=_tessdata_dir,
+        languages=sorted(langs),
     )
-    _logged_init = True
 
 
 def _get_api() -> PyTessBaseAPI:
@@ -109,15 +116,26 @@ def _get_api() -> PyTessBaseAPI:
     global _api
     if _api is None:
         _api = _create_api()
-        _log_init(_api)
+        _record_backend_info(_api)
     return _api
 
 
-def initialize_ocr() -> None:
+def initialize_ocr() -> OcrBackendInfo:
     """
-    Force initialization so startup logging happens before the first OCR call.
+    Force initialization so the OCR backend is ready before the first OCR call.
     """
-    _get_api()
+    api = _get_api()
+    _record_backend_info(api)
+    if _backend_info is None:  # pragma: no cover - defensive
+        raise RuntimeError("OCR backend initialized but metadata is missing.")
+    return _backend_info
+
+
+def get_ocr_backend_info() -> OcrBackendInfo | None:
+    """
+    Return metadata about the configured OCR backend, if initialized.
+    """
+    return _backend_info
 
 
 def _as_pil_image(image: np.ndarray) -> Image.Image:

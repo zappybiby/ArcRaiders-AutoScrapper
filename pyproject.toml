@@ -23,7 +23,6 @@ dependencies = [
     "tesserocr @ https://github.com/simonflueckiger/tesserocr-windows_build/releases/download/tesserocr-v2.9.1-tesseract-5.5.1/tesserocr-2.9.1-cp311-cp311-win_amd64.whl ; sys_platform == 'win32' and python_version == '3.11' and platform_machine == 'AMD64'",
     "tesserocr @ https://github.com/simonflueckiger/tesserocr-windows_build/releases/download/tesserocr-v2.9.1-tesseract-5.5.1/tesserocr-2.9.1-cp312-cp312-win_amd64.whl ; sys_platform == 'win32' and python_version == '3.12' and platform_machine == 'AMD64'",
     "tesserocr @ https://github.com/simonflueckiger/tesserocr-windows_build/releases/download/tesserocr-v2.9.1-tesseract-5.5.1/tesserocr-2.9.1-cp313-cp313-win_amd64.whl ; sys_platform == 'win32' and python_version == '3.13' and platform_machine == 'AMD64'",
-    "tqdm",
 ]
 
 [project.optional-dependencies]
@@ -47,3 +46,8 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 autoscrapper = ["items/items_actions.json"]
+
+[tool.black]
+extend-exclude = '''
+^scripts/(setup-linux\.sh|setup-windows\.ps1)$
+'''

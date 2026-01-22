@@ -11,23 +11,44 @@ import argparse
 import math
 import sys
 import time
-from collections import Counter
+from collections import Counter, deque
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, List, Optional, Tuple
 
 try:
-    from tqdm.auto import tqdm  # type: ignore
-except ImportError:  # pragma: no cover - optional dependency
-    tqdm = None
-
-try:
     from rich import box
+    from rich.align import Align
     from rich.console import Console
+    from rich.console import Group
+    from rich.live import Live
+    from rich.panel import Panel
+    from rich.progress import BarColumn
+    from rich.progress import Progress
+    from rich.progress import ProgressColumn
+    from rich.progress import SpinnerColumn
+    from rich.progress import Task
+    from rich.progress import TaskProgressColumn
+    from rich.progress import TextColumn
+    from rich.progress import TimeElapsedColumn
+    from rich.progress import TimeRemainingColumn
     from rich.table import Table
     from rich.text import Text
 except ImportError:  # pragma: no cover - optional dependency
+    Align = None
     Console = None
+    Group = None
+    Live = None
+    Panel = None
+    BarColumn = None
+    Progress = None
+    ProgressColumn = None
+    SpinnerColumn = None
+    Task = None
+    TaskProgressColumn = None
+    TextColumn = None
+    TimeElapsedColumn = None
+    TimeRemainingColumn = None
     Table = None
     Text = None
     box = None
@@ -233,9 +254,16 @@ def scan_inventory(
 
     scan_start = time.perf_counter()
 
-    print("waiting for Arc Raiders to be active window...", flush=True)
-    window = wait_for_target_window(timeout=window_timeout)
-    display_name, display_size, work_area = window_display_info(window)
+    ocr_info = initialize_ocr()
+
+    if show_progress and Console is not None:
+        console = Console()
+        with console.status("Waiting for Arc Raiders window…", spinner="dots"):
+            window = wait_for_target_window(timeout=window_timeout)
+    else:
+        print("waiting for Arc Raiders to be active window...", flush=True)
+        window = wait_for_target_window(timeout=window_timeout)
+    display_name, _display_size, work_area = window_display_info(window)
     mon_left, mon_top, mon_right, mon_bottom = window_monitor_rect(window)
     win_left, win_top, win_width, win_height = window_rect(window)
     win_right = win_left + win_width
@@ -248,39 +276,31 @@ def scan_inventory(
         and win_bottom == mon_bottom
     )
 
-    print(
-        f"[display] {display_name} size={display_size[0]}x{display_size[1]} "
-        f"work_area=({work_left},{work_top},{work_right},{work_bottom})",
-        flush=True,
-    )
-    print(
-        f"[window] pos=({win_left},{win_top}) size={win_width}x{win_height}",
-        flush=True,
-    )
+    startup_events: List[Tuple[str, str]] = []
+
     if (
         win_left < mon_left
         or win_top < mon_top
         or win_right > mon_right
         or win_bottom > mon_bottom
     ):
-        print(
-            "[warning] target window extends beyond its display bounds; "
-            "ensure it is fully visible on a single monitor.",
-            flush=True,
+        startup_events.append(
+            (
+                "Target window extends beyond its display bounds; ensure it is fully visible.",
+                "yellow",
+            )
         )
-    elif (
-        not win_is_full_monitor
-        and (
-            win_left < work_left
-            or win_top < work_top
-            or win_right > work_right
-            or win_bottom > work_bottom
-        )
+    elif not win_is_full_monitor and (
+        win_left < work_left
+        or win_top < work_top
+        or win_right > work_right
+        or win_bottom > work_bottom
     ):
-        print(
-            "[warning] target window overlaps the OS taskbar/dock area; if any UI is "
-            "obscured, move it fully into view.",
-            flush=True,
+        startup_events.append(
+            (
+                "Target window overlaps the OS taskbar/dock area; ensure no UI is obscured.",
+                "yellow",
+            )
         )
 
     actions: ActionMap = (
@@ -314,7 +334,7 @@ def scan_inventory(
             )
             return ocr_inventory_count(count_bgr)
         except Exception as exc:
-            print(f"[warning] failed to read stash count: {exc}", flush=True)
+            startup_events.append((f"Failed to read stash count: {exc}", "yellow"))
             return None, ""
 
     stash_items, stash_count_text = _detect_inventory_count()
@@ -325,12 +345,15 @@ def scan_inventory(
     pages_to_scan = max(1, pages_to_scan)
     pages_source = "cli" if pages is not None else "auto"
     items_label = stash_items if stash_items is not None else "?"
-    count_label = f" raw='{stash_count_text}'" if stash_count_text else ""
-    print(
-        f"[count] items_in_stash={items_label} pages_to_scan={pages_to_scan} "
-        f"(cells/page={cells_per_page}) source={pages_source}{count_label}",
-        flush=True,
-    )
+
+    ui: Optional[_ScanLiveUI] = None
+    ui_running = False
+
+    def _queue_event(message: str, style: str = "dim") -> None:
+        if ui is not None and ui_running:
+            ui.add_event(message, style=style)
+        else:
+            startup_events.append((message, style))
 
     def _detect_grid() -> Grid:
         """
@@ -347,26 +370,57 @@ def scan_inventory(
         grid = Grid.detect(inv_bgr, grid_roi, win_width, win_height)
         expected_cells = Grid.COLS * Grid.ROWS
         if len(grid) < expected_cells:
-            print(
-                f"[warning] detected {len(grid)} cells inside the grid ROI (expected {expected_cells}); "
+            _queue_event(
+                f"Detected {len(grid)} cells inside the grid ROI (expected {expected_cells}); "
                 "grid may be partially obscured or ROI misaligned.",
-                flush=True,
+                style="yellow",
             )
         return grid
 
     grid = _detect_grid()
     cells = list(grid)
     total_cells = cells_per_page * pages_to_scan
+    items_total = stash_items if stash_items is not None else total_cells
     results: List[ItemActionResult] = []
     pages_scanned = 0
 
     abort_if_escape_pressed()
 
-    progress = (
-        tqdm(total=total_cells, desc="Scanning grid")
-        if show_progress and tqdm is not None
-        else None
-    )
+    if show_progress:
+        try:
+            ui = _ScanLiveUI()
+            ui.start()
+            ui_running = True
+        except Exception:
+            ui = None
+            ui_running = False
+
+    if ui is not None and ui_running:
+        ui.mode_label = "Dry run" if not apply_actions else "Scan"
+        langs_desc = ",".join(ocr_info.languages) if ocr_info.languages else "?"
+        ui.ocr_label = (
+            f"OCR: Tesseract {ocr_info.tesseract_version} • langs={langs_desc}"
+        )
+        ui.window_label = f"{win_width}x{win_height} • {display_name}"
+
+        if stash_items is None and stash_count_text:
+            ui.stash_label = f"? items (OCR '{stash_count_text}')"
+        else:
+            ui.stash_label = f"{items_label} items"
+
+        ui.pages_label = f"{pages_to_scan} ({pages_source})"
+        ui.set_total(items_total)
+        ui.set_phase("Scanning…")
+        ui.start_timer()
+
+        for message, style in startup_events:
+            ui.add_event(message, style=style)
+        startup_events.clear()
+    else:
+        for message, _style in startup_events:
+            print(f"[warning] {message}", flush=True)
+        startup_events.clear()
+
     stop_at_global_idx: Optional[int] = None
     scroll_sequence = _scroll_clicks_sequence(scroll_clicks_per_page)
     stop_scan = False
@@ -401,9 +455,10 @@ def scan_inventory(
                 first_empty_idx = max(0, empty_idx - 1)
                 detected_page = empty_idx // cells_per_page
                 detected_cell = empty_idx % cells_per_page
-                print(
-                    f"[empty] 2 consecutive empty cells detected at idx={first_empty_idx:03d},{empty_idx:03d} "
-                    f"page={detected_page + 1:02d} cell={detected_cell:02d}"
+                _queue_event(
+                    f"Detected 2 consecutive empty slots at idx={first_empty_idx:03d},{empty_idx:03d} "
+                    f"(page {detected_page + 1}/{pages_to_scan}, cell {detected_cell})",
+                    style="yellow",
                 )
 
             if not cells:
@@ -418,9 +473,12 @@ def scan_inventory(
                 cell_start = time.perf_counter()
 
                 if stop_at_global_idx is not None and global_idx >= stop_at_global_idx:
-                    print(
-                        f"[empty] reached empty cell idx={stop_at_global_idx:03d}; stopping scan."
+                    _queue_event(
+                        f"Reached empty slot idx={stop_at_global_idx:03d}; stopping scan.",
+                        style="yellow",
                     )
+                    if ui is not None and ui_running:
+                        ui.set_phase("Stopping…")
                     stop_scan = True
                     break
 
@@ -552,17 +610,11 @@ def scan_inventory(
                     else:
                         action_taken = "SKIP_NO_INFOBOX"
 
-                note_suffix = f" note={decision_note}" if decision_note else ""
-                infobox_status = "found" if infobox_rect else "missing"
                 action_label, details = _describe_action(action_taken)
-                if action_label == "SKIP":
-                    action_label = "SKIPPED"
-                detail_suffix = f" detail={'; '.join(details)}" if details else ""
-                item_label = item_name or raw_item_text or "<unreadable>"
-                print(
-                    f"[item] idx={global_idx:03d} page={page + 1:02d} cell={cell.index:02d} "
-                    f"item='{item_label}' action={action_label}{detail_suffix} "
-                    f"infobox={infobox_status}{note_suffix}"
+                item_label = (
+                    (item_name or raw_item_text or "<unreadable>")
+                    .replace("\n", " ")
+                    .strip()
                 )
 
                 results.append(
@@ -577,23 +629,30 @@ def scan_inventory(
                     )
                 )
 
+                if ui is not None and ui_running:
+                    processed = len(results)
+                    total_label = str(items_total) if items_total is not None else "?"
+                    current_label = (
+                        f"{processed}/{total_label} • p{page + 1}/{pages_to_scan} "
+                        f"r{cell.row}c{cell.col}"
+                    )
+                    ui.update_item(current_label, item_label, action_label)
+
                 destructive_action = action_taken in {"SELL", "RECYCLE"}
                 if destructive_action:
                     # Item removed; the next item collapses into this slot. Re-open the same cell.
                     open_cell_menu(cell, win_left, win_top)
                     continue
 
-                if progress:
-                    progress.update(1)
-
                 if profile_timing:
                     total_time = time.perf_counter() - cell_start
-                    print(
+                    _queue_event(
                         f"[perf] idx={global_idx:03d} capture={capture_time:.3f}s "
                         f"find={find_time:.3f}s preprocess={preprocess_time:.3f}s "
                         f"ocr={ocr_time:.3f}s total={total_time:.3f}s "
                         f"tries={capture_attempts} found_at={found_on_attempt} "
-                        f"infobox={'y' if infobox_rect else 'n'}"
+                        f"infobox={'y' if infobox_rect else 'n'}",
+                        style="dim",
                     )
 
                 idx_in_page += 1
@@ -603,9 +662,12 @@ def scan_inventory(
                         stop_at_global_idx is not None
                         and next_global_idx >= stop_at_global_idx
                     ):
-                        print(
-                            f"[empty] reached empty cell idx={stop_at_global_idx:03d}; stopping scan."
+                        _queue_event(
+                            f"Reached empty slot idx={stop_at_global_idx:03d}; stopping scan.",
+                            style="yellow",
                         )
+                        if ui is not None and ui_running:
+                            ui.set_phase("Stopping…")
                         stop_scan = True
                         break
                     open_cell_menu(cells[idx_in_page], win_left, win_top)
@@ -613,8 +675,9 @@ def scan_inventory(
             if stop_scan:
                 break
     finally:
-        if progress:
-            progress.close()
+        if ui is not None and ui_running:
+            ui.stop()
+            ui_running = False
 
     processing_seconds = time.perf_counter() - scan_start
     stats = ScanStats(
@@ -673,6 +736,267 @@ def _detect_consecutive_empty_stop_idx(
         prev_empty = is_empty
 
     return None
+
+
+# ---------------------------------------------------------------------------
+# Live scan UI
+# ---------------------------------------------------------------------------
+
+AUTOSCRAPPER_ASCII = r"""
+    ___       __       ____
+  / _ |__ __/ /____  / __/__________ ____  ___  ___ ____
+ / __ / // / __/ _ \_\ \/ __/ __/ _ `/ _ \/ _ \/ -_) __/
+/_/ |_\_,_/\__/\___/___/\__/_/  \_,_/ .__/ .__/\__/_/
+                                   /_/  /_/
+""".strip(
+    "\n"
+)
+
+
+def _format_duration(seconds: Optional[float]) -> str:
+    if seconds is None:
+        return "--:--"
+    if seconds < 0:
+        seconds = 0
+    minutes, secs = divmod(int(seconds), 60)
+    hours, minutes = divmod(minutes, 60)
+    if hours:
+        return f"{hours:d}:{minutes:02d}:{secs:02d}"
+    return f"{minutes:02d}:{secs:02d}"
+
+
+if (
+    ProgressColumn is not None and Task is not None and Text is not None
+):  # pragma: no cover
+
+    class _ItemsPerSecondColumn(ProgressColumn):
+        def render(self, task: Task) -> Text:
+            speed = getattr(task, "finished_speed", None) or task.speed
+            if speed is None:
+                return Text("-- it/s", style="dim")
+            return Text(f"{speed:0.2f} it/s", style="dim")
+
+else:  # pragma: no cover - rich missing
+    _ItemsPerSecondColumn = None  # type: ignore[assignment]
+
+
+class _ScanLiveUI:
+    def __init__(self) -> None:
+        if (
+            Console is None
+            or Group is None
+            or Live is None
+            or Panel is None
+            or Progress is None
+            or BarColumn is None
+            or SpinnerColumn is None
+            or TextColumn is None
+            or TaskProgressColumn is None
+            or TimeElapsedColumn is None
+            or TimeRemainingColumn is None
+            or Align is None
+            or Table is None
+            or Text is None
+            or box is None
+        ):
+            raise RuntimeError("Rich is required for the live scan UI.")
+
+        self.console: Console = Console()
+        self._events: deque[Text] = deque(maxlen=6)
+        self._counts: Counter = Counter()
+
+        self.phase = "Starting…"
+        self.mode_label = "Scan"
+        self.ocr_label = ""
+        self.window_label = ""
+        self.stash_label = ""
+        self.pages_label = ""
+        self.current_label = ""
+        self.last_item_label = ""
+        self.last_outcome_label = ""
+
+        self._scan_started_at: Optional[float] = None
+
+        self.progress: Progress = Progress(
+            SpinnerColumn(style="cyan"),
+            TextColumn("[bold cyan]Scanning[/]"),
+            BarColumn(bar_width=None),
+            TextColumn("{task.completed}/{task.total}", style="cyan"),
+            TaskProgressColumn(),
+            _ItemsPerSecondColumn() if _ItemsPerSecondColumn is not None else Text(""),
+            TimeElapsedColumn(),
+            TimeRemainingColumn(),
+            expand=True,
+        )
+        self._task_id = self.progress.add_task("Scanning", total=None, start=True)
+
+        self._live: Live = Live(
+            self._render(),
+            console=self.console,
+            refresh_per_second=12,
+            transient=True,
+        )
+
+    def start(self) -> None:
+        self._live.start()
+
+    def stop(self) -> None:
+        self._live.stop()
+
+    def start_timer(self) -> None:
+        if self._scan_started_at is None:
+            self._scan_started_at = time.perf_counter()
+
+    def set_total(self, total: Optional[int]) -> None:
+        self.progress.update(self._task_id, total=total)
+        self.refresh()
+
+    def set_phase(self, phase: str) -> None:
+        self.phase = phase
+        self.refresh()
+
+    def add_event(self, message: str, style: str = "dim") -> None:
+        self._events.append(Text(message, style=style))
+        self.refresh()
+
+    def update_item(self, current_label: str, item_label: str, outcome: str) -> None:
+        self.progress.advance(self._task_id, 1)
+        self._counts[outcome] += 1
+        self.current_label = current_label
+        self.last_item_label = item_label
+        self.last_outcome_label = outcome
+        self.refresh()
+
+    def refresh(self) -> None:
+        self._live.update(self._render(), refresh=True)
+
+    def _render_counts(self) -> "Table":
+        table = Table(
+            box=box.SIMPLE,
+            show_header=False,
+            show_lines=False,
+            padding=(0, 1),
+        )
+        table.add_column("Outcome", justify="left", style="cyan", no_wrap=True)
+        table.add_column("Count", justify="right", style="white", no_wrap=True)
+
+        ordered = [
+            "KEEP",
+            "CRAFTING MATERIAL",
+            "RECYCLE",
+            "SELL",
+            "DRY-RECYCLE",
+            "DRY-SELL",
+            "UNREADABLE",
+            "SKIP",
+        ]
+        for key in ordered:
+            if key not in self._counts:
+                continue
+            label = Text(key, style=_outcome_style(key))
+            table.add_row(label, str(self._counts[key]))
+
+        remaining = sorted(set(self._counts.keys()) - set(ordered))
+        for key in remaining:
+            label = Text(key, style=_outcome_style(key))
+            table.add_row(label, str(self._counts[key]))
+
+        return table
+
+    def _render_events(self) -> Text:
+        if not self._events:
+            return Text("—", style="dim")
+        out = Text()
+        for i, line in enumerate(self._events):
+            if i:
+                out.append("\n")
+            out.append_text(line)
+        return out
+
+    def _render(self) -> "Group":
+        banner = Text(AUTOSCRAPPER_ASCII, style="bold cyan")
+
+        subtitle = Text()
+        if self.mode_label:
+            subtitle.append(self.mode_label, style="dim")
+            subtitle.append(" • ", style="dim")
+        subtitle.append(self.phase, style="cyan")
+        if self.ocr_label:
+            subtitle.append(f"\n{self.ocr_label}", style="dim")
+
+        header = Group(
+            Align.center(banner),
+            Align.center(subtitle),
+        )
+
+        header_panel = Panel(
+            header,
+            box=box.ROUNDED,
+            padding=(0, 1),
+        )
+
+        stats = Table.grid(expand=True)
+        stats.add_column(ratio=1)
+        stats.add_column(ratio=1)
+
+        left = Table.grid(padding=(0, 1))
+        left.add_column("k", style="cyan", justify="right", no_wrap=True)
+        left.add_column("v", style="white", justify="left")
+        if self.window_label:
+            left.add_row("Window", self.window_label)
+        if self.stash_label:
+            left.add_row("Stash", self.stash_label)
+        if self.pages_label:
+            left.add_row("Pages", self.pages_label)
+        if self._scan_started_at is not None:
+            elapsed = time.perf_counter() - self._scan_started_at
+            left.add_row("Elapsed", _format_duration(elapsed))
+
+        right = Table.grid(padding=(0, 1))
+        right.add_column("k", style="cyan", justify="right", no_wrap=True)
+        right.add_column("v", style="white", justify="left")
+        if self.current_label:
+            right.add_row("Current", self.current_label)
+        if self.last_item_label:
+            right.add_row("Last", self.last_item_label)
+        if self.last_outcome_label:
+            right.add_row(
+                "Outcome",
+                Text(
+                    self.last_outcome_label,
+                    style=_outcome_style(self.last_outcome_label),
+                ),
+            )
+
+        stats.add_row(
+            Panel(left, box=box.SIMPLE, title="Status", padding=(0, 1)),
+            Panel(right, box=box.SIMPLE, title="Last Item", padding=(0, 1)),
+        )
+
+        counts_panel = Panel(
+            self._render_counts(),
+            box=box.SIMPLE,
+            title="Outcomes",
+            padding=(0, 1),
+        )
+        events_panel = Panel(
+            self._render_events(),
+            box=box.SIMPLE,
+            title="Events",
+            padding=(0, 1),
+        )
+
+        bottom = Table.grid(expand=True)
+        bottom.add_column(ratio=1)
+        bottom.add_column(ratio=1)
+        bottom.add_row(counts_panel, events_panel)
+
+        return Group(
+            header_panel,
+            stats,
+            self.progress,
+            bottom,
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -1004,7 +1328,6 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
         enable_ocr_debug(Path("ocr_debug"))
 
     try:
-        initialize_ocr()
         results, stats = scan_inventory(
             show_progress=True,
             pages=args.pages,
