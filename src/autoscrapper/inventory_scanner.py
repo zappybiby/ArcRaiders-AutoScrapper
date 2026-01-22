@@ -13,6 +13,7 @@ import sys
 import time
 from collections import Counter, deque
 from dataclasses import dataclass
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Iterable, List, Optional, Tuple
 
@@ -263,7 +264,7 @@ def scan_inventory(
     else:
         print("waiting for Arc Raiders to be active window...", flush=True)
         window = wait_for_target_window(timeout=window_timeout)
-    display_name, _display_size, work_area = window_display_info(window)
+    _display_name, _display_size, work_area = window_display_info(window)
     mon_left, mon_top, mon_right, mon_bottom = window_monitor_rect(window)
     win_left, win_top, win_width, win_height = window_rect(window)
     win_right = win_left + win_width
@@ -397,11 +398,6 @@ def scan_inventory(
 
     if ui is not None and ui_running:
         ui.mode_label = "Dry run" if not apply_actions else "Scan"
-        langs_desc = ",".join(ocr_info.languages) if ocr_info.languages else "?"
-        ui.ocr_label = (
-            f"OCR: Tesseract {ocr_info.tesseract_version} • langs={langs_desc}"
-        )
-        ui.window_label = f"{win_width}x{win_height} • {display_name}"
 
         if stash_items is None and stash_count_text:
             ui.stash_label = f"? items (OCR '{stash_count_text}')"
@@ -647,11 +643,10 @@ def scan_inventory(
                 if profile_timing:
                     total_time = time.perf_counter() - cell_start
                     _queue_event(
-                        f"[perf] idx={global_idx:03d} capture={capture_time:.3f}s "
-                        f"find={find_time:.3f}s preprocess={preprocess_time:.3f}s "
-                        f"ocr={ocr_time:.3f}s total={total_time:.3f}s "
-                        f"tries={capture_attempts} found_at={found_on_attempt} "
-                        f"infobox={'y' if infobox_rect else 'n'}",
+                        f"Perf idx={global_idx:03d} • tries={capture_attempts} • found@{found_on_attempt} • "
+                        f"infobox={'y' if infobox_rect else 'n'}\n"
+                        f"  cap {capture_time:.3f}s • find {find_time:.3f}s • pre {preprocess_time:.3f}s • "
+                        f"ocr {ocr_time:.3f}s • total {total_time:.3f}s",
                         style="dim",
                     )
 
@@ -802,13 +797,11 @@ class _ScanLiveUI:
             raise RuntimeError("Rich is required for the live scan UI.")
 
         self.console: Console = Console()
-        self._events: deque[Text] = deque(maxlen=6)
+        self._events: deque[tuple[Text, Text]] = deque(maxlen=6)
         self._counts: Counter = Counter()
 
         self.phase = "Starting…"
         self.mode_label = "Scan"
-        self.ocr_label = ""
-        self.window_label = ""
         self.stash_label = ""
         self.pages_label = ""
         self.current_label = ""
@@ -819,12 +812,13 @@ class _ScanLiveUI:
 
         self.progress: Progress = Progress(
             SpinnerColumn(style="cyan"),
-            TextColumn("[bold cyan]Scanning[/]"),
             BarColumn(bar_width=None),
             TextColumn("{task.completed}/{task.total}", style="cyan"),
             TaskProgressColumn(),
             _ItemsPerSecondColumn() if _ItemsPerSecondColumn is not None else Text(""),
+            TextColumn("[dim]elapsed[/]"),
             TimeElapsedColumn(),
+            TextColumn("[dim]left[/]"),
             TimeRemainingColumn(),
             expand=True,
         )
@@ -856,7 +850,10 @@ class _ScanLiveUI:
         self.refresh()
 
     def add_event(self, message: str, style: str = "dim") -> None:
-        self._events.append(Text(message, style=style))
+        timestamp = Text(time.strftime("%H:%M:%S"), style="dim")
+        line = Text("• ", style="dim")
+        line.append(message, style=style)
+        self._events.append((timestamp, line))
         self.refresh()
 
     def update_item(self, current_label: str, item_label: str, outcome: str) -> None:
@@ -903,15 +900,33 @@ class _ScanLiveUI:
 
         return table
 
-    def _render_events(self) -> Text:
+    def _completion_eta_label(self) -> str:
+        task = self.progress.tasks[0]
+        if task.total is None:
+            return "--:--"
+
+        speed = getattr(task, "finished_speed", None) or task.speed
+        if speed is None or speed <= 0:
+            return "--:--"
+
+        remaining = max(0.0, float(task.total) - float(task.completed))
+        seconds = remaining / speed
+        eta = datetime.now() + timedelta(seconds=seconds)
+        return eta.strftime("%H:%M:%S")
+
+    def _render_events(self) -> "Table":
+        table = Table.grid(expand=True)
+        table.add_column(justify="right", width=8, no_wrap=True, style="dim")
+        table.add_column(ratio=1, overflow="fold")
+
         if not self._events:
-            return Text("—", style="dim")
-        out = Text()
-        for i, line in enumerate(self._events):
-            if i:
-                out.append("\n")
-            out.append_text(line)
-        return out
+            table.add_row(Text("--:--:--", style="dim"), Text("—", style="dim"))
+            return table
+
+        for timestamp, line in self._events:
+            table.add_row(timestamp, line)
+
+        return table
 
     def _render(self) -> "Group":
         banner = Text(AUTOSCRAPPER_ASCII, style="bold cyan")
@@ -921,8 +936,6 @@ class _ScanLiveUI:
             subtitle.append(self.mode_label, style="dim")
             subtitle.append(" • ", style="dim")
         subtitle.append(self.phase, style="cyan")
-        if self.ocr_label:
-            subtitle.append(f"\n{self.ocr_label}", style="dim")
 
         header = Group(
             Align.center(banner),
@@ -942,8 +955,6 @@ class _ScanLiveUI:
         left = Table.grid(padding=(0, 1))
         left.add_column("k", style="cyan", justify="right", no_wrap=True)
         left.add_column("v", style="white", justify="left")
-        if self.window_label:
-            left.add_row("Window", self.window_label)
         if self.stash_label:
             left.add_row("Stash", self.stash_label)
         if self.pages_label:
@@ -951,6 +962,7 @@ class _ScanLiveUI:
         if self._scan_started_at is not None:
             elapsed = time.perf_counter() - self._scan_started_at
             left.add_row("Elapsed", _format_duration(elapsed))
+            left.add_row("Completion ETA", self._completion_eta_label())
 
         right = Table.grid(padding=(0, 1))
         right.add_column("k", style="cyan", justify="right", no_wrap=True)
@@ -988,7 +1000,7 @@ class _ScanLiveUI:
 
         bottom = Table.grid(expand=True)
         bottom.add_column(ratio=1)
-        bottom.add_column(ratio=1)
+        bottom.add_column(ratio=2)
         bottom.add_row(counts_panel, events_panel)
 
         return Group(
