@@ -1,55 +1,58 @@
-# Arc Raiders Inventory Auto Scrapper
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9f5d3723-1b8e-49a7-9cd5-c10c798795d8" alt="autoscrapper_logo4">
+</p>
 
-Automates Arc Raiders inventory actions (Sell/Recycle) using screen capture + OCR + simulated mouse input.
-It never hooks the game process, memory, or network.
+
+## Arc Raiders Inventory Auto Scrapper
+
+Automates Arc Raiders inventory actions (Sell/Recycle) using screen capture and Tesseract (OCR).
+
+**This program does not hook into the game process, but there is no guarantee it will not be flagged by anti-cheat systems or violate the game’s Terms of Service. Use at your own risk.**
 
 ## Support
-- Windows 10/11: supported
-- Linux: experimental/untested (native X11/XWayland only)
-- WSL is not supported
+### OS
+- **Windows 10/11**: supported
+- **Linux**: experimental/untested
+- **WSL**: not supported
 
-Python 3.10–3.13 is supported (3.13 recommended). Python 3.14 is not supported.
+### Python 
+- **Versions 3.10 to 3.13 are supported**
 
 ## Setup
 This repo uses `uv` to manage Python + dependencies.
 
 ### Clone the repo
-From a terminal (PowerShell/CMD on Windows, bash on Linux):
+From a terminal:
 - `git clone https://github.com/zappybiby/ArcRaiders-AutoScrapper.git`
 - `cd ArcRaiders-AutoScrapper`
 
 ### Windows 10/11 (64-bit)
-From the repo root (PowerShell or CMD):
-- `powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup-windows.ps1`
-- Optional (use a different supported Python): `powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup-windows.ps1 -PythonVersion 3.12`
+**From the repo root, run the setup script**
 
-### Linux (experimental/untested)
-From the repo root:
-- `bash scripts/setup-linux.sh`
-- Optional (use a different supported Python): `AUTOSCRAPPER_PYTHON_VERSION=3.12 bash scripts/setup-linux.sh`
+`powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup-windows.ps1`
+
+- **Use a different supported Python version**:
+  - `powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup-windows.ps1 -PythonVersion 3.12`
+
+### Linux
+**From the repo root, run the setup script**
+
+`bash scripts/setup-linux.sh`
+- **Use a different supported Python version**:
+  - `AUTOSCRAPPER_PYTHON_VERSION=3.12 bash scripts/setup-linux.sh`
 
 ## Usage
 
-Common commands:
-- `uv run autoscrapper` (interactive menu)
-- `uv run autoscrapper scan`
-- `uv run autoscrapper rules`
-- `uv run autoscrapper config`
-- `uv run autoscrapper scan --help`
+Open the interactive menu to scan, change settings, or adjust item rules:
+- `uv run autoscrapper`
 
-Before you scan:
-- Open your inventory (ideally “Crafting Materials”), scroll to the top, and keep the game window fully on one monitor.
+Start a scan directly:
+- `uv run autoscrapper scan`
+
+How AutoScrapper Works:
+- Open your inventory and make sure you are scrolled to the top of it
+- Start the scan, then alt-tab back into the game. It will then begin after a few seconds.
 - Press Escape to abort (may need multiple presses).
 
-Linux notes (experimental):
+Linux notes:
 - Default target window title is `Arc Raiders`. Override with `AUTOSCRAPPER_TARGET_APP` if needed.
-
-## CLI options (scan)
-Run `uv run autoscrapper scan --help` for the full list.
-- `--pages INT` override auto-detected 4x5 page count to scan.
-- `--scroll-clicks INT` initial scroll clicks between grids (alternates with +1 on the next page).
-- `--dry-run` log planned actions without clicking Sell/Recycle.
-- `--profile` enable per-item timing logs (capture, OCR, total).
-- `--no-profile` disable per-item timing logs (overrides saved scan configuration).
-- `--debug` / `--debug-ocr` save OCR debug images to `./ocr_debug`.
-- `--no-debug` disable OCR debug images (overrides saved scan configuration).
