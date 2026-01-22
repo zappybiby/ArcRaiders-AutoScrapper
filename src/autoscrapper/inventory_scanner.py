@@ -65,6 +65,7 @@ from .interaction.ui_windows import (
     sleep_with_abort,
     wait_for_target_window,
     window_display_info,
+    window_monitor_rect,
     window_rect,
 )
 from .ocr.tesseract import initialize_ocr
@@ -235,10 +236,17 @@ def scan_inventory(
     print("waiting for Arc Raiders to be active window...", flush=True)
     window = wait_for_target_window(timeout=window_timeout)
     display_name, display_size, work_area = window_display_info(window)
+    mon_left, mon_top, mon_right, mon_bottom = window_monitor_rect(window)
     win_left, win_top, win_width, win_height = window_rect(window)
     win_right = win_left + win_width
     win_bottom = win_top + win_height
     work_left, work_top, work_right, work_bottom = work_area
+    win_is_full_monitor = (
+        win_left == mon_left
+        and win_top == mon_top
+        and win_right == mon_right
+        and win_bottom == mon_bottom
+    )
 
     print(
         f"[display] {display_name} size={display_size[0]}x{display_size[1]} "
@@ -250,14 +258,28 @@ def scan_inventory(
         flush=True,
     )
     if (
-        win_left < work_left
-        or win_top < work_top
-        or win_right > work_right
-        or win_bottom > work_bottom
+        win_left < mon_left
+        or win_top < mon_top
+        or win_right > mon_right
+        or win_bottom > mon_bottom
     ):
         print(
-            "[warning] target window extends beyond its display's work area; "
+            "[warning] target window extends beyond its display bounds; "
             "ensure it is fully visible on a single monitor.",
+            flush=True,
+        )
+    elif (
+        not win_is_full_monitor
+        and (
+            win_left < work_left
+            or win_top < work_top
+            or win_right > work_right
+            or win_bottom > work_bottom
+        )
+    ):
+        print(
+            "[warning] target window overlaps the OS taskbar/dock area; if any UI is "
+            "obscured, move it fully into view.",
             flush=True,
         )
 

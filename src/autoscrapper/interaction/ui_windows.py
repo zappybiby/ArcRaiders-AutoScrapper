@@ -119,6 +119,35 @@ def window_display_info(
     return display_name, size, work_area
 
 
+def window_monitor_rect(win: pwc.Window) -> Tuple[int, int, int, int]:
+    """
+    Return (left, top, right, bottom) bounds for the physical monitor containing
+    the window center.
+
+    This differs from the OS "work area", which excludes taskbars/docks and can
+    cause false warnings for borderless fullscreen windows.
+    """
+    win_left, win_top, win_width, win_height = window_rect(win)
+    center_x = win_left + (win_width // 2)
+    center_y = win_top + (win_height // 2)
+
+    sct = _get_mss()
+    monitors = getattr(sct, "monitors", None)
+    if not monitors or len(monitors) < 2:
+        raise RuntimeError("Unable to determine monitor bounds via mss.")
+
+    # Index 0 is the "all monitors" virtual rectangle.
+    for mon in monitors[1:]:
+        mon_left = int(mon["left"])
+        mon_top = int(mon["top"])
+        mon_right = mon_left + int(mon["width"])
+        mon_bottom = mon_top + int(mon["height"])
+        if mon_left <= center_x < mon_right and mon_top <= center_y < mon_bottom:
+            return mon_left, mon_top, mon_right, mon_bottom
+
+    raise RuntimeError("Unable to map target window to a monitor via mss.")
+
+
 def _get_mss() -> "MSSBase":
     """
     Lazily create an MSS instance for screen capture.
