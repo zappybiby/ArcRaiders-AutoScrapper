@@ -109,8 +109,8 @@ from .config import load_scan_settings
 # Configuration
 # ---------------------------------------------------------------------------
 
-MENU_APPEAR_DELAY = 0.05
-INFOBOX_RETRY_DELAY = 0.05
+MENU_APPEAR_DELAY = 0.15
+INFOBOX_RETRY_DELAY = 0.10
 INFOBOX_RETRIES = 3
 
 
