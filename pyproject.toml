@@ -45,7 +45,7 @@ include-package-data = true
 where = ["src"]
 
 [tool.setuptools.package-data]
-autoscrapper = ["items/items_actions.json"]
+autoscrapper = ["items/items_actions.default.json"]
 
 [tool.black]
 extend-exclude = '''

@@ -1,5 +1,5 @@
 """
-Interactive CLI for managing item rules in items_actions.json.
+Interactive CLI for managing item rules.
 Uses Rich for output styling. Intended to be run with `python -m autoscrapper rules`.
 """
 
@@ -11,21 +11,48 @@ from rich.console import Console
 from rich.prompt import Confirm, Prompt
 from rich.table import Table
 
-DATA_PATH = Path(__file__).with_name("items_actions.json")
+DEFAULT_RULES_PATH = Path(__file__).with_name("items_actions.default.json")
+CUSTOM_RULES_PATH = Path(__file__).with_name("items_actions.custom.json")
 console = Console()
 
 
-def load_items() -> List[dict]:
-    if not DATA_PATH.exists():
+def active_rules_path() -> Path:
+    return CUSTOM_RULES_PATH if CUSTOM_RULES_PATH.exists() else DEFAULT_RULES_PATH
+
+
+def using_custom_rules() -> bool:
+    return CUSTOM_RULES_PATH.exists()
+
+
+def load_items(path: Optional[Path] = None) -> List[dict]:
+    rules_path = path or active_rules_path()
+    if not rules_path.exists():
         return []
-    with DATA_PATH.open("r", encoding="utf-8") as fp:
+    with rules_path.open("r", encoding="utf-8") as fp:
         return json.load(fp)
 
 
-def save_items(items: List[dict]) -> None:
+def save_items(items: List[dict], path: Path) -> None:
     ordered = sorted(items, key=lambda entry: entry.get("index", 0))
-    with DATA_PATH.open("w", encoding="utf-8") as fp:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as fp:
         json.dump(ordered, fp, indent=2)
+
+
+def save_custom_items(items: List[dict]) -> None:
+    save_items(items, CUSTOM_RULES_PATH)
+
+
+def reset_custom_rules(_: Optional[List[dict]] = None) -> None:
+    if not CUSTOM_RULES_PATH.exists():
+        console.print("[yellow]Already using default rules.[/yellow]")
+        return
+    if Confirm.ask(
+        "Reset to default rules? This will delete your custom rules.",
+        default=False,
+    ):
+        CUSTOM_RULES_PATH.unlink(missing_ok=True)
+        console.print("[green]Custom rules removed. Defaults restored.[/green]")
 
 
 def show_table(items: List[dict], title: str) -> None:
@@ -135,7 +162,7 @@ def add_item(items: List[dict]) -> None:
     decisions = parse_decisions()
     next_index = max((item.get("index", 0) for item in items), default=0) + 1
     items.append({"index": next_index, "name": name, "decision": decisions})
-    save_items(items)
+    save_custom_items(items)
     console.print(f"[green]Added '{name}' with index {next_index}.[/green]")
 
 
@@ -147,7 +174,7 @@ def edit_item(items: List[dict], existing: Optional[dict] = None) -> None:
     new_name = new_name or chosen.get("name", "")
     new_decisions = parse_decisions(chosen.get("decision", []))
     chosen.update({"name": new_name, "decision": new_decisions})
-    save_items(items)
+    save_custom_items(items)
     console.print(f"[green]Updated item {chosen.get('index')}.[/green]")
 
 
@@ -159,7 +186,7 @@ def remove_item(items: List[dict]) -> None:
     index = chosen.get("index", "")
     if Confirm.ask(f"Delete '{name}' (index {index})?", default=False):
         items[:] = [item for item in items if item.get("index") != index]
-        save_items(items)
+        save_custom_items(items)
         console.print(f"[green]Removed '{name}'.[/green]")
 
 
@@ -171,10 +198,13 @@ def main() -> None:
         "3": ("Add item rule", add_item),
         "4": ("Edit item rule", edit_item),
         "5": ("Remove item rule", remove_item),
+        "6": ("Reset to default rules", reset_custom_rules),
         "q": ("Quit", None),
     }
     while True:
         items = load_items()
+        status = "Custom" if using_custom_rules() else "Default"
+        console.print(f"[dim]Active rules: {status} ({active_rules_path()})[/dim]")
         table = Table(show_header=False, box=None)
         for key, (label, _) in actions.items():
             table.add_row(f"[cyan]{key}[/cyan]", label)

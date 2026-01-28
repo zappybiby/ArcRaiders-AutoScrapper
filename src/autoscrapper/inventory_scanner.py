@@ -237,7 +237,8 @@ def scan_inventory(
     """
     Walk each 4x5 grid (top-to-bottom, left-to-right), OCR each cell's item
     title, and apply the configured keep/recycle/sell decision when possible.
-    Decisions come from items_actions.json unless an override map is provided.
+    Decisions come from the default rules file unless a custom rules file exists
+    or an override map is provided.
     Cells are detected via contours inside a normalized ROI, and scrolling
     alternates between `scroll_clicks_per_page` and `scroll_clicks_per_page + 1`
     to handle the carousel offset. If `pages` is not provided, the script will

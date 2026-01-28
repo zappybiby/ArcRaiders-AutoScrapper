@@ -25,9 +25,23 @@ class ItemActionResult:
 
 
 VALID_DECISIONS = {"KEEP", "RECYCLE", "SELL", "CRAFTING MATERIAL"}
-ITEM_ACTIONS_PATH = (
-    Path(__file__).resolve().parent.parent / "items" / "items_actions.json"
+ITEM_ACTIONS_DEFAULT_PATH = (
+    Path(__file__).resolve().parent.parent / "items" / "items_actions.default.json"
 )
+ITEM_ACTIONS_CUSTOM_PATH = (
+    Path(__file__).resolve().parent.parent / "items" / "items_actions.custom.json"
+)
+ITEM_ACTIONS_PATH = ITEM_ACTIONS_DEFAULT_PATH
+
+
+def resolve_item_actions_path(path: Optional[Path] = None) -> Path:
+    if path is None or path == ITEM_ACTIONS_DEFAULT_PATH or path == ITEM_ACTIONS_PATH:
+        return (
+            ITEM_ACTIONS_CUSTOM_PATH
+            if ITEM_ACTIONS_CUSTOM_PATH.exists()
+            else ITEM_ACTIONS_DEFAULT_PATH
+        )
+    return path
 
 
 def normalize_item_name(name: str) -> str:
@@ -40,7 +54,8 @@ def clean_ocr_text(raw: str) -> str:
     return text.strip()
 
 
-def load_item_actions(path: Path = ITEM_ACTIONS_PATH) -> ActionMap:
+def load_item_actions(path: Optional[Path] = None) -> ActionMap:
+    path = resolve_item_actions_path(path)
     try:
         raw = json.loads(path.read_text(encoding="utf-8"))
     except FileNotFoundError:
