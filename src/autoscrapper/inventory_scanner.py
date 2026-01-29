@@ -64,7 +64,7 @@ from .interaction.inventory_grid import (
 from .core.item_actions import (
     ActionMap,
     Decision,
-    ITEM_ACTIONS_PATH,
+    ITEM_RULES_PATH,
     ItemActionResult,
     choose_decision,
     load_item_actions,
@@ -229,7 +229,7 @@ def scan_inventory(
     pages: Optional[int] = None,
     scroll_clicks_per_page: int = SCROLL_CLICKS_PER_PAGE,
     apply_actions: bool = True,
-    actions_path: Path = ITEM_ACTIONS_PATH,
+    actions_path: Path = ITEM_RULES_PATH,
     actions_override: Optional[ActionMap] = None,
     profile_timing: bool = False,
 ) -> Tuple[List[ItemActionResult], ScanStats]:
@@ -567,7 +567,7 @@ def scan_inventory(
                         action_taken = "SKIP_NO_ACTION_MAP"
                     else:
                         action_taken = "SKIP_UNLISTED"
-                elif decision in {"KEEP", "CRAFTING MATERIAL"}:
+                elif decision == "KEEP":
                     action_taken = decision
                 elif decision == "SELL":
                     if infobox_rect is not None and infobox_ocr is not None:
@@ -877,7 +877,6 @@ class _ScanLiveUI:
 
         ordered = [
             "KEEP",
-            "CRAFTING MATERIAL",
             "RECYCLE",
             "SELL",
             "DRY-RECYCLE",
@@ -1061,7 +1060,6 @@ def _outcome_style(label: str) -> str:
     base = label.replace("DRY-", "")
     return {
         "KEEP": "green",
-        "CRAFTING MATERIAL": "bright_blue",
         "RECYCLE": "cyan",
         "SELL": "magenta",
         "UNREADABLE": "yellow",
@@ -1128,9 +1126,7 @@ def _render_scan_overview(
 
 
 def _render_summary(summary: Counter, console: Optional["Console"]) -> None:
-    ordered_keys = [
-        k for k in ("KEEP", "CRAFTING MATERIAL", "RECYCLE", "SELL") if k in summary
-    ]
+    ordered_keys = [k for k in ("KEEP", "RECYCLE", "SELL") if k in summary]
     ordered_keys += [k for k in ("DRY-KEEP", "DRY-RECYCLE", "DRY-SELL") if k in summary]
     if "UNREADABLE" in summary:
         ordered_keys.append("UNREADABLE")
@@ -1343,7 +1339,7 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
             pages=args.pages,
             scroll_clicks_per_page=args.scroll_clicks,
             apply_actions=not args.dry_run,
-            actions_path=ITEM_ACTIONS_PATH,
+            actions_path=ITEM_RULES_PATH,
             profile_timing=args.profile,
             ocr_unreadable_retries=settings.ocr_unreadable_retries,
             ocr_unreadable_retry_delay_ms=settings.ocr_unreadable_retry_delay_ms,

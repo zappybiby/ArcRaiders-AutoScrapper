@@ -1,0 +1,4400 @@
+[
+  {
+    "id": "a-bad-feeling",
+    "name": "A Bad Feeling",
+    "objectives": [
+      "Find and search any ARC Probe or ARC Courier"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "1dcfa564-efc5-4e00-aac9-aefe21a8eb31",
+        "item": {
+          "id": "duct-tape-recipe",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/duct-tape.webp",
+          "name": "Duct Tape",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "duct-tape-recipe",
+        "quantity": "5"
+      },
+      {
+        "id": "250403c6-ee9e-4ef2-831b-3173a8948d46",
+        "item": {
+          "id": "spring",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/spring.webp",
+          "name": "Steel Spring",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "spring",
+        "quantity": "5"
+      },
+      {
+        "id": "a748a753-77e8-42c1-89af-135beeea2c25",
+        "item": {
+          "id": "metal-parts",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/metal-parts.webp",
+          "name": "Metal Parts",
+          "rarity": "Common",
+          "item_type": "Basic Material"
+        },
+        "item_id": "metal-parts",
+        "quantity": "10"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 800
+  },
+  {
+    "id": "a-balanced-harvest",
+    "name": "A Balanced Harvest",
+    "objectives": [
+      "In one round:",
+      "Go to the Research & Administration building",
+      "Locate Lab 1 on the upper floor above the reception",
+      "Search for any traces of the agricultural research project"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "48ba0f87-b088-4986-bf01-8ab9c8f989e2",
+        "item": {
+          "id": "advanced-mechanical-components",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/advanced-mechanical-components.webp",
+          "name": "Advanced Mechanical Components",
+          "rarity": "Rare",
+          "item_type": "Advanced Material"
+        },
+        "item_id": "advanced-mechanical-components",
+        "quantity": "3"
+      },
+      {
+        "id": "804fbd79-f700-4772-8e4d-5ee517c48978",
+        "item": {
+          "id": "spring",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/spring.webp",
+          "name": "Steel Spring",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "spring",
+        "quantity": "10"
+      },
+      {
+        "id": "e70a65c6-aed4-4042-864c-4d80d865c846",
+        "item": {
+          "id": "medium-gun-parts",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/medium-gun-parts.webp",
+          "name": "Medium Gun Parts",
+          "rarity": "Rare",
+          "item_type": "Topside Material"
+        },
+        "item_id": "medium-gun-parts",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 2772.6437696475923
+  },
+  {
+    "id": "a-better-use",
+    "name": "A Better Use",
+    "objectives": [
+      "Request in a Supply Drop from a Call Station",
+      "Loot a Supply Drop"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "ae5fd179-4083-44b6-ba75-b08ee74033f5",
+        "item": {
+          "id": "stable-stock-i",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/stable-stock-i.webp",
+          "name": "Stable Stock I",
+          "rarity": "Common",
+          "item_type": "Modification"
+        },
+        "item_id": "stable-stock-i",
+        "quantity": "1"
+      },
+      {
+        "id": "bab2ba66-7114-45a1-8a01-eb63cee7aefb",
+        "item": {
+          "id": "extended-light-mag-i",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/extended-light-mag-i.webp",
+          "name": "Extended Light Mag I",
+          "rarity": "Common",
+          "item_type": "Modification"
+        },
+        "item_id": "extended-light-mag-i",
+        "quantity": "1"
+      },
+      {
+        "id": "d3961095-acd7-4d3c-aa0c-4e0857648312",
+        "item": {
+          "id": "muzzle-brake-ii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/muzzle-brake-ii.webp",
+          "name": "Muzzle Brake II",
+          "rarity": "Uncommon",
+          "item_type": "Modification"
+        },
+        "item_id": "muzzle-brake-ii",
+        "quantity": "1"
+      }
+    ],
+    "trader": "TianWen",
+    "xp": 0,
+    "sortOrder": 1280.3902829127408
+  },
+  {
+    "id": "a-first-foothold",
+    "name": "A First Foothold",
+    "objectives": [
+      "Stabilize the observation deck near the Ridgeline",
+      "Enable the comms terminal near the Olive Grove",
+      "Rotate the satellite dishes on the church roof, north of Data Vault",
+      "Nail down the roof plates on the Raider structure near Trapper's Glade"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "0449e93d-1f2a-4fde-8ef9-ab9bf1d0ad64",
+        "item": {
+          "id": "heavy-fuze-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/heavy-fuze-grenade.webp",
+          "name": "Heavy Fuze Grenade",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "heavy-fuze-grenade",
+        "quantity": "3"
+      },
+      {
+        "id": "074ce4dc-1107-419f-93ce-4eaffdc61b52",
+        "item": {
+          "id": "shrapnel-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/shrapnel-grenade.webp",
+          "name": "Shrapnel Grenade",
+          "rarity": "Uncommon",
+          "item_type": "Throwable"
+        },
+        "item_id": "shrapnel-grenade",
+        "quantity": "3"
+      },
+      {
+        "id": "ec6ae10a-5d08-478c-8d10-1c56ec6c35d1",
+        "item": {
+          "id": "snap-blast-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/snap-blast-grenade.webp",
+          "name": "Snap Blast Grenade",
+          "rarity": "Uncommon",
+          "item_type": "Quick Use"
+        },
+        "item_id": "snap-blast-grenade",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 6196.983228767364
+  },
+  {
+    "id": "after-rain-comes",
+    "name": "After Rain Comes",
+    "objectives": [
+      "Find the flooded solar panels nearby the Grandioso Apartments",
+      "Repair the solar panels"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "0fd96a8f-df62-43f8-95c1-2a16130e6a5a",
+        "item": {
+          "id": "antiseptic",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/antiseptic.webp",
+          "name": "Antiseptic",
+          "rarity": "Rare",
+          "item_type": "Refined Material"
+        },
+        "item_id": "antiseptic",
+        "quantity": "3"
+      },
+      {
+        "id": "5e0a96ac-cf45-4bc0-b15d-e4bbb4349c09",
+        "item": {
+          "id": "durable-cloth",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/durable-cloth.webp",
+          "name": "Durable Cloth",
+          "rarity": "Uncommon",
+          "item_type": "Refined Material"
+        },
+        "item_id": "durable-cloth",
+        "quantity": "5"
+      },
+      {
+        "id": "ddb980bf-bea0-4c49-b4f9-192a990c9ca4",
+        "item": {
+          "id": "blue-light-stick",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/blue-light-stick.webp",
+          "name": "Blue Light Stick",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "blue-light-stick",
+        "quantity": "5"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 3001.204857358231
+  },
+  {
+    "id": "a-lay-of-the-land",
+    "name": "A Lay of the Land",
+    "objectives": [
+      "In One Round:",
+      "Reach the Jiangsu Warehouse",
+      "Find the shipping notes in the foreman's office",
+      "Locate the scanners on the upper floor of Control Tower A6",
+      "Deliver 1 LiDAR Scanners to Shani"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "3701c5c3-49b9-463a-b934-77239b2847ab",
+        "item": {
+          "id": "smoke-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/smoke-grenade.webp",
+          "name": "Smoke Grenade",
+          "rarity": "Rare",
+          "item_type": "Recyclable"
+        },
+        "item_id": "smoke-grenade",
+        "quantity": "2"
+      },
+      {
+        "id": "e5daf2d5-8a22-4053-8eec-5ac40b598fb2",
+        "item": {
+          "id": "zipline",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/zipline.webp",
+          "name": "Zipline",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "zipline",
+        "quantity": "3"
+      },
+      {
+        "id": "f3b8b1b2-10e4-425c-b7e6-5aa9dea97c3a",
+        "item": {
+          "id": "dam-testing-annex-key",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/dam-testing-annex-key.webp",
+          "name": "Dam Testing Annex Key",
+          "rarity": "Rare",
+          "item_type": "Key"
+        },
+        "item_id": "dam-testing-annex-key",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 2531.860157381871
+  },
+  {
+    "id": "a-new-type-of-plant",
+    "name": "A New Type of Plant",
+    "objectives": [
+      "In One Round:",
+      "Search for the new plant near the Baron Husk in the Old Battleground",
+      "Deliver the Possibly Toxic Plant to Lance"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "09b44846-db2a-4908-9c09-ef5520b9948a",
+        "item": {
+          "id": "vita-shot",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/vita-shot.webp",
+          "name": "Vita Shot",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "vita-shot",
+        "quantity": "1"
+      },
+      {
+        "id": "16015f74-612a-4539-87bc-7e9d07a11cb7",
+        "item": {
+          "id": "antiseptic",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/antiseptic.webp",
+          "name": "Antiseptic",
+          "rarity": "Rare",
+          "item_type": "Refined Material"
+        },
+        "item_id": "antiseptic",
+        "quantity": "5"
+      }
+    ],
+    "trader": "Lance",
+    "xp": 0,
+    "sortOrder": 6677.2338897110185
+  },
+  {
+    "id": "a-prime-specimen",
+    "name": "A Prime Specimen",
+    "objectives": [
+      "Obtain 2 ARC Powercells",
+      "Interact with any ARC Deforester"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "38796fbe-574a-4576-bc6e-2bae06e93546",
+        "item": {
+          "id": "patrol-car-key",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/patrol-car-key.webp",
+          "name": "Patrol Car Key",
+          "rarity": "Uncommon",
+          "item_type": "Key"
+        },
+        "item_id": "patrol-car-key",
+        "quantity": "1"
+      },
+      {
+        "id": "5bb997d0-e9bb-4a82-8bcd-e0cecf7fa6dc",
+        "item": {
+          "id": "door-blocker",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/door-blocker.webp",
+          "name": "Door Blocker",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "door-blocker",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Unknown",
+    "xp": 0,
+    "sortOrder": 7209.777176880825
+  },
+  {
+    "id": "esr-analyzer",
+    "name": "A Reveal in Ruins",
+    "objectives": [
+      "In one round: Search for an ESR Analyzer inside any pharmacy in Buried City",
+      "Delivery the ESR Analyzer to Lance"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "eb2b01df-83fc-4c83-ae59-a0d02a5f240a",
+        "item": {
+          "id": "tactical-mk-3-healing",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/tactical-mk-3-healing.webp",
+          "name": "Tactical Mk. 3 (Healing)",
+          "rarity": "Epic",
+          "item_type": "Augment"
+        },
+        "item_id": "tactical-mk-3-healing",
+        "quantity": "1"
+      },
+      {
+        "id": "f574c105-44b4-4b0f-ac66-357bb72c5c9f",
+        "item": {
+          "id": "surge-shield-recharger",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
+          "name": "Surge Shield Recharger",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "surge-shield-recharger",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Lance",
+    "xp": 0,
+    "sortOrder": 2291.860157381871
+  },
+  {
+    "id": "armored-transports",
+    "name": "Armored Transports",
+    "objectives": [
+      "Reach the Checkpoint",
+      "Search the Guard huts for a Armored Patrol Key Card",
+      "Reach the Traffic Tunnel near the Blue Gate Checkpoint",
+      "Find and unlock the rear door of an armored patrol car"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "3e3a1b3e-350c-4dd3-9cad-c7533a7ec43d",
+        "item": {
+          "id": "blue-yellow-aviator-color",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/blue-yellow-aviator-color.webp",
+          "name": "Blue Yellow (Aviator Color)",
+          "rarity": "Common",
+          "item_type": "Misc"
+        },
+        "item_id": "blue-yellow-aviator-color",
+        "quantity": "1"
+      },
+      {
+        "id": "6bcf90c6-1d53-4393-9ded-9528b7222448",
+        "item": {
+          "id": "defibrillator",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/defibrillator.webp",
+          "name": "Defibrillator",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "defibrillator",
+        "quantity": "3"
+      },
+      {
+        "id": "916d2861-9715-45c6-92ae-ff39c969e82d",
+        "item": {
+          "id": "smoke-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/smoke-grenade.webp",
+          "name": "Smoke Grenade",
+          "rarity": "Rare",
+          "item_type": "Recyclable"
+        },
+        "item_id": "smoke-grenade",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 6970.490569947188
+  },
+  {
+    "id": "a-symbol-of-unification",
+    "name": "A Symbol of Unification",
+    "objectives": [
+      "In One Round:",
+      "Reach the Formicai Outpost in Dam Battlegrounds",
+      "Locate the flag at the Formicai Outpost",
+      "Hoist the flag on the small platform overlooking the Red Lake"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "323948bd-705f-4d95-ae86-91a0e150a953",
+        "item": {
+          "id": "duct-tape-recipe",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/duct-tape.webp",
+          "name": "Duct Tape",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "duct-tape-recipe",
+        "quantity": "5"
+      },
+      {
+        "id": "6b5ed8ac-3165-4d51-8700-360f0270a8d4",
+        "item": {
+          "id": "mod-components",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/mod-components.webp",
+          "name": "Mod Components",
+          "rarity": "Rare",
+          "item_type": "Refined Material"
+        },
+        "item_id": "mod-components",
+        "quantity": "3"
+      },
+      {
+        "id": "b5efb892-5933-4d4e-9aeb-602042e681f8",
+        "item": {
+          "id": "aviator-outfit",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/aviator-outfit.webp",
+          "name": "Aviator (Outfit)",
+          "rarity": "",
+          "item_type": "Misc"
+        },
+        "item_id": "aviator-outfit",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 3676.3707629417568
+  },
+  {
+    "id": "a-toxic-trail",
+    "name": "A Toxic Trail",
+    "objectives": [
+      "Return to the Water Intake below the Water Treatment Control building",
+      "Search the swamp for traces of the barrel's origins",
+      "Take a photo of the barrel truck",
+      "Search the truck for clues about the saboteur's identity"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "264da55a-dc2c-466b-a112-3583a60c1c3b",
+        "item": {
+          "id": "tactical-mk-2",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/tactical-mk-2.webp",
+          "name": "Tactical Mk. 2",
+          "rarity": "Rare",
+          "item_type": "Augment"
+        },
+        "item_id": "tactical-mk-2",
+        "quantity": "1"
+      },
+      {
+        "id": "728b6301-194a-47f4-b726-3bb161fc7de8",
+        "item": {
+          "id": "pulse-mine",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/pulse-mine.webp",
+          "name": "Pulse Mine",
+          "rarity": "Uncommon",
+          "item_type": "Quick Use"
+        },
+        "item_id": "pulse-mine",
+        "quantity": "3"
+      },
+      {
+        "id": "c4630e9d-abbb-4952-864c-56bb828c5190",
+        "item": {
+          "id": "gas-mine",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/gas-mine.webp",
+          "name": "Gas Mine",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "gas-mine",
+        "quantity": "3"
+      },
+      {
+        "id": "ec82c2f0-65b0-4279-9922-16d0d38e37d0",
+        "item": {
+          "id": "zipline",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/zipline.webp",
+          "name": "Zipline",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "zipline",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 5831.580186814919
+  },
+  {
+    "id": "a-warm-place-to-rest",
+    "name": "A Warm Place to Rest",
+    "objectives": [
+      "Locate the Abandoned Highway Camp",
+      "Search for any signs of survivors",
+      "Follow the red markers",
+      "Inspect the grave"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "7ae88050-9463-4c10-83b7-447749b48978",
+        "item": {
+          "id": "blue-light-stick",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/blue-light-stick.webp",
+          "name": "Blue Light Stick",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "blue-light-stick",
+        "quantity": "5"
+      },
+      {
+        "id": "d9121522-a11f-4ed8-b8b7-4aa9e09f7068",
+        "item": {
+          "id": "rosary",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/rosary.webp",
+          "name": "Rosary",
+          "rarity": "Rare",
+          "item_type": "Trinket"
+        },
+        "item_id": "rosary",
+        "quantity": "1"
+      },
+      {
+        "id": "e5a66093-5aa7-4de6-8048-27f0264dc085",
+        "item": {
+          "id": "noisemaker",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/noisemaker.webp",
+          "name": "Noisemaker",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "noisemaker",
+        "quantity": "3"
+      },
+      {
+        "id": "ef0d3cda-ad8a-4dca-909f-5525839b031b",
+        "item": {
+          "id": "goggles-radio-renegade-variant",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/goggles-radio-renegade-variant.webp",
+          "name": "Goggles (Radio Renegade Variant)",
+          "rarity": "",
+          "item_type": "Misc"
+        },
+        "item_id": "goggles-radio-renegade-variant",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Apollo",
+    "xp": 0,
+    "sortOrder": 4259.252140564836
+  },
+  {
+    "id": "back-on-top",
+    "name": "Back on Top",
+    "objectives": [
+      "On Dam Battlegrounds, mark the Pattern House",
+      "On The Blue Gate, mark the white lookout tower south of the Warehouse Complex",
+      "On Spaceport, mark the South Trench Tower",
+      "On Buried City, mark the building with the mural in the Buried Properties"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "3c1aa197-61a8-4ad1-99d2-d7456b2ac478",
+        "item": {
+          "id": "stable-stock-iii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/stable-stock-iii.webp",
+          "name": "Stable Stock III",
+          "rarity": "Rare",
+          "item_type": "Modification"
+        },
+        "item_id": "stable-stock-iii",
+        "quantity": "1"
+      },
+      {
+        "id": "6432f074-c42c-48f1-9e27-d5df7b4a364a",
+        "item": {
+          "id": "medium-ammo",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/medium-ammo.webp",
+          "name": "Medium Ammo",
+          "rarity": "Common",
+          "item_type": "Ammunition"
+        },
+        "item_id": "medium-ammo",
+        "quantity": "80"
+      },
+      {
+        "id": "ea4d9a1d-6f88-4b8d-8bcf-c8e06c9acde4",
+        "item": {
+          "id": "renegade-i",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/renegade-i.webp",
+          "name": "Renegade I",
+          "rarity": "Rare",
+          "item_type": "Weapon"
+        },
+        "item_id": "renegade-i",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 4173.137708038272
+  },
+  {
+    "id": "bees",
+    "name": "Bees!",
+    "objectives": [
+      "In One Round:",
+      "Reach the Olive Grove in Blue Gate",
+      "Search for bee hives around the Olive Grove"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "3810858b-2467-44a6-9b1e-03b72540a32c",
+        "item": {
+          "id": "advanced-electrical-components",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/advanced-electrical-components.webp",
+          "name": "Advanced Electrical Components",
+          "rarity": "Rare",
+          "item_type": "Refined Material"
+        },
+        "item_id": "advanced-electrical-components",
+        "quantity": "1"
+      },
+      {
+        "id": "3ed1ea3e-6167-459b-8d10-9f6513e8ad8f",
+        "item": {
+          "id": "sensors-recipe",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/sensors-recipe.webp",
+          "name": "Sensors",
+          "rarity": "Rare",
+          "item_type": "Topside Material"
+        },
+        "item_id": "sensors-recipe",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 5219.252140564836
+  },
+  {
+    "id": "bombing-run",
+    "name": "Bombing Run",
+    "objectives": [
+      "Destroy a Bombardier",
+      "Deliver a Bombardier Cell to Shani"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [],
+    "trader": "Unknown",
+    "xp": 0,
+    "sortOrder": 5465.869255355122
+  },
+  {
+    "id": "broken-monument",
+    "name": "Broken Monument",
+    "objectives": [
+      "In One Round",
+      "Reach the hallowed grounds by the Scrap Yard",
+      "Search for a compass near the broken-down vehicles",
+      "Search for the video tape near the cylindrical containers",
+      "Search for the old field rations in the Raider camp",
+      "Deliver the First Wave Tape to Tian Wen",
+      "Deliver First Wave Compass to Tian Wen",
+      "Deliver First Wave Rations to Tian Wen"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "38ee0ec0-8d68-439d-8b8f-a6335051fec1",
+        "item": {
+          "id": "compensator-ii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/compensator-ii.webp",
+          "name": "Compensator II",
+          "rarity": "Uncommon",
+          "item_type": "Modification"
+        },
+        "item_id": "compensator-ii",
+        "quantity": "1"
+      },
+      {
+        "id": "592c9dba-5f28-41db-b696-8e318424debf",
+        "item": {
+          "id": "medium-ammo",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/medium-ammo.webp",
+          "name": "Medium Ammo",
+          "rarity": "Common",
+          "item_type": "Ammunition"
+        },
+        "item_id": "medium-ammo",
+        "quantity": "80"
+      },
+      {
+        "id": "9962d79e-0d0f-4189-ae7f-03d6baccfbaa",
+        "item": {
+          "id": "arpeggio-i",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/arpeggio-i.webp",
+          "name": "Arpeggio I",
+          "rarity": "Uncommon",
+          "item_type": "Weapon"
+        },
+        "item_id": "arpeggio-i",
+        "quantity": "1"
+      }
+    ],
+    "trader": "TianWen",
+    "xp": 0,
+    "sortOrder": 2292.7044581548457
+  },
+  {
+    "id": "building-a-library",
+    "name": "Building a Library",
+    "objectives": [
+      "In one round: Locate the Library in the City Center",
+      "Find 1 romance book",
+      "Find 1 detective book",
+      "Find 1 adventure book",
+      "Deliver 3 books to Apollo"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "24f8e064-5ce4-4ede-88f4-7f4c35191991",
+        "item": {
+          "id": "explosive-mine",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/explosive-mine.webp",
+          "name": "Explosive Mine",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "explosive-mine",
+        "quantity": "1"
+      },
+      {
+        "id": "27d4e6a0-4ca2-4b96-8f33-11aada0a7f27",
+        "item": {
+          "id": "jolt-mine",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/jolt-mine.webp",
+          "name": "Jolt Mine",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "jolt-mine",
+        "quantity": "1"
+      },
+      {
+        "id": "7e8da35a-fe82-417b-a44c-1d1901fb96cc",
+        "item": {
+          "id": "heavy-fuze-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/heavy-fuze-grenade.webp",
+          "name": "Heavy Fuze Grenade",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "heavy-fuze-grenade",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Apollo",
+    "xp": 0,
+    "sortOrder": 6437.2338897110185
+  },
+  {
+    "id": "celestes-journals",
+    "name": "Celeste's Journals",
+    "objectives": [
+      "Retreive Celeste's Journals from the South Swamp Outpost",
+      "Retrieve Celeste's Journals from the northern outpost overlooking the Red Lakes",
+      "Deliver 2 Journals to Celeste"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "23f60ae6-17bd-45cf-8cd9-d8da7d478181",
+        "item": {
+          "id": "exodus-modules",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/exodus-modules.webp",
+          "name": "Exodus Modules",
+          "rarity": "Epic",
+          "item_type": "Topside Material"
+        },
+        "item_id": "exodus-modules",
+        "quantity": "1"
+      },
+      {
+        "id": "2aefd057-53ce-4415-bb65-444329f21ddd",
+        "item": {
+          "id": "heavy-gun-parts",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/heavy-gun-parts.webp",
+          "name": "Heavy Gun Parts",
+          "rarity": "Rare",
+          "item_type": "Topside Material"
+        },
+        "item_id": "heavy-gun-parts",
+        "quantity": "3"
+      },
+      {
+        "id": "94fad47c-d869-4272-b557-0b16b2f6de5e",
+        "item": {
+          "id": "magnetic-accelerator",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/magnetic-accelerator.webp",
+          "name": "Magnetic Accelerator",
+          "rarity": "Epic",
+          "item_type": "Refined Material"
+        },
+        "item_id": "magnetic-accelerator",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 3891.485408941247
+  },
+  {
+    "id": "clearer-skies",
+    "name": "Clearer Skies",
+    "objectives": [
+      "Destroy 3 ARC enemies",
+      "Get 3 ARC Alloy for Shani"
+    ],
+    "requirements": [
+      {
+        "id": "dc69ffa8-bcbf-4e37-b599-f17f43d45046",
+        "item": {
+          "id": "arc-alloy",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/arc-alloy.webp",
+          "name": "ARC Alloy",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "arc-alloy",
+        "quantity": 3
+      }
+    ],
+    "rewardItemIds": [
+      {
+        "id": "dc69ffa8-bcbf-4e37-b599-f17f43d45046",
+        "item": {
+          "id": "arc-alloy",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/arc-alloy.webp",
+          "name": "ARC Alloy",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "arc-alloy",
+        "quantity": 3
+      }
+    ],
+    "rewards": [
+      {
+        "id": "0ed1e108-9b8d-491e-9ae4-980df4feb5bb",
+        "item": {
+          "id": "sterilized-bandage",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/sterilized-bandage.webp",
+          "name": "Sterilized Bandage",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "sterilized-bandage",
+        "quantity": "3"
+      },
+      {
+        "id": "5452401f-cdd3-4a32-8469-7813c2c44299",
+        "item": {
+          "id": "light-shield",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/light-shield.webp",
+          "name": "Light Shield",
+          "rarity": "Uncommon",
+          "item_type": "Shield"
+        },
+        "item_id": "light-shield",
+        "quantity": "1"
+      },
+      {
+        "id": "8d2b26f9-6f5d-4d43-b8c1-15b5631e1dcc",
+        "item": {
+          "id": "black-hiker-colour",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/black-hiker-colour.webp",
+          "name": "Black (Hiker Colour)",
+          "rarity": "Common",
+          "item_type": "Misc"
+        },
+        "item_id": "black-hiker-colour",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 319.47311544888146
+  },
+  {
+    "id": "cold-storage",
+    "name": "Cold Storage",
+    "objectives": [
+      "In one round",
+      "Search any J Kozma Ventures Container"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "75a92c96-db6a-4023-984d-63e87885dcc8",
+        "item": {
+          "id": "raider-hatch-key",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/raider-hatch-key.webp",
+          "name": "Raider Hatch Key",
+          "rarity": "Rare",
+          "item_type": "Key"
+        },
+        "item_id": "raider-hatch-key",
+        "quantity": "1"
+      },
+      {
+        "id": "eb60c64e-bd49-4318-ae8b-c69264749ef9",
+        "item": {
+          "id": "gas-mine",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/gas-mine.webp",
+          "name": "Gas Mine",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "gas-mine",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 1278.8847623375223
+  },
+  {
+    "id": "combat-recon",
+    "name": "Combat Recon",
+    "objectives": [
+      "Scope out a cover spot in the Parking Garage staircases",
+      "Scope out a cover spot in the buses near Marano Park",
+      "Scope out a cover spot in the attics around Main Street",
+      "Destroy 2 Spotters",
+      "Deliver Spotter Relay to Shani"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "e9952e1d-9de9-4d14-88c7-8a99a3bd9dcf",
+        "item": {
+          "id": "firecracker",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/firecracker.webp",
+          "name": "Firecracker",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "firecracker",
+        "quantity": "1"
+      },
+      {
+        "id": "72bf1f44-52ab-44e0-8137-34b79fa296e0",
+        "item": {
+          "id": "fireworks-box",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/fireworks-box.webp",
+          "name": "Fireworks Box",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "fireworks-box",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Unknown",
+    "xp": 0,
+    "sortOrder": 5257.189393285459
+  },
+  {
+    "id": "communication-hideout",
+    "name": "Communication Hideout",
+    "objectives": [
+      "In one round: Reach the Red Tower in Old Town",
+      "Find missing battery cell",
+      "Install the battery in the Generator",
+      "Enable the power on the Generator",
+      "Boot the antenna terminal near the Red Tower"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "43fc1c42-bda8-47f6-bb81-31a8f15a2201",
+        "item": {
+          "id": "anvil-iii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/anvil-iii.webp",
+          "name": "Anvil III",
+          "rarity": "Uncommon",
+          "item_type": "Weapon"
+        },
+        "item_id": "anvil-iii",
+        "quantity": "1"
+      },
+      {
+        "id": "57d8bcc3-f8a2-46e4-a2f2-86caeef3917a",
+        "item": {
+          "id": "heavy-ammo",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/heavy-ammo.webp",
+          "name": "Heavy Ammo",
+          "rarity": "Common",
+          "item_type": "Ammunition"
+        },
+        "item_id": "heavy-ammo",
+        "quantity": "40"
+      },
+      {
+        "id": "f4ff7650-1605-4a92-89b2-f6739d6caf5b",
+        "item": {
+          "id": "crimson-racer-aviator-colour",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/crimson-racer-aviator-colour.webp",
+          "name": "Crimson Racer (Aviator Colour)",
+          "rarity": "Common",
+          "item_type": "Misc"
+        },
+        "item_id": "crimson-racer-aviator-colour",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 4916.473458081255
+  },
+  {
+    "id": "deciphering-the-data",
+    "name": "Deciphering The Data",
+    "objectives": [
+      "Use the Magnetic Decryptor in the Fuel Control Building",
+      "Reach the Arrival Building in Spaceport",
+      "Use the Magnetic Decryptor on the top floor of the Arrival Building"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "836a16b9-c45f-4c41-b10e-8f0950dc8ca4",
+        "item": {
+          "id": "trailblazer-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/trailblazer-grenade.webp",
+          "name": "Trailblazer Grenade",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "trailblazer-grenade",
+        "quantity": "3"
+      },
+      {
+        "id": "a5b8f963-a8d1-4ade-a38f-b4bb3e4e632c",
+        "item": {
+          "id": "defibrillator",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/defibrillator.webp",
+          "name": "Defibrillator",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "defibrillator",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 5620.695307679854
+  },
+  {
+    "id": "digging-up-dirt",
+    "name": "Digging Up Dirt",
+    "objectives": [
+      "Locate the Santa Maria Houses in Old Town",
+      "Locate the Dead Drop inside the Santa Maria Houses in Old Town"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "10a4860c-674e-42a5-bb3b-458ef544e895",
+        "item": {
+          "id": "advanced-electrical-components",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/advanced-electrical-components.webp",
+          "name": "Advanced Electrical Components",
+          "rarity": "Rare",
+          "item_type": "Refined Material"
+        },
+        "item_id": "advanced-electrical-components",
+        "quantity": "2"
+      },
+      {
+        "id": "44b3b903-0e1f-4812-9223-b6b5f2a41a96",
+        "item": {
+          "id": "speaker-component",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/speaker-component.webp",
+          "name": "Speaker Component",
+          "rarity": "Rare",
+          "item_type": "Topside Material"
+        },
+        "item_id": "speaker-component",
+        "quantity": "4"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 6179.252140564836
+  },
+  {
+    "id": "doctors-orders",
+    "name": "Doctor's Orders",
+    "objectives": [
+      "Obtain 1 Syringe",
+      "Obtain 2 Antiseptic",
+      "Obtain 1 Durable Cloth",
+      "Obtain 1 Great Mullein"
+    ],
+    "requirements": [
+      {
+        "id": "1f9fb1ed-6ef2-4ac4-a22f-9545b6a6253d",
+        "item": {
+          "id": "great-muullein",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/great-muullein.webp",
+          "name": "Great Mullein",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "great-muullein",
+        "quantity": 1
+      },
+      {
+        "id": "2f48f121-2dfc-4ffc-ac59-65212944a336",
+        "item": {
+          "id": "syringe",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/syringe.webp",
+          "name": "Syringe",
+          "rarity": "Rare",
+          "item_type": "Topside Material"
+        },
+        "item_id": "syringe",
+        "quantity": 1
+      },
+      {
+        "id": "6223ffe5-3945-44d8-b56d-89eeab7965c4",
+        "item": {
+          "id": "antiseptic",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/antiseptic.webp",
+          "name": "Antiseptic",
+          "rarity": "Rare",
+          "item_type": "Refined Material"
+        },
+        "item_id": "antiseptic",
+        "quantity": 2
+      },
+      {
+        "id": "f9e820de-ebef-4410-98f4-09dd923728f7",
+        "item": {
+          "id": "durable-cloth",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/durable-cloth.webp",
+          "name": "Durable Cloth",
+          "rarity": "Uncommon",
+          "item_type": "Refined Material"
+        },
+        "item_id": "durable-cloth",
+        "quantity": 1
+      }
+    ],
+    "rewardItemIds": [
+      {
+        "id": "1f9fb1ed-6ef2-4ac4-a22f-9545b6a6253d",
+        "item": {
+          "id": "great-muullein",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/great-muullein.webp",
+          "name": "Great Mullein",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "great-muullein",
+        "quantity": 1
+      },
+      {
+        "id": "2f48f121-2dfc-4ffc-ac59-65212944a336",
+        "item": {
+          "id": "syringe",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/syringe.webp",
+          "name": "Syringe",
+          "rarity": "Rare",
+          "item_type": "Topside Material"
+        },
+        "item_id": "syringe",
+        "quantity": 1
+      },
+      {
+        "id": "6223ffe5-3945-44d8-b56d-89eeab7965c4",
+        "item": {
+          "id": "antiseptic",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/antiseptic.webp",
+          "name": "Antiseptic",
+          "rarity": "Rare",
+          "item_type": "Refined Material"
+        },
+        "item_id": "antiseptic",
+        "quantity": 2
+      },
+      {
+        "id": "f9e820de-ebef-4410-98f4-09dd923728f7",
+        "item": {
+          "id": "durable-cloth",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/durable-cloth.webp",
+          "name": "Durable Cloth",
+          "rarity": "Uncommon",
+          "item_type": "Refined Material"
+        },
+        "item_id": "durable-cloth",
+        "quantity": 1
+      }
+    ],
+    "rewards": [
+      {
+        "id": "3b4b52de-3074-4e11-b32a-ab80d1e61404",
+        "item": {
+          "id": "adrenaline-shot",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/adrenaline-shot.webp",
+          "name": "Adrenaline Shot",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "adrenaline-shot",
+        "quantity": "3"
+      },
+      {
+        "id": "68154698-1a2b-4652-802a-96948e88d390",
+        "item": {
+          "id": "sterilized-bandage",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/sterilized-bandage.webp",
+          "name": "Sterilized Bandage",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "sterilized-bandage",
+        "quantity": "3"
+      },
+      {
+        "id": "cb5a519d-8c10-4e23-933e-a390f8c919c6",
+        "item": {
+          "id": "surge-shield-recharger",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
+          "name": "Surge Shield Recharger",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "surge-shield-recharger",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 1811.860157381871
+  },
+  {
+    "id": "dormant-barons",
+    "name": "Dormant Barons",
+    "objectives": [
+      "Find and loot a Baron Husk"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "2848cea4-6d06-469e-88ff-a838e5452b23",
+        "item": {
+          "id": "door-blocker",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/door-blocker.webp",
+          "name": "Door Blocker",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "door-blocker",
+        "quantity": "3"
+      },
+      {
+        "id": "777e7076-02e5-4d27-b072-de5fb03c0cf5",
+        "item": {
+          "id": "lil-smoke-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/lil-smoke-grenade.webp",
+          "name": "Li'l Smoke Grenade",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "lil-smoke-grenade",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 1813.6925197784376
+  },
+  {
+    "id": "down-to-earth",
+    "name": "Down To Earth",
+    "objectives": [
+      "All Objectives in one round",
+      "Visit a Field Depot",
+      "Deliver a Field Crate to a Supply Station",
+      "Collect the reward"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "7644473c-3190-4ad5-a907-9d9cf9b5ccca",
+        "item": {
+          "id": "medium-shield",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/medium-shield.webp",
+          "name": "Medium Shield",
+          "rarity": "Rare",
+          "item_type": "Shield"
+        },
+        "item_id": "medium-shield",
+        "quantity": "1"
+      },
+      {
+        "id": "f220f3eb-6514-4c3b-8ea5-8f74eb363b72",
+        "item": {
+          "id": "combat-mk-1",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/combat-mk-1.webp",
+          "name": "Combat Mk. 1",
+          "rarity": "Uncommon",
+          "item_type": "Augment"
+        },
+        "item_id": "combat-mk-1",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 1279.0611297924638
+  },
+  {
+    "id": "echoes-of-victory-ridge",
+    "name": "Echoes of Victory Ridge",
+    "objectives": [
+      "In One Round:",
+      "Reach Victory Ridge.",
+      "Retrieve the battle plans from the hideout under the broken highway.",
+      "Deliver Major Aiva's Patch to Celeste."
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "3a9f2caa-a869-49cc-bd38-86c5e0f0ea9f",
+        "item": {
+          "id": "crude-explosives",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/crude-explosives.webp",
+          "name": "Crude Explosives",
+          "rarity": "Uncommon",
+          "item_type": "Refined Material"
+        },
+        "item_id": "crude-explosives",
+        "quantity": "6"
+      },
+      {
+        "id": "43c011ec-4e49-410d-b1ef-93ef90080f79",
+        "item": {
+          "id": "music-box",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/music-box.webp",
+          "name": "Music Box",
+          "rarity": "Rare",
+          "item_type": "Trinket"
+        },
+        "item_id": "music-box",
+        "quantity": "1"
+      },
+      {
+        "id": "fa082260-c092-4c8f-8136-8fb449147c72",
+        "item": {
+          "id": "processor",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/processor.webp",
+          "name": "Processor",
+          "rarity": "Rare",
+          "item_type": "Topside Material"
+        },
+        "item_id": "processor",
+        "quantity": "2"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 3162.736884149872
+  },
+  {
+    "id": "espresso",
+    "name": "Espresso",
+    "objectives": [
+      "In One Round:",
+      "Find an espresso machine to salvage for spare parts",
+      "Get the Espresso Machine Parts for Apollo"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "2218412f-4404-4d93-a617-7bf45c5801e5",
+        "item": {
+          "id": "coffee-pot",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/coffee-pot.webp",
+          "name": "Coffee Pot",
+          "rarity": "Common",
+          "item_type": "Trinket"
+        },
+        "item_id": "coffee-pot",
+        "quantity": "1"
+      },
+      {
+        "id": "ab53a82d-12fe-4512-8575-966194451693",
+        "item": {
+          "id": "adrenaline-shot",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/adrenaline-shot.webp",
+          "name": "Adrenaline Shot",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "adrenaline-shot",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Apollo",
+    "xp": 0,
+    "sortOrder": 5459.252140564836
+  },
+  {
+    "id": "eyes-in-the-sky",
+    "name": "Eyes in the Sky",
+    "objectives": [
+      "On Dam Battlegrounds, install a LiDAR Scanner at the top of the Control Tower",
+      "On Spaceport, install a LiDAR Scanner at the Communications Tower",
+      "On Buried City, install a LiDAR Scanner on top of the Galleria sign"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "23cbf8f0-aeb3-4e89-904a-5a0f5dd86c95",
+        "item": {
+          "id": "tagging-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/tagging-grenade.webp",
+          "name": "Tagging Grenade",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "tagging-grenade",
+        "quantity": "3"
+      },
+      {
+        "id": "bedeb4b1-e9ce-40be-a680-e9070c1cfc4c",
+        "item": {
+          "id": "vita-spray",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/vita-spray.webp",
+          "name": "Vita Spray",
+          "rarity": "Epic",
+          "item_type": "Quick Use"
+        },
+        "item_id": "vita-spray",
+        "quantity": "1"
+      },
+      {
+        "id": "e4580528-04a8-435a-a881-5f4b08290205",
+        "item": {
+          "id": "yellow-light-stick",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/yellow-light-stick.webp",
+          "name": "Yellow Light Stick",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "yellow-light-stick",
+        "quantity": "5"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 2771.860157381871
+  },
+  {
+    "id": "eyes-on-the-prize",
+    "name": "Eyes on the Prize",
+    "objectives": [
+      "Find the secluded roof terrace south-west of the Southern Station, look for blue tarps.",
+      "Rewire the solar panel using 3 Wires."
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "ddd5b553-861c-46f8-a954-bac2a4e9a8e2",
+        "item": {
+          "id": "extended-shotgun-mag-ii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/extended-shotgun-mag-ii.webp",
+          "name": "Extended Shotgun Mag II",
+          "rarity": "Uncommon",
+          "item_type": "Modification"
+        },
+        "item_id": "extended-shotgun-mag-ii",
+        "quantity": "1"
+      },
+      {
+        "id": "edea5b5b-15e6-450a-bc5a-12b236410d95",
+        "item": {
+          "id": "extended-medium-mag-ii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/extended-medium-mag-ii.webp",
+          "name": "Extended Medium Mag II",
+          "rarity": "Uncommon",
+          "item_type": "Modification"
+        },
+        "item_id": "extended-medium-mag-ii",
+        "quantity": "1"
+      }
+    ],
+    "trader": "TianWen",
+    "xp": 0,
+    "sortOrder": 2934.700983655939
+  },
+  {
+    "id": "flickering-threat",
+    "name": "Flickering Threat",
+    "objectives": [
+      "Enter the Power Generation Complex by The Dam",
+      "Find the Generator Room",
+      "Repair the Generator",
+      "Find the Ventilation Shaft",
+      "Enable the power via the power switch undernearth the stairs"
+    ],
+    "requirements": [
+      {
+        "id": "e377a016-400a-4a71-9b0a-fe1deeb46c1b",
+        "item": {
+          "id": "wires-recipe",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/wires.webp",
+          "name": "Wires",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "wires-recipe",
+        "quantity": 4
+      }
+    ],
+    "rewardItemIds": [
+      {
+        "id": "e377a016-400a-4a71-9b0a-fe1deeb46c1b",
+        "item": {
+          "id": "wires-recipe",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/wires.webp",
+          "name": "Wires",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "wires-recipe",
+        "quantity": 4
+      }
+    ],
+    "rewards": [
+      {
+        "id": "46f48ad2-c610-4afc-b5dc-99906a3caed3",
+        "item": {
+          "id": "medium-gun-parts",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/medium-gun-parts.webp",
+          "name": "Medium Gun Parts",
+          "rarity": "Rare",
+          "item_type": "Topside Material"
+        },
+        "item_id": "medium-gun-parts",
+        "quantity": "5"
+      },
+      {
+        "id": "75f13447-69a8-4fca-874a-5e86bb540988",
+        "item": {
+          "id": "advanced-mechanical-components",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/advanced-mechanical-components.webp",
+          "name": "Advanced Mechanical Components",
+          "rarity": "Rare",
+          "item_type": "Advanced Material"
+        },
+        "item_id": "advanced-mechanical-components",
+        "quantity": "3"
+      },
+      {
+        "id": "93925b74-4a0a-4d49-830e-beb831ed0fbb",
+        "item": {
+          "id": "helmet-radio-renegade-variant",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/helmet-radio-renegade-variant.webp",
+          "name": "Helmet (Radio Renegade Variant)",
+          "rarity": "Common",
+          "item_type": "Misc"
+        },
+        "item_id": "helmet-radio-renegade-variant",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 4979.252140564836
+  },
+  {
+    "id": "greasing-her-palms",
+    "name": "Greasing Her Palms",
+    "objectives": [
+      "On Dam Battlegrounds, visit the Locked Room in the Water Treatment Control Building.",
+      "On Spaceport, scope out the rocket thrusters outside the Rocket Assembly",
+      "On Buried City, visit the barricaded area on floor 6 of the Space Travel Building."
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "3369cd02-78ae-4fa1-883b-a81201b6b94d",
+        "item": {
+          "id": "speaker-component",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/speaker-component.webp",
+          "name": "Speaker Component",
+          "rarity": "Rare",
+          "item_type": "Topside Material"
+        },
+        "item_id": "speaker-component",
+        "quantity": "3"
+      },
+      {
+        "id": "523cd249-dd09-450b-8628-fcee986960d7",
+        "item": {
+          "id": "lure-grenade-recipe",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/lure-grenade.webp",
+          "name": "Lure Grenade Blueprint",
+          "rarity": "Legendary",
+          "item_type": "Blueprint"
+        },
+        "item_id": "lure-grenade-recipe",
+        "quantity": "1"
+      },
+      {
+        "id": "59d4d12b-9313-40cc-a7f0-34c96cfe1ca8",
+        "item": {
+          "id": "electrical-components",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/electrical-components.webp",
+          "name": "Electrical Components",
+          "rarity": "Uncommon",
+          "item_type": "Refined Material"
+        },
+        "item_id": "electrical-components",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 1520.3902829127408
+  },
+  {
+    "id": "groundbreaking",
+    "name": "Groundbreaking",
+    "objectives": [
+      "Enter the locked room at Pilgrim's Peak",
+      "Search the room for any construction research",
+      "Find the building pictured on the whiteboard",
+      "Photograph the abandoned housing project"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "43bb79e1-839c-41ab-ac33-4516caaea46a",
+        "item": {
+          "id": "tangerine-warden-color",
+          "icon": "",
+          "name": "Tangerine (Warden Color)",
+          "rarity": "Common",
+          "item_type": "Misc"
+        },
+        "item_id": "tangerine-warden-color",
+        "quantity": "1"
+      },
+      {
+        "id": "6da6cf14-151d-412c-8d10-3312c31f8cc0",
+        "item": {
+          "id": "power-rod",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/power-rod.webp",
+          "name": "Power Rod",
+          "rarity": "Epic",
+          "item_type": "Advanced Material"
+        },
+        "item_id": "power-rod",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Apollo",
+    "xp": 0,
+    "sortOrder": 5860.695307679854
+  },
+  {
+    "id": "hatch-repairs",
+    "name": "Hatch Repairs",
+    "objectives": [
+      "Repair the leaking hydraulic pipes near a Raider Hatch",
+      "Loot an ARC husk"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "66d2a7a9-5fb4-4660-9923-99fa4f0ad1a8",
+        "item": {
+          "id": "raider-hatch-key",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/raider-hatch-key.webp",
+          "name": "Raider Hatch Key",
+          "rarity": "Rare",
+          "item_type": "Key"
+        },
+        "item_id": "raider-hatch-key",
+        "quantity": "1"
+      },
+      {
+        "id": "cf09ab05-d303-4f85-87d8-fdcfd3accc36",
+        "item": {
+          "id": "binoculars",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/binoculars.webp",
+          "name": "Binoculars",
+          "rarity": "Common",
+          "item_type": "Gadget"
+        },
+        "item_id": "binoculars",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 1039.0611297924638
+  },
+  {
+    "id": "industrial-espionage",
+    "name": "Industrial Espionage",
+    "objectives": [
+      "Find Tian Wen's weapon cache near the Gas Station in the Outskirts",
+      "Deliver the Burletta to the rival weapon cache",
+      "Plant a bug on the weapon cache"
+    ],
+    "requirements": [
+      {
+        "id": "bc50c6b8-a30f-4688-9ca7-b29b5404093b",
+        "item": {
+          "id": "burletta-i",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/burletta-i.webp",
+          "name": "Burletta I",
+          "rarity": "Uncommon",
+          "item_type": "Weapon"
+        },
+        "item_id": "burletta-i",
+        "quantity": 1
+      }
+    ],
+    "rewardItemIds": [
+      {
+        "id": "bc50c6b8-a30f-4688-9ca7-b29b5404093b",
+        "item": {
+          "id": "burletta-i",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/burletta-i.webp",
+          "name": "Burletta I",
+          "rarity": "Uncommon",
+          "item_type": "Weapon"
+        },
+        "item_id": "burletta-i",
+        "quantity": 1
+      }
+    ],
+    "rewards": [
+      {
+        "id": "3e9ca817-41f9-4b57-b375-75905bdef44c",
+        "item": {
+          "id": "mechanical-components",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/mechanical-components.webp",
+          "name": "Mechanical Components",
+          "rarity": "Uncommon",
+          "item_type": "Refined Material"
+        },
+        "item_id": "mechanical-components",
+        "quantity": "3"
+      },
+      {
+        "id": "48572c2b-28b2-4533-9cf3-26debbfdf9b3",
+        "item": {
+          "id": "simple-gun-parts",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/simple-gun-parts.webp",
+          "name": "Simple Gun Parts",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "simple-gun-parts",
+        "quantity": "3"
+      },
+      {
+        "id": "97a928e9-f9d0-4578-a1cd-225960c3bfd5",
+        "item": {
+          "id": "burltetta-recipe",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/burltetta-recipe.webp",
+          "name": "Burletta Blueprint",
+          "rarity": "Legendary",
+          "item_type": "Blueprint"
+        },
+        "item_id": "burltetta-recipe",
+        "quantity": "1"
+      }
+    ],
+    "trader": "TianWen",
+    "xp": 0,
+    "sortOrder": 3162.932222187488
+  },
+  {
+    "id": "in-my-image",
+    "name": "In My Image",
+    "objectives": [
+      "Deploy into Stella Montis",
+      "Find and search 3 Androids"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "152eefaf-732f-4723-9ef4-46e1a28a8ec2",
+        "item": {
+          "id": "green-light-stick",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/green-light-stick.webp",
+          "name": "Green Light Stick",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "green-light-stick",
+        "quantity": "5"
+      },
+      {
+        "id": "7fe4d5f7-1f1f-406e-a87e-8046e5be0c31",
+        "item": {
+          "id": "looting-mk-2",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/looting-mk-2.webp",
+          "name": "Looting Mk. 2",
+          "rarity": "Rare",
+          "item_type": "Augment"
+        },
+        "item_id": "looting-mk-2",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Lance",
+    "xp": 0,
+    "sortOrder": 1038.8847623375223
+  },
+  {
+    "id": "into-the-fray",
+    "name": "Into the Fray",
+    "objectives": [
+      "Destroy a Leaper",
+      "Obtain a Leaper Pulse Unit"
+    ],
+    "requirements": [
+      {
+        "id": "78ce6f9c-0410-436e-b108-afa97f44039c",
+        "item": {
+          "id": "leaper-pulse-unit",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/leaper-pulse-unit.webp",
+          "name": "Leaper Pulse Unit",
+          "rarity": "Epic",
+          "item_type": "Throwable"
+        },
+        "item_id": "leaper-pulse-unit",
+        "quantity": 1
+      }
+    ],
+    "rewardItemIds": [
+      {
+        "id": "78ce6f9c-0410-436e-b108-afa97f44039c",
+        "item": {
+          "id": "leaper-pulse-unit",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/leaper-pulse-unit.webp",
+          "name": "Leaper Pulse Unit",
+          "rarity": "Epic",
+          "item_type": "Throwable"
+        },
+        "item_id": "leaper-pulse-unit",
+        "quantity": 1
+      }
+    ],
+    "rewards": [
+      {
+        "id": "9c5e8089-447a-4f8c-8dbe-c9ee2691dff6",
+        "item": {
+          "id": "burgerboy-backpack-charm",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/burgerboy-backpack-charm.webp",
+          "name": "Burgerboy (Backpack Charm)",
+          "rarity": "",
+          "item_type": "Misc"
+        },
+        "item_id": "burgerboy-backpack-charm",
+        "quantity": "1"
+      },
+      {
+        "id": "9e36d889-dc42-4553-bf37-b8d774f10a79",
+        "item": {
+          "id": "vulcano-iii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/vulcano-iii.webp",
+          "name": "Vulcano III",
+          "rarity": "Epic",
+          "item_type": "Weapon"
+        },
+        "item_id": "vulcano-iii",
+        "quantity": "1"
+      },
+      {
+        "id": "c70a8152-d177-47e9-b6d5-6985b76c3f29",
+        "item": {
+          "id": "radio-renegade-outfit",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/radio-renegade-outfit.webp",
+          "name": "Radio Renegade (Outfit)",
+          "rarity": "",
+          "item_type": "Misc"
+        },
+        "item_id": "radio-renegade-outfit",
+        "quantity": "1"
+      },
+      {
+        "id": "f4dbec19-edbc-40dc-b569-c19517b3bcaa",
+        "item": {
+          "id": "shotgun-ammo",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/shotgun-ammo.webp",
+          "name": "Shotgun ammo",
+          "rarity": "Common",
+          "item_type": "Ammunition"
+        },
+        "item_id": "shotgun-ammo",
+        "quantity": "40"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 5140.695307679854
+  },
+  {
+    "id": "keeping-the-memory",
+    "name": "Keeping the Memory",
+    "objectives": [
+      "In One Round:",
+      "Reach the wreckage in the Formicai Hills",
+      "Search for the missing helmet",
+      "Return the helmet to the memorial"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "3fd923b5-1e87-4edc-8be6-41934582dec8",
+        "item": {
+          "id": "duct-tape-recipe",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/duct-tape.webp",
+          "name": "Duct Tape",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "duct-tape-recipe",
+        "quantity": "5"
+      },
+      {
+        "id": "a8f1322f-0d90-4962-b5fb-387e916e9b9a",
+        "item": {
+          "id": "magnet",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/magnet.webp",
+          "name": "Magnet",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "magnet",
+        "quantity": "5"
+      },
+      {
+        "id": "dbbba6f9-7856-4ece-ab2a-65cdbe332885",
+        "item": {
+          "id": "simple-gun-parts",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/simple-gun-parts.webp",
+          "name": "Simple Gun Parts",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "simple-gun-parts",
+        "quantity": "5"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 2929.9041515567033
+  },
+  {
+    "id": "life-of-a-pharmacist",
+    "name": "Life of a Pharmacist",
+    "objectives": [
+      "Find the Arbuso Farmacia then search the apartment above",
+      "Document the pharmacist's hobbies",
+      "Document the pharmacist's family",
+      "Document the pharmacist's taste",
+      "Document the pharmacist's skills"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "49f51118-8d22-4276-bf95-621f68bab2ab",
+        "item": {
+          "id": "defibrillator",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/defibrillator.webp",
+          "name": "Defibrillator",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "defibrillator",
+        "quantity": "1"
+      },
+      {
+        "id": "b98e3c05-77d5-417b-9902-5a25afaa35ae",
+        "item": {
+          "id": "surge-shield-recharger",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
+          "name": "Surge Shield Recharger",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "surge-shield-recharger",
+        "quantity": "1"
+      },
+      {
+        "id": "bf8a95e1-1f4c-4fae-8974-973c2071a9ef",
+        "item": {
+          "id": "sterilized-bandage",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/sterilized-bandage.webp",
+          "name": "Sterilized Bandage",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "sterilized-bandage",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Lance",
+    "xp": 0,
+    "sortOrder": 5699.252140564836
+  },
+  {
+    "id": "lost-in-transmission",
+    "name": "Lost in Transmission",
+    "objectives": [
+      "In One Round:",
+      "Visit Control Tower A6",
+      "Reach the top of Control Tower A6",
+      "Establish a connection from the terminal"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "b054a81a-08c4-4a46-bb7c-2c992b595697",
+        "item": {
+          "id": "snap-hook",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/snap-hook.webp",
+          "name": "Snap Hook",
+          "rarity": "Legendary",
+          "item_type": "Quick Use"
+        },
+        "item_id": "snap-hook",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 4676.473458081255
+  },
+  {
+    "id": "marked-for-death",
+    "name": "Marked for Death",
+    "objectives": [
+      "Reach the Su Durante Warehouses in the Outskirts in Buried City",
+      "Search for Tian Wen's cache near the Warehouses",
+      "Follow the Clues"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "7d492de5-0a15-4a03-ba62-98756e4590b0",
+        "item": {
+          "id": "angled-grip-ii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/angled-grip-ii.webp",
+          "name": "Angled Grip II",
+          "rarity": "Uncommon",
+          "item_type": "Modification"
+        },
+        "item_id": "angled-grip-ii",
+        "quantity": "1"
+      },
+      {
+        "id": "f08e7df9-a883-4f59-bbb5-eebe9113ae13",
+        "item": {
+          "id": "shotgun-choke-ii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/shotgun-choke-ii.webp",
+          "name": "Shotgun Choke II",
+          "rarity": "Uncommon",
+          "item_type": "Modification"
+        },
+        "item_id": "shotgun-choke-ii",
+        "quantity": "1"
+      }
+    ],
+    "trader": "TianWen",
+    "xp": 0,
+    "sortOrder": 2475.855715426346
+  },
+  {
+    "id": "market-correction",
+    "name": "Market Correction",
+    "objectives": [
+      "In One Round -",
+      "Locate the cache near Marano Station.",
+      "Sabotage the cache"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "1f668ea9-4dac-48f1-afd3-aca099719d27",
+        "item": {
+          "id": "compensator-i",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/compensator-i.webp",
+          "name": "Compensator I",
+          "rarity": "Common",
+          "item_type": "Modification"
+        },
+        "item_id": "compensator-i",
+        "quantity": "1"
+      },
+      {
+        "id": "50cf9552-9c47-43bc-9fa6-7b97f83e522d",
+        "item": {
+          "id": "extended-light-mag-i",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/extended-light-mag-i.webp",
+          "name": "Extended Light Mag I",
+          "rarity": "Common",
+          "item_type": "Modification"
+        },
+        "item_id": "extended-light-mag-i",
+        "quantity": "1"
+      },
+      {
+        "id": "f4a58696-615f-46cf-89e4-fdc4932f831e",
+        "item": {
+          "id": "silencer-ii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/silencer-ii.webp",
+          "name": "Silencer II",
+          "rarity": "Rare",
+          "item_type": "Modification"
+        },
+        "item_id": "silencer-ii",
+        "quantity": "1"
+      }
+    ],
+    "trader": "TianWen",
+    "xp": 0,
+    "sortOrder": 2698.623904145423
+  },
+  {
+    "id": "medical-merchandise",
+    "name": "Medical Merchandise",
+    "objectives": [
+      "On Spaceport, search 2 containers in the Departure Building's exam rooms",
+      "Search 3 contrainers in the Hospital in Buried City",
+      "On Dam Battlegrounds, search 2 containers in the Research & Administration building's medical room"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "69fbfd5e-8ae5-4b9e-a122-cb57882c274f",
+        "item": {
+          "id": "defibrillator",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/defibrillator.webp",
+          "name": "Defibrillator",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "defibrillator",
+        "quantity": "3"
+      },
+      {
+        "id": "7539a21b-b2c9-46d9-82d4-803f06dcc06f",
+        "item": {
+          "id": "vita-shot",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/vita-shot.webp",
+          "name": "Vita Shot",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "vita-shot",
+        "quantity": "2"
+      },
+      {
+        "id": "d46d3728-9b99-4d38-9a94-bb5385329762",
+        "item": {
+          "id": "banana-backpack-charm",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/banana-backpack-charm.webp",
+          "name": "Banana (Backpack Charm)",
+          "rarity": "",
+          "item_type": "Misc"
+        },
+        "item_id": "banana-backpack-charm",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Lance",
+    "xp": 0,
+    "sortOrder": 2051.860157381871
+  },
+  {
+    "id": "mixed-signals",
+    "name": "Mixed Signals",
+    "objectives": [
+      "Destroy an ARC Surveyor",
+      "Obtain 1 Surveyor Vault"
+    ],
+    "requirements": [
+      {
+        "id": "992ccac9-2f02-4349-8221-c38b2df83ab2",
+        "item": {
+          "id": "surveyor-vault",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/surveyor-vault.webp",
+          "name": "Surveyor Vault",
+          "rarity": "Rare",
+          "item_type": "Recyclable"
+        },
+        "item_id": "surveyor-vault",
+        "quantity": 1
+      }
+    ],
+    "rewardItemIds": [
+      {
+        "id": "992ccac9-2f02-4349-8221-c38b2df83ab2",
+        "item": {
+          "id": "surveyor-vault",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/surveyor-vault.webp",
+          "name": "Surveyor Vault",
+          "rarity": "Rare",
+          "item_type": "Recyclable"
+        },
+        "item_id": "surveyor-vault",
+        "quantity": 1
+      }
+    ],
+    "rewards": [
+      {
+        "id": "08b88868-cbbc-4d17-81fa-50e170305bf9",
+        "item": {
+          "id": "photoelectric-cloak",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/photoelectric-cloak.webp",
+          "name": "Photoelectric Cloak",
+          "rarity": "Epic",
+          "item_type": "Quick Use"
+        },
+        "item_id": "photoelectric-cloak",
+        "quantity": "1"
+      },
+      {
+        "id": "d813d908-1059-4a82-a276-9177985832be",
+        "item": {
+          "id": "raider-hatch-key",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/raider-hatch-key.webp",
+          "name": "Raider Hatch Key",
+          "rarity": "Rare",
+          "item_type": "Key"
+        },
+        "item_id": "raider-hatch-key",
+        "quantity": "1"
+      }
+    ],
+    "trader": "TianWen",
+    "xp": 0,
+    "sortOrder": 2006.475046689308
+  },
+  {
+    "id": "movie-night",
+    "name": "Movie Night",
+    "objectives": [
+      "Deliver a Portable TV to Apollo",
+      "On Stella Montis, search the Cultural Archives for old Movie Tapes",
+      "Deliver the Stack of Movie Tapes to Apollo"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "b0bcc1cb-6a13-4ca1-83d6-5cc5b9ed0208",
+        "item": {
+          "id": "showstopper",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/showstopper.webp",
+          "name": "Showstopper",
+          "rarity": "Rare",
+          "item_type": "Throwable"
+        },
+        "item_id": "showstopper",
+        "quantity": "1"
+      },
+      {
+        "id": "3b4fe2e3-2aea-479b-a3b1-6e97acd2c4e2",
+        "item": {
+          "id": "smoke-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/smoke-grenade.webp",
+          "name": "Smoke Grenade",
+          "rarity": "Rare",
+          "item_type": "Recyclable"
+        },
+        "item_id": "smoke-grenade",
+        "quantity": "1"
+      },
+      {
+        "id": "81341fa6-aa63-4197-aa40-9bbc6ed79703",
+        "item": {
+          "id": "fireworks-box",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/fireworks-box.webp",
+          "name": "Fireworks Box",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "fireworks-box",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Apollo",
+    "xp": 0,
+    "sortOrder": 1965.5143577290614
+  },
+  {
+    "id": "off-the-raider",
+    "name": "Off The Radar",
+    "objectives": [
+      "Visit a Field Depot (In one Round)",
+      "Repair the antenna on the roof of the Field Depot (In one Round)"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "5b690ded-5c93-49c6-98a7-3075cba8d0f2",
+        "item": {
+          "id": "black-and-white-origin-color",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/black-and-white-origin-color.webp",
+          "name": "Black & White (Origin Color)",
+          "rarity": "Common",
+          "item_type": "Misc"
+        },
+        "item_id": "black-and-white-origin-color",
+        "quantity": "1"
+      },
+      {
+        "id": "cea66c44-5586-4958-af27-02964c58f04c",
+        "item": {
+          "id": "defibrillator",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/defibrillator.webp",
+          "name": "Defibrillator",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "defibrillator",
+        "quantity": "2"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 563.7351191683605
+  },
+  {
+    "id": "on-deaf-ears",
+    "name": "On Deaf Ears",
+    "objectives": [
+      "Find the researcher's guest logs on the reception computers"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "4b4f06fe-c5aa-4ff1-ad51-f2267a3c8016",
+        "item": {
+          "id": "lure-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/lure-grenade.webp",
+          "name": "Lure Grenade",
+          "rarity": "Uncommon",
+          "item_type": "Quick Use"
+        },
+        "item_id": "lure-grenade",
+        "quantity": "1"
+      },
+      {
+        "id": "a8051d8c-7814-45d4-b53d-f82532337307",
+        "item": {
+          "id": "noisemaker",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/noisemaker.webp",
+          "name": "Noisemaker",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "noisemaker",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Unknown",
+    "xp": 0,
+    "sortOrder": 6098.557992881553
+  },
+  {
+    "id": "on-the-map",
+    "name": "On The Map",
+    "objectives": [
+      "Head to where the Fuel Lines snapped, and transmit your location.",
+      "Head to the antenna near the Fuel Control, and transmit your location.",
+      "Head to the cactus patch in the wall breach, and transmit your location.",
+      "Transmit your location from the roof of the Container Storage building",
+      "Find the container covered in tarp, and mark it"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "77b8e9e6-b19c-453a-ac78-21ed712e58ef",
+        "item": {
+          "id": "sterilized-bandage",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/sterilized-bandage.webp",
+          "name": "Sterilized Bandage",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "sterilized-bandage",
+        "quantity": "1"
+      },
+      {
+        "id": "a6f96e78-2e9d-40a7-a21c-5cf6da66c88a",
+        "item": {
+          "id": "surge-shield-recharger",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
+          "name": "Surge Shield Recharger",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "surge-shield-recharger",
+        "quantity": "1"
+      },
+      {
+        "id": "b07b9f2e-1ed4-42aa-8cac-2e7fbebb3238",
+        "item": {
+          "id": "tactical-mk-3-healing",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/tactical-mk-3-healing.webp",
+          "name": "Tactical Mk. 3 (Healing)",
+          "rarity": "Epic",
+          "item_type": "Augment"
+        },
+        "item_id": "tactical-mk-3-healing",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Unknown",
+    "xp": 0,
+    "sortOrder": 6303.962520692375
+  },
+  {
+    "id": "our-presence-up-there",
+    "name": "Our Presence Up There",
+    "objectives": [
+      "In one round: Visit the Pattern House in The Dam",
+      "Find and interact with the Power Switch",
+      "Complete the antenna installation on the roof"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "28533e49-45c6-41bd-bb5a-2576486d23bb",
+        "item": {
+          "id": "jolt-mine",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/jolt-mine.webp",
+          "name": "Jolt Mine",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "jolt-mine",
+        "quantity": "3"
+      },
+      {
+        "id": "aeba52c3-68a8-42f4-88ce-02627b4c5c5c",
+        "item": {
+          "id": "raider-hatch-key",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/raider-hatch-key.webp",
+          "name": "Raider Hatch Key",
+          "rarity": "Rare",
+          "item_type": "Key"
+        },
+        "item_id": "raider-hatch-key",
+        "quantity": "1"
+      },
+      {
+        "id": "eb230d4a-c2f5-4fc4-bdf0-043ad650c544",
+        "item": {
+          "id": "buried-city-town-hall-key",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/buried-city-town-hall-key.webp",
+          "name": "Buried City Town Hall Key",
+          "rarity": "Epic",
+          "item_type": "Key"
+        },
+        "item_id": "buried-city-town-hall-key",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 4436.473458081255
+  },
+  {
+    "id": "out-of-the-shadows",
+    "name": "Out of the Shadows",
+    "objectives": [
+      "Destroy a Rocketeer",
+      "Obtain a Rocketeer Driver"
+    ],
+    "requirements": [
+      {
+        "id": "04662365-f4a1-4fd9-a967-4f381fc55271",
+        "item": {
+          "id": "rocketeer-part",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/rocketeer-part.webp",
+          "name": "Rocketeer Driver",
+          "rarity": "Epic",
+          "item_type": "Recyclable"
+        },
+        "item_id": "rocketeer-part",
+        "quantity": 1
+      }
+    ],
+    "rewardItemIds": [
+      {
+        "id": "04662365-f4a1-4fd9-a967-4f381fc55271",
+        "item": {
+          "id": "rocketeer-part",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/rocketeer-part.webp",
+          "name": "Rocketeer Driver",
+          "rarity": "Epic",
+          "item_type": "Recyclable"
+        },
+        "item_id": "rocketeer-part",
+        "quantity": 1
+      }
+    ],
+    "rewards": [
+      {
+        "id": "afcfd0d9-bc75-4a01-990a-024739195659",
+        "item": {
+          "id": "surge-shield-recharger",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
+          "name": "Surge Shield Recharger",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "surge-shield-recharger",
+        "quantity": "3"
+      },
+      {
+        "id": "cfd05728-9dd4-493e-9d11-a4ba35894017",
+        "item": {
+          "id": "wolfpack",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/wolfpack.webp",
+          "name": "WolfPack",
+          "rarity": "Epic",
+          "item_type": "Quick Use"
+        },
+        "item_id": "wolfpack",
+        "quantity": "2"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 3807.5478144224858
+  },
+  {
+    "id": "paving-the-way",
+    "name": "Paving the Way",
+    "objectives": [
+      "Go to any ENELICA building",
+      "Search for a notice board with a note from the researcher",
+      "On Buried City, reach the top floorabove the Convinio in Piazza Roma",
+      "Find the researcher's flat and search for any research data"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "55d63fa2-aa96-43d8-b183-08ba727e2614",
+        "item": {
+          "id": "advanced-electrical-components",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/advanced-electrical-components.webp",
+          "name": "Advanced Electrical Components",
+          "rarity": "Rare",
+          "item_type": "Refined Material"
+        },
+        "item_id": "advanced-electrical-components",
+        "quantity": "1"
+      },
+      {
+        "id": "6f1ae2d4-b08f-4f4c-878e-d8376d2dba18",
+        "item": {
+          "id": "seeker-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/seeker-grenade.webp",
+          "name": "Seeker Grenade",
+          "rarity": "Uncommon",
+          "item_type": "Quick Use"
+        },
+        "item_id": "seeker-grenade",
+        "quantity": "3"
+      },
+      {
+        "id": "a739b91f-24bb-4571-a1df-79b4f55b0f64",
+        "item": {
+          "id": "raider-hatch-key",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/raider-hatch-key.webp",
+          "name": "Raider Hatch Key",
+          "rarity": "Rare",
+          "item_type": "Key"
+        },
+        "item_id": "raider-hatch-key",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Apollo",
+    "xp": 0,
+    "sortOrder": 5380.695307679854
+  },
+  {
+    "id": "picking-up-the-pieces",
+    "name": "Picking Up The Pieces",
+    "objectives": [
+      "Visit any area on your map with a loot category icon",
+      "Loot 3 containers"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "a72a187b-6d02-4ae7-b582-5c3bc8a4e1ce",
+        "item": {
+          "id": "medium-ammo",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/medium-ammo.webp",
+          "name": "Medium Ammo",
+          "rarity": "Common",
+          "item_type": "Ammunition"
+        },
+        "item_id": "medium-ammo",
+        "quantity": "80"
+      },
+      {
+        "id": "b1a39759-f81e-4428-8dfb-00bca9fcce41",
+        "item": {
+          "id": "rattler-iii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/rattler-iii.webp",
+          "name": "Rattler III",
+          "rarity": "Common",
+          "item_type": "Weapon"
+        },
+        "item_id": "rattler-iii",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 83.77692521396251
+  },
+  {
+    "id": "power-out",
+    "name": "Power Out",
+    "objectives": [
+      "In one round: Find the Electrical Substation south of the Spaceport, next to the Checkpoint",
+      "Find any sign of the missing engineer",
+      "Carry the fuse/battery back to the Electrical Substation",
+      "Enable the power switch on the Fuse Bo"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "3ce10e27-1702-4964-af97-539902352fb1",
+        "item": {
+          "id": "explosive-compound",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/explosive-compound.webp",
+          "name": "Explosive Compound",
+          "rarity": "Rare",
+          "item_type": "Refined Material"
+        },
+        "item_id": "explosive-compound",
+        "quantity": "5"
+      },
+      {
+        "id": "82243ee1-7602-492c-9546-88c51ca923c9",
+        "item": {
+          "id": "oil",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/oil.webp",
+          "name": "Oil",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "oil",
+        "quantity": "5"
+      },
+      {
+        "id": "997473a3-6f4d-4799-ad4f-fe8d3a257f5f",
+        "item": {
+          "id": "bag-radio-renegade-variant",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/bag-radio-renegade-variant.webp",
+          "name": "Bag (Radio Renegade Variant)",
+          "rarity": "Common",
+          "item_type": "Misc"
+        },
+        "item_id": "bag-radio-renegade-variant",
+        "quantity": "1"
+      },
+      {
+        "id": "aea9afad-0d15-41cb-93ce-50c125d541f8",
+        "item": {
+          "id": "wires-recipe",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/wires.webp",
+          "name": "Wires",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "wires-recipe",
+        "quantity": "5"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 4739.252140564836
+  },
+  {
+    "id": "prescriptions-of-the-past",
+    "name": "Prescriptions of the Past",
+    "objectives": [
+      "In one round: Visit the Departure Building in Spaceport",
+      "Find the Medical Exam Room inside the Departure Building",
+      "Search for the records"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "76b34db8-c579-42cd-9c4b-330712233896",
+        "item": {
+          "id": "adrenaline-shot",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/adrenaline-shot.webp",
+          "name": "Adrenaline Shot",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "adrenaline-shot",
+        "quantity": "3"
+      },
+      {
+        "id": "79ddb231-5842-4c06-b48b-eb94a5c1196e",
+        "item": {
+          "id": "tactical-mk-3-healing",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/tactical-mk-3-healing.webp",
+          "name": "Tactical Mk. 3 (Healing)",
+          "rarity": "Epic",
+          "item_type": "Augment"
+        },
+        "item_id": "tactical-mk-3-healing",
+        "quantity": "1"
+      },
+      {
+        "id": "870b9d8f-859e-443c-90ec-0d7d0854d183",
+        "item": {
+          "id": "heavy-shield",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/heavy-shield.webp",
+          "name": "Heavy Shield",
+          "rarity": "Epic",
+          "item_type": "Shield"
+        },
+        "item_id": "heavy-shield",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Lance",
+    "xp": 0,
+    "sortOrder": 4499.252140564836
+  },
+  {
+    "id": "reduced-to-rubble",
+    "name": "Reduced To Rubble",
+    "objectives": [
+      "Take a photo of the collapsed highway",
+      "Go to the Broken Earth",
+      "Follow the trail of destruction through the Broken Earth",
+      "Investigate the unknown ARC machines"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "61762de3-37b1-423b-b57d-2be07dc7d4b8",
+        "item": {
+          "id": "door-blocker",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/door-blocker.webp",
+          "name": "Door Blocker",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "door-blocker",
+        "quantity": "3"
+      },
+      {
+        "id": "c6f5be1b-95d4-4dd9-a40b-3c9fec9e86df",
+        "item": {
+          "id": "zipline",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/zipline.webp",
+          "name": "Zipline",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "zipline",
+        "quantity": "1"
+      },
+      {
+        "id": "cd8d8289-81a4-4519-936d-05dbbe71662c",
+        "item": {
+          "id": "barricade-kit",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/barricade-kit.webp",
+          "name": "Barricade Kit",
+          "rarity": "Uncommon",
+          "item_type": "Quick Use"
+        },
+        "item_id": "barricade-kit",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 6436.983228767364
+  },
+  {
+    "id": "safe-passage",
+    "name": "Safe Passage",
+    "objectives": [
+      "Destroy 2 ARC enemies using any explosive grenade"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "3b6676e4-b717-4a56-95a5-7e36153475eb",
+        "item": {
+          "id": "shrapnel-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/shrapnel-grenade.webp",
+          "name": "Shrapnel Grenade",
+          "rarity": "Uncommon",
+          "item_type": "Throwable"
+        },
+        "item_id": "shrapnel-grenade",
+        "quantity": "3"
+      },
+      {
+        "id": "760a5f6d-a436-4054-8d04-05a1de0a61de",
+        "item": {
+          "id": "lil-smoke-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/lil-smoke-grenade.webp",
+          "name": "Li'l Smoke Grenade",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "lil-smoke-grenade",
+        "quantity": "5"
+      },
+      {
+        "id": "b99778d4-2b56-45b3-bdf1-0f662d3ca6fb",
+        "item": {
+          "id": "barricade-kit",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/barricade-kit.webp",
+          "name": "Barricade Kit",
+          "rarity": "Uncommon",
+          "item_type": "Quick Use"
+        },
+        "item_id": "barricade-kit",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Apollo",
+    "xp": 0,
+    "sortOrder": 1039.9397757882718
+  },
+  {
+    "id": "snap-and-salvage",
+    "name": "Snap and Salvage",
+    "objectives": [
+      "Take a Photo of any of the Rovers in the Sandbox",
+      "Search the papers in the Security Checkpoint room by the Lobby",
+      "Deliver a Magnetron to Tian Wen",
+      "Deliver a Flow Controller to Tian Wen"
+    ],
+    "requirements": [
+      {
+        "id": "097e24dd-82bc-4733-9d15-42fc6dc712bf",
+        "item": {
+          "id": "magnetron",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/magnetron.webp",
+          "name": "Magnetron",
+          "rarity": "Epic",
+          "item_type": "Recyclable"
+        },
+        "item_id": "magnetron",
+        "quantity": 1
+      },
+      {
+        "id": "1acd2461-d4a9-4d1c-ba2e-1e0ebc03c1c9",
+        "item": {
+          "id": "flow-controller",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/flow-controller.webp",
+          "name": "Flow Controller",
+          "rarity": "Rare",
+          "item_type": "Recyclable"
+        },
+        "item_id": "flow-controller",
+        "quantity": 1
+      }
+    ],
+    "rewardItemIds": [
+      {
+        "id": "097e24dd-82bc-4733-9d15-42fc6dc712bf",
+        "item": {
+          "id": "magnetron",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/magnetron.webp",
+          "name": "Magnetron",
+          "rarity": "Epic",
+          "item_type": "Recyclable"
+        },
+        "item_id": "magnetron",
+        "quantity": 1
+      },
+      {
+        "id": "1acd2461-d4a9-4d1c-ba2e-1e0ebc03c1c9",
+        "item": {
+          "id": "flow-controller",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/flow-controller.webp",
+          "name": "Flow Controller",
+          "rarity": "Rare",
+          "item_type": "Recyclable"
+        },
+        "item_id": "flow-controller",
+        "quantity": 1
+      }
+    ],
+    "rewards": [
+      {
+        "id": "27aa790d-0d6a-4c38-bb96-3f64e8f6a04a",
+        "item": {
+          "id": "light-ammo",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/light-ammo.webp",
+          "name": "Light Ammo",
+          "rarity": "Common",
+          "item_type": "Ammunition"
+        },
+        "item_id": "light-ammo",
+        "quantity": "100"
+      },
+      {
+        "id": "5a65a037-d1a5-41a9-adbc-3ddf97798a28",
+        "item": {
+          "id": "extended-light-mag-ii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/extended-light-mag-ii.webp",
+          "name": "Extended Light Mag II",
+          "rarity": "Uncommon",
+          "item_type": "Modification"
+        },
+        "item_id": "extended-light-mag-ii",
+        "quantity": "1"
+      },
+      {
+        "id": "818b2491-b371-42a6-baa9-ecc7ab9ccdfb",
+        "item": {
+          "id": "silencer-ii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/silencer-ii.webp",
+          "name": "Silencer II",
+          "rarity": "Rare",
+          "item_type": "Modification"
+        },
+        "item_id": "silencer-ii",
+        "quantity": "1"
+      },
+      {
+        "id": "b663452d-5280-4baf-979e-e21b3ade377c",
+        "item": {
+          "id": "burletta-iiii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/burletta-iiii.webp",
+          "name": "Burletta III",
+          "rarity": "Uncommon",
+          "item_type": "Weapon"
+        },
+        "item_id": "burletta-iiii",
+        "quantity": "1"
+      }
+    ],
+    "trader": "TianWen",
+    "xp": 0,
+    "sortOrder": 1518.8847623375223
+  },
+  {
+    "id": "source-of-the-contamination",
+    "name": "Source of the Contamination",
+    "objectives": [
+      "Reach the Water Treatment Building in The Dam",
+      "Search for the Flood Spill Intake near the Swamp",
+      "Investigate any suspicious objects"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "ef00e0ac-9ef0-4d78-88e4-b2ba392ee331",
+        "item": {
+          "id": "spring",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/spring.webp",
+          "name": "Steel Spring",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "spring",
+        "quantity": "5"
+      },
+      {
+        "id": "f49ecfbd-1acf-4883-9e45-8663a99f0c7d",
+        "item": {
+          "id": "mod-components",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/mod-components.webp",
+          "name": "Mod Components",
+          "rarity": "Rare",
+          "item_type": "Refined Material"
+        },
+        "item_id": "mod-components",
+        "quantity": "1"
+      },
+      {
+        "id": "f9ac0a82-03f5-4caf-8e3c-234d5e463c0c",
+        "item": {
+          "id": "duct-tape-recipe",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/duct-tape.webp",
+          "name": "Duct Tape",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "duct-tape-recipe",
+        "quantity": "5"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 3779.252140564836
+  },
+  {
+    "id": "sparks-fly",
+    "name": "Sparks Fly",
+    "objectives": [
+      "Destroy a Hornet with a Trigger Nade or Snap Blast grenade"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "2e349990-8fce-4ca5-b727-3a61c897ba54",
+        "item": {
+          "id": "processor",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/processor.webp",
+          "name": "Processor",
+          "rarity": "Rare",
+          "item_type": "Topside Material"
+        },
+        "item_id": "processor",
+        "quantity": "2"
+      },
+      {
+        "id": "9ffb0502-deb7-4294-9c44-474fd01bcbe1",
+        "item": {
+          "id": "trigger-nade-recipe",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/trigger-nade.webp",
+          "name": "Trigger Nade Blueprint",
+          "rarity": "Legendary",
+          "item_type": "Blueprint"
+        },
+        "item_id": "trigger-nade-recipe",
+        "quantity": "1"
+      },
+      {
+        "id": "ad39d222-1375-4fa9-83f1-df06a6c17039",
+        "item": {
+          "id": "crude-explosives",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/crude-explosives.webp",
+          "name": "Crude Explosives",
+          "rarity": "Uncommon",
+          "item_type": "Refined Material"
+        },
+        "item_id": "crude-explosives",
+        "quantity": "4"
+      }
+    ],
+    "trader": "Apollo",
+    "xp": 0,
+    "sortOrder": 1519.9397757882718
+  },
+  {
+    "id": "straight-record",
+    "name": "Straight Record",
+    "objectives": [
+      "Reach Victory Ridge",
+      "Find the old EMP trap",
+      "Disable the first power switch",
+      "Disable the second power switch",
+      "Disable the third power switch",
+      "Shut down the EMP trap"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "92122893-7311-473d-8a4f-cbf3a52fa527",
+        "item": {
+          "id": "advanced-mechanical-components",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/advanced-mechanical-components.webp",
+          "name": "Advanced Mechanical Components",
+          "rarity": "Rare",
+          "item_type": "Advanced Material"
+        },
+        "item_id": "advanced-mechanical-components",
+        "quantity": "3"
+      },
+      {
+        "id": "a591e158-19e2-4eff-8385-49653bcd9a70",
+        "item": {
+          "id": "medium-gun-parts",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/medium-gun-parts.webp",
+          "name": "Medium Gun Parts",
+          "rarity": "Rare",
+          "item_type": "Topside Material"
+        },
+        "item_id": "medium-gun-parts",
+        "quantity": "5"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 2699.773302130645
+  },
+  {
+    "id": "switching-the-supply",
+    "name": "Switching the Supply",
+    "objectives": [
+      "In one round: Find the tunnels under the Spaceport",
+      "Find and turn the valve in the tunnels under Spaceport"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "55f335d9-fe29-40df-b278-5938be8fdba7",
+        "item": {
+          "id": "synthesized-fuel",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/synthesized-fuel.webp",
+          "name": "Synthesized Fuel",
+          "rarity": "Rare",
+          "item_type": "Topside Material"
+        },
+        "item_id": "synthesized-fuel",
+        "quantity": "3"
+      },
+      {
+        "id": "7a842682-44d9-4b1c-93d8-cfbfbc5e52e6",
+        "item": {
+          "id": "spaceport-trench-tower-key",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/spaceport-trench-tower-key.webp",
+          "name": "Spaceport Trench Tower Key",
+          "rarity": "Uncommon",
+          "item_type": "Key"
+        },
+        "item_id": "spaceport-trench-tower-key",
+        "quantity": "1"
+      },
+      {
+        "id": "dfcf10cd-0883-4c5b-86da-89ac900cfd80",
+        "item": {
+          "id": "blue-radio-renegade-color",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/blue-radio-renegade-color.webp",
+          "name": "Blue (Radio Renegade Color)",
+          "rarity": "Common",
+          "item_type": "Misc"
+        },
+        "item_id": "blue-radio-renegade-color",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 4019.252140564836
+  },
+  {
+    "id": "the-clean-dream",
+    "name": "The Clean Dream",
+    "objectives": [
+      "On Spaceport, search 4 containers in the underground tunnels",
+      "Find and monitor any Filtration System in the tunnels",
+      "On The Blue Gate, visit the Maintenance Bunker",
+      "Monitor the Purification System in the bunker",
+      "Find and photograph the blueprints in the bunker"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "6fca14ab-7c0c-477b-87d9-4d52a546fea7",
+        "item": {
+          "id": "heavy-fuze-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/heavy-fuze-grenade.webp",
+          "name": "Heavy Fuze Grenade",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "heavy-fuze-grenade",
+        "quantity": "3"
+      },
+      {
+        "id": "a1a57e77-f46e-4cd2-82ce-ba2dec417ccd",
+        "item": {
+          "id": "deadline",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/deadline.webp",
+          "name": "Deadline",
+          "rarity": "Epic",
+          "item_type": "Quick Use"
+        },
+        "item_id": "deadline",
+        "quantity": "1"
+      },
+      {
+        "id": "cb66c8ac-ad7b-41d0-b834-99a90fb01329",
+        "item": {
+          "id": "showstopper",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/showstopper.webp",
+          "name": "Showstopper",
+          "rarity": "Rare",
+          "item_type": "Throwable"
+        },
+        "item_id": "showstopper",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Apollo",
+    "xp": 0,
+    "sortOrder": 6970.340249561917
+  },
+  {
+    "id": "the-league",
+    "name": "The League",
+    "objectives": [
+      "Deliver a Deflated Foodball to Apollo",
+      "Deliver a Bicycle Pump to Apollo",
+      "On Dam Battlegrounds, photography the goal by the Water Towers",
+      "On Buried City, photograph the football magazines in any kiosk"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "d5bc04a8-3159-442d-ae93-026bdfb3e649",
+        "item": {
+          "id": "tagging-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/tagging-grenade.webp",
+          "name": "Tagging Grenade",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "tagging-grenade",
+        "quantity": "1"
+      },
+      {
+        "id": "28c549a4-52c7-4d48-93aa-cbb499c3727b",
+        "item": {
+          "id": "firecracker",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/firecracker.webp",
+          "name": "Firecracker",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "firecracker",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Apollo",
+    "xp": 0,
+    "sortOrder": 1533.2327539462642
+  },
+  {
+    "id": "the-majors-footlocker",
+    "name": "The Majors Footlocker",
+    "objectives": [
+      "In One Round:",
+      "Search for Major Aiva's mementos in the apartments northwest of The Dam",
+      "Deliver Major Aiva's Mementos to Tian Wen"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "b10dfc87-5cc0-4c33-8ba1-8a36866680db",
+        "item": {
+          "id": "hullcracker-blueprint",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/hullcracker.webp",
+          "name": "Hullcracker Blueprint",
+          "rarity": "Legendary",
+          "item_type": "Blueprint"
+        },
+        "item_id": "hullcracker-blueprint",
+        "quantity": "1"
+      }
+    ],
+    "trader": "TianWen",
+    "xp": 0,
+    "sortOrder": 3808.281728989622
+  },
+  {
+    "id": "the-right-tool",
+    "name": "The Right Tool",
+    "objectives": [
+      "Destroy a Fireball",
+      "Destroy a Hornet",
+      "Destroy a Turret"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "645b2df6-8164-477f-af49-d84c1566158b",
+        "item": {
+          "id": "stitcher-ii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/stitcher-ii.webp",
+          "name": "Stitcher II",
+          "rarity": "Common",
+          "item_type": "Weapon"
+        },
+        "item_id": "stitcher-ii",
+        "quantity": "1"
+      },
+      {
+        "id": "7b6d8385-dee6-49d0-9db3-4a57072610e4",
+        "item": {
+          "id": "cheer-emote",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/cheer-emote.webp",
+          "name": "Cheer (Emote)",
+          "rarity": "",
+          "item_type": "Misc"
+        },
+        "item_id": "cheer-emote",
+        "quantity": "1"
+      },
+      {
+        "id": "d4ca590b-7b1e-4b23-9b5a-31122dbaeb80",
+        "item": {
+          "id": "extended-light-mag-i",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/extended-light-mag-i.webp",
+          "name": "Extended Light Mag I",
+          "rarity": "Common",
+          "item_type": "Modification"
+        },
+        "item_id": "extended-light-mag-i",
+        "quantity": "1"
+      }
+    ],
+    "trader": "TianWen",
+    "xp": 0,
+    "sortOrder": 1040.3902829127408
+  },
+  {
+    "id": "the-root-of-the-matter",
+    "name": "The Root of the Matter",
+    "objectives": [
+      "In one round: Go to the Research Building",
+      "Search for the seed vault in the 'room with a great view'"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "4ab659f0-f4b5-40ab-bfb7-09ae2650b1df",
+        "item": {
+          "id": "succulent-backpack-charm",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/succulent-backpack-charm.webp",
+          "name": "Succulent (Backpack Charm)",
+          "rarity": "",
+          "item_type": "Misc"
+        },
+        "item_id": "succulent-backpack-charm",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 3268.4876761730225
+  },
+  {
+    "id": "the-stench-of-corruption",
+    "name": "The Stench Of Corruption",
+    "objectives": [
+      "In one round",
+      "Reach the southwest lobby of the Departure Building",
+      "Find the staff locker room",
+      "Search the room for any clues of the saboteur's identity",
+      "Reach the tunnels below the Spaceport",
+      "Use the key on any Flushing Terminal to override the bypass protocol"
+    ],
+    "requirements": [
+      {
+        "id": "69b82e4b-f856-4da1-b7fb-e90c02779aee",
+        "item": {
+          "id": "flushing-terminal-key",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/flushing-terminal-key.webp",
+          "name": "Flushing Terminal Key",
+          "rarity": "Common",
+          "item_type": "Trinket"
+        },
+        "item_id": "flushing-terminal-key",
+        "quantity": 1
+      }
+    ],
+    "rewardItemIds": [
+      {
+        "id": "69b82e4b-f856-4da1-b7fb-e90c02779aee",
+        "item": {
+          "id": "flushing-terminal-key",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/flushing-terminal-key.webp",
+          "name": "Flushing Terminal Key",
+          "rarity": "Common",
+          "item_type": "Trinket"
+        },
+        "item_id": "flushing-terminal-key",
+        "quantity": 1
+      }
+    ],
+    "rewards": [
+      {
+        "id": "1e2af30d-a660-49dc-a114-f9b3ad5b7ea1",
+        "item": {
+          "id": "air-freshener",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/air-freshener.webp",
+          "name": "Air Freshener",
+          "rarity": "Uncommon",
+          "item_type": "Trinket"
+        },
+        "item_id": "air-freshener",
+        "quantity": "1"
+      },
+      {
+        "id": "5dfbcf1c-fa17-4cab-8089-444a810215ed",
+        "item": {
+          "id": "noisemaker",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/noisemaker.webp",
+          "name": "Noisemaker",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "noisemaker",
+        "quantity": "3"
+      },
+      {
+        "id": "f408cf52-ebab-405a-8ff1-b1a5904ec8a2",
+        "item": {
+          "id": "warden-outfit",
+          "icon": "",
+          "name": "Warden (Outfit)",
+          "rarity": "Common",
+          "item_type": "Misc"
+        },
+        "item_id": "warden-outfit",
+        "quantity": "1"
+      },
+      {
+        "id": "fa61fa71-65eb-451c-8c27-d6ef7e602637",
+        "item": {
+          "id": "dam-staff-room-key",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/dam-staff-room-key.webp",
+          "name": "Dam Staff Room Key",
+          "rarity": "Uncommon",
+          "item_type": "Key"
+        },
+        "item_id": "dam-staff-room-key",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 6047.565315216083
+  },
+  {
+    "id": "the-trifecta",
+    "name": "The Trifecta",
+    "objectives": [
+      "Destroy a Wasp",
+      "Get a Wasp Driver for Shani",
+      "Destroy a Hornet",
+      "Get a Hornet Driver for Shani",
+      "Destroy a Snitch Scanner",
+      "Get a Snitch Scanner for Shani"
+    ],
+    "requirements": [
+      {
+        "id": "0fc17c35-e25d-445e-8029-f082dea303e5",
+        "item": {
+          "id": "snitch-scanner",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/snitch-scanner.webp",
+          "name": "Snitch Scanner",
+          "rarity": "Uncommon",
+          "item_type": "Recyclable"
+        },
+        "item_id": "snitch-scanner",
+        "quantity": 2
+      },
+      {
+        "id": "97d09979-887c-419c-8c6d-299776226863",
+        "item": {
+          "id": "wasp-driver",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/wasp-driver.webp",
+          "name": "Wasp Driver",
+          "rarity": "Rare",
+          "item_type": "Recyclable"
+        },
+        "item_id": "wasp-driver",
+        "quantity": 2
+      },
+      {
+        "id": "dae93130-0994-4d9d-abbc-cff78b5cad1f",
+        "item": {
+          "id": "hornet-driver",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/hornet-driver.webp",
+          "name": "Hornet Driver",
+          "rarity": "Rare",
+          "item_type": "Recyclable"
+        },
+        "item_id": "hornet-driver",
+        "quantity": 2
+      }
+    ],
+    "rewardItemIds": [
+      {
+        "id": "0fc17c35-e25d-445e-8029-f082dea303e5",
+        "item": {
+          "id": "snitch-scanner",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/snitch-scanner.webp",
+          "name": "Snitch Scanner",
+          "rarity": "Uncommon",
+          "item_type": "Recyclable"
+        },
+        "item_id": "snitch-scanner",
+        "quantity": 2
+      },
+      {
+        "id": "97d09979-887c-419c-8c6d-299776226863",
+        "item": {
+          "id": "wasp-driver",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/wasp-driver.webp",
+          "name": "Wasp Driver",
+          "rarity": "Rare",
+          "item_type": "Recyclable"
+        },
+        "item_id": "wasp-driver",
+        "quantity": 2
+      },
+      {
+        "id": "dae93130-0994-4d9d-abbc-cff78b5cad1f",
+        "item": {
+          "id": "hornet-driver",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/hornet-driver.webp",
+          "name": "Hornet Driver",
+          "rarity": "Rare",
+          "item_type": "Recyclable"
+        },
+        "item_id": "hornet-driver",
+        "quantity": 2
+      }
+    ],
+    "rewards": [
+      {
+        "id": "09da6e36-d6ab-4448-9133-54965f0b2771",
+        "item": {
+          "id": "defibrillator",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/defibrillator.webp",
+          "name": "Defibrillator",
+          "rarity": "Rare",
+          "item_type": "Quick Use"
+        },
+        "item_id": "defibrillator",
+        "quantity": "2"
+      },
+      {
+        "id": "3f39cf0b-dbb5-419c-827b-386183df3419",
+        "item": {
+          "id": "dam-control-center-tower-key",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/dam-control-center-tower-key.webp",
+          "name": "Dam Control Center Tower Key",
+          "rarity": "Epic",
+          "item_type": "Key"
+        },
+        "item_id": "dam-control-center-tower-key",
+        "quantity": "1"
+      },
+      {
+        "id": "8461f437-2b30-4307-8ce1-4003a190e876",
+        "item": {
+          "id": "orange-camo-origin-outfit",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/orange-camo-origin-outfit.webp",
+          "name": "Orange Camo (Origin Outfit)",
+          "rarity": "",
+          "item_type": "Misc"
+        },
+        "item_id": "orange-camo-origin-outfit",
+        "quantity": "1"
+      },
+      {
+        "id": "bb7b7470-54c0-4afa-9eb8-7e5f28f7946c",
+        "item": {
+          "id": "raider-hatch-key",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/raider-hatch-key.webp",
+          "name": "Raider Hatch Key",
+          "rarity": "Rare",
+          "item_type": "Key"
+        },
+        "item_id": "raider-hatch-key",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 1519.0611297924638
+  },
+  {
+    "id": "trash-into-treasure",
+    "name": "Trash Into Treasure",
+    "objectives": [
+      "Obtain 6 Wires",
+      "Obtain 1 Battery"
+    ],
+    "requirements": [
+      {
+        "id": "2b13e659-43eb-40b5-91be-0bd636285ce9",
+        "item": {
+          "id": "wires-recipe",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/wires.webp",
+          "name": "Wires",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "wires-recipe",
+        "quantity": 6
+      },
+      {
+        "id": "82004bb4-c632-4cdf-afc2-76a1f65e683a",
+        "item": {
+          "id": "battery",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/battery.webp",
+          "name": "Battery",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "battery",
+        "quantity": 1
+      }
+    ],
+    "rewardItemIds": [
+      {
+        "id": "2b13e659-43eb-40b5-91be-0bd636285ce9",
+        "item": {
+          "id": "wires-recipe",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/wires.webp",
+          "name": "Wires",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "wires-recipe",
+        "quantity": 6
+      },
+      {
+        "id": "82004bb4-c632-4cdf-afc2-76a1f65e683a",
+        "item": {
+          "id": "battery",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/battery.webp",
+          "name": "Battery",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "battery",
+        "quantity": 1
+      }
+    ],
+    "rewards": [
+      {
+        "id": "3d4eee25-21a3-4399-842c-4f3cda62eb5d",
+        "item": {
+          "id": "tactical-mk-1",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/tactical-mk-1.webp",
+          "name": "Tactical Mk. 1",
+          "rarity": "Uncommon",
+          "item_type": "Augment"
+        },
+        "item_id": "tactical-mk-1",
+        "quantity": "1"
+      },
+      {
+        "id": "4a7736c0-7682-46d4-8f00-d140a83e3d8d",
+        "item": {
+          "id": "adrenaline-shot",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/adrenaline-shot.webp",
+          "name": "Adrenaline Shot",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "adrenaline-shot",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 319.4725833201698
+  },
+  {
+    "id": "tribute-to-toledo",
+    "name": "Tribute to Toledo",
+    "objectives": [
+      "Get a Power Rod for Celeste"
+    ],
+    "requirements": [
+      {
+        "id": "f1a604e7-4b19-4d8f-a859-0abf9676c838",
+        "item": {
+          "id": "power-rod",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/power-rod.webp",
+          "name": "Power Rod",
+          "rarity": "Epic",
+          "item_type": "Advanced Material"
+        },
+        "item_id": "power-rod",
+        "quantity": 1
+      }
+    ],
+    "rewardItemIds": [
+      {
+        "id": "f1a604e7-4b19-4d8f-a859-0abf9676c838",
+        "item": {
+          "id": "power-rod",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/power-rod.webp",
+          "name": "Power Rod",
+          "rarity": "Epic",
+          "item_type": "Advanced Material"
+        },
+        "item_id": "power-rod",
+        "quantity": 1
+      }
+    ],
+    "rewards": [
+      {
+        "id": "b5e6ce57-7803-4984-b809-cd2ae8583824",
+        "item": {
+          "id": "advanced-mechanical-components",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/advanced-mechanical-components.webp",
+          "name": "Advanced Mechanical Components",
+          "rarity": "Rare",
+          "item_type": "Advanced Material"
+        },
+        "item_id": "advanced-mechanical-components",
+        "quantity": "2"
+      },
+      {
+        "id": "d6d05a09-3aa4-4c10-8e9b-ff53ec15cd1b",
+        "item": {
+          "id": "magnet",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/magnet.webp",
+          "name": "Magnet",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "magnet",
+        "quantity": "5"
+      },
+      {
+        "id": "e597821d-a421-4d0f-9f70-00059ab2d421",
+        "item": {
+          "id": "synthesized-fuel",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/synthesized-fuel.webp",
+          "name": "Synthesized Fuel",
+          "rarity": "Rare",
+          "item_type": "Topside Material"
+        },
+        "item_id": "synthesized-fuel",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 5939.252140564836
+  },
+  {
+    "id": "turnabout",
+    "name": "Turnabout",
+    "objectives": [
+      "Go to the North Trench Tower",
+      "Locate and upload the Blackmail Files to Celeste"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "36dfa2f5-e34a-4eea-9d51-ef1783cd84da",
+        "item": {
+          "id": "heavy-gun-parts",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/heavy-gun-parts.webp",
+          "name": "Heavy Gun Parts",
+          "rarity": "Rare",
+          "item_type": "Topside Material"
+        },
+        "item_id": "heavy-gun-parts",
+        "quantity": "2"
+      },
+      {
+        "id": "51b5ea58-9919-4946-ac01-4293fe99d8cd",
+        "item": {
+          "id": "medium-gun-parts",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/medium-gun-parts.webp",
+          "name": "Medium Gun Parts",
+          "rarity": "Rare",
+          "item_type": "Topside Material"
+        },
+        "item_id": "medium-gun-parts",
+        "quantity": "2"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 6295.427563904591
+  },
+  {
+    "id": "unexpected-initiative",
+    "name": "Unexpected Initiative",
+    "objectives": [
+      "In One Round:",
+      "Reach the Grandioso Apartments in Buried City",
+      "Search for Fertilizer on the rooftop of the Grandioso Apartments",
+      "Reach Piazza Roma in Buried City",
+      "Search for a Water Pump in the broken rooftop gardens at Piazza Roma",
+      "Deliver a Water Pump to Tian Wen",
+      "Deliver Fertilizer to Tian Wen"
+    ],
+    "requirements": [
+      {
+        "id": "959356ad-e436-4cc8-a483-45d856e73689",
+        "item": {
+          "id": "water-pump",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/water-pump.webp",
+          "name": "Water Pump",
+          "rarity": "Rare",
+          "item_type": "Recyclable"
+        },
+        "item_id": "water-pump",
+        "quantity": 1
+      },
+      {
+        "id": "f19bea42-64b5-45e5-9ebb-3b1341c1f96c",
+        "item": {
+          "id": "fertilizer",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/fertilizer.webp",
+          "name": "Fertilizer",
+          "rarity": "Common",
+          "item_type": "Nature"
+        },
+        "item_id": "fertilizer",
+        "quantity": 1
+      }
+    ],
+    "rewardItemIds": [
+      {
+        "id": "959356ad-e436-4cc8-a483-45d856e73689",
+        "item": {
+          "id": "water-pump",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/water-pump.webp",
+          "name": "Water Pump",
+          "rarity": "Rare",
+          "item_type": "Recyclable"
+        },
+        "item_id": "water-pump",
+        "quantity": 1
+      },
+      {
+        "id": "f19bea42-64b5-45e5-9ebb-3b1341c1f96c",
+        "item": {
+          "id": "fertilizer",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/fertilizer.webp",
+          "name": "Fertilizer",
+          "rarity": "Common",
+          "item_type": "Nature"
+        },
+        "item_id": "fertilizer",
+        "quantity": 1
+      }
+    ],
+    "rewards": [
+      {
+        "id": "0ee5f3f3-a1c1-411e-b3e4-dbf0bd3f91ae",
+        "item": {
+          "id": "il-toro-i",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/il%20Toro-i.webp",
+          "name": "Il Toro I",
+          "rarity": "Uncommon",
+          "item_type": "Weapon"
+        },
+        "item_id": "il-toro-i",
+        "quantity": "1"
+      },
+      {
+        "id": "7b613402-d182-4436-8d75-d318acb9a9a6",
+        "item": {
+          "id": "shotgun-choke-ii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/shotgun-choke-ii.webp",
+          "name": "Shotgun Choke II",
+          "rarity": "Uncommon",
+          "item_type": "Modification"
+        },
+        "item_id": "shotgun-choke-ii",
+        "quantity": "1"
+      },
+      {
+        "id": "fc486f16-e16e-45cc-9ecd-e20163055504",
+        "item": {
+          "id": "shotgun-ammo",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/shotgun-ammo.webp",
+          "name": "Shotgun ammo",
+          "rarity": "Common",
+          "item_type": "Ammunition"
+        },
+        "item_id": "shotgun-ammo",
+        "quantity": "40"
+      }
+    ],
+    "trader": "TianWen",
+    "xp": 0,
+    "sortOrder": 3406.951187812034
+  },
+  {
+    "id": "untended-garden",
+    "name": "Untended Garden",
+    "objectives": [
+      "In One Round:",
+      "Go to the Hydroponic Dome Complex",
+      "Access the data archive in one of the domes",
+      "Upload the data to the computer terminal in any Field Depot"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "301ddd29-01ba-419e-bd78-1cbcbbf329e3",
+        "item": {
+          "id": "advanced-mechanical-components",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/advanced-mechanical-components.webp",
+          "name": "Advanced Mechanical Components",
+          "rarity": "Rare",
+          "item_type": "Advanced Material"
+        },
+        "item_id": "advanced-mechanical-components",
+        "quantity": "3"
+      },
+      {
+        "id": "9355c84f-43af-40cc-8222-31d506d3a7d3",
+        "item": {
+          "id": "canister",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/canister.webp",
+          "name": "Canister",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "canister",
+        "quantity": "5"
+      },
+      {
+        "id": "ad042cbb-22cd-493c-b82b-c48e881e056f",
+        "item": {
+          "id": "heavy-gun-parts",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/heavy-gun-parts.webp",
+          "name": "Heavy Gun Parts",
+          "rarity": "Rare",
+          "item_type": "Topside Material"
+        },
+        "item_id": "heavy-gun-parts",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 3028.4876761730225
+  },
+  {
+    "id": "water-troubles",
+    "name": "Water Troubles",
+    "objectives": [
+      "In one round: Locate the Flood Access Tunnel under the Red Lake Berm",
+      "Find the intake to the District's Water Supply",
+      "Sample the water"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "544ff8e0-aeb5-4706-a359-8566bc237648",
+        "item": {
+          "id": "simple-gun-parts",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/simple-gun-parts.webp",
+          "name": "Simple Gun Parts",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "simple-gun-parts",
+        "quantity": "3"
+      },
+      {
+        "id": "77ce5b26-1d01-4808-8368-df3713eb6316",
+        "item": {
+          "id": "mechanical-components",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/mechanical-components.webp",
+          "name": "Mechanical Components",
+          "rarity": "Uncommon",
+          "item_type": "Refined Material"
+        },
+        "item_id": "mechanical-components",
+        "quantity": "3"
+      },
+      {
+        "id": "99a79d3f-bdfd-4910-abc6-604d417095d3",
+        "item": {
+          "id": "spring",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/spring.webp",
+          "name": "Steel Spring",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "spring",
+        "quantity": "3"
+      }
+    ],
+    "trader": "Celeste",
+    "xp": 0,
+    "sortOrder": 3539.252140564836
+  },
+  {
+    "id": "what-goes-around",
+    "name": "What Goes Around",
+    "objectives": [
+      "Destroy any ARC enemy using a Fireball Burner"
+    ],
+    "requirements": [
+      {
+        "id": "9a8a0af6-0493-4bea-ba18-a4c25b1a8a8c",
+        "item": {
+          "id": "fireball-burner",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/fireball-burner.webp",
+          "name": "Fireball Burner",
+          "rarity": "Uncommon",
+          "item_type": "Recyclable"
+        },
+        "item_id": "fireball-burner",
+        "quantity": 1
+      }
+    ],
+    "rewardItemIds": [
+      {
+        "id": "9a8a0af6-0493-4bea-ba18-a4c25b1a8a8c",
+        "item": {
+          "id": "fireball-burner",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/fireball-burner.webp",
+          "name": "Fireball Burner",
+          "rarity": "Uncommon",
+          "item_type": "Recyclable"
+        },
+        "item_id": "fireball-burner",
+        "quantity": 1
+      }
+    ],
+    "rewards": [
+      {
+        "id": "09da2aed-0d20-4355-9a1e-f210d3af9468",
+        "item": {
+          "id": "noisemaker",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/noisemaker.webp",
+          "name": "Noisemaker",
+          "rarity": "Common",
+          "item_type": "Quick Use"
+        },
+        "item_id": "noisemaker",
+        "quantity": "2"
+      },
+      {
+        "id": "2ac28092-95df-42a2-bb31-830aa56310d0",
+        "item": {
+          "id": "blaze-grenade",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/blaze-grenade.webp",
+          "name": "Blaze Grenade",
+          "rarity": "Rare",
+          "item_type": "Throwable"
+        },
+        "item_id": "blaze-grenade",
+        "quantity": "3"
+      },
+      {
+        "id": "dbd3280f-a2f1-4eb6-852e-6e54fe447d56",
+        "item": {
+          "id": "cans-backpack-attachment",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/cans-backpack-attachment.webp",
+          "name": "Cans (Backpack Attachment)",
+          "rarity": "Common",
+          "item_type": "Cosmetic"
+        },
+        "item_id": "cans-backpack-attachment",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Apollo",
+    "xp": 0,
+    "sortOrder": 1279.9397757882718
+  },
+  {
+    "id": "what-we-left-behind",
+    "name": "What We Left Behind",
+    "objectives": [
+      "On Buried City, search 2 containers in the Raider Camp beneath the Parking Garage",
+      "On Dam Battlegrounds, search for anything significant in the South Swamp Outpost",
+      "On Spaceport, search for anything significant in Bilguun's Hideout, next to the Container Storage"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "459242ca-6f7b-4e7e-b4bb-f7c3c395eadc",
+        "item": {
+          "id": "vertical-grip-ii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/vertical-grip-ii.webp",
+          "name": "Vertical Grip II",
+          "rarity": "Uncommon",
+          "item_type": "Modification"
+        },
+        "item_id": "vertical-grip-ii",
+        "quantity": "1"
+      },
+      {
+        "id": "7caedc87-fb08-4d30-95e9-f2984d75eb6c",
+        "item": {
+          "id": "stable-stock-ii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/stable-stock-ii.webp",
+          "name": "Stable Stock II",
+          "rarity": "Uncommon",
+          "item_type": "Modification"
+        },
+        "item_id": "stable-stock-ii",
+        "quantity": "1"
+      },
+      {
+        "id": "e5d39aa5-be09-49b0-b02e-383ec5bedba8",
+        "item": {
+          "id": "muzzle-brake-ii",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/muzzle-brake-ii.webp",
+          "name": "Muzzle Brake II",
+          "rarity": "Uncommon",
+          "item_type": "Modification"
+        },
+        "item_id": "muzzle-brake-ii",
+        "quantity": "1"
+      }
+    ],
+    "trader": "TianWen",
+    "xp": 0,
+    "sortOrder": 2048.8797708209436
+  },
+  {
+    "id": "with-a-trace",
+    "name": "With a Trace",
+    "objectives": [
+      "Reach the Barren Clearing",
+      "Find signs of who brought down the ARC machines",
+      "Inspect the Adorned Wreckage",
+      "Inspect the communications device"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "5b20c967-2032-4cdd-b0b9-c260e3f5a3e7",
+        "item": {
+          "id": "medium-shield",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/medium-shield.webp",
+          "name": "Medium Shield",
+          "rarity": "Rare",
+          "item_type": "Shield"
+        },
+        "item_id": "medium-shield",
+        "quantity": "1"
+      },
+      {
+        "id": "a046e3fd-f04a-4ccc-b6b5-518024c8e569",
+        "item": {
+          "id": "looting-mk-2",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/looting-mk-2.webp",
+          "name": "Looting Mk. 2",
+          "rarity": "Rare",
+          "item_type": "Augment"
+        },
+        "item_id": "looting-mk-2",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 6676.983228767364
+  },
+  {
+    "id": "with-a-view",
+    "name": "With a View",
+    "objectives": [
+      "Obtain a Rotary Encoder",
+      "Visit any of the Control Rooms near the Assembly Line"
+    ],
+    "requirements": [],
+    "rewardItemIds": [],
+    "rewards": [
+      {
+        "id": "af785644-8018-4af3-b0fe-a16918d9a91f",
+        "item": {
+          "id": "spring",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/spring.webp",
+          "name": "Steel Spring",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "spring",
+        "quantity": "1"
+      },
+      {
+        "id": "40056edd-0c19-4895-8dd5-9a97a5a64bfa",
+        "item": {
+          "id": "wires-recipe",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/wires.webp",
+          "name": "Wires",
+          "rarity": "Uncommon",
+          "item_type": "Topside Material"
+        },
+        "item_id": "wires-recipe",
+        "quantity": "1"
+      },
+      {
+        "id": "46d665a1-b561-484c-9e38-0d59a72d7d54",
+        "item": {
+          "id": "tactical-mk-2",
+          "icon": "https://cdn.metaforge.app/arc-raiders/icons/tactical-mk-2.webp",
+          "name": "Tactical Mk. 2",
+          "rarity": "Rare",
+          "item_type": "Augment"
+        },
+        "item_id": "tactical-mk-2",
+        "quantity": "1"
+      }
+    ],
+    "trader": "Shani",
+    "xp": 0,
+    "sortOrder": 1754.6943973062562
+  }
+]

@@ -8,7 +8,7 @@ from typing import Dict, List, Literal, Optional, Tuple, cast
 
 from ..interaction.inventory_grid import Cell
 
-Decision = Literal["KEEP", "RECYCLE", "SELL", "CRAFTING MATERIAL"]
+Decision = Literal["KEEP", "RECYCLE", "SELL"]
 DecisionList = List[Decision]
 ActionMap = Dict[str, DecisionList]
 
@@ -24,22 +24,32 @@ class ItemActionResult:
     note: Optional[str] = None
 
 
-VALID_DECISIONS = {"KEEP", "RECYCLE", "SELL", "CRAFTING MATERIAL"}
-ITEM_ACTIONS_DEFAULT_PATH = (
-    Path(__file__).resolve().parent.parent / "items" / "items_actions.default.json"
+VALID_DECISIONS = {"KEEP", "RECYCLE", "SELL"}
+ACTION_ALIASES = {
+    "keep": "KEEP",
+    "sell": "SELL",
+    "recycle": "RECYCLE",
+    "your_call": "KEEP",
+    "your call": "KEEP",
+    "sell_or_recycle": "SELL",
+    "sell or recycle": "SELL",
+    "crafting material": "KEEP",
+}
+ITEM_RULES_DEFAULT_PATH = (
+    Path(__file__).resolve().parent.parent / "items" / "items_rules.default.json"
 )
-ITEM_ACTIONS_CUSTOM_PATH = (
-    Path(__file__).resolve().parent.parent / "items" / "items_actions.custom.json"
+ITEM_RULES_CUSTOM_PATH = (
+    Path(__file__).resolve().parent.parent / "items" / "items_rules.custom.json"
 )
-ITEM_ACTIONS_PATH = ITEM_ACTIONS_DEFAULT_PATH
+ITEM_RULES_PATH = ITEM_RULES_DEFAULT_PATH
 
 
 def resolve_item_actions_path(path: Optional[Path] = None) -> Path:
-    if path is None or path == ITEM_ACTIONS_DEFAULT_PATH or path == ITEM_ACTIONS_PATH:
+    if path is None or path == ITEM_RULES_DEFAULT_PATH or path == ITEM_RULES_PATH:
         return (
-            ITEM_ACTIONS_CUSTOM_PATH
-            if ITEM_ACTIONS_CUSTOM_PATH.exists()
-            else ITEM_ACTIONS_DEFAULT_PATH
+            ITEM_RULES_CUSTOM_PATH
+            if ITEM_RULES_CUSTOM_PATH.exists()
+            else ITEM_RULES_DEFAULT_PATH
         )
     return path
 
@@ -54,45 +64,71 @@ def clean_ocr_text(raw: str) -> str:
     return text.strip()
 
 
+def _normalize_action(value: object) -> Optional[Decision]:
+    if not isinstance(value, str):
+        return None
+    key = value.strip().lower()
+    mapped = ACTION_ALIASES.get(key)
+    if mapped in VALID_DECISIONS:
+        return cast(Decision, mapped)
+    candidate = key.upper()
+    if candidate in VALID_DECISIONS:
+        return cast(Decision, candidate)
+    return None
+
+
 def load_item_actions(path: Optional[Path] = None) -> ActionMap:
     path = resolve_item_actions_path(path)
     try:
         raw = json.loads(path.read_text(encoding="utf-8"))
     except FileNotFoundError:
         print(
-            f"[warn] Item actions file not found at {path}; defaulting to skip actions."
+            f"[warn] Item rules file not found at {path}; defaulting to skip actions."
         )
         return {}
     except json.JSONDecodeError as exc:
         print(
-            f"[warn] Could not parse item actions file {path}: {exc}; defaulting to skip actions."
+            f"[warn] Could not parse item rules file {path}: {exc}; defaulting to skip actions."
         )
         return {}
 
-    if not isinstance(raw, list):
+    if isinstance(raw, dict):
+        raw_items = raw.get("items", [])
+    else:
+        raw_items = raw
+
+    if not isinstance(raw_items, list):
         print(
-            f"[warn] Item actions file {path} must be a JSON array; defaulting to skip actions."
+            f"[warn] Item rules file {path} must contain an items list; defaulting to skip actions."
         )
         return {}
 
     actions: ActionMap = {}
-    for entry in raw:
+    for entry in raw_items:
         if not isinstance(entry, dict):
             continue
         name = entry.get("name")
-        decisions = entry.get("decision")
-        if not isinstance(name, str) or not isinstance(decisions, list):
+        normalized_name = normalize_item_name(name)
+        if not isinstance(name, str) or not normalized_name:
             continue
 
-        normalized_name = normalize_item_name(name)
+        action_value = entry.get("action")
+        action = _normalize_action(action_value)
+        if action:
+            actions[normalized_name] = [action]
+            continue
+
+        decisions = entry.get("decision")
+        if not isinstance(decisions, list):
+            continue
+
         cleaned: DecisionList = []
         for decision in decisions:
-            if not isinstance(decision, str):
-                continue
-            candidate = decision.strip().upper()
-            if candidate in VALID_DECISIONS:
-                cleaned.append(cast(Decision, candidate))
-        if normalized_name and cleaned:
+            action = _normalize_action(decision)
+            if action:
+                cleaned.append(action)
+
+        if cleaned:
             actions[normalized_name] = cleaned
 
     return actions

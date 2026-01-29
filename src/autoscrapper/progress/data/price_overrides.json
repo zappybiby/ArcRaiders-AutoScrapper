@@ -1,0 +1,169 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-11-09",
+    "description": "Price overrides for items with missing or incorrect values. These overrides persist across data updates from external sources."
+  },
+  "overrides": {
+    "wolfpack": {
+      "value": 3000,
+      "source": "MetaForge database - A-Tier trinket",
+      "confidence": "high"
+    },
+    "venator_i": {
+      "value": 7000,
+      "source": "Arc Raiders database and multiple sources",
+      "confidence": "high"
+    },
+    "venator_ii": {
+      "value": 7000,
+      "source": "Same weapon tier as Venator I",
+      "confidence": "medium"
+    },
+    "vulcano_i": {
+      "value": 8000,
+      "source": "Epic shotgun, estimated based on epic weapon tier",
+      "confidence": "medium"
+    },
+    "arpeggio_iii": {
+      "value": 5500,
+      "source": "Arpeggio I base value from database",
+      "confidence": "medium"
+    },
+    "arpeggio_iv": {
+      "value": 5500,
+      "source": "Arpeggio I base value from database",
+      "confidence": "medium"
+    },
+    "rattler_iii": {
+      "value": 2000,
+      "source": "Common weapon tier average (800-5000, avg 2199)",
+      "confidence": "medium"
+    },
+    "burletta_blueprint": {
+      "value": 5000,
+      "source": "All blueprints sell for 5000",
+      "confidence": "high"
+    },
+    "dam_staff_room_key": {
+      "value": 100,
+      "source": "Standard key price pattern",
+      "confidence": "high"
+    },
+    "buried_city_residential_master_key": {
+      "value": 100,
+      "source": "Standard key price pattern",
+      "confidence": "high"
+    },
+    "dam_utility_key": {
+      "value": 100,
+      "source": "Standard key price pattern",
+      "confidence": "high"
+    },
+    "deflated_football": {
+      "value": 900,
+      "source": "Uncommon recyclable average (270-5000, avg 902)",
+      "confidence": "medium"
+    },
+    "broken_flashlight": {
+      "value": 1000,
+      "source": "Rare recyclable average (640-3000, avg 1264)",
+      "confidence": "medium"
+    },
+    "broken_riot_shield": {
+      "value": 1000,
+      "source": "Rare recyclable average (640-3000, avg 1264)",
+      "confidence": "medium"
+    },
+    "impure_arc_coolant": {
+      "value": 900,
+      "source": "Uncommon recyclable average (270-5000, avg 902)",
+      "confidence": "medium"
+    },
+    "ruined_baton": {
+      "value": 900,
+      "source": "Uncommon recyclable average (270-5000, avg 902)",
+      "confidence": "medium"
+    },
+    "diving_goggles": {
+      "value": 1000,
+      "source": "Rare recyclable average (640-3000, avg 1264)",
+      "confidence": "medium"
+    },
+    "dried_out_arc_resin": {
+      "value": 900,
+      "source": "Uncommon recyclable average (270-5000, avg 902)",
+      "confidence": "medium"
+    },
+    "broken_guidance_system": {
+      "value": 1000,
+      "source": "Rare recyclable average (640-3000, avg 1264)",
+      "confidence": "medium"
+    },
+    "ruined_handcuffs": {
+      "value": 900,
+      "source": "Uncommon recyclable average (270-5000, avg 902)",
+      "confidence": "medium"
+    },
+    "smoke_grenade_trap": {
+      "value": 1300,
+      "source": "Rare quick use average (850-2200, avg 1342)",
+      "confidence": "medium"
+    },
+    "celestes_journal": {
+      "value": 955,
+      "source": "Common trinket average (640-1000, avg 955)",
+      "confidence": "medium"
+    },
+    "explosive_mixture": {
+      "value": 300,
+      "source": "Basic crafting material, estimated",
+      "confidence": "low"
+    },
+    "sentinel_part": {
+      "value": 500,
+      "source": "Special material component, estimated",
+      "confidence": "low"
+    },
+    "spring": {
+      "value": 300,
+      "source": "Steel Spring sells for 300 per web research",
+      "confidence": "high"
+    },
+    "esr_analyzer": {
+      "value": 270,
+      "source": "Common misc item baseline",
+      "confidence": "low"
+    },
+    "backpack_black_hiker_color": {
+      "value": 0,
+      "source": "Cosmetic items typically not sellable",
+      "confidence": "medium"
+    },
+    "junior_outfit": {
+      "value": 0,
+      "source": "Cosmetic items typically not sellable",
+      "confidence": "medium"
+    },
+    "cans_backpack_attachment": {
+      "value": 0,
+      "source": "Cosmetic items typically not sellable",
+      "confidence": "medium"
+    },
+    "radio_renegade": {
+      "value": 0,
+      "source": "Cosmetic outfit, typically not sellable",
+      "confidence": "medium"
+    },
+    "banana": {
+      "value": 0,
+      "source": "Cosmetic backpack charm, not sellable",
+      "confidence": "medium"
+    },
+    "burgerboy": {
+      "value": 0,
+      "source": "Cosmetic backpack charm, not sellable",
+      "confidence": "medium"
+    }
+  }
+}

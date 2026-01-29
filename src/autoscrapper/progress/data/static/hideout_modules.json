@@ -1,0 +1,483 @@
+[
+  {
+    "id": "scrappy",
+    "name": "Scrappy",
+    "maxLevel": 5,
+    "levels": [
+      {
+        "level": 1,
+        "requirementItemIds": []
+      },
+      {
+        "level": 2,
+        "requirementItemIds": [
+          {
+            "item_id": "dog-collar",
+            "quantity": 1
+          }
+        ]
+      },
+      {
+        "level": 3,
+        "requirementItemIds": [
+          {
+            "item_id": "lemon",
+            "quantity": 3
+          },
+          {
+            "item_id": "apricot",
+            "quantity": 3
+          }
+        ]
+      },
+      {
+        "level": 4,
+        "requirementItemIds": [
+          {
+            "item_id": "prickly-pear",
+            "quantity": 6
+          },
+          {
+            "item_id": "olives",
+            "quantity": 6
+          },
+          {
+            "item_id": "cat-bed",
+            "quantity": 1
+          }
+        ]
+      },
+      {
+        "level": 5,
+        "requirementItemIds": [
+          {
+            "item_id": "mushroom",
+            "quantity": 12
+          },
+          {
+            "item_id": "apricot",
+            "quantity": 12
+          },
+          {
+            "item_id": "very-comfortable-pillow",
+            "quantity": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "workbench",
+    "name": "Workbench",
+    "maxLevel": 0,
+    "levels": []
+  },
+  {
+    "id": "weapon_bench",
+    "name": "Gunsmith",
+    "maxLevel": 3,
+    "levels": [
+      {
+        "level": 1,
+        "requirementItemIds": [
+          {
+            "item_id": "metal-parts",
+            "quantity": 20
+          },
+          {
+            "item_id": "rubber-parts-recipe",
+            "quantity": 30
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "requirementItemIds": [
+          {
+            "item_id": "rusted-tools",
+            "quantity": 3
+          },
+          {
+            "item_id": "mechanical-components",
+            "quantity": 5
+          },
+          {
+            "item_id": "wasp-driver",
+            "quantity": 8
+          }
+        ]
+      },
+      {
+        "level": 3,
+        "requirementItemIds": [
+          {
+            "item_id": "rusted-gear",
+            "quantity": 3
+          },
+          {
+            "item_id": "advanced-mechanical-components",
+            "quantity": 5
+          },
+          {
+            "item_id": "sentinel-part",
+            "quantity": 4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "equipment_bench",
+    "name": "Gear Bench",
+    "maxLevel": 3,
+    "levels": [
+      {
+        "level": 1,
+        "requirementItemIds": [
+          {
+            "item_id": "plastic-parts",
+            "quantity": 25
+          },
+          {
+            "item_id": "fabric",
+            "quantity": 30
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "requirementItemIds": [
+          {
+            "item_id": "power-cable",
+            "quantity": 3
+          },
+          {
+            "item_id": "electrical-components",
+            "quantity": 5
+          },
+          {
+            "item_id": "hornet-driver",
+            "quantity": 5
+          }
+        ]
+      },
+      {
+        "level": 3,
+        "requirementItemIds": [
+          {
+            "item_id": "industrial-battery",
+            "quantity": 3
+          },
+          {
+            "item_id": "advanced-electrical-components",
+            "quantity": 5
+          },
+          {
+            "item_id": "bastion-part",
+            "quantity": 6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "med_station",
+    "name": "Medical Lab",
+    "maxLevel": 3,
+    "levels": [
+      {
+        "level": 1,
+        "requirementItemIds": [
+          {
+            "item_id": "fabric",
+            "quantity": 50
+          },
+          {
+            "item_id": "arc-alloy",
+            "quantity": 6
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "requirementItemIds": [
+          {
+            "item_id": "cracked-bioscanner",
+            "quantity": 2
+          },
+          {
+            "item_id": "durable-cloth",
+            "quantity": 5
+          },
+          {
+            "item_id": "tick-pod",
+            "quantity": 8
+          }
+        ]
+      },
+      {
+        "level": 3,
+        "requirementItemIds": [
+          {
+            "item_id": "rusted-shut-medical-kit",
+            "quantity": 3
+          },
+          {
+            "item_id": "antiseptic",
+            "quantity": 8
+          },
+          {
+            "item_id": "surveyor-vault",
+            "quantity": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "explosives_bench",
+    "name": "Explosives Station",
+    "maxLevel": 3,
+    "levels": [
+      {
+        "level": 1,
+        "requirementItemIds": [
+          {
+            "item_id": "rubber-parts-recipe",
+            "quantity": 50
+          },
+          {
+            "item_id": "arc-alloy",
+            "quantity": 6
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "requirementItemIds": [
+          {
+            "item_id": "synthesized-fuel",
+            "quantity": 3
+          },
+          {
+            "item_id": "crude-explosives",
+            "quantity": 5
+          },
+          {
+            "item_id": "pop-trigger",
+            "quantity": 5
+          }
+        ]
+      },
+      {
+        "level": 3,
+        "requirementItemIds": [
+          {
+            "item_id": "laboratory-reagents",
+            "quantity": 3
+          },
+          {
+            "item_id": "explosive-compound",
+            "quantity": 5
+          },
+          {
+            "item_id": "rocketeer-part",
+            "quantity": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "utility_bench",
+    "name": "Utility Station",
+    "maxLevel": 3,
+    "levels": [
+      {
+        "level": 1,
+        "requirementItemIds": [
+          {
+            "item_id": "plastic-parts",
+            "quantity": 50
+          },
+          {
+            "item_id": "arc-alloy",
+            "quantity": 6
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "requirementItemIds": [
+          {
+            "item_id": "damaged-heat-sink",
+            "quantity": 2
+          },
+          {
+            "item_id": "electrical-components",
+            "quantity": 5
+          },
+          {
+            "item_id": "snitch-scanner",
+            "quantity": 6
+          }
+        ]
+      },
+      {
+        "level": 3,
+        "requirementItemIds": [
+          {
+            "item_id": "fried-motherboard",
+            "quantity": 3
+          },
+          {
+            "item_id": "advanced-electrical-components",
+            "quantity": 5
+          },
+          {
+            "item_id": "leaper-pulse-unit",
+            "quantity": 4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "refiner",
+    "name": "Refiner",
+    "maxLevel": 3,
+    "levels": [
+      {
+        "level": 1,
+        "requirementItemIds": [
+          {
+            "item_id": "metal-parts",
+            "quantity": 60
+          },
+          {
+            "item_id": "arc-powercell",
+            "quantity": 5
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "requirementItemIds": [
+          {
+            "item_id": "toaster",
+            "quantity": 3
+          },
+          {
+            "item_id": "arc-motion-core",
+            "quantity": 5
+          },
+          {
+            "item_id": "fireball-burner",
+            "quantity": 8
+          }
+        ]
+      },
+      {
+        "level": 3,
+        "requirementItemIds": [
+          {
+            "item_id": "motor",
+            "quantity": 3
+          },
+          {
+            "item_id": "arc-circuitry",
+            "quantity": 10
+          },
+          {
+            "item_id": "bombardier-cell",
+            "quantity": 6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "stash",
+    "name": "Stash",
+    "maxLevel": 10,
+    "levels": [
+      {
+        "level": 1,
+        "requirementItemIds": [],
+        "description": "64 slots"
+      },
+      {
+        "level": 2,
+        "requirementItemIds": [],
+        "otherRequirements": [
+          "5000 Coins"
+        ],
+        "description": "+24 slots (88 total)"
+      },
+      {
+        "level": 3,
+        "requirementItemIds": [],
+        "otherRequirements": [
+          "10000 Coins"
+        ],
+        "description": "+24 slots (112 total)"
+      },
+      {
+        "level": 4,
+        "requirementItemIds": [],
+        "otherRequirements": [
+          "15000 Coins"
+        ],
+        "description": "+24 slots (136 total)"
+      },
+      {
+        "level": 5,
+        "requirementItemIds": [],
+        "otherRequirements": [
+          "25000 Coins"
+        ],
+        "description": "+24 slots (160 total)"
+      },
+      {
+        "level": 6,
+        "requirementItemIds": [],
+        "otherRequirements": [
+          "40000 Coins"
+        ],
+        "description": "+24 slots (184 total)"
+      },
+      {
+        "level": 7,
+        "requirementItemIds": [],
+        "otherRequirements": [
+          "60000 Coins"
+        ],
+        "description": "+24 slots (208 total)"
+      },
+      {
+        "level": 8,
+        "requirementItemIds": [],
+        "otherRequirements": [
+          "90000 Coins"
+        ],
+        "description": "+24 slots (232 total)"
+      },
+      {
+        "level": 9,
+        "requirementItemIds": [],
+        "otherRequirements": [
+          "130000 Coins"
+        ],
+        "description": "+24 slots (256 total)"
+      },
+      {
+        "level": 10,
+        "requirementItemIds": [],
+        "otherRequirements": [
+          "200000 Coins"
+        ],
+        "description": "+24 slots (280 total)"
+      }
+    ]
+  }
+]

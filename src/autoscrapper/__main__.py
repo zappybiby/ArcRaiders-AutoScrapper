@@ -35,7 +35,7 @@ def _menu() -> int:
         print("  1) Scan inventory now")
         print("  2) Dry run scan (no clicks)")
         print("  3) Edit / view rules")
-        print("  4) Edit game progress (coming soon)")
+        print("  4) Generate rules from game progress")
         print("  5) Scan configuration")
         print("  q) Quit\n")
 

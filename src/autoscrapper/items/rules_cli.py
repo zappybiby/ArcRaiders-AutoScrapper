@@ -3,6 +3,8 @@ Interactive CLI for managing item rules.
 Uses Rich for output styling. Intended to be run with `python -m autoscrapper rules`.
 """
 
+from __future__ import annotations
+
 import json
 from pathlib import Path
 from typing import List, Optional
@@ -11,8 +13,8 @@ from rich.console import Console
 from rich.prompt import Confirm, Prompt
 from rich.table import Table
 
-DEFAULT_RULES_PATH = Path(__file__).with_name("items_actions.default.json")
-CUSTOM_RULES_PATH = Path(__file__).with_name("items_actions.custom.json")
+DEFAULT_RULES_PATH = Path(__file__).with_name("items_rules.default.json")
+CUSTOM_RULES_PATH = Path(__file__).with_name("items_rules.custom.json")
 console = Console()
 
 
@@ -24,23 +26,45 @@ def using_custom_rules() -> bool:
     return CUSTOM_RULES_PATH.exists()
 
 
-def load_items(path: Optional[Path] = None) -> List[dict]:
+def _coerce_payload(raw: object) -> dict:
+    if isinstance(raw, dict):
+        items = raw.get("items")
+        if not isinstance(items, list):
+            items = []
+        metadata = raw.get("metadata") if isinstance(raw.get("metadata"), dict) else {}
+        return {"metadata": metadata, "items": items}
+
+    if isinstance(raw, list):
+        return {"metadata": {}, "items": raw}
+
+    return {"metadata": {}, "items": []}
+
+
+def load_rules(path: Optional[Path] = None) -> dict:
     rules_path = path or active_rules_path()
     if not rules_path.exists():
-        return []
+        return {"metadata": {}, "items": []}
     with rules_path.open("r", encoding="utf-8") as fp:
-        return json.load(fp)
+        raw = json.load(fp)
+    return _coerce_payload(raw)
 
 
-def save_items(items: List[dict], path: Path) -> None:
-    ordered = sorted(items, key=lambda entry: entry.get("index", 0))
+def save_rules(payload: dict, path: Path) -> None:
+    items = payload.get("items")
+    if not isinstance(items, list):
+        items = []
+    metadata = (
+        payload.get("metadata") if isinstance(payload.get("metadata"), dict) else {}
+    )
+    metadata["itemCount"] = len(items)
+    payload = {"metadata": metadata, "items": items}
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as fp:
-        json.dump(ordered, fp, indent=2)
+        json.dump(payload, fp, indent=2)
 
 
-def save_custom_items(items: List[dict]) -> None:
-    save_items(items, CUSTOM_RULES_PATH)
+def save_custom_rules(payload: dict) -> None:
+    save_rules(payload, CUSTOM_RULES_PATH)
 
 
 def reset_custom_rules(_: Optional[List[dict]] = None) -> None:
@@ -55,90 +79,105 @@ def reset_custom_rules(_: Optional[List[dict]] = None) -> None:
         console.print("[green]Custom rules removed. Defaults restored.[/green]")
 
 
+def _display_action(item: dict) -> str:
+    action = item.get("action")
+    if isinstance(action, str) and action.strip():
+        return action.strip().upper()
+    decisions = item.get("decision")
+    if isinstance(decisions, list):
+        return ", ".join(str(d).upper() for d in decisions if isinstance(d, str))
+    return ""
+
+
 def show_table(items: List[dict], title: str) -> None:
     table = Table(title=title, show_lines=False)
-    table.add_column("Index", style="cyan", justify="right")
+    table.add_column("No.", style="cyan", justify="right")
     table.add_column("Name", style="bold")
-    table.add_column("Decisions", style="magenta")
-    for item in items:
-        decisions = ", ".join(item.get("decision", []))
-        table.add_row(str(item.get("index", "")), item.get("name", ""), decisions)
+    table.add_column("Action", style="magenta")
+    for idx, item in enumerate(items, start=1):
+        table.add_row(str(idx), item.get("name", ""), _display_action(item))
     console.print(table)
 
 
-def parse_decisions(default: Optional[List[str]] = None) -> List[str]:
-    default_text = ", ".join(default or [])
+def normalize_action(value: str) -> Optional[str]:
+    raw = value.strip().lower()
+    if raw in {"k", "keep"}:
+        return "keep"
+    if raw in {"s", "sell"}:
+        return "sell"
+    if raw in {"r", "recycle"}:
+        return "recycle"
+    return None
+
+
+def parse_action(default: Optional[str] = None) -> str:
     while True:
         raw = Prompt.ask(
-            "Enter decisions (comma-separated)",
-            default=default_text if default else None,
+            "Enter action (keep/sell/recycle)",
+            default=default,
         )
-        entries = [
-            part.strip() for part in raw.replace(";", ",").split(",") if part.strip()
-        ]
-        if entries:
-            return entries
-        console.print("[yellow]Please provide at least one decision.[/yellow]")
+        action = normalize_action(raw)
+        if action:
+            return action
+        console.print("[yellow]Please enter keep, sell, or recycle.[/yellow]")
 
 
 def find_matches(items: List[dict], query: str) -> List[dict]:
-    if query.isdigit():
-        index = int(query)
-        return [item for item in items if item.get("index") == index]
-    lowered = query.lower()
-    return [item for item in items if lowered in item.get("name", "").lower()]
+    q = query.lower().strip()
+    matches: List[dict] = []
+    for item in items:
+        name = str(item.get("name", "")).lower()
+        item_id = str(item.get("id", "")).lower()
+        if q in name or (item_id and q == item_id):
+            matches.append(item)
+    return matches
 
 
 def pick_from_matches(matches: List[dict], title: str) -> Optional[dict]:
     if not matches:
         return None
     show_table(matches, title)
-    default_choice = str(matches[0].get("index", ""))
+    default_choice = "1"
     while True:
-        choice = Prompt.ask("Select index from the table", default=default_choice)
-        selected = next(
-            (item for item in matches if str(item.get("index")) == choice.strip()),
-            None,
-        )
-        if selected:
-            return selected
-        console.print("[yellow]Please enter a valid index from the table.[/yellow]")
+        choice = Prompt.ask("Select number from the table", default=default_choice)
+        if choice.isdigit():
+            number = int(choice)
+            if 1 <= number <= len(matches):
+                return matches[number - 1]
+        console.print("[yellow]Please enter a valid number from the table.[/yellow]")
 
 
 def choose_item(items: List[dict], action: str) -> Optional[dict]:
     if not items:
         console.print("[yellow]No items available.[/yellow]")
         return None
-    query = Prompt.ask(f"Enter item name or index to {action}")
-    matches = find_matches(items, query.strip())
+    query = Prompt.ask(f"Enter item name or id to {action}")
+    matches = find_matches(items, query)
     if not matches:
         console.print("[yellow]No matching items found.[/yellow]")
         return None
     if len(matches) == 1:
         return matches[0]
-    show_table(matches, f"Multiple matches for '{query}'")
-    while True:
-        choice = Prompt.ask("Select index from the matches")
-        picked = [item for item in matches if str(item.get("index")) == choice.strip()]
-        if picked:
-            return picked[0]
-        console.print("[yellow]Please enter a valid index from the table.[/yellow]")
+    return pick_from_matches(matches, f"Multiple matches for '{query}'")
 
 
-def view_all(items: List[dict]) -> None:
+def view_all(payload: dict) -> None:
+    items = payload.get("items", [])
     if not items:
         console.print("[yellow]No rules found.[/yellow]")
         return
     show_table(items, "All Item Rules")
 
 
-def view_single(items: List[dict]) -> None:
+def view_single(payload: dict) -> None:
+    items = payload.get("items", [])
     chosen = choose_item(items, "view")
     if chosen:
         show_table([chosen], f"Rule for '{chosen.get('name', '')}'")
 
 
-def add_item(items: List[dict]) -> None:
+def add_item(payload: dict) -> None:
+    items = payload.get("items", [])
     name = ""
     while not name:
         name = Prompt.ask("Enter new item name").strip()
@@ -157,36 +196,42 @@ def add_item(items: List[dict]) -> None:
         if choice == "e":
             target = pick_from_matches(existing, f"Matches for '{name}'")
             if target:
-                edit_item(items, target)
+                edit_item(payload, target)
             return
-    decisions = parse_decisions()
-    next_index = max((item.get("index", 0) for item in items), default=0) + 1
-    items.append({"index": next_index, "name": name, "decision": decisions})
-    save_custom_items(items)
-    console.print(f"[green]Added '{name}' with index {next_index}.[/green]")
+    action = parse_action()
+    item_id = Prompt.ask("Enter item id (optional)", default="").strip()
+    entry = {"name": name, "action": action}
+    if item_id:
+        entry["id"] = item_id
+    items.append(entry)
+    payload["items"] = items
+    save_custom_rules(payload)
+    console.print(f"[green]Added '{name}'.[/green]")
 
 
-def edit_item(items: List[dict], existing: Optional[dict] = None) -> None:
+def edit_item(payload: dict, existing: Optional[dict] = None) -> None:
+    items = payload.get("items", [])
     chosen = existing or choose_item(items, "edit")
     if not chosen:
         return
     new_name = Prompt.ask("Enter new name", default=chosen.get("name", "")).strip()
     new_name = new_name or chosen.get("name", "")
-    new_decisions = parse_decisions(chosen.get("decision", []))
-    chosen.update({"name": new_name, "decision": new_decisions})
-    save_custom_items(items)
-    console.print(f"[green]Updated item {chosen.get('index')}.[/green]")
+    new_action = parse_action(default=str(chosen.get("action", "keep")))
+    chosen["name"] = new_name
+    chosen["action"] = new_action
+    save_custom_rules(payload)
+    console.print("[green]Updated item rule.[/green]")
 
 
-def remove_item(items: List[dict]) -> None:
+def remove_item(payload: dict) -> None:
+    items = payload.get("items", [])
     chosen = choose_item(items, "remove")
     if not chosen:
         return
     name = chosen.get("name", "")
-    index = chosen.get("index", "")
-    if Confirm.ask(f"Delete '{name}' (index {index})?", default=False):
-        items[:] = [item for item in items if item.get("index") != index]
-        save_custom_items(items)
+    if Confirm.ask(f"Delete '{name}'?", default=False):
+        payload["items"] = [item for item in items if item is not chosen]
+        save_custom_rules(payload)
         console.print(f"[green]Removed '{name}'.[/green]")
 
 
@@ -202,7 +247,7 @@ def main() -> None:
         "q": ("Quit", None),
     }
     while True:
-        items = load_items()
+        payload = load_rules()
         status = "Custom" if using_custom_rules() else "Default"
         console.print(f"[dim]Active rules: {status} ({active_rules_path()})[/dim]")
         table = Table(show_header=False, box=None)
@@ -217,7 +262,7 @@ def main() -> None:
             break
         label, handler = actions[choice]
         console.print(f"[bold]{label}[/bold]")
-        handler(items)
+        handler(payload)
         console.print()
 
 
