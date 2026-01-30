@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-from ..items.rules_cli import main as _rules_main
+from ..items.rules_viewer import run_rules_viewer
 
 
 def main(argv=None) -> int:
     """
-    Wrapper entrypoint for the item rules manager.
+    Wrapper entrypoint for the item rules viewer.
     """
-    _rules_main()
-    return 0
+    _ = argv
+    return run_rules_viewer()
