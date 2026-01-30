@@ -2,13 +2,12 @@ from __future__ import annotations
 
 from typing import List, Optional
 
-from rich.console import Console
+from rich.console import Console, Group
 from rich.panel import Panel
 from rich.prompt import Confirm, Prompt
 from rich.table import Table
 from rich.text import Text
 from rich.live import Live
-from rich.group import Group
 
 from .rules_cli import (
     CUSTOM_RULES_PATH,
