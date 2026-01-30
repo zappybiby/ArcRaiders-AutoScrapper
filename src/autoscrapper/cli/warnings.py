@@ -4,7 +4,13 @@ from typing import Optional
 
 from rich.console import Console
 
-from ..config import UiSettings, has_saved_progress, load_progress_settings, load_ui_settings, save_ui_settings
+from ..config import (
+    UiSettings,
+    has_saved_progress,
+    load_progress_settings,
+    load_ui_settings,
+    save_ui_settings,
+)
 from ..core.item_actions import ITEM_RULES_CUSTOM_PATH
 
 

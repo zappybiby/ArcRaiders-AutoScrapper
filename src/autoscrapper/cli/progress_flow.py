@@ -206,7 +206,9 @@ def _collect_active_quests_by_trader(
                         active_ids.append(quest.id)
                 used_saved = True
 
-        if used_saved and not Confirm.ask("Add more quests for this trader?", default=False):
+        if used_saved and not Confirm.ask(
+            "Add more quests for this trader?", default=False
+        ):
             continue
 
         console.print("[dim]Enter active quests for this trader (Enter to skip).[/dim]")
@@ -605,7 +607,9 @@ def run_progress_wizard(console: Optional[Console] = None) -> int:
             active_ids,
         )
         if canceled:
-            console.print("[yellow]Quest review canceled; keeping previous selections.[/yellow]")
+            console.print(
+                "[yellow]Quest review canceled; keeping previous selections.[/yellow]"
+            )
         all_quests_completed = len(completed_ids) == len(quest_entries)
 
     progress_settings = ProgressSettings(

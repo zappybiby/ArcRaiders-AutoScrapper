@@ -122,7 +122,9 @@ def _render_view(
         style="dim",
     )
 
-    return Panel(Group(header, table, details, search_line, help_text), border_style="cyan")
+    return Panel(
+        Group(header, table, details, search_line, help_text), border_style="cyan"
+    )
 
 
 def run_rules_viewer(console: Optional[Console] = None) -> int:
@@ -293,8 +295,12 @@ def run_rules_viewer(console: Optional[Console] = None) -> int:
                 continue
             item = items[filtered[cursor]]
             name = _prompt_non_empty(console, "Item name", str(item.get("name", "")))
-            action_value = _prompt_action(console, default=str(item.get("action", "keep")))
-            item_id = Prompt.ask("Item id (optional)", default=str(item.get("id", "") or "")).strip()
+            action_value = _prompt_action(
+                console, default=str(item.get("action", "keep"))
+            )
+            item_id = Prompt.ask(
+                "Item id (optional)", default=str(item.get("id", "") or "")
+            ).strip()
             item["name"] = name
             item["action"] = action_value
             if item_id:

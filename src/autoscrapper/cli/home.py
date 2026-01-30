@@ -66,7 +66,10 @@ def show_home_menu(console: Optional[Console] = None) -> int:
         "1": ("Scan inventory now", lambda: scan_cli.main([])),
         "2": ("Dry run scan (no clicks)", lambda: scan_cli.main(["--dry-run"])),
         "3": ("Set up / update progress", lambda: run_progress_wizard(console)),
-        "4": ("Regenerate rules from saved progress", lambda: generate_rules_from_saved_progress(console)),
+        "4": (
+            "Regenerate rules from saved progress",
+            lambda: generate_rules_from_saved_progress(console),
+        ),
         "5": ("Review quests", lambda: review_saved_quests(console)),
         "6": ("Edit workshop levels", lambda: edit_saved_workshops(console)),
         "7": ("Review / edit rules", lambda: run_rules_viewer(console)),

@@ -43,7 +43,6 @@ if os.name == "nt":
             raise KeyboardInterrupt
         return KeyPress("CHAR", ch)
 
-
     @contextmanager
     def key_reader() -> Iterator[Callable[[], KeyPress]]:
         yield _read_key_windows
@@ -87,7 +86,6 @@ else:
         if ch == "\x03":
             raise KeyboardInterrupt
         return KeyPress("CHAR", ch)
-
 
     @contextmanager
     def key_reader() -> Iterator[Callable[[], KeyPress]]:
