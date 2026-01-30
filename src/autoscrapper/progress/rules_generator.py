@@ -35,6 +35,7 @@ def generate_rules_from_active(
     hideout_levels: Dict[str, int],
     *,
     completed_projects: Optional[List[str]] = None,
+    completed_quests_override: Optional[List[str]] = None,
     all_quests_completed: bool = False,
     data_dir: Optional[Path] = None,
 ) -> Dict[str, object]:
@@ -43,17 +44,23 @@ def generate_rules_from_active(
         hideout_levels, game_data.hideout_modules
     )
 
+    quests_by_trader = group_quests_by_trader(game_data.quests)
+    quest_index = build_quest_index(quests_by_trader)
     active_resolved: List[dict] = []
+    if active_quests:
+        active_resolved, missing = resolve_active_quests(active_quests, quest_index)
+        if missing:
+            raise ValueError(f"Active quests not found: {', '.join(missing)}")
+
     if all_quests_completed:
         completed_quests = [
             quest.get("id") for quest in game_data.quests if quest.get("id")
         ]
+    elif completed_quests_override is not None:
+        completed_quests = completed_quests_override
     else:
-        quests_by_trader = group_quests_by_trader(game_data.quests)
-        quest_index = build_quest_index(quests_by_trader)
-        active_resolved, missing = resolve_active_quests(active_quests, quest_index)
-        if missing:
-            raise ValueError(f"Active quests not found: {', '.join(missing)}")
+        if not active_resolved:
+            raise ValueError("No active quests provided.")
         completed_quests = infer_completed_by_trader(quests_by_trader, active_resolved)
 
     user_progress = {
