@@ -2,7 +2,8 @@
 inventory_scanner.py
 
 Scan the 4x5 inventory grid by hovering each cell, opening the context
-menu, locating the light infobox (#f9eedf), and OCR-ing the item title.
+menu, locating the light infobox (adaptive around #fdf6ec), and OCR-ing
+the item title.
 """
 
 from __future__ import annotations
@@ -92,8 +93,9 @@ from .interaction.ui_windows import (
 )
 from .ocr.tesseract import initialize_ocr
 from .ocr.inventory_vision import (
+    InfoboxDetectionResult,
     enable_ocr_debug,
-    find_infobox,
+    find_infobox_with_debug,
     inventory_count_rect,
     is_slot_empty,
     ocr_infobox,
@@ -486,6 +488,7 @@ def scan_inventory(
                 pause_action()
 
                 infobox_rect: Optional[Tuple[int, int, int, int]] = None
+                infobox_detection: Optional[InfoboxDetectionResult] = None
                 window_bgr = None
                 infobox_ocr = None
                 sell_bbox_rel: Optional[Tuple[int, int, int, int]] = None
@@ -507,13 +510,34 @@ def scan_inventory(
                     )
                     capture_time += time.perf_counter() - capture_start
                     find_start = time.perf_counter()
-                    infobox_rect = find_infobox(window_bgr)
+                    infobox_detection = find_infobox_with_debug(window_bgr)
+                    infobox_rect = infobox_detection.rect
                     find_time += time.perf_counter() - find_start
                     if infobox_rect:
                         found_on_attempt = attempt
                         break
                     sleep_with_abort(INFOBOX_RETRY_DELAY)
                     pause_action()
+
+                if (
+                    infobox_detection is not None
+                    and infobox_detection.rect is not None
+                    and infobox_detection.bbox_method == "percentile_fallback"
+                ):
+                    _queue_event(
+                        f"Infobox bbox fallback used at idx={global_idx:03d} "
+                        f"(tol={infobox_detection.tolerance}, min_dist={infobox_detection.min_dist:.2f}).",
+                        style="yellow",
+                    )
+                elif (
+                    infobox_detection is not None
+                    and infobox_detection.failure_reason == "percentile_fallback_failed"
+                ):
+                    _queue_event(
+                        f"Infobox percentile fallback failed at idx={global_idx:03d} "
+                        f"(tol={infobox_detection.tolerance}, min_dist={infobox_detection.min_dist:.2f}).",
+                        style="yellow",
+                    )
 
                 item_name = ""
                 if infobox_rect and window_bgr is not None:
@@ -642,9 +666,30 @@ def scan_inventory(
 
                 if profile_timing:
                     total_time = time.perf_counter() - cell_start
+                    detect_method = (
+                        infobox_detection.bbox_method
+                        if infobox_detection and infobox_detection.bbox_method
+                        else "none"
+                    )
+                    detect_tol = (
+                        infobox_detection.tolerance
+                        if infobox_detection is not None
+                        else -1
+                    )
+                    detect_min_dist = (
+                        infobox_detection.min_dist
+                        if infobox_detection is not None
+                        else float("nan")
+                    )
+                    detect_reason = (
+                        infobox_detection.failure_reason
+                        if infobox_detection and infobox_detection.failure_reason
+                        else "ok"
+                    )
                     _queue_event(
                         f"Perf idx={global_idx:03d} • tries={capture_attempts} • found@{found_on_attempt} • "
-                        f"infobox={'y' if infobox_rect else 'n'}\n"
+                        f"infobox={'y' if infobox_rect else 'n'} • det={detect_method} • "
+                        f"tol={detect_tol} • min={detect_min_dist:.2f} • reason={detect_reason}\n"
                         f"  cap {capture_time:.3f}s • find {find_time:.3f}s • pre {preprocess_time:.3f}s • "
                         f"ocr {ocr_time:.3f}s • total {total_time:.3f}s",
                         style="dim",
