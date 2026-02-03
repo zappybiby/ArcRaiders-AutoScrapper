@@ -6,6 +6,8 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any, Dict, Literal, Optional
 
+from .interaction.keybinds import DEFAULT_STOP_KEY, normalize_stop_key
+
 CONFIG_VERSION = 2
 APP_CONFIG_DIR_NAME = "AutoScrapper"
 CONFIG_FILE_NAME = "config.json"
@@ -19,8 +21,14 @@ class ScanSettings:
     pages_mode: PagesMode = "auto"
     pages: Optional[int] = None
     scroll_clicks_per_page: Optional[int] = None
+    stop_key: str = DEFAULT_STOP_KEY
+    infobox_retries: int = 3
+    infobox_retry_delay_ms: int = 100
     ocr_unreadable_retries: int = 1
     ocr_unreadable_retry_delay_ms: int = 100
+    action_delay_ms: int = 50
+    menu_appear_delay_ms: int = 150
+    sell_recycle_post_delay_ms: int = 100
     debug_ocr: bool = False
     profile: bool = False
 
@@ -92,8 +100,14 @@ def _from_raw_scan_settings(raw: Any) -> ScanSettings:
     pages_mode_raw = raw.get("pages_mode")
     pages_raw = raw.get("pages")
     scroll_clicks_raw = raw.get("scroll_clicks_per_page")
+    stop_key_raw = raw.get("stop_key")
+    infobox_retries_raw = raw.get("infobox_retries")
+    infobox_retry_delay_ms_raw = raw.get("infobox_retry_delay_ms")
     ocr_unreadable_retries_raw = raw.get("ocr_unreadable_retries")
     ocr_unreadable_retry_delay_ms_raw = raw.get("ocr_unreadable_retry_delay_ms")
+    action_delay_ms_raw = raw.get("action_delay_ms")
+    menu_appear_delay_ms_raw = raw.get("menu_appear_delay_ms")
+    sell_recycle_post_delay_ms_raw = raw.get("sell_recycle_post_delay_ms")
 
     pages = _coerce_positive_int(pages_raw)
     pages_mode: PagesMode
@@ -109,6 +123,14 @@ def _from_raw_scan_settings(raw: Any) -> ScanSettings:
 
     scroll_clicks_per_page = _coerce_non_negative_int(scroll_clicks_raw)
 
+    infobox_retries = _coerce_positive_int(infobox_retries_raw)
+    if infobox_retries is None:
+        infobox_retries = ScanSettings.infobox_retries
+
+    infobox_retry_delay_ms = _coerce_non_negative_int(infobox_retry_delay_ms_raw)
+    if infobox_retry_delay_ms is None:
+        infobox_retry_delay_ms = ScanSettings.infobox_retry_delay_ms
+
     ocr_unreadable_retries = _coerce_non_negative_int(ocr_unreadable_retries_raw)
     if ocr_unreadable_retries is None:
         ocr_unreadable_retries = ScanSettings.ocr_unreadable_retries
@@ -119,12 +141,32 @@ def _from_raw_scan_settings(raw: Any) -> ScanSettings:
     if ocr_unreadable_retry_delay_ms is None:
         ocr_unreadable_retry_delay_ms = ScanSettings.ocr_unreadable_retry_delay_ms
 
+    action_delay_ms = _coerce_non_negative_int(action_delay_ms_raw)
+    if action_delay_ms is None:
+        action_delay_ms = ScanSettings.action_delay_ms
+
+    menu_appear_delay_ms = _coerce_non_negative_int(menu_appear_delay_ms_raw)
+    if menu_appear_delay_ms is None:
+        menu_appear_delay_ms = ScanSettings.menu_appear_delay_ms
+
+    sell_recycle_post_delay_ms = _coerce_non_negative_int(
+        sell_recycle_post_delay_ms_raw
+    )
+    if sell_recycle_post_delay_ms is None:
+        sell_recycle_post_delay_ms = ScanSettings.sell_recycle_post_delay_ms
+
     return ScanSettings(
         pages_mode=pages_mode,
         pages=pages,
         scroll_clicks_per_page=scroll_clicks_per_page,
+        stop_key=normalize_stop_key(stop_key_raw),
+        infobox_retries=infobox_retries,
+        infobox_retry_delay_ms=infobox_retry_delay_ms,
         ocr_unreadable_retries=ocr_unreadable_retries,
         ocr_unreadable_retry_delay_ms=ocr_unreadable_retry_delay_ms,
+        action_delay_ms=action_delay_ms,
+        menu_appear_delay_ms=menu_appear_delay_ms,
+        sell_recycle_post_delay_ms=sell_recycle_post_delay_ms,
         debug_ocr=_coerce_bool(raw.get("debug_ocr"), False),
         profile=_coerce_bool(raw.get("profile"), False),
     )

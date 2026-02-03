@@ -26,7 +26,9 @@ from ..interaction.inventory_grid import (
     safe_mouse_point,
 )
 from ..interaction.ui_windows import (
+    ACTION_DELAY,
     SCROLL_CLICKS_PER_PAGE,
+    SELL_RECYCLE_POST_DELAY,
     WINDOW_TIMEOUT,
     abort_if_escape_pressed,
     capture_region,
@@ -40,6 +42,7 @@ from ..interaction.ui_windows import (
     window_monitor_rect,
     window_rect,
 )
+from ..interaction.keybinds import DEFAULT_STOP_KEY, normalize_stop_key
 from ..ocr.inventory_vision import (
     find_infobox,
     inventory_count_rect,
@@ -72,8 +75,13 @@ def _scroll_clicks_sequence(start_clicks: int) -> Iterable[int]:
 def scan_inventory(
     window_timeout: float = WINDOW_TIMEOUT,
     infobox_retries: int = INFOBOX_RETRIES,
+    infobox_retry_delay_ms: int = int(INFOBOX_RETRY_DELAY * 1000),
     ocr_unreadable_retries: int = 1,
     ocr_unreadable_retry_delay_ms: int = 100,
+    stop_key: str = DEFAULT_STOP_KEY,
+    action_delay_ms: int = int(ACTION_DELAY * 1000),
+    menu_appear_delay_ms: int = int(MENU_APPEAR_DELAY * 1000),
+    sell_recycle_post_delay_ms: int = int(SELL_RECYCLE_POST_DELAY * 1000),
     show_progress: bool = True,
     pages: Optional[int] = None,
     scroll_clicks_per_page: int = SCROLL_CLICKS_PER_PAGE,
@@ -96,12 +104,26 @@ def scan_inventory(
     """
     if infobox_retries < 1:
         raise ValueError("infobox_retries must be >= 1")
+    if infobox_retry_delay_ms < 0:
+        raise ValueError("infobox_retry_delay_ms must be >= 0")
     if ocr_unreadable_retries < 0:
         raise ValueError("ocr_unreadable_retries must be >= 0")
     if ocr_unreadable_retry_delay_ms < 0:
         raise ValueError("ocr_unreadable_retry_delay_ms must be >= 0")
+    if action_delay_ms < 0:
+        raise ValueError("action_delay_ms must be >= 0")
+    if menu_appear_delay_ms < 0:
+        raise ValueError("menu_appear_delay_ms must be >= 0")
+    if sell_recycle_post_delay_ms < 0:
+        raise ValueError("sell_recycle_post_delay_ms must be >= 0")
     if pages is not None and pages < 1:
         raise ValueError("pages must be >= 1")
+
+    stop_key = normalize_stop_key(stop_key)
+    action_delay = action_delay_ms / 1000.0
+    menu_appear_delay = menu_appear_delay_ms / 1000.0
+    infobox_retry_delay = infobox_retry_delay_ms / 1000.0
+    post_action_delay = sell_recycle_post_delay_ms / 1000.0
 
     scan_start = time.perf_counter()
 
@@ -120,10 +142,10 @@ def scan_inventory(
 
     try:
         if progress_impl is not None:
-            window = wait_for_target_window(timeout=window_timeout)
+            window = wait_for_target_window(timeout=window_timeout, stop_key=stop_key)
         else:
             print("waiting for Arc Raiders to be active window...", flush=True)
-            window = wait_for_target_window(timeout=window_timeout)
+            window = wait_for_target_window(timeout=window_timeout, stop_key=stop_key)
         _display_name, _display_size, work_area = window_display_info(window)
         mon_left, mon_top, mon_right, mon_bottom = window_monitor_rect(window)
         win_left, win_top, win_width, win_height = window_rect(window)
@@ -185,8 +207,9 @@ def scan_inventory(
                 move_absolute(
                     safe_point_abs[0],
                     safe_point_abs[1],
+                    stop_key=stop_key,
                 )
-                pause_action()
+                pause_action(action_delay, stop_key=stop_key)
                 count_roi_rel = inventory_count_rect(win_width, win_height)
                 count_left = win_left + count_roi_rel[0]
                 count_top = win_top + count_roi_rel[1]
@@ -220,8 +243,9 @@ def scan_inventory(
             move_absolute(
                 safe_point_abs[0],
                 safe_point_abs[1],
+                stop_key=stop_key,
             )
-            pause_action()
+            pause_action(action_delay, stop_key=stop_key)
             roi_left = win_left + grid_roi[0]
             roi_top = win_top + grid_roi[1]
             inv_bgr = capture_region((roi_left, roi_top, grid_roi[2], grid_roi[3]))
@@ -242,7 +266,7 @@ def scan_inventory(
         results: List[ItemActionResult] = []
         pages_scanned = 0
 
-        abort_if_escape_pressed()
+        abort_if_escape_pressed(stop_key)
 
         if progress_impl is not None:
             progress_impl.set_mode("Dry run" if not apply_actions else "Scan")
@@ -274,7 +298,13 @@ def scan_inventory(
             pages_scanned += 1
             if page > 0:
                 clicks = next(scroll_sequence)
-                scroll_to_next_grid_at(clicks, grid_center_abs, safe_point_abs)
+                scroll_to_next_grid_at(
+                    clicks,
+                    grid_center_abs,
+                    safe_point_abs,
+                    stop_key=stop_key,
+                    pause=action_delay,
+                )
                 grid = _detect_grid()
                 cells = list(grid)
 
@@ -287,6 +317,8 @@ def scan_inventory(
                 win_width,
                 win_height,
                 safe_point_abs,
+                stop_key,
+                action_delay,
             )
             if empty_idx is not None and (
                 stop_at_global_idx is None or empty_idx < stop_at_global_idx
@@ -305,7 +337,13 @@ def scan_inventory(
                 continue
 
             idx_in_page = 0
-            open_cell_menu(cells[0], win_left, win_top)
+            open_cell_menu(
+                cells[0],
+                win_left,
+                win_top,
+                stop_key=stop_key,
+                pause=action_delay,
+            )
 
             while idx_in_page < len(cells):
                 cell = cells[idx_in_page]
@@ -322,12 +360,12 @@ def scan_inventory(
                     stop_scan = True
                     break
 
-                abort_if_escape_pressed()
+                abort_if_escape_pressed(stop_key)
                 if hasattr(window, "isAlive") and not window.isAlive:  # type: ignore[attr-defined]
                     raise RuntimeError("Target window closed during scan")
 
-                sleep_with_abort(MENU_APPEAR_DELAY)
-                pause_action()
+                sleep_with_abort(menu_appear_delay, stop_key=stop_key)
+                pause_action(action_delay, stop_key=stop_key)
 
                 infobox_rect: Optional[Tuple[int, int, int, int]] = None
                 window_bgr = None
@@ -344,7 +382,7 @@ def scan_inventory(
 
                 for attempt in range(1, infobox_retries + 1):
                     capture_attempts += 1
-                    abort_if_escape_pressed()
+                    abort_if_escape_pressed(stop_key)
                     capture_start = time.perf_counter()
                     window_bgr = capture_region(
                         (win_left, win_top, win_width, win_height)
@@ -356,18 +394,18 @@ def scan_inventory(
                     if infobox_rect:
                         found_on_attempt = attempt
                         break
-                    sleep_with_abort(INFOBOX_RETRY_DELAY)
-                    pause_action()
+                    sleep_with_abort(infobox_retry_delay, stop_key=stop_key)
+                    pause_action(action_delay, stop_key=stop_key)
 
                 item_name = ""
                 if infobox_rect and window_bgr is not None:
-                    pause_action()
+                    pause_action(action_delay, stop_key=stop_key)
                     x, y, w, h = infobox_rect
                     delay_seconds = ocr_unreadable_retry_delay_ms / 1000.0
 
                     for ocr_attempt in range(ocr_unreadable_retries + 1):
                         if ocr_attempt > 0:
-                            sleep_with_abort(delay_seconds)
+                            sleep_with_abort(delay_seconds, stop_key=stop_key)
                             try:
                                 infobox_bgr = capture_region(
                                     (win_left + x, win_top + y, w, h)
@@ -425,6 +463,10 @@ def scan_inventory(
                                 win_top,
                                 win_width,
                                 win_height,
+                                stop_key=stop_key,
+                                action_delay=action_delay,
+                                menu_appear_delay=menu_appear_delay,
+                                post_action_delay=post_action_delay,
                             )
                             action_taken = "SELL"
                         else:
@@ -443,6 +485,10 @@ def scan_inventory(
                                 win_top,
                                 win_width,
                                 win_height,
+                                stop_key=stop_key,
+                                action_delay=action_delay,
+                                menu_appear_delay=menu_appear_delay,
+                                post_action_delay=post_action_delay,
                             )
                             action_taken = "RECYCLE"
                         else:
@@ -481,7 +527,13 @@ def scan_inventory(
                 destructive_action = action_taken in {"SELL", "RECYCLE"}
                 if destructive_action:
                     # Item removed; the next item collapses into this slot. Re-open the same cell.
-                    open_cell_menu(cell, win_left, win_top)
+                    open_cell_menu(
+                        cell,
+                        win_left,
+                        win_top,
+                        stop_key=stop_key,
+                        pause=action_delay,
+                    )
                     continue
 
                 if profile_timing:
@@ -509,7 +561,13 @@ def scan_inventory(
                             progress_impl.set_phase("Stopping…")
                         stop_scan = True
                         break
-                    open_cell_menu(cells[idx_in_page], win_left, win_top)
+                    open_cell_menu(
+                        cells[idx_in_page],
+                        win_left,
+                        win_top,
+                        stop_key=stop_key,
+                        pause=action_delay,
+                    )
 
                 if stop_scan:
                     break
@@ -542,6 +600,8 @@ def _detect_consecutive_empty_stop_idx(
     window_width: int,
     window_height: int,
     safe_point_abs: Tuple[int, int],
+    stop_key: str,
+    action_delay: float,
 ) -> Optional[int]:
     """
     Capture the current page and return the global index of the *second* empty cell
@@ -551,17 +611,17 @@ def _detect_consecutive_empty_stop_idx(
     (e.g., during item removal/collapse), but two empties in a row is a strong
     signal that we've reached the end of items.
     """
-    abort_if_escape_pressed()
+    abort_if_escape_pressed(stop_key)
 
     # Keep the cursor out of the grid so it doesn't occlude cells.
-    move_absolute(safe_point_abs[0], safe_point_abs[1])
-    pause_action()
+    move_absolute(safe_point_abs[0], safe_point_abs[1], stop_key=stop_key)
+    pause_action(action_delay, stop_key=stop_key)
 
     window_bgr = capture_region((window_left, window_top, window_width, window_height))
 
     prev_empty = False
     for cell in cells:
-        abort_if_escape_pressed()
+        abort_if_escape_pressed(stop_key)
         x, y, w, h = cell.safe_rect
         slot_bgr = window_bgr[y : y + h, x : x + w]
         if slot_bgr.size == 0:

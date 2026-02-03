@@ -253,7 +253,7 @@ class AutoScrapperApp(App[None]):
         items = [
             MenuItem(
                 "1",
-                "Scan configuration",
+                "Scan controls, retries, and timings",
                 lambda screen: screen.app.push_screen(ScanConfigScreen()),
             ),
             MenuItem("b", "Back", lambda screen: screen.app.pop_screen()),

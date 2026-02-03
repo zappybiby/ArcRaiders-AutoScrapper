@@ -15,6 +15,7 @@ from textual.screen import Screen
 from textual.widgets import DataTable, Footer, Static
 
 from ..config import load_scan_settings
+from ..interaction.keybinds import stop_key_label
 from ..scanner.outcomes import _describe_action, _outcome_style
 from ..scanner.progress import ScanProgress
 from ..scanner.types import ScanStats
@@ -117,6 +118,7 @@ class ScanScreen(Screen):
     def __init__(self, *, dry_run: bool) -> None:
         super().__init__()
         self.dry_run = dry_run
+        self._settings = load_scan_settings()
         self._state = ScanState()
         self._updates: "queue.Queue[ScanUpdate]" = queue.Queue()
         self._scan_complete = False
@@ -127,9 +129,10 @@ class ScanScreen(Screen):
     def compose(self) -> ComposeResult:
         with Vertical(id="scan-layout"):
             title = "Scan (Dry Run)" if self.dry_run else "Scan"
+            stop_label = stop_key_label(self._settings.stop_key)
             yield Static(title, classes="menu-title")
             yield Static(
-                "Alt-tab to ARC Raiders. Press ESC in the game window to stop scanning.",
+                f"Alt-tab to ARC Raiders. Press {stop_label} in the game window to stop scanning.",
                 classes="hint",
                 id="scan-hint",
             )
@@ -156,7 +159,7 @@ class ScanScreen(Screen):
         thread.start()
 
     def _run_scan(self) -> None:
-        settings = load_scan_settings()
+        settings = self._settings
         pages_default = settings.pages if settings.pages_mode == "manual" else None
         try:
             from ..core.item_actions import ITEM_RULES_PATH
@@ -183,13 +186,24 @@ class ScanScreen(Screen):
                 apply_actions=not self.dry_run,
                 actions_path=ITEM_RULES_PATH,
                 profile_timing=settings.profile,
+                stop_key=settings.stop_key,
+                action_delay_ms=settings.action_delay_ms,
+                menu_appear_delay_ms=settings.menu_appear_delay_ms,
+                sell_recycle_post_delay_ms=settings.sell_recycle_post_delay_ms,
+                infobox_retries=settings.infobox_retries,
+                infobox_retry_delay_ms=settings.infobox_retry_delay_ms,
                 ocr_unreadable_retries=settings.ocr_unreadable_retries,
                 ocr_unreadable_retry_delay_ms=settings.ocr_unreadable_retry_delay_ms,
                 progress=progress,
             )
         except KeyboardInterrupt:
             self._updates.put(
-                ScanUpdate(kind="error", payload={"message": "Aborted by Escape key."})
+                ScanUpdate(
+                    kind="error",
+                    payload={
+                        "message": f"Aborted by {stop_key_label(settings.stop_key)} key."
+                    },
+                )
             )
             return
         except ValueError as exc:

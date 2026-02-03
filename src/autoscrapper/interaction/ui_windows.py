@@ -11,6 +11,7 @@ import pywinctl as pwc
 
 from .inventory_grid import Cell
 from . import input_driver as pdi
+from .keybinds import DEFAULT_STOP_KEY
 
 
 # Target window
@@ -44,25 +45,33 @@ SCROLL_SETTLE_DELAY = 0.05
 _MSS: Optional["MSSBase"] = None
 
 
+def stop_key_pressed(stop_key: str = DEFAULT_STOP_KEY) -> bool:
+    """
+    Detect whether the configured stop key is currently pressed.
+    """
+    return pdi.key_pressed(stop_key)
+
+
 def escape_pressed() -> bool:
     """
     Detect whether Escape is currently pressed.
     """
-    return pdi.escape_pressed()
+    return stop_key_pressed("escape")
 
 
-def abort_if_escape_pressed() -> None:
+def abort_if_escape_pressed(stop_key: str = DEFAULT_STOP_KEY) -> None:
     """
-    Raise KeyboardInterrupt if Escape is down.
+    Raise KeyboardInterrupt if the configured stop key is down.
     """
-    if escape_pressed():
-        raise KeyboardInterrupt("Escape pressed")
+    if stop_key_pressed(stop_key):
+        raise KeyboardInterrupt(f"{stop_key} pressed")
 
 
 def wait_for_target_window(
     target_app: str = TARGET_APP,
     timeout: float = WINDOW_TIMEOUT,
     poll_interval: float = WINDOW_POLL_INTERVAL,
+    stop_key: str = DEFAULT_STOP_KEY,
 ) -> pwc.Window:
     """
     Wait until the active window belongs to the target process.
@@ -71,7 +80,7 @@ def wait_for_target_window(
     target_lower = target_app.lower()
 
     while time.monotonic() - start < timeout:
-        abort_if_escape_pressed()
+        abort_if_escape_pressed(stop_key)
         win = pwc.getActiveWindow()
         if win is not None:
             app = (win.getAppName() or "").lower()
@@ -86,7 +95,7 @@ def wait_for_target_window(
             title_lower = title.lower()
             if target_lower in app or (title_lower and target_lower in title_lower):
                 return win
-        sleep_with_abort(poll_interval)
+        sleep_with_abort(poll_interval, stop_key=stop_key)
 
     raise TimeoutError(f"Timed out waiting for active window {target_app!r}")
 
@@ -192,32 +201,40 @@ def capture_region(region: Tuple[int, int, int, int]) -> np.ndarray:
     return np.ascontiguousarray(frame)
 
 
-def sleep_with_abort(duration: float) -> None:
+def sleep_with_abort(duration: float, *, stop_key: str = DEFAULT_STOP_KEY) -> None:
     """
-    Sleep for a specific duration and honor Escape aborts.
+    Sleep for a specific duration and honor configured abort key presses.
     """
     time.sleep(duration)
-    abort_if_escape_pressed()
+    abort_if_escape_pressed(stop_key)
 
 
-def pause_action(duration: float = ACTION_DELAY) -> None:
+def pause_action(
+    duration: float = ACTION_DELAY, *, stop_key: str = DEFAULT_STOP_KEY
+) -> None:
     """
     Standard pause to keep a safe delay between input/processing steps.
     """
-    sleep_with_abort(duration)
+    sleep_with_abort(duration, stop_key=stop_key)
 
 
-def timed_action(func, *args, **kwargs) -> None:
+def timed_action(func, *args, stop_key: str = DEFAULT_STOP_KEY, **kwargs) -> None:
     """
-    Run an input action while checking for Escape.
+    Run an input action while checking for configured abort key presses.
     """
-    abort_if_escape_pressed()
+    abort_if_escape_pressed(stop_key)
     func(*args, **kwargs)
 
 
-def click_absolute(x: int, y: int, pause: float = ACTION_DELAY) -> None:
-    timed_action(pdi.leftClick, x, y)
-    pause_action(pause)
+def click_absolute(
+    x: int,
+    y: int,
+    pause: float = ACTION_DELAY,
+    *,
+    stop_key: str = DEFAULT_STOP_KEY,
+) -> None:
+    timed_action(pdi.leftClick, x, y, stop_key=stop_key)
+    pause_action(pause, stop_key=stop_key)
 
 
 def click_window_relative(
@@ -226,8 +243,12 @@ def click_window_relative(
     window_left: int,
     window_top: int,
     pause: float = ACTION_DELAY,
+    *,
+    stop_key: str = DEFAULT_STOP_KEY,
 ) -> None:
-    click_absolute(int(window_left + x), int(window_top + y), pause=pause)
+    click_absolute(
+        int(window_left + x), int(window_top + y), pause=pause, stop_key=stop_key
+    )
 
 
 def move_absolute(
@@ -235,9 +256,11 @@ def move_absolute(
     y: int,
     duration: float = MOVE_DURATION,
     pause: float = ACTION_DELAY,
+    *,
+    stop_key: str = DEFAULT_STOP_KEY,
 ) -> None:
-    timed_action(pdi.moveTo, x, y, duration=duration)
-    pause_action(pause)
+    timed_action(pdi.moveTo, x, y, duration=duration, stop_key=stop_key)
+    pause_action(pause, stop_key=stop_key)
 
 
 def move_window_relative(
@@ -247,56 +270,78 @@ def move_window_relative(
     window_top: int,
     duration: float = MOVE_DURATION,
     pause: float = ACTION_DELAY,
+    *,
+    stop_key: str = DEFAULT_STOP_KEY,
 ) -> None:
     move_absolute(
-        int(window_left + x), int(window_top + y), duration=duration, pause=pause
+        int(window_left + x),
+        int(window_top + y),
+        duration=duration,
+        pause=pause,
+        stop_key=stop_key,
     )
 
 
-def open_cell_menu(cell: Cell, window_left: int, window_top: int) -> None:
+def open_cell_menu(
+    cell: Cell,
+    window_left: int,
+    window_top: int,
+    *,
+    stop_key: str = DEFAULT_STOP_KEY,
+    pause: float = ACTION_DELAY,
+    move_duration: float = MOVE_DURATION,
+) -> None:
     """
     Hover the cell, then left-click and right-click to open its context menu.
     """
-    abort_if_escape_pressed()
+    abort_if_escape_pressed(stop_key)
     cx, cy = _cell_screen_center(cell, window_left, window_top)
-    timed_action(pdi.moveTo, cx, cy, duration=MOVE_DURATION)
-    pause_action()
-    timed_action(pdi.leftClick, cx, cy)
-    pause_action()
-    timed_action(pdi.rightClick, cx, cy)
-    pause_action()
+    timed_action(pdi.moveTo, cx, cy, duration=move_duration, stop_key=stop_key)
+    pause_action(pause, stop_key=stop_key)
+    timed_action(pdi.leftClick, cx, cy, stop_key=stop_key)
+    pause_action(pause, stop_key=stop_key)
+    timed_action(pdi.rightClick, cx, cy, stop_key=stop_key)
+    pause_action(pause, stop_key=stop_key)
 
 
 def scroll_to_next_grid_at(
     clicks: int,
     grid_center_abs: Tuple[int, int],
     safe_point_abs: Optional[Tuple[int, int]] = None,
+    *,
+    stop_key: str = DEFAULT_STOP_KEY,
+    pause: float = ACTION_DELAY,
+    move_duration: float = SCROLL_MOVE_DURATION,
+    scroll_interval: float = SCROLL_INTERVAL,
+    settle_delay: float = SCROLL_SETTLE_DELAY,
 ) -> None:
     """
     Scroll with the cursor positioned inside the grid to ensure the carousel moves.
     Optionally park the cursor back at a safe point afterwards.
     """
-    abort_if_escape_pressed()
+    abort_if_escape_pressed(stop_key)
     gx, gy = grid_center_abs
     scroll_clicks = -abs(clicks)
 
     # Match the working standalone script: slow move into position, click, then vertical scroll.
-    pdi.moveTo(gx, gy, duration=SCROLL_MOVE_DURATION)
-    pause_action()
-    abort_if_escape_pressed()
-    pdi.leftClick(gx, gy)
-    pause_action()
+    timed_action(pdi.moveTo, gx, gy, duration=move_duration, stop_key=stop_key)
+    pause_action(pause, stop_key=stop_key)
+    abort_if_escape_pressed(stop_key)
+    timed_action(pdi.leftClick, gx, gy, stop_key=stop_key)
+    pause_action(pause, stop_key=stop_key)
 
     print(
-        f"[scroll] vscroll clicks={scroll_clicks} interval={SCROLL_INTERVAL} at=({gx},{gy})",
+        f"[scroll] vscroll clicks={scroll_clicks} interval={scroll_interval} at=({gx},{gy})",
         flush=True,
     )
-    pdi.vscroll(clicks=scroll_clicks, interval=SCROLL_INTERVAL)
-    sleep_with_abort(SCROLL_SETTLE_DELAY)
+    timed_action(
+        pdi.vscroll, clicks=scroll_clicks, interval=scroll_interval, stop_key=stop_key
+    )
+    sleep_with_abort(settle_delay, stop_key=stop_key)
 
     if safe_point_abs is not None:
         sx, sy = safe_point_abs
-        move_absolute(sx, sy)
+        move_absolute(sx, sy, pause=pause, stop_key=stop_key)
 
 
 def _cell_screen_center(

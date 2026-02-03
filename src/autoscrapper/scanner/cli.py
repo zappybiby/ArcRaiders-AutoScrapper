@@ -9,6 +9,7 @@ from .report import _render_results
 from ..config import load_scan_settings
 from ..core.item_actions import ITEM_RULES_PATH
 from ..cli.warnings import maybe_warn_default_rules
+from ..interaction.keybinds import stop_key_label
 from ..interaction.inventory_grid import Grid
 from ..interaction.ui_windows import SCROLL_CLICKS_PER_PAGE
 from ..ocr.inventory_vision import enable_ocr_debug
@@ -110,11 +111,17 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
             apply_actions=not args.dry_run,
             actions_path=ITEM_RULES_PATH,
             profile_timing=args.profile,
+            stop_key=settings.stop_key,
+            action_delay_ms=settings.action_delay_ms,
+            menu_appear_delay_ms=settings.menu_appear_delay_ms,
+            sell_recycle_post_delay_ms=settings.sell_recycle_post_delay_ms,
+            infobox_retries=settings.infobox_retries,
+            infobox_retry_delay_ms=settings.infobox_retry_delay_ms,
             ocr_unreadable_retries=settings.ocr_unreadable_retries,
             ocr_unreadable_retry_delay_ms=settings.ocr_unreadable_retry_delay_ms,
         )
     except KeyboardInterrupt:
-        print("Aborted by Escape key.")
+        print(f"Aborted by {stop_key_label(settings.stop_key)} key.")
         return 0
     except ValueError as exc:
         print(f"Error: {exc}")
