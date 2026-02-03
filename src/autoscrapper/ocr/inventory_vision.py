@@ -13,14 +13,15 @@ from ..core.item_actions import clean_ocr_text
 from .tesseract import image_to_data, image_to_string
 
 # Infobox visual characteristics
-INFOBOX_COLOR_BGR = np.array([223, 238, 249], dtype=np.uint8)  # #f9eedf in BGR
-INFOBOX_TOLERANCE = 8
-# Expected infobox size, normalized to the active window
-INFOBOX_TARGET_NORM_W = 0.132
-INFOBOX_TARGET_NORM_H = 0.268
-INFOBOX_SCALE_MIN = 0.8  # accept down to 80% of the expected size
-INFOBOX_MIN_NORM_W = INFOBOX_TARGET_NORM_W * INFOBOX_SCALE_MIN
-INFOBOX_MIN_NORM_H = INFOBOX_TARGET_NORM_H * INFOBOX_SCALE_MIN
+INFOBOX_COLOR_BGR = np.array([236, 246, 253], dtype=np.uint8)  # #fdf6ec in BGR
+INFOBOX_TOLERANCE_MIN = 5
+INFOBOX_TOLERANCE_MAX = 30
+INFOBOX_TOLERANCE_PADDING = 2.0
+INFOBOX_CLOSE_KERNEL_MIN = 7
+INFOBOX_CLOSE_KERNEL_MAX = 15
+INFOBOX_CLOSE_DIVISOR = 150.0
+INFOBOX_EDGE_FRACTION = 0.55
+INFOBOX_MIN_AREA = 1000
 
 # Item title placement inside the infobox (relative to infobox size)
 TITLE_HEIGHT_REL = 0.18
@@ -46,6 +47,20 @@ class InfoboxOcrResult:
     preprocess_time: float
     ocr_time: float
     ocr_failed: bool = False
+
+
+@dataclass
+class InfoboxDetectionResult:
+    rect: Optional[Tuple[int, int, int, int]]
+    tolerance: int
+    min_dist: float
+    close_kernel: int
+    contour_count: int
+    candidate_count: int
+    selected_area: Optional[int]
+    selected_score: Optional[float]
+    bbox_method: Optional[Literal["dominant_edge", "percentile_fallback"]]
+    failure_reason: Optional[str]
 
 
 def is_empty_cell(
@@ -115,44 +130,348 @@ def is_slot_empty(
     return is_empty_cell(bright_fraction, gray_var, edge_fraction)
 
 
+def _odd(value: int) -> int:
+    return value if value % 2 == 1 else value + 1
+
+
+def _compute_auto_tolerance(
+    bgr_image: np.ndarray, target_bgr: np.ndarray
+) -> Tuple[int, float]:
+    image_f = bgr_image.astype(np.float32)
+    target_f = target_bgr.astype(np.float32)
+    dist = np.linalg.norm(image_f - target_f, axis=2)
+    min_dist = float(dist.min()) if dist.size else float("inf")
+    tol = int(np.ceil(min_dist + INFOBOX_TOLERANCE_PADDING))
+    tol = int(np.clip(tol, INFOBOX_TOLERANCE_MIN, INFOBOX_TOLERANCE_MAX))
+    return tol, min_dist
+
+
+def _dominant_edge_bbox(
+    contour: np.ndarray, image_width: int, image_height: int
+) -> Optional[Tuple[int, int, int, int]]:
+    points = contour.reshape(-1, 2)
+    if points.size == 0:
+        return None
+
+    xs = points[:, 0]
+    ys = points[:, 1]
+
+    x_counts = np.bincount(xs, minlength=image_width)
+    y_counts = np.bincount(ys, minlength=image_height)
+
+    if x_counts.size == 0 or y_counts.size == 0:
+        return None
+
+    x_thr = float(x_counts.max()) * INFOBOX_EDGE_FRACTION
+    y_thr = float(y_counts.max()) * INFOBOX_EDGE_FRACTION
+
+    x_candidates = np.where(x_counts >= x_thr)[0]
+    y_candidates = np.where(y_counts >= y_thr)[0]
+
+    if len(x_candidates) < 2 or len(y_candidates) < 2:
+        return None
+
+    x0 = int(x_candidates.min())
+    x1 = int(x_candidates.max())
+    y0 = int(y_candidates.min())
+    y1 = int(y_candidates.max())
+
+    return x0, y0, max(1, x1 - x0 + 1), max(1, y1 - y0 + 1)
+
+
+def _percentile_bbox_from_filled_contour(
+    contour: np.ndarray, image_width: int, image_height: int
+) -> Optional[Tuple[int, int, int, int]]:
+    filled = np.zeros((image_height, image_width), dtype=np.uint8)
+    cv2.drawContours(filled, [contour], contourIdx=-1, color=255, thickness=-1)
+    ys, xs = np.where(filled > 0)
+    if len(xs) == 0 or len(ys) == 0:
+        return None
+
+    x0 = int(np.percentile(xs, 2))
+    x1 = int(np.percentile(xs, 98))
+    y0 = int(np.percentile(ys, 2))
+    y1 = int(np.percentile(ys, 98))
+
+    return x0, y0, max(1, x1 - x0 + 1), max(1, y1 - y0 + 1)
+
+
+def _save_infobox_detection_debug_images(
+    bgr_image: np.ndarray,
+    mask: np.ndarray,
+    mask_proc: np.ndarray,
+    contour: Optional[np.ndarray],
+    rect: Optional[Tuple[int, int, int, int]],
+    tolerance: int,
+    min_dist: float,
+    bbox_method: Optional[str],
+    failure_reason: Optional[str],
+) -> None:
+    if _OCR_DEBUG_DIR is None:
+        return
+
+    _save_debug_image("infobox_detect_raw", bgr_image)
+    _save_debug_image("infobox_detect_mask", mask)
+    _save_debug_image("infobox_detect_mask_proc", mask_proc)
+
+    overlay = bgr_image.copy()
+    if contour is not None:
+        cv2.drawContours(overlay, [contour], -1, (0, 255, 255), 2)
+
+    if rect is not None:
+        x, y, w, h = rect
+        color = (0, 255, 0) if bbox_method == "dominant_edge" else (0, 165, 255)
+        cv2.rectangle(overlay, (x, y), (x + w - 1, y + h - 1), color, 2)
+
+    line_1 = f"tol={tolerance} min_dist={min_dist:.2f}"
+    method_text = bbox_method or "none"
+    line_2 = f"method={method_text}"
+    line_3 = f"reason={failure_reason}" if failure_reason else ""
+    cv2.putText(
+        overlay,
+        line_1,
+        (8, 24),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        0.6,
+        (0, 0, 0),
+        3,
+        cv2.LINE_AA,
+    )
+    cv2.putText(
+        overlay,
+        line_1,
+        (8, 24),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        0.6,
+        (255, 255, 255),
+        1,
+        cv2.LINE_AA,
+    )
+    cv2.putText(
+        overlay,
+        line_2,
+        (8, 48),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        0.6,
+        (0, 0, 0),
+        3,
+        cv2.LINE_AA,
+    )
+    cv2.putText(
+        overlay,
+        line_2,
+        (8, 48),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        0.6,
+        (255, 255, 255),
+        1,
+        cv2.LINE_AA,
+    )
+    if line_3:
+        cv2.putText(
+            overlay,
+            line_3,
+            (8, 72),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.6,
+            (0, 0, 0),
+            3,
+            cv2.LINE_AA,
+        )
+        cv2.putText(
+            overlay,
+            line_3,
+            (8, 72),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.6,
+            (255, 255, 255),
+            1,
+            cv2.LINE_AA,
+        )
+
+    _save_debug_image("infobox_detect_overlay", overlay)
+
+
+def find_infobox_with_debug(bgr_image: np.ndarray) -> InfoboxDetectionResult:
+    """
+    Detect the infobox/context-menu panel using adaptive color tolerance and
+    contour refinement. Returns the detected rect plus diagnostics.
+    """
+    if bgr_image.size == 0:
+        return InfoboxDetectionResult(
+            rect=None,
+            tolerance=INFOBOX_TOLERANCE_MIN,
+            min_dist=float("inf"),
+            close_kernel=INFOBOX_CLOSE_KERNEL_MIN,
+            contour_count=0,
+            candidate_count=0,
+            selected_area=None,
+            selected_score=None,
+            bbox_method=None,
+            failure_reason="empty_image",
+        )
+
+    img_h, img_w = bgr_image.shape[:2]
+    close_k = _odd(
+        int(
+            np.clip(
+                round(min(img_w, img_h) / INFOBOX_CLOSE_DIVISOR),
+                INFOBOX_CLOSE_KERNEL_MIN,
+                INFOBOX_CLOSE_KERNEL_MAX,
+            )
+        )
+    )
+
+    tolerance, min_dist = _compute_auto_tolerance(bgr_image, INFOBOX_COLOR_BGR)
+    color = INFOBOX_COLOR_BGR.astype(np.int16)
+    lower = np.clip(color - tolerance, 0, 255).astype(np.uint8)
+    upper = np.clip(color + tolerance, 0, 255).astype(np.uint8)
+
+    mask = cv2.inRange(bgr_image, lower, upper)
+    close_kernel = np.ones((close_k, close_k), dtype=np.uint8)
+    open_kernel = np.ones((3, 3), dtype=np.uint8)
+
+    mask_proc = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, close_kernel, iterations=2)
+    mask_proc = cv2.morphologyEx(mask_proc, cv2.MORPH_OPEN, open_kernel, iterations=1)
+
+    contours, _ = cv2.findContours(mask_proc, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    contour_count = len(contours)
+    if not contours:
+        _save_infobox_detection_debug_images(
+            bgr_image,
+            mask,
+            mask_proc,
+            contour=None,
+            rect=None,
+            tolerance=tolerance,
+            min_dist=min_dist,
+            bbox_method=None,
+            failure_reason="no_contours",
+        )
+        return InfoboxDetectionResult(
+            rect=None,
+            tolerance=tolerance,
+            min_dist=min_dist,
+            close_kernel=close_k,
+            contour_count=contour_count,
+            candidate_count=0,
+            selected_area=None,
+            selected_score=None,
+            bbox_method=None,
+            failure_reason="no_contours",
+        )
+
+    candidates: List[Tuple[float, np.ndarray, int]] = []
+    for contour in contours:
+        x, y, bw, bh = cv2.boundingRect(contour)
+        area = int(bw * bh)
+        if area < INFOBOX_MIN_AREA:
+            continue
+        ar = float(bh) / float(max(bw, 1))
+        score = float(area) * (1.0 + 0.3 * min(ar, 5.0))
+        candidates.append((score, contour, area))
+
+    if not candidates:
+        _save_infobox_detection_debug_images(
+            bgr_image,
+            mask,
+            mask_proc,
+            contour=None,
+            rect=None,
+            tolerance=tolerance,
+            min_dist=min_dist,
+            bbox_method=None,
+            failure_reason="no_scored_contours",
+        )
+        return InfoboxDetectionResult(
+            rect=None,
+            tolerance=tolerance,
+            min_dist=min_dist,
+            close_kernel=close_k,
+            contour_count=contour_count,
+            candidate_count=0,
+            selected_area=None,
+            selected_score=None,
+            bbox_method=None,
+            failure_reason="no_scored_contours",
+        )
+
+    selected_score, best_contour, selected_area = max(
+        candidates, key=lambda item: item[0]
+    )
+
+    dominant_bbox = _dominant_edge_bbox(best_contour, img_w, img_h)
+    bbox_method: Optional[Literal["dominant_edge", "percentile_fallback"]]
+    failure_reason: Optional[str]
+
+    if dominant_bbox is not None:
+        rect = dominant_bbox
+        bbox_method = "dominant_edge"
+        failure_reason = None
+    else:
+        percentile_bbox = _percentile_bbox_from_filled_contour(
+            best_contour, img_w, img_h
+        )
+        if percentile_bbox is None:
+            _save_infobox_detection_debug_images(
+                bgr_image,
+                mask,
+                mask_proc,
+                contour=best_contour,
+                rect=None,
+                tolerance=tolerance,
+                min_dist=min_dist,
+                bbox_method=None,
+                failure_reason="percentile_fallback_failed",
+            )
+            return InfoboxDetectionResult(
+                rect=None,
+                tolerance=tolerance,
+                min_dist=min_dist,
+                close_kernel=close_k,
+                contour_count=contour_count,
+                candidate_count=len(candidates),
+                selected_area=selected_area,
+                selected_score=selected_score,
+                bbox_method=None,
+                failure_reason="percentile_fallback_failed",
+            )
+        rect = percentile_bbox
+        bbox_method = "percentile_fallback"
+        failure_reason = "dominant_edge_threshold_failed"
+
+    _save_infobox_detection_debug_images(
+        bgr_image,
+        mask,
+        mask_proc,
+        contour=best_contour,
+        rect=rect,
+        tolerance=tolerance,
+        min_dist=min_dist,
+        bbox_method=bbox_method,
+        failure_reason=failure_reason,
+    )
+
+    return InfoboxDetectionResult(
+        rect=rect,
+        tolerance=tolerance,
+        min_dist=min_dist,
+        close_kernel=close_k,
+        contour_count=contour_count,
+        candidate_count=len(candidates),
+        selected_area=selected_area,
+        selected_score=selected_score,
+        bbox_method=bbox_method,
+        failure_reason=failure_reason,
+    )
+
+
 def find_infobox(bgr_image: np.ndarray) -> Optional[Tuple[int, int, int, int]]:
     """
-    Locate the largest rectangle that matches the infobox background color.
+    Backward-compatible wrapper returning only the detected infobox rectangle.
     Returns (x, y, w, h) relative to the provided image, or None if not found.
     """
-    kernel = np.ones((3, 3), np.uint8)
-
-    def _meets_min_infobox_size(
-        w: int, h: int, window_width: int, window_height: int
-    ) -> bool:
-        if window_width <= 0 or window_height <= 0:
-            return False
-        norm_w = w / float(window_width)
-        norm_h = h / float(window_height)
-        return norm_w >= INFOBOX_MIN_NORM_W and norm_h >= INFOBOX_MIN_NORM_H
-
-    def _find_from_mask(mask: np.ndarray) -> Optional[Tuple[int, int, int, int]]:
-        contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        candidates: List[Tuple[int, Tuple[int, int, int, int]]] = []
-        window_height, window_width = mask.shape[:2]
-        for contour in contours:
-            x, y, w, h = cv2.boundingRect(contour)
-            if _meets_min_infobox_size(w, h, window_width, window_height):
-                candidates.append((w * h, (x, y, w, h)))
-        if not candidates:
-            return None
-        _, best_rect = max(candidates, key=lambda item: item[0])
-        return best_rect
-
-    # Use tolerance-based mask around the expected infobox color
-    color = INFOBOX_COLOR_BGR.astype(
-        np.int16
-    )  # promote to avoid uint8 overflow when adding tolerance
-    lower = np.clip(color - INFOBOX_TOLERANCE, 0, 255).astype(np.uint8)
-    upper = np.clip(color + INFOBOX_TOLERANCE, 0, 255).astype(np.uint8)
-    mask_tol = cv2.inRange(bgr_image, lower, upper)
-    mask_tol = cv2.morphologyEx(mask_tol, cv2.MORPH_CLOSE, kernel, iterations=1)
-    return _find_from_mask(mask_tol)
+    return find_infobox_with_debug(bgr_image).rect
 
 
 def title_roi(infobox_rect: Tuple[int, int, int, int]) -> Tuple[int, int, int, int]:
