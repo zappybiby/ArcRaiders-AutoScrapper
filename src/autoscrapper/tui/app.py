@@ -97,9 +97,12 @@ class MenuScreen(AppScreen):
         self._highlight_default()
 
     def _build_option(self, item: MenuItem) -> Option:
-        text = Text.assemble((item.key, "bold cyan"), " ", item.label)
-        if self.recommended_key and item.key == self.recommended_key:
-            text.append("  (recommended)", style="dim")
+        is_recommended = self.recommended_key and item.key == self.recommended_key
+        text = Text.assemble((item.key, "bold cyan"), " ")
+        if is_recommended:
+            text.append(item.label, style="bold #f59e0b")
+        else:
+            text.append(item.label)
         return Option(text, id=item.key)
 
     def _highlight_default(self) -> None:
