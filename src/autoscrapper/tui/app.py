@@ -20,7 +20,13 @@ from .progress import (
 )
 from .rules import RulesScreen
 from .scan import ScanScreen
-from .settings import ScanConfigScreen
+from .settings import (
+    ResetScanSettingsScreen,
+    ScanControlsScreen,
+    ScanDetectionScreen,
+    ScanDiagnosticsScreen,
+    ScanTimingScreen,
+)
 from .status import build_status_panel, has_progress
 
 MenuAction = Callable[["MenuScreen"], None]
@@ -253,8 +259,28 @@ class AutoScrapperApp(App[None]):
         items = [
             MenuItem(
                 "1",
-                "Scan controls, retries, and timings",
-                lambda screen: screen.app.push_screen(ScanConfigScreen()),
+                "Keyboard + paging",
+                lambda screen: screen.app.push_screen(ScanControlsScreen()),
+            ),
+            MenuItem(
+                "2",
+                "Detection + OCR retries",
+                lambda screen: screen.app.push_screen(ScanDetectionScreen()),
+            ),
+            MenuItem(
+                "3",
+                "Timing delays",
+                lambda screen: screen.app.push_screen(ScanTimingScreen()),
+            ),
+            MenuItem(
+                "4",
+                "Diagnostics",
+                lambda screen: screen.app.push_screen(ScanDiagnosticsScreen()),
+            ),
+            MenuItem(
+                "5",
+                "Reset scan settings to defaults",
+                lambda screen: screen.app.push_screen(ResetScanSettingsScreen()),
             ),
             MenuItem("b", "Back", lambda screen: screen.app.pop_screen()),
         ]
@@ -284,5 +310,5 @@ class AutoScrapperApp(App[None]):
 
 def run_tui() -> int:
     app = AutoScrapperApp()
-    app.run(mouse=False)
+    app.run(mouse=True)
     return 0
