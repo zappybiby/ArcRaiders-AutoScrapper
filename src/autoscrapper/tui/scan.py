@@ -122,7 +122,7 @@ class ScanScreen(Screen):
         self._state = ScanState()
         self._updates: "queue.Queue[ScanUpdate]" = queue.Queue()
         self._scan_complete = False
-        self._update_timer = None
+        self._scan_update_timer = None
         self._results: list["ItemActionResult"] = []
         self._stats: Optional[ScanStats] = None
 
@@ -147,7 +147,7 @@ class ScanScreen(Screen):
 
     def on_mount(self) -> None:
         self._refresh_panels()
-        self._update_timer = self.set_interval(0.25, self._drain_updates)
+        self._scan_update_timer = self.set_interval(0.25, self._drain_updates)
         self._start_scan()
 
     def on_screen_resume(self, _event) -> None:  # type: ignore[override]
@@ -275,15 +275,15 @@ class ScanScreen(Screen):
                 self._scan_complete = True
                 message = str(payload.get("message", "Scan failed."))
                 self.app.push_screen(MessageScreen(message, title="Scan stopped"))
-                if self._update_timer is not None:
-                    self._update_timer.pause()
+                if self._scan_update_timer is not None:
+                    self._scan_update_timer.pause()
                 return
             elif kind == "done":
                 self._scan_complete = True
                 self._results = payload.get("results", [])
                 self._stats = payload.get("stats")
-                if self._update_timer is not None:
-                    self._update_timer.pause()
+                if self._scan_update_timer is not None:
+                    self._scan_update_timer.pause()
                 if self._stats is not None:
                     self.app.push_screen(
                         ScanResultsScreen(
