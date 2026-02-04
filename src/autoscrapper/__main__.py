@@ -2,17 +2,6 @@ from __future__ import annotations
 
 import sys
 
-_LEGACY_TEXT_MENU_COMMANDS = {
-    "--cli",
-    "cli",
-    "rules",
-    "progress",
-    "config",
-    "scan-config",
-    "scan_configuration",
-    "settings",
-}
-
 
 def _run_tui() -> int:
     from .tui import run_tui
@@ -47,13 +36,6 @@ def main(argv=None) -> int:
         from .scanner.cli import main as scan_main
 
         return scan_main(rest)
-
-    if cmd in _LEGACY_TEXT_MENU_COMMANDS:
-        print(
-            f"'{cmd}' is now managed inside the Textual UI. "
-            "Launching the UI instead."
-        )
-        return _run_tui()
 
     print(f"Unknown command: {cmd}\n")
     _print_usage()
