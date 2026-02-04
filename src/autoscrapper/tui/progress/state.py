@@ -7,11 +7,7 @@ from typing import Dict, List, Set
 
 from ...config import ProgressSettings, load_progress_settings, save_progress_settings
 from ...progress.data_loader import load_game_data
-from ...progress.progress_config import (
-    build_quest_index,
-    infer_completed_by_trader,
-    resolve_active_quests,
-)
+from ...progress.quest_inference import infer_completed_from_active
 
 
 @dataclass(frozen=True)
@@ -20,6 +16,7 @@ class QuestEntry:
     name: str
     trader: str
     sort_order: int
+    has_requirements: bool
 
 
 @dataclass(frozen=True)
@@ -63,6 +60,7 @@ def build_quest_entries(quests: List[dict]) -> List[QuestEntry]:
                 name=str(quest_name),
                 trader=str(trader),
                 sort_order=sort_order,
+                has_requirements=bool(quest.get("requirements")),
             )
         )
     entries.sort(key=lambda entry: (entry.trader, entry.sort_order, entry.name))
@@ -86,27 +84,12 @@ def build_hideout_modules(hideout_modules: List[dict]) -> List[HideoutModule]:
 
 
 def compute_completed_quests(
-    quest_entries: List[QuestEntry],
     active_ids: List[str],
 ) -> List[str]:
-    quests_by_trader: Dict[str, List[dict]] = {}
-    for entry in quest_entries:
-        quests_by_trader.setdefault(entry.trader, []).append(
-            {
-                "id": entry.id,
-                "name": entry.name,
-                "sortOrder": entry.sort_order,
-            }
-        )
-    for trader, quests in quests_by_trader.items():
-        quests.sort(key=lambda quest: quest.get("sortOrder") or 0)
-        quests_by_trader[trader] = quests
-
-    quest_index = build_quest_index(quests_by_trader)
-    active_resolved, missing = resolve_active_quests(active_ids, quest_index)
-    if missing:
-        raise ValueError(f"Active quests not found: {', '.join(missing)}")
-    return infer_completed_by_trader(quests_by_trader, active_resolved)
+    game_data = load_game_data()
+    return infer_completed_from_active(
+        game_data.quests, game_data.quest_graph, active_ids
+    )
 
 
 def build_wizard_state() -> ProgressWizardState:

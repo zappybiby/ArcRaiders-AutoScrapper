@@ -5,12 +5,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional
 
-from .data_loader import GameData, load_game_data
+from .data_loader import load_game_data
 from .decision_engine import DecisionEngine, DecisionReason
+from .quest_inference import infer_completed_from_active
 from .progress_config import (
     build_quest_index,
     group_quests_by_trader,
-    infer_completed_by_trader,
     normalize_hideout_levels,
     resolve_active_quests,
 )
@@ -61,7 +61,9 @@ def generate_rules_from_active(
     else:
         if not active_resolved:
             raise ValueError("No active quests provided.")
-        completed_quests = infer_completed_by_trader(quests_by_trader, active_resolved)
+        completed_quests = infer_completed_from_active(
+            game_data.quests, game_data.quest_graph, active_quests
+        )
 
     user_progress = {
         "hideoutLevels": normalized_levels,

@@ -231,7 +231,9 @@ class AutoScrapperApp(App[None]):
                 lambda screen: launch_progress_wizard(screen.app),
             ),
             MenuItem(
-                "2", "Review quests", lambda screen: launch_review_quests(screen.app)
+                "2",
+                "Review completed quests",
+                lambda screen: launch_review_quests(screen.app),
             ),
             MenuItem(
                 "3",

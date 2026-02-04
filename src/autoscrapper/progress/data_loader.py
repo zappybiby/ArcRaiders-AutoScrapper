@@ -15,6 +15,7 @@ class GameData:
     items: List[dict]
     hideout_modules: List[dict]
     quests: List[dict]
+    quest_graph: Dict[str, Any]
     projects: List[dict]
     metadata: Dict[str, str]
 
@@ -28,18 +29,25 @@ def load_game_data(data_dir: Optional[Path] = None) -> GameData:
 
     items_path = data_dir / "items.json"
     quests_path = data_dir / "quests.json"
+    quest_graph_path = data_dir / "quests_graph.json"
     hideout_modules_path = data_dir / "static" / "hideout_modules.json"
     projects_path = data_dir / "static" / "projects.json"
     metadata_path = data_dir / "metadata.json"
     price_overrides_path = data_dir / "price_overrides.json"
 
-    if not items_path.exists() or not quests_path.exists():
+    if (
+        not items_path.exists()
+        or not quests_path.exists()
+        or not quest_graph_path.exists()
+    ):
         raise FileNotFoundError(
-            f"Missing data snapshot. Expected {items_path} and {quests_path}."
+            "Missing data snapshot. Expected "
+            f"{items_path}, {quests_path}, and {quest_graph_path}."
         )
 
     items = _read_json(items_path)
     quests = apply_quest_overrides(_read_json(quests_path))
+    quest_graph = _read_json(quest_graph_path)
     hideout_modules = _read_json(hideout_modules_path)
     projects = _read_json(projects_path)
 
@@ -64,6 +72,7 @@ def load_game_data(data_dir: Optional[Path] = None) -> GameData:
         items=normalized_items,
         hideout_modules=hideout_modules,
         quests=quests,
+        quest_graph=quest_graph,
         projects=projects,
         metadata={
             "lastUpdated": (metadata or {}).get("lastUpdated", "1970-01-01T00:00:00Z"),

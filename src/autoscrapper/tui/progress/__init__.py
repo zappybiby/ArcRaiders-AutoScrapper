@@ -58,16 +58,16 @@ class ProgressIntroScreen(ProgressScreen):
     def compose(self) -> ComposeResult:
         yield Static("Progress Setup", classes="menu-title")
         yield Static(
-            "Tell us your current progress so we can generate a personalized rule list.",
+            "Enter your currently active quests. Completed quests are inferred automatically.",
             classes="hint",
         )
         yield Static(
-            "Have you completed all quests? (If yes, active quests are skipped.)",
+            "Do you currently have any active quests?",
             classes="section-title",
         )
         yield OptionList(
-            Option("Yes, all quests are completed", id="yes"),
-            Option("No, I still have active quests", id="no"),
+            Option("No active quests (all quests completed)", id="yes"),
+            Option("Yes, I have active quests now", id="no"),
             id="all-quests",
         )
         with Horizontal(id="intro-actions"):
@@ -134,6 +134,10 @@ class ActiveQuestsScreen(ProgressScreen):
 
     def compose(self) -> ComposeResult:
         yield Static("Select Active Quests", classes="menu-title")
+        yield Static(
+            "Select quests currently active in-game. Completed quests will be inferred.",
+            classes="hint",
+        )
         yield Static(id="quest-filter", classes="hint")
         yield OptionList(id="quest-list")
         yield Static(id="quest-count", classes="hint")
@@ -408,6 +412,7 @@ class ProgressSummaryScreen(ProgressScreen):
     def __init__(self, state: ProgressWizardState) -> None:
         super().__init__()
         self.state = state
+        self.inferred_completed_ids: list[str] = []
 
     BINDINGS = [
         *ProgressScreen.BINDINGS,
@@ -428,30 +433,62 @@ class ProgressSummaryScreen(ProgressScreen):
     def _render_summary(self) -> None:
         active_count = len(self.state.active_ids)
         workshop_count = len(self.state.hideout_levels)
-        status = "Yes" if self.state.all_quests_completed else "No"
+        requirement_entries = [
+            entry for entry in self.state.quest_entries if entry.has_requirements
+        ]
         lines = [
-            f"All quests completed: {status}",
             f"Active quests selected: {active_count}",
             f"Workshops configured: {workshop_count}",
             "",
-            "We will infer completed quests and generate a personalized rule list.",
+            "Completed quests are inferred from your active quests using quest order and the quest graph.",
         ]
+        try:
+            if self.state.all_quests_completed:
+                self.inferred_completed_ids = [
+                    entry.id for entry in self.state.quest_entries
+                ]
+            else:
+                self.inferred_completed_ids = compute_completed_quests(
+                    list(self.state.active_ids)
+                )
+        except ValueError as exc:
+            self.inferred_completed_ids = []
+            lines.extend(["", f"Could not infer completed quests: {exc}"])
+            self.query_one("#summary-body", Static).update("\n".join(lines))
+            return
+
+        completed_set = set(self.inferred_completed_ids)
+        inferred_requirement_completed = [
+            entry.name for entry in requirement_entries if entry.id in completed_set
+        ]
+        inferred_requirement_remaining = [
+            entry.name for entry in requirement_entries if entry.id not in completed_set
+        ]
+        lines.extend(
+            [
+                "",
+                f"Inferred completed quests: {len(self.inferred_completed_ids)} / {len(self.state.quest_entries)}",
+                f"Requirement quests completed: {len(inferred_requirement_completed)} / {len(requirement_entries)}",
+            ]
+        )
+        if inferred_requirement_remaining:
+            lines.append("Requirement quests still incomplete:")
+            lines.extend(f"- {name}" for name in inferred_requirement_remaining)
+        else:
+            lines.append("All requirement quests are inferred completed.")
         self.query_one("#summary-body", Static).update("\n".join(lines))
 
     def _save(self) -> None:
         try:
-            if self.state.all_quests_completed:
-                completed_ids = [q.id for q in self.state.quest_entries]
-            else:
-                completed_ids = compute_completed_quests(
-                    self.state.quest_entries, list(self.state.active_ids)
-                )
+            completed_ids = list(
+                self.inferred_completed_ids
+            ) or compute_completed_quests(list(self.state.active_ids))
         except ValueError as exc:
             self.app.push_screen(MessageScreen(str(exc)))
             return
 
         progress_settings = persist_progress_settings(
-            all_quests_completed=self.state.all_quests_completed,
+            all_quests_completed=(len(completed_ids) == len(self.state.quest_entries)),
             active_quests=list(self.state.active_ids),
             completed_quests=completed_ids,
             hideout_levels=self.state.hideout_levels,

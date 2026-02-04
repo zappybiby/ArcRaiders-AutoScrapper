@@ -38,9 +38,8 @@ class ReviewQuestsScreen(ProgressScreen):
 
     BINDINGS = [
         *ProgressScreen.BINDINGS,
-        Binding("enter", "cycle_status", "Cycle state"),
+        Binding("enter", "toggle_completed", "Toggle done"),
         Binding("space", "toggle_completed", "Toggle done"),
-        Binding("ctrl+a", "toggle_active", "Toggle active"),
         Binding("ctrl+t", "toggle_sort", "Sort"),
         Binding("ctrl+enter", "save", "Save"),
     ]
@@ -51,7 +50,7 @@ class ReviewQuestsScreen(ProgressScreen):
         super().__init__()
         self.quest_entries = quest_entries
         self.completed = set(settings.completed_quests)
-        self.active = set(settings.active_quests)
+        self.active_read_only = set(settings.active_quests)
         self.original = ProgressSettings(
             all_quests_completed=settings.all_quests_completed,
             active_quests=list(settings.active_quests),
@@ -64,9 +63,9 @@ class ReviewQuestsScreen(ProgressScreen):
         self.filtered: List[QuestEntry] = []
 
     def compose(self) -> ComposeResult:
-        yield Static("Review Quest Completion", classes="menu-title")
+        yield Static("Review Completed Quests", classes="menu-title")
         yield Static(
-            "Space toggles completed. Ctrl+A toggles active.",
+            "Space/Enter toggles completed. Active quests are read-only from setup.",
             classes="hint",
         )
         yield Static(id="review-filter", classes="hint")
@@ -124,7 +123,7 @@ class ReviewQuestsScreen(ProgressScreen):
     def _status_label(self, entry: QuestEntry) -> Text:
         if entry.id in self.completed:
             return Text("✓", style="green")
-        if entry.id in self.active:
+        if entry.id in self.active_read_only:
             return Text("A", style="cyan")
         return Text("·", style="dim")
 
@@ -170,7 +169,7 @@ class ReviewQuestsScreen(ProgressScreen):
         )
         count_text = (
             f"Completed: {len(self.completed)} • "
-            f"Active: {len(self.active)} • "
+            f"Active (read-only): {len(self.active_read_only)} • "
             f"Showing: {len(self.filtered)} • "
             f"Total: {len(self.quest_entries)}"
         )
@@ -191,54 +190,33 @@ class ReviewQuestsScreen(ProgressScreen):
         if entry.id in self.completed:
             self.completed.remove(entry.id)
         else:
+            if entry.id in self.active_read_only:
+                self.app.push_screen(
+                    MessageScreen(
+                        "This quest is marked active. Update active quests in setup first."
+                    )
+                )
+                return
             self.completed.add(entry.id)
-            self.active.discard(entry.id)
-        self._refresh()
-
-    def _toggle_active(self) -> None:
-        entry = self._selected_entry()
-        if entry is None:
-            return
-        if entry.id in self.active:
-            self.active.remove(entry.id)
-        else:
-            self.active.add(entry.id)
-            self.completed.discard(entry.id)
-        self._refresh()
-
-    def _cycle_selected_status(self) -> None:
-        entry = self._selected_entry()
-        if entry is None:
-            return
-        if entry.id in self.completed:
-            self.completed.remove(entry.id)
-            self.active.discard(entry.id)
-        elif entry.id in self.active:
-            self.active.remove(entry.id)
-            self.completed.add(entry.id)
-        else:
-            self.active.add(entry.id)
-            self.completed.discard(entry.id)
         self._refresh()
 
     def _save(self) -> None:
+        active_quests = [
+            quest_id
+            for quest_id in self.original.active_quests
+            if quest_id not in self.completed
+        ]
         persist_progress_settings(
             all_quests_completed=(len(self.completed) == len(self.quest_entries)),
-            active_quests=list(self.active),
+            active_quests=active_quests,
             completed_quests=list(self.completed),
             hideout_levels=self.original.hideout_levels,
         )
         self.app.pop_screen()
-        self.app.push_screen(MessageScreen("Quest progress saved."))
+        self.app.push_screen(MessageScreen("Completed quest overrides saved."))
 
     def action_toggle_completed(self) -> None:
         self._toggle_completed()
-
-    def action_toggle_active(self) -> None:
-        self._toggle_active()
-
-    def action_cycle_status(self) -> None:
-        self._cycle_selected_status()
 
     def action_toggle_sort(self) -> None:
         self.sort_mode = "trader" if self.sort_mode == "order" else "order"
@@ -267,7 +245,7 @@ class ReviewQuestsScreen(ProgressScreen):
         event.stop()
 
     def on_option_list_option_selected(self, _event: OptionList.OptionSelected) -> None:
-        self._cycle_selected_status()
+        self._toggle_completed()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "sort":
