@@ -814,6 +814,7 @@ class ReviewQuestsScreen(ProgressScreen):
 
     BINDINGS = [
         *ProgressScreen.BINDINGS,
+        Binding("enter", "cycle_status", "Cycle state"),
         Binding("space", "toggle_completed", "Toggle done"),
         Binding("ctrl+a", "toggle_active", "Toggle active"),
         Binding("ctrl+t", "toggle_sort", "Sort"),
@@ -981,6 +982,21 @@ class ReviewQuestsScreen(ProgressScreen):
             self.completed.discard(entry.id)
         self._refresh()
 
+    def _cycle_selected_status(self) -> None:
+        entry = self._selected_entry()
+        if entry is None:
+            return
+        if entry.id in self.completed:
+            self.completed.remove(entry.id)
+            self.active.discard(entry.id)
+        elif entry.id in self.active:
+            self.active.remove(entry.id)
+            self.completed.add(entry.id)
+        else:
+            self.active.add(entry.id)
+            self.completed.discard(entry.id)
+        self._refresh()
+
     def _save(self) -> None:
         updated = ProgressSettings(
             all_quests_completed=(len(self.completed) == len(self.quest_entries)),
@@ -998,6 +1014,9 @@ class ReviewQuestsScreen(ProgressScreen):
 
     def action_toggle_active(self) -> None:
         self._toggle_active()
+
+    def action_cycle_status(self) -> None:
+        self._cycle_selected_status()
 
     def action_toggle_sort(self) -> None:
         self.sort_mode = "trader" if self.sort_mode == "order" else "order"
@@ -1032,6 +1051,9 @@ class ReviewQuestsScreen(ProgressScreen):
             self.filter_text += character
             self._refresh()
             event.stop()
+
+    def on_option_list_option_selected(self, _event: OptionList.OptionSelected) -> None:
+        self._cycle_selected_status()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "sort":
