@@ -18,7 +18,7 @@ from ..config import (
     save_progress_settings,
 )
 from ..core.item_actions import ITEM_RULES_CUSTOM_PATH
-from ..items.rules_cli import DEFAULT_RULES_PATH, load_rules
+from ..items.rules_store import DEFAULT_RULES_PATH, load_rules
 from ..items.rules_diff import RuleChange, collect_rule_changes
 from ..progress.data_loader import load_game_data
 from ..progress.progress_config import (

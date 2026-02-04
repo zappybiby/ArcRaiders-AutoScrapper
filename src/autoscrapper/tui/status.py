@@ -9,7 +9,7 @@ from rich.table import Table
 from rich.text import Text
 
 from ..config import has_saved_progress, load_progress_settings
-from ..items.rules_cli import load_rules, using_custom_rules
+from ..items.rules_store import load_rules, using_custom_rules
 from ..progress.data_loader import load_game_data
 
 

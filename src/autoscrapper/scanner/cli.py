@@ -6,9 +6,9 @@ from typing import Iterable, Optional
 
 from .engine import scan_inventory
 from .report import _render_results
+from ..app_warnings import maybe_warn_default_rules
 from ..config import load_scan_settings
 from ..core.item_actions import ITEM_RULES_PATH
-from ..cli.warnings import maybe_warn_default_rules
 from ..interaction.keybinds import stop_key_label
 from ..interaction.inventory_grid import Grid
 from ..interaction.ui_windows import SCROLL_CLICKS_PER_PAGE

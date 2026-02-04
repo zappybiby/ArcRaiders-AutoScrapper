@@ -9,7 +9,7 @@ from textual.widgets import Button, Footer, Input, OptionList, Static
 from textual.widgets.option_list import Option
 
 from .common import AppScreen, MessageScreen
-from ..items.rules_cli import (
+from ..items.rules_store import (
     CUSTOM_RULES_PATH,
     active_rules_path,
     load_rules,
