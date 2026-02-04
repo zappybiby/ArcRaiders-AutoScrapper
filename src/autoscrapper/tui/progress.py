@@ -6,7 +6,9 @@ import re
 from typing import Dict, List, Optional, Set
 
 from rich.text import Text
+from textual import events
 from textual.app import ComposeResult
+from textual.binding import Binding
 from textual.containers import Horizontal, Vertical
 from textual.widgets import Button, Footer, Input, OptionList, Static
 from textual.widgets.option_list import Option
@@ -141,7 +143,14 @@ def _build_state() -> ProgressWizardState:
 
 
 class ProgressScreen(AppScreen):
-    pass
+    BINDINGS = [
+        *AppScreen.BINDINGS,
+        Binding("ctrl+p", "back", "Back"),
+        Binding("escape", "back", "Back"),
+    ]
+
+    def action_back(self) -> None:
+        self.app.pop_screen()
 
 
 class ProgressIntroScreen(ProgressScreen):
@@ -159,6 +168,11 @@ class ProgressIntroScreen(ProgressScreen):
     def __init__(self, state: ProgressWizardState) -> None:
         super().__init__()
         self.state = state
+
+    BINDINGS = [
+        *ProgressScreen.BINDINGS,
+        Binding("ctrl+enter", "next", "Continue"),
+    ]
 
     def compose(self) -> ComposeResult:
         yield Static("Progress Setup", classes="menu-title")
@@ -194,6 +208,9 @@ class ProgressIntroScreen(ProgressScreen):
         else:
             self.app.push_screen(ActiveQuestsScreen(self.state))
 
+    def action_next(self) -> None:
+        self._next()
+
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "next":
             self._next()
@@ -225,9 +242,7 @@ class ActiveQuestsScreen(ProgressScreen):
         *ProgressScreen.BINDINGS,
         ("space", "toggle", "Toggle quest"),
         ("enter", "toggle", "Toggle quest"),
-        ("/", "focus_search", "Search"),
-        ("ctrl+n", "next", "Next"),
-        ("ctrl+p", "back", "Back"),
+        ("ctrl+enter", "next", "Continue"),
     ]
 
     def __init__(self, state: ProgressWizardState) -> None:
@@ -238,12 +253,12 @@ class ActiveQuestsScreen(ProgressScreen):
 
     def compose(self) -> ComposeResult:
         yield Static("Select Active Quests", classes="menu-title")
-        yield Input(placeholder="Search quests by name or id", id="quest-search")
+        yield Static(id="quest-filter", classes="hint")
         yield OptionList(id="quest-list")
         yield Static(id="quest-count", classes="hint")
         with Horizontal(id="quest-actions"):
             yield Button("Back", id="back")
-            yield Button("Next", id="next", variant="primary")
+            yield Button("Continue", id="next", variant="primary")
         yield Footer()
 
     def on_mount(self) -> None:
@@ -252,9 +267,6 @@ class ActiveQuestsScreen(ProgressScreen):
 
     def _focus_list(self) -> None:
         self.query_one("#quest-list", OptionList).focus()
-
-    def _focus_search(self) -> None:
-        self.query_one("#quest-search", Input).focus()
 
     def _filtered_entries(self) -> List[QuestEntry]:
         if not self.filter_text:
@@ -303,6 +315,11 @@ class ActiveQuestsScreen(ProgressScreen):
                 menu.highlighted = 0
         if had_focus:
             menu.focus()
+        filter_text = self.filter_text or "all"
+        self.query_one("#quest-filter", Static).update(
+            f"Type to filter by name or id • Backspace deletes • Esc clears/back • "
+            f"Filter: {filter_text} ({len(self.filtered)} matches)"
+        )
         count_text = f"Selected: {len(self.state.active_ids)} • Total: {len(self.state.quest_entries)}"
         self.query_one("#quest-count", Static).update(count_text)
 
@@ -316,15 +333,6 @@ class ActiveQuestsScreen(ProgressScreen):
         else:
             self.state.active_ids.add(entry.id)
         self._refresh_options()
-
-    def on_input_changed(self, event: Input.Changed) -> None:
-        if event.input.id == "quest-search":
-            self.filter_text = event.value
-            self._refresh_options()
-
-    def on_input_submitted(self, event: Input.Submitted) -> None:
-        if event.input.id == "quest-search":
-            self._focus_list()
 
     def on_option_list_option_selected(self, _event: OptionList.OptionSelected) -> None:
         self._toggle_selected()
@@ -348,10 +356,31 @@ class ActiveQuestsScreen(ProgressScreen):
         self._next()
 
     def action_back(self) -> None:
+        if self.filter_text:
+            self.filter_text = ""
+            self._refresh_options()
+            return
         self.app.pop_screen()
 
-    def action_focus_search(self) -> None:
-        self._focus_search()
+    def on_key(self, event: events.Key) -> None:
+        if event.key in {"space", "enter"}:
+            return
+        if event.key == "backspace":
+            if self.filter_text:
+                self.filter_text = self.filter_text[:-1]
+                self._refresh_options()
+            event.stop()
+            return
+        character = event.character
+        if (
+            character
+            and len(character) == 1
+            and character.isprintable()
+            and not event.key.startswith(("ctrl+", "alt+", "meta+"))
+        ):
+            self.filter_text += character
+            self._refresh_options()
+            event.stop()
 
 
 class WorkshopLevelsScreen(ProgressScreen):
@@ -372,8 +401,7 @@ class WorkshopLevelsScreen(ProgressScreen):
 
     BINDINGS = [
         *ProgressScreen.BINDINGS,
-        ("ctrl+n", "next", "Next"),
-        ("ctrl+p", "back", "Back"),
+        ("ctrl+enter", "next", "Continue"),
     ]
 
     def __init__(self, state: ProgressWizardState, *, wizard_mode: bool) -> None:
@@ -509,6 +537,11 @@ class ProgressSummaryScreen(ProgressScreen):
         self.state = state
         self.error: Optional[str] = None
 
+    BINDINGS = [
+        *ProgressScreen.BINDINGS,
+        Binding("ctrl+enter", "save", "Generate"),
+    ]
+
     def compose(self) -> ComposeResult:
         yield Static("Review & Generate Rules", classes="menu-title")
         yield Static(id="summary-body")
@@ -586,8 +619,18 @@ class ProgressSummaryScreen(ProgressScreen):
         elif event.button.id == "save":
             self._save()
 
+    def action_save(self) -> None:
+        self._save()
+
 
 class RulesChangesScreen(AppScreen):
+    BINDINGS = [
+        *AppScreen.BINDINGS,
+        Binding("ctrl+p", "back", "Back"),
+        Binding("escape", "back", "Back"),
+        Binding("/", "focus_search", "Search"),
+    ]
+
     DEFAULT_CSS = """
     RulesChangesScreen {
         padding: 1 2;
@@ -648,6 +691,12 @@ class RulesChangesScreen(AppScreen):
         self._refresh_details()
         if self.changes:
             self.query_one("#changes-list", OptionList).focus()
+
+    def action_back(self) -> None:
+        self.app.pop_screen()
+
+    def action_focus_search(self) -> None:
+        self.query_one("#changes-search", Input).focus()
 
     def _update_summary(self) -> None:
         total_changes = len(self.changes)
@@ -749,11 +798,27 @@ class ReviewQuestsScreen(ProgressScreen):
         padding: 1 2;
     }
 
+    #review-filter {
+        margin-bottom: 1;
+    }
+
+    #review-list {
+        height: 1fr;
+    }
+
     #review-actions {
         margin-top: 1;
         height: auto;
     }
     """
+
+    BINDINGS = [
+        *ProgressScreen.BINDINGS,
+        Binding("space", "toggle_completed", "Toggle done"),
+        Binding("ctrl+a", "toggle_active", "Toggle active"),
+        Binding("ctrl+t", "toggle_sort", "Sort"),
+        Binding("ctrl+enter", "save", "Save"),
+    ]
 
     def __init__(
         self, quest_entries: List[QuestEntry], settings: ProgressSettings
@@ -769,22 +834,67 @@ class ReviewQuestsScreen(ProgressScreen):
             hideout_levels=dict(settings.hideout_levels),
             last_updated=settings.last_updated,
         )
+        self.filter_text = ""
+        self.sort_mode = "order"
+        self.filtered: List[QuestEntry] = []
 
     def compose(self) -> ComposeResult:
         yield Static("Review Quest Completion", classes="menu-title")
         yield Static(
-            "Space toggles completed. Press A to toggle active.",
+            "Space toggles completed. Ctrl+A toggles active.",
             classes="hint",
         )
+        yield Static(id="review-filter", classes="hint")
         yield OptionList(id="review-list")
         yield Static(id="review-count", classes="hint")
         with Horizontal(id="review-actions"):
+            yield Button("Sort: Order", id="sort")
             yield Button("Cancel", id="cancel")
             yield Button("Save", id="save", variant="primary")
         yield Footer()
 
     def on_mount(self) -> None:
         self._refresh()
+        self.query_one("#review-list", OptionList).focus()
+
+    def _sorted_entries(self) -> List[QuestEntry]:
+        entries = list(self.quest_entries)
+        if self.sort_mode == "trader":
+            entries.sort(
+                key=lambda entry: (
+                    _normalize_quest_value(entry.trader),
+                    entry.sort_order,
+                    _normalize_quest_value(entry.name),
+                )
+            )
+            return entries
+        entries.sort(
+            key=lambda entry: (
+                entry.sort_order,
+                _normalize_quest_value(entry.trader),
+                _normalize_quest_value(entry.name),
+            )
+        )
+        return entries
+
+    def _visible_entries(self) -> List[QuestEntry]:
+        entries = self._sorted_entries()
+        if not self.filter_text:
+            return entries
+        normalized = _normalize_quest_value(self.filter_text)
+        if not normalized:
+            return entries
+        matches: List[QuestEntry] = []
+        for entry in entries:
+            name_norm = _normalize_quest_value(entry.name)
+            trader_norm = _normalize_quest_value(entry.trader)
+            if (
+                normalized in name_norm
+                or normalized in trader_norm
+                or normalized == entry.id
+            ):
+                matches.append(entry)
+        return matches
 
     def _status_label(self, entry: QuestEntry) -> Text:
         if entry.id in self.completed:
@@ -795,8 +905,15 @@ class ReviewQuestsScreen(ProgressScreen):
 
     def _refresh(self) -> None:
         menu = self.query_one("#review-list", OptionList)
+        prev_filtered = list(self.filtered)
+        prev_highlight = menu.highlighted
+        prev_id = None
+        if prev_highlight is not None and 0 <= prev_highlight < len(prev_filtered):
+            prev_id = prev_filtered[prev_highlight].id
+
+        self.filtered = self._visible_entries()
         options: List[Option] = []
-        for entry in self.quest_entries:
+        for entry in self.filtered:
             label = Text()
             label.append_text(self._status_label(entry))
             label.append(" ")
@@ -804,17 +921,48 @@ class ReviewQuestsScreen(ProgressScreen):
             label.append("  ")
             label.append(entry.trader, style="dim")
             options.append(Option(label, id=entry.id))
+        had_focus = menu.has_focus
         menu.set_options(options)
         if options:
-            menu.highlighted = 0
-        count_text = f"Completed: {len(self.completed)} • Active: {len(self.active)} • Total: {len(self.quest_entries)}"
+            if prev_id:
+                for idx, entry in enumerate(self.filtered):
+                    if entry.id == prev_id:
+                        menu.highlighted = idx
+                        break
+                else:
+                    menu.highlighted = 0
+            else:
+                menu.highlighted = 0
+        if had_focus:
+            menu.focus()
+
+        sort_label = "Order" if self.sort_mode == "order" else "Trader"
+        self.query_one("#sort", Button).label = f"Sort: {sort_label}"
+        filter_text = self.filter_text or "all"
+        self.query_one("#review-filter", Static).update(
+            f"Type to filter quests • Backspace deletes • Esc clears/back • "
+            f"Filter: {filter_text} ({len(self.filtered)} matches)"
+        )
+        count_text = (
+            f"Completed: {len(self.completed)} • "
+            f"Active: {len(self.active)} • "
+            f"Showing: {len(self.filtered)} • "
+            f"Total: {len(self.quest_entries)}"
+        )
         self.query_one("#review-count", Static).update(count_text)
 
-    def _toggle_completed(self) -> None:
+    def _selected_entry(self) -> Optional[QuestEntry]:
         menu = self.query_one("#review-list", OptionList)
         if menu.highlighted is None:
+            return None
+        if not self.filtered or menu.highlighted >= len(self.filtered):
+            return None
+        return self.filtered[menu.highlighted]
+
+    def _toggle_completed(self) -> None:
+        entry = self._selected_entry()
+        if entry is None:
             return
-        entry = self.quest_entries[menu.highlighted]
         if entry.id in self.completed:
             self.completed.remove(entry.id)
         else:
@@ -823,10 +971,9 @@ class ReviewQuestsScreen(ProgressScreen):
         self._refresh()
 
     def _toggle_active(self) -> None:
-        menu = self.query_one("#review-list", OptionList)
-        if menu.highlighted is None:
+        entry = self._selected_entry()
+        if entry is None:
             return
-        entry = self.quest_entries[menu.highlighted]
         if entry.id in self.active:
             self.active.remove(entry.id)
         else:
@@ -834,28 +981,65 @@ class ReviewQuestsScreen(ProgressScreen):
             self.completed.discard(entry.id)
         self._refresh()
 
-    def on_key(self, event) -> None:
+    def _save(self) -> None:
+        updated = ProgressSettings(
+            all_quests_completed=(len(self.completed) == len(self.quest_entries)),
+            active_quests=sorted(self.active),
+            completed_quests=sorted(self.completed),
+            hideout_levels=self.original.hideout_levels,
+            last_updated=_iso_now(),
+        )
+        save_progress_settings(updated)
+        self.app.pop_screen()
+        self.app.push_screen(MessageScreen("Quest progress saved."))
+
+    def action_toggle_completed(self) -> None:
+        self._toggle_completed()
+
+    def action_toggle_active(self) -> None:
+        self._toggle_active()
+
+    def action_toggle_sort(self) -> None:
+        self.sort_mode = "trader" if self.sort_mode == "order" else "order"
+        self._refresh()
+
+    def action_save(self) -> None:
+        self._save()
+
+    def action_back(self) -> None:
+        if self.filter_text:
+            self.filter_text = ""
+            self._refresh()
+            return
+        self.app.pop_screen()
+
+    def on_key(self, event: events.Key) -> None:
         if event.key == "space":
-            self._toggle_completed()
+            return
+        if event.key == "backspace":
+            if self.filter_text:
+                self.filter_text = self.filter_text[:-1]
+                self._refresh()
             event.stop()
-        elif event.key in {"a", "A"}:
-            self._toggle_active()
+            return
+        character = event.character
+        if (
+            character
+            and len(character) == 1
+            and character.isprintable()
+            and not event.key.startswith(("ctrl+", "alt+", "meta+"))
+        ):
+            self.filter_text += character
+            self._refresh()
             event.stop()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
-        if event.button.id == "cancel":
+        if event.button.id == "sort":
+            self.action_toggle_sort()
+        elif event.button.id == "cancel":
             self.app.pop_screen()
         elif event.button.id == "save":
-            updated = ProgressSettings(
-                all_quests_completed=(len(self.completed) == len(self.quest_entries)),
-                active_quests=sorted(self.active),
-                completed_quests=sorted(self.completed),
-                hideout_levels=self.original.hideout_levels,
-                last_updated=_iso_now(),
-            )
-            save_progress_settings(updated)
-            self.app.pop_screen()
-            self.app.push_screen(MessageScreen("Quest progress saved."))
+            self._save()
 
 
 def _save_workshop_levels(levels: Dict[str, int]) -> None:
