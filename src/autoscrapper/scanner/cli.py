@@ -37,11 +37,15 @@ def _non_negative_int_arg(value: str) -> int:
 
 def main(argv: Optional[Iterable[str]] = None) -> int:
     settings = load_scan_settings()
-    pages_default = settings.pages if settings.pages_mode == "manual" else None
     scroll_clicks_default = (
         settings.scroll_clicks_per_page
         if settings.scroll_clicks_per_page is not None
         else SCROLL_CLICKS_PER_PAGE
+    )
+    scroll_clicks_alt_default = (
+        settings.scroll_clicks_alt_per_page
+        if settings.scroll_clicks_alt_per_page is not None
+        else (scroll_clicks_default + 1)
     )
 
     parser = argparse.ArgumentParser(
@@ -50,14 +54,20 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
     parser.add_argument(
         "--pages",
         type=_positive_int_arg,
-        default=pages_default,
+        default=None,
         help="Override auto-detected page count; number of 4x5 grids to scan.",
     )
     parser.add_argument(
         "--scroll-clicks",
         type=_non_negative_int_arg,
         default=scroll_clicks_default,
-        help="Initial scroll clicks to reach the next grid (alternates with +1 on following page).",
+        help="Primary scroll clicks to reach the next grid.",
+    )
+    parser.add_argument(
+        "--scroll-clicks-alt",
+        type=_non_negative_int_arg,
+        default=scroll_clicks_alt_default,
+        help="Alternating scroll clicks used every other page (default: --scroll-clicks + 1).",
     )
     parser.add_argument(
         "--dry-run",
@@ -108,6 +118,7 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
             show_progress=True,
             pages=args.pages,
             scroll_clicks_per_page=args.scroll_clicks,
+            scroll_clicks_alt_per_page=args.scroll_clicks_alt,
             apply_actions=not args.dry_run,
             actions_path=ITEM_RULES_PATH,
             profile_timing=args.profile,

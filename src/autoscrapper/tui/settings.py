@@ -21,7 +21,7 @@ from ..config import (
     save_scan_settings,
 )
 from ..interaction.keybinds import stop_key_label, textual_key_to_stop_key
-from ..interaction.ui_windows import SCROLL_CLICKS_PER_PAGE
+from ..interaction.ui_windows import SCROLL_ALT_CLICKS_PER_PAGE, SCROLL_CLICKS_PER_PAGE
 
 
 class CaptureStopKeyScreen(ModalScreen[Optional[str]]):
@@ -194,10 +194,8 @@ class ScanControlsScreen(ScanSettingsScreen):
     TITLE = "Scan Controls"
     _FOCUS_ORDER = (
         "set-stop-key",
-        "pages-manual",
-        "pages-count",
-        "scroll-default",
         "scroll-clicks",
+        "scroll-clicks-alt",
         "save",
         "back",
     )
@@ -222,21 +220,22 @@ class ScanControlsScreen(ScanSettingsScreen):
             yield Static("", id="stop-key-value")
             yield Button("Set key", id="set-stop-key")
 
-        yield Static("Paging", classes="section-title")
-        with Horizontal(classes="field-row"):
-            yield Static("Manual pages", classes="field-label")
-            yield Checkbox(id="pages-manual")
-            yield Input(id="pages-count", placeholder="Pages", classes="field-input")
-
         yield Static("Scrolling", classes="section-title")
         with Horizontal(classes="field-row"):
-            yield Static("Use default clicks", classes="field-label")
-            yield Checkbox(id="scroll-default")
+            yield Static("Primary clicks", classes="field-label")
             yield Input(
                 id="scroll-clicks",
                 placeholder=f"{SCROLL_CLICKS_PER_PAGE}",
                 classes="field-input",
             )
+        with Horizontal(classes="field-row"):
+            yield Static("Alternating clicks", classes="field-label")
+            yield Input(
+                id="scroll-clicks-alt",
+                placeholder=f"{SCROLL_ALT_CLICKS_PER_PAGE}",
+                classes="field-input",
+            )
+        yield Static("Leave blank for alternating = primary + 1.", classes="hint")
 
         yield Static(Text(f"Config file: {config_path()}", style="dim"), classes="hint")
 
@@ -253,23 +252,16 @@ class ScanControlsScreen(ScanSettingsScreen):
         self._stop_key = self.settings.stop_key
         self._refresh_stop_key_label()
 
-        pages_input = self.query_one("#pages-count", Input)
-        pages_manual = self.query_one("#pages-manual", Checkbox)
-        pages_manual.value = self.settings.pages_mode == "manual"
-        pages_input.value = (
-            "" if self.settings.pages is None else str(self.settings.pages)
-        )
-        pages_input.disabled = not pages_manual.value
-
-        scroll_input = self.query_one("#scroll-clicks", Input)
-        scroll_default = self.query_one("#scroll-default", Checkbox)
-        scroll_default.value = self.settings.scroll_clicks_per_page is None
-        scroll_input.value = (
+        self.query_one("#scroll-clicks", Input).value = (
             ""
             if self.settings.scroll_clicks_per_page is None
             else str(self.settings.scroll_clicks_per_page)
         )
-        scroll_input.disabled = scroll_default.value
+        self.query_one("#scroll-clicks-alt", Input).value = (
+            ""
+            if self.settings.scroll_clicks_alt_per_page is None
+            else str(self.settings.scroll_clicks_alt_per_page)
+        )
 
     def _set_stop_key(self) -> None:
         self.app.push_screen(CaptureStopKeyScreen(), self._on_stop_key_selected)
@@ -281,22 +273,9 @@ class ScanControlsScreen(ScanSettingsScreen):
         self._refresh_stop_key_label()
 
     def _save(self) -> None:
-        pages_manual = self.query_one("#pages-manual", Checkbox).value
-        pages_raw = self.query_one("#pages-count", Input).value.strip()
-        pages_mode = "manual" if pages_manual else "auto"
-        pages_value: Optional[int] = None
-        if pages_manual:
-            if not pages_raw.isdigit() or int(pages_raw) < 1:
-                self.app.push_screen(
-                    MessageScreen("Enter a valid number of pages (>= 1).")
-                )
-                return
-            pages_value = int(pages_raw)
-
-        scroll_default = self.query_one("#scroll-default", Checkbox).value
         scroll_raw = self.query_one("#scroll-clicks", Input).value.strip()
         scroll_value: Optional[int] = None
-        if not scroll_default:
+        if scroll_raw:
             if not scroll_raw.isdigit() or int(scroll_raw) < 0:
                 self.app.push_screen(
                     MessageScreen("Enter a valid scroll click count (>= 0).")
@@ -304,26 +283,25 @@ class ScanControlsScreen(ScanSettingsScreen):
                 return
             scroll_value = int(scroll_raw)
 
+        scroll_alt_raw = self.query_one("#scroll-clicks-alt", Input).value.strip()
+        scroll_alt_value: Optional[int] = None
+        if scroll_alt_raw:
+            if not scroll_alt_raw.isdigit() or int(scroll_alt_raw) < 0:
+                self.app.push_screen(
+                    MessageScreen(
+                        "Enter a valid alternating scroll click count (>= 0)."
+                    )
+                )
+                return
+            scroll_alt_value = int(scroll_alt_raw)
+
         updated = replace(
             self.settings,
-            pages_mode=pages_mode,
-            pages=pages_value,
             scroll_clicks_per_page=scroll_value,
+            scroll_clicks_alt_per_page=scroll_alt_value,
             stop_key=self._stop_key,
         )
         self._save_settings(updated)
-
-    def on_checkbox_changed(self, event: Checkbox.Changed) -> None:
-        if event.checkbox.id == "pages-manual":
-            pages_input = self.query_one("#pages-count", Input)
-            pages_input.disabled = not event.checkbox.value
-            if pages_input.disabled and self.focused is pages_input:
-                event.checkbox.focus()
-        if event.checkbox.id == "scroll-default":
-            scroll_input = self.query_one("#scroll-clicks", Input)
-            scroll_input.disabled = event.checkbox.value
-            if scroll_input.disabled and self.focused is scroll_input:
-                event.checkbox.focus()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         button_id = event.button.id

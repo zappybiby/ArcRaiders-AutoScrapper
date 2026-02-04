@@ -4,23 +4,19 @@ import json
 import os
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
-from typing import Any, Dict, Literal, Optional
+from typing import Any, Dict, Optional
 
 from .interaction.keybinds import DEFAULT_STOP_KEY, normalize_stop_key
 
-CONFIG_VERSION = 2
+CONFIG_VERSION = 3
 APP_CONFIG_DIR_NAME = "AutoScrapper"
 CONFIG_FILE_NAME = "config.json"
 
 
-PagesMode = Literal["auto", "manual"]
-
-
 @dataclass(frozen=True)
 class ScanSettings:
-    pages_mode: PagesMode = "auto"
-    pages: Optional[int] = None
     scroll_clicks_per_page: Optional[int] = None
+    scroll_clicks_alt_per_page: Optional[int] = None
     stop_key: str = DEFAULT_STOP_KEY
     infobox_retries: int = 3
     infobox_retry_delay_ms: int = 100
@@ -97,9 +93,8 @@ def _from_raw_scan_settings(raw: Any) -> ScanSettings:
     if not isinstance(raw, dict):
         return ScanSettings()
 
-    pages_mode_raw = raw.get("pages_mode")
-    pages_raw = raw.get("pages")
     scroll_clicks_raw = raw.get("scroll_clicks_per_page")
+    scroll_clicks_alt_raw = raw.get("scroll_clicks_alt_per_page")
     stop_key_raw = raw.get("stop_key")
     infobox_retries_raw = raw.get("infobox_retries")
     infobox_retry_delay_ms_raw = raw.get("infobox_retry_delay_ms")
@@ -109,19 +104,8 @@ def _from_raw_scan_settings(raw: Any) -> ScanSettings:
     menu_appear_delay_ms_raw = raw.get("menu_appear_delay_ms")
     sell_recycle_post_delay_ms_raw = raw.get("sell_recycle_post_delay_ms")
 
-    pages = _coerce_positive_int(pages_raw)
-    pages_mode: PagesMode
-    if pages_mode_raw in ("auto", "manual"):
-        pages_mode = pages_mode_raw
-    else:
-        pages_mode = "manual" if pages is not None else "auto"
-
-    if pages_mode == "manual" and pages is None:
-        pages_mode = "auto"
-    if pages_mode == "auto":
-        pages = None
-
     scroll_clicks_per_page = _coerce_non_negative_int(scroll_clicks_raw)
+    scroll_clicks_alt_per_page = _coerce_non_negative_int(scroll_clicks_alt_raw)
 
     infobox_retries = _coerce_positive_int(infobox_retries_raw)
     if infobox_retries is None:
@@ -156,9 +140,8 @@ def _from_raw_scan_settings(raw: Any) -> ScanSettings:
         sell_recycle_post_delay_ms = ScanSettings.sell_recycle_post_delay_ms
 
     return ScanSettings(
-        pages_mode=pages_mode,
-        pages=pages,
         scroll_clicks_per_page=scroll_clicks_per_page,
+        scroll_clicks_alt_per_page=scroll_clicks_alt_per_page,
         stop_key=normalize_stop_key(stop_key_raw),
         infobox_retries=infobox_retries,
         infobox_retry_delay_ms=infobox_retry_delay_ms,

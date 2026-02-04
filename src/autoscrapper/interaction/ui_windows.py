@@ -38,6 +38,7 @@ SELL_RECYCLE_POST_DELAY = 0.1  # seconds to allow item collapse after confirm
 # Scrolling
 # Alternate 16/17 downward scroll clicks to advance between 4x5 grids.
 SCROLL_CLICKS_PER_PAGE = 16
+SCROLL_ALT_CLICKS_PER_PAGE = 17
 SCROLL_MOVE_DURATION = 0.5
 SCROLL_INTERVAL = 0.04
 SCROLL_SETTLE_DELAY = 0.05

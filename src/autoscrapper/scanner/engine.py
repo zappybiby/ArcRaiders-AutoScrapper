@@ -27,6 +27,7 @@ from ..interaction.inventory_grid import (
 )
 from ..interaction.ui_windows import (
     ACTION_DELAY,
+    SCROLL_ALT_CLICKS_PER_PAGE,
     SCROLL_CLICKS_PER_PAGE,
     SELL_RECYCLE_POST_DELAY,
     WINDOW_TIMEOUT,
@@ -60,12 +61,12 @@ INFOBOX_RETRY_DELAY = 0.10
 INFOBOX_RETRIES = 3
 
 
-def _scroll_clicks_sequence(start_clicks: int) -> Iterable[int]:
+def _scroll_clicks_sequence(start_clicks: int, alt_clicks: int) -> Iterable[int]:
     """
-    Yield alternating scroll counts: start_clicks, start_clicks + 1, repeat.
+    Yield alternating scroll counts: start_clicks, alt_clicks, repeat.
     """
     base = abs(start_clicks)
-    alt = base + 1
+    alt = abs(alt_clicks)
     use_alt = False
     while True:
         yield alt if use_alt else base
@@ -85,6 +86,7 @@ def scan_inventory(
     show_progress: bool = True,
     pages: Optional[int] = None,
     scroll_clicks_per_page: int = SCROLL_CLICKS_PER_PAGE,
+    scroll_clicks_alt_per_page: int = SCROLL_ALT_CLICKS_PER_PAGE,
     apply_actions: bool = True,
     actions_path: Path = ITEM_RULES_PATH,
     actions_override: Optional[ActionMap] = None,
@@ -97,8 +99,8 @@ def scan_inventory(
     Decisions come from the default rules file unless a custom rules file exists
     or an override map is provided.
     Cells are detected via contours inside a normalized ROI, and scrolling
-    alternates between `scroll_clicks_per_page` and `scroll_clicks_per_page + 1`
-    to handle the carousel offset. If `pages` is not provided, the script will
+    alternates between `scroll_clicks_per_page` and `scroll_clicks_alt_per_page`
+    to handle carousel offset. If `pages` is not provided, the script will
     OCR the always-visible stash count label to automatically determine how
     many 4x5 grids to scan.
     """
@@ -118,6 +120,10 @@ def scan_inventory(
         raise ValueError("sell_recycle_post_delay_ms must be >= 0")
     if pages is not None and pages < 1:
         raise ValueError("pages must be >= 1")
+    if scroll_clicks_per_page < 0:
+        raise ValueError("scroll_clicks_per_page must be >= 0")
+    if scroll_clicks_alt_per_page < 0:
+        raise ValueError("scroll_clicks_alt_per_page must be >= 0")
 
     stop_key = normalize_stop_key(stop_key)
     action_delay = action_delay_ms / 1000.0
@@ -287,7 +293,9 @@ def scan_inventory(
             startup_events.clear()
 
         stop_at_global_idx: Optional[int] = None
-        scroll_sequence = _scroll_clicks_sequence(scroll_clicks_per_page)
+        scroll_sequence = _scroll_clicks_sequence(
+            scroll_clicks_per_page, scroll_clicks_alt_per_page
+        )
         stop_scan = False
 
         for page in range(pages_to_scan):

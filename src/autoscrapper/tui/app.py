@@ -259,7 +259,7 @@ class AutoScrapperApp(App[None]):
         items = [
             MenuItem(
                 "1",
-                "Keyboard + paging",
+                "Keyboard + scrolling",
                 lambda screen: screen.app.push_screen(ScanControlsScreen()),
             ),
             MenuItem(

@@ -160,10 +160,11 @@ class ScanScreen(Screen):
 
     def _run_scan(self) -> None:
         settings = self._settings
-        pages_default = settings.pages if settings.pages_mode == "manual" else None
         try:
             from ..core.item_actions import ITEM_RULES_PATH
-            from ..interaction.ui_windows import SCROLL_CLICKS_PER_PAGE
+            from ..interaction.ui_windows import (
+                SCROLL_CLICKS_PER_PAGE,
+            )
             from ..ocr.inventory_vision import enable_ocr_debug
             from ..scanner.engine import scan_inventory
 
@@ -171,6 +172,11 @@ class ScanScreen(Screen):
                 settings.scroll_clicks_per_page
                 if settings.scroll_clicks_per_page is not None
                 else SCROLL_CLICKS_PER_PAGE
+            )
+            scroll_clicks_alt_default = (
+                settings.scroll_clicks_alt_per_page
+                if settings.scroll_clicks_alt_per_page is not None
+                else (scroll_clicks_default + 1)
             )
 
             if settings.debug_ocr:
@@ -181,8 +187,8 @@ class ScanScreen(Screen):
             progress = TextualScanProgress(self._updates)
             results, stats = scan_inventory(
                 show_progress=False,
-                pages=pages_default,
                 scroll_clicks_per_page=scroll_clicks_default,
+                scroll_clicks_alt_per_page=scroll_clicks_alt_default,
                 apply_actions=not self.dry_run,
                 actions_path=ITEM_RULES_PATH,
                 profile_timing=settings.profile,
