@@ -5,8 +5,9 @@ from typing import Optional
 from rich.text import Text
 from textual import events
 from textual.app import ComposeResult
-from textual.containers import Horizontal, Vertical
+from textual.containers import Horizontal, Vertical, VerticalScroll
 from textual.screen import ModalScreen
+from textual.widget import Widget
 from textual.widgets import Button, Checkbox, Footer, Input, Static
 
 from .common import AppScreen, MessageScreen
@@ -64,9 +65,40 @@ class CaptureStopKeyScreen(ModalScreen[Optional[str]]):
 
 
 class ScanConfigScreen(AppScreen):
+    BINDINGS = [
+        *AppScreen.BINDINGS,
+        ("up", "focus_previous_field", "Previous field"),
+        ("down", "focus_next_field", "Next field"),
+    ]
+
+    _FOCUS_ORDER = (
+        "set-stop-key",
+        "pages-manual",
+        "pages-count",
+        "scroll-default",
+        "scroll-clicks",
+        "infobox-retries",
+        "infobox-delay",
+        "ocr-retries",
+        "ocr-delay",
+        "action-delay",
+        "menu-delay",
+        "post-delay",
+        "debug-ocr",
+        "profile-timing",
+        "save",
+        "reset",
+        "back",
+    )
+
     DEFAULT_CSS = """
     ScanConfigScreen {
         padding: 1 2;
+    }
+
+    #config-form {
+        height: 1fr;
+        padding-right: 1;
     }
 
     .section-title {
@@ -76,6 +108,8 @@ class ScanConfigScreen(AppScreen):
     }
 
     .field-row {
+        height: auto;
+        align: left middle;
         margin: 0 0 1 0;
     }
 
@@ -93,6 +127,10 @@ class ScanConfigScreen(AppScreen):
         color: $text-muted;
     }
 
+    .field-input {
+        min-width: 10;
+    }
+
     #config-actions {
         margin-top: 1;
         height: auto;
@@ -106,8 +144,9 @@ class ScanConfigScreen(AppScreen):
 
     def compose(self) -> ComposeResult:
         yield Static("Scan Settings", classes="menu-title")
+        yield Static("Use ↑/↓ to move between fields.", classes="hint")
 
-        with Vertical():
+        with VerticalScroll(id="config-form"):
             yield Static("Controls", classes="section-title")
             with Horizontal(classes="field-row"):
                 yield Static("Stop scan key", classes="field-label")
@@ -180,6 +219,37 @@ class ScanConfigScreen(AppScreen):
 
     def on_mount(self) -> None:
         self._load_into_fields()
+        self.action_focus_next_field()
+
+    def _focus_candidates(self) -> list[Widget]:
+        candidates: list[Widget] = []
+        for widget_id in self._FOCUS_ORDER:
+            widget = self.query_one(f"#{widget_id}")
+            if getattr(widget, "disabled", False):
+                continue
+            candidates.append(widget)
+        return candidates
+
+    def _move_focus(self, delta: int) -> None:
+        candidates = self._focus_candidates()
+        if not candidates:
+            return
+
+        current = self.focused
+        if current in candidates:
+            index = (candidates.index(current) + delta) % len(candidates)
+        else:
+            index = 0 if delta > 0 else len(candidates) - 1
+
+        target = candidates[index]
+        target.focus()
+        target.scroll_visible(immediate=True)
+
+    def action_focus_next_field(self) -> None:
+        self._move_focus(1)
+
+    def action_focus_previous_field(self) -> None:
+        self._move_focus(-1)
 
     def _parse_int_field(
         self, field_id: str, *, label: str, min_value: int
@@ -358,9 +428,13 @@ class ScanConfigScreen(AppScreen):
         if event.checkbox.id == "pages-manual":
             pages_input = self.query_one("#pages-count", Input)
             pages_input.disabled = not event.checkbox.value
+            if pages_input.disabled and self.focused is pages_input:
+                event.checkbox.focus()
         if event.checkbox.id == "scroll-default":
             scroll_input = self.query_one("#scroll-clicks", Input)
             scroll_input.disabled = event.checkbox.value
+            if scroll_input.disabled and self.focused is scroll_input:
+                event.checkbox.focus()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         button_id = event.button.id
