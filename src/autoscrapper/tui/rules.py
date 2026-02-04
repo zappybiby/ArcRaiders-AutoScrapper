@@ -11,7 +11,8 @@ from textual.screen import ModalScreen
 from textual.widgets import Button, Footer, Input, OptionList, Static
 from textual.widgets.option_list import Option
 
-from .common import AppScreen, MessageScreen
+from .common import AppScreen, MessageScreen, update_inline_filter
+from ..items.rules_diff import RuleChange
 from ..items.rules_store import (
     CUSTOM_RULES_PATH,
     load_rules,
@@ -527,25 +528,15 @@ class RulesScreen(AppScreen):
     def on_key(self, event: events.Key) -> None:
         if self._is_editing_advanced_fields():
             return
-        if event.key == "backspace":
-            if self.search_query:
-                self.search_query = self.search_query[:-1]
-                self._refresh_list()
-                self._refresh_details()
-            event.stop()
-            return
 
-        character = event.character
-        if (
-            character
-            and len(character) == 1
-            and character.isprintable()
-            and not event.key.startswith(("ctrl+", "alt+", "meta+"))
-        ):
-            self.search_query += character
+        updated_query, consumed = update_inline_filter(event, self.search_query)
+        if not consumed:
+            return
+        if updated_query != self.search_query:
+            self.search_query = updated_query
             self._refresh_list()
             self._refresh_details()
-            event.stop()
+        event.stop()
 
     def on_input_changed(self, event: Input.Changed) -> None:
         if event.input.id not in {"rule-name", "rule-id"}:
@@ -589,4 +580,173 @@ class RulesScreen(AppScreen):
         elif button_id == "reset":
             self._confirm_reset_default()
         elif button_id == "back":
+            self.app.pop_screen()
+
+
+class RulesChangesScreen(AppScreen):
+    BINDINGS = [
+        *AppScreen.BINDINGS,
+        Binding("ctrl+p", "back", "Back"),
+        Binding("escape", "back", "Back"),
+        Binding("/", "focus_search", "Search"),
+    ]
+
+    DEFAULT_CSS = """
+    RulesChangesScreen {
+        padding: 1 2;
+    }
+
+    #changes-layout {
+        height: 1fr;
+    }
+
+    #changes-list {
+        width: 55%;
+    }
+
+    #changes-detail {
+        width: 45%;
+        padding-left: 1;
+    }
+
+    #changes-actions {
+        margin-top: 1;
+        height: auto;
+    }
+
+    .hint {
+        color: $text-muted;
+    }
+    """
+
+    def __init__(
+        self,
+        changes: List[RuleChange],
+        *,
+        item_count: int,
+        default_count: int,
+    ) -> None:
+        super().__init__()
+        self.changes = list(changes)
+        self.filtered: List[int] = []
+        self.search_query = ""
+        self.selected_index: Optional[int] = None
+        self.item_count = item_count
+        self.default_count = default_count
+
+    def compose(self) -> ComposeResult:
+        yield Static("Rule Changes", classes="menu-title")
+        yield Static(id="changes-summary", classes="hint")
+        yield Input(placeholder="Search changes by name or id", id="changes-search")
+        with Horizontal(id="changes-layout"):
+            yield OptionList(id="changes-list")
+            with Vertical(id="changes-detail"):
+                yield Static(id="changes-detail-body")
+        with Horizontal(id="changes-actions"):
+            yield Button("Done", id="done", variant="primary")
+        yield Footer()
+
+    def on_mount(self) -> None:
+        self._refresh_list()
+        self._refresh_details()
+        if self.changes:
+            self.query_one("#changes-list", OptionList).focus()
+
+    def action_back(self) -> None:
+        self.app.pop_screen()
+
+    def action_focus_search(self) -> None:
+        self.query_one("#changes-search", Input).focus()
+
+    def _update_summary(self) -> None:
+        total_changes = len(self.changes)
+        showing = len(self.filtered)
+        base_total = self.default_count or self.item_count
+        summary = (
+            f"Changed rules: {total_changes} | "
+            f"Default items: {base_total} | "
+            f"Showing: {showing}"
+        )
+        self.query_one("#changes-summary", Static).update(summary)
+
+    def _filter_indices(self) -> List[int]:
+        if not self.search_query:
+            return list(range(len(self.changes)))
+        q = self.search_query.lower().strip()
+        if not q:
+            return list(range(len(self.changes)))
+        matches: List[int] = []
+        for idx, change in enumerate(self.changes):
+            name = change.name.lower()
+            item_id = change.item_id.lower()
+            if q in name or (item_id and q in item_id):
+                matches.append(idx)
+        return matches
+
+    def _option_label(self, change: RuleChange, index: int) -> Text:
+        action = f"{change.before_action.upper()} -> {change.after_action.upper()}"
+        return Text.assemble(
+            (f"{index + 1:>3} ", "dim"),
+            (change.name, "bold"),
+            ("  ", ""),
+            (action, "cyan"),
+        )
+
+    def _refresh_list(self) -> None:
+        self.filtered = self._filter_indices()
+        menu = self.query_one("#changes-list", OptionList)
+        options = []
+        for list_index, change_index in enumerate(self.filtered):
+            change = self.changes[change_index]
+            label = self._option_label(change, list_index)
+            options.append(Option(label, id=str(change_index)))
+        menu.set_options(options)
+        if options:
+            menu.highlighted = 0
+            self.selected_index = self.filtered[0]
+        else:
+            self.selected_index = None
+        self._update_summary()
+
+    def _refresh_details(self) -> None:
+        detail = self.query_one("#changes-detail-body", Static)
+        if self.selected_index is None:
+            detail.update(
+                "No changes match your filter."
+                if self.changes
+                else "No changes detected."
+            )
+            return
+        change = self.changes[self.selected_index]
+        lines = [
+            f"Name: {change.name}",
+            f"ID: {change.item_id}",
+            f"Action: {change.before_action.upper()} -> {change.after_action.upper()}",
+        ]
+        if change.reasons:
+            lines.append("Reasons:")
+            lines.extend([f"- {reason}" for reason in change.reasons[:8]])
+            if len(change.reasons) > 8:
+                lines.append(f"- ... +{len(change.reasons) - 8} more")
+        else:
+            lines.append("Reasons: none recorded")
+        detail.update("\n".join(lines))
+
+    def on_input_changed(self, event: Input.Changed) -> None:
+        if event.input.id == "changes-search":
+            self.search_query = event.value
+            self._refresh_list()
+            self._refresh_details()
+
+    def on_option_list_option_selected(self, event: OptionList.OptionSelected) -> None:
+        if event.option_id is None:
+            return
+        try:
+            self.selected_index = int(event.option_id)
+        except ValueError:
+            return
+        self._refresh_details()
+
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        if event.button.id == "done":
             self.app.pop_screen()

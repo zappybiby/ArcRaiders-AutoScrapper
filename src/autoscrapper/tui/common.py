@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import Optional
 
+from textual import events
 from textual.app import ComposeResult
 from textual.containers import Vertical
 from textual.screen import ModalScreen, Screen
@@ -47,3 +48,19 @@ class MessageScreen(ModalScreen[None]):
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "ok":
             self.dismiss()
+
+
+def update_inline_filter(event: events.Key, text: str) -> tuple[str, bool]:
+    if event.key == "backspace":
+        return (text[:-1] if text else text, True)
+
+    character = event.character
+    if (
+        character
+        and len(character) == 1
+        and character.isprintable()
+        and not event.key.startswith(("ctrl+", "alt+", "meta+"))
+    ):
+        return (text + character, True)
+
+    return (text, False)
