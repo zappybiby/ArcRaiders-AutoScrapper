@@ -212,7 +212,7 @@ class RulesScreen(AppScreen):
                     yield Button("Recycle", id="action-recycle")
                 yield Static(
                     "Ctrl+1 keep • Ctrl+2 sell • Ctrl+3 recycle • "
-                    "Ctrl+N add rule • All edits auto-save",
+                    "Ctrl+N start/add rule • Saves on add/delete/action changes",
                     classes="hint",
                 )
                 with Vertical(id="rules-advanced"):
@@ -268,9 +268,9 @@ class RulesScreen(AppScreen):
         self._refresh_filter_hint()
 
     def _refresh_details(self) -> None:
-        status = "Custom rules active • Auto-save enabled"
+        status = "Custom rules active • Saves on explicit rule actions"
         if not using_custom_rules():
-            status = "Default rules active • First edit creates custom rules"
+            status = "Default rules active • First saved change creates custom rules"
         self.query_one("#rules-status", Static).update(status)
 
         if self.mode == "add":
@@ -363,15 +363,9 @@ class RulesScreen(AppScreen):
             return
         self.current_action = action_value
         self._refresh_action_buttons()
-        if self.mode == "edit" and self.selected_index is not None:
-            item = self.items[self.selected_index]
-            if normalize_action(str(item.get("action", ""))) != action_value:
-                item["action"] = action_value
-                self._persist_rules()
-                self._refresh_list()
-                self._refresh_details()
+        self._commit_edit_changes()
 
-    def _autosave_detail_changes(self) -> None:
+    def _save_detail_changes(self) -> None:
         if self._updating_form:
             return
 
@@ -419,6 +413,11 @@ class RulesScreen(AppScreen):
         self._refresh_list()
         self._refresh_details()
 
+    def _commit_edit_changes(self) -> None:
+        if self.mode != "edit":
+            return
+        self._save_detail_changes()
+
     def _confirm_reset_default(self) -> None:
         self.app.push_screen(ConfirmResetRulesScreen(), self._handle_reset_confirmation)
 
@@ -452,6 +451,7 @@ class RulesScreen(AppScreen):
     def _move_highlight(self, delta: int) -> None:
         if not self.filtered:
             return
+        self._commit_edit_changes()
         menu = self.query_one("#rules-list", OptionList)
         current = menu.highlighted if menu.highlighted is not None else 0
         new_index = max(0, min(len(self.filtered) - 1, current + delta))
@@ -499,6 +499,17 @@ class RulesScreen(AppScreen):
         self._cycle_action(1)
 
     def action_new_rule(self) -> None:
+        if self.mode == "add":
+            name = self.query_one("#rule-name", Input).value.strip()
+            if not name:
+                self.app.push_screen(
+                    MessageScreen("Enter a name before adding a rule.")
+                )
+                self.query_one("#rule-name", Input).focus()
+                return
+            self._save_detail_changes()
+            self.query_one("#rules-list", OptionList).focus()
+            return
         self._populate_edit_fields(None, set_add_mode=True)
         self._refresh_details()
         self.query_one("#rule-name", Input).focus()
@@ -518,6 +529,7 @@ class RulesScreen(AppScreen):
             self._refresh_details()
             self.query_one("#rules-list", OptionList).focus()
             return
+        self._commit_edit_changes()
         if self.search_query:
             self.search_query = ""
             self._refresh_list()
@@ -541,11 +553,13 @@ class RulesScreen(AppScreen):
     def on_input_changed(self, event: Input.Changed) -> None:
         if event.input.id not in {"rule-name", "rule-id"}:
             return
-        self._autosave_detail_changes()
+        # Explicit actions (add/delete/action change/nav/back) trigger saves.
+        return
 
     def on_option_list_option_selected(self, event: OptionList.OptionSelected) -> None:
         if event.option_id is None:
             return
+        self._commit_edit_changes()
         try:
             self.selected_index = int(event.option_id)
         except ValueError:
@@ -580,6 +594,7 @@ class RulesScreen(AppScreen):
         elif button_id == "reset":
             self._confirm_reset_default()
         elif button_id == "back":
+            self._commit_edit_changes()
             self.app.pop_screen()
 
 
