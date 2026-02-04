@@ -2,42 +2,62 @@ from __future__ import annotations
 
 import sys
 
-from .cli import config as config_cli
-from .cli import progress as progress_cli
-from .cli import rules as rules_cli
-from .cli import scan as scan_cli
-from .cli.home import show_home_menu
+_LEGACY_TEXT_MENU_COMMANDS = {
+    "--cli",
+    "cli",
+    "rules",
+    "progress",
+    "config",
+    "scan-config",
+    "scan_configuration",
+    "settings",
+}
+
+
+def _run_tui() -> int:
+    from .tui import run_tui
+
+    return run_tui()
+
+
+def _print_usage() -> None:
+    print("Usage: autoscrapper [scan [scan options]]")
+    print("       autoscrapper [tui|ui]")
+    print()
+    print("No command starts the Textual UI.")
+    print("'scan' runs an immediate scan without opening the UI.")
 
 
 def main(argv=None) -> int:
     args = list(sys.argv[1:] if argv is None else argv)
     if not args:
-        from .tui import run_tui
-
-        return run_tui()
+        return _run_tui()
 
     cmd, *rest = args
     cmd = cmd.lower().strip()
 
-    if cmd in {"--cli", "cli"}:
-        return show_home_menu()
-    if cmd in {"--tui", "tui", "ui"}:
-        from .tui import run_tui
+    if cmd in {"-h", "--help", "help"}:
+        _print_usage()
+        return 0
 
-        return run_tui()
+    if cmd in {"--tui", "tui", "ui"}:
+        return _run_tui()
+
     if cmd == "scan":
-        return scan_cli.main(rest)
-    if cmd == "rules":
-        return rules_cli.main(rest)
-    if cmd == "progress":
-        return progress_cli.main(rest)
-    if cmd in {"config", "scan-config", "scan_configuration", "settings"}:
-        return config_cli.main(rest)
+        from .scanner.cli import main as scan_main
+
+        return scan_main(rest)
+
+    if cmd in _LEGACY_TEXT_MENU_COMMANDS:
+        print(
+            f"'{cmd}' is now managed inside the Textual UI. "
+            "Launching the UI instead."
+        )
+        return _run_tui()
 
     print(f"Unknown command: {cmd}\n")
-    from .tui import run_tui
-
-    return run_tui()
+    _print_usage()
+    return 2
 
 
 if __name__ == "__main__":

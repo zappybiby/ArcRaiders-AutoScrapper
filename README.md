@@ -35,11 +35,16 @@ From a terminal:
 
 ## Usage
 
-Open the interactive menu to scan, change settings, or adjust item rules:
+Open the Textual UI (default):
 - `uv run autoscrapper`
+
+Open the Textual UI explicitly:
+- `uv run autoscrapper tui`
 
 Start a scan directly:
 - `uv run autoscrapper scan`
+
+`scan` is the only standalone CLI command. Other workflows are now in the Textual UI.
 
 How AutoScrapper Works:
 - Open your inventory and make sure you are scrolled to the top of it
