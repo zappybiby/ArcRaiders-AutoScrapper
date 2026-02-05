@@ -4,7 +4,11 @@ from collections import deque
 import re
 from typing import Dict, Iterable, List, Set, Tuple
 
-from .progress_config import build_quest_index, group_quests_by_trader, resolve_active_quests
+from .progress_config import (
+    build_quest_index,
+    group_quests_by_trader,
+    resolve_active_quests,
+)
 
 
 def _normalize_quest_name(value: str) -> str:
@@ -72,7 +76,9 @@ def _build_predecessors_by_id(
     return predecessors
 
 
-def _build_trader_sequences(quests: List[dict]) -> Tuple[List[str], Dict[str, List[str]]]:
+def _build_trader_sequences(
+    quests: List[dict],
+) -> Tuple[List[str], Dict[str, List[str]]]:
     quests_by_trader = group_quests_by_trader(quests)
     trader_order = sorted(quests_by_trader.keys())
     sequences: Dict[str, List[str]] = {}
@@ -87,7 +93,9 @@ def _build_trader_sequences(quests: List[dict]) -> Tuple[List[str], Dict[str, Li
 
 
 def _state_completed_ids(
-    state: Tuple[int, ...], trader_order: List[str], trader_sequences: Dict[str, List[str]]
+    state: Tuple[int, ...],
+    trader_order: List[str],
+    trader_sequences: Dict[str, List[str]],
 ) -> List[str]:
     completed: List[str] = []
     for idx, trader in enumerate(trader_order):
@@ -121,7 +129,7 @@ def _resolve_active_ids(quests: List[dict], active_quests: Iterable[str]) -> Set
     active_resolved, missing = resolve_active_quests(list(active_quests), quest_index)
     if missing:
         raise ValueError(f"Active quests not found: {', '.join(missing)}")
-    return {str(quest.get('id')) for quest in active_resolved if quest.get("id")}
+    return {str(quest.get("id")) for quest in active_resolved if quest.get("id")}
 
 
 def infer_completed_from_active(
