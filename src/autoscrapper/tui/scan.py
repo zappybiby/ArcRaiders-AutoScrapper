@@ -113,11 +113,6 @@ def _format_exception_for_ui(exc: BaseException, *, context: str) -> str:
     if com_details is not None:
         hresult, text, hresult_hex = com_details
         lines.append(f"COM error: {hresult_hex} ({text})")
-        if hresult == -2147221020:
-            lines.append(
-                "Note: This COM error is often triggered by window/monitor queries "
-                "running in a background thread."
-            )
     lines.extend(["", "Traceback:", trace])
     report_path = _write_crash_report("\n".join(lines))
     if report_path:
