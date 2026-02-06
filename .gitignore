@@ -219,5 +219,4 @@ __marimo__/
 AGENTS.md
 
 # AutoScrapper custom rules (user-specific)
-src/autoscrapper/items/items_actions.custom.json
 src/autoscrapper/items/items_rules.custom.json
