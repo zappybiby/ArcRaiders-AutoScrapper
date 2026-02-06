@@ -17,6 +17,7 @@ from ..items.rules_diff import RuleChange
 from ..items.rules_store import (
     CUSTOM_RULES_PATH,
     DEFAULT_RULES_PATH,
+    active_rules_path,
     load_rules,
     normalize_action,
     save_custom_rules,
@@ -202,7 +203,7 @@ class RulesScreen(AppScreen):
             priority=True,
         ),
         Binding("ctrl+f", "cycle_sort", "filter", priority=True),
-        Binding("escape", "clear_or_back", "Clear filter / Back"),
+        Binding("b,escape", "back", "back", priority=True),
     ]
 
     DEFAULT_CSS = """
@@ -212,14 +213,19 @@ class RulesScreen(AppScreen):
 
     #rules-topbar {
         height: auto;
-        align: left middle;
+        align: left top;
         margin-bottom: 1;
     }
 
-    #rules-top-actions {
+    #rules-title-block {
         width: 1fr;
         height: auto;
-        align: right middle;
+    }
+
+    #rules-top-actions {
+        width: auto;
+        height: auto;
+        align: right top;
     }
 
     #rules-top-actions Button {
@@ -233,7 +239,7 @@ class RulesScreen(AppScreen):
     }
 
     #rules-title {
-        width: 8;
+        width: auto;
         text-style: bold;
         color: #7dd3fc;
     }
@@ -249,9 +255,9 @@ class RulesScreen(AppScreen):
     }
 
     #rules-save-chip {
-        width: 14;
-        text-align: right;
-        text-style: bold;
+        width: auto;
+        margin-top: 0;
+        color: #94a3b8;
     }
 
     #rules-save-chip.is-saved {
@@ -264,6 +270,10 @@ class RulesScreen(AppScreen):
 
     #rules-save-chip.is-error {
         color: #fca5a5;
+    }
+
+    #rules-save-chip.is-save-flash {
+        text-style: bold reverse;
     }
 
     #rules-list-summary {
@@ -354,11 +364,10 @@ class RulesScreen(AppScreen):
 
     SORT_LABELS: dict[str, str] = {
         "name_asc": "Name A-Z",
-        "name_desc": "Name Z-A",
         "action": "Action",
         "modified": "Modified first",
     }
-    SORT_SEQUENCE: tuple[str, ...] = ("name_asc", "name_desc", "action", "modified")
+    SORT_SEQUENCE: tuple[str, ...] = ("name_asc", "action", "modified")
     ACTION_SORT_ORDER: dict[str, int] = {"keep": 0, "sell": 1, "recycle": 2}
 
     def __init__(self) -> None:
@@ -377,19 +386,18 @@ class RulesScreen(AppScreen):
         self.filtered: List[int] = []
         self.modified_map: dict[int, bool] = {}
         self.search_query = ""
-        self.sort_mode: Literal["name_asc", "name_desc", "action", "modified"] = (
-            "name_asc"
-        )
+        self.sort_mode: Literal["name_asc", "action", "modified"] = "name_asc"
         self.selected_index: Optional[int] = None
         self.mode: str = "edit"
         self.current_action: str = "keep"
-        self._save_reset_timer = None
+        self._save_flash_timer = None
 
     def compose(self) -> ComposeResult:
         with Horizontal(id="rules-topbar"):
-            yield Static("Rules", id="rules-title")
+            with Vertical(id="rules-title-block"):
+                yield Static("Rules", id="rules-title")
+                yield Static(id="rules-save-chip", classes="is-saved")
             with Horizontal(id="rules-top-actions"):
-                yield Static("Saved", id="rules-save-chip", classes="is-saved")
                 yield Button("Actions", id="more-actions")
                 yield Button("Back", id="back")
         with Horizontal(id="rules-filterbar"):
@@ -416,8 +424,8 @@ class RulesScreen(AppScreen):
                     yield Button("Add rule", id="add-rule", variant="primary")
                     yield Button("Cancel", id="cancel-add")
         yield Static(
-            "Type to search • Up/Down list • Left/Right action • Ctrl+F cycle filter • "
-            "Tab focus controls • Enter activates button • Esc clear/back",
+            "Type to search • Up/Down move list • Left/Right change action • "
+            "Ctrl+F cycle filter • Tab focus controls • Enter activates button • B/Esc back",
             classes="hint",
         )
         yield Footer()
@@ -425,8 +433,20 @@ class RulesScreen(AppScreen):
     def on_mount(self) -> None:
         self._refresh_list()
         self._refresh_details()
-        self._set_save_chip("Saved", state="saved")
+        self._set_save_chip(self._last_saved_label(), state="saved")
         self.query_one("#rules-list", OptionList).focus()
+
+    def _last_saved_label(self) -> str:
+        try:
+            rules_path = active_rules_path()
+            if rules_path.exists():
+                timestamp = datetime.fromtimestamp(rules_path.stat().st_mtime).strftime(
+                    "%Y-%m-%d %H:%M:%S"
+                )
+                return f"Last saved: {timestamp}"
+        except OSError:
+            pass
+        return "Last saved: unknown"
 
     def _build_default_action_indexes(
         self, items: list[object]
@@ -528,12 +548,6 @@ class RulesScreen(AppScreen):
         }
 
     def _sort_indices(self, indices: List[int]) -> List[int]:
-        if self.sort_mode == "name_desc":
-            return sorted(
-                indices,
-                key=lambda idx: str(self.items[idx].get("name", "")).lower(),
-                reverse=True,
-            )
         if self.sort_mode == "action":
             return sorted(
                 indices,
@@ -697,18 +711,28 @@ class RulesScreen(AppScreen):
         save_chip.remove_class("is-saved")
         save_chip.remove_class("is-saving")
         save_chip.remove_class("is-error")
+        save_chip.remove_class("is-save-flash")
+        if state != "saved" and self._save_flash_timer is not None:
+            self._save_flash_timer.stop()
+            self._save_flash_timer = None
         save_chip.add_class(f"is-{state}")
         save_chip.update(text)
 
     def _set_saved_with_timestamp(self) -> None:
-        timestamp = datetime.now().strftime("%H:%M:%S")
-        self._set_save_chip(f"Saved {timestamp}", state="saved")
-        if self._save_reset_timer is not None:
-            self._save_reset_timer.stop()
-        self._save_reset_timer = self.set_timer(1.5, self._restore_saved_chip)
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        self._set_save_chip(f"Last saved: {timestamp}", state="saved")
+        self._flash_save_chip()
 
-    def _restore_saved_chip(self) -> None:
-        self._set_save_chip("Saved", state="saved")
+    def _flash_save_chip(self) -> None:
+        save_chip = self.query_one("#rules-save-chip", Static)
+        save_chip.add_class("is-save-flash")
+        if self._save_flash_timer is not None:
+            self._save_flash_timer.stop()
+        self._save_flash_timer = self.set_timer(0.9, self._clear_save_chip_flash)
+
+    def _clear_save_chip_flash(self) -> None:
+        self.query_one("#rules-save-chip", Static).remove_class("is-save-flash")
+        self._save_flash_timer = None
 
     def _refresh_action_buttons(self) -> None:
         button_ids = {
@@ -906,20 +930,7 @@ class RulesScreen(AppScreen):
         if choice == "reset":
             self._confirm_reset_default()
 
-    def action_clear_or_back(self) -> None:
-        if self.mode == "add":
-            self.mode = "edit"
-            self._refresh_details()
-            self.query_one("#rules-search", Input).focus()
-            return
-        if self.search_query:
-            self.search_query = ""
-            search_input = self.query_one("#rules-search", Input)
-            search_input.value = ""
-            self._refresh_list()
-            self._refresh_details()
-            search_input.focus()
-            return
+    def action_back(self) -> None:
         self.app.pop_screen()
 
     def on_key(self, event: events.Key) -> None:
@@ -999,14 +1010,13 @@ class RulesScreen(AppScreen):
         elif button_id == "more-actions":
             self.action_open_actions()
         elif button_id == "back":
-            self.app.pop_screen()
+            self.action_back()
 
 
 class RulesChangesScreen(AppScreen):
     BINDINGS = [
         *AppScreen.BINDINGS,
-        Binding("b", "back", "Back"),
-        Binding("escape", "back", "Back"),
+        Binding("b,escape", "back", "Back"),
     ]
 
     DEFAULT_CSS = """
