@@ -9,7 +9,7 @@ from textual.app import ComposeResult
 from textual.binding import Binding
 from textual.containers import Horizontal, Vertical
 from textual.screen import ModalScreen
-from textual.widgets import Button, Footer, Input, OptionList, Select, Static
+from textual.widgets import Button, Footer, Input, OptionList, Static
 from textual.widgets.option_list import Option
 
 from .common import AppScreen, MessageScreen, update_inline_filter
@@ -74,6 +74,10 @@ def _action_badge(item: dict) -> tuple[str, str]:
     if display:
         return (display, "cyan")
     return (label, style)
+
+
+def _should_hide_reason(reason: str) -> bool:
+    return reason.strip().lower().startswith("override:")
 
 
 def _filter_indices(items: List[dict], query: str) -> List[int]:
@@ -156,9 +160,6 @@ class RulesActionsScreen(ModalScreen[Optional[str]]):
     def compose(self) -> ComposeResult:
         with Vertical(id="rules-actions-box"):
             yield Static("Rule Actions", classes="modal-title")
-            yield Static(
-                "Rare actions are grouped here to keep the main editor focused."
-            )
             with Vertical(id="rules-actions-buttons"):
                 yield Button("New rule", id="new-rule", variant="primary")
                 yield Button("Delete selected", id="delete-rule", variant="warning")
@@ -188,10 +189,10 @@ class RulesActionsScreen(ModalScreen[Optional[str]]):
 class RulesScreen(AppScreen):
     BINDINGS = [
         *AppScreen.BINDINGS,
-        Binding("up", "cursor_up", "Move up", priority=True),
-        Binding("down", "cursor_down", "Move down", priority=True),
-        Binding("left", "previous_action", "Prev action", priority=True),
-        Binding("right", "next_action", "Next action", priority=True),
+        Binding("up", "cursor_up", "up", priority=True),
+        Binding("down", "cursor_down", "down", priority=True),
+        Binding("left", "previous_action", "left", priority=True),
+        Binding("right", "next_action", "right", priority=True),
         Binding("tab", "focus_next_control", "Next focus", show=False, priority=True),
         Binding(
             "shift+tab",
@@ -200,7 +201,7 @@ class RulesScreen(AppScreen):
             show=False,
             priority=True,
         ),
-        Binding("/", "focus_search", "Search"),
+        Binding("ctrl+f", "cycle_sort", "filter", priority=True),
         Binding("escape", "clear_or_back", "Clear filter / Back"),
     ]
 
@@ -210,6 +211,22 @@ class RulesScreen(AppScreen):
     }
 
     #rules-topbar {
+        height: auto;
+        align: left middle;
+        margin-bottom: 1;
+    }
+
+    #rules-top-actions {
+        width: 1fr;
+        height: auto;
+        align: right middle;
+    }
+
+    #rules-top-actions Button {
+        margin-left: 1;
+    }
+
+    #rules-filterbar {
         height: auto;
         align: left middle;
         margin-bottom: 1;
@@ -228,11 +245,7 @@ class RulesScreen(AppScreen):
 
     #rules-sort {
         width: 24;
-        margin-right: 1;
-    }
-
-    #rules-topbar Button {
-        margin-right: 1;
+        text-style: bold;
     }
 
     #rules-save-chip {
@@ -314,9 +327,7 @@ class RulesScreen(AppScreen):
 
     #rule-reasons {
         margin-top: 1;
-        height: auto;
-        min-height: 5;
-        max-height: 9;
+        height: 8;
         border: round #334155;
         padding: 0 1;
         overflow-y: auto;
@@ -347,6 +358,7 @@ class RulesScreen(AppScreen):
         "action": "Action",
         "modified": "Modified first",
     }
+    SORT_SEQUENCE: tuple[str, ...] = ("name_asc", "name_desc", "action", "modified")
     ACTION_SORT_ORDER: dict[str, int] = {"keep": 0, "sell": 1, "recycle": 2}
 
     def __init__(self) -> None:
@@ -376,24 +388,15 @@ class RulesScreen(AppScreen):
     def compose(self) -> ComposeResult:
         with Horizontal(id="rules-topbar"):
             yield Static("Rules", id="rules-title")
+            with Horizontal(id="rules-top-actions"):
+                yield Static("Saved", id="rules-save-chip", classes="is-saved")
+                yield Button("Actions", id="more-actions")
+                yield Button("Back", id="back")
+        with Horizontal(id="rules-filterbar"):
             yield Input(
                 placeholder="Search rules... (type to filter)", id="rules-search"
             )
-            yield Select(
-                options=[
-                    ("Name A-Z", "name_asc"),
-                    ("Name Z-A", "name_desc"),
-                    ("Action", "action"),
-                    ("Modified first", "modified"),
-                ],
-                allow_blank=False,
-                value="name_asc",
-                compact=True,
-                id="rules-sort",
-            )
-            yield Button("Actions", id="more-actions")
-            yield Button("Back", id="back")
-            yield Static("Saved", id="rules-save-chip", classes="is-saved")
+            yield Button("Filter: Name A-Z", id="rules-sort", variant="primary")
         yield Static(id="rules-list-summary", classes="hint")
         yield OptionList(id="rules-list")
         with Vertical(id="rules-inspector"):
@@ -413,7 +416,7 @@ class RulesScreen(AppScreen):
                     yield Button("Add rule", id="add-rule", variant="primary")
                     yield Button("Cancel", id="cancel-add")
         yield Static(
-            "Type to search • Up/Down move list • Left/Right cycle action • "
+            "Type to search • Up/Down list • Left/Right action • Ctrl+F cycle filter • "
             "Tab focus controls • Enter activates button • Esc clear/back",
             classes="hint",
         )
@@ -484,7 +487,9 @@ class RulesScreen(AppScreen):
             lines = [
                 reason.strip()
                 for reason in analysis
-                if isinstance(reason, str) and reason.strip()
+                if isinstance(reason, str)
+                and reason.strip()
+                and not _should_hide_reason(reason)
             ]
             if lines:
                 return (lines, False)
@@ -499,7 +504,9 @@ class RulesScreen(AppScreen):
         lines = [
             reason.strip()
             for reason in default_analysis
-            if isinstance(reason, str) and reason.strip()
+            if isinstance(reason, str)
+            and reason.strip()
+            and not _should_hide_reason(reason)
         ]
         return (lines, bool(lines))
 
@@ -555,6 +562,7 @@ class RulesScreen(AppScreen):
         )
         filter_text = self.search_query or "all"
         sort_label = self.SORT_LABELS.get(self.sort_mode, self.sort_mode)
+        self.query_one("#rules-sort", Button).label = f"Filter: {sort_label}"
         self.query_one("#rules-list-summary", Static).update(
             f"Showing {len(self.filtered)} of {len(self.items)} • "
             f"Changed: {changed_count} • Sort: {sort_label} • Filter: {filter_text}"
@@ -659,7 +667,7 @@ class RulesScreen(AppScreen):
         if default_action is None:
             default_suffix = " (custom rule)"
         elif current_action == default_action:
-            default_suffix = " (matches default)"
+            default_suffix = " (default)"
         else:
             default_suffix = f" (default {default_action.upper()})"
         action_line.update(
@@ -880,6 +888,11 @@ class RulesScreen(AppScreen):
     def action_focus_search(self) -> None:
         self.query_one("#rules-search", Input).focus()
 
+    def action_cycle_sort(self) -> None:
+        current_index = self.SORT_SEQUENCE.index(self.sort_mode)
+        next_index = (current_index + 1) % len(self.SORT_SEQUENCE)
+        self._set_sort_mode(self.SORT_SEQUENCE[next_index])
+
     def action_open_actions(self) -> None:
         self.app.push_screen(RulesActionsScreen(), self._handle_actions_choice)
 
@@ -936,14 +949,12 @@ class RulesScreen(AppScreen):
         if event.input.id == "new-rule-name":
             self._add_rule()
 
-    def on_select_changed(self, event: Select.Changed) -> None:
-        if event.select.id != "rules-sort":
+    def _set_sort_mode(self, mode: str) -> None:
+        if mode not in self.SORT_LABELS:
             return
-        if not isinstance(event.value, str):
+        if mode == self.sort_mode:
             return
-        if event.value == self.sort_mode:
-            return
-        self.sort_mode = event.value
+        self.sort_mode = mode
         self._refresh_list()
         self._refresh_details()
 
@@ -983,6 +994,8 @@ class RulesScreen(AppScreen):
             self.mode = "edit"
             self._refresh_details()
             self.query_one("#rules-search", Input).focus()
+        elif button_id == "rules-sort":
+            self.action_cycle_sort()
         elif button_id == "more-actions":
             self.action_open_actions()
         elif button_id == "back":
@@ -994,7 +1007,6 @@ class RulesChangesScreen(AppScreen):
         *AppScreen.BINDINGS,
         Binding("b", "back", "Back"),
         Binding("escape", "back", "Back"),
-        Binding("/", "focus_search", "Search"),
     ]
 
     DEFAULT_CSS = """
@@ -1129,11 +1141,14 @@ class RulesChangesScreen(AppScreen):
             f"ID: {change.item_id}",
             f"Action: {change.before_action.upper()} -> {change.after_action.upper()}",
         ]
-        if change.reasons:
+        visible_reasons = [
+            reason for reason in change.reasons if not _should_hide_reason(reason)
+        ]
+        if visible_reasons:
             lines.append("Reasons:")
-            lines.extend([f"- {reason}" for reason in change.reasons[:8]])
-            if len(change.reasons) > 8:
-                lines.append(f"- ... +{len(change.reasons) - 8} more")
+            lines.extend([f"- {reason}" for reason in visible_reasons[:8]])
+            if len(visible_reasons) > 8:
+                lines.append(f"- ... +{len(visible_reasons) - 8} more")
         else:
             lines.append("Reasons: none recorded")
         detail.update("\n".join(lines))
