@@ -28,6 +28,7 @@ from ..interaction.ui_windows import (
     SCROLL_ALT_CLICKS_PER_PAGE,
     SCROLL_CLICKS_PER_PAGE,
     SELL_RECYCLE_POST_DELAY,
+    WindowSnapshot,
     WINDOW_TIMEOUT,
     abort_if_escape_pressed,
     capture_region,
@@ -212,6 +213,7 @@ def scan_inventory(
     actions_override: Optional[ActionMap] = None,
     profile_timing: bool = False,
     progress: Optional[ScanProgress] = None,
+    window_snapshot: Optional[WindowSnapshot] = None,
 ) -> Tuple[List[ItemActionResult], ScanStats]:
     """
     Walk each 4x5 grid (top-to-bottom, left-to-right), OCR each cell's item
@@ -253,19 +255,36 @@ def scan_inventory(
     progress_impl = _build_progress_impl(show_progress, progress)
     if progress_impl is not None:
         progress_impl.start()
-        progress_impl.set_phase("Waiting for Arc Raiders window…")
+        if window_snapshot is None:
+            progress_impl.set_phase("Waiting for Arc Raiders window…")
 
     try:
-        if progress_impl is not None:
-            window = wait_for_target_window(timeout=window_timeout, stop_key=stop_key)
+        window = None
+        if window_snapshot is None:
+            if progress_impl is not None:
+                window = wait_for_target_window(
+                    timeout=window_timeout, stop_key=stop_key
+                )
+            else:
+                print("waiting for Arc Raiders to be active window...", flush=True)
+                window = wait_for_target_window(
+                    timeout=window_timeout, stop_key=stop_key
+                )
+
+            _display_name, _display_size, work_area = window_display_info(window)
+            mon_left, mon_top, mon_right, mon_bottom = window_monitor_rect(window)
+
+            win_left, win_top, win_width, win_height = window_rect(window)
         else:
-            print("waiting for Arc Raiders to be active window...", flush=True)
-            window = wait_for_target_window(timeout=window_timeout, stop_key=stop_key)
-
-        _display_name, _display_size, work_area = window_display_info(window)
-        mon_left, mon_top, mon_right, mon_bottom = window_monitor_rect(window)
-
-        win_left, win_top, win_width, win_height = window_rect(window)
+            work_area = window_snapshot.work_area
+            mon_left = window_snapshot.mon_left
+            mon_top = window_snapshot.mon_top
+            mon_right = window_snapshot.mon_right
+            mon_bottom = window_snapshot.mon_bottom
+            win_left = window_snapshot.win_left
+            win_top = window_snapshot.win_top
+            win_width = window_snapshot.win_width
+            win_height = window_snapshot.win_height
         win_right = win_left + win_width
         win_bottom = win_top + win_height
 

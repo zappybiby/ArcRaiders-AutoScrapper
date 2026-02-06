@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import sys
 import time
+from dataclasses import dataclass
 from typing import Optional, Tuple
 
 import mss
@@ -46,6 +47,62 @@ SCROLL_SETTLE_DELAY = 0.05
 _MSS: Optional["MSSBase"] = None
 
 
+@dataclass(frozen=True)
+class WindowSnapshot:
+    win_left: int
+    win_top: int
+    win_width: int
+    win_height: int
+    work_area: Tuple[int, int, int, int]
+    mon_left: int
+    mon_top: int
+    mon_right: int
+    mon_bottom: int
+
+
+def get_active_target_window(target_app: str = TARGET_APP) -> Optional[pwc.Window]:
+    """
+    Return the active window if it matches the target app; otherwise None.
+    """
+    win = pwc.getActiveWindow()
+    if win is None:
+        return None
+    target_lower = target_app.lower()
+    app = (win.getAppName() or "").lower()
+    title = ""
+    if hasattr(win, "title"):
+        title = getattr(win, "title") or ""
+    if not title and hasattr(win, "getTitle"):
+        try:
+            title = win.getTitle() or ""
+        except Exception:
+            title = ""
+    title_lower = title.lower()
+    if target_lower in app or (title_lower and target_lower in title_lower):
+        return win
+    return None
+
+
+def build_window_snapshot(win: pwc.Window) -> WindowSnapshot:
+    """
+    Capture window bounds and display metadata for the current target window.
+    """
+    _display_name, _display_size, work_area = window_display_info(win)
+    mon_left, mon_top, mon_right, mon_bottom = window_monitor_rect(win)
+    win_left, win_top, win_width, win_height = window_rect(win)
+    return WindowSnapshot(
+        win_left=win_left,
+        win_top=win_top,
+        win_width=win_width,
+        win_height=win_height,
+        work_area=work_area,
+        mon_left=mon_left,
+        mon_top=mon_top,
+        mon_right=mon_right,
+        mon_bottom=mon_bottom,
+    )
+
+
 def stop_key_pressed(stop_key: str = DEFAULT_STOP_KEY) -> bool:
     """
     Detect whether the configured stop key is currently pressed.
@@ -71,24 +128,12 @@ def wait_for_target_window(
     Wait until the active window belongs to the target process.
     """
     start = time.monotonic()
-    target_lower = target_app.lower()
 
     while time.monotonic() - start < timeout:
         abort_if_escape_pressed(stop_key)
-        win = pwc.getActiveWindow()
+        win = get_active_target_window(target_app=target_app)
         if win is not None:
-            app = (win.getAppName() or "").lower()
-            title = ""
-            if hasattr(win, "title"):
-                title = getattr(win, "title") or ""
-            if not title and hasattr(win, "getTitle"):
-                try:
-                    title = win.getTitle() or ""
-                except Exception:
-                    title = ""
-            title_lower = title.lower()
-            if target_lower in app or (title_lower and target_lower in title_lower):
-                return win
+            return win
         sleep_with_abort(poll_interval, stop_key=stop_key)
 
     raise TimeoutError(f"Timed out waiting for active window {target_app!r}")

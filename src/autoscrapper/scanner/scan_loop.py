@@ -37,7 +37,7 @@ class TimingConfig:
 
 @dataclass(frozen=True)
 class ScanContext:
-    window: Any
+    window: Optional[Any]
     stop_key: str
     win_left: int
     win_top: int
@@ -399,7 +399,8 @@ class _ScanRunner:
         cell_start = time.perf_counter()
 
         abort_if_escape_pressed(self.context.stop_key)
-        if hasattr(self.context.window, "isAlive") and not self.context.window.isAlive:  # type: ignore[attr-defined]
+        window = self.context.window
+        if window is not None and hasattr(window, "isAlive") and not window.isAlive:  # type: ignore[attr-defined]
             raise RuntimeError("Target window closed during scan")
 
         sleep_with_abort(

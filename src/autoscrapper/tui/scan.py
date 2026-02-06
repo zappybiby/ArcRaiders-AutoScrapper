@@ -6,6 +6,8 @@ from datetime import datetime, timedelta
 import queue
 import threading
 import time
+import traceback
+from pathlib import Path
 from typing import Deque, Optional, TYPE_CHECKING
 
 from rich.text import Text
@@ -16,6 +18,14 @@ from textual.widgets import DataTable, Footer, Static
 
 from ..config import load_scan_settings
 from ..interaction.keybinds import stop_key_label
+from ..interaction.ui_windows import (
+    TARGET_APP,
+    WINDOW_TIMEOUT,
+    WindowSnapshot,
+    build_window_snapshot,
+    get_active_target_window,
+    stop_key_pressed,
+)
 from ..scanner.outcomes import _describe_action, _outcome_style
 from ..scanner.progress import ScanProgress
 from ..scanner.types import ScanStats
@@ -71,6 +81,50 @@ def _item_label(result: "ItemActionResult") -> str:
     )
 
 
+def _com_error_details(exc: BaseException) -> Optional[tuple[int, str, str]]:
+    args = getattr(exc, "args", ())
+    if len(args) < 2 or not isinstance(args[0], int) or not isinstance(args[1], str):
+        return None
+    hresult = args[0]
+    text = args[1]
+    if hresult < 0:
+        hresult_hex = f"0x{hresult & 0xFFFFFFFF:08X}"
+    else:
+        hresult_hex = f"0x{hresult:08X}"
+    return hresult, text, hresult_hex
+
+
+def _write_crash_report(content: str) -> Optional[str]:
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    path = Path.cwd() / f"autoscrapper_crash_{timestamp}.log"
+    try:
+        path.write_text(content, encoding="utf-8")
+    except Exception:
+        return None
+    return str(path)
+
+
+def _format_exception_for_ui(exc: BaseException, *, context: str) -> str:
+    trace = "".join(
+        traceback.format_exception(type(exc), exc, exc.__traceback__)
+    ).rstrip()
+    lines = [context, "", f"{type(exc).__name__}: {exc}"]
+    com_details = _com_error_details(exc)
+    if com_details is not None:
+        hresult, text, hresult_hex = com_details
+        lines.append(f"COM error: {hresult_hex} ({text})")
+        if hresult == -2147221020:
+            lines.append(
+                "Note: This COM error is often triggered by window/monitor queries "
+                "running in a background thread."
+            )
+    lines.extend(["", "Traceback:", trace])
+    report_path = _write_crash_report("\n".join(lines))
+    if report_path:
+        lines.extend(["", f"Crash report: {report_path}"])
+    return "\n".join(lines)
+
+
 class TextualScanProgress(ScanProgress):
     def __init__(self, updates: "queue.Queue[ScanUpdate]") -> None:
         self._updates = updates
@@ -123,6 +177,9 @@ class ScanScreen(Screen):
         self._updates: "queue.Queue[ScanUpdate]" = queue.Queue()
         self._scan_complete = False
         self._scan_update_timer = None
+        self._window_wait_timer = None
+        self._window_wait_started: Optional[float] = None
+        self._scan_started = False
         self._results: list["ItemActionResult"] = []
         self._stats: Optional[ScanStats] = None
 
@@ -148,17 +205,83 @@ class ScanScreen(Screen):
     def on_mount(self) -> None:
         self._refresh_panels()
         self._scan_update_timer = self.set_interval(0.25, self._drain_updates)
-        self._start_scan()
+        self._start_window_wait()
 
     def on_screen_resume(self, _event) -> None:  # type: ignore[override]
         if self._scan_complete:
             self.app.pop_screen()
 
-    def _start_scan(self) -> None:
-        thread = threading.Thread(target=self._run_scan, daemon=True)
+    def _start_window_wait(self) -> None:
+        self._window_wait_started = time.monotonic()
+        self._updates.put(
+            ScanUpdate(
+                kind="phase", payload={"phase": "Waiting for Arc Raiders window…"}
+            )
+        )
+        self._window_wait_timer = self.set_interval(0.25, self._poll_for_window)
+
+    def _stop_window_wait(self) -> None:
+        if self._window_wait_timer is not None:
+            self._window_wait_timer.pause()
+
+    def _poll_for_window(self) -> None:
+        if self._scan_complete or self._scan_started:
+            self._stop_window_wait()
+            return
+        if self._window_wait_started is None:
+            self._window_wait_started = time.monotonic()
+
+        if stop_key_pressed(self._settings.stop_key):
+            self._stop_window_wait()
+            self._updates.put(
+                ScanUpdate(
+                    kind="error",
+                    payload={
+                        "message": f"Aborted by {stop_key_label(self._settings.stop_key)} key."
+                    },
+                )
+            )
+            return
+
+        elapsed = time.monotonic() - self._window_wait_started
+        if elapsed > WINDOW_TIMEOUT:
+            self._stop_window_wait()
+            self._updates.put(
+                ScanUpdate(
+                    kind="error",
+                    payload={
+                        "message": f"Timed out waiting for active window {TARGET_APP!r}"
+                    },
+                )
+            )
+            return
+
+        window = get_active_target_window()
+        if window is None:
+            return
+        try:
+            snapshot = build_window_snapshot(window)
+        except Exception as exc:
+            self._stop_window_wait()
+            message = _format_exception_for_ui(
+                exc, context="Failed to read target window information."
+            )
+            self._updates.put(ScanUpdate(kind="error", payload={"message": message}))
+            return
+
+        self._stop_window_wait()
+        self._start_scan(snapshot)
+
+    def _start_scan(self, window_snapshot: WindowSnapshot) -> None:
+        if self._scan_started:
+            return
+        self._scan_started = True
+        thread = threading.Thread(
+            target=self._run_scan, args=(window_snapshot,), daemon=True
+        )
         thread.start()
 
-    def _run_scan(self) -> None:
+    def _run_scan(self, window_snapshot: WindowSnapshot) -> None:
         settings = self._settings
         try:
             from ..core.item_actions import ITEM_RULES_PATH
@@ -180,8 +303,6 @@ class ScanScreen(Screen):
             )
 
             if settings.debug_ocr:
-                from pathlib import Path
-
                 enable_ocr_debug(Path("ocr_debug"))
 
             progress = TextualScanProgress(self._updates)
@@ -201,6 +322,7 @@ class ScanScreen(Screen):
                 ocr_unreadable_retries=settings.ocr_unreadable_retries,
                 ocr_unreadable_retry_delay_ms=settings.ocr_unreadable_retry_delay_ms,
                 progress=progress,
+                window_snapshot=window_snapshot,
             )
         except KeyboardInterrupt:
             self._updates.put(
@@ -226,11 +348,10 @@ class ScanScreen(Screen):
             )
             return
         except Exception as exc:  # pragma: no cover - safety net
-            self._updates.put(
-                ScanUpdate(
-                    kind="error", payload={"message": f"Unexpected error: {exc}"}
-                )
+            message = _format_exception_for_ui(
+                exc, context="Unexpected error while scanning."
             )
+            self._updates.put(ScanUpdate(kind="error", payload={"message": message}))
             return
 
         self._updates.put(
