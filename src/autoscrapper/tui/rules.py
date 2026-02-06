@@ -192,13 +192,14 @@ class RulesScreen(AppScreen):
         Binding("down", "cursor_down", "Move down", priority=True),
         Binding("left", "previous_action", "Prev action", priority=True),
         Binding("right", "next_action", "Next action", priority=True),
-        Binding("ctrl+1", "set_keep", "Keep"),
-        Binding("ctrl+2", "set_sell", "Sell"),
-        Binding("ctrl+3", "set_recycle", "Recycle"),
-        Binding("ctrl+n", "new_rule", "New rule"),
-        Binding("ctrl+d", "delete_rule", "Delete"),
-        Binding("ctrl+r", "reset_rules", "Reset"),
-        Binding("ctrl+.", "open_actions", "Actions"),
+        Binding("tab", "focus_next_control", "Next focus", show=False, priority=True),
+        Binding(
+            "shift+tab",
+            "focus_previous_control",
+            "Previous focus",
+            show=False,
+            priority=True,
+        ),
         Binding("/", "focus_search", "Search"),
         Binding("escape", "clear_or_back", "Clear filter / Back"),
     ]
@@ -412,7 +413,8 @@ class RulesScreen(AppScreen):
                     yield Button("Add rule", id="add-rule", variant="primary")
                     yield Button("Cancel", id="cancel-add")
         yield Static(
-            "Type to search • Ctrl+1/2/3 set action • Ctrl+. actions • Esc clear/back",
+            "Type to search • Up/Down move list • Left/Right cycle action • "
+            "Tab focus controls • Enter activates button • Esc clear/back",
             classes="hint",
         )
         yield Footer()
@@ -421,7 +423,7 @@ class RulesScreen(AppScreen):
         self._refresh_list()
         self._refresh_details()
         self._set_save_chip("Saved", state="saved")
-        self.query_one("#rules-search", Input).focus()
+        self.query_one("#rules-list", OptionList).focus()
 
     def _build_default_action_indexes(
         self, items: list[object]
@@ -799,9 +801,9 @@ class RulesScreen(AppScreen):
         self._refresh_details()
         self.app.push_screen(MessageScreen("Custom rules removed. Defaults restored."))
 
-    def _is_editing_name_field(self) -> bool:
+    def _is_text_input_focused(self) -> bool:
         focused = self.focused
-        return isinstance(focused, Input) and focused.id == "new-rule-name"
+        return isinstance(focused, Input)
 
     def _move_highlight(self, delta: int) -> None:
         if not self.filtered:
@@ -817,12 +819,12 @@ class RulesScreen(AppScreen):
         self._refresh_details()
 
     def action_cursor_up(self) -> None:
-        if self._is_editing_name_field():
+        if self._is_text_input_focused():
             return
         self._move_highlight(-1)
 
     def action_cursor_down(self) -> None:
-        if self._is_editing_name_field():
+        if self._is_text_input_focused():
             return
         self._move_highlight(1)
 
@@ -843,14 +845,20 @@ class RulesScreen(AppScreen):
         self._set_action(actions[next_index])
 
     def action_previous_action(self) -> None:
-        if self._is_editing_name_field():
+        if self._is_text_input_focused():
             return
         self._cycle_action(-1)
 
     def action_next_action(self) -> None:
-        if self._is_editing_name_field():
+        if self._is_text_input_focused():
             return
         self._cycle_action(1)
+
+    def action_focus_next_control(self) -> None:
+        self.focus_next()
+
+    def action_focus_previous_control(self) -> None:
+        self.focus_previous()
 
     def action_new_rule(self) -> None:
         if self.mode == "add":
@@ -984,7 +992,7 @@ class RulesScreen(AppScreen):
 class RulesChangesScreen(AppScreen):
     BINDINGS = [
         *AppScreen.BINDINGS,
-        Binding("ctrl+p", "back", "Back"),
+        Binding("b", "back", "Back"),
         Binding("escape", "back", "Back"),
         Binding("/", "focus_search", "Search"),
     ]

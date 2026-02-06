@@ -6,6 +6,7 @@ from typing import Callable, Iterable, Optional
 from rich.text import Text
 from textual import events
 from textual.app import App, ComposeResult
+from textual.binding import Binding
 from textual.containers import Vertical
 from textual.widgets import Footer, OptionList, Static
 from textual.widgets.option_list import Option
@@ -197,6 +198,10 @@ class HomeScreen(MenuScreen):
 class AutoScrapperApp(App[None]):
     CSS_PATH = "app.tcss"
     TITLE = "Autoscrapper"
+    BINDINGS = [
+        Binding("ctrl+g", "main_menu", "Main menu"),
+        Binding("ctrl+b", "back", "Back"),
+    ]
 
     def __init__(self, *, start_screen: str = "home", scan_dry_run: bool = False):
         super().__init__()
@@ -213,6 +218,13 @@ class AutoScrapperApp(App[None]):
             return
         while not isinstance(self.screen, HomeScreen):
             self.pop_screen()
+
+    def action_back(self) -> None:
+        if isinstance(self.screen, ScanScreen):
+            return
+        if isinstance(self.screen, HomeScreen):
+            return
+        self.pop_screen()
 
     def _scan_menu(self) -> MenuScreen:
         items = [

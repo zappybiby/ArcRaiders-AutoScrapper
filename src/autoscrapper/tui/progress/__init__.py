@@ -52,7 +52,7 @@ class ProgressIntroScreen(ProgressScreen):
 
     BINDINGS = [
         *ProgressScreen.BINDINGS,
-        Binding("ctrl+enter", "next", "Continue"),
+        Binding("ctrl+n", "next", "Continue"),
     ]
 
     def compose(self) -> ComposeResult:
@@ -123,7 +123,7 @@ class ActiveQuestsScreen(ProgressScreen):
         *ProgressScreen.BINDINGS,
         ("space", "toggle", "Toggle quest"),
         ("enter", "toggle", "Toggle quest"),
-        ("ctrl+enter", "next", "Continue"),
+        ("ctrl+n", "next", "Continue"),
     ]
 
     def __init__(self, state: ProgressWizardState) -> None:
@@ -278,7 +278,7 @@ class WorkshopLevelsScreen(ProgressScreen):
 
     BINDINGS = [
         *ProgressScreen.BINDINGS,
-        ("ctrl+enter", "next", "Continue"),
+        ("ctrl+n", "next", "Continue"),
     ]
 
     def __init__(self, state: ProgressWizardState, *, wizard_mode: bool) -> None:
@@ -416,7 +416,7 @@ class ProgressSummaryScreen(ProgressScreen):
 
     BINDINGS = [
         *ProgressScreen.BINDINGS,
-        Binding("ctrl+enter", "save", "Generate"),
+        Binding("ctrl+s", "save", "Generate"),
     ]
 
     def compose(self) -> ComposeResult:

@@ -41,7 +41,7 @@ class ReviewQuestsScreen(ProgressScreen):
         Binding("enter", "toggle_completed", "Toggle done"),
         Binding("space", "toggle_completed", "Toggle done"),
         Binding("ctrl+t", "toggle_sort", "Sort"),
-        Binding("ctrl+enter", "save", "Save"),
+        Binding("ctrl+s", "save", "Save"),
     ]
 
     def __init__(

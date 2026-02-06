@@ -8,7 +8,7 @@ from ..common import AppScreen
 class ProgressScreen(AppScreen):
     BINDINGS = [
         *AppScreen.BINDINGS,
-        Binding("ctrl+p", "back", "Back"),
+        Binding("b", "back", "Back"),
         Binding("escape", "back", "Back"),
     ]
 

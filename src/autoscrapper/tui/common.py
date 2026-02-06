@@ -10,9 +10,7 @@ from textual.widgets import Button, Static
 
 
 class AppScreen(Screen):
-    BINDINGS = [
-        ("ctrl+g", "main_menu", "Main menu"),
-    ]
+    BINDINGS = []
 
 
 class MessageScreen(ModalScreen[None]):
