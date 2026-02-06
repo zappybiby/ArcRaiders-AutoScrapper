@@ -67,9 +67,6 @@ if sys.platform == "win32":
         state = _GetAsyncKeyState(vk)
         return bool(state & 0x8000) or bool(state & 0x0001)
 
-    def escape_pressed() -> bool:
-        return key_pressed("escape")
-
     def moveTo(x: int, y: int, duration: float = 0.0) -> None:
         _pydirectinput.moveTo(int(x), int(y), duration=duration)
 
@@ -181,9 +178,6 @@ elif sys.platform.startswith("linux"):
                 _KEY_LATCH.discard(canonical_target)
                 return True
             return False
-
-    def escape_pressed() -> bool:
-        return key_pressed("escape")
 
     def moveTo(x: int, y: int, duration: float = 0.0) -> None:
         x = int(x)

@@ -49,7 +49,7 @@ Start a scan directly:
 How AutoScrapper Works:
 - Open your inventory and make sure you are scrolled to the top of it
 - Start the scan, then alt-tab back into the game. It will then begin after a few seconds.
-- Press Escape to abort (may need multiple presses).
+- Press the configured stop key (default Esc) to abort (may need multiple presses).
 
 Linux notes:
 - Default target window title is `Arc Raiders`. Override with `AUTOSCRAPPER_TARGET_APP` if needed.

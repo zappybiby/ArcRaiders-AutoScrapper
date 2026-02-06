@@ -13,7 +13,7 @@ def _print_usage() -> None:
     print("Usage: autoscrapper [scan [scan options]]")
     print("       autoscrapper [tui|ui]")
     print()
-    print("No command starts the Textual UI.")
+    print("Running without arguments starts the Textual UI.")
     print("'scan' runs an immediate scan without opening the UI.")
 
 

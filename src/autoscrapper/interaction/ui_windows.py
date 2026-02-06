@@ -53,13 +53,6 @@ def stop_key_pressed(stop_key: str = DEFAULT_STOP_KEY) -> bool:
     return pdi.key_pressed(stop_key)
 
 
-def escape_pressed() -> bool:
-    """
-    Detect whether Escape is currently pressed.
-    """
-    return stop_key_pressed("escape")
-
-
 def abort_if_escape_pressed(stop_key: str = DEFAULT_STOP_KEY) -> None:
     """
     Raise KeyboardInterrupt if the configured stop key is down.
