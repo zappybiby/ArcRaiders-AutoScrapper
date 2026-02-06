@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from typing import List, Optional
+from datetime import datetime
+from typing import List, Literal, Optional
 
 from rich.text import Text
 from textual import events
@@ -8,17 +9,17 @@ from textual.app import ComposeResult
 from textual.binding import Binding
 from textual.containers import Horizontal, Vertical
 from textual.screen import ModalScreen
-from textual.widgets import Button, Footer, Input, OptionList, Static
+from textual.widgets import Button, Footer, Input, OptionList, Select, Static
 from textual.widgets.option_list import Option
 
 from .common import AppScreen, MessageScreen, update_inline_filter
 from ..items.rules_diff import RuleChange
 from ..items.rules_store import (
     CUSTOM_RULES_PATH,
+    DEFAULT_RULES_PATH,
     load_rules,
     normalize_action,
     save_custom_rules,
-    using_custom_rules,
 )
 
 
@@ -32,18 +33,47 @@ def _display_action(item: dict) -> str:
     return ""
 
 
-def _action_badge(item: dict) -> tuple[str, str]:
+def _normalized_action(item: dict) -> Optional[str]:
     action = normalize_action(str(item.get("action", "")))
+    if action:
+        return action
+    decisions = item.get("decision")
+    if isinstance(decisions, list):
+        for decision in decisions:
+            if isinstance(decision, str):
+                parsed = normalize_action(decision)
+                if parsed:
+                    return parsed
+    return None
+
+
+def _lookup_key(value: object) -> Optional[str]:
+    if isinstance(value, str):
+        normalized = value.strip().lower()
+        if normalized:
+            return normalized
+    return None
+
+
+def _action_label_style(action: Optional[str]) -> tuple[str, str]:
     if action == "keep":
         return ("KEEP", "bold green")
     if action == "sell":
         return ("SELL", "bold yellow")
     if action == "recycle":
         return ("RECYCLE", "bold magenta")
+    return ("UNKNOWN", "dim")
+
+
+def _action_badge(item: dict) -> tuple[str, str]:
+    action = _normalized_action(item)
+    label, style = _action_label_style(action)
+    if action:
+        return (label, style)
     display = _display_action(item).strip().upper()
     if display:
         return (display, "cyan")
-    return ("UNKNOWN", "dim")
+    return (label, style)
 
 
 def _filter_indices(items: List[dict], query: str) -> List[int]:
@@ -99,6 +129,62 @@ class ConfirmResetRulesScreen(ModalScreen[bool]):
             self.dismiss(True)
 
 
+class RulesActionsScreen(ModalScreen[Optional[str]]):
+    DEFAULT_CSS = """
+    RulesActionsScreen {
+        align: center middle;
+    }
+
+    #rules-actions-box {
+        width: 52;
+        border: round $accent;
+        padding: 1 2;
+        background: $surface;
+    }
+
+    #rules-actions-buttons {
+        margin-top: 1;
+        height: auto;
+    }
+
+    #rules-actions-buttons Button {
+        width: 1fr;
+        margin-bottom: 1;
+    }
+    """
+
+    def compose(self) -> ComposeResult:
+        with Vertical(id="rules-actions-box"):
+            yield Static("Rule Actions", classes="modal-title")
+            yield Static(
+                "Rare actions are grouped here to keep the main editor focused."
+            )
+            with Vertical(id="rules-actions-buttons"):
+                yield Button("New rule", id="new-rule", variant="primary")
+                yield Button("Delete selected", id="delete-rule", variant="warning")
+                yield Button("Reset to default", id="reset-rules", variant="error")
+                yield Button("Cancel", id="cancel")
+
+    def on_key(self, event: events.Key) -> None:
+        if event.key == "escape":
+            self.dismiss(None)
+            event.stop()
+
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        button_id = event.button.id
+        if button_id == "cancel":
+            self.dismiss(None)
+            return
+        if button_id == "new-rule":
+            self.dismiss("new")
+            return
+        if button_id == "delete-rule":
+            self.dismiss("delete")
+            return
+        if button_id == "reset-rules":
+            self.dismiss("reset")
+
+
 class RulesScreen(AppScreen):
     BINDINGS = [
         *AppScreen.BINDINGS,
@@ -109,9 +195,11 @@ class RulesScreen(AppScreen):
         Binding("ctrl+1", "set_keep", "Keep"),
         Binding("ctrl+2", "set_sell", "Sell"),
         Binding("ctrl+3", "set_recycle", "Recycle"),
-        Binding("ctrl+n", "new_rule", "Add rule"),
+        Binding("ctrl+n", "new_rule", "New rule"),
         Binding("ctrl+d", "delete_rule", "Delete"),
         Binding("ctrl+r", "reset_rules", "Reset"),
+        Binding("ctrl+.", "open_actions", "Actions"),
+        Binding("/", "focus_search", "Search"),
         Binding("escape", "clear_or_back", "Clear filter / Back"),
     ]
 
@@ -120,26 +208,68 @@ class RulesScreen(AppScreen):
         padding: 1 2;
     }
 
-    #rules-filter {
+    #rules-topbar {
+        height: auto;
+        align: left middle;
         margin-bottom: 1;
     }
 
-    #rules-layout {
-        height: 1fr;
+    #rules-title {
+        width: 8;
+        text-style: bold;
+        color: #7dd3fc;
+    }
+
+    #rules-search {
+        width: 1fr;
+        margin-right: 1;
+    }
+
+    #rules-sort {
+        width: 24;
+        margin-right: 1;
+    }
+
+    #rules-save-chip {
+        width: 18;
+        text-align: right;
+        text-style: bold;
+    }
+
+    #rules-save-chip.is-saved {
+        color: #86efac;
+    }
+
+    #rules-save-chip.is-saving {
+        color: #fbbf24;
+    }
+
+    #rules-save-chip.is-error {
+        color: #fca5a5;
+    }
+
+    #rules-list-summary {
+        margin-bottom: 1;
     }
 
     #rules-list {
-        width: 55%;
+        height: 1fr;
     }
 
-    #rules-detail {
-        width: 45%;
-        padding-left: 1;
+    #rules-inspector {
+        margin-top: 1;
+        height: 15;
+        border: round #334155;
+        padding: 1 2;
+        background: #0b1220;
     }
 
     #rule-selected {
-        margin-top: 1;
         text-style: bold;
+    }
+
+    #rule-action-line {
+        margin-top: 1;
     }
 
     #action-buttons {
@@ -148,7 +278,7 @@ class RulesScreen(AppScreen):
     }
 
     #action-buttons Button {
-        min-width: 12;
+        min-width: 11;
     }
 
     #action-buttons Button:focus {
@@ -168,15 +298,28 @@ class RulesScreen(AppScreen):
         border: tall #93c5fd;
     }
 
-    #rules-advanced {
+    #rule-reasons {
         margin-top: 1;
+        height: 1fr;
     }
 
-    #rules-advanced-actions,
-    #rules-actions,
-    #rules-actions-2 {
+    #new-rule-panel {
         margin-top: 1;
         height: auto;
+    }
+
+    #new-rule-actions {
+        margin-top: 1;
+        height: auto;
+    }
+
+    #rules-bottom-actions {
+        margin-top: 1;
+        height: auto;
+    }
+
+    .is-hidden {
+        display: none;
     }
 
     .hint {
@@ -184,78 +327,193 @@ class RulesScreen(AppScreen):
     }
     """
 
+    SORT_LABELS: dict[str, str] = {
+        "name_asc": "Name A-Z",
+        "name_desc": "Name Z-A",
+        "action": "Action",
+        "modified": "Modified first",
+    }
+    ACTION_SORT_ORDER: dict[str, int] = {"keep": 0, "sell": 1, "recycle": 2}
+
     def __init__(self) -> None:
         super().__init__()
         self.payload = load_rules()
         self.items = list(self.payload.get("items", []))
+        defaults = load_rules(DEFAULT_RULES_PATH)
+        (
+            self.default_actions_by_id,
+            self.default_actions_by_name,
+        ) = self._build_default_action_indexes(list(defaults.get("items", [])))
         self.filtered: List[int] = []
+        self.modified_map: dict[int, bool] = {}
         self.search_query = ""
+        self.sort_mode: Literal["name_asc", "name_desc", "action", "modified"] = (
+            "name_asc"
+        )
         self.selected_index: Optional[int] = None
         self.mode: str = "edit"
         self.current_action: str = "keep"
-        self._updating_form = False
+        self._save_reset_timer = None
 
     def compose(self) -> ComposeResult:
-        yield Static("Rules", classes="menu-title")
-        yield Static(id="rules-filter", classes="hint")
-        with Horizontal(id="rules-layout"):
-            yield OptionList(id="rules-list")
-            with Vertical(id="rules-detail"):
-                yield Static(id="rules-status", classes="hint")
-                yield Static(id="rule-selected")
-                yield Static(id="rule-details")
-                yield Static("Edit rule", classes="section-title")
-                yield Static("Action", classes="section-title")
-                with Horizontal(id="action-buttons"):
-                    yield Button("Keep", id="action-keep")
-                    yield Button("Sell", id="action-sell")
-                    yield Button("Recycle", id="action-recycle")
-                yield Static(
-                    "Ctrl+1 keep • Ctrl+2 sell • Ctrl+3 recycle • "
-                    "Ctrl+N start/add rule • Saves on add/delete/action changes",
-                    classes="hint",
+        with Horizontal(id="rules-topbar"):
+            yield Static("Rules", id="rules-title")
+            yield Input(
+                placeholder="Search rules... (type to filter)", id="rules-search"
+            )
+            yield Select(
+                options=[
+                    ("Name A-Z", "name_asc"),
+                    ("Name Z-A", "name_desc"),
+                    ("Action", "action"),
+                    ("Modified first", "modified"),
+                ],
+                allow_blank=False,
+                value="name_asc",
+                compact=True,
+                id="rules-sort",
+            )
+            yield Static("Saved", id="rules-save-chip", classes="is-saved")
+        yield Static(id="rules-list-summary", classes="hint")
+        yield OptionList(id="rules-list")
+        with Vertical(id="rules-inspector"):
+            yield Static(id="rule-selected")
+            yield Static(id="rule-action-line")
+            with Horizontal(id="action-buttons"):
+                yield Button("Keep", id="action-keep")
+                yield Button("Sell", id="action-sell")
+                yield Button("Recycle", id="action-recycle")
+            yield Static(id="rule-reasons")
+            with Vertical(id="new-rule-panel", classes="is-hidden"):
+                yield Static("New rule name", classes="hint")
+                yield Input(
+                    placeholder="Enter a name for the new rule", id="new-rule-name"
                 )
-                with Vertical(id="rules-advanced"):
-                    yield Static("Advanced", classes="section-title")
-                    yield Input(placeholder="Name", id="rule-name")
-                    yield Input(placeholder="Item id (optional)", id="rule-id")
-                    with Horizontal(id="rules-advanced-actions"):
-                        yield Button("New rule", id="new")
-                with Horizontal(id="rules-actions"):
-                    yield Button("Delete", id="delete", variant="warning")
-                with Horizontal(id="rules-actions-2"):
-                    yield Button("Reset to default", id="reset")
-                    yield Button("Back", id="back")
+                with Horizontal(id="new-rule-actions"):
+                    yield Button("Add rule", id="add-rule", variant="primary")
+                    yield Button("Cancel", id="cancel-add")
+            with Horizontal(id="rules-bottom-actions"):
+                yield Button("Actions", id="more-actions")
+                yield Button("Back", id="back")
+        yield Static(
+            "Type to search • Ctrl+1/2/3 set action • Ctrl+. actions • Esc clear/back",
+            classes="hint",
+        )
         yield Footer()
 
     def on_mount(self) -> None:
         self._refresh_list()
         self._refresh_details()
-        self.query_one("#rules-list", OptionList).focus()
+        self._set_save_chip("Saved", state="saved")
+        self.query_one("#rules-search", Input).focus()
 
-    def _refresh_filter_hint(self) -> None:
+    def _build_default_action_indexes(
+        self, items: list[object]
+    ) -> tuple[dict[str, str], dict[str, str]]:
+        by_id: dict[str, str] = {}
+        by_name: dict[str, str] = {}
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            action = _normalized_action(item)
+            if not action:
+                continue
+            item_id = _lookup_key(item.get("id"))
+            if item_id:
+                by_id[item_id] = action
+            name = _lookup_key(item.get("name"))
+            if name:
+                by_name[name] = action
+        return by_id, by_name
+
+    def _default_action_for_item(self, item: dict) -> Optional[str]:
+        item_id = _lookup_key(item.get("id"))
+        if item_id and item_id in self.default_actions_by_id:
+            return self.default_actions_by_id[item_id]
+        name = _lookup_key(item.get("name"))
+        if name and name in self.default_actions_by_name:
+            return self.default_actions_by_name[name]
+        return None
+
+    def _is_modified(self, item: dict) -> bool:
+        default_action = self._default_action_for_item(item)
+        current_action = _normalized_action(item)
+        if default_action is None:
+            return True
+        if current_action is None:
+            return True
+        return current_action != default_action
+
+    def _is_modified_index(self, index: int) -> bool:
+        return self.modified_map.get(index, False)
+
+    def _refresh_modified_map(self) -> None:
+        self.modified_map = {
+            idx: self._is_modified(item) for idx, item in enumerate(self.items)
+        }
+
+    def _sort_indices(self, indices: List[int]) -> List[int]:
+        if self.sort_mode == "name_desc":
+            return sorted(
+                indices,
+                key=lambda idx: str(self.items[idx].get("name", "")).lower(),
+                reverse=True,
+            )
+        if self.sort_mode == "action":
+            return sorted(
+                indices,
+                key=lambda idx: (
+                    self.ACTION_SORT_ORDER.get(
+                        _normalized_action(self.items[idx]) or "", 99
+                    ),
+                    str(self.items[idx].get("name", "")).lower(),
+                ),
+            )
+        if self.sort_mode == "modified":
+            return sorted(
+                indices,
+                key=lambda idx: (
+                    0 if self._is_modified_index(idx) else 1,
+                    str(self.items[idx].get("name", "")).lower(),
+                ),
+            )
+        return sorted(
+            indices, key=lambda idx: str(self.items[idx].get("name", "")).lower()
+        )
+
+    def _refresh_list_summary(self) -> None:
+        changed_count = sum(
+            1 for is_modified in self.modified_map.values() if is_modified
+        )
         filter_text = self.search_query or "all"
-        self.query_one("#rules-filter", Static).update(
-            f"Type to filter by name or id • Backspace deletes • Esc clears/back • "
-            f"Filter: {filter_text} ({len(self.filtered)} matches)"
+        sort_label = self.SORT_LABELS.get(self.sort_mode, self.sort_mode)
+        self.query_one("#rules-list-summary", Static).update(
+            f"Showing {len(self.filtered)} of {len(self.items)} • "
+            f"Changed: {changed_count} • Sort: {sort_label} • Filter: {filter_text}"
         )
 
     def _refresh_list(self) -> None:
         previous_selection = self.selected_index
-        self.filtered = _filter_indices(self.items, self.search_query)
+        self._refresh_modified_map()
+        filtered_indices = _filter_indices(self.items, self.search_query)
+        self.filtered = self._sort_indices(filtered_indices)
         menu = self.query_one("#rules-list", OptionList)
         options = []
-        for idx in self.filtered:
-            item = self.items[idx]
+        for list_index, item_index in enumerate(self.filtered):
+            item = self.items[item_index]
             action_label, action_style = _action_badge(item)
+            name_style = (
+                "bold #f59e0b" if self._is_modified_index(item_index) else "bold"
+            )
             label = Text.assemble(
-                (f"{idx + 1:>3} ", "dim"),
-                (str(item.get("name", "")), "bold"),
+                (f"{list_index + 1:>3} ", "dim"),
+                (str(item.get("name", "")), name_style),
                 ("  ", ""),
                 (action_label, action_style),
             )
-            options.append(Option(label, id=str(idx)))
+            options.append(Option(label, id=str(item_index)))
         menu.set_options(options)
+
         if options:
             if previous_selection in self.filtered:
                 highlighted = self.filtered.index(previous_selection)
@@ -263,80 +521,118 @@ class RulesScreen(AppScreen):
                 highlighted = 0
             menu.highlighted = highlighted
             self.selected_index = self.filtered[highlighted]
+            if self.mode != "add":
+                self.current_action = (
+                    _normalized_action(self.items[self.selected_index]) or "keep"
+                )
         else:
             self.selected_index = None
-        self._refresh_filter_hint()
+            if self.mode != "add":
+                self.current_action = "keep"
+
+        self._refresh_action_buttons()
+        self._refresh_list_summary()
+
+    def _set_add_mode(self, enabled: bool) -> None:
+        panel = self.query_one("#new-rule-panel", Vertical)
+        if enabled:
+            panel.remove_class("is-hidden")
+        else:
+            panel.add_class("is-hidden")
 
     def _refresh_details(self) -> None:
-        status = "Custom rules active • Saves on explicit rule actions"
-        if not using_custom_rules():
-            status = "Default rules active • First saved change creates custom rules"
-        self.query_one("#rules-status", Static).update(status)
+        self._set_add_mode(self.mode == "add")
+        title = self.query_one("#rule-selected", Static)
+        action_line = self.query_one("#rule-action-line", Static)
+        reasons = self.query_one("#rule-reasons", Static)
 
         if self.mode == "add":
-            self.query_one("#rule-selected", Static).update("Selected: New rule")
-            self.query_one("#rule-details", Static).update(
-                "Create a new rule using the Advanced fields."
+            title.update("Create New Rule")
+            action_label, action_style = _action_label_style(self.current_action)
+            action_line.update(
+                Text.assemble(
+                    ("Action: ", "bold"),
+                    (action_label, action_style),
+                    (" (new custom rule)", "dim"),
+                )
+            )
+            reasons.update(
+                "Enter a rule name below, then choose Add rule.\n"
+                "This path is for uncommon cases; most edits are action changes only."
             )
             return
 
         if self.selected_index is None:
+            title.update("No rule selected")
+            action_line.update("")
             if self.search_query:
-                self.query_one("#rule-selected", Static).update("Selected: none")
-                self.query_one("#rule-details", Static).update(
-                    "No matching rules for this filter."
-                )
+                reasons.update("No matching rules for this filter.")
             else:
-                self.query_one("#rule-selected", Static).update("Selected: none")
-                self.query_one("#rule-details", Static).update("No rule selected.")
-            self._populate_edit_fields(None, set_add_mode=False)
+                reasons.update("Select a rule to view reasons and edit action.")
             return
 
         item = self.items[self.selected_index]
-        self.query_one("#rule-selected", Static).update(
-            f"Selected: {item.get('name', '')}"
+        name = str(item.get("name", ""))
+        name_style = (
+            "bold #f59e0b" if self._is_modified_index(self.selected_index) else "bold"
         )
-        details = [
-            f"Current action: {_display_action(item)}",
-        ]
-        analysis = item.get("analysis")
-        if isinstance(analysis, list) and analysis:
-            details.append("Reasons:")
-            details.extend([f" • {reason}" for reason in analysis[:6]])
-            if len(analysis) > 6:
-                details.append(f" • … +{len(analysis) - 6} more")
-        self.query_one("#rule-details", Static).update("\n".join(details))
-        self._populate_edit_fields(item)
+        title.update(Text(name, style=name_style))
 
-    def _populate_edit_fields(
-        self, item: Optional[dict], *, set_add_mode: bool = False
-    ) -> None:
-        name_input = self.query_one("#rule-name", Input)
-        id_input = self.query_one("#rule-id", Input)
-        self._updating_form = True
-        if not item:
-            try:
-                name_input.value = ""
-                id_input.value = ""
-            finally:
-                self._updating_form = False
-            self.current_action = "keep"
-            if set_add_mode:
-                self.mode = "add"
-            elif self.mode != "add":
-                self.mode = "edit"
-            self._refresh_action_buttons()
-            return
-        try:
-            name_input.value = str(item.get("name", ""))
-            id_input.value = str(item.get("id", ""))
-        finally:
-            self._updating_form = False
-        self.current_action = (
-            normalize_action(str(item.get("action", "keep"))) or "keep"
+        current_action = _normalized_action(item) or "keep"
+        self.current_action = current_action
+        action_label, action_style = _action_label_style(current_action)
+        default_action = self._default_action_for_item(item)
+        if default_action is None:
+            default_suffix = " (custom rule)"
+        elif current_action == default_action:
+            default_suffix = " (matches default)"
+        else:
+            default_suffix = f" (default {default_action.upper()})"
+        action_line.update(
+            Text.assemble(
+                ("Action: ", "bold"),
+                (action_label, action_style),
+                (default_suffix, "dim"),
+            )
         )
-        self.mode = "edit"
+
+        lines = ["Reasons:"]
+        analysis = item.get("analysis")
+        reason_lines: list[str] = []
+        if isinstance(analysis, list):
+            reason_lines = [
+                reason.strip()
+                for reason in analysis
+                if isinstance(reason, str) and reason.strip()
+            ]
+        if reason_lines:
+            lines.extend([f" • {reason}" for reason in reason_lines[:6]])
+            if len(reason_lines) > 6:
+                lines.append(f" • ... +{len(reason_lines) - 6} more")
+        else:
+            lines.append(" • none recorded")
+        reasons.update("\n".join(lines))
         self._refresh_action_buttons()
+
+    def _set_save_chip(
+        self, text: str, *, state: Literal["saved", "saving", "error"]
+    ) -> None:
+        save_chip = self.query_one("#rules-save-chip", Static)
+        save_chip.remove_class("is-saved")
+        save_chip.remove_class("is-saving")
+        save_chip.remove_class("is-error")
+        save_chip.add_class(f"is-{state}")
+        save_chip.update(text)
+
+    def _set_saved_with_timestamp(self) -> None:
+        timestamp = datetime.now().strftime("%H:%M:%S")
+        self._set_save_chip(f"Saved {timestamp}", state="saved")
+        if self._save_reset_timer is not None:
+            self._save_reset_timer.stop()
+        self._save_reset_timer = self.set_timer(1.5, self._restore_saved_chip)
+
+    def _restore_saved_chip(self) -> None:
+        self._set_save_chip("Saved", state="saved")
 
     def _refresh_action_buttons(self) -> None:
         button_ids = {
@@ -351,72 +647,62 @@ class RulesScreen(AppScreen):
             else:
                 button.remove_class("is-current-action")
 
-    def _persist_rules(self) -> None:
+    def _persist_rules(self) -> bool:
         self.payload["items"] = self.items
-        save_custom_rules(self.payload)
+        self._set_save_chip("Saving...", state="saving")
+        try:
+            save_custom_rules(self.payload)
+        except Exception as exc:
+            self._set_save_chip("Save failed", state="error")
+            self.app.push_screen(MessageScreen(f"Failed to save rules: {exc}"))
+            return False
+        self._set_saved_with_timestamp()
+        return True
 
     def _set_action(self, action: str) -> None:
         action_value = normalize_action(action)
         if not action_value:
             return
-        if self.current_action == action_value and self.mode != "edit":
-            return
-        self.current_action = action_value
-        self._refresh_action_buttons()
-        self._commit_edit_changes()
-
-    def _save_detail_changes(self) -> None:
-        if self._updating_form:
-            return
-
-        name = self.query_one("#rule-name", Input).value.strip()
-        item_id = self.query_one("#rule-id", Input).value.strip()
-        action = normalize_action(self.current_action) or "keep"
-
         if self.mode == "add":
-            if not name:
+            if self.current_action == action_value:
                 return
-            entry = {"name": name, "action": action}
-            if item_id:
-                entry["id"] = item_id
-            self.items.append(entry)
-            self.selected_index = len(self.items) - 1
-            self.mode = "edit"
-            self._persist_rules()
-            self._refresh_list()
+            self.current_action = action_value
+            self._refresh_action_buttons()
             self._refresh_details()
             return
 
-        if self.selected_index is None or not name:
+        if self.selected_index is None:
             return
 
         item = self.items[self.selected_index]
-        changed = False
-        if str(item.get("name", "")) != name:
-            item["name"] = name
-            changed = True
-        if normalize_action(str(item.get("action", ""))) != action:
-            item["action"] = action
-            changed = True
-        if item_id:
-            if str(item.get("id", "")) != item_id:
-                item["id"] = item_id
-                changed = True
-        elif "id" in item:
-            item.pop("id", None)
-            changed = True
-
-        if not changed:
+        current_action = _normalized_action(item) or "keep"
+        if current_action == action_value:
+            self.current_action = action_value
+            self._refresh_action_buttons()
             return
 
+        item["action"] = action_value
+        self.current_action = action_value
         self._persist_rules()
         self._refresh_list()
         self._refresh_details()
 
-    def _commit_edit_changes(self) -> None:
-        if self.mode != "edit":
+    def _add_rule(self) -> None:
+        name = self.query_one("#new-rule-name", Input).value.strip()
+        if not name:
+            self.app.push_screen(MessageScreen("Enter a name before adding a rule."))
+            self.query_one("#new-rule-name", Input).focus()
             return
-        self._save_detail_changes()
+        action = normalize_action(self.current_action) or "keep"
+        self.items.append({"name": name, "action": action})
+        self.selected_index = len(self.items) - 1
+        self.mode = "edit"
+        self.search_query = name
+        self.query_one("#rules-search", Input).value = name
+        self._persist_rules()
+        self._refresh_list()
+        self._refresh_details()
+        self.query_one("#rules-search", Input).focus()
 
     def _confirm_reset_default(self) -> None:
         self.app.push_screen(ConfirmResetRulesScreen(), self._handle_reset_confirmation)
@@ -431,27 +717,29 @@ class RulesScreen(AppScreen):
             return
         item = self.items.pop(self.selected_index)
         self._persist_rules()
-        self.app.push_screen(MessageScreen(f"Removed '{item.get('name', '')}'."))
         self._refresh_list()
         self._refresh_details()
+        self.app.push_screen(MessageScreen(f"Removed '{item.get('name', '')}'."))
 
     def _reset_default(self) -> None:
         if CUSTOM_RULES_PATH.exists():
             CUSTOM_RULES_PATH.unlink(missing_ok=True)
-        self.payload = load_rules()
+        self.payload = load_rules(DEFAULT_RULES_PATH)
         self.items = list(self.payload.get("items", []))
-        self.app.push_screen(MessageScreen("Custom rules removed. Defaults restored."))
+        self.mode = "edit"
+        self.current_action = "keep"
+        self._set_saved_with_timestamp()
         self._refresh_list()
         self._refresh_details()
+        self.app.push_screen(MessageScreen("Custom rules removed. Defaults restored."))
 
-    def _is_editing_advanced_fields(self) -> bool:
+    def _is_editing_name_field(self) -> bool:
         focused = self.focused
-        return isinstance(focused, Input) and focused.id in {"rule-name", "rule-id"}
+        return isinstance(focused, Input) and focused.id == "new-rule-name"
 
     def _move_highlight(self, delta: int) -> None:
         if not self.filtered:
             return
-        self._commit_edit_changes()
         menu = self.query_one("#rules-list", OptionList)
         current = menu.highlighted if menu.highlighted is not None else 0
         new_index = max(0, min(len(self.filtered) - 1, current + delta))
@@ -463,12 +751,12 @@ class RulesScreen(AppScreen):
         self._refresh_details()
 
     def action_cursor_up(self) -> None:
-        if self._is_editing_advanced_fields():
+        if self._is_editing_name_field():
             return
         self._move_highlight(-1)
 
     def action_cursor_down(self) -> None:
-        if self._is_editing_advanced_fields():
+        if self._is_editing_name_field():
             return
         self._move_highlight(1)
 
@@ -489,30 +777,25 @@ class RulesScreen(AppScreen):
         self._set_action(actions[next_index])
 
     def action_previous_action(self) -> None:
-        if self._is_editing_advanced_fields():
+        if self._is_editing_name_field():
             return
         self._cycle_action(-1)
 
     def action_next_action(self) -> None:
-        if self._is_editing_advanced_fields():
+        if self._is_editing_name_field():
             return
         self._cycle_action(1)
 
     def action_new_rule(self) -> None:
         if self.mode == "add":
-            name = self.query_one("#rule-name", Input).value.strip()
-            if not name:
-                self.app.push_screen(
-                    MessageScreen("Enter a name before adding a rule.")
-                )
-                self.query_one("#rule-name", Input).focus()
-                return
-            self._save_detail_changes()
-            self.query_one("#rules-list", OptionList).focus()
+            self._add_rule()
             return
-        self._populate_edit_fields(None, set_add_mode=True)
+        self.mode = "add"
+        self.current_action = "keep"
+        self.query_one("#new-rule-name", Input).value = ""
+        self._refresh_action_buttons()
         self._refresh_details()
-        self.query_one("#rule-name", Input).focus()
+        self.query_one("#new-rule-name", Input).focus()
 
     def action_delete_rule(self) -> None:
         self._delete_selected()
@@ -520,46 +803,79 @@ class RulesScreen(AppScreen):
     def action_reset_rules(self) -> None:
         self._confirm_reset_default()
 
-    def action_clear_or_back(self) -> None:
-        if self._is_editing_advanced_fields():
-            self.query_one("#rules-list", OptionList).focus()
+    def action_focus_search(self) -> None:
+        self.query_one("#rules-search", Input).focus()
+
+    def action_open_actions(self) -> None:
+        self.app.push_screen(RulesActionsScreen(), self._handle_actions_choice)
+
+    def _handle_actions_choice(self, choice: Optional[str]) -> None:
+        if choice == "new":
+            self.action_new_rule()
             return
+        if choice == "delete":
+            self._delete_selected()
+            return
+        if choice == "reset":
+            self._confirm_reset_default()
+
+    def action_clear_or_back(self) -> None:
         if self.mode == "add":
             self.mode = "edit"
             self._refresh_details()
-            self.query_one("#rules-list", OptionList).focus()
+            self.query_one("#rules-search", Input).focus()
             return
-        self._commit_edit_changes()
         if self.search_query:
             self.search_query = ""
+            search_input = self.query_one("#rules-search", Input)
+            search_input.value = ""
             self._refresh_list()
             self._refresh_details()
+            search_input.focus()
             return
         self.app.pop_screen()
 
     def on_key(self, event: events.Key) -> None:
-        if self._is_editing_advanced_fields():
+        if isinstance(self.focused, Input):
             return
-
         updated_query, consumed = update_inline_filter(event, self.search_query)
         if not consumed:
             return
-        if updated_query != self.search_query:
-            self.search_query = updated_query
-            self._refresh_list()
-            self._refresh_details()
+        self.search_query = updated_query
+        search_input = self.query_one("#rules-search", Input)
+        search_input.value = updated_query
+        search_input.focus()
         event.stop()
 
     def on_input_changed(self, event: Input.Changed) -> None:
-        if event.input.id not in {"rule-name", "rule-id"}:
+        if event.input.id == "rules-search":
+            if event.value == self.search_query:
+                return
+            self.search_query = event.value
+            self._refresh_list()
+            self._refresh_details()
             return
-        # Explicit actions (add/delete/action change/nav/back) trigger saves.
-        return
+        if event.input.id == "new-rule-name":
+            return
+
+    def on_input_submitted(self, event: Input.Submitted) -> None:
+        if event.input.id == "new-rule-name":
+            self._add_rule()
+
+    def on_select_changed(self, event: Select.Changed) -> None:
+        if event.select.id != "rules-sort":
+            return
+        if not isinstance(event.value, str):
+            return
+        if event.value == self.sort_mode:
+            return
+        self.sort_mode = event.value
+        self._refresh_list()
+        self._refresh_details()
 
     def on_option_list_option_selected(self, event: OptionList.OptionSelected) -> None:
         if event.option_id is None:
             return
-        self._commit_edit_changes()
         try:
             self.selected_index = int(event.option_id)
         except ValueError:
@@ -587,14 +903,15 @@ class RulesScreen(AppScreen):
             self._set_action("sell")
         elif button_id == "action-recycle":
             self._set_action("recycle")
-        elif button_id == "new":
-            self.action_new_rule()
-        elif button_id == "delete":
-            self._delete_selected()
-        elif button_id == "reset":
-            self._confirm_reset_default()
+        elif button_id == "add-rule":
+            self._add_rule()
+        elif button_id == "cancel-add":
+            self.mode = "edit"
+            self._refresh_details()
+            self.query_one("#rules-search", Input).focus()
+        elif button_id == "more-actions":
+            self.action_open_actions()
         elif button_id == "back":
-            self._commit_edit_changes()
             self.app.pop_screen()
 
 
