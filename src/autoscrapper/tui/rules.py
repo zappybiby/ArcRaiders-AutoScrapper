@@ -230,8 +230,12 @@ class RulesScreen(AppScreen):
         margin-right: 1;
     }
 
+    #rules-topbar Button {
+        margin-right: 1;
+    }
+
     #rules-save-chip {
-        width: 18;
+        width: 14;
         text-align: right;
         text-style: bold;
     }
@@ -256,9 +260,18 @@ class RulesScreen(AppScreen):
         height: 1fr;
     }
 
+    #rules-list > .option-list--option {
+        padding: 0 0 1 0;
+    }
+
+    #rules-list > .option-list--option-highlighted {
+        text-style: bold;
+    }
+
     #rules-inspector {
         margin-top: 1;
-        height: 15;
+        height: auto;
+        min-height: 12;
         border: round #334155;
         padding: 1 2;
         background: #0b1220;
@@ -300,7 +313,12 @@ class RulesScreen(AppScreen):
 
     #rule-reasons {
         margin-top: 1;
-        height: 1fr;
+        height: auto;
+        min-height: 5;
+        max-height: 9;
+        border: round #334155;
+        padding: 0 1;
+        overflow-y: auto;
     }
 
     #new-rule-panel {
@@ -309,11 +327,6 @@ class RulesScreen(AppScreen):
     }
 
     #new-rule-actions {
-        margin-top: 1;
-        height: auto;
-    }
-
-    #rules-bottom-actions {
         margin-top: 1;
         height: auto;
     }
@@ -344,6 +357,10 @@ class RulesScreen(AppScreen):
             self.default_actions_by_id,
             self.default_actions_by_name,
         ) = self._build_default_action_indexes(list(defaults.get("items", [])))
+        (
+            self.default_items_by_id,
+            self.default_items_by_name,
+        ) = self._build_default_item_indexes(list(defaults.get("items", [])))
         self.filtered: List[int] = []
         self.modified_map: dict[int, bool] = {}
         self.search_query = ""
@@ -373,6 +390,8 @@ class RulesScreen(AppScreen):
                 compact=True,
                 id="rules-sort",
             )
+            yield Button("Actions", id="more-actions")
+            yield Button("Back", id="back")
             yield Static("Saved", id="rules-save-chip", classes="is-saved")
         yield Static(id="rules-list-summary", classes="hint")
         yield OptionList(id="rules-list")
@@ -392,9 +411,6 @@ class RulesScreen(AppScreen):
                 with Horizontal(id="new-rule-actions"):
                     yield Button("Add rule", id="add-rule", variant="primary")
                     yield Button("Cancel", id="cancel-add")
-            with Horizontal(id="rules-bottom-actions"):
-                yield Button("Actions", id="more-actions")
-                yield Button("Back", id="back")
         yield Static(
             "Type to search • Ctrl+1/2/3 set action • Ctrl+. actions • Esc clear/back",
             classes="hint",
@@ -426,6 +442,22 @@ class RulesScreen(AppScreen):
                 by_name[name] = action
         return by_id, by_name
 
+    def _build_default_item_indexes(
+        self, items: list[object]
+    ) -> tuple[dict[str, dict], dict[str, dict]]:
+        by_id: dict[str, dict] = {}
+        by_name: dict[str, dict] = {}
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            item_id = _lookup_key(item.get("id"))
+            if item_id:
+                by_id[item_id] = item
+            name = _lookup_key(item.get("name"))
+            if name:
+                by_name[name] = item
+        return by_id, by_name
+
     def _default_action_for_item(self, item: dict) -> Optional[str]:
         item_id = _lookup_key(item.get("id"))
         if item_id and item_id in self.default_actions_by_id:
@@ -434,6 +466,40 @@ class RulesScreen(AppScreen):
         if name and name in self.default_actions_by_name:
             return self.default_actions_by_name[name]
         return None
+
+    def _default_item_for_item(self, item: dict) -> Optional[dict]:
+        item_id = _lookup_key(item.get("id"))
+        if item_id and item_id in self.default_items_by_id:
+            return self.default_items_by_id[item_id]
+        name = _lookup_key(item.get("name"))
+        if name and name in self.default_items_by_name:
+            return self.default_items_by_name[name]
+        return None
+
+    def _reason_lines(self, item: dict) -> tuple[list[str], bool]:
+        analysis = item.get("analysis")
+        if isinstance(analysis, list):
+            lines = [
+                reason.strip()
+                for reason in analysis
+                if isinstance(reason, str) and reason.strip()
+            ]
+            if lines:
+                return (lines, False)
+
+        default_item = self._default_item_for_item(item)
+        if default_item is None:
+            return ([], False)
+
+        default_analysis = default_item.get("analysis")
+        if not isinstance(default_analysis, list):
+            return ([], False)
+        lines = [
+            reason.strip()
+            for reason in default_analysis
+            if isinstance(reason, str) and reason.strip()
+        ]
+        return (lines, bool(lines))
 
     def _is_modified(self, item: dict) -> bool:
         default_action = self._default_action_for_item(item)
@@ -492,12 +558,13 @@ class RulesScreen(AppScreen):
             f"Changed: {changed_count} • Sort: {sort_label} • Filter: {filter_text}"
         )
 
-    def _refresh_list(self) -> None:
+    def _refresh_list(self, *, preserve_scroll: bool = False) -> None:
         previous_selection = self.selected_index
+        menu = self.query_one("#rules-list", OptionList)
+        previous_scroll_y = menu.scroll_y if preserve_scroll else None
         self._refresh_modified_map()
         filtered_indices = _filter_indices(self.items, self.search_query)
         self.filtered = self._sort_indices(filtered_indices)
-        menu = self.query_one("#rules-list", OptionList)
         options = []
         for list_index, item_index in enumerate(self.filtered):
             item = self.items[item_index]
@@ -529,6 +596,11 @@ class RulesScreen(AppScreen):
             self.selected_index = None
             if self.mode != "add":
                 self.current_action = "keep"
+
+        if previous_scroll_y is not None:
+            menu.scroll_to(
+                y=previous_scroll_y, animate=False, force=True, immediate=True
+            )
 
         self._refresh_action_buttons()
         self._refresh_list_summary()
@@ -596,15 +668,9 @@ class RulesScreen(AppScreen):
             )
         )
 
-        lines = ["Reasons:"]
-        analysis = item.get("analysis")
-        reason_lines: list[str] = []
-        if isinstance(analysis, list):
-            reason_lines = [
-                reason.strip()
-                for reason in analysis
-                if isinstance(reason, str) and reason.strip()
-            ]
+        reason_lines, used_default_reasons = self._reason_lines(item)
+        heading = "Reasons (default):" if used_default_reasons else "Reasons:"
+        lines = [heading]
         if reason_lines:
             lines.extend([f" • {reason}" for reason in reason_lines[:6]])
             if len(reason_lines) > 6:
@@ -684,7 +750,7 @@ class RulesScreen(AppScreen):
         item["action"] = action_value
         self.current_action = action_value
         self._persist_rules()
-        self._refresh_list()
+        self._refresh_list(preserve_scroll=True)
         self._refresh_details()
 
     def _add_rule(self) -> None:
