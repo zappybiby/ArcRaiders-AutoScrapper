@@ -198,8 +198,15 @@ class AutoScrapperApp(App[None]):
     CSS_PATH = "app.tcss"
     TITLE = "Autoscrapper"
 
+    def __init__(self, *, start_screen: str = "home", scan_dry_run: bool = False):
+        super().__init__()
+        self._start_screen = start_screen
+        self._scan_dry_run = scan_dry_run
+
     def on_mount(self) -> None:
         self.push_screen(HomeScreen())
+        if self._start_screen == "scan":
+            self.push_screen(ScanScreen(dry_run=self._scan_dry_run))
 
     def action_main_menu(self) -> None:
         if isinstance(self.screen, ScanScreen):
@@ -313,7 +320,9 @@ class AutoScrapperApp(App[None]):
         return MenuScreen("Maintenance", items, default_key="1")
 
 
-def run_tui() -> int:
-    app = AutoScrapperApp()
+def run_tui(*, start_screen: str = "home", dry_run: bool = False) -> int:
+    if start_screen not in {"home", "scan"}:
+        raise ValueError("start_screen must be 'home' or 'scan'")
+    app = AutoScrapperApp(start_screen=start_screen, scan_dry_run=dry_run)
     app.run(mouse=True)
     return 0

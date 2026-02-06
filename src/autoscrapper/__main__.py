@@ -10,11 +10,11 @@ def _run_tui() -> int:
 
 
 def _print_usage() -> None:
-    print("Usage: autoscrapper [scan [scan options]]")
-    print("       autoscrapper [tui|ui]")
+    print("Usage: autoscrapper")
+    print("       autoscrapper scan [--dry-run]")
     print()
     print("Running without arguments starts the Textual UI.")
-    print("'scan' runs an immediate scan without opening the UI.")
+    print("'scan' opens the Textual scan screen directly.")
 
 
 def main(argv=None) -> int:
@@ -28,9 +28,6 @@ def main(argv=None) -> int:
     if cmd in {"-h", "--help", "help"}:
         _print_usage()
         return 0
-
-    if cmd in {"--tui", "tui", "ui"}:
-        return _run_tui()
 
     if cmd == "scan":
         from .scanner.cli import main as scan_main
