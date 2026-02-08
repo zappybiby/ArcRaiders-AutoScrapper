@@ -123,6 +123,28 @@ def _state_active_signature(
     return tuple(sorted(active))
 
 
+def _infer_completed_from_graph_ancestors(
+    quests: List[dict],
+    active_ids: Iterable[str],
+    predecessors_by_id: Dict[str, Set[str]],
+) -> List[str]:
+    completed: Set[str] = set()
+    active = {str(quest_id) for quest_id in active_ids}
+    stack = list(active)
+
+    while stack:
+        quest_id = stack.pop()
+        for predecessor_id in predecessors_by_id.get(quest_id, set()):
+            if predecessor_id in completed:
+                continue
+            completed.add(predecessor_id)
+            stack.append(predecessor_id)
+
+    completed.difference_update(active)
+    ordered_ids = [str(quest.get("id")) for quest in quests if quest.get("id")]
+    return [quest_id for quest_id in ordered_ids if quest_id in completed]
+
+
 def _resolve_active_ids(quests: List[dict], active_quests: Iterable[str]) -> Set[str]:
     quests_by_trader = group_quests_by_trader(quests)
     quest_index = build_quest_index(quests_by_trader)
@@ -166,15 +188,9 @@ def infer_completed_from_active(
                 seen.add(encoded)
                 queue.append(encoded)
 
-    if not matches:
-        raise ValueError(
-            "Active quests do not match a valid quest progression state. "
-            "Update your active quests and try again."
-        )
-    if len(matches) > 1:
-        raise ValueError(
-            "Active quests map to multiple progression states. "
-            "Please review your active quest list."
+    if len(matches) != 1:
+        return _infer_completed_from_graph_ancestors(
+            quests, target_active, predecessors_by_id
         )
 
     return _state_completed_ids(matches[0], trader_order, trader_sequences)
