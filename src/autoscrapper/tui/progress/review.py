@@ -7,7 +7,7 @@ from textual import events
 from textual.app import ComposeResult
 from textual.binding import Binding
 from textual.containers import Horizontal
-from textual.widgets import Button, Footer, OptionList, Static
+from textual.widgets import Button, Footer, Input, OptionList, Static
 from textual.widgets.option_list import Option
 
 from ...config import ProgressSettings
@@ -22,12 +22,42 @@ class ReviewQuestsScreen(ProgressScreen):
         padding: 1 2;
     }
 
-    #review-filter {
+    #review-title {
+        width: auto;
+        text-style: bold;
+        color: #7dd3fc;
+    }
+
+    #review-filterbar {
+        height: auto;
+        align: left middle;
+        margin-bottom: 1;
+    }
+
+    #review-search {
+        width: 1fr;
+        margin-right: 1;
+    }
+
+    #review-sort {
+        width: 20;
+        text-style: bold;
+    }
+
+    #review-list-summary {
         margin-bottom: 1;
     }
 
     #review-list {
         height: 1fr;
+    }
+
+    #review-list > .option-list--option {
+        padding: 0 0 1 0;
+    }
+
+    #review-list > .option-list--option-highlighted {
+        text-style: bold;
     }
 
     #review-actions {
@@ -36,11 +66,18 @@ class ReviewQuestsScreen(ProgressScreen):
     }
     """
 
+    SORT_LABELS: dict[str, str] = {
+        "name_asc": "Name A-Z",
+        "trader": "Trader",
+    }
+    SORT_SEQUENCE: tuple[str, ...] = ("name_asc", "trader")
+
     BINDINGS = [
         *ProgressScreen.BINDINGS,
+        Binding("up", "cursor_up", "up", priority=True),
+        Binding("down", "cursor_down", "down", priority=True),
         Binding("enter", "toggle_completed", "Toggle done"),
-        Binding("space", "toggle_completed", "Toggle done"),
-        Binding("ctrl+t", "toggle_sort", "Sort"),
+        Binding("ctrl+f", "cycle_sort", "Sort", priority=True),
         Binding("ctrl+s", "save", "Save"),
     ]
 
@@ -58,23 +95,31 @@ class ReviewQuestsScreen(ProgressScreen):
             hideout_levels=dict(settings.hideout_levels),
             last_updated=settings.last_updated,
         )
-        self.filter_text = ""
-        self.sort_mode = "order"
+        self.search_query = ""
+        self.sort_mode: str = "name_asc"
         self.filtered: List[QuestEntry] = []
 
     def compose(self) -> ComposeResult:
-        yield Static("Review Completed Quests", classes="menu-title")
+        yield Static("Review Completed Quests", id="review-title")
         yield Static(
-            "Space/Enter toggles completed. Active quests are read-only from setup.",
+            "Active quests are read-only from setup. Press Enter to toggle completed.",
             classes="hint",
         )
-        yield Static(id="review-filter", classes="hint")
+        with Horizontal(id="review-filterbar"):
+            yield Input(
+                placeholder="Search quests... (name, id, trader)", id="review-search"
+            )
+            yield Button("Sort: Name A-Z", id="review-sort", variant="primary")
+        yield Static(id="review-list-summary", classes="hint")
         yield OptionList(id="review-list")
         yield Static(id="review-count", classes="hint")
         with Horizontal(id="review-actions"):
-            yield Button("Sort: Order", id="sort")
             yield Button("Cancel", id="cancel")
             yield Button("Save", id="save", variant="primary")
+        yield Static(
+            "Type to search • Enter toggles completed • Up/Down move list • Ctrl+F cycles sort • Esc clears/back",
+            classes="hint",
+        )
         yield Footer()
 
     def on_mount(self) -> None:
@@ -87,25 +132,25 @@ class ReviewQuestsScreen(ProgressScreen):
             entries.sort(
                 key=lambda entry: (
                     normalize_quest_value(entry.trader),
-                    entry.sort_order,
                     normalize_quest_value(entry.name),
+                    entry.sort_order,
                 )
             )
             return entries
         entries.sort(
             key=lambda entry: (
-                entry.sort_order,
-                normalize_quest_value(entry.trader),
                 normalize_quest_value(entry.name),
+                normalize_quest_value(entry.trader),
+                entry.sort_order,
             )
         )
         return entries
 
     def _visible_entries(self) -> List[QuestEntry]:
         entries = self._sorted_entries()
-        if not self.filter_text:
+        if not self.search_query:
             return entries
-        normalized = normalize_quest_value(self.filter_text)
+        normalized = normalize_quest_value(self.search_query)
         if not normalized:
             return entries
         matches: List[QuestEntry] = []
@@ -137,8 +182,9 @@ class ReviewQuestsScreen(ProgressScreen):
 
         self.filtered = self._visible_entries()
         options: List[Option] = []
-        for entry in self.filtered:
+        for list_index, entry in enumerate(self.filtered):
             label = Text()
+            label.append(f"{list_index + 1:>3} ", style="dim")
             label.append_text(self._status_label(entry))
             label.append(" ")
             label.append(entry.name, style="bold")
@@ -160,12 +206,12 @@ class ReviewQuestsScreen(ProgressScreen):
         if had_focus:
             menu.focus()
 
-        sort_label = "Order" if self.sort_mode == "order" else "Trader"
-        self.query_one("#sort", Button).label = f"Sort: {sort_label}"
-        filter_text = self.filter_text or "all"
-        self.query_one("#review-filter", Static).update(
-            f"Type to filter quests • Backspace deletes • Esc clears/back • "
-            f"Filter: {filter_text} ({len(self.filtered)} matches)"
+        sort_label = self.SORT_LABELS.get(self.sort_mode, self.sort_mode)
+        self.query_one("#review-sort", Button).label = f"Sort: {sort_label}"
+        filter_text = self.search_query if self.search_query.strip() else "all"
+        self.query_one("#review-list-summary", Static).update(
+            f"Showing {len(self.filtered)} of {len(self.quest_entries)} • "
+            f"Sort: {sort_label} • Filter: {filter_text}"
         )
         count_text = (
             f"Completed: {len(self.completed)} • "
@@ -174,6 +220,16 @@ class ReviewQuestsScreen(ProgressScreen):
             f"Total: {len(self.quest_entries)}"
         )
         self.query_one("#review-count", Static).update(count_text)
+
+    def _move_highlight(self, delta: int) -> None:
+        if not self.filtered:
+            return
+        menu = self.query_one("#review-list", OptionList)
+        current = menu.highlighted if menu.highlighted is not None else 0
+        new_index = max(0, min(len(self.filtered) - 1, current + delta))
+        if new_index == current:
+            return
+        menu.highlighted = new_index
 
     def _selected_entry(self) -> Optional[QuestEntry]:
         menu = self.query_one("#review-list", OptionList)
@@ -218,38 +274,62 @@ class ReviewQuestsScreen(ProgressScreen):
     def action_toggle_completed(self) -> None:
         self._toggle_completed()
 
-    def action_toggle_sort(self) -> None:
-        self.sort_mode = "trader" if self.sort_mode == "order" else "order"
+    def action_cursor_up(self) -> None:
+        self._move_highlight(-1)
+
+    def action_cursor_down(self) -> None:
+        self._move_highlight(1)
+
+    def action_cycle_sort(self) -> None:
+        current_index = self.SORT_SEQUENCE.index(self.sort_mode)
+        next_index = (current_index + 1) % len(self.SORT_SEQUENCE)
+        self.sort_mode = self.SORT_SEQUENCE[next_index]
         self._refresh()
 
     def action_save(self) -> None:
         self._save()
 
     def action_back(self) -> None:
-        if self.filter_text:
-            self.filter_text = ""
+        if self.search_query:
+            self.search_query = ""
+            self.query_one("#review-search", Input).value = ""
             self._refresh()
             return
         self.app.pop_screen()
 
     def on_key(self, event: events.Key) -> None:
-        if event.key == "space":
+        if isinstance(self.focused, Input):
+            return
+        if event.key in {"up", "down", "enter"}:
             return
 
-        updated_text, consumed = update_inline_filter(event, self.filter_text)
+        updated_text, consumed = update_inline_filter(event, self.search_query)
         if not consumed:
             return
-        if updated_text != self.filter_text:
-            self.filter_text = updated_text
+        if updated_text != self.search_query:
+            self.search_query = updated_text
+            self.query_one("#review-search", Input).value = updated_text
             self._refresh()
         event.stop()
+
+    def on_input_changed(self, event: Input.Changed) -> None:
+        if event.input.id != "review-search":
+            return
+        if event.value == self.search_query:
+            return
+        self.search_query = event.value
+        self._refresh()
+
+    def on_input_submitted(self, event: Input.Submitted) -> None:
+        if event.input.id == "review-search":
+            self._toggle_completed()
 
     def on_option_list_option_selected(self, _event: OptionList.OptionSelected) -> None:
         self._toggle_completed()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
-        if event.button.id == "sort":
-            self.action_toggle_sort()
+        if event.button.id == "review-sort":
+            self.action_cycle_sort()
         elif event.button.id == "cancel":
             self.app.pop_screen()
         elif event.button.id == "save":

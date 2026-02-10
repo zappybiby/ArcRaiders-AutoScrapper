@@ -7,7 +7,7 @@ from textual import events
 from textual.app import ComposeResult
 from textual.binding import Binding
 from textual.containers import Horizontal
-from textual.widgets import Button, Footer, OptionList, Static
+from textual.widgets import Button, Footer, Input, OptionList, Static
 from textual.widgets.option_list import Option
 
 from ...config import has_saved_progress, load_progress_settings
@@ -109,8 +109,42 @@ class ActiveQuestsScreen(ProgressScreen):
         padding: 1 2;
     }
 
+    #quest-title {
+        width: auto;
+        text-style: bold;
+        color: #7dd3fc;
+    }
+
+    #quest-filterbar {
+        height: auto;
+        align: left middle;
+        margin-bottom: 1;
+    }
+
+    #quest-search {
+        width: 1fr;
+        margin-right: 1;
+    }
+
+    #quest-sort {
+        width: 20;
+        text-style: bold;
+    }
+
+    #quest-list-summary {
+        margin-bottom: 1;
+    }
+
     #quest-list {
         height: 1fr;
+    }
+
+    #quest-list > .option-list--option {
+        padding: 0 0 1 0;
+    }
+
+    #quest-list > .option-list--option-highlighted {
+        text-style: bold;
     }
 
     #quest-actions {
@@ -119,31 +153,49 @@ class ActiveQuestsScreen(ProgressScreen):
     }
     """
 
+    SORT_LABELS: dict[str, str] = {
+        "name_asc": "Name A-Z",
+        "trader": "Trader",
+    }
+    SORT_SEQUENCE: tuple[str, ...] = ("name_asc", "trader")
+
     BINDINGS = [
         *ProgressScreen.BINDINGS,
-        ("space", "toggle", "Toggle quest"),
-        ("enter", "toggle", "Toggle quest"),
-        ("ctrl+n", "next", "Continue"),
+        Binding("up", "cursor_up", "up", priority=True),
+        Binding("down", "cursor_down", "down", priority=True),
+        Binding("enter", "toggle", "Toggle quest"),
+        Binding("ctrl+f", "cycle_sort", "Sort", priority=True),
+        Binding("ctrl+n", "next", "Continue"),
     ]
 
     def __init__(self, state: ProgressWizardState) -> None:
         super().__init__()
         self.state = state
-        self.filter_text = ""
+        self.search_query = ""
+        self.sort_mode: str = "name_asc"
         self.filtered: List[QuestEntry] = []
 
     def compose(self) -> ComposeResult:
-        yield Static("Select Active Quests", classes="menu-title")
+        yield Static("Select Active Quests", id="quest-title")
         yield Static(
             "Select quests currently active in-game. Completed quests will be inferred.",
             classes="hint",
         )
-        yield Static(id="quest-filter", classes="hint")
+        with Horizontal(id="quest-filterbar"):
+            yield Input(
+                placeholder="Search quests... (name, id, trader)", id="quest-search"
+            )
+            yield Button("Sort: Name A-Z", id="quest-sort", variant="primary")
+        yield Static(id="quest-list-summary", classes="hint")
         yield OptionList(id="quest-list")
         yield Static(id="quest-count", classes="hint")
         with Horizontal(id="quest-actions"):
             yield Button("Back", id="back")
             yield Button("Continue", id="next", variant="primary")
+        yield Static(
+            "Type to search • Enter toggles quest • Up/Down move list • Ctrl+F cycles sort • Esc clears/back",
+            classes="hint",
+        )
         yield Footer()
 
     def on_mount(self) -> None:
@@ -153,24 +205,54 @@ class ActiveQuestsScreen(ProgressScreen):
     def _focus_list(self) -> None:
         self.query_one("#quest-list", OptionList).focus()
 
+    def _sorted_entries(self) -> List[QuestEntry]:
+        entries = list(self.state.quest_entries)
+        if self.sort_mode == "trader":
+            entries.sort(
+                key=lambda entry: (
+                    normalize_quest_value(entry.trader),
+                    normalize_quest_value(entry.name),
+                    entry.sort_order,
+                )
+            )
+            return entries
+        entries.sort(
+            key=lambda entry: (
+                normalize_quest_value(entry.name),
+                normalize_quest_value(entry.trader),
+                entry.sort_order,
+            )
+        )
+        return entries
+
     def _filtered_entries(self) -> List[QuestEntry]:
-        if not self.filter_text:
-            return list(self.state.quest_entries)
-        normalized = normalize_quest_value(self.filter_text)
+        entries = self._sorted_entries()
+        if not self.search_query:
+            return entries
+        normalized = normalize_quest_value(self.search_query)
         if not normalized:
-            return list(self.state.quest_entries)
+            return entries
         results: List[QuestEntry] = []
-        for entry in self.state.quest_entries:
+        for entry in entries:
             name_norm = normalize_quest_value(entry.name)
-            if normalized in name_norm or normalized == entry.id:
+            trader_norm = normalize_quest_value(entry.trader)
+            if (
+                normalized in name_norm
+                or normalized in trader_norm
+                or normalized == entry.id
+            ):
                 results.append(entry)
         return results
 
-    def _option_label(self, entry: QuestEntry) -> Text:
+    def _option_label(self, entry: QuestEntry, list_index: int) -> Text:
         selected = entry.id in self.state.active_ids
-        marker = ("[x] ", "bold green") if selected else ("[ ] ", "dim")
+        marker = ("✓ ", "bold green") if selected else ("· ", "dim")
         text = Text.assemble(
-            marker, (entry.name, "bold"), ("  ", ""), (entry.trader, "dim")
+            (f"{list_index + 1:>3} ", "dim"),
+            marker,
+            (entry.name, "bold"),
+            ("  ", ""),
+            (entry.trader, "dim"),
         )
         return text
 
@@ -183,9 +265,9 @@ class ActiveQuestsScreen(ProgressScreen):
             prev_id = prev_filtered[prev_highlight].id
 
         self.filtered = self._filtered_entries()
-        options = [
-            Option(self._option_label(entry), id=entry.id) for entry in self.filtered
-        ]
+        options = []
+        for list_index, entry in enumerate(self.filtered):
+            options.append(Option(self._option_label(entry, list_index), id=entry.id))
         had_focus = menu.has_focus
         menu.set_options(options)
         if options:
@@ -200,13 +282,29 @@ class ActiveQuestsScreen(ProgressScreen):
                 menu.highlighted = 0
         if had_focus:
             menu.focus()
-        filter_text = self.filter_text or "all"
-        self.query_one("#quest-filter", Static).update(
-            f"Type to filter by name or id • Backspace deletes • Esc clears/back • "
-            f"Filter: {filter_text} ({len(self.filtered)} matches)"
+        sort_label = self.SORT_LABELS.get(self.sort_mode, self.sort_mode)
+        self.query_one("#quest-sort", Button).label = f"Sort: {sort_label}"
+        filter_text = self.search_query if self.search_query.strip() else "all"
+        self.query_one("#quest-list-summary", Static).update(
+            f"Showing {len(self.filtered)} of {len(self.state.quest_entries)} • "
+            f"Sort: {sort_label} • Filter: {filter_text}"
         )
-        count_text = f"Selected: {len(self.state.active_ids)} • Total: {len(self.state.quest_entries)}"
+        count_text = (
+            f"Selected: {len(self.state.active_ids)} • "
+            f"Showing: {len(self.filtered)} • "
+            f"Total: {len(self.state.quest_entries)}"
+        )
         self.query_one("#quest-count", Static).update(count_text)
+
+    def _move_highlight(self, delta: int) -> None:
+        if not self.filtered:
+            return
+        menu = self.query_one("#quest-list", OptionList)
+        current = menu.highlighted if menu.highlighted is not None else 0
+        new_index = max(0, min(len(self.filtered) - 1, current + delta))
+        if new_index == current:
+            return
+        menu.highlighted = new_index
 
     def _toggle_selected(self) -> None:
         menu = self.query_one("#quest-list", OptionList)
@@ -219,11 +317,19 @@ class ActiveQuestsScreen(ProgressScreen):
             self.state.active_ids.add(entry.id)
         self._refresh_options()
 
+    def action_cursor_up(self) -> None:
+        self._move_highlight(-1)
+
+    def action_cursor_down(self) -> None:
+        self._move_highlight(1)
+
     def on_option_list_option_selected(self, _event: OptionList.OptionSelected) -> None:
         self._toggle_selected()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
-        if event.button.id == "back":
+        if event.button.id == "quest-sort":
+            self.action_cycle_sort()
+        elif event.button.id == "back":
             self.app.pop_screen()
         elif event.button.id == "next":
             self._next()
@@ -237,27 +343,49 @@ class ActiveQuestsScreen(ProgressScreen):
     def action_toggle(self) -> None:
         self._toggle_selected()
 
+    def action_cycle_sort(self) -> None:
+        current_index = self.SORT_SEQUENCE.index(self.sort_mode)
+        next_index = (current_index + 1) % len(self.SORT_SEQUENCE)
+        self.sort_mode = self.SORT_SEQUENCE[next_index]
+        self._refresh_options()
+
     def action_next(self) -> None:
         self._next()
 
     def action_back(self) -> None:
-        if self.filter_text:
-            self.filter_text = ""
+        if self.search_query:
+            self.search_query = ""
+            self.query_one("#quest-search", Input).value = ""
             self._refresh_options()
             return
         self.app.pop_screen()
 
     def on_key(self, event: events.Key) -> None:
-        if event.key in {"space", "enter"}:
+        if isinstance(self.focused, Input):
+            return
+        if event.key in {"up", "down", "enter"}:
             return
 
-        updated_text, consumed = update_inline_filter(event, self.filter_text)
+        updated_text, consumed = update_inline_filter(event, self.search_query)
         if not consumed:
             return
-        if updated_text != self.filter_text:
-            self.filter_text = updated_text
+        if updated_text != self.search_query:
+            self.search_query = updated_text
+            self.query_one("#quest-search", Input).value = updated_text
             self._refresh_options()
         event.stop()
+
+    def on_input_changed(self, event: Input.Changed) -> None:
+        if event.input.id != "quest-search":
+            return
+        if event.value == self.search_query:
+            return
+        self.search_query = event.value
+        self._refresh_options()
+
+    def on_input_submitted(self, event: Input.Submitted) -> None:
+        if event.input.id == "quest-search":
+            self._toggle_selected()
 
 
 class WorkshopLevelsScreen(ProgressScreen):
