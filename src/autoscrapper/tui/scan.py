@@ -566,11 +566,7 @@ class ScanScreen(Screen):
 
 
 class ScanResultsScreen(AppScreen):
-    BINDINGS = [
-        *AppScreen.BINDINGS,
-        ("b", "back", "Back"),
-        ("escape", "back", "Back"),
-    ]
+    BINDINGS = [*AppScreen.BINDINGS]
 
     def __init__(
         self,

@@ -123,7 +123,7 @@ class ConfirmResetRulesScreen(ModalScreen[bool]):
                 yield Button("Reset", id="confirm-reset", variant="warning")
 
     def on_key(self, event: events.Key) -> None:
-        if event.key == "escape":
+        if event.key in {"escape", "ctrl+b"}:
             self.dismiss(False)
             event.stop()
 
@@ -168,7 +168,7 @@ class RulesActionsScreen(ModalScreen[Optional[str]]):
                 yield Button("Cancel", id="cancel")
 
     def on_key(self, event: events.Key) -> None:
-        if event.key == "escape":
+        if event.key in {"escape", "ctrl+b"}:
             self.dismiss(None)
             event.stop()
 
@@ -203,7 +203,6 @@ class RulesScreen(AppScreen):
             priority=True,
         ),
         Binding("ctrl+f", "cycle_sort", "filter", priority=True),
-        Binding("b,escape", "back", "back", priority=True),
     ]
 
     DEFAULT_CSS = """
@@ -425,7 +424,7 @@ class RulesScreen(AppScreen):
                     yield Button("Cancel", id="cancel-add")
         yield Static(
             "Type to search • Up/Down move list • Left/Right change action • "
-            "Ctrl+F cycle filter • Tab focus controls • Enter activates button • B/Esc back",
+            "Ctrl+F cycle filter • Tab focus controls • Enter activates button • Esc/Ctrl+B back",
             classes="hint",
         )
         yield Footer()
@@ -1014,10 +1013,7 @@ class RulesScreen(AppScreen):
 
 
 class RulesChangesScreen(AppScreen):
-    BINDINGS = [
-        *AppScreen.BINDINGS,
-        Binding("b,escape", "back", "Back"),
-    ]
+    BINDINGS = [*AppScreen.BINDINGS]
 
     DEFAULT_CSS = """
     RulesChangesScreen {

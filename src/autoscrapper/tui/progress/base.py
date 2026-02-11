@@ -1,19 +1,10 @@
 from __future__ import annotations
 
-from textual.binding import Binding
-
 from ..common import AppScreen
 
 
 class ProgressScreen(AppScreen):
-    BINDINGS = [
-        *AppScreen.BINDINGS,
-        Binding("b", "back", "Back"),
-        Binding("escape", "back", "Back"),
-    ]
-
-    def action_back(self) -> None:
-        self.app.pop_screen()
+    BINDINGS = [*AppScreen.BINDINGS]
 
 
 def pop_progress_stack(app) -> None:

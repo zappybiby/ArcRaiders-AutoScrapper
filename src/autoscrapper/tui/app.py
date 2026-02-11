@@ -115,11 +115,6 @@ class MenuScreen(AppScreen):
         menu.highlighted = index
 
     def on_key(self, event: events.Key) -> None:
-        if event.key in {"escape"}:
-            if "b" in self._actions:
-                self._select_key("b")
-                event.stop()
-                return
         if event.key.isalnum():
             key = event.key.lower()
             if key in self._actions:
@@ -194,13 +189,16 @@ class HomeScreen(MenuScreen):
         self._refresh_items()
         super().on_screen_resume(event)
 
+    def action_back(self) -> None:
+        # Home is the root screen; Back should be a no-op here.
+        return
+
 
 class AutoScrapperApp(App[None]):
     CSS_PATH = "app.tcss"
     TITLE = "Autoscrapper"
     BINDINGS = [
         Binding("ctrl+g", "main_menu", "Main menu"),
-        Binding("ctrl+b", "back", "Back"),
     ]
 
     def __init__(self, *, start_screen: str = "home", scan_dry_run: bool = False):
@@ -238,7 +236,7 @@ class AutoScrapperApp(App[None]):
                 "Dry run (no clicks)",
                 lambda screen: screen.app.push_screen(ScanScreen(dry_run=True)),
             ),
-            MenuItem("b", "Back", lambda screen: screen.app.pop_screen()),
+            MenuItem("0", "Back", lambda screen: screen.app.pop_screen()),
         ]
         return MenuScreen("Scan", items, default_key="1")
 
@@ -264,7 +262,7 @@ class AutoScrapperApp(App[None]):
                 "Update rules from saved progress",
                 lambda screen: launch_generate_rules(screen.app),
             ),
-            MenuItem("b", "Back", lambda screen: screen.app.pop_screen()),
+            MenuItem("0", "Back", lambda screen: screen.app.pop_screen()),
         ]
         return MenuScreen("Progress", items, default_key="1")
 
@@ -275,7 +273,7 @@ class AutoScrapperApp(App[None]):
                 "Review / edit rules",
                 lambda screen: screen.app.push_screen(RulesScreen()),
             ),
-            MenuItem("b", "Back", lambda screen: screen.app.pop_screen()),
+            MenuItem("0", "Back", lambda screen: screen.app.pop_screen()),
         ]
         return MenuScreen("Rules", items, default_key="1")
 
@@ -306,7 +304,7 @@ class AutoScrapperApp(App[None]):
                 "Reset scan settings to defaults",
                 lambda screen: screen.app.push_screen(ResetScanSettingsScreen()),
             ),
-            MenuItem("b", "Back", lambda screen: screen.app.pop_screen()),
+            MenuItem("0", "Back", lambda screen: screen.app.pop_screen()),
         ]
         return MenuScreen("Settings", items, default_key="1")
 
@@ -327,7 +325,7 @@ class AutoScrapperApp(App[None]):
                 "Reset rules to default",
                 lambda screen: screen.app.push_screen(ResetRulesScreen()),
             ),
-            MenuItem("b", "Back", lambda screen: screen.app.pop_screen()),
+            MenuItem("0", "Back", lambda screen: screen.app.pop_screen()),
         ]
         return MenuScreen("Maintenance", items, default_key="1")
 

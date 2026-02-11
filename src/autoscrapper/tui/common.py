@@ -4,13 +4,17 @@ from typing import Optional
 
 from textual import events
 from textual.app import ComposeResult
+from textual.binding import Binding
 from textual.containers import Vertical
 from textual.screen import ModalScreen, Screen
 from textual.widgets import Button, Static
 
 
 class AppScreen(Screen):
-    BINDINGS = []
+    BINDINGS = [Binding("escape,ctrl+b", "back", "Back", priority=True)]
+
+    def action_back(self) -> None:
+        self.app.pop_screen()
 
 
 class MessageScreen(ModalScreen[None]):
@@ -46,6 +50,11 @@ class MessageScreen(ModalScreen[None]):
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "ok":
             self.dismiss()
+
+    def on_key(self, event: events.Key) -> None:
+        if event.key in {"escape", "ctrl+b"}:
+            self.dismiss()
+            event.stop()
 
 
 def update_inline_filter(event: events.Key, text: str) -> tuple[str, bool]:

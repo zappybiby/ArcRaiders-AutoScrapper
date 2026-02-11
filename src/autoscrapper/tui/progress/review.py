@@ -117,7 +117,7 @@ class ReviewQuestsScreen(ProgressScreen):
             yield Button("Cancel", id="cancel")
             yield Button("Save", id="save", variant="primary")
         yield Static(
-            "Type to search • Enter toggles completed • Up/Down move list • Ctrl+F cycles sort • Esc clears/back",
+            "Type to search • Enter toggles completed • Up/Down move list • Ctrl+F cycles sort • Esc/Ctrl+B clears/back",
             classes="hint",
         )
         yield Footer()

@@ -193,7 +193,7 @@ class ActiveQuestsScreen(ProgressScreen):
             yield Button("Back", id="back")
             yield Button("Continue", id="next", variant="primary")
         yield Static(
-            "Type to search • Enter toggles quest • Up/Down move list • Ctrl+F cycles sort • Esc clears/back",
+            "Type to search • Enter toggles quest • Up/Down move list • Ctrl+F cycles sort • Esc/Ctrl+B clears/back",
             classes="hint",
         )
         yield Footer()
