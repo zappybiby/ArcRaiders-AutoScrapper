@@ -13,7 +13,7 @@ _SKIP_REASONS = {
     "SKIP_NO_NAME": "missing OCR name",
     "SKIP_NO_ACTION_MAP": "no action map loaded",
     "SKIP_UNLISTED": "no configured decision",
-    "SKIP_NO_ACTION_BBOX": "action not found in menu",
+    "SKIP_NO_ACTION_BBOX": "action not found in item infobox",
     "SKIP_NO_INFOBOX": "infobox missing",
 }
 

@@ -332,13 +332,13 @@ class ScanDetectionScreen(ScanSettingsScreen):
             yield Static("Infobox retries", classes="field-label")
             yield Input(id="infobox-retries", classes="field-input")
         with Horizontal(classes="field-row"):
-            yield Static("Infobox delay (ms)", classes="field-label")
+            yield Static("Infobox retry gap (ms)", classes="field-label")
             yield Input(id="infobox-delay", classes="field-input")
         with Horizontal(classes="field-row"):
             yield Static("OCR retries", classes="field-label")
             yield Input(id="ocr-retries", classes="field-input")
         with Horizontal(classes="field-row"):
-            yield Static("OCR delay (ms)", classes="field-label")
+            yield Static("OCR retry gap (ms)", classes="field-label")
             yield Input(id="ocr-delay", classes="field-input")
 
         with Horizontal(id="screen-actions"):
@@ -352,13 +352,13 @@ class ScanDetectionScreen(ScanSettingsScreen):
             self.settings.infobox_retries
         )
         self.query_one("#infobox-delay", Input).value = str(
-            self.settings.infobox_retry_delay_ms
+            self.settings.infobox_retry_interval_ms
         )
         self.query_one("#ocr-retries", Input).value = str(
             self.settings.ocr_unreadable_retries
         )
         self.query_one("#ocr-delay", Input).value = str(
-            self.settings.ocr_unreadable_retry_delay_ms
+            self.settings.ocr_retry_interval_ms
         )
 
     def _save(self) -> None:
@@ -372,7 +372,7 @@ class ScanDetectionScreen(ScanSettingsScreen):
 
         infobox_delay = self._parse_int_field(
             "#infobox-delay",
-            label="infobox retry delay (ms)",
+            label="infobox retry gap (ms)",
             min_value=0,
         )
         if infobox_delay is None:
@@ -388,7 +388,7 @@ class ScanDetectionScreen(ScanSettingsScreen):
 
         ocr_delay = self._parse_int_field(
             "#ocr-delay",
-            label="OCR retry delay (ms)",
+            label="OCR retry gap (ms)",
             min_value=0,
         )
         if ocr_delay is None:
@@ -397,9 +397,9 @@ class ScanDetectionScreen(ScanSettingsScreen):
         updated = replace(
             self.settings,
             infobox_retries=infobox_retries,
-            infobox_retry_delay_ms=infobox_delay,
+            infobox_retry_interval_ms=infobox_delay,
             ocr_unreadable_retries=ocr_retries,
-            ocr_unreadable_retry_delay_ms=ocr_delay,
+            ocr_retry_interval_ms=ocr_delay,
         )
         self._save_settings(updated)
 
@@ -411,21 +411,31 @@ class ScanDetectionScreen(ScanSettingsScreen):
 
 
 class ScanTimingScreen(ScanSettingsScreen):
-    TITLE = "Timing Delays"
-    _FOCUS_ORDER = ("action-delay", "menu-delay", "post-delay", "save", "back")
+    TITLE = "Scan Pacing"
+    _FOCUS_ORDER = (
+        "action-delay",
+        "click-gap",
+        "item-infobox-delay",
+        "post-delay",
+        "save",
+        "back",
+    )
 
     def compose(self) -> ComposeResult:
         yield Static(self.TITLE, classes="menu-title")
         yield Static("Use Tab / Shift+Tab or ↑/↓ to move fields.", classes="hint")
 
         with Horizontal(classes="field-row"):
-            yield Static("Action delay (ms)", classes="field-label")
+            yield Static("Base input pause (ms)", classes="field-label")
             yield Input(id="action-delay", classes="field-input")
         with Horizontal(classes="field-row"):
-            yield Static("Menu appear delay", classes="field-label")
-            yield Input(id="menu-delay", classes="field-input")
+            yield Static("Cell infobox L->R gap (ms)", classes="field-label")
+            yield Input(id="click-gap", classes="field-input")
         with Horizontal(classes="field-row"):
-            yield Static("Post-action delay", classes="field-label")
+            yield Static("Item infobox settle gap (ms)", classes="field-label")
+            yield Input(id="item-infobox-delay", classes="field-input")
+        with Horizontal(classes="field-row"):
+            yield Static("Post sell/recycle (ms)", classes="field-label")
             yield Input(id="post-delay", classes="field-input")
 
         with Horizontal(id="screen-actions"):
@@ -436,35 +446,46 @@ class ScanTimingScreen(ScanSettingsScreen):
     def _load_into_fields(self) -> None:
         self.settings = load_scan_settings()
         self.query_one("#action-delay", Input).value = str(
-            self.settings.action_delay_ms
+            self.settings.input_action_delay_ms
         )
-        self.query_one("#menu-delay", Input).value = str(
-            self.settings.menu_appear_delay_ms
+        self.query_one("#click-gap", Input).value = str(
+            self.settings.cell_infobox_left_right_click_gap_ms
+        )
+        self.query_one("#item-infobox-delay", Input).value = str(
+            self.settings.item_infobox_settle_delay_ms
         )
         self.query_one("#post-delay", Input).value = str(
-            self.settings.sell_recycle_post_delay_ms
+            self.settings.post_sell_recycle_delay_ms
         )
 
     def _save(self) -> None:
         action_delay = self._parse_int_field(
             "#action-delay",
-            label="action delay (ms)",
+            label="base input pause (ms)",
             min_value=0,
         )
         if action_delay is None:
             return
 
-        menu_delay = self._parse_int_field(
-            "#menu-delay",
-            label="menu appear delay (ms)",
+        click_gap = self._parse_int_field(
+            "#click-gap",
+            label="cell left-to-right click gap (ms)",
             min_value=0,
         )
-        if menu_delay is None:
+        if click_gap is None:
+            return
+
+        item_infobox_delay = self._parse_int_field(
+            "#item-infobox-delay",
+            label="item infobox settle gap (ms)",
+            min_value=0,
+        )
+        if item_infobox_delay is None:
             return
 
         post_delay = self._parse_int_field(
             "#post-delay",
-            label="post-action delay (ms)",
+            label="post sell/recycle delay (ms)",
             min_value=0,
         )
         if post_delay is None:
@@ -472,9 +493,10 @@ class ScanTimingScreen(ScanSettingsScreen):
 
         updated = replace(
             self.settings,
-            action_delay_ms=action_delay,
-            menu_appear_delay_ms=menu_delay,
-            sell_recycle_post_delay_ms=post_delay,
+            input_action_delay_ms=action_delay,
+            cell_infobox_left_right_click_gap_ms=click_gap,
+            item_infobox_settle_delay_ms=item_infobox_delay,
+            post_sell_recycle_delay_ms=post_delay,
         )
         self._save_settings(updated)
 

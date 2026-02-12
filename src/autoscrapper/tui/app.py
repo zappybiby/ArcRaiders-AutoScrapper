@@ -291,7 +291,7 @@ class AutoScrapperApp(App[None]):
             ),
             MenuItem(
                 "3",
-                "Timing delays",
+                "Scan pacing + delays",
                 lambda screen: screen.app.push_screen(ScanTimingScreen()),
             ),
             MenuItem(

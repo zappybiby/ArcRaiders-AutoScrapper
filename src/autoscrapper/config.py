@@ -8,7 +8,7 @@ from typing import Any, Dict, Optional
 
 from .interaction.keybinds import DEFAULT_STOP_KEY, normalize_stop_key
 
-CONFIG_VERSION = 3
+CONFIG_VERSION = 5
 APP_CONFIG_DIR_NAME = "AutoScrapper"
 CONFIG_FILE_NAME = "config.json"
 
@@ -19,12 +19,13 @@ class ScanSettings:
     scroll_clicks_alt_per_page: Optional[int] = None
     stop_key: str = DEFAULT_STOP_KEY
     infobox_retries: int = 3
-    infobox_retry_delay_ms: int = 100
+    infobox_retry_interval_ms: int = 50
     ocr_unreadable_retries: int = 1
-    ocr_unreadable_retry_delay_ms: int = 100
-    action_delay_ms: int = 50
-    menu_appear_delay_ms: int = 150
-    sell_recycle_post_delay_ms: int = 100
+    ocr_retry_interval_ms: int = 50
+    input_action_delay_ms: int = 100
+    cell_infobox_left_right_click_gap_ms: int = 250
+    item_infobox_settle_delay_ms: int = 200
+    post_sell_recycle_delay_ms: int = 100
     debug_ocr: bool = False
     profile: bool = False
 
@@ -71,6 +72,13 @@ def _coerce_non_negative_int(value: Any) -> Optional[int]:
     return None
 
 
+def _raw_with_aliases(raw: Dict[str, Any], *keys: str) -> Any:
+    for key in keys:
+        if key in raw:
+            return raw.get(key)
+    return None
+
+
 def _load_config_dict() -> Dict[str, Any]:
     path = config_path()
     try:
@@ -97,12 +105,35 @@ def _from_raw_scan_settings(raw: Any) -> ScanSettings:
     scroll_clicks_alt_raw = raw.get("scroll_clicks_alt_per_page")
     stop_key_raw = raw.get("stop_key")
     infobox_retries_raw = raw.get("infobox_retries")
-    infobox_retry_delay_ms_raw = raw.get("infobox_retry_delay_ms")
+    infobox_retry_interval_ms_raw = _raw_with_aliases(
+        raw,
+        "infobox_retry_interval_ms",
+        "infobox_retry_delay_ms",
+    )
     ocr_unreadable_retries_raw = raw.get("ocr_unreadable_retries")
-    ocr_unreadable_retry_delay_ms_raw = raw.get("ocr_unreadable_retry_delay_ms")
-    action_delay_ms_raw = raw.get("action_delay_ms")
-    menu_appear_delay_ms_raw = raw.get("menu_appear_delay_ms")
-    sell_recycle_post_delay_ms_raw = raw.get("sell_recycle_post_delay_ms")
+    ocr_retry_interval_ms_raw = _raw_with_aliases(
+        raw,
+        "ocr_retry_interval_ms",
+        "ocr_unreadable_retry_delay_ms",
+    )
+    input_action_delay_ms_raw = _raw_with_aliases(
+        raw,
+        "input_action_delay_ms",
+        "action_delay_ms",
+    )
+    cell_infobox_left_right_click_gap_ms_raw = raw.get(
+        "cell_infobox_left_right_click_gap_ms"
+    )
+    item_infobox_settle_delay_ms_raw = _raw_with_aliases(
+        raw,
+        "item_infobox_settle_delay_ms",
+        "menu_appear_delay_ms",
+    )
+    post_sell_recycle_delay_ms_raw = _raw_with_aliases(
+        raw,
+        "post_sell_recycle_delay_ms",
+        "sell_recycle_post_delay_ms",
+    )
 
     scroll_clicks_per_page = _coerce_non_negative_int(scroll_clicks_raw)
     scroll_clicks_alt_per_page = _coerce_non_negative_int(scroll_clicks_alt_raw)
@@ -111,45 +142,54 @@ def _from_raw_scan_settings(raw: Any) -> ScanSettings:
     if infobox_retries is None:
         infobox_retries = ScanSettings.infobox_retries
 
-    infobox_retry_delay_ms = _coerce_non_negative_int(infobox_retry_delay_ms_raw)
-    if infobox_retry_delay_ms is None:
-        infobox_retry_delay_ms = ScanSettings.infobox_retry_delay_ms
+    infobox_retry_interval_ms = _coerce_non_negative_int(infobox_retry_interval_ms_raw)
+    if infobox_retry_interval_ms is None:
+        infobox_retry_interval_ms = ScanSettings.infobox_retry_interval_ms
 
     ocr_unreadable_retries = _coerce_non_negative_int(ocr_unreadable_retries_raw)
     if ocr_unreadable_retries is None:
         ocr_unreadable_retries = ScanSettings.ocr_unreadable_retries
 
-    ocr_unreadable_retry_delay_ms = _coerce_non_negative_int(
-        ocr_unreadable_retry_delay_ms_raw
+    ocr_retry_interval_ms = _coerce_non_negative_int(ocr_retry_interval_ms_raw)
+    if ocr_retry_interval_ms is None:
+        ocr_retry_interval_ms = ScanSettings.ocr_retry_interval_ms
+
+    input_action_delay_ms = _coerce_non_negative_int(input_action_delay_ms_raw)
+    if input_action_delay_ms is None:
+        input_action_delay_ms = ScanSettings.input_action_delay_ms
+
+    cell_infobox_left_right_click_gap_ms = _coerce_non_negative_int(
+        cell_infobox_left_right_click_gap_ms_raw
     )
-    if ocr_unreadable_retry_delay_ms is None:
-        ocr_unreadable_retry_delay_ms = ScanSettings.ocr_unreadable_retry_delay_ms
+    if cell_infobox_left_right_click_gap_ms is None:
+        cell_infobox_left_right_click_gap_ms = (
+            ScanSettings.cell_infobox_left_right_click_gap_ms
+        )
 
-    action_delay_ms = _coerce_non_negative_int(action_delay_ms_raw)
-    if action_delay_ms is None:
-        action_delay_ms = ScanSettings.action_delay_ms
-
-    menu_appear_delay_ms = _coerce_non_negative_int(menu_appear_delay_ms_raw)
-    if menu_appear_delay_ms is None:
-        menu_appear_delay_ms = ScanSettings.menu_appear_delay_ms
-
-    sell_recycle_post_delay_ms = _coerce_non_negative_int(
-        sell_recycle_post_delay_ms_raw
+    item_infobox_settle_delay_ms = _coerce_non_negative_int(
+        item_infobox_settle_delay_ms_raw
     )
-    if sell_recycle_post_delay_ms is None:
-        sell_recycle_post_delay_ms = ScanSettings.sell_recycle_post_delay_ms
+    if item_infobox_settle_delay_ms is None:
+        item_infobox_settle_delay_ms = ScanSettings.item_infobox_settle_delay_ms
+
+    post_sell_recycle_delay_ms = _coerce_non_negative_int(
+        post_sell_recycle_delay_ms_raw
+    )
+    if post_sell_recycle_delay_ms is None:
+        post_sell_recycle_delay_ms = ScanSettings.post_sell_recycle_delay_ms
 
     return ScanSettings(
         scroll_clicks_per_page=scroll_clicks_per_page,
         scroll_clicks_alt_per_page=scroll_clicks_alt_per_page,
         stop_key=normalize_stop_key(stop_key_raw),
         infobox_retries=infobox_retries,
-        infobox_retry_delay_ms=infobox_retry_delay_ms,
+        infobox_retry_interval_ms=infobox_retry_interval_ms,
         ocr_unreadable_retries=ocr_unreadable_retries,
-        ocr_unreadable_retry_delay_ms=ocr_unreadable_retry_delay_ms,
-        action_delay_ms=action_delay_ms,
-        menu_appear_delay_ms=menu_appear_delay_ms,
-        sell_recycle_post_delay_ms=sell_recycle_post_delay_ms,
+        ocr_retry_interval_ms=ocr_retry_interval_ms,
+        input_action_delay_ms=input_action_delay_ms,
+        cell_infobox_left_right_click_gap_ms=cell_infobox_left_right_click_gap_ms,
+        item_infobox_settle_delay_ms=item_infobox_settle_delay_ms,
+        post_sell_recycle_delay_ms=post_sell_recycle_delay_ms,
         debug_ocr=_coerce_bool(raw.get("debug_ocr"), False),
         profile=_coerce_bool(raw.get("profile"), False),
     )

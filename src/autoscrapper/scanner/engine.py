@@ -5,11 +5,11 @@ import time
 from pathlib import Path
 from typing import List, Optional, Tuple
 
-from .actions import MENU_APPEAR_DELAY
 from .progress import RichScanProgress, ScanProgress
 from .rich_support import Console
 from .scan_loop import ScanContext, TimingConfig, detect_grid, scan_pages
 from .types import ScanStats
+from ..config import ScanSettings
 from ..core.item_actions import (
     ActionMap,
     ITEM_RULES_PATH,
@@ -24,10 +24,8 @@ from ..interaction.inventory_grid import (
 )
 from ..interaction.keybinds import DEFAULT_STOP_KEY, normalize_stop_key
 from ..interaction.ui_windows import (
-    ACTION_DELAY,
     SCROLL_ALT_CLICKS_PER_PAGE,
     SCROLL_CLICKS_PER_PAGE,
-    SELL_RECYCLE_POST_DELAY,
     WindowSnapshot,
     WINDOW_TIMEOUT,
     abort_if_escape_pressed,
@@ -46,37 +44,50 @@ from ..ocr.tesseract import initialize_ocr
 # Configuration
 # ---------------------------------------------------------------------------
 
-INFOBOX_RETRY_DELAY = 0.10
-INFOBOX_RETRIES = 3
+# Keep runtime scanner defaults anchored to persisted scan settings.
+_DEFAULT_SCAN_SETTINGS = ScanSettings()
+INFOBOX_RETRIES = _DEFAULT_SCAN_SETTINGS.infobox_retries
+INFOBOX_RETRY_INTERVAL_MS = _DEFAULT_SCAN_SETTINGS.infobox_retry_interval_ms
+OCR_UNREADABLE_RETRIES = _DEFAULT_SCAN_SETTINGS.ocr_unreadable_retries
+OCR_RETRY_INTERVAL_MS = _DEFAULT_SCAN_SETTINGS.ocr_retry_interval_ms
+INPUT_ACTION_DELAY_MS = _DEFAULT_SCAN_SETTINGS.input_action_delay_ms
+CELL_INFOBOX_LEFT_RIGHT_CLICK_GAP_MS = (
+    _DEFAULT_SCAN_SETTINGS.cell_infobox_left_right_click_gap_ms
+)
+ITEM_INFOBOX_SETTLE_DELAY_MS = _DEFAULT_SCAN_SETTINGS.item_infobox_settle_delay_ms
+POST_SELL_RECYCLE_DELAY_MS = _DEFAULT_SCAN_SETTINGS.post_sell_recycle_delay_ms
 
 
 def _validate_scan_args(
     *,
     infobox_retries: int,
-    infobox_retry_delay_ms: int,
+    infobox_retry_interval_ms: int,
     ocr_unreadable_retries: int,
-    ocr_unreadable_retry_delay_ms: int,
-    action_delay_ms: int,
-    menu_appear_delay_ms: int,
-    sell_recycle_post_delay_ms: int,
+    ocr_retry_interval_ms: int,
+    input_action_delay_ms: int,
+    cell_infobox_left_right_click_gap_ms: int,
+    item_infobox_settle_delay_ms: int,
+    post_sell_recycle_delay_ms: int,
     pages: Optional[int],
     scroll_clicks_per_page: int,
     scroll_clicks_alt_per_page: int,
 ) -> None:
     if infobox_retries < 1:
         raise ValueError("infobox_retries must be >= 1")
-    if infobox_retry_delay_ms < 0:
-        raise ValueError("infobox_retry_delay_ms must be >= 0")
+    if infobox_retry_interval_ms < 0:
+        raise ValueError("infobox_retry_interval_ms must be >= 0")
     if ocr_unreadable_retries < 0:
         raise ValueError("ocr_unreadable_retries must be >= 0")
-    if ocr_unreadable_retry_delay_ms < 0:
-        raise ValueError("ocr_unreadable_retry_delay_ms must be >= 0")
-    if action_delay_ms < 0:
-        raise ValueError("action_delay_ms must be >= 0")
-    if menu_appear_delay_ms < 0:
-        raise ValueError("menu_appear_delay_ms must be >= 0")
-    if sell_recycle_post_delay_ms < 0:
-        raise ValueError("sell_recycle_post_delay_ms must be >= 0")
+    if ocr_retry_interval_ms < 0:
+        raise ValueError("ocr_retry_interval_ms must be >= 0")
+    if input_action_delay_ms < 0:
+        raise ValueError("input_action_delay_ms must be >= 0")
+    if cell_infobox_left_right_click_gap_ms < 0:
+        raise ValueError("cell_infobox_left_right_click_gap_ms must be >= 0")
+    if item_infobox_settle_delay_ms < 0:
+        raise ValueError("item_infobox_settle_delay_ms must be >= 0")
+    if post_sell_recycle_delay_ms < 0:
+        raise ValueError("post_sell_recycle_delay_ms must be >= 0")
     if pages is not None and pages < 1:
         raise ValueError("pages must be >= 1")
     if scroll_clicks_per_page < 0:
@@ -87,18 +98,20 @@ def _validate_scan_args(
 
 def _build_timing_config(
     *,
-    action_delay_ms: int,
-    menu_appear_delay_ms: int,
-    infobox_retry_delay_ms: int,
-    sell_recycle_post_delay_ms: int,
-    ocr_unreadable_retry_delay_ms: int,
+    input_action_delay_ms: int,
+    cell_infobox_left_right_click_gap_ms: int,
+    item_infobox_settle_delay_ms: int,
+    infobox_retry_interval_ms: int,
+    post_sell_recycle_delay_ms: int,
+    ocr_retry_interval_ms: int,
 ) -> TimingConfig:
     return TimingConfig(
-        action_delay=action_delay_ms / 1000.0,
-        menu_appear_delay=menu_appear_delay_ms / 1000.0,
-        infobox_retry_delay=infobox_retry_delay_ms / 1000.0,
-        post_action_delay=sell_recycle_post_delay_ms / 1000.0,
-        ocr_unreadable_retry_delay=ocr_unreadable_retry_delay_ms / 1000.0,
+        input_action_delay=input_action_delay_ms / 1000.0,
+        cell_infobox_left_right_click_gap=cell_infobox_left_right_click_gap_ms / 1000.0,
+        item_infobox_settle_delay=item_infobox_settle_delay_ms / 1000.0,
+        infobox_retry_interval=infobox_retry_interval_ms / 1000.0,
+        post_sell_recycle_delay=post_sell_recycle_delay_ms / 1000.0,
+        ocr_retry_interval=ocr_retry_interval_ms / 1000.0,
     )
 
 
@@ -197,13 +210,14 @@ def _detect_inventory_count(
 def scan_inventory(
     window_timeout: float = WINDOW_TIMEOUT,
     infobox_retries: int = INFOBOX_RETRIES,
-    infobox_retry_delay_ms: int = int(INFOBOX_RETRY_DELAY * 1000),
-    ocr_unreadable_retries: int = 1,
-    ocr_unreadable_retry_delay_ms: int = 100,
+    infobox_retry_interval_ms: int = INFOBOX_RETRY_INTERVAL_MS,
+    ocr_unreadable_retries: int = OCR_UNREADABLE_RETRIES,
+    ocr_retry_interval_ms: int = OCR_RETRY_INTERVAL_MS,
     stop_key: str = DEFAULT_STOP_KEY,
-    action_delay_ms: int = int(ACTION_DELAY * 1000),
-    menu_appear_delay_ms: int = int(MENU_APPEAR_DELAY * 1000),
-    sell_recycle_post_delay_ms: int = int(SELL_RECYCLE_POST_DELAY * 1000),
+    input_action_delay_ms: int = INPUT_ACTION_DELAY_MS,
+    cell_infobox_left_right_click_gap_ms: int = CELL_INFOBOX_LEFT_RIGHT_CLICK_GAP_MS,
+    item_infobox_settle_delay_ms: int = ITEM_INFOBOX_SETTLE_DELAY_MS,
+    post_sell_recycle_delay_ms: int = POST_SELL_RECYCLE_DELAY_MS,
     show_progress: bool = True,
     pages: Optional[int] = None,
     scroll_clicks_per_page: int = SCROLL_CLICKS_PER_PAGE,
@@ -228,12 +242,13 @@ def scan_inventory(
     """
     _validate_scan_args(
         infobox_retries=infobox_retries,
-        infobox_retry_delay_ms=infobox_retry_delay_ms,
+        infobox_retry_interval_ms=infobox_retry_interval_ms,
         ocr_unreadable_retries=ocr_unreadable_retries,
-        ocr_unreadable_retry_delay_ms=ocr_unreadable_retry_delay_ms,
-        action_delay_ms=action_delay_ms,
-        menu_appear_delay_ms=menu_appear_delay_ms,
-        sell_recycle_post_delay_ms=sell_recycle_post_delay_ms,
+        ocr_retry_interval_ms=ocr_retry_interval_ms,
+        input_action_delay_ms=input_action_delay_ms,
+        cell_infobox_left_right_click_gap_ms=cell_infobox_left_right_click_gap_ms,
+        item_infobox_settle_delay_ms=item_infobox_settle_delay_ms,
+        post_sell_recycle_delay_ms=post_sell_recycle_delay_ms,
         pages=pages,
         scroll_clicks_per_page=scroll_clicks_per_page,
         scroll_clicks_alt_per_page=scroll_clicks_alt_per_page,
@@ -241,11 +256,12 @@ def scan_inventory(
 
     stop_key = normalize_stop_key(stop_key)
     timing = _build_timing_config(
-        action_delay_ms=action_delay_ms,
-        menu_appear_delay_ms=menu_appear_delay_ms,
-        infobox_retry_delay_ms=infobox_retry_delay_ms,
-        sell_recycle_post_delay_ms=sell_recycle_post_delay_ms,
-        ocr_unreadable_retry_delay_ms=ocr_unreadable_retry_delay_ms,
+        input_action_delay_ms=input_action_delay_ms,
+        cell_infobox_left_right_click_gap_ms=cell_infobox_left_right_click_gap_ms,
+        item_infobox_settle_delay_ms=item_infobox_settle_delay_ms,
+        infobox_retry_interval_ms=infobox_retry_interval_ms,
+        post_sell_recycle_delay_ms=post_sell_recycle_delay_ms,
+        ocr_retry_interval_ms=ocr_retry_interval_ms,
     )
 
     scan_start = time.perf_counter()
@@ -320,7 +336,7 @@ def scan_inventory(
             win_height=win_height,
             safe_point_abs=safe_point_abs,
             stop_key=stop_key,
-            action_delay=timing.action_delay,
+            action_delay=timing.input_action_delay,
             startup_events=startup_events,
         )
         auto_pages = (

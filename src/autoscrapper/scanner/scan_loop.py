@@ -13,7 +13,7 @@ from ..interaction.ui_windows import (
     abort_if_escape_pressed,
     capture_region,
     move_absolute,
-    open_cell_menu,
+    open_cell_item_infobox,
     pause_action,
     scroll_to_next_grid_at,
     sleep_with_abort,
@@ -28,11 +28,12 @@ from ..ocr.inventory_vision import (
 
 @dataclass(frozen=True)
 class TimingConfig:
-    action_delay: float
-    menu_appear_delay: float
-    infobox_retry_delay: float
-    post_action_delay: float
-    ocr_unreadable_retry_delay: float
+    input_action_delay: float
+    cell_infobox_left_right_click_gap: float
+    item_infobox_settle_delay: float
+    infobox_retry_interval: float
+    post_sell_recycle_delay: float
+    ocr_retry_interval: float
 
 
 @dataclass(frozen=True)
@@ -135,7 +136,7 @@ def detect_grid(
         context.safe_point_abs[1],
         stop_key=context.stop_key,
     )
-    pause_action(context.timing.action_delay, stop_key=context.stop_key)
+    pause_action(context.timing.input_action_delay, stop_key=context.stop_key)
     roi_left = context.win_left + context.grid_roi[0]
     roi_top = context.win_top + context.grid_roi[1]
     inv_bgr = capture_region(
@@ -223,9 +224,9 @@ class _ScanRunner:
             win_width=context.win_width,
             win_height=context.win_height,
             stop_key=context.stop_key,
-            action_delay=context.timing.action_delay,
-            menu_appear_delay=context.timing.menu_appear_delay,
-            post_action_delay=context.timing.post_action_delay,
+            action_delay=context.timing.input_action_delay,
+            item_infobox_settle_delay=context.timing.item_infobox_settle_delay,
+            post_action_delay=context.timing.post_sell_recycle_delay,
         )
 
     def run(self) -> ScanRunState:
@@ -261,13 +262,14 @@ class _ScanRunner:
             self.progress_impl.set_phase("Stopping…")
         return True
 
-    def _open_cell_menu(self, cell: Cell) -> None:
-        open_cell_menu(
+    def _open_cell_infobox(self, cell: Cell) -> None:
+        open_cell_item_infobox(
             cell,
             self.context.win_left,
             self.context.win_top,
             stop_key=self.context.stop_key,
-            pause=self.context.timing.action_delay,
+            pause=self.context.timing.input_action_delay,
+            left_right_click_gap=self.context.timing.cell_infobox_left_right_click_gap,
         )
 
     def _capture_infobox_with_retries(self) -> _InfoboxCaptureResult:
@@ -302,11 +304,11 @@ class _ScanRunner:
                 break
 
             sleep_with_abort(
-                self.context.timing.infobox_retry_delay,
+                self.context.timing.infobox_retry_interval,
                 stop_key=self.context.stop_key,
             )
             pause_action(
-                self.context.timing.action_delay,
+                self.context.timing.input_action_delay,
                 stop_key=self.context.stop_key,
             )
 
@@ -346,7 +348,7 @@ class _ScanRunner:
             )
 
         pause_action(
-            self.context.timing.action_delay,
+            self.context.timing.input_action_delay,
             stop_key=self.context.stop_key,
         )
         x, y, w, h = infobox_rect
@@ -354,7 +356,7 @@ class _ScanRunner:
         for ocr_attempt in range(self.config.ocr_unreadable_retries + 1):
             if ocr_attempt > 0:
                 sleep_with_abort(
-                    self.context.timing.ocr_unreadable_retry_delay,
+                    self.context.timing.ocr_retry_interval,
                     stop_key=self.context.stop_key,
                 )
                 try:
@@ -404,11 +406,11 @@ class _ScanRunner:
             raise RuntimeError("Target window closed during scan")
 
         sleep_with_abort(
-            self.context.timing.menu_appear_delay,
+            self.context.timing.item_infobox_settle_delay,
             stop_key=self.context.stop_key,
         )
         pause_action(
-            self.context.timing.action_delay,
+            self.context.timing.input_action_delay,
             stop_key=self.context.stop_key,
         )
 
@@ -509,7 +511,7 @@ class _ScanRunner:
             self.context.win_height,
             self.context.safe_point_abs,
             self.context.stop_key,
-            self.context.timing.action_delay,
+            self.context.timing.input_action_delay,
         )
         if empty_idx is None:
             return
@@ -534,7 +536,7 @@ class _ScanRunner:
             return
 
         idx_in_page = 0
-        self._open_cell_menu(cells[0])
+        self._open_cell_infobox(cells[0])
 
         while idx_in_page < len(cells):
             cell = cells[idx_in_page]
@@ -549,7 +551,7 @@ class _ScanRunner:
             destructive_action = cell_scan.action_taken in {"SELL", "RECYCLE"}
             if destructive_action:
                 # Item removed; the next item collapses into this slot. Re-open the same cell.
-                self._open_cell_menu(cell)
+                self._open_cell_infobox(cell)
                 continue
 
             idx_in_page += 1
@@ -559,7 +561,7 @@ class _ScanRunner:
                 )
                 if self._should_stop_at_index(next_global_idx):
                     break
-                self._open_cell_menu(cells[idx_in_page])
+                self._open_cell_infobox(cells[idx_in_page])
 
     def _scan_single_page(self, page: int) -> None:
         self.state.pages_scanned += 1
@@ -572,7 +574,7 @@ class _ScanRunner:
                 self.context.grid_center_abs,
                 self.context.safe_point_abs,
                 stop_key=self.context.stop_key,
-                pause=self.context.timing.action_delay,
+                pause=self.context.timing.input_action_delay,
             )
             grid = detect_grid(self.context, self.progress_impl, self.startup_events)
             cells = list(grid)
