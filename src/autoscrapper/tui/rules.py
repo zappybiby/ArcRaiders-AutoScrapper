@@ -251,11 +251,14 @@ class RulesScreen(AppScreen):
 
     #rules-search {
         width: 1fr;
+        height: 1;
         margin-right: 1;
     }
 
     #rules-sort {
-        width: 18;
+        width: 16;
+        height: 1;
+        padding: 0 1;
         text-style: bold;
     }
 
@@ -276,7 +279,7 @@ class RulesScreen(AppScreen):
     }
 
     #rules-bottom {
-        height: 10;
+        height: 9;
     }
 
     #rules-actions-panel {
@@ -284,7 +287,7 @@ class RulesScreen(AppScreen):
         min-width: 20;
         margin-right: 1;
         border: none;
-        padding: 0;
+        padding: 1 0 0 0;
         background: transparent;
     }
 

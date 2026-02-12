@@ -110,7 +110,7 @@ class ScanSettingsScreen(AppScreen):
     }
 
     .field-input {
-        width: 14;
+        width: 7;
     }
 
     .hint {
