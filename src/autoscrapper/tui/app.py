@@ -165,8 +165,8 @@ class HomeScreen(MenuScreen):
             ),
             MenuItem(
                 "3",
-                "Rules",
-                lambda screen: screen.app.push_screen(screen.app._rules_menu()),
+                "Review Rules",
+                lambda screen: screen.app.push_screen(RulesScreen()),
             ),
             MenuItem(
                 "4",
@@ -265,17 +265,6 @@ class AutoScrapperApp(App[None]):
             MenuItem("0", "Back", lambda screen: screen.app.pop_screen()),
         ]
         return MenuScreen("Progress", items, default_key="1")
-
-    def _rules_menu(self) -> MenuScreen:
-        items = [
-            MenuItem(
-                "1",
-                "Review / edit rules",
-                lambda screen: screen.app.push_screen(RulesScreen()),
-            ),
-            MenuItem("0", "Back", lambda screen: screen.app.pop_screen()),
-        ]
-        return MenuScreen("Rules", items, default_key="1")
 
     def _settings_menu(self) -> MenuScreen:
         items = [

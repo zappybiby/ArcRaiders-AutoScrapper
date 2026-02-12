@@ -58,11 +58,11 @@ def _lookup_key(value: object) -> Optional[str]:
 
 def _action_label_style(action: Optional[str]) -> tuple[str, str]:
     if action == "keep":
-        return ("KEEP", "bold green")
+        return ("KEEP", "bold #56B4E9")
     if action == "sell":
-        return ("SELL", "bold yellow")
+        return ("SELL", "bold #E69F00")
     if action == "recycle":
-        return ("RECYCLE", "bold magenta")
+        return ("RECYCLE", "bold #009E73")
     return ("UNKNOWN", "dim")
 
 
@@ -92,6 +92,14 @@ def _filter_indices(items: List[dict], query: str) -> List[int]:
         if q in name or (item_id and q in item_id):
             matches.append(idx)
     return matches
+
+
+def _truncate_label(text: str, limit: int) -> str:
+    if limit <= 3:
+        return text[:limit]
+    if len(text) <= limit:
+        return text
+    return f"{text[: limit - 3]}..."
 
 
 class ConfirmResetRulesScreen(ModalScreen[bool]):
@@ -134,66 +142,25 @@ class ConfirmResetRulesScreen(ModalScreen[bool]):
             self.dismiss(True)
 
 
-class RulesActionsScreen(ModalScreen[Optional[str]]):
-    DEFAULT_CSS = """
-    RulesActionsScreen {
-        align: center middle;
-    }
-
-    #rules-actions-box {
-        width: 52;
-        border: round $accent;
-        padding: 1 2;
-        background: $surface;
-    }
-
-    #rules-actions-buttons {
-        margin-top: 1;
-        height: auto;
-    }
-
-    #rules-actions-buttons Button {
-        width: 1fr;
-        margin-bottom: 1;
-    }
-    """
-
-    def compose(self) -> ComposeResult:
-        with Vertical(id="rules-actions-box"):
-            yield Static("Rule Actions", classes="modal-title")
-            with Vertical(id="rules-actions-buttons"):
-                yield Button("New rule", id="new-rule", variant="primary")
-                yield Button("Delete selected", id="delete-rule", variant="warning")
-                yield Button("Reset to default", id="reset-rules", variant="error")
-                yield Button("Cancel", id="cancel")
-
-    def on_key(self, event: events.Key) -> None:
-        if event.key in {"escape", "ctrl+b"}:
-            self.dismiss(None)
-            event.stop()
-
-    def on_button_pressed(self, event: Button.Pressed) -> None:
-        button_id = event.button.id
-        if button_id == "cancel":
-            self.dismiss(None)
-            return
-        if button_id == "new-rule":
-            self.dismiss("new")
-            return
-        if button_id == "delete-rule":
-            self.dismiss("delete")
-            return
-        if button_id == "reset-rules":
-            self.dismiss("reset")
-
-
 class RulesScreen(AppScreen):
     BINDINGS = [
         *AppScreen.BINDINGS,
-        Binding("up", "cursor_up", "up", priority=True),
-        Binding("down", "cursor_down", "down", priority=True),
-        Binding("left", "previous_action", "left", priority=True),
-        Binding("right", "next_action", "right", priority=True),
+        Binding(
+            "up",
+            "cursor_up",
+            "List",
+            key_display="Up/Down",
+            priority=True,
+        ),
+        Binding("down", "cursor_down", "List", show=False, priority=True),
+        Binding(
+            "left",
+            "previous_action",
+            "Actions",
+            key_display="Left/Right",
+            priority=True,
+        ),
+        Binding("right", "next_action", "Actions", show=False, priority=True),
         Binding("tab", "focus_next_control", "Next focus", show=False, priority=True),
         Binding(
             "shift+tab",
@@ -207,18 +174,19 @@ class RulesScreen(AppScreen):
 
     DEFAULT_CSS = """
     RulesScreen {
-        padding: 1 2;
+        padding: 0 1;
     }
 
     #rules-topbar {
         height: auto;
         align: left top;
-        margin-bottom: 1;
+        margin-bottom: 0;
     }
 
     #rules-title-block {
         width: 1fr;
         height: auto;
+        align: left middle;
     }
 
     #rules-top-actions {
@@ -227,14 +195,12 @@ class RulesScreen(AppScreen):
         align: right top;
     }
 
-    #rules-top-actions Button {
-        margin-left: 1;
-    }
-
-    #rules-filterbar {
-        height: auto;
-        align: left middle;
-        margin-bottom: 1;
+    #back {
+        width: auto;
+        min-width: 6;
+        height: 1;
+        padding: 0 1;
+        margin-right: 0;
     }
 
     #rules-title {
@@ -243,19 +209,9 @@ class RulesScreen(AppScreen):
         color: #7dd3fc;
     }
 
-    #rules-search {
-        width: 1fr;
-        margin-right: 1;
-    }
-
-    #rules-sort {
-        width: 24;
-        text-style: bold;
-    }
-
     #rules-save-chip {
         width: auto;
-        margin-top: 0;
+        margin-left: 1;
         color: #94a3b8;
     }
 
@@ -275,8 +231,36 @@ class RulesScreen(AppScreen):
         text-style: bold reverse;
     }
 
+    #rules-content {
+        height: 1fr;
+    }
+
+    #rules-list-card {
+        height: 1fr;
+        border: round #334155;
+        padding: 0;
+        background: #0b1220;
+        margin-bottom: 0;
+    }
+
+    #rules-filterbar {
+        height: auto;
+        align: left middle;
+        margin-bottom: 0;
+    }
+
+    #rules-search {
+        width: 1fr;
+        margin-right: 1;
+    }
+
+    #rules-sort {
+        width: 18;
+        text-style: bold;
+    }
+
     #rules-list-summary {
-        margin-bottom: 1;
+        margin-bottom: 0;
     }
 
     #rules-list {
@@ -284,72 +268,145 @@ class RulesScreen(AppScreen):
     }
 
     #rules-list > .option-list--option {
-        padding: 0 0 1 0;
+        padding: 0;
     }
 
     #rules-list > .option-list--option-highlighted {
         text-style: bold;
     }
 
-    #rules-inspector {
-        margin-top: 1;
-        height: auto;
-        min-height: 12;
-        border: round #334155;
-        padding: 1 2;
-        background: #0b1220;
+    #rules-bottom {
+        height: 10;
+    }
+
+    #rules-actions-panel {
+        width: 38%;
+        min-width: 20;
+        margin-right: 1;
+        border: none;
+        padding: 0;
+        background: transparent;
     }
 
     #rule-selected {
         text-style: bold;
-    }
-
-    #rule-action-line {
-        margin-top: 1;
+        margin-bottom: 0;
     }
 
     #action-buttons {
-        margin-top: 1;
         height: auto;
+        margin-bottom: 0;
     }
 
     #action-buttons Button {
-        min-width: 11;
+        width: 1fr;
+        min-width: 0;
+        height: 2;
+        margin-right: 0;
+        margin-bottom: 0;
+        padding: 0 1;
+        border: none;
     }
 
-    #action-buttons Button:focus {
-        border: tall #60a5fa;
+    #action-keep {
+        background: #10384f;
+        color: #e0f4ff;
     }
 
-    #action-buttons Button.is-current-action {
-        background: #14532d;
-        color: #dcfce7;
-        border: tall #22c55e;
+    #action-sell {
+        background: #4a3400;
+        color: #fff2d0;
+    }
+
+    #action-recycle {
+        background: #0f3c31;
+        color: #dffaf0;
+    }
+
+    #action-keep:focus,
+    #action-sell:focus,
+    #action-recycle:focus {
         text-style: bold;
     }
 
-    #action-buttons Button.is-current-action:focus {
-        background: #1e3a8a;
-        color: #eff6ff;
-        border: tall #93c5fd;
+    #action-keep.is-current-action {
+        background: #56B4E9;
+        color: #0a2534;
+        text-style: bold;
+    }
+
+    #action-sell.is-current-action {
+        background: #E69F00;
+        color: #392600;
+        text-style: bold;
+    }
+
+    #action-recycle.is-current-action {
+        background: #009E73;
+        color: #03251c;
+        text-style: bold;
+    }
+
+    #action-keep.is-current-action:focus,
+    #action-sell.is-current-action:focus,
+    #action-recycle.is-current-action:focus {
+        text-style: bold reverse;
+    }
+
+    #rule-management-actions {
+        height: auto;
+    }
+
+    #rule-management-actions Button {
+        width: 1fr;
+        min-width: 0;
+        height: 1;
+        margin-right: 0;
+        margin-bottom: 0;
+        padding: 0 1;
+        border: none;
+    }
+
+    #actions-spacer {
+        height: 1fr;
+    }
+
+    #rules-reasons-panel {
+        width: 62%;
+        min-width: 20;
+        border: none;
+        padding: 0;
+        background: transparent;
+    }
+
+    #reasons-title {
+        margin-bottom: 0;
     }
 
     #rule-reasons {
-        margin-top: 1;
-        height: 8;
+        height: 1fr;
         border: round #334155;
-        padding: 0 1;
+        padding: 0;
         overflow-y: auto;
+        background: #111827;
     }
 
     #new-rule-panel {
         margin-top: 1;
         height: auto;
+        border: round #334155;
+        padding: 1;
+        background: #0b1220;
     }
 
     #new-rule-actions {
         margin-top: 1;
         height: auto;
+    }
+
+    #new-rule-actions Button {
+        width: 1fr;
+        margin-right: 0;
     }
 
     .is-hidden {
@@ -362,9 +419,9 @@ class RulesScreen(AppScreen):
     """
 
     SORT_LABELS: dict[str, str] = {
-        "name_asc": "Name A-Z",
+        "name_asc": "Name",
         "action": "Action",
-        "modified": "Modified first",
+        "modified": "Changed",
     }
     SORT_SEQUENCE: tuple[str, ...] = ("name_asc", "action", "modified")
     ACTION_SORT_ORDER: dict[str, int] = {"keep": 0, "sell": 1, "recycle": 2}
@@ -393,40 +450,47 @@ class RulesScreen(AppScreen):
 
     def compose(self) -> ComposeResult:
         with Horizontal(id="rules-topbar"):
-            with Vertical(id="rules-title-block"):
-                yield Static("Rules", id="rules-title")
+            with Horizontal(id="rules-title-block"):
+                yield Static("Review Rules", id="rules-title")
                 yield Static(id="rules-save-chip", classes="is-saved")
             with Horizontal(id="rules-top-actions"):
-                yield Button("Actions", id="more-actions")
                 yield Button("Back", id="back")
-        with Horizontal(id="rules-filterbar"):
-            yield Input(
-                placeholder="Search rules... (type to filter)", id="rules-search"
-            )
-            yield Button("Filter: Name A-Z", id="rules-sort", variant="primary")
-        yield Static(id="rules-list-summary", classes="hint")
-        yield OptionList(id="rules-list")
-        with Vertical(id="rules-inspector"):
-            yield Static(id="rule-selected")
-            yield Static(id="rule-action-line")
-            with Horizontal(id="action-buttons"):
-                yield Button("Keep", id="action-keep")
-                yield Button("Sell", id="action-sell")
-                yield Button("Recycle", id="action-recycle")
-            yield Static(id="rule-reasons")
-            with Vertical(id="new-rule-panel", classes="is-hidden"):
-                yield Static("New rule name", classes="hint")
-                yield Input(
-                    placeholder="Enter a name for the new rule", id="new-rule-name"
-                )
-                with Horizontal(id="new-rule-actions"):
-                    yield Button("Add rule", id="add-rule", variant="primary")
-                    yield Button("Cancel", id="cancel-add")
-        yield Static(
-            "Type to search • Up/Down move list • Left/Right change action • "
-            "Ctrl+F cycle filter • Tab focus controls • Enter activates button • Esc/Ctrl+B back",
-            classes="hint",
-        )
+        with Vertical(id="rules-content"):
+            with Vertical(id="rules-list-card"):
+                with Horizontal(id="rules-filterbar"):
+                    yield Input(
+                        placeholder="Search rules... (type to filter)",
+                        id="rules-search",
+                    )
+                    yield Button("Sort: Name", id="rules-sort", variant="primary")
+                yield Static(id="rules-list-summary", classes="hint")
+                yield OptionList(id="rules-list")
+            with Horizontal(id="rules-bottom"):
+                with Vertical(id="rules-actions-panel"):
+                    yield Static(id="rule-selected")
+                    with Horizontal(id="action-buttons"):
+                        yield Button("Keep", id="action-keep")
+                        yield Button("Sell", id="action-sell")
+                        yield Button("Recycle", id="action-recycle")
+                    yield Static("", id="actions-spacer")
+                    with Horizontal(id="rule-management-actions"):
+                        yield Button("New", id="new-rule", variant="primary")
+                        yield Button("Delete", id="delete-rule", variant="warning")
+                        yield Button("Reset", id="reset-rules", variant="error")
+                    with Vertical(id="new-rule-panel", classes="is-hidden"):
+                        yield Static("New rule name", classes="hint")
+                        yield Input(
+                            placeholder="Enter a name for the new rule",
+                            id="new-rule-name",
+                        )
+                        with Horizontal(id="new-rule-actions"):
+                            yield Button("Add rule", id="add-rule", variant="primary")
+                            yield Button("Cancel", id="cancel-add")
+                with Vertical(id="rules-reasons-panel"):
+                    yield Static(
+                        "Default Reasons", id="reasons-title", classes="section-title"
+                    )
+                    yield Static(id="rule-reasons")
         yield Footer()
 
     def on_mount(self) -> None:
@@ -434,6 +498,12 @@ class RulesScreen(AppScreen):
         self._refresh_details()
         self._set_save_chip(self._last_saved_label(), state="saved")
         self.query_one("#rules-list", OptionList).focus()
+
+    def on_resize(self, _event: events.Resize) -> None:
+        if not self.is_mounted:
+            return
+        self._refresh_list(preserve_scroll=True)
+        self._refresh_details()
 
     def _last_saved_label(self) -> str:
         try:
@@ -500,26 +570,15 @@ class RulesScreen(AppScreen):
             return self.default_items_by_name[name]
         return None
 
-    def _reason_lines(self, item: dict) -> tuple[list[str], bool]:
-        analysis = item.get("analysis")
-        if isinstance(analysis, list):
-            lines = [
-                reason.strip()
-                for reason in analysis
-                if isinstance(reason, str)
-                and reason.strip()
-                and not _should_hide_reason(reason)
-            ]
-            if lines:
-                return (lines, False)
-
+    def _default_reason_lines(self, item: dict) -> tuple[list[str], bool]:
         default_item = self._default_item_for_item(item)
         if default_item is None:
             return ([], False)
 
         default_analysis = default_item.get("analysis")
         if not isinstance(default_analysis, list):
-            return ([], False)
+            return ([], True)
+
         lines = [
             reason.strip()
             for reason in default_analysis
@@ -527,7 +586,7 @@ class RulesScreen(AppScreen):
             and reason.strip()
             and not _should_hide_reason(reason)
         ]
-        return (lines, bool(lines))
+        return (lines, True)
 
     def _is_modified(self, item: dict) -> bool:
         default_action = self._default_action_for_item(item)
@@ -573,18 +632,29 @@ class RulesScreen(AppScreen):
         changed_count = sum(
             1 for is_modified in self.modified_map.values() if is_modified
         )
-        filter_text = self.search_query or "all"
+        filter_text = self.search_query.strip()
         sort_label = self.SORT_LABELS.get(self.sort_mode, self.sort_mode)
-        self.query_one("#rules-sort", Button).label = f"Filter: {sort_label}"
-        self.query_one("#rules-list-summary", Static).update(
-            f"Showing {len(self.filtered)} of {len(self.items)} • "
-            f"Changed: {changed_count} • Sort: {sort_label} • Filter: {filter_text}"
-        )
+        self.query_one("#rules-sort", Button).label = f"Sort: {sort_label}"
+        summary_parts = [
+            f"{len(self.filtered)}/{len(self.items)} shown",
+            f"{changed_count} changed",
+            f"sort {sort_label}",
+        ]
+        if filter_text:
+            summary_parts.append(f"filter {filter_text}")
+        self.query_one("#rules-list-summary", Static).update(" | ".join(summary_parts))
+
+    def _list_name_limit(self, menu: OptionList) -> int:
+        if menu.size.width <= 0:
+            return 42
+        # Reserve space for list index, spacing, and action badge.
+        return max(18, menu.size.width - 16)
 
     def _refresh_list(self, *, preserve_scroll: bool = False) -> None:
         previous_selection = self.selected_index
         menu = self.query_one("#rules-list", OptionList)
         previous_scroll_y = menu.scroll_y if preserve_scroll else None
+        name_limit = self._list_name_limit(menu)
         self._refresh_modified_map()
         filtered_indices = _filter_indices(self.items, self.search_query)
         self.filtered = self._sort_indices(filtered_indices)
@@ -595,9 +665,10 @@ class RulesScreen(AppScreen):
             name_style = (
                 "bold #f59e0b" if self._is_modified_index(item_index) else "bold"
             )
+            item_name = _truncate_label(str(item.get("name", "")), name_limit)
             label = Text.assemble(
                 (f"{list_index + 1:>3} ", "dim"),
-                (str(item.get("name", "")), name_style),
+                (item_name, name_style),
                 ("  ", ""),
                 (action_label, action_style),
             )
@@ -638,32 +709,24 @@ class RulesScreen(AppScreen):
     def _refresh_details(self) -> None:
         self._set_add_mode(self.mode == "add")
         title = self.query_one("#rule-selected", Static)
-        action_line = self.query_one("#rule-action-line", Static)
         reasons = self.query_one("#rule-reasons", Static)
 
         if self.mode == "add":
             title.update("Create New Rule")
-            action_label, action_style = _action_label_style(self.current_action)
-            action_line.update(
-                Text.assemble(
-                    ("Action: ", "bold"),
-                    (action_label, action_style),
-                    (" (new custom rule)", "dim"),
-                )
-            )
             reasons.update(
-                "Enter a rule name below, then choose Add rule.\n"
-                "This path is for uncommon cases; most edits are action changes only."
+                "Default reasons are shown for existing rules.\n"
+                "Enter a new rule name and choose an action."
             )
+            self._refresh_action_buttons()
             return
 
         if self.selected_index is None:
             title.update("No rule selected")
-            action_line.update("")
             if self.search_query:
                 reasons.update("No matching rules for this filter.")
             else:
-                reasons.update("Select a rule to view reasons and edit action.")
+                reasons.update("Select a rule to view default reasons.")
+            self._refresh_action_buttons()
             return
 
         item = self.items[self.selected_index]
@@ -675,31 +738,17 @@ class RulesScreen(AppScreen):
 
         current_action = _normalized_action(item) or "keep"
         self.current_action = current_action
-        action_label, action_style = _action_label_style(current_action)
-        default_action = self._default_action_for_item(item)
-        if default_action is None:
-            default_suffix = " (custom rule)"
-        elif current_action == default_action:
-            default_suffix = " (default)"
-        else:
-            default_suffix = f" (default {default_action.upper()})"
-        action_line.update(
-            Text.assemble(
-                ("Action: ", "bold"),
-                (action_label, action_style),
-                (default_suffix, "dim"),
-            )
-        )
 
-        reason_lines, used_default_reasons = self._reason_lines(item)
-        heading = "Reasons (default):" if used_default_reasons else "Reasons:"
-        lines = [heading]
+        reason_lines, has_default_rule = self._default_reason_lines(item)
+        lines = []
         if reason_lines:
-            lines.extend([f" • {reason}" for reason in reason_lines[:6]])
-            if len(reason_lines) > 6:
-                lines.append(f" • ... +{len(reason_lines) - 6} more")
+            lines.extend([f"- {reason}" for reason in reason_lines[:12]])
+            if len(reason_lines) > 12:
+                lines.append(f"- ... +{len(reason_lines) - 12} more")
+        elif has_default_rule:
+            lines.append("No default reasons recorded.")
         else:
-            lines.append(" • none recorded")
+            lines.append("No default rule found (custom rule).")
         reasons.update("\n".join(lines))
         self._refresh_action_buttons()
 
@@ -834,7 +883,7 @@ class RulesScreen(AppScreen):
 
     def _is_text_input_focused(self) -> bool:
         focused = self.focused
-        return isinstance(focused, Input)
+        return isinstance(focused, Input) and focused.id == "new-rule-name"
 
     def _move_highlight(self, delta: int) -> None:
         if not self.filtered:
@@ -916,19 +965,6 @@ class RulesScreen(AppScreen):
         next_index = (current_index + 1) % len(self.SORT_SEQUENCE)
         self._set_sort_mode(self.SORT_SEQUENCE[next_index])
 
-    def action_open_actions(self) -> None:
-        self.app.push_screen(RulesActionsScreen(), self._handle_actions_choice)
-
-    def _handle_actions_choice(self, choice: Optional[str]) -> None:
-        if choice == "new":
-            self.action_new_rule()
-            return
-        if choice == "delete":
-            self._delete_selected()
-            return
-        if choice == "reset":
-            self._confirm_reset_default()
-
     def action_back(self) -> None:
         self.app.pop_screen()
 
@@ -1004,10 +1040,14 @@ class RulesScreen(AppScreen):
             self.mode = "edit"
             self._refresh_details()
             self.query_one("#rules-search", Input).focus()
+        elif button_id == "new-rule":
+            self.action_new_rule()
+        elif button_id == "delete-rule":
+            self.action_delete_rule()
+        elif button_id == "reset-rules":
+            self.action_reset_rules()
         elif button_id == "rules-sort":
             self.action_cycle_sort()
-        elif button_id == "more-actions":
-            self.action_open_actions()
         elif button_id == "back":
             self.action_back()
 
