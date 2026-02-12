@@ -101,16 +101,18 @@ class ScanSettingsScreen(AppScreen):
     .field-row {
         height: auto;
         align: left middle;
-        margin: 0 0 1 0;
+        margin: 0;
     }
 
     .field-label {
-        width: 24;
+        width: 30;
         color: $text-muted;
     }
 
     .field-input {
-        width: 7;
+        width: 9;
+        height: 1;
+        padding: 0 1;
     }
 
     .hint {
