@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import sys
+import threading
 import time
 from dataclasses import dataclass
 from typing import Optional, Tuple
@@ -29,6 +30,7 @@ WINDOW_POLL_INTERVAL = 0.05
 # Click pacing
 ACTION_DELAY = 0.05
 MOVE_DURATION = 0.05
+CELL_INFOBOX_LEFT_RIGHT_CLICK_GAP = 0.25
 SELL_RECYCLE_SPEED_MULT = (
     1.5  # extra slack vs default pacing (MOVE_DURATION/ACTION_DELAY)
 )
@@ -44,7 +46,7 @@ SCROLL_MOVE_DURATION = 0.5
 SCROLL_INTERVAL = 0.04
 SCROLL_SETTLE_DELAY = 0.05
 
-_MSS: Optional["MSSBase"] = None
+_MSS_LOCAL = threading.local()
 
 
 @dataclass(frozen=True)
@@ -198,17 +200,47 @@ def window_monitor_rect(win: pwc.Window) -> Tuple[int, int, int, int]:
 
 def _get_mss() -> "MSSBase":
     """
-    Lazily create an MSS instance for screen capture.
+    Lazily create a thread-local MSS instance for screen capture.
+
+    MSS stores platform capture handles in thread-local storage internally.
+    Reusing one MSS instance across threads on Windows can fail with errors like
+    missing `srcdc`, so each thread keeps its own instance.
     """
-    global _MSS
     if sys.platform not in ("win32", "linux"):
         raise RuntimeError(
             "Screen capture requires Windows or Linux; this build targets X11/XWayland."
         )
 
-    if _MSS is None:
-        _MSS = mss.mss()
-    return _MSS
+    sct = getattr(_MSS_LOCAL, "instance", None)
+    if sct is None:
+        sct = mss.mss()
+        _MSS_LOCAL.instance = sct
+    return sct
+
+
+def _reset_mss() -> None:
+    """
+    Drop the current thread-local MSS instance so the next capture recreates it.
+    """
+    sct = getattr(_MSS_LOCAL, "instance", None)
+    if sct is None:
+        return
+
+    close = getattr(sct, "close", None)
+    if callable(close):
+        try:
+            close()
+        except Exception:
+            pass
+    _MSS_LOCAL.instance = None
+
+
+def _is_mss_thread_handle_error(exc: Exception) -> bool:
+    """
+    Detect stale-thread-handle MSS failures that can recover by recreating MSS.
+    """
+    text = str(exc).lower()
+    return "srcdc" in text or "thread._local" in text
 
 
 def capture_region(region: Tuple[int, int, int, int]) -> np.ndarray:
@@ -230,9 +262,18 @@ def capture_region(region: Tuple[int, int, int, int]) -> np.ndarray:
     try:
         shot = sct.grab(bbox)
     except Exception as exc:
-        raise RuntimeError(
-            f"mss failed to capture the requested region {bbox}: {exc}"
-        ) from exc
+        if _is_mss_thread_handle_error(exc):
+            _reset_mss()
+            try:
+                shot = _get_mss().grab(bbox)
+            except Exception as retry_exc:
+                raise RuntimeError(
+                    f"mss failed to capture the requested region {bbox}: {retry_exc}"
+                ) from retry_exc
+        else:
+            raise RuntimeError(
+                f"mss failed to capture the requested region {bbox}: {exc}"
+            ) from exc
 
     frame = np.asarray(shot)
     if frame.shape[2] == 4:
@@ -321,7 +362,7 @@ def move_window_relative(
     )
 
 
-def open_cell_menu(
+def open_cell_item_infobox(
     cell: Cell,
     window_left: int,
     window_top: int,
@@ -329,16 +370,17 @@ def open_cell_menu(
     stop_key: str = DEFAULT_STOP_KEY,
     pause: float = ACTION_DELAY,
     move_duration: float = MOVE_DURATION,
+    left_right_click_gap: float = CELL_INFOBOX_LEFT_RIGHT_CLICK_GAP,
 ) -> None:
     """
-    Hover the cell, then left-click and right-click to open its context menu.
+    Hover the cell, then left-click and right-click to open its item infobox.
     """
     abort_if_escape_pressed(stop_key)
     cx, cy = _cell_screen_center(cell, window_left, window_top)
     timed_action(pdi.moveTo, cx, cy, duration=move_duration, stop_key=stop_key)
     pause_action(pause, stop_key=stop_key)
     timed_action(pdi.leftClick, cx, cy, stop_key=stop_key)
-    pause_action(pause, stop_key=stop_key)
+    pause_action(left_right_click_gap, stop_key=stop_key)
     timed_action(pdi.rightClick, cx, cy, stop_key=stop_key)
     pause_action(pause, stop_key=stop_key)
 
