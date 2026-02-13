@@ -13,6 +13,7 @@ import tessdata
 from tesserocr import PSM, PyTessBaseAPI, RIL, iterate_level
 
 _api_lock = threading.Lock()
+_api_init_lock = threading.Lock()
 _api: PyTessBaseAPI | None = None
 _tessdata_dir: str | None = None
 _backend_info: "OcrBackendInfo | None" = None
@@ -114,9 +115,13 @@ def _get_api() -> PyTessBaseAPI:
     Lazily initialize and return the shared Tesseract API instance.
     """
     global _api
-    if _api is None:
-        _api = _create_api()
-        _record_backend_info(_api)
+    if _api is not None:
+        return _api
+
+    with _api_init_lock:
+        if _api is None:
+            _api = _create_api()
+            _record_backend_info(_api)
     return _api
 
 

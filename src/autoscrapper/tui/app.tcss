@@ -5,6 +5,44 @@ Screen {
     color: #e5e7eb;
 }
 
+StartupSplash {
+    align: center middle;
+    background: #020617 90%;
+}
+
+#startup-shell {
+    width: 90%;
+    max-width: 90;
+    border: heavy #38bdf8;
+    padding: 1 2;
+    background: #050b17;
+}
+
+#startup-title {
+    color: #7dd3fc;
+    text-style: bold;
+    text-align: center;
+}
+
+#startup-status {
+    margin-top: 1;
+    color: #e2e8f0;
+    text-align: center;
+}
+
+#startup-bar {
+    margin-top: 1;
+    color: #22d3ee;
+    text-style: bold;
+    text-align: center;
+}
+
+#startup-hint {
+    margin-top: 1;
+    color: #64748b;
+    text-align: center;
+}
+
 #menu-root {
     width: 100%;
 }

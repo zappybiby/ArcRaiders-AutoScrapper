@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import time
 from typing import Callable, Iterable, Optional
 
 from rich.text import Text
@@ -8,6 +9,7 @@ from textual import events
 from textual.app import App, ComposeResult
 from textual.binding import Binding
 from textual.containers import Vertical
+from textual.screen import ModalScreen
 from textual.widgets import Footer, OptionList, Static
 from textual.widgets.option_list import Option
 
@@ -29,8 +31,23 @@ from .settings import (
     ScanTimingScreen,
 )
 from .status import build_status_panel, has_progress
+from ..warmup import start_background_warmup, warmup_status
 
 MenuAction = Callable[["MenuScreen"], None]
+_SPLASH_MIN_SECONDS = 1.2
+_SPLASH_MAX_SECONDS = 8.0
+_SPLASH_TICK_SECONDS = 0.08
+_SPLASH_BAR_WIDTH = 36
+_SPLASH_SPINNER = "|/-\\"
+_SPLASH_GLITCH = "._-:=+*#"
+_SPLASH_TITLE = (
+    "    ___        __        _____                                  ",
+    "   /   | _____/ /_____  / ___/____________ _____  ____  ___  _____",
+    "  / /| |/ ___/ __/ __ \\ \\__ \\/ ___/ ___/ __ `/ __ \\/ __ \\/ _ \\/ ___/",
+    " / ___ / /__/ /_/ /_/ /___/ / /__/ /  / /_/ / /_/ / /_/ /  __/ /    ",
+    "/_/  |_\\___/\\__/\\____//____/\\___/_/   \\__,_/ .___/ .___/\\___/_/     ",
+    "                                           /_/   /_/                 ",
+)
 
 
 @dataclass(frozen=True)
@@ -46,6 +63,117 @@ class StatusPanel(Static):
 
     def on_mount(self) -> None:
         self.refresh_status()
+
+
+class StartupSplash(ModalScreen[None]):
+    def __init__(self, *, start_screen: str, scan_dry_run: bool) -> None:
+        super().__init__()
+        self._start_screen = start_screen
+        self._scan_dry_run = scan_dry_run
+        self._started_at = 0.0
+        self._tick = 0
+        self._completed = False
+        self._timed_out = False
+        self._timer = None
+
+    def compose(self) -> ComposeResult:
+        with Vertical(id="startup-shell"):
+            yield Static(id="startup-title")
+            yield Static(id="startup-status")
+            yield Static(id="startup-bar")
+            yield Static(
+                "Preparing modules, OCR backend, and scanner runtime...",
+                id="startup-hint",
+            )
+
+    def on_mount(self) -> None:
+        start_background_warmup()
+        self._started_at = time.monotonic()
+        self._render_frame()
+        self._timer = self.set_interval(_SPLASH_TICK_SECONDS, self._render_frame)
+
+    def _animated_title(self, *, ready: bool) -> str:
+        if ready:
+            return "\n".join(_SPLASH_TITLE)
+
+        reveal_budget = self._tick * 16
+        glitch_col = (self._tick * 3) % max(len(line) for line in _SPLASH_TITLE)
+        rendered: list[str] = []
+        for line in _SPLASH_TITLE:
+            line_chars: list[str] = []
+            for idx, ch in enumerate(line):
+                if ch == " ":
+                    line_chars.append(" ")
+                    continue
+                if reveal_budget <= 0:
+                    line_chars.append(" ")
+                    continue
+                if idx == glitch_col and self._tick % 2 == 0:
+                    line_chars.append(
+                        _SPLASH_GLITCH[(self._tick + idx) % len(_SPLASH_GLITCH)]
+                    )
+                else:
+                    line_chars.append(ch)
+                reveal_budget -= 1
+            rendered.append("".join(line_chars))
+        return "\n".join(rendered)
+
+    def _progress_percent(self, *, ready: bool, elapsed: float) -> int:
+        if ready:
+            return 100
+        return min(95, int(elapsed * 30))
+
+    def _progress_bar(self, percent: int) -> str:
+        filled = int(_SPLASH_BAR_WIDTH * (percent / 100.0))
+        filled = max(0, min(_SPLASH_BAR_WIDTH, filled))
+        return "[" + ("#" * filled) + ("." * (_SPLASH_BAR_WIDTH - filled)) + "]"
+
+    def _render_frame(self) -> None:
+        if self._completed:
+            return
+
+        status = warmup_status()
+        elapsed = time.monotonic() - self._started_at
+        ready = status.completed
+        if not ready and elapsed >= _SPLASH_MAX_SECONDS:
+            ready = True
+            self._timed_out = True
+
+        spinner = _SPLASH_SPINNER[self._tick % len(_SPLASH_SPINNER)]
+        percent = self._progress_percent(ready=ready, elapsed=elapsed)
+
+        phase = "Initializing..."
+        if status.completed and status.failed:
+            phase = "Warmup issue detected, continuing safely..."
+        elif status.completed:
+            phase = "Initialization complete."
+        elif self._timed_out:
+            phase = "Warmup taking longer than expected, continuing..."
+
+        self.query_one("#startup-title", Static).update(
+            self._animated_title(ready=ready)
+        )
+        self.query_one("#startup-status", Static).update(f"{spinner} {phase}")
+        self.query_one("#startup-bar", Static).update(
+            f"{self._progress_bar(percent)} {percent:3d}%"
+        )
+
+        self._tick += 1
+        if ready and elapsed >= _SPLASH_MIN_SECONDS:
+            self._complete()
+
+    def _complete(self) -> None:
+        if self._completed:
+            return
+        self._completed = True
+        if self._timer is not None:
+            self._timer.pause()
+        self.dismiss()
+        if self._start_screen == "scan":
+            self.app.set_timer(
+                0.01,
+                lambda: self.app.push_screen(ScanScreen(dry_run=self._scan_dry_run)),
+            )
 
 
 class MenuScreen(AppScreen):
@@ -208,8 +336,12 @@ class AutoScrapperApp(App[None]):
 
     def on_mount(self) -> None:
         self.push_screen(HomeScreen())
-        if self._start_screen == "scan":
-            self.push_screen(ScanScreen(dry_run=self._scan_dry_run))
+        self.push_screen(
+            StartupSplash(
+                start_screen=self._start_screen,
+                scan_dry_run=self._scan_dry_run,
+            )
+        )
 
     def action_main_menu(self) -> None:
         if isinstance(self.screen, ScanScreen):

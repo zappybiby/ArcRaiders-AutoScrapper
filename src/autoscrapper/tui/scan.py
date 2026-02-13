@@ -29,6 +29,7 @@ from ..interaction.ui_windows import (
 from ..scanner.outcomes import _describe_action, _outcome_style
 from ..scanner.progress import ScanProgress
 from ..scanner.types import ScanStats
+from ..warmup import start_background_warmup, warmup_status
 from .common import AppScreen, MessageScreen
 
 if TYPE_CHECKING:
@@ -278,6 +279,9 @@ class ScanScreen(Screen):
 
     def _run_scan(self, window_snapshot: WindowSnapshot) -> None:
         settings = self._settings
+        progress = TextualScanProgress(self._updates)
+        progress.set_phase("Initializing OCR…")
+        start_background_warmup()
         try:
             from ..core.item_actions import ITEM_RULES_PATH
             from ..interaction.ui_windows import (
@@ -285,6 +289,13 @@ class ScanScreen(Screen):
             )
             from ..ocr.inventory_vision import enable_ocr_debug
             from ..scanner.engine import scan_inventory
+
+            status = warmup_status()
+            if status.completed and status.failed and status.error:
+                progress.add_event(
+                    f"Warmup failed; initializing OCR on demand ({status.error}).",
+                    style="yellow",
+                )
 
             scroll_clicks_default = (
                 settings.scroll_clicks_per_page
@@ -300,7 +311,6 @@ class ScanScreen(Screen):
             if settings.debug_ocr:
                 enable_ocr_debug(Path("ocr_debug"))
 
-            progress = TextualScanProgress(self._updates)
             results, stats = scan_inventory(
                 show_progress=False,
                 scroll_clicks_per_page=scroll_clicks_default,
