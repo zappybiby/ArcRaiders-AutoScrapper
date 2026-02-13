@@ -34,7 +34,6 @@ from .status import build_status_panel, has_progress
 from ..warmup import start_background_warmup, warmup_status
 
 MenuAction = Callable[["MenuScreen"], None]
-_SPLASH_MIN_SECONDS = 1.2
 _SPLASH_MAX_SECONDS = 8.0
 _SPLASH_TICK_SECONDS = 0.08
 _SPLASH_BAR_WIDTH = 36
@@ -159,7 +158,7 @@ class StartupSplash(ModalScreen[None]):
         )
 
         self._tick += 1
-        if ready and elapsed >= _SPLASH_MIN_SECONDS:
+        if ready:
             self._complete()
 
     def _complete(self) -> None:
