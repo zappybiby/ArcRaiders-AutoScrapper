@@ -3,11 +3,10 @@ from __future__ import annotations
 from dataclasses import replace
 from typing import Optional
 
-from rich.text import Text
 from textual import events
 from textual.app import ComposeResult
 from textual.binding import Binding
-from textual.containers import Horizontal, Vertical
+from textual.containers import Horizontal, HorizontalGroup, Vertical
 from textual.screen import ModalScreen
 from textual.widget import Widget
 from textual.widgets import Button, Checkbox, Footer, Input, Static
@@ -15,13 +14,12 @@ from textual.widgets import Button, Checkbox, Footer, Input, Static
 from .common import AppScreen, MessageScreen
 from ..config import (
     ScanSettings,
-    config_path,
     load_scan_settings,
     reset_scan_settings,
     save_scan_settings,
 )
 from ..interaction.keybinds import stop_key_label, textual_key_to_stop_key
-from ..interaction.ui_windows import SCROLL_ALT_CLICKS_PER_PAGE, SCROLL_CLICKS_PER_PAGE
+from ..interaction.ui_windows import SCROLL_CLICKS_PER_PAGE
 
 
 class CaptureStopKeyScreen(ModalScreen[Optional[str]]):
@@ -32,38 +30,66 @@ class CaptureStopKeyScreen(ModalScreen[Optional[str]]):
 
     #capture-box {
         width: 72%;
-        max-width: 84;
+        max-width: 88;
         border: round $accent;
         padding: 1 2;
         background: $surface;
+    }
+
+    #capture-selected {
+        margin-top: 1;
+        text-style: bold;
     }
 
     #capture-help {
         margin-top: 1;
         color: $text-muted;
     }
+
+    #capture-actions {
+        margin-top: 1;
+        height: auto;
+    }
+
+    #capture-actions Button {
+        min-width: 12;
+    }
     """
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._pending_key: Optional[str] = None
 
     def compose(self) -> ComposeResult:
         with Vertical(id="capture-box"):
             yield Static("Set stop key", classes="modal-title")
-            yield Static("Press any key to set the stop key.")
+            yield Static("Press any key to preview your stop key.")
+            yield Static("Selected: (waiting for key)", id="capture-selected")
             yield Static(
                 "Modifier-only keys (Ctrl/Alt/Shift) are ignored.",
                 id="capture-help",
             )
-            yield Button("Cancel", id="cancel")
+            with Horizontal(id="capture-actions"):
+                yield Button("Cancel", id="cancel")
+                yield Button("Confirm", id="confirm", variant="primary", disabled=True)
 
     def on_key(self, event: events.Key) -> None:
         key_name = textual_key_to_stop_key(event.key, event.character)
         if key_name is None:
             return
-        self.dismiss(key_name)
+
+        self._pending_key = key_name
+        self.query_one("#capture-selected", Static).update(
+            f"Selected: {stop_key_label(key_name)}"
+        )
+        self.query_one("#confirm", Button).disabled = False
         event.stop()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "cancel":
             self.dismiss(None)
+        elif event.button.id == "confirm" and self._pending_key is not None:
+            self.dismiss(self._pending_key)
 
 
 class ScanSettingsScreen(AppScreen):
@@ -89,39 +115,74 @@ class ScanSettingsScreen(AppScreen):
 
     DEFAULT_CSS = """
     ScanSettingsScreen {
-        padding: 1 2;
+        padding: 0 1;
     }
 
-    .section-title {
-        text-style: bold;
-        color: $accent;
-        margin: 1 0 0 0;
-    }
-
-    .field-row {
-        height: auto;
-        align: left middle;
+    ScanSettingsScreen .menu-title {
         margin: 0;
     }
 
-    .field-label {
+    #settings-shell {
+        width: 100%;
+        height: 1fr;
+        layout: vertical;
+        border: round #334155;
+        background: #0b1220;
+        padding: 0 1;
+        overflow: hidden hidden;
+    }
+
+    #settings-form {
+        width: 100%;
+        height: 1fr;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .setting-row {
+        width: 1fr;
+        height: auto;
+        align: left middle;
+    }
+
+    .setting-label-col {
         width: 30;
         color: $text-muted;
+        margin-right: 1;
+    }
+
+    .setting-control-row {
+        height: auto;
+        align: left middle;
+        margin-top: 0;
+    }
+
+    .setting-value {
+        width: 10;
+        min-width: 10;
+        text-style: bold;
+        border: round #334155;
+        background: #111827;
+        padding: 0 1;
+        margin-right: 1;
     }
 
     .field-input {
-        width: 9;
+        width: 10;
+        min-width: 10;
+        max-width: 10;
         height: 1;
         padding: 0 1;
     }
 
-    .hint {
-        color: $text-muted;
+    #screen-actions {
+        margin-top: 0;
+        height: auto;
+        align: left middle;
     }
 
-    #screen-actions {
-        margin-top: 1;
-        height: auto;
+    #screen-actions Button {
+        min-width: 12;
     }
     """
 
@@ -131,6 +192,16 @@ class ScanSettingsScreen(AppScreen):
     def __init__(self) -> None:
         super().__init__()
         self.settings = load_scan_settings()
+
+    def compose(self) -> ComposeResult:
+        yield Static(self.TITLE, classes="menu-title")
+        with Vertical(id="settings-shell"):
+            with Vertical(id="settings-form"):
+                yield from self._compose_form()
+            with Horizontal(id="screen-actions"):
+                yield Button("Save", id="save", variant="primary")
+                yield Button("Back", id="back")
+        yield Footer()
 
     def on_mount(self) -> None:
         self._load_into_fields()
@@ -188,6 +259,9 @@ class ScanSettingsScreen(AppScreen):
         save_scan_settings(settings)
         self.app.push_screen(MessageScreen("Scan settings saved."))
 
+    def _compose_form(self) -> ComposeResult:
+        raise NotImplementedError
+
     def _load_into_fields(self) -> None:
         raise NotImplementedError
 
@@ -201,50 +275,31 @@ class ScanControlsScreen(ScanSettingsScreen):
         "save",
         "back",
     )
-    DEFAULT_CSS = ScanSettingsScreen.DEFAULT_CSS + """
-    #stop-key-value {
-        width: 14;
-        text-style: bold;
-    }
-    """
 
     def __init__(self) -> None:
         super().__init__()
         self._stop_key = self.settings.stop_key
 
-    def compose(self) -> ComposeResult:
-        yield Static(self.TITLE, classes="menu-title")
-        yield Static("Use Tab / Shift+Tab or ↑/↓ to move fields.", classes="hint")
+    def _compose_form(self) -> ComposeResult:
+        with HorizontalGroup(classes="setting-row"):
+            yield Static("Stop scan key", classes="setting-label-col")
+            with Horizontal(classes="setting-control-row"):
+                yield Static("", id="stop-key-value", classes="setting-value")
+                yield Button("Set key", id="set-stop-key")
 
-        yield Static("Keyboard", classes="section-title")
-        with Horizontal(classes="field-row"):
-            yield Static("Stop scan key", classes="field-label")
-            yield Static("", id="stop-key-value")
-            yield Button("Set key", id="set-stop-key")
-
-        yield Static("Scrolling", classes="section-title")
-        with Horizontal(classes="field-row"):
-            yield Static("Primary clicks", classes="field-label")
+        with HorizontalGroup(classes="setting-row"):
+            yield Static("Primary clicks per page", classes="setting-label-col")
             yield Input(
                 id="scroll-clicks",
-                placeholder=f"{SCROLL_CLICKS_PER_PAGE}",
                 classes="field-input",
             )
-        with Horizontal(classes="field-row"):
-            yield Static("Alternating clicks", classes="field-label")
+
+        with HorizontalGroup(classes="setting-row"):
+            yield Static("Alternating clicks per page", classes="setting-label-col")
             yield Input(
                 id="scroll-clicks-alt",
-                placeholder=f"{SCROLL_ALT_CLICKS_PER_PAGE}",
                 classes="field-input",
             )
-        yield Static("Leave blank for alternating = primary + 1.", classes="hint")
-
-        yield Static(Text(f"Config file: {config_path()}", style="dim"), classes="hint")
-
-        with Horizontal(id="screen-actions"):
-            yield Button("Save", id="save", variant="primary")
-            yield Button("Back", id="back")
-        yield Footer()
 
     def _refresh_stop_key_label(self) -> None:
         self.query_one("#stop-key-value", Static).update(stop_key_label(self._stop_key))
@@ -254,16 +309,19 @@ class ScanControlsScreen(ScanSettingsScreen):
         self._stop_key = self.settings.stop_key
         self._refresh_stop_key_label()
 
-        self.query_one("#scroll-clicks", Input).value = (
-            ""
-            if self.settings.scroll_clicks_per_page is None
-            else str(self.settings.scroll_clicks_per_page)
+        primary_clicks = (
+            self.settings.scroll_clicks_per_page
+            if self.settings.scroll_clicks_per_page is not None
+            else SCROLL_CLICKS_PER_PAGE
         )
-        self.query_one("#scroll-clicks-alt", Input).value = (
-            ""
-            if self.settings.scroll_clicks_alt_per_page is None
-            else str(self.settings.scroll_clicks_alt_per_page)
+        alternating_clicks = (
+            self.settings.scroll_clicks_alt_per_page
+            if self.settings.scroll_clicks_alt_per_page is not None
+            else (primary_clicks + 1)
         )
+
+        self.query_one("#scroll-clicks", Input).value = str(primary_clicks)
+        self.query_one("#scroll-clicks-alt", Input).value = str(alternating_clicks)
 
     def _set_stop_key(self) -> None:
         self.app.push_screen(CaptureStopKeyScreen(), self._on_stop_key_selected)
@@ -275,27 +333,21 @@ class ScanControlsScreen(ScanSettingsScreen):
         self._refresh_stop_key_label()
 
     def _save(self) -> None:
-        scroll_raw = self.query_one("#scroll-clicks", Input).value.strip()
-        scroll_value: Optional[int] = None
-        if scroll_raw:
-            if not scroll_raw.isdigit() or int(scroll_raw) < 0:
-                self.app.push_screen(
-                    MessageScreen("Enter a valid scroll click count (>= 0).")
-                )
-                return
-            scroll_value = int(scroll_raw)
+        scroll_value = self._parse_int_field(
+            "#scroll-clicks",
+            label="scroll click count",
+            min_value=0,
+        )
+        if scroll_value is None:
+            return
 
-        scroll_alt_raw = self.query_one("#scroll-clicks-alt", Input).value.strip()
-        scroll_alt_value: Optional[int] = None
-        if scroll_alt_raw:
-            if not scroll_alt_raw.isdigit() or int(scroll_alt_raw) < 0:
-                self.app.push_screen(
-                    MessageScreen(
-                        "Enter a valid alternating scroll click count (>= 0)."
-                    )
-                )
-                return
-            scroll_alt_value = int(scroll_alt_raw)
+        scroll_alt_value = self._parse_int_field(
+            "#scroll-clicks-alt",
+            label="alternating scroll click count",
+            min_value=0,
+        )
+        if scroll_alt_value is None:
+            return
 
         updated = replace(
             self.settings,
@@ -326,27 +378,20 @@ class ScanDetectionScreen(ScanSettingsScreen):
         "back",
     )
 
-    def compose(self) -> ComposeResult:
-        yield Static(self.TITLE, classes="menu-title")
-        yield Static("Use Tab / Shift+Tab or ↑/↓ to move fields.", classes="hint")
-
-        with Horizontal(classes="field-row"):
-            yield Static("Infobox retries", classes="field-label")
+    def _compose_form(self) -> ComposeResult:
+        with HorizontalGroup(classes="setting-row"):
+            yield Static("Infobox retries", classes="setting-label-col")
             yield Input(id="infobox-retries", classes="field-input")
-        with Horizontal(classes="field-row"):
-            yield Static("Infobox retry gap (ms)", classes="field-label")
+        with HorizontalGroup(classes="setting-row"):
+            yield Static("Infobox retry gap (ms)", classes="setting-label-col")
             yield Input(id="infobox-delay", classes="field-input")
-        with Horizontal(classes="field-row"):
-            yield Static("OCR retries", classes="field-label")
-            yield Input(id="ocr-retries", classes="field-input")
-        with Horizontal(classes="field-row"):
-            yield Static("OCR retry gap (ms)", classes="field-label")
-            yield Input(id="ocr-delay", classes="field-input")
 
-        with Horizontal(id="screen-actions"):
-            yield Button("Save", id="save", variant="primary")
-            yield Button("Back", id="back")
-        yield Footer()
+        with HorizontalGroup(classes="setting-row"):
+            yield Static("OCR retries", classes="setting-label-col")
+            yield Input(id="ocr-retries", classes="field-input")
+        with HorizontalGroup(classes="setting-row"):
+            yield Static("OCR retry gap (ms)", classes="setting-label-col")
+            yield Input(id="ocr-delay", classes="field-input")
 
     def _load_into_fields(self) -> None:
         self.settings = load_scan_settings()
@@ -423,27 +468,19 @@ class ScanTimingScreen(ScanSettingsScreen):
         "back",
     )
 
-    def compose(self) -> ComposeResult:
-        yield Static(self.TITLE, classes="menu-title")
-        yield Static("Use Tab / Shift+Tab or ↑/↓ to move fields.", classes="hint")
-
-        with Horizontal(classes="field-row"):
-            yield Static("Base input pause (ms)", classes="field-label")
+    def _compose_form(self) -> ComposeResult:
+        with HorizontalGroup(classes="setting-row"):
+            yield Static("Base input pause (ms)", classes="setting-label-col")
             yield Input(id="action-delay", classes="field-input")
-        with Horizontal(classes="field-row"):
-            yield Static("Cell infobox L->R gap (ms)", classes="field-label")
+        with HorizontalGroup(classes="setting-row"):
+            yield Static("Cell infobox L->R gap (ms)", classes="setting-label-col")
             yield Input(id="click-gap", classes="field-input")
-        with Horizontal(classes="field-row"):
-            yield Static("Item infobox settle gap (ms)", classes="field-label")
+        with HorizontalGroup(classes="setting-row"):
+            yield Static("Item infobox settle gap (ms)", classes="setting-label-col")
             yield Input(id="item-infobox-delay", classes="field-input")
-        with Horizontal(classes="field-row"):
-            yield Static("Post sell/recycle (ms)", classes="field-label")
+        with HorizontalGroup(classes="setting-row"):
+            yield Static("Post sell/recycle (ms)", classes="setting-label-col")
             yield Input(id="post-delay", classes="field-input")
-
-        with Horizontal(id="screen-actions"):
-            yield Button("Save", id="save", variant="primary")
-            yield Button("Back", id="back")
-        yield Footer()
 
     def _load_into_fields(self) -> None:
         self.settings = load_scan_settings()
@@ -513,21 +550,13 @@ class ScanDiagnosticsScreen(ScanSettingsScreen):
     TITLE = "Diagnostics"
     _FOCUS_ORDER = ("debug-ocr", "profile-timing", "save", "back")
 
-    def compose(self) -> ComposeResult:
-        yield Static(self.TITLE, classes="menu-title")
-        yield Static("Use Tab / Shift+Tab or ↑/↓ to move fields.", classes="hint")
-
-        with Horizontal(classes="field-row"):
-            yield Static("Debug OCR", classes="field-label")
+    def _compose_form(self) -> ComposeResult:
+        with HorizontalGroup(classes="setting-row"):
+            yield Static("Debug OCR", classes="setting-label-col")
             yield Checkbox(id="debug-ocr")
-        with Horizontal(classes="field-row"):
-            yield Static("Profile timing", classes="field-label")
+        with HorizontalGroup(classes="setting-row"):
+            yield Static("Profile timing", classes="setting-label-col")
             yield Checkbox(id="profile-timing")
-
-        with Horizontal(id="screen-actions"):
-            yield Button("Save", id="save", variant="primary")
-            yield Button("Back", id="back")
-        yield Footer()
 
     def _load_into_fields(self) -> None:
         self.settings = load_scan_settings()
@@ -552,24 +581,36 @@ class ScanDiagnosticsScreen(ScanSettingsScreen):
 class ResetScanSettingsScreen(AppScreen):
     DEFAULT_CSS = """
     ResetScanSettingsScreen {
-        padding: 1 2;
+        padding: 0 1;
+    }
+
+    ResetScanSettingsScreen .menu-title {
+        margin: 0 0 1 0;
+    }
+
+    #scan-reset-shell {
+        width: 100%;
+        border: round #334155;
+        background: #0b1220;
+        padding: 0 1;
     }
 
     #scan-reset-actions {
-        margin-top: 1;
+        margin-top: 0;
         height: auto;
     }
     """
 
     def compose(self) -> ComposeResult:
         yield Static("Reset Scan Settings", classes="menu-title")
-        yield Static(
-            "This restores all scan settings to defaults. Are you sure?",
-            classes="hint",
-        )
-        with Horizontal(id="scan-reset-actions"):
-            yield Button("Cancel", id="cancel")
-            yield Button("Reset", id="reset", variant="warning")
+        with Vertical(id="scan-reset-shell"):
+            yield Static(
+                "This restores all scan settings to defaults. Are you sure?",
+                classes="hint",
+            )
+            with Horizontal(id="scan-reset-actions"):
+                yield Button("Cancel", id="cancel")
+                yield Button("Reset", id="reset", variant="warning")
         yield Footer()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
