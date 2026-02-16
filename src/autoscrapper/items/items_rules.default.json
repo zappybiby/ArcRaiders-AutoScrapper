@@ -1,25 +1,13 @@
 {
   "metadata": {
-    "generatedAt": "2026-01-29T23:01:27.359069Z",
+    "generatedAt": "2026-02-16T19:13:53.235009Z",
     "data": {
-      "lastUpdated": "2026-01-29T17:22:46.446Z",
-      "source": "https://metaforge.app/arc-raiders (items, quests, recipes, recycle outputs)",
-      "version": "standalone-0.1.0"
+      "lastUpdated": "2026-02-16T19:04:45.107168Z",
+      "source": "https://metaforge.app/arc-raiders",
+      "version": "autoscrapper-data-1"
     },
-    "progress": {
-      "hideoutLevels": {
-        "scrappy": 2,
-        "weapon_bench": 2,
-        "equipment_bench": 2,
-        "med_station": 2,
-        "explosives_bench": 2,
-        "utility_bench": 2,
-        "refiner": 2
-      },
-      "completedQuests": [],
-      "completedProjects": []
-    },
-    "itemCount": 526
+    "itemCount": 525,
+    "allQuestsCompleted": true
   },
   "items": [
     {
@@ -192,7 +180,7 @@
       "value": 1000,
       "action": "keep",
       "analysis": [
-        "Required for quest: Doctor's Orders"
+        "Required for hideout upgrade: Medical Lab (Level 3)"
       ]
     },
     {
@@ -294,7 +282,7 @@
       "value": 200,
       "action": "keep",
       "analysis": [
-        "Required for quest: Clearer Skies"
+        "Needed for project: Expedition Project"
       ]
     },
     {
@@ -508,7 +496,7 @@
       "value": 250,
       "action": "keep",
       "analysis": [
-        "Required for quest: Trash Into Treasure"
+        "Needed for project: Expedition Project"
       ]
     },
     {
@@ -882,16 +870,6 @@
       "analysis": [
         "Recycles into: 3x Sensors, 2x Wires",
         "Recycle value: Components (1900 coins) worth less than Item (2000 coins)"
-      ]
-    },
-    {
-      "id": "broken-riot-shield",
-      "name": "Broken Riot Shield",
-      "value": 1000,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 10x Plastic Parts",
-        "Recycle value: Components (600 coins) worth less than Item (1000 coins)"
       ]
     },
     {
@@ -1594,7 +1572,7 @@
       "value": 300,
       "action": "keep",
       "analysis": [
-        "Used in 12 crafting recipes",
+        "Used in 11 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -1605,7 +1583,7 @@
       "value": 640,
       "action": "keep",
       "analysis": [
-        "Required for quest: Doctor's Orders"
+        "Needed for project: Expedition Project"
       ]
     },
     {
@@ -1985,9 +1963,10 @@
       "id": "fertilizer",
       "name": "Fertilizer",
       "value": 1000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Required for quest: Unexpected Initiative"
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -2014,9 +1993,10 @@
       "id": "fireball-burner",
       "name": "Fireball Burner",
       "value": 640,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Required for quest: What Goes Around"
+        "Recycles into: 1x ARC Alloy, 1x Crude Explosives",
+        "Recycle value: Components (470 coins) worth less than Item (640 coins)"
       ]
     },
     {
@@ -2076,18 +2056,20 @@
       "id": "flow-controller",
       "name": "Flow Controller",
       "value": 3000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Required for quest: Snap and Salvage"
+        "Recycles into: 1x Advanced Mechanical Components, 1x Sensors",
+        "Recycle value: Components (2250 coins) worth less than Item (3000 coins)"
       ]
     },
     {
       "id": "flushing-terminal-key",
       "name": "Flushing Terminal Key",
       "value": 0,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Required for quest: The Stench Of Corruption"
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -2196,7 +2178,7 @@
     {
       "id": "gas-mine-blueprint",
       "name": "Gas Mine Blueprint",
-      "value": 0,
+      "value": 5000,
       "action": "keep",
       "analysis": [
         "Legendary rarity - extremely valuable",
@@ -2237,9 +2219,10 @@
       "id": "great-muullein",
       "name": "Great Mullein",
       "value": 300,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Required for quest: Doctor's Orders"
+        "Recycles into: 2x Assorted Seeds",
+        "Recycle value: Components (200 coins) worth less than Item (300 coins)"
       ]
     },
     {
@@ -2417,9 +2400,10 @@
       "id": "hornet-driver",
       "name": "Hornet Driver",
       "value": 2000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Required for quest: The Trifecta"
+        "Recycles into: 2x ARC Alloy, 2x Electrical Components",
+        "Recycle value: Components (1680 coins) worth less than Item (2000 coins)"
       ]
     },
     {
@@ -2746,7 +2730,7 @@
     {
       "id": "laser-trap-smoke-recipe",
       "name": "Smoke Grenade Trap",
-      "value": 0,
+      "value": 640,
       "action": "keep",
       "analysis": [
         "Consumable item - grenades, healing items, etc.",
@@ -2771,7 +2755,7 @@
       "value": 5000,
       "action": "keep",
       "analysis": [
-        "Required for quest: Into the Fray"
+        "Needed for project: Expedition Project"
       ]
     },
     {
@@ -2985,7 +2969,7 @@
     {
       "id": "lure-grenade-trap",
       "name": "Lure Grenade Trap",
-      "value": 0,
+      "value": 1000,
       "action": "keep",
       "analysis": [
         "Consumable item - grenades, healing items, etc.",
@@ -3017,9 +3001,10 @@
       "id": "magnetron",
       "name": "Magnetron",
       "value": 6000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Required for quest: Snap and Salvage"
+        "Recycles into: 1x Magnetic Accelerator, 1x Steel Spring",
+        "Recycle value: Components (5800 coins) worth less than Item (6000 coins)"
       ]
     },
     {
@@ -3141,7 +3126,7 @@
       "value": 1750,
       "action": "keep",
       "analysis": [
-        "Used in 15 crafting recipes",
+        "Used in 14 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -3524,7 +3509,9 @@
       "value": 5500,
       "action": "keep",
       "analysis": [
-        "Required for quest: Tribute to Toledo"
+        "Used in 2 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -3542,7 +3529,7 @@
       "value": 500,
       "action": "keep",
       "analysis": [
-        "Used in 7 crafting recipes",
+        "Used in 9 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -3571,7 +3558,7 @@
     {
       "id": "pulse-mine-blueprint",
       "name": "Pulse Mine Blueprint",
-      "value": 0,
+      "value": 5000,
       "action": "keep",
       "analysis": [
         "Legendary rarity - extremely valuable",
@@ -3727,16 +3714,6 @@
       ]
     },
     {
-      "id": "refinement-1",
-      "name": "Refinement 1",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
       "id": "reinforced-reception-security-code",
       "name": "Reinforced Reception Security Code",
       "value": 0,
@@ -3858,7 +3835,7 @@
       "value": 5000,
       "action": "keep",
       "analysis": [
-        "Required for quest: Out of the Shadows"
+        "Required for hideout upgrade: Explosives Station (Level 3)"
       ]
     },
     {
@@ -4396,9 +4373,10 @@
       "id": "snitch-scanner",
       "name": "Snitch Scanner",
       "value": 2000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Required for quest: The Trifecta"
+        "Recycles into: 1x ARC Alloy, 2x Electrical Components",
+        "Recycle value: Components (1480 coins) worth less than Item (2000 coins)"
       ]
     },
     {
@@ -4569,6 +4547,16 @@
       ]
     },
     {
+      "id": "stack-of-movie-tapes",
+      "name": "Stack of Movie Tapes",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "statuette",
       "name": "Statuette",
       "value": 3000,
@@ -4704,7 +4692,7 @@
       "value": 2000,
       "action": "keep",
       "analysis": [
-        "Required for quest: Mixed Signals"
+        "Required for hideout upgrade: Medical Lab (Level 3)"
       ]
     },
     {
@@ -4723,7 +4711,9 @@
       "value": 500,
       "action": "keep",
       "analysis": [
-        "Required for quest: Doctor's Orders"
+        "Used in 1 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -4884,7 +4874,7 @@
     },
     {
       "id": "tempest-i-recipe",
-      "name": "Tempest I Blueprint",
+      "name": "Tempest Blueprint",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -4917,7 +4907,7 @@
     {
       "id": "tempest-iv",
       "name": "Tempest IV",
-      "value": 0,
+      "value": 27000,
       "action": "keep",
       "analysis": [
         "Weapon - review based on your current loadout",
@@ -5053,7 +5043,7 @@
     {
       "id": "trailblazer-grenade-blueprint",
       "name": "Trailblazer Grenade Blueprint",
-      "value": 0,
+      "value": 5000,
       "action": "keep",
       "analysis": [
         "Legendary rarity - extremely valuable",
@@ -5157,7 +5147,7 @@
     {
       "id": "venator-iv",
       "name": "Venator IV",
-      "value": 10540,
+      "value": 17000,
       "action": "keep",
       "analysis": [
         "Weapon - review based on your current loadout",
@@ -5261,7 +5251,7 @@
     {
       "id": "vita-spray",
       "name": "Vita Spray",
-      "value": 2880,
+      "value": 3000,
       "action": "keep",
       "analysis": [
         "Consumable item - grenades, healing items, etc.",
@@ -5368,9 +5358,10 @@
       "id": "wasp-driver",
       "name": "Wasp Driver",
       "value": 1000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Required for quest: The Trifecta"
+        "Recycles into: 1x ARC Alloy, 1x Electrical Components",
+        "Recycle value: Components (840 coins) worth less than Item (1000 coins)"
       ]
     },
     {
@@ -5387,9 +5378,10 @@
       "id": "water-pump",
       "name": "Water Pump",
       "value": 1000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Required for quest: Unexpected Initiative"
+        "Recycles into: 4x Metal Parts, 2x Oil",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
       ]
     },
     {
@@ -5398,7 +5390,7 @@
       "value": 200,
       "action": "keep",
       "analysis": [
-        "Required for quest: Flickering Threat, Trash Into Treasure"
+        "Needed for project: Expedition Project"
       ]
     },
     {
