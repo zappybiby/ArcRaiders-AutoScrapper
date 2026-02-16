@@ -282,12 +282,6 @@ class DecisionEngine:
                     req.get("item_id") == item.get("id") for req in requirements
                 )
 
-            reward_items = quest.get("rewardItemIds") or []
-            if not is_required and isinstance(reward_items, list):
-                is_required = any(
-                    reward.get("item_id") == item.get("id") for reward in reward_items
-                )
-
             if is_required:
                 quest_names.append(quest.get("name", ""))
 

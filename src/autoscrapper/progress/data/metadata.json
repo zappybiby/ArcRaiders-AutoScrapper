@@ -1,8 +1,8 @@
 {
-  "lastUpdated": "2026-01-29T17:22:46.446Z",
-  "source": "https://metaforge.app/arc-raiders (items, quests, recipes, recycle outputs)",
-  "version": "standalone-0.1.0",
-  "itemCount": 526,
+  "lastUpdated": "2026-02-16T19:04:45.107168Z",
+  "source": "https://metaforge.app/arc-raiders",
+  "version": "autoscrapper-data-1",
+  "itemCount": 525,
   "questCount": 80,
   "hasPriceOverrides": true
 }

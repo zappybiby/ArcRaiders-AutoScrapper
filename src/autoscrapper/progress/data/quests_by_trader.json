@@ -1,64 +1,7 @@
 {
-  "generatedAt": "2026-01-29T20:41:52.199Z",
-  "source": "data/quests.json",
+  "generatedAt": "2026-02-16T19:04:45.033974Z",
+  "source": "quests.json",
   "traders": {
-    "Apollo": [
-      {
-        "id": "safe-passage",
-        "name": "Safe Passage",
-        "sortOrder": 1039.9397757882718
-      },
-      {
-        "id": "what-goes-around",
-        "name": "What Goes Around",
-        "sortOrder": 1279.9397757882718
-      },
-      {
-        "id": "sparks-fly",
-        "name": "Sparks Fly",
-        "sortOrder": 1519.9397757882718
-      },
-      {
-        "id": "the-league",
-        "name": "The League",
-        "sortOrder": 1533.2327539462642
-      },
-      {
-        "id": "movie-night",
-        "name": "Movie Night",
-        "sortOrder": 1965.5143577290614
-      },
-      {
-        "id": "a-warm-place-to-rest",
-        "name": "A Warm Place to Rest",
-        "sortOrder": 4259.252140564836
-      },
-      {
-        "id": "paving-the-way",
-        "name": "Paving the Way",
-        "sortOrder": 5380.695307679854
-      },
-      {
-        "id": "espresso",
-        "name": "Espresso",
-        "sortOrder": 5459.252140564836
-      },
-      {
-        "id": "groundbreaking",
-        "name": "Groundbreaking",
-        "sortOrder": 5860.695307679854
-      },
-      {
-        "id": "building-a-library",
-        "name": "Building a Library",
-        "sortOrder": 6437.2338897110185
-      },
-      {
-        "id": "the-clean-dream",
-        "name": "The Clean Dream",
-        "sortOrder": 6970.340249561917
-      }
-    ],
     "Celeste": [
       {
         "id": "a-bad-feeling",
@@ -176,46 +119,66 @@
         "sortOrder": 6295.427563904591
       }
     ],
-    "Lance": [
+    "TianWen": [
       {
-        "id": "in-my-image",
-        "name": "In My Image",
-        "sortOrder": 1038.8847623375223
+        "id": "the-right-tool",
+        "name": "The Right Tool",
+        "sortOrder": 1040.3902829127408
       },
       {
-        "id": "medical-merchandise",
-        "name": "Medical Merchandise",
-        "sortOrder": 2051.860157381871
+        "id": "a-better-use",
+        "name": "A Better Use",
+        "sortOrder": 1280.3902829127408
       },
       {
-        "id": "esr-analyzer",
-        "name": "A Reveal in Ruins",
-        "sortOrder": 2291.860157381871
+        "id": "snap-and-salvage",
+        "name": "Snap and Salvage",
+        "sortOrder": 1518.8847623375223
       },
       {
-        "id": "prescriptions-of-the-past",
-        "name": "Prescriptions of the Past",
-        "sortOrder": 4499.252140564836
+        "id": "mixed-signals",
+        "name": "Mixed Signals",
+        "sortOrder": 2006.475046689308
       },
       {
-        "id": "life-of-a-pharmacist",
-        "name": "Life of a Pharmacist",
-        "sortOrder": 5699.252140564836
+        "id": "what-we-left-behind",
+        "name": "What We Left Behind",
+        "sortOrder": 2048.8797708209436
       },
       {
-        "id": "on-deaf-ears",
-        "name": "On Deaf Ears",
-        "sortOrder": 6098.557992881553
+        "id": "broken-monument",
+        "name": "Broken Monument",
+        "sortOrder": 2292.7044581548457
       },
       {
-        "id": "on-the-map",
-        "name": "On The Map",
-        "sortOrder": 6303.962520692375
+        "id": "marked-for-death",
+        "name": "Marked for Death",
+        "sortOrder": 2475.855715426346
       },
       {
-        "id": "a-new-type-of-plant",
-        "name": "A New Type of Plant",
-        "sortOrder": 6677.2338897110185
+        "id": "market-correction",
+        "name": "Market Correction",
+        "sortOrder": 2698.623904145423
+      },
+      {
+        "id": "eyes-on-the-prize",
+        "name": "Eyes on the Prize",
+        "sortOrder": 2934.700983655939
+      },
+      {
+        "id": "industrial-espionage",
+        "name": "Industrial Espionage",
+        "sortOrder": 3162.932222187488
+      },
+      {
+        "id": "unexpected-initiative",
+        "name": "Unexpected Initiative",
+        "sortOrder": 3406.951187812034
+      },
+      {
+        "id": "the-majors-footlocker",
+        "name": "The Majors Footlocker",
+        "sortOrder": 3808.281728989622
       }
     ],
     "Shani": [
@@ -350,66 +313,103 @@
         "sortOrder": 7209.777176880825
       }
     ],
-    "TianWen": [
+    "Lance": [
       {
-        "id": "the-right-tool",
-        "name": "The Right Tool",
-        "sortOrder": 1040.3902829127408
+        "id": "in-my-image",
+        "name": "In My Image",
+        "sortOrder": 1038.8847623375223
       },
       {
-        "id": "a-better-use",
-        "name": "A Better Use",
-        "sortOrder": 1280.3902829127408
+        "id": "medical-merchandise",
+        "name": "Medical Merchandise",
+        "sortOrder": 2051.860157381871
       },
       {
-        "id": "snap-and-salvage",
-        "name": "Snap and Salvage",
-        "sortOrder": 1518.8847623375223
+        "id": "esr-analyzer",
+        "name": "A Reveal in Ruins",
+        "sortOrder": 2291.860157381871
       },
       {
-        "id": "mixed-signals",
-        "name": "Mixed Signals",
-        "sortOrder": 2006.475046689308
+        "id": "prescriptions-of-the-past",
+        "name": "Prescriptions of the Past",
+        "sortOrder": 4499.252140564836
       },
       {
-        "id": "what-we-left-behind",
-        "name": "What We Left Behind",
-        "sortOrder": 2048.8797708209436
+        "id": "life-of-a-pharmacist",
+        "name": "Life of a Pharmacist",
+        "sortOrder": 5699.252140564836
       },
       {
-        "id": "broken-monument",
-        "name": "Broken Monument",
-        "sortOrder": 2292.7044581548457
+        "id": "on-deaf-ears",
+        "name": "On Deaf Ears",
+        "sortOrder": 6098.557992881553
       },
       {
-        "id": "marked-for-death",
-        "name": "Marked for Death",
-        "sortOrder": 2475.855715426346
+        "id": "on-the-map",
+        "name": "On The Map",
+        "sortOrder": 6303.962520692375
       },
       {
-        "id": "market-correction",
-        "name": "Market Correction",
-        "sortOrder": 2698.623904145423
+        "id": "a-new-type-of-plant",
+        "name": "A New Type of Plant",
+        "sortOrder": 6677.2338897110185
+      }
+    ],
+    "Apollo": [
+      {
+        "id": "safe-passage",
+        "name": "Safe Passage",
+        "sortOrder": 1039.9397757882718
       },
       {
-        "id": "eyes-on-the-prize",
-        "name": "Eyes on the Prize",
-        "sortOrder": 2934.700983655939
+        "id": "what-goes-around",
+        "name": "What Goes Around",
+        "sortOrder": 1279.9397757882718
       },
       {
-        "id": "industrial-espionage",
-        "name": "Industrial Espionage",
-        "sortOrder": 3162.932222187488
+        "id": "sparks-fly",
+        "name": "Sparks Fly",
+        "sortOrder": 1519.9397757882718
       },
       {
-        "id": "unexpected-initiative",
-        "name": "Unexpected Initiative",
-        "sortOrder": 3406.951187812034
+        "id": "the-league",
+        "name": "The League",
+        "sortOrder": 1533.2327539462642
       },
       {
-        "id": "the-majors-footlocker",
-        "name": "The Majors Footlocker",
-        "sortOrder": 3808.281728989622
+        "id": "movie-night",
+        "name": "Movie Night",
+        "sortOrder": 1965.5143577290614
+      },
+      {
+        "id": "a-warm-place-to-rest",
+        "name": "A Warm Place to Rest",
+        "sortOrder": 4259.252140564836
+      },
+      {
+        "id": "paving-the-way",
+        "name": "Paving the Way",
+        "sortOrder": 5380.695307679854
+      },
+      {
+        "id": "espresso",
+        "name": "Espresso",
+        "sortOrder": 5459.252140564836
+      },
+      {
+        "id": "groundbreaking",
+        "name": "Groundbreaking",
+        "sortOrder": 5860.695307679854
+      },
+      {
+        "id": "building-a-library",
+        "name": "Building a Library",
+        "sortOrder": 6437.2338897110185
+      },
+      {
+        "id": "the-clean-dream",
+        "name": "The Clean Dream",
+        "sortOrder": 6970.340249561917
       }
     ]
   }

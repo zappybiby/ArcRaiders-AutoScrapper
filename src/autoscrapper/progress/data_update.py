@@ -29,7 +29,18 @@ class DownloadError(RuntimeError):
 
 
 def _fetch_json(url: str, headers: Optional[Dict[str, str]] = None) -> object:
-    req = Request(url, headers=headers or {})
+    request_headers = {
+        "Accept": "application/json",
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/132.0.0.0 Safari/537.36"
+        ),
+    }
+    if headers:
+        request_headers.update(headers)
+
+    req = Request(url, headers=request_headers)
     try:
         with urlopen(req, timeout=30) as resp:
             payload = resp.read().decode("utf-8")
@@ -152,14 +163,36 @@ def _map_metaforge_quest(metaforge_quest: dict) -> dict:
     sort_order = position.get("y", metaforge_quest.get("sort_order", 0))
 
     required_items = metaforge_quest.get("required_items") or []
+    rewards = metaforge_quest.get("rewards") or []
+
+    reward_item_ids: List[str] = []
+    if isinstance(rewards, list):
+        for reward in rewards:
+            reward_item_id: Optional[str] = None
+            if isinstance(reward, dict):
+                reward_item_id = reward.get("item_id")
+                if not reward_item_id:
+                    reward_item = reward.get("item")
+                    if isinstance(reward_item, dict):
+                        reward_item_id = reward_item.get("id")
+                    elif isinstance(reward_item, str):
+                        reward_item_id = reward_item
+            elif isinstance(reward, str):
+                reward_item_id = reward
+
+            if isinstance(reward_item_id, str) and reward_item_id:
+                reward_item_ids.append(reward_item_id)
+
+    # Keep IDs stable while removing duplicates.
+    reward_item_ids = list(dict.fromkeys(reward_item_ids))
 
     return {
         "id": metaforge_quest.get("id"),
         "name": metaforge_quest.get("name"),
         "objectives": metaforge_quest.get("objectives") or [],
         "requirements": required_items,
-        "rewardItemIds": required_items,
-        "rewards": metaforge_quest.get("rewards") or [],
+        "rewardItemIds": reward_item_ids,
+        "rewards": rewards,
         "trader": metaforge_quest.get("trader_name") or "Unknown",
         "xp": metaforge_quest.get("xp") or 0,
         "sortOrder": sort_order,

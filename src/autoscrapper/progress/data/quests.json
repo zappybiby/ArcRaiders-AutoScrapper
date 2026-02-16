@@ -6,7 +6,11 @@
       "Find and search any ARC Probe or ARC Courier"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "duct-tape-recipe",
+      "spring",
+      "metal-parts"
+    ],
     "rewards": [
       {
         "id": "1dcfa564-efc5-4e00-aac9-aefe21a8eb31",
@@ -59,7 +63,11 @@
       "Search for any traces of the agricultural research project"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "advanced-mechanical-components",
+      "spring",
+      "medium-gun-parts"
+    ],
     "rewards": [
       {
         "id": "48ba0f87-b088-4986-bf01-8ab9c8f989e2",
@@ -110,7 +118,11 @@
       "Loot a Supply Drop"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "stable-stock-i",
+      "extended-light-mag-i",
+      "muzzle-brake-ii"
+    ],
     "rewards": [
       {
         "id": "ae5fd179-4083-44b6-ba75-b08ee74033f5",
@@ -163,7 +175,11 @@
       "Nail down the roof plates on the Raider structure near Trapper's Glade"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "heavy-fuze-grenade",
+      "shrapnel-grenade",
+      "snap-blast-grenade"
+    ],
     "rewards": [
       {
         "id": "0449e93d-1f2a-4fde-8ef9-ab9bf1d0ad64",
@@ -214,7 +230,11 @@
       "Repair the solar panels"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "antiseptic",
+      "durable-cloth",
+      "blue-light-stick"
+    ],
     "rewards": [
       {
         "id": "0fd96a8f-df62-43f8-95c1-2a16130e6a5a",
@@ -268,7 +288,11 @@
       "Deliver 1 LiDAR Scanners to Shani"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "smoke-grenade",
+      "zipline",
+      "dam-testing-annex-key"
+    ],
     "rewards": [
       {
         "id": "3701c5c3-49b9-463a-b934-77239b2847ab",
@@ -320,7 +344,10 @@
       "Deliver the Possibly Toxic Plant to Lance"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "vita-shot",
+      "antiseptic"
+    ],
     "rewards": [
       {
         "id": "09b44846-db2a-4908-9c09-ef5520b9948a",
@@ -359,7 +386,10 @@
       "Interact with any ARC Deforester"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "patrol-car-key",
+      "door-blocker"
+    ],
     "rewards": [
       {
         "id": "38796fbe-574a-4576-bc6e-2bae06e93546",
@@ -386,7 +416,7 @@
         "quantity": "1"
       }
     ],
-    "trader": "Unknown",
+    "trader": "Shani",
     "xp": 0,
     "sortOrder": 7209.777176880825
   },
@@ -398,7 +428,10 @@
       "Delivery the ESR Analyzer to Lance"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "tactical-mk-3-healing",
+      "surge-shield-recharger"
+    ],
     "rewards": [
       {
         "id": "eb2b01df-83fc-4c83-ae59-a0d02a5f240a",
@@ -439,7 +472,11 @@
       "Find and unlock the rear door of an armored patrol car"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "blue-yellow-aviator-color",
+      "defibrillator",
+      "smoke-grenade"
+    ],
     "rewards": [
       {
         "id": "3e3a1b3e-350c-4dd3-9cad-c7533a7ec43d",
@@ -492,7 +529,11 @@
       "Hoist the flag on the small platform overlooking the Red Lake"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "duct-tape-recipe",
+      "mod-components",
+      "aviator-outfit"
+    ],
     "rewards": [
       {
         "id": "323948bd-705f-4d95-ae86-91a0e150a953",
@@ -545,7 +586,12 @@
       "Search the truck for clues about the saboteur's identity"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "tactical-mk-2",
+      "pulse-mine",
+      "gas-mine",
+      "zipline"
+    ],
     "rewards": [
       {
         "id": "264da55a-dc2c-466b-a112-3583a60c1c3b",
@@ -610,7 +656,12 @@
       "Inspect the grave"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "blue-light-stick",
+      "rosary",
+      "noisemaker",
+      "goggles-radio-renegade-variant"
+    ],
     "rewards": [
       {
         "id": "7ae88050-9463-4c10-83b7-447749b48978",
@@ -675,7 +726,11 @@
       "On Buried City, mark the building with the mural in the Buried Properties"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "stable-stock-iii",
+      "medium-ammo",
+      "renegade-i"
+    ],
     "rewards": [
       {
         "id": "3c1aa197-61a8-4ad1-99d2-d7456b2ac478",
@@ -727,7 +782,10 @@
       "Search for bee hives around the Olive Grove"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "advanced-electrical-components",
+      "sensors-recipe"
+    ],
     "rewards": [
       {
         "id": "3810858b-2467-44a6-9b1e-03b72540a32c",
@@ -768,7 +826,7 @@
     "requirements": [],
     "rewardItemIds": [],
     "rewards": [],
-    "trader": "Unknown",
+    "trader": "Shani",
     "xp": 0,
     "sortOrder": 5465.869255355122
   },
@@ -786,7 +844,11 @@
       "Deliver First Wave Rations to Tian Wen"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "compensator-ii",
+      "medium-ammo",
+      "arpeggio-i"
+    ],
     "rewards": [
       {
         "id": "38ee0ec0-8d68-439d-8b8f-a6335051fec1",
@@ -840,7 +902,11 @@
       "Deliver 3 books to Apollo"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "explosive-mine",
+      "jolt-mine",
+      "heavy-fuze-grenade"
+    ],
     "rewards": [
       {
         "id": "24f8e064-5ce4-4ede-88f4-7f4c35191991",
@@ -892,7 +958,11 @@
       "Deliver 2 Journals to Celeste"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "exodus-modules",
+      "heavy-gun-parts",
+      "magnetic-accelerator"
+    ],
     "rewards": [
       {
         "id": "23f60ae6-17bd-45cf-8cd9-d8da7d478181",
@@ -957,18 +1027,9 @@
       }
     ],
     "rewardItemIds": [
-      {
-        "id": "dc69ffa8-bcbf-4e37-b599-f17f43d45046",
-        "item": {
-          "id": "arc-alloy",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/arc-alloy.webp",
-          "name": "ARC Alloy",
-          "rarity": "Uncommon",
-          "item_type": "Topside Material"
-        },
-        "item_id": "arc-alloy",
-        "quantity": 3
-      }
+      "sterilized-bandage",
+      "light-shield",
+      "black-hiker-colour"
     ],
     "rewards": [
       {
@@ -1020,7 +1081,10 @@
       "Search any J Kozma Ventures Container"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "raider-hatch-key",
+      "gas-mine"
+    ],
     "rewards": [
       {
         "id": "75a92c96-db6a-4023-984d-63e87885dcc8",
@@ -1062,7 +1126,10 @@
       "Deliver Spotter Relay to Shani"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "firecracker",
+      "fireworks-box"
+    ],
     "rewards": [
       {
         "id": "e9952e1d-9de9-4d14-88c7-8a99a3bd9dcf",
@@ -1089,7 +1156,7 @@
         "quantity": "1"
       }
     ],
-    "trader": "Unknown",
+    "trader": "Shani",
     "xp": 0,
     "sortOrder": 5257.189393285459
   },
@@ -1104,7 +1171,11 @@
       "Boot the antenna terminal near the Red Tower"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "anvil-iii",
+      "heavy-ammo",
+      "crimson-racer-aviator-colour"
+    ],
     "rewards": [
       {
         "id": "43fc1c42-bda8-47f6-bb81-31a8f15a2201",
@@ -1156,7 +1227,10 @@
       "Use the Magnetic Decryptor on the top floor of the Arrival Building"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "trailblazer-grenade",
+      "defibrillator"
+    ],
     "rewards": [
       {
         "id": "836a16b9-c45f-4c41-b10e-8f0950dc8ca4",
@@ -1195,7 +1269,10 @@
       "Locate the Dead Drop inside the Santa Maria Houses in Old Town"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "advanced-electrical-components",
+      "speaker-component"
+    ],
     "rewards": [
       {
         "id": "10a4860c-674e-42a5-bb3b-458ef544e895",
@@ -1286,54 +1363,9 @@
       }
     ],
     "rewardItemIds": [
-      {
-        "id": "1f9fb1ed-6ef2-4ac4-a22f-9545b6a6253d",
-        "item": {
-          "id": "great-muullein",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/great-muullein.webp",
-          "name": "Great Mullein",
-          "rarity": "Uncommon",
-          "item_type": "Topside Material"
-        },
-        "item_id": "great-muullein",
-        "quantity": 1
-      },
-      {
-        "id": "2f48f121-2dfc-4ffc-ac59-65212944a336",
-        "item": {
-          "id": "syringe",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/syringe.webp",
-          "name": "Syringe",
-          "rarity": "Rare",
-          "item_type": "Topside Material"
-        },
-        "item_id": "syringe",
-        "quantity": 1
-      },
-      {
-        "id": "6223ffe5-3945-44d8-b56d-89eeab7965c4",
-        "item": {
-          "id": "antiseptic",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/antiseptic.webp",
-          "name": "Antiseptic",
-          "rarity": "Rare",
-          "item_type": "Refined Material"
-        },
-        "item_id": "antiseptic",
-        "quantity": 2
-      },
-      {
-        "id": "f9e820de-ebef-4410-98f4-09dd923728f7",
-        "item": {
-          "id": "durable-cloth",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/durable-cloth.webp",
-          "name": "Durable Cloth",
-          "rarity": "Uncommon",
-          "item_type": "Refined Material"
-        },
-        "item_id": "durable-cloth",
-        "quantity": 1
-      }
+      "adrenaline-shot",
+      "sterilized-bandage",
+      "surge-shield-recharger"
     ],
     "rewards": [
       {
@@ -1384,7 +1416,10 @@
       "Find and loot a Baron Husk"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "door-blocker",
+      "lil-smoke-grenade"
+    ],
     "rewards": [
       {
         "id": "2848cea4-6d06-469e-88ff-a838e5452b23",
@@ -1425,7 +1460,10 @@
       "Collect the reward"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "medium-shield",
+      "combat-mk-1"
+    ],
     "rewards": [
       {
         "id": "7644473c-3190-4ad5-a907-9d9cf9b5ccca",
@@ -1466,7 +1504,11 @@
       "Deliver Major Aiva's Patch to Celeste."
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "crude-explosives",
+      "music-box",
+      "processor"
+    ],
     "rewards": [
       {
         "id": "3a9f2caa-a869-49cc-bd38-86c5e0f0ea9f",
@@ -1518,7 +1560,10 @@
       "Get the Espresso Machine Parts for Apollo"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "coffee-pot",
+      "adrenaline-shot"
+    ],
     "rewards": [
       {
         "id": "2218412f-4404-4d93-a617-7bf45c5801e5",
@@ -1558,7 +1603,11 @@
       "On Buried City, install a LiDAR Scanner on top of the Galleria sign"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "tagging-grenade",
+      "vita-spray",
+      "yellow-light-stick"
+    ],
     "rewards": [
       {
         "id": "23cbf8f0-aeb3-4e89-904a-5a0f5dd86c95",
@@ -1609,7 +1658,10 @@
       "Rewire the solar panel using 3 Wires."
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "extended-shotgun-mag-ii",
+      "extended-medium-mag-ii"
+    ],
     "rewards": [
       {
         "id": "ddd5b553-861c-46f8-a954-bac2a4e9a8e2",
@@ -1665,18 +1717,9 @@
       }
     ],
     "rewardItemIds": [
-      {
-        "id": "e377a016-400a-4a71-9b0a-fe1deeb46c1b",
-        "item": {
-          "id": "wires-recipe",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/wires.webp",
-          "name": "Wires",
-          "rarity": "Uncommon",
-          "item_type": "Topside Material"
-        },
-        "item_id": "wires-recipe",
-        "quantity": 4
-      }
+      "medium-gun-parts",
+      "advanced-mechanical-components",
+      "helmet-radio-renegade-variant"
     ],
     "rewards": [
       {
@@ -1729,7 +1772,11 @@
       "On Buried City, visit the barricaded area on floor 6 of the Space Travel Building."
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "speaker-component",
+      "lure-grenade-recipe",
+      "electrical-components"
+    ],
     "rewards": [
       {
         "id": "3369cd02-78ae-4fa1-883b-a81201b6b94d",
@@ -1782,7 +1829,10 @@
       "Photograph the abandoned housing project"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "tangerine-warden-color",
+      "power-rod"
+    ],
     "rewards": [
       {
         "id": "43bb79e1-839c-41ab-ac33-4516caaea46a",
@@ -1821,7 +1871,10 @@
       "Loot an ARC husk"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "raider-hatch-key",
+      "binoculars"
+    ],
     "rewards": [
       {
         "id": "66d2a7a9-5fb4-4660-9923-99fa4f0ad1a8",
@@ -1875,18 +1928,9 @@
       }
     ],
     "rewardItemIds": [
-      {
-        "id": "bc50c6b8-a30f-4688-9ca7-b29b5404093b",
-        "item": {
-          "id": "burletta-i",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/burletta-i.webp",
-          "name": "Burletta I",
-          "rarity": "Uncommon",
-          "item_type": "Weapon"
-        },
-        "item_id": "burletta-i",
-        "quantity": 1
-      }
+      "mechanical-components",
+      "simple-gun-parts",
+      "burltetta-recipe"
     ],
     "rewards": [
       {
@@ -1938,7 +1982,10 @@
       "Find and search 3 Androids"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "green-light-stick",
+      "looting-mk-2"
+    ],
     "rewards": [
       {
         "id": "152eefaf-732f-4723-9ef4-46e1a28a8ec2",
@@ -1991,18 +2038,10 @@
       }
     ],
     "rewardItemIds": [
-      {
-        "id": "78ce6f9c-0410-436e-b108-afa97f44039c",
-        "item": {
-          "id": "leaper-pulse-unit",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/leaper-pulse-unit.webp",
-          "name": "Leaper Pulse Unit",
-          "rarity": "Epic",
-          "item_type": "Throwable"
-        },
-        "item_id": "leaper-pulse-unit",
-        "quantity": 1
-      }
+      "burgerboy-backpack-charm",
+      "vulcano-iii",
+      "radio-renegade-outfit",
+      "shotgun-ammo"
     ],
     "rewards": [
       {
@@ -2068,7 +2107,11 @@
       "Return the helmet to the memorial"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "duct-tape-recipe",
+      "magnet",
+      "simple-gun-parts"
+    ],
     "rewards": [
       {
         "id": "3fd923b5-1e87-4edc-8be6-41934582dec8",
@@ -2122,7 +2165,11 @@
       "Document the pharmacist's skills"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "defibrillator",
+      "surge-shield-recharger",
+      "sterilized-bandage"
+    ],
     "rewards": [
       {
         "id": "49f51118-8d22-4276-bf95-621f68bab2ab",
@@ -2175,7 +2222,9 @@
       "Establish a connection from the terminal"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "snap-hook"
+    ],
     "rewards": [
       {
         "id": "b054a81a-08c4-4a46-bb7c-2c992b595697",
@@ -2203,7 +2252,10 @@
       "Follow the Clues"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "angled-grip-ii",
+      "shotgun-choke-ii"
+    ],
     "rewards": [
       {
         "id": "7d492de5-0a15-4a03-ba62-98756e4590b0",
@@ -2243,7 +2295,11 @@
       "Sabotage the cache"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "compensator-i",
+      "extended-light-mag-i",
+      "silencer-ii"
+    ],
     "rewards": [
       {
         "id": "1f668ea9-4dac-48f1-afd3-aca099719d27",
@@ -2295,7 +2351,11 @@
       "On Dam Battlegrounds, search 2 containers in the Research & Administration building's medical room"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "defibrillator",
+      "vita-shot",
+      "banana-backpack-charm"
+    ],
     "rewards": [
       {
         "id": "69fbfd5e-8ae5-4b9e-a122-cb57882c274f",
@@ -2360,18 +2420,8 @@
       }
     ],
     "rewardItemIds": [
-      {
-        "id": "992ccac9-2f02-4349-8221-c38b2df83ab2",
-        "item": {
-          "id": "surveyor-vault",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/surveyor-vault.webp",
-          "name": "Surveyor Vault",
-          "rarity": "Rare",
-          "item_type": "Recyclable"
-        },
-        "item_id": "surveyor-vault",
-        "quantity": 1
-      }
+      "photoelectric-cloak",
+      "raider-hatch-key"
     ],
     "rewards": [
       {
@@ -2412,7 +2462,11 @@
       "Deliver the Stack of Movie Tapes to Apollo"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "showstopper",
+      "smoke-grenade",
+      "fireworks-box"
+    ],
     "rewards": [
       {
         "id": "b0bcc1cb-6a13-4ca1-83d6-5cc5b9ed0208",
@@ -2463,7 +2517,10 @@
       "Repair the antenna on the roof of the Field Depot (In one Round)"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "black-and-white-origin-color",
+      "defibrillator"
+    ],
     "rewards": [
       {
         "id": "5b690ded-5c93-49c6-98a7-3075cba8d0f2",
@@ -2501,7 +2558,10 @@
       "Find the researcher's guest logs on the reception computers"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "lure-grenade",
+      "noisemaker"
+    ],
     "rewards": [
       {
         "id": "4b4f06fe-c5aa-4ff1-ad51-f2267a3c8016",
@@ -2528,7 +2588,7 @@
         "quantity": "1"
       }
     ],
-    "trader": "Unknown",
+    "trader": "Lance",
     "xp": 0,
     "sortOrder": 6098.557992881553
   },
@@ -2543,7 +2603,11 @@
       "Find the container covered in tarp, and mark it"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "sterilized-bandage",
+      "surge-shield-recharger",
+      "tactical-mk-3-healing"
+    ],
     "rewards": [
       {
         "id": "77b8e9e6-b19c-453a-ac78-21ed712e58ef",
@@ -2582,7 +2646,7 @@
         "quantity": "1"
       }
     ],
-    "trader": "Unknown",
+    "trader": "Lance",
     "xp": 0,
     "sortOrder": 6303.962520692375
   },
@@ -2595,7 +2659,11 @@
       "Complete the antenna installation on the roof"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "jolt-mine",
+      "raider-hatch-key",
+      "buried-city-town-hall-key"
+    ],
     "rewards": [
       {
         "id": "28533e49-45c6-41bd-bb5a-2576486d23bb",
@@ -2660,18 +2728,8 @@
       }
     ],
     "rewardItemIds": [
-      {
-        "id": "04662365-f4a1-4fd9-a967-4f381fc55271",
-        "item": {
-          "id": "rocketeer-part",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/rocketeer-part.webp",
-          "name": "Rocketeer Driver",
-          "rarity": "Epic",
-          "item_type": "Recyclable"
-        },
-        "item_id": "rocketeer-part",
-        "quantity": 1
-      }
+      "surge-shield-recharger",
+      "wolfpack"
     ],
     "rewards": [
       {
@@ -2713,7 +2771,11 @@
       "Find the researcher's flat and search for any research data"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "advanced-electrical-components",
+      "seeker-grenade",
+      "raider-hatch-key"
+    ],
     "rewards": [
       {
         "id": "55d63fa2-aa96-43d8-b183-08ba727e2614",
@@ -2764,7 +2826,10 @@
       "Loot 3 containers"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "medium-ammo",
+      "rattler-iii"
+    ],
     "rewards": [
       {
         "id": "a72a187b-6d02-4ae7-b582-5c3bc8a4e1ce",
@@ -2805,7 +2870,12 @@
       "Enable the power switch on the Fuse Bo"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "explosive-compound",
+      "oil",
+      "bag-radio-renegade-variant",
+      "wires-recipe"
+    ],
     "rewards": [
       {
         "id": "3ce10e27-1702-4964-af97-539902352fb1",
@@ -2869,7 +2939,11 @@
       "Search for the records"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "adrenaline-shot",
+      "tactical-mk-3-healing",
+      "heavy-shield"
+    ],
     "rewards": [
       {
         "id": "76b34db8-c579-42cd-9c4b-330712233896",
@@ -2922,7 +2996,11 @@
       "Investigate the unknown ARC machines"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "door-blocker",
+      "zipline",
+      "barricade-kit"
+    ],
     "rewards": [
       {
         "id": "61762de3-37b1-423b-b57d-2be07dc7d4b8",
@@ -2972,7 +3050,11 @@
       "Destroy 2 ARC enemies using any explosive grenade"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "shrapnel-grenade",
+      "lil-smoke-grenade",
+      "barricade-kit"
+    ],
     "rewards": [
       {
         "id": "3b6676e4-b717-4a56-95a5-7e36153475eb",
@@ -3051,30 +3133,10 @@
       }
     ],
     "rewardItemIds": [
-      {
-        "id": "097e24dd-82bc-4733-9d15-42fc6dc712bf",
-        "item": {
-          "id": "magnetron",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/magnetron.webp",
-          "name": "Magnetron",
-          "rarity": "Epic",
-          "item_type": "Recyclable"
-        },
-        "item_id": "magnetron",
-        "quantity": 1
-      },
-      {
-        "id": "1acd2461-d4a9-4d1c-ba2e-1e0ebc03c1c9",
-        "item": {
-          "id": "flow-controller",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/flow-controller.webp",
-          "name": "Flow Controller",
-          "rarity": "Rare",
-          "item_type": "Recyclable"
-        },
-        "item_id": "flow-controller",
-        "quantity": 1
-      }
+      "light-ammo",
+      "extended-light-mag-ii",
+      "silencer-ii",
+      "burletta-iiii"
     ],
     "rewards": [
       {
@@ -3139,7 +3201,11 @@
       "Investigate any suspicious objects"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "spring",
+      "mod-components",
+      "duct-tape-recipe"
+    ],
     "rewards": [
       {
         "id": "ef00e0ac-9ef0-4d78-88e4-b2ba392ee331",
@@ -3189,7 +3255,11 @@
       "Destroy a Hornet with a Trigger Nade or Snap Blast grenade"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "processor",
+      "trigger-nade-recipe",
+      "crude-explosives"
+    ],
     "rewards": [
       {
         "id": "2e349990-8fce-4ca5-b727-3a61c897ba54",
@@ -3244,7 +3314,10 @@
       "Shut down the EMP trap"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "advanced-mechanical-components",
+      "medium-gun-parts"
+    ],
     "rewards": [
       {
         "id": "92122893-7311-473d-8a4f-cbf3a52fa527",
@@ -3283,7 +3356,11 @@
       "Find and turn the valve in the tunnels under Spaceport"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "synthesized-fuel",
+      "spaceport-trench-tower-key",
+      "blue-radio-renegade-color"
+    ],
     "rewards": [
       {
         "id": "55f335d9-fe29-40df-b278-5938be8fdba7",
@@ -3337,7 +3414,11 @@
       "Find and photograph the blueprints in the bunker"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "heavy-fuze-grenade",
+      "deadline",
+      "showstopper"
+    ],
     "rewards": [
       {
         "id": "6fca14ab-7c0c-477b-87d9-4d52a546fea7",
@@ -3390,7 +3471,10 @@
       "On Buried City, photograph the football magazines in any kiosk"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "tagging-grenade",
+      "firecracker"
+    ],
     "rewards": [
       {
         "id": "d5bc04a8-3159-442d-ae93-026bdfb3e649",
@@ -3430,7 +3514,9 @@
       "Deliver Major Aiva's Mementos to Tian Wen"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "hullcracker-blueprint"
+    ],
     "rewards": [
       {
         "id": "b10dfc87-5cc0-4c33-8ba1-8a36866680db",
@@ -3458,7 +3544,11 @@
       "Destroy a Turret"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "stitcher-ii",
+      "cheer-emote",
+      "extended-light-mag-i"
+    ],
     "rewards": [
       {
         "id": "645b2df6-8164-477f-af49-d84c1566158b",
@@ -3509,7 +3599,9 @@
       "Search for the seed vault in the 'room with a great view'"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "succulent-backpack-charm"
+    ],
     "rewards": [
       {
         "id": "4ab659f0-f4b5-40ab-bfb7-09ae2650b1df",
@@ -3554,18 +3646,10 @@
       }
     ],
     "rewardItemIds": [
-      {
-        "id": "69b82e4b-f856-4da1-b7fb-e90c02779aee",
-        "item": {
-          "id": "flushing-terminal-key",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/flushing-terminal-key.webp",
-          "name": "Flushing Terminal Key",
-          "rarity": "Common",
-          "item_type": "Trinket"
-        },
-        "item_id": "flushing-terminal-key",
-        "quantity": 1
-      }
+      "air-freshener",
+      "noisemaker",
+      "warden-outfit",
+      "dam-staff-room-key"
     ],
     "rewards": [
       {
@@ -3671,42 +3755,10 @@
       }
     ],
     "rewardItemIds": [
-      {
-        "id": "0fc17c35-e25d-445e-8029-f082dea303e5",
-        "item": {
-          "id": "snitch-scanner",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/snitch-scanner.webp",
-          "name": "Snitch Scanner",
-          "rarity": "Uncommon",
-          "item_type": "Recyclable"
-        },
-        "item_id": "snitch-scanner",
-        "quantity": 2
-      },
-      {
-        "id": "97d09979-887c-419c-8c6d-299776226863",
-        "item": {
-          "id": "wasp-driver",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/wasp-driver.webp",
-          "name": "Wasp Driver",
-          "rarity": "Rare",
-          "item_type": "Recyclable"
-        },
-        "item_id": "wasp-driver",
-        "quantity": 2
-      },
-      {
-        "id": "dae93130-0994-4d9d-abbc-cff78b5cad1f",
-        "item": {
-          "id": "hornet-driver",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/hornet-driver.webp",
-          "name": "Hornet Driver",
-          "rarity": "Rare",
-          "item_type": "Recyclable"
-        },
-        "item_id": "hornet-driver",
-        "quantity": 2
-      }
+      "defibrillator",
+      "dam-control-center-tower-key",
+      "orange-camo-origin-outfit",
+      "raider-hatch-key"
     ],
     "rewards": [
       {
@@ -3796,30 +3848,8 @@
       }
     ],
     "rewardItemIds": [
-      {
-        "id": "2b13e659-43eb-40b5-91be-0bd636285ce9",
-        "item": {
-          "id": "wires-recipe",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/wires.webp",
-          "name": "Wires",
-          "rarity": "Uncommon",
-          "item_type": "Topside Material"
-        },
-        "item_id": "wires-recipe",
-        "quantity": 6
-      },
-      {
-        "id": "82004bb4-c632-4cdf-afc2-76a1f65e683a",
-        "item": {
-          "id": "battery",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/battery.webp",
-          "name": "Battery",
-          "rarity": "Uncommon",
-          "item_type": "Topside Material"
-        },
-        "item_id": "battery",
-        "quantity": 1
-      }
+      "tactical-mk-1",
+      "adrenaline-shot"
     ],
     "rewards": [
       {
@@ -3872,18 +3902,9 @@
       }
     ],
     "rewardItemIds": [
-      {
-        "id": "f1a604e7-4b19-4d8f-a859-0abf9676c838",
-        "item": {
-          "id": "power-rod",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/power-rod.webp",
-          "name": "Power Rod",
-          "rarity": "Epic",
-          "item_type": "Advanced Material"
-        },
-        "item_id": "power-rod",
-        "quantity": 1
-      }
+      "advanced-mechanical-components",
+      "magnet",
+      "synthesized-fuel"
     ],
     "rewards": [
       {
@@ -3935,7 +3956,10 @@
       "Locate and upload the Blackmail Files to Celeste"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "heavy-gun-parts",
+      "medium-gun-parts"
+    ],
     "rewards": [
       {
         "id": "36dfa2f5-e34a-4eea-9d51-ef1783cd84da",
@@ -4005,30 +4029,9 @@
       }
     ],
     "rewardItemIds": [
-      {
-        "id": "959356ad-e436-4cc8-a483-45d856e73689",
-        "item": {
-          "id": "water-pump",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/water-pump.webp",
-          "name": "Water Pump",
-          "rarity": "Rare",
-          "item_type": "Recyclable"
-        },
-        "item_id": "water-pump",
-        "quantity": 1
-      },
-      {
-        "id": "f19bea42-64b5-45e5-9ebb-3b1341c1f96c",
-        "item": {
-          "id": "fertilizer",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/fertilizer.webp",
-          "name": "Fertilizer",
-          "rarity": "Common",
-          "item_type": "Nature"
-        },
-        "item_id": "fertilizer",
-        "quantity": 1
-      }
+      "il-toro-i",
+      "shotgun-choke-ii",
+      "shotgun-ammo"
     ],
     "rewards": [
       {
@@ -4082,7 +4085,11 @@
       "Upload the data to the computer terminal in any Field Depot"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "advanced-mechanical-components",
+      "canister",
+      "heavy-gun-parts"
+    ],
     "rewards": [
       {
         "id": "301ddd29-01ba-419e-bd78-1cbcbbf329e3",
@@ -4134,7 +4141,11 @@
       "Sample the water"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "simple-gun-parts",
+      "mechanical-components",
+      "spring"
+    ],
     "rewards": [
       {
         "id": "544ff8e0-aeb5-4706-a359-8566bc237648",
@@ -4198,18 +4209,9 @@
       }
     ],
     "rewardItemIds": [
-      {
-        "id": "9a8a0af6-0493-4bea-ba18-a4c25b1a8a8c",
-        "item": {
-          "id": "fireball-burner",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/fireball-burner.webp",
-          "name": "Fireball Burner",
-          "rarity": "Uncommon",
-          "item_type": "Recyclable"
-        },
-        "item_id": "fireball-burner",
-        "quantity": 1
-      }
+      "noisemaker",
+      "blaze-grenade",
+      "cans-backpack-attachment"
     ],
     "rewards": [
       {
@@ -4262,7 +4264,11 @@
       "On Spaceport, search for anything significant in Bilguun's Hideout, next to the Container Storage"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "vertical-grip-ii",
+      "stable-stock-ii",
+      "muzzle-brake-ii"
+    ],
     "rewards": [
       {
         "id": "459242ca-6f7b-4e7e-b4bb-f7c3c395eadc",
@@ -4315,7 +4321,10 @@
       "Inspect the communications device"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "medium-shield",
+      "looting-mk-2"
+    ],
     "rewards": [
       {
         "id": "5b20c967-2032-4cdd-b0b9-c260e3f5a3e7",
@@ -4354,7 +4363,11 @@
       "Visit any of the Control Rooms near the Assembly Line"
     ],
     "requirements": [],
-    "rewardItemIds": [],
+    "rewardItemIds": [
+      "spring",
+      "wires-recipe",
+      "tactical-mk-2"
+    ],
     "rewards": [
       {
         "id": "af785644-8018-4af3-b0fe-a16918d9a91f",
