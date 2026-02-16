@@ -198,7 +198,7 @@ class RulesScreen(AppScreen):
     #back {
         width: auto;
         min-width: 6;
-        height: 1;
+        min-height: 3;
         padding: 0 1;
         margin-right: 0;
     }
@@ -251,13 +251,13 @@ class RulesScreen(AppScreen):
 
     #rules-search {
         width: 1fr;
-        height: 1;
+        min-height: 3;
         margin-right: 1;
     }
 
     #rules-sort {
         width: 16;
-        height: 1;
+        min-height: 3;
         padding: 0 1;
         text-style: bold;
     }
@@ -363,7 +363,7 @@ class RulesScreen(AppScreen):
     #rule-management-actions Button {
         width: 1fr;
         min-width: 0;
-        height: 1;
+        height: 2;
         margin-right: 0;
         margin-bottom: 0;
         padding: 0 1;
@@ -635,7 +635,6 @@ class RulesScreen(AppScreen):
         changed_count = sum(
             1 for is_modified in self.modified_map.values() if is_modified
         )
-        filter_text = self.search_query.strip()
         sort_label = self.SORT_LABELS.get(self.sort_mode, self.sort_mode)
         self.query_one("#rules-sort", Button).label = f"Sort: {sort_label}"
         summary_parts = [
@@ -643,8 +642,6 @@ class RulesScreen(AppScreen):
             f"{changed_count} changed",
             f"sort {sort_label}",
         ]
-        if filter_text:
-            summary_parts.append(f"filter {filter_text}")
         self.query_one("#rules-list-summary", Static).update(" | ".join(summary_parts))
 
     def _list_name_limit(self, menu: OptionList) -> int:

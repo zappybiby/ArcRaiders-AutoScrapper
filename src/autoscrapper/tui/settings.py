@@ -160,6 +160,8 @@ class ScanSettingsScreen(AppScreen):
     .setting-value {
         width: 10;
         min-width: 10;
+        min-height: 3;
+        content-align: left middle;
         text-style: bold;
         border: round #334155;
         background: #111827;
@@ -171,7 +173,7 @@ class ScanSettingsScreen(AppScreen):
         width: 10;
         min-width: 10;
         max-width: 10;
-        height: 1;
+        min-height: 3;
         padding: 0 1;
     }
 
