@@ -1,0 +1,422 @@
+{
+  "nodes": {
+    "Picking_Up_The_Pieces": "Picking Up The Pieces",
+    "Clearer_Skies": "Clearer Skies",
+    "Trash_Into_Treasure": "Trash Into Treasure",
+    "Off_The_Radar": "Off The Radar",
+    "A_Bad_Feeling": "A Bad Feeling",
+    "In_My_Image": "In My Image",
+    "Cold_Storage": "Cold Storage",
+    "Snap_And_Salvage": "Snap And Salvage",
+    "With_A_View": "With A View",
+    "Movie_Night": "Movie Night",
+    "The_Right_Tool": "The Right Tool",
+    "A_Better_Use": "A Better Use",
+    "Greasing_Her_Palms": "Greasing Her Palms",
+    "Hatch_Repairs": "Hatch Repairs",
+    "Down_To_Earth": "Down To Earth",
+    "The_Trifecta": "The Trifecta",
+    "Safe_Passage": "Safe Passage",
+    "What_Goes_Around": "What Goes Around",
+    "Sparks_Fly": "Sparks Fly",
+    "The_League": "The League",
+    "Out_Of_The_Shadows": "Out Of The Shadows",
+    "Doctors_Orders": "Doctor's Orders",
+    "Dormant_Barons": "Dormant Barons",
+    "Medical_Merchandise": "Medical Merchandise",
+    "A_Reveal_In_Ruins": "A Reveal In Ruins",
+    "A_Lay_Of_The_Land": "A Lay Of The Land",
+    "Eyes_In_The_Sky": "Eyes In The Sky",
+    "Back_On_Top": "Back On Top",
+    "After_Rain_Comes": "After Rain Comes",
+    "A_Balanced_Harvest": "A Balanced Harvest",
+    "Untended_Garden": "Untended Garden",
+    "The_Root_Of_The_Matter": "The Root Of The Matter",
+    "Water_Troubles": "Water Troubles",
+    "Source_Of_The_Contamination": "Source Of The Contamination",
+    "Switching_The_Supply": "Switching The Supply",
+    "A_Warm_Place_To_Rest": "A Warm Place To Rest",
+    "Prescriptions_Of_The_Past": "Prescriptions Of The Past",
+    "Power_Out": "Power Out",
+    "Flickering_Threat": "Flickering Threat",
+    "Bees": "Bees!",
+    "Espresso": "Espresso",
+    "Life_Of_A_Pharmacist": "Life Of A Pharmacist",
+    "A_Toxic_Trail": "A Toxic Trail",
+    "The_Stench_Of_Corruption": "The Stench Of Corruption",
+    "Tribute_To_Toledo": "Tribute To Toledo",
+    "Digging_Up_Dirt": "Digging Up Dirt",
+    "Turnabout": "Turnabout",
+    "Building_A_Library": "Building A Library",
+    "A_New_Type_Of_Plant": "A New Type Of Plant",
+    "A_First_Foothold": "A First Foothold",
+    "Reduced_To_Rubble": "Reduced To Rubble",
+    "With_A_Trace": "With A Trace",
+    "The_Clean_Dream": "The Clean Dream",
+    "A_Prime_Specimen": "A Prime Specimen",
+    "Armored_Transports": "Armored Transports",
+    "Mixed_Signals": "Mixed Signals",
+    "What_We_Left_Behind": "What We Left Behind",
+    "Broken_Monument": "Broken Monument",
+    "Straight_Record": "Straight Record",
+    "Marked_For_Death": "Marked For Death",
+    "Keeping_The_Memory": "Keeping The Memory",
+    "Echoes_Of_Victory_Ridge": "Echoes Of Victory Ridge",
+    "Market_Correction": "Market Correction",
+    "Eyes_On_The_Prize": "Eyes On The Prize",
+    "Industrial_Espionage": "Industrial Espionage",
+    "Unexpected_Initiative": "Unexpected Initiative",
+    "A_Symbol_Of_Unification": "A Symbol Of Unification",
+    "Celestes_Journals": "Celeste's Journal's",
+    "The_Majors_Footlocker": "The Major's Footlocker",
+    "Our_Presence_Up_There": "Our Presence Up There",
+    "Lost_In_Transmission": "Lost In Transmission",
+    "Communication_Hideout": "Communication Hideout",
+    "Into_The_Fray": "Into The Fray",
+    "Paving_The_Way": "Paving The Way",
+    "Combat_Recon": "Combat Recon",
+    "Bombing_Run": "Bombing Run",
+    "Deciphering_The_Data": "Deciphering The Data",
+    "Groundbreaking": "Groundbreaking",
+    "On_Deaf_Ears": "On Deaf Ears",
+    "On_The_Map": "On The Map"
+  },
+  "edges": [
+    [
+      "Picking_Up_The_Pieces",
+      "Clearer_Skies"
+    ],
+    [
+      "Picking_Up_The_Pieces",
+      "Trash_Into_Treasure"
+    ],
+    [
+      "Clearer_Skies",
+      "Off_The_Radar"
+    ],
+    [
+      "Trash_Into_Treasure",
+      "Off_The_Radar"
+    ],
+    [
+      "Off_The_Radar",
+      "A_Bad_Feeling"
+    ],
+    [
+      "A_Bad_Feeling",
+      "In_My_Image"
+    ],
+    [
+      "In_My_Image",
+      "Cold_Storage"
+    ],
+    [
+      "Cold_Storage",
+      "Snap_And_Salvage"
+    ],
+    [
+      "Snap_And_Salvage",
+      "With_A_View"
+    ],
+    [
+      "With_A_View",
+      "Movie_Night"
+    ],
+    [
+      "A_Bad_Feeling",
+      "The_Right_Tool"
+    ],
+    [
+      "The_Right_Tool",
+      "A_Better_Use"
+    ],
+    [
+      "A_Better_Use",
+      "Greasing_Her_Palms"
+    ],
+    [
+      "A_Bad_Feeling",
+      "Hatch_Repairs"
+    ],
+    [
+      "Hatch_Repairs",
+      "Down_To_Earth"
+    ],
+    [
+      "Down_To_Earth",
+      "The_Trifecta"
+    ],
+    [
+      "A_Bad_Feeling",
+      "Safe_Passage"
+    ],
+    [
+      "Safe_Passage",
+      "What_Goes_Around"
+    ],
+    [
+      "What_Goes_Around",
+      "Sparks_Fly"
+    ],
+    [
+      "Sparks_Fly",
+      "The_League"
+    ],
+    [
+      "Sparks_Fly",
+      "Out_Of_The_Shadows"
+    ],
+    [
+      "Greasing_Her_Palms",
+      "Doctors_Orders"
+    ],
+    [
+      "Greasing_Her_Palms",
+      "Dormant_Barons"
+    ],
+    [
+      "Doctors_Orders",
+      "Medical_Merchandise"
+    ],
+    [
+      "Medical_Merchandise",
+      "A_Reveal_In_Ruins"
+    ],
+    [
+      "A_Reveal_In_Ruins",
+      "A_Lay_Of_The_Land"
+    ],
+    [
+      "A_Lay_Of_The_Land",
+      "Eyes_In_The_Sky"
+    ],
+    [
+      "Eyes_In_The_Sky",
+      "Back_On_Top"
+    ],
+    [
+      "Eyes_In_The_Sky",
+      "After_Rain_Comes"
+    ],
+    [
+      "Eyes_In_The_Sky",
+      "A_Balanced_Harvest"
+    ],
+    [
+      "A_Balanced_Harvest",
+      "Untended_Garden"
+    ],
+    [
+      "Untended_Garden",
+      "The_Root_Of_The_Matter"
+    ],
+    [
+      "The_Root_Of_The_Matter",
+      "Water_Troubles"
+    ],
+    [
+      "Water_Troubles",
+      "Source_Of_The_Contamination"
+    ],
+    [
+      "Source_Of_The_Contamination",
+      "Switching_The_Supply"
+    ],
+    [
+      "Switching_The_Supply",
+      "A_Warm_Place_To_Rest"
+    ],
+    [
+      "A_Warm_Place_To_Rest",
+      "Prescriptions_Of_The_Past"
+    ],
+    [
+      "Prescriptions_Of_The_Past",
+      "Power_Out"
+    ],
+    [
+      "Power_Out",
+      "Flickering_Threat"
+    ],
+    [
+      "Flickering_Threat",
+      "Bees"
+    ],
+    [
+      "Bees",
+      "Espresso"
+    ],
+    [
+      "Espresso",
+      "Life_Of_A_Pharmacist"
+    ],
+    [
+      "Life_Of_A_Pharmacist",
+      "A_Toxic_Trail"
+    ],
+    [
+      "A_Toxic_Trail",
+      "The_Stench_Of_Corruption"
+    ],
+    [
+      "Life_Of_A_Pharmacist",
+      "Tribute_To_Toledo"
+    ],
+    [
+      "Tribute_To_Toledo",
+      "Digging_Up_Dirt"
+    ],
+    [
+      "Digging_Up_Dirt",
+      "Turnabout"
+    ],
+    [
+      "Digging_Up_Dirt",
+      "Building_A_Library"
+    ],
+    [
+      "Building_A_Library",
+      "A_New_Type_Of_Plant"
+    ],
+    [
+      "A_First_Foothold",
+      "Reduced_To_Rubble"
+    ],
+    [
+      "Reduced_To_Rubble",
+      "With_A_Trace"
+    ],
+    [
+      "With_A_Trace",
+      "The_Clean_Dream"
+    ],
+    [
+      "The_Clean_Dream",
+      "A_Prime_Specimen"
+    ],
+    [
+      "With_A_Trace",
+      "Armored_Transports"
+    ],
+    [
+      "A_New_Type_Of_Plant",
+      "Armored_Transports"
+    ],
+    [
+      "Dormant_Barons",
+      "Mixed_Signals"
+    ],
+    [
+      "Dormant_Barons",
+      "What_We_Left_Behind"
+    ],
+    [
+      "What_We_Left_Behind",
+      "Broken_Monument"
+    ],
+    [
+      "Broken_Monument",
+      "Straight_Record"
+    ],
+    [
+      "Broken_Monument",
+      "Marked_For_Death"
+    ],
+    [
+      "Straight_Record",
+      "Keeping_The_Memory"
+    ],
+    [
+      "Keeping_The_Memory",
+      "Echoes_Of_Victory_Ridge"
+    ],
+    [
+      "Marked_For_Death",
+      "Market_Correction"
+    ],
+    [
+      "Market_Correction",
+      "Eyes_On_The_Prize"
+    ],
+    [
+      "Eyes_On_The_Prize",
+      "Industrial_Espionage"
+    ],
+    [
+      "Echoes_Of_Victory_Ridge",
+      "Unexpected_Initiative"
+    ],
+    [
+      "Industrial_Espionage",
+      "Unexpected_Initiative"
+    ],
+    [
+      "Unexpected_Initiative",
+      "A_Symbol_Of_Unification"
+    ],
+    [
+      "A_Symbol_Of_Unification",
+      "Celestes_Journals"
+    ],
+    [
+      "A_Symbol_Of_Unification",
+      "The_Majors_Footlocker"
+    ],
+    [
+      "A_Symbol_Of_Unification",
+      "Out_Of_The_Shadows"
+    ],
+    [
+      "Celestes_Journals",
+      "Back_On_Top"
+    ],
+    [
+      "The_Majors_Footlocker",
+      "Back_On_Top"
+    ],
+    [
+      "Back_On_Top",
+      "Our_Presence_Up_There"
+    ],
+    [
+      "Our_Presence_Up_There",
+      "Lost_In_Transmission"
+    ],
+    [
+      "Lost_In_Transmission",
+      "Communication_Hideout"
+    ],
+    [
+      "Communication_Hideout",
+      "Into_The_Fray"
+    ],
+    [
+      "Into_The_Fray",
+      "Paving_The_Way"
+    ],
+    [
+      "Into_The_Fray",
+      "Combat_Recon"
+    ],
+    [
+      "Combat_Recon",
+      "Bombing_Run"
+    ],
+    [
+      "Paving_The_Way",
+      "Deciphering_The_Data"
+    ],
+    [
+      "Deciphering_The_Data",
+      "Groundbreaking"
+    ],
+    [
+      "Groundbreaking",
+      "On_Deaf_Ears"
+    ],
+    [
+      "On_Deaf_Ears",
+      "On_The_Map"
+    ]
+  ]
+}

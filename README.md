@@ -35,16 +35,19 @@ From a terminal:
 
 ## Usage
 
-Open the interactive menu to scan, change settings, or adjust item rules:
+Open the Textual UI (default):
 - `uv run autoscrapper`
 
 Start a scan directly:
 - `uv run autoscrapper scan`
+- `uv run autoscrapper scan --dry-run`
+
+`scan` only supports the optional `--dry-run` flag. Other workflows are in the Textual UI.
 
 How AutoScrapper Works:
 - Open your inventory and make sure you are scrolled to the top of it
 - Start the scan, then alt-tab back into the game. It will then begin after a few seconds.
-- Press Escape to abort (may need multiple presses).
+- Press the configured stop key (default Esc) to abort (may need multiple presses).
 
 Linux notes:
 - Default target window title is `Arc Raiders`. Override with `AUTOSCRAPPER_TARGET_APP` if needed.

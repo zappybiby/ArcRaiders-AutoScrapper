@@ -1,0 +1,8260 @@
+[
+  {
+    "id": "acoustic-guitar",
+    "name": "Acoustic Guitar",
+    "type": "Quick Use",
+    "rarity": "legendary",
+    "value": 7000,
+    "weightKg": 1,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "adrenaline-shot",
+    "name": "Adrenaline Shot",
+    "type": "Quick Use",
+    "rarity": "common",
+    "value": 300,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "craftBench": "Med Stations 1",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "plastic-parts": 3,
+      "chemicals": 3
+    },
+    "recyclesInto": {
+      "chemicals": 1,
+      "plastic-parts": 1
+    }
+  },
+  {
+    "id": "advanced-arc-powercell",
+    "name": "Advanced ARC Powercell",
+    "type": "Topside Material",
+    "rarity": "rare",
+    "value": 640,
+    "weightKg": 0.5,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-powercell": 2
+    }
+  },
+  {
+    "id": "advanced-electrical-components",
+    "name": "Advanced Electrical Components",
+    "type": "Refined Material",
+    "rarity": "rare",
+    "value": 1750,
+    "weightKg": 1,
+    "stackSize": 5,
+    "craftBench": "Refiner",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "wires-recipe": 3,
+      "electrical-components": 2
+    },
+    "recyclesInto": {
+      "electrical-components": 1,
+      "wires-recipe": 1
+    }
+  },
+  {
+    "id": "advanced-mechanical-components",
+    "name": "Advanced Mechanical Components",
+    "type": "Advanced Material",
+    "rarity": "rare",
+    "value": 1750,
+    "weightKg": 1,
+    "stackSize": 5,
+    "craftBench": "Refiner",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "spring": 2,
+      "mechanical-components": 2
+    },
+    "recyclesInto": {
+      "mechanical-components": 1,
+      "spring": 1
+    }
+  },
+  {
+    "id": "agave",
+    "name": "Agave",
+    "type": "Nature",
+    "rarity": "uncommon",
+    "value": 1000,
+    "weightKg": 0.2,
+    "stackSize": 10,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "assorted-seeds": 3
+    }
+  },
+  {
+    "id": "agave-juice",
+    "name": "Agave Juice",
+    "type": "Consumable",
+    "rarity": "common",
+    "value": 1800,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "agave": 1,
+      "empty-wine-bottle": 1
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "air-freshener",
+    "name": "Air Freshener",
+    "type": "Trinket",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.3,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "alarm-clock",
+    "name": "Alarm Clock",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "plastic-parts": 6,
+      "processor": 1
+    }
+  },
+  {
+    "id": "alien-duck",
+    "name": "Alien Duck",
+    "type": "Trinket",
+    "rarity": "uncommon",
+    "value": 1000,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "ancient-fort-security-code",
+    "name": "Ancient Fort Security Code",
+    "type": "Key",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "angled-grip-i",
+    "name": "Angled Grip I",
+    "type": "Modification",
+    "rarity": "common",
+    "value": 640,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "plastic-parts": 6,
+      "duct-tape-recipe": 1
+    },
+    "recyclesInto": {
+      "plastic-parts": 6
+    }
+  },
+  {
+    "id": "angled-grip-ii",
+    "name": "Angled Grip II",
+    "type": "Modification",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 2,
+      "duct-tape-recipe": 3
+    },
+    "recyclesInto": {
+      "duct-tape-recipe": 1,
+      "mechanical-components": 1
+    }
+  },
+  {
+    "id": "angled-grip-ii-recipe",
+    "name": "Angled Grip II Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "angled-grip-iii",
+    "name": "Angled Grip III",
+    "type": "Modification",
+    "rarity": "rare",
+    "value": 5000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mod-components": 2,
+      "duct-tape-recipe": 5
+    },
+    "recyclesInto": {
+      "duct-tape-recipe": 2,
+      "mod-components": 1
+    }
+  },
+  {
+    "id": "angled-grip-iii-recipe",
+    "name": "Angled Grip III Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "antiseptic",
+    "name": "Antiseptic",
+    "type": "Refined Material",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 1,
+    "stackSize": 5,
+    "craftBench": "Refiner",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "chemicals": 10,
+      "great-muullein": 2
+    },
+    "recyclesInto": {
+      "chemicals": 10
+    }
+  },
+  {
+    "id": "anvil-recipe",
+    "name": "Anvil Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "anvil-i",
+    "name": "Anvil I",
+    "type": "Weapon",
+    "rarity": "uncommon",
+    "value": 5000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench 2",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 5,
+      "simple-gun-parts": 6,
+      "anvil-recipe": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 2,
+      "simple-gun-parts": 2
+    }
+  },
+  {
+    "id": "anvil-ii",
+    "name": "Anvil II",
+    "type": "Weapon",
+    "rarity": "uncommon",
+    "value": 7000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench II",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "anvil-i": 1,
+      "mechanical-components": 3,
+      "simple-gun-parts": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 3,
+      "simple-gun-parts": 3
+    }
+  },
+  {
+    "id": "anvil-iii",
+    "name": "Anvil III",
+    "type": "Weapon",
+    "rarity": "uncommon",
+    "value": 10000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "anvil-ii": 1,
+      "mechanical-components": 4,
+      "heavy-gun-parts": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 4,
+      "simple-gun-parts": 4
+    }
+  },
+  {
+    "id": "anvil-iv",
+    "name": "Anvil IV",
+    "type": "Weapon",
+    "rarity": "uncommon",
+    "value": 13000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 4,
+      "heavy-gun-parts": 1,
+      "anvil-iii": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 5,
+      "simple-gun-parts": 5
+    }
+  },
+  {
+    "id": "anvil-splitter",
+    "name": "Anvil Splitter",
+    "type": "Modification",
+    "rarity": "legendary",
+    "value": 7000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "mod-components": 1,
+      "processor": 1
+    }
+  },
+  {
+    "id": "aphelion-rifle",
+    "name": "Aphelion Rifle",
+    "type": "Weapon",
+    "rarity": "legendary",
+    "value": 27500,
+    "weightKg": 10,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "magnetic-accelerator": 3,
+      "complex-gun-parts": 3,
+      "matriarch-reactor": 1
+    },
+    "recyclesInto": {
+      "magnetic-accelerator": 2,
+      "complex-gun-parts": 1
+    }
+  },
+  {
+    "id": "aphelion-rifle-blueprint",
+    "name": "Aphelion Rifle Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "apricot",
+    "name": "Apricot",
+    "type": "Nature",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.2,
+    "stackSize": 10,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "assorted-seeds": 3
+    }
+  },
+  {
+    "id": "arc-alloy",
+    "name": "ARC Alloy",
+    "type": "Topside Material",
+    "rarity": "uncommon",
+    "value": 200,
+    "weightKg": 0.25,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 2
+    }
+  },
+  {
+    "id": "arc-circuitry",
+    "name": "ARC Circuitry",
+    "type": "Topside Material",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 0.3,
+    "stackSize": 5,
+    "craftBench": "Refiner II",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "arc-alloy": 8
+    },
+    "recyclesInto": {
+      "arc-alloy": 2
+    }
+  },
+  {
+    "id": "arc-coolant",
+    "name": "ARC Coolant",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "chemicals": 16
+    }
+  },
+  {
+    "id": "arc-flex-rubber",
+    "name": "ARC Flex Rubber",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "rubber-parts-recipe": 16
+    }
+  },
+  {
+    "id": "arc-motion-core",
+    "name": "ARC Motion Core",
+    "type": "Topside Material",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 0.3,
+    "stackSize": 5,
+    "craftBench": "Refiner II",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "arc-alloy": 8
+    },
+    "recyclesInto": {
+      "arc-alloy": 2
+    }
+  },
+  {
+    "id": "arc-performance-steel",
+    "name": "ARC Performance Steel",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 12
+    }
+  },
+  {
+    "id": "arc-powercell",
+    "name": "ARC Powercell",
+    "type": "Topside Material",
+    "rarity": "common",
+    "value": 270,
+    "weightKg": 0.5,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "arc-synthetic-resin",
+    "name": "ARC Synthetic Resin",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "plastic-parts": 14
+    }
+  },
+  {
+    "id": "arc-thermo-lining",
+    "name": "ARC Thermo Lining",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "fabric": 16
+    }
+  },
+  {
+    "id": "arpeggio-i",
+    "name": "Arpeggio I",
+    "type": "Weapon",
+    "rarity": "uncommon",
+    "value": 5500,
+    "weightKg": 6,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 6,
+      "simple-gun-parts": 6
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "arpeggio-ii",
+    "name": "Arpeggio II",
+    "type": "Weapon",
+    "rarity": "uncommon",
+    "value": 8000,
+    "weightKg": 6,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "arpeggio-i": 1,
+      "metal-parts": 14,
+      "simple-gun-parts": 3
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "arpeggio-iii",
+    "name": "Arpeggio III",
+    "type": "Weapon",
+    "rarity": "uncommon",
+    "value": 11500,
+    "weightKg": 6,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "arpeggio-ii": 1,
+      "metal-parts": 10,
+      "simple-gun-parts": 4
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "arpeggio-iv",
+    "name": "Arpeggio IV",
+    "type": "Weapon",
+    "rarity": "uncommon",
+    "value": 15000,
+    "weightKg": 6,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 1,
+      "medium-gun-parts": 2,
+      "arpeggio-iii": 1
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "assorted-seeds",
+    "name": "Assorted Seeds",
+    "type": "Nature",
+    "rarity": "common",
+    "value": 100,
+    "weightKg": 0.05,
+    "stackSize": 100,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "aviator-outfit",
+    "name": "Aviator (Outfit)",
+    "type": "Misc",
+    "rarity": null,
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "bag-radio-renegade-variant",
+    "name": "Bag (Radio Renegade Variant)",
+    "type": "Misc",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "banana-backpack-charm",
+    "name": "Banana (Backpack Charm)",
+    "type": "Misc",
+    "rarity": null,
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "bandage",
+    "name": "Bandage",
+    "type": "Quick Use",
+    "rarity": "common",
+    "value": 250,
+    "weightKg": 0.1,
+    "stackSize": 5,
+    "craftBench": "Basic Bench or Med Station 1",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "fabric": 5
+    },
+    "recyclesInto": {
+      "fabric": 2
+    }
+  },
+  {
+    "id": "barricade-kit",
+    "name": "Barricade Kit",
+    "type": "Quick Use",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.4,
+    "stackSize": 3,
+    "craftBench": "Utility Bench 1",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 1
+    },
+    "recyclesInto": {
+      "metal-parts": 4
+    }
+  },
+  {
+    "id": "barricade-kit-recipe",
+    "name": "Barricade Kit Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "bastion-part",
+    "name": "Bastion Cell",
+    "type": "Recyclable",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 0.25,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 2,
+      "advanced-mechanical-components": 2
+    }
+  },
+  {
+    "id": "battery",
+    "name": "Battery",
+    "type": "Topside Material",
+    "rarity": "uncommon",
+    "value": 250,
+    "weightKg": 0.25,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 2
+    }
+  },
+  {
+    "id": "bettina-blueprint",
+    "name": "Bettina Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "bettina-i",
+    "name": "Bettina I",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 8000,
+    "weightKg": 11,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-mechanical-components": 3,
+      "heavy-gun-parts": 3,
+      "canister": 3
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "bettina-ii",
+    "name": "Bettina II",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 11000,
+    "weightKg": 11,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-mechanical-components": 1,
+      "heavy-gun-parts": 2
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 2,
+      "heavy-gun-parts": 2
+    }
+  },
+  {
+    "id": "bettina-iii",
+    "name": "Bettina III",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 14000,
+    "weightKg": 11,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-mechanical-components": 1,
+      "heavy-gun-parts": 2
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 2,
+      "heavy-gun-parts": 3
+    }
+  },
+  {
+    "id": "bettina-iv",
+    "name": "Bettina IV",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 18000,
+    "weightKg": 11,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-mechanical-components": 2,
+      "heavy-gun-parts": 2
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 3,
+      "heavy-gun-parts": 3
+    }
+  },
+  {
+    "id": "bicycle-pump",
+    "name": "Bicycle Pump",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "canister": 4,
+      "metal-parts": 10
+    }
+  },
+  {
+    "id": "binoculars",
+    "name": "Binoculars",
+    "type": "Gadget",
+    "rarity": "common",
+    "value": 640,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": "Utility Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "plastic-parts": 8,
+      "rubber-parts-recipe": 4
+    },
+    "recyclesInto": {
+      "plastic-parts": 4,
+      "rubber-parts-recipe": 2
+    }
+  },
+  {
+    "id": "bison-driver",
+    "name": "Bison Driver",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2500,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-motion-core": 2,
+      "arc-alloy": 2
+    }
+  },
+  {
+    "id": "black-eye-face-style",
+    "name": "Black Eye (Face Style)",
+    "type": "Misc",
+    "rarity": null,
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "black-hiker-colour",
+    "name": "Black (Hiker Colour)",
+    "type": "Misc",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "black-and-white-origin-color",
+    "name": "Black & White (Origin Color)",
+    "type": "Misc",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "blaze-grenade",
+    "name": "Blaze Grenade",
+    "type": "Throwable",
+    "rarity": "rare",
+    "value": 1600,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "craftBench": "Explosive Bench 3",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "oil": 2,
+      "explosive-compound": 1
+    },
+    "recyclesInto": {
+      "metal-parts": 4,
+      "oil": 2
+    }
+  },
+  {
+    "id": "blaze-grenade-blueprint",
+    "name": "Blaze Grenade Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "blaze-grenade-trap",
+    "name": "Blaze Grenade Trap",
+    "type": "Quick Use",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 0.3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "bloated-tuna-can",
+    "name": "Bloated Tuna Can",
+    "type": "Trinket",
+    "rarity": "common",
+    "value": 1000,
+    "weightKg": 0.2,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "blue-gate-cellar-key",
+    "name": "Blue Gate Cellar Key",
+    "type": "Key",
+    "rarity": "rare",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "blue-gate-communication-tower-key",
+    "name": "Blue Gate Communication Tower Key",
+    "type": "Key",
+    "rarity": "rare",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "blue-gate-confiscation-room-key",
+    "name": "Blue Gate Confiscation Room Key",
+    "type": "Key",
+    "rarity": "epic",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-02-12T12:31:24.507299+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "blue-gate-village-key",
+    "name": "Blue Gate Village Key",
+    "type": "Key",
+    "rarity": "uncommon",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "blue-light-stick",
+    "name": "Blue Light Stick",
+    "type": "Quick Use",
+    "rarity": "common",
+    "value": 150,
+    "weightKg": 0.15,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "chemicals": 1
+    }
+  },
+  {
+    "id": "blue-light-stick-blueprint",
+    "name": "Blue Light Stick Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "blue-radio-renegade-color",
+    "name": "Blue (Radio Renegade Color)",
+    "type": "Misc",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "blue-yellow-aviator-color",
+    "name": "Blue Yellow (Aviator Color)",
+    "type": "Misc",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "bobcat-i-recipe",
+    "name": "Bobcat Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "bobcat-i",
+    "name": "Bobcat I",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 13000,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench 3",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "magnetic-accelerator": 1,
+      "light-gun-parts": 3,
+      "bobcat-i-recipe": 1,
+      "exodus-modules": 2
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "bobcat-ii",
+    "name": "Bobcat II",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 17000,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "bobcat-i": 1,
+      "advanced-mechanical-components": 2,
+      "light-gun-parts": 1
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 3,
+      "light-gun-parts": 3
+    }
+  },
+  {
+    "id": "bobcat-iii",
+    "name": "Bobcat III",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 22000,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-mechanical-components": 2,
+      "light-gun-parts": 3,
+      "bobcat-ii": 1
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 4,
+      "light-gun-parts": 4
+    }
+  },
+  {
+    "id": "bobcat-iv",
+    "name": "Bobcat IV",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 27000,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "bobcat-iii": 1,
+      "advanced-mechanical-components": 2,
+      "light-gun-parts": 3
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 5,
+      "light-gun-parts": 4
+    }
+  },
+  {
+    "id": "bombardier-cell",
+    "name": "Bombardier Cell",
+    "type": "Recyclable",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "advanced-mechanical-components": 2,
+      "arc-alloy": 2
+    }
+  },
+  {
+    "id": "bow-and-arrow-emote",
+    "name": "Bow and Arrow (Emote)",
+    "type": "Misc",
+    "rarity": null,
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "breathtaking-snow-globe",
+    "name": "Breathtaking Snow Globe",
+    "type": "Trinket",
+    "rarity": "epic",
+    "value": 7000,
+    "weightKg": 0.2,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "briefcase-backpack-attachment",
+    "name": "Briefcase (Backpack Attachment)",
+    "type": "Misc",
+    "rarity": null,
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "broken-flashlight",
+    "name": "Broken Flashlight",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "battery": 2,
+      "metal-parts": 6
+    }
+  },
+  {
+    "id": "broken-guidance-system",
+    "name": "Broken Guidance System",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "processor": 4
+    }
+  },
+  {
+    "id": "broken-handcuffs",
+    "name": "Broken Handcuffs",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 270,
+    "weightKg": 0.8,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "broken-handheld-radio",
+    "name": "Broken Handheld Radio",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "sensors-recipe": 3,
+      "wires-recipe": 2
+    }
+  },
+  {
+    "id": "broken-taser",
+    "name": "Broken Taser",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "battery": 2,
+      "wires-recipe": 2
+    }
+  },
+  {
+    "id": "burgerboy-backpack-charm",
+    "name": "Burgerboy (Backpack Charm)",
+    "type": "Misc",
+    "rarity": null,
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "buried-city-hospital-key",
+    "name": "Buried City Hospital Key",
+    "type": "Key",
+    "rarity": "rare",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "buried-city-jkv-employee-access-card",
+    "name": "Buried City JKV Employee Access Card",
+    "type": "Key",
+    "rarity": "uncommon",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "buried-city-residential-master-key",
+    "name": "Buried City Residential Master Key",
+    "type": "Key",
+    "rarity": "uncommon",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "buried-city-town-hall-key",
+    "name": "Buried City Town Hall Key",
+    "type": "Key",
+    "rarity": "epic",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "burltetta-recipe",
+    "name": "Burletta Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "burletta-i",
+    "name": "Burletta I",
+    "type": "Weapon",
+    "rarity": "uncommon",
+    "value": 2900,
+    "weightKg": 4,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench 2",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 3,
+      "simple-gun-parts": 3,
+      "burltetta-recipe": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 1,
+      "simple-gun-parts": 2
+    }
+  },
+  {
+    "id": "burletta-ii",
+    "name": "Burletta II",
+    "type": "Weapon",
+    "rarity": "uncommon",
+    "value": 5000,
+    "weightKg": 4,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "burletta-i": 1,
+      "mechanical-components": 3,
+      "simple-gun-parts": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 2,
+      "simple-gun-parts": 2
+    }
+  },
+  {
+    "id": "burletta-iiii",
+    "name": "Burletta III",
+    "type": "Weapon",
+    "rarity": "uncommon",
+    "value": 7000,
+    "weightKg": 4,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "burletta-ii": 1,
+      "mechanical-components": 3,
+      "simple-gun-parts": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 3,
+      "simple-gun-parts": 3
+    }
+  },
+  {
+    "id": "burletta-iv",
+    "name": "Burletta IV",
+    "type": "Weapon",
+    "rarity": "uncommon",
+    "value": 10000,
+    "weightKg": 4,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "burletta-iiii": 1,
+      "mechanical-components": 4,
+      "light-gun-parts": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 4,
+      "simple-gun-parts": 4
+    }
+  },
+  {
+    "id": "burned-arc-circuitry",
+    "name": "Burned ARC Circuitry",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 2
+    }
+  },
+  {
+    "id": "burnt-out-candles",
+    "name": "Burnt-Out Candles",
+    "type": "Trinket",
+    "rarity": "common",
+    "value": 640,
+    "weightKg": 0.2,
+    "stackSize": 16,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "camera-lens",
+    "name": "Camera Lens",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.8,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "plastic-parts": 8
+    }
+  },
+  {
+    "id": "candleberries",
+    "name": "Candleberries",
+    "type": "Nature",
+    "rarity": "rare",
+    "value": 460,
+    "weightKg": 0.5,
+    "stackSize": 10,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "assorted-seeds": 2
+    }
+  },
+  {
+    "id": "candle-holder",
+    "name": "Candle Holder",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 8
+    }
+  },
+  {
+    "id": "canister",
+    "name": "Canister",
+    "type": "Topside Material",
+    "rarity": "uncommon",
+    "value": 300,
+    "weightKg": 0.25,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "plastic-parts": 3
+    }
+  },
+  {
+    "id": "cans-backpack-attachment",
+    "name": "Cans (Backpack Attachment)",
+    "type": "Cosmetic",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "cat-bed",
+    "name": "Cat Bed",
+    "type": "Trinket",
+    "rarity": "uncommon",
+    "value": 1000,
+    "weightKg": 0.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "cheer-emote",
+    "name": "Cheer (Emote)",
+    "type": "Misc",
+    "rarity": null,
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "chemicals",
+    "name": "Chemicals",
+    "type": "Basic Material",
+    "rarity": "common",
+    "value": 50,
+    "weightKg": 0.1,
+    "stackSize": 50,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "coffee-pot",
+    "name": "Coffee Pot",
+    "type": "Trinket",
+    "rarity": "common",
+    "value": 1000,
+    "weightKg": 0.3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "combat-mk-1",
+    "name": "Combat Mk. 1",
+    "type": "Augment",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 2,
+    "stackSize": 1,
+    "craftBench": "Equipment Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "plastic-parts": 6,
+      "rubber-parts-recipe": 6
+    },
+    "recyclesInto": {
+      "plastic-parts": 3,
+      "rubber-parts-recipe": 3
+    }
+  },
+  {
+    "id": "combat-mk-2",
+    "name": "Combat Mk. 2",
+    "type": "Augment",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 3,
+    "stackSize": 1,
+    "craftBench": "Equipment Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "electrical-components": 2,
+      "magnet": 3
+    },
+    "recyclesInto": {
+      "electrical-components": 1,
+      "magnet": 1
+    }
+  },
+  {
+    "id": "combat-mk-3-aggressive",
+    "name": "Combat Mk. 3 (Aggressive)",
+    "type": "Augment",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": "Gear Bench III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-electrical-components": 2,
+      "processor": 3
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "combat-mk3-aggressive-blueprint",
+    "name": "Combat Mk.3 (Aggressive) Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "combat-mk3-flanking",
+    "name": "Combat Mk.3 (Flanking) ",
+    "type": "Augment",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 3,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-electrical-components": 2,
+      "processor": 3
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "combat-mk-3-flanking",
+    "name": "Combat Mk. 3 (Flanking) Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "compensator-i",
+    "name": "Compensator I",
+    "type": "Modification",
+    "rarity": "common",
+    "value": 640,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": "Gunsmith",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "metal-parts": 6,
+      "wires-recipe": 1
+    },
+    "recyclesInto": {
+      "metal-parts": 5
+    }
+  },
+  {
+    "id": "compensator-ii",
+    "name": "Compensator II",
+    "type": "Modification",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": "Gunsmith II",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 2,
+      "wires-recipe": 4
+    },
+    "recyclesInto": {
+      "wires-recipe": 1,
+      "mechanical-components": 1
+    }
+  },
+  {
+    "id": "compensator-ii-recipe",
+    "name": "Compensator II Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "compensator-iii",
+    "name": "Compensator III",
+    "type": "Modification",
+    "rarity": "rare",
+    "value": 5000,
+    "weightKg": 0.75,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mod-components": 2,
+      "wires-recipe": 8
+    },
+    "recyclesInto": {
+      "wires-recipe": 2,
+      "mod-components": 1
+    }
+  },
+  {
+    "id": "compensator-iii-recipe",
+    "name": "Compensator III Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "complex-gun-parts",
+    "name": "Complex Gun Parts",
+    "type": "Topside Material",
+    "rarity": "epic",
+    "value": 3000,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": "Refiner",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "light-gun-parts": 2,
+      "medium-gun-parts": 2,
+      "heavy-gun-parts": 2
+    },
+    "recyclesInto": {
+      "simple-gun-parts": 3
+    }
+  },
+  {
+    "id": "complex-gun-parts-blueprint",
+    "name": "Complex Gun Parts Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "coolant",
+    "name": "Coolant",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "chemicals": 5,
+      "oil": 2
+    }
+  },
+  {
+    "id": "cooling-coil",
+    "name": "Cooling Coil",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "chemicals": 6,
+      "spring": 2
+    }
+  },
+  {
+    "id": "cooling-fan",
+    "name": "Cooling Fan",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "plastic-parts": 14,
+      "wires-recipe": 4
+    }
+  },
+  {
+    "id": "cracked-bioscanner",
+    "name": "Cracked Bioscanner",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "battery": 3,
+      "rubber-parts-recipe": 3
+    }
+  },
+  {
+    "id": "crimson-racer-aviator-colour",
+    "name": "Crimson Racer (Aviator Colour)",
+    "type": "Misc",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "crude-explosives",
+    "name": "Crude Explosives",
+    "type": "Refined Material",
+    "rarity": "uncommon",
+    "value": 270,
+    "weightKg": 0.5,
+    "stackSize": 10,
+    "craftBench": "Refiner",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "chemicals": 6
+    },
+    "recyclesInto": {
+      "chemicals": 3
+    }
+  },
+  {
+    "id": "crumpled-plastic-bottle",
+    "name": "Crumpled Plastic Bottle",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 270,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "plastic-parts": 4
+    }
+  },
+  {
+    "id": "damaged-arc-motion-core",
+    "name": "Damaged ARC Motion Core",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.25,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 2
+    }
+  },
+  {
+    "id": "damaged-arc-powercell",
+    "name": "Damaged ARC Powercell",
+    "type": "Recyclable",
+    "rarity": "common",
+    "value": 293,
+    "weightKg": 0.25,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 1
+    }
+  },
+  {
+    "id": "damaged-fireball-burner",
+    "name": "Damaged Fireball Burner",
+    "type": "Recyclable",
+    "rarity": "common",
+    "value": 270,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 1
+    }
+  },
+  {
+    "id": "damaged-heat-sink",
+    "name": "Damaged Heat Sink",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 6,
+      "wires-recipe": 2
+    }
+  },
+  {
+    "id": "danaged-hornet-driver",
+    "name": "Damaged Hornet Driver",
+    "type": "Recyclable",
+    "rarity": "common",
+    "value": 640,
+    "weightKg": 0.3,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "damaged-rocketeer-part",
+    "name": "Damaged Rocketeer Driver",
+    "type": "Recyclable",
+    "rarity": "common",
+    "value": 2000,
+    "weightKg": 0.25,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 3
+    }
+  },
+  {
+    "id": "damaged-tick-pod",
+    "name": "Damaged Tick Pod",
+    "type": "Recyclable",
+    "rarity": "common",
+    "value": 270,
+    "weightKg": 0.25,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 1
+    }
+  },
+  {
+    "id": "damaged-wasp-driver",
+    "name": "Damaged Wasp Driver",
+    "type": "Recyclable",
+    "rarity": "common",
+    "value": 270,
+    "weightKg": 0.25,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 1
+    }
+  },
+  {
+    "id": "dam-control-center-tower-key",
+    "name": "Dam Control Center Tower Key",
+    "type": "Key",
+    "rarity": "epic",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "dam-staff-room-key",
+    "name": "Dam Staff Room Key",
+    "type": "Key",
+    "rarity": "uncommon",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "dam-surveillance-key",
+    "name": "Dam Surveillance Key",
+    "type": "Key",
+    "rarity": "uncommon",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "dam-testing-annex-key",
+    "name": "Dam Testing Annex Key",
+    "type": "Key",
+    "rarity": "rare",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "dam-utility-key",
+    "name": "Dam Utility Key",
+    "type": "Quest Item",
+    "rarity": "uncommon",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "dart-board",
+    "name": "Dart Board",
+    "type": "Trinket",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "deadline",
+    "name": "Deadline",
+    "type": "Quick Use",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 1,
+    "stackSize": 1,
+    "craftBench": "Explosives Bench III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "explosive-compound": 3,
+      "arc-circuitry": 2
+    },
+    "recyclesInto": {
+      "explosive-compound": 1
+    }
+  },
+  {
+    "id": "deadline-blueprint",
+    "name": "Deadline Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "defibrillator",
+    "name": "Defibrillator",
+    "type": "Quick Use",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 0.75,
+    "stackSize": 3,
+    "craftBench": "Med Station 3",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "plastic-parts": 3,
+      "moss": 1
+    },
+    "recyclesInto": {
+      "moss": 1,
+      "plastic-parts": 1
+    }
+  },
+  {
+    "id": "defibrillator-recipe",
+    "name": "Defibrillator Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": "Medical Lab II",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "deflated-football",
+    "name": "Deflated Football",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 1000,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "fabric": 9,
+      "rubber-parts-recipe": 9
+    }
+  },
+  {
+    "id": "degraded-arc-rubber",
+    "name": "Degraded ARC Rubber",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "rubber-parts-recipe": 11
+    }
+  },
+  {
+    "id": "diving-googles",
+    "name": "Diving Goggles",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 640,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "rubber-parts-recipe": 12
+    }
+  },
+  {
+    "id": "dog-collar",
+    "name": "Dog Collar",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 640,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "fabric": 8,
+      "metal-parts": 1
+    }
+  },
+  {
+    "id": "doodly-duck",
+    "name": "Doodly Duck",
+    "type": "Trinket",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "door-blocker",
+    "name": "Door Blocker",
+    "type": "Quick Use",
+    "rarity": "common",
+    "value": 270,
+    "weightKg": 0.2,
+    "stackSize": 1,
+    "craftBench": "Utility Bench I ",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "metal-parts": 3,
+      "rubber-parts-recipe": 3
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "dried-out-arc-resin",
+    "name": "Dried-Out ARC Resin",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "plastic-parts": 9
+    }
+  },
+  {
+    "id": "duct-tape-recipe",
+    "name": "Duct Tape",
+    "type": "Topside Material",
+    "rarity": "uncommon",
+    "value": 300,
+    "weightKg": 0.25,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "fabric": 3
+    }
+  },
+  {
+    "id": "durable-cloth",
+    "name": "Durable Cloth",
+    "type": "Refined Material",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.25,
+    "stackSize": 10,
+    "craftBench": "Refiner",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "fabric": 14
+    },
+    "recyclesInto": {
+      "fabric": 6
+    }
+  },
+  {
+    "id": "electrical-components",
+    "name": "Electrical Components",
+    "type": "Refined Material",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.5,
+    "stackSize": 10,
+    "craftBench": "Refiner",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "plastic-parts": 8,
+      "rubber-parts-recipe": 4
+    },
+    "recyclesInto": {
+      "plastic-parts": 3,
+      "rubber-parts-recipe": 3
+    }
+  },
+  {
+    "id": "empty-wine-bottle",
+    "name": "Empty Wine Bottle",
+    "type": "Trinket",
+    "rarity": "common",
+    "value": 1000,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "energy-ammo",
+    "name": "Energy Clip",
+    "type": "Ammunition",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 0.3,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-arc-powercell": 1,
+      "battery": 2
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "equalizer-i",
+    "name": "Equalizer",
+    "type": "Weapon",
+    "rarity": "legendary",
+    "value": 27500,
+    "weightKg": 14,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench 3",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "queen-reactor": 1,
+      "magnetic-accelerator": 3,
+      "complex-gun-parts": 3
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "equalizer-recipe",
+    "name": "Equalizer Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "esr-analyzer",
+    "name": "ESR Analyzer",
+    "type": "Quest Item",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "exodus-modules",
+    "name": "Exodus Modules",
+    "type": "Topside Material",
+    "rarity": "epic",
+    "value": 2750,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "magnet": 2,
+      "processor": 2
+    }
+  },
+  {
+    "id": "expired-pasta",
+    "name": "Expired Pasta",
+    "type": "Trinket",
+    "rarity": "common",
+    "value": 1000,
+    "weightKg": 0.1,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "expired-respirator",
+    "name": "Expired Respirator",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 640,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "fabric": 4,
+      "rubber-parts-recipe": 8
+    }
+  },
+  {
+    "id": "explosive-compound",
+    "name": "Explosive Compound",
+    "type": "Refined Material",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 0.3,
+    "stackSize": 5,
+    "craftBench": "Refiner",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "crude-explosives": 2,
+      "oil": 2
+    },
+    "recyclesInto": {
+      "crude-explosives": 1
+    }
+  },
+  {
+    "id": "explosive-mine",
+    "name": "Explosive Mine",
+    "type": "Quick Use",
+    "rarity": "rare",
+    "value": 1500,
+    "weightKg": 0.4,
+    "stackSize": 3,
+    "craftBench": "Explosives Bench 3",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "sensors-recipe": 1,
+      "explosive-compound": 1
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "explosive-mine-blueprint",
+    "name": "Explosive Mine Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "extended-barrel",
+    "name": "Extended Barrel",
+    "type": "Modification",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mod-components": 2,
+      "wires-recipe": 8
+    },
+    "recyclesInto": {
+      "mod-components": 1,
+      "wires-recipe": 1
+    }
+  },
+  {
+    "id": "extended-barrel-recipe",
+    "name": "Extended Barrel Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "extended-light-mag-i",
+    "name": "Extended Light Mag I",
+    "type": "Modification",
+    "rarity": "common",
+    "value": 640,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": "Gunsmith",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "plastic-parts": 6,
+      "spring": 1
+    },
+    "recyclesInto": {
+      "plastic-parts": 6
+    }
+  },
+  {
+    "id": "extended-light-mag-ii",
+    "name": "Extended Light Mag II",
+    "type": "Modification",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench II",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 2,
+      "spring": 3
+    },
+    "recyclesInto": {
+      "mechanical-components": 1,
+      "spring": 1
+    }
+  },
+  {
+    "id": "extended-light-mag-ii-recipe",
+    "name": "Extended Light Mag II Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "extended-light-mag-iii",
+    "name": "Extended Light Mag III",
+    "type": "Modification",
+    "rarity": "rare",
+    "value": 5000,
+    "weightKg": 0.75,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mod-components": 2,
+      "spring": 5
+    },
+    "recyclesInto": {
+      "mod-components": 1,
+      "spring": 2
+    }
+  },
+  {
+    "id": "extended-light-mag-iii-recipe",
+    "name": "Extended Light Mag III Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "extended-medium-mag-i",
+    "name": "Extended Medium Mag I",
+    "type": "Modification",
+    "rarity": "common",
+    "value": 640,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "plastic-parts": 6,
+      "spring": 1
+    },
+    "recyclesInto": {
+      "plastic-parts": 6
+    }
+  },
+  {
+    "id": "extended-medium-mag-ii",
+    "name": "Extended Medium Mag II",
+    "type": "Modification",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 2,
+      "spring": 3
+    },
+    "recyclesInto": {
+      "mechanical-components": 1,
+      "spring": 1
+    }
+  },
+  {
+    "id": "extended-medium-mag-ii-recipe",
+    "name": "Extended Medium Mag II Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "extended-medium-mag-iii",
+    "name": "Extended Medium Mag III",
+    "type": "Modification",
+    "rarity": "rare",
+    "value": 5000,
+    "weightKg": 0.75,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mod-components": 1,
+      "spring": 6
+    },
+    "recyclesInto": {
+      "mod-components": 1,
+      "spring": 2
+    }
+  },
+  {
+    "id": "extended-medium-mag-iii-blueprint",
+    "name": "Extended Medium Mag III Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "extended-shotgun-mag-i",
+    "name": "Extended Shotgun Mag I",
+    "type": "Modification",
+    "rarity": "common",
+    "value": 640,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": "Gunsmith",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "plastic-parts": 6,
+      "spring": 1
+    },
+    "recyclesInto": {
+      "plastic-parts": 6
+    }
+  },
+  {
+    "id": "extended-shotgun-mag-ii",
+    "name": "Extended Shotgun Mag II",
+    "type": "Modification",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": "Gunsmith II",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 2,
+      "spring": 3
+    },
+    "recyclesInto": {
+      "mechanical-components": 1,
+      "spring": 1
+    }
+  },
+  {
+    "id": "extended-shotgun-mag-ii-recipe",
+    "name": "Extended Shotgun Mag II Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "extended-shotgun-mag-iii",
+    "name": "Extended Shotgun Mag III",
+    "type": "Modification",
+    "rarity": "rare",
+    "value": 5000,
+    "weightKg": 0.75,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mod-components": 1,
+      "spring": 2
+    },
+    "recyclesInto": {
+      "mod-components": 1,
+      "spring": 2
+    }
+  },
+  {
+    "id": "extended-shotgun-mag-iii-recipe",
+    "name": "Extended Shotgun Mag III Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "fabric",
+    "name": "Fabric",
+    "type": "Basic Material",
+    "rarity": "common",
+    "value": 50,
+    "weightKg": 0.1,
+    "stackSize": 50,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "faded-photograph",
+    "name": "Faded Photograph",
+    "type": "Trinket",
+    "rarity": "common",
+    "value": 640,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "familiar-duck",
+    "name": "Familiar Duck",
+    "type": "Trinket",
+    "rarity": "epic",
+    "value": 7000,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "ferro-i",
+    "name": "Ferro I",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 475,
+    "weightKg": 8,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "metal-parts": 5,
+      "rubber-parts-recipe": 2
+    },
+    "recyclesInto": {
+      "metal-parts": 2,
+      "rubber-parts-recipe": 1
+    }
+  },
+  {
+    "id": "ferro-ii",
+    "name": "Ferro II",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 1000,
+    "weightKg": 8,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "ferro-i": 1,
+      "metal-parts": 7
+    },
+    "recyclesInto": {
+      "metal-parts": 4,
+      "rubber-parts-recipe": 3
+    }
+  },
+  {
+    "id": "ferro-iii",
+    "name": "Ferro III",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 2000,
+    "weightKg": 8,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "ferro-ii": 1,
+      "metal-parts": 9,
+      "simple-gun-parts": 1
+    },
+    "recyclesInto": {
+      "metal-parts": 6,
+      "simple-gun-parts": 1
+    }
+  },
+  {
+    "id": "ferro-iv",
+    "name": "Ferro IV",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 2900,
+    "weightKg": 8,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "ferro-iii": 1,
+      "mechanical-components": 1,
+      "simple-gun-parts": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 1,
+      "simple-gun-parts": 2
+    }
+  },
+  {
+    "id": "fertilizer",
+    "name": "Fertilizer",
+    "type": "Nature",
+    "rarity": "common",
+    "value": 1000,
+    "weightKg": 0.4,
+    "stackSize": 10,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "film-reel",
+    "name": "Film Reel",
+    "type": "Trinket",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 0.2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "fine-wristwatch",
+    "name": "Fine Wristwatch",
+    "type": "Trinket",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 0.2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "fireball-burner",
+    "name": "Fireball Burner",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 1,
+      "crude-explosives": 1
+    }
+  },
+  {
+    "id": "firecracker",
+    "name": "Firecracker",
+    "type": "Quick Use",
+    "rarity": "common",
+    "value": 270,
+    "weightKg": 0.05,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "plastic-parts": 3
+    }
+  },
+  {
+    "id": "fireworks-box",
+    "name": "Fireworks Box",
+    "type": "Quick Use",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "explosive-compound": 1,
+      "pop-trigger": 3
+    },
+    "recyclesInto": {
+      "explosive-compound": 1
+    }
+  },
+  {
+    "id": "fireworks-box-blueprint",
+    "name": "Fireworks Box Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "flame-spray",
+    "name": "Flame Spray",
+    "type": "Quick use",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 1,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "air-freshener": 1,
+      "fireball-burner": 1
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "flashy-duck",
+    "name": "Flashy Duck",
+    "type": "Trinket",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "flow-controller",
+    "name": "Flow Controller",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "advanced-mechanical-components": 1,
+      "sensors-recipe": 1
+    }
+  },
+  {
+    "id": "flushing-terminal-key",
+    "name": "Flushing Terminal Key",
+    "type": "Trinket",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "fossilized-lightning",
+    "name": "Fossilized Lightning",
+    "type": "Nature",
+    "rarity": "epic",
+    "value": 4000,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "explosive-compound": 3
+    }
+  },
+  {
+    "id": "free-loadout-augment",
+    "name": "Free Loadout Augment",
+    "type": "Augment",
+    "rarity": "common",
+    "value": 100,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "frequency-modulation-box",
+    "name": "Frequency Modulation Box",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "advanced-electrical-components": 1,
+      "speaker-component": 1
+    }
+  },
+  {
+    "id": "fried-motherboard",
+    "name": "Fried Motherboard",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "electrical-components": 2,
+      "plastic-parts": 5
+    }
+  },
+  {
+    "id": "fruit-mix",
+    "name": "Fruit Mix",
+    "type": "Quick Use",
+    "rarity": "uncommon",
+    "value": 1800,
+    "weightKg": 0,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "lemon": 1,
+      "apricot": 1,
+      "prickly-pear": 1
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "frying-pan",
+    "name": "Frying Pan",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 640,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 8
+    }
+  },
+  {
+    "id": "garlic-press",
+    "name": "Garlic Press",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 1000,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 12
+    }
+  },
+  {
+    "id": "gas-grenade",
+    "name": "Gas Grenade",
+    "type": "Quick Use",
+    "rarity": "common",
+    "value": 270,
+    "weightKg": 0.2,
+    "stackSize": 3,
+    "craftBench": "Explosive Bench 1",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "chemicals": 4,
+      "rubber-parts-recipe": 2
+    },
+    "recyclesInto": {
+      "chemicals": 1,
+      "rubber-parts-recipe": 1
+    }
+  },
+  {
+    "id": "gas-grenade-trap",
+    "name": "Gas Grenade Trap",
+    "type": "Quick Use",
+    "rarity": "common",
+    "value": 300,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "gas-mine",
+    "name": "Gas Mine",
+    "type": "Quick Use",
+    "rarity": "common",
+    "value": 270,
+    "weightKg": 0.25,
+    "stackSize": 3,
+    "craftBench": "Explosives Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "chemicals": 1,
+      "rubber-parts-recipe": 1
+    }
+  },
+  {
+    "id": "gas-mine-blueprint",
+    "name": "Gas Mine Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-02-16T15:01:07.394926+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "geiger-counter",
+    "name": "Geiger Counter",
+    "type": "Recyclable",
+    "rarity": "epic",
+    "value": 3500,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "battery": 3,
+      "exodus-modules": 1
+    }
+  },
+  {
+    "id": "gentle-duck",
+    "name": "Gentle Duck",
+    "type": "Trinket",
+    "rarity": "uncommon",
+    "value": 1000,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "goggles-radio-renegade-variant",
+    "name": "Goggles (Radio Renegade Variant)",
+    "type": "Misc",
+    "rarity": null,
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "great-muullein",
+    "name": "Great Mullein",
+    "type": "Topside Material",
+    "rarity": "uncommon",
+    "value": 300,
+    "weightKg": 0.25,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "assorted-seeds": 2
+    }
+  },
+  {
+    "id": "green-light-stick",
+    "name": "Green Light Stick",
+    "type": "Quick Use",
+    "rarity": "common",
+    "value": 150,
+    "weightKg": 0.15,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "chemicals": 1
+    }
+  },
+  {
+    "id": "green-light-stick-blueprint",
+    "name": "Green Light Stick Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "hairpin-i",
+    "name": "Hairpin I",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 450,
+    "weightKg": 3,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench 1 or Basic Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "metal-parts": 2,
+      "plastic-parts": 5
+    },
+    "recyclesInto": {
+      "metal-parts": 2,
+      "rubber-parts-recipe": 1
+    }
+  },
+  {
+    "id": "hairpin-ii",
+    "name": "Hairpin II",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 1000,
+    "weightKg": 3,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "hairpin-i": 1,
+      "metal-parts": 8
+    },
+    "recyclesInto": {
+      "metal-parts": 4,
+      "rubber-parts-recipe": 4
+    }
+  },
+  {
+    "id": "hairpin-iii",
+    "name": "Hairpin III",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 2000,
+    "weightKg": 3,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "hairpin-ii": 1,
+      "metal-parts": 9,
+      "simple-gun-parts": 1
+    },
+    "recyclesInto": {
+      "metal-parts": 6,
+      "simple-gun-parts": 1
+    }
+  },
+  {
+    "id": "hairpin-iv",
+    "name": "Hairpin IV",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 2900,
+    "weightKg": 3,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "hairpin-iii": 1,
+      "mechanical-components": 1,
+      "simple-gun-parts": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 1,
+      "simple-gun-parts": 1
+    }
+  },
+  {
+    "id": "happy-jig-emote",
+    "name": "Happy Jig (Emote)",
+    "type": "Misc",
+    "rarity": null,
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "headphones",
+    "name": "Headphones",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "rubber-parts-recipe": 7,
+      "speaker-component": 1
+    }
+  },
+  {
+    "id": "heavy-ammo",
+    "name": "Heavy Ammo",
+    "type": "Ammunition",
+    "rarity": "common",
+    "value": 12,
+    "weightKg": 0.05,
+    "stackSize": 40,
+    "craftBench": "Workbench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "metal-parts": 3,
+      "chemicals": 2
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "heavy-fuze-grenade",
+    "name": "Heavy Fuze Grenade",
+    "type": "Quick Use",
+    "rarity": "rare",
+    "value": 1600,
+    "weightKg": 0.2,
+    "stackSize": 3,
+    "craftBench": "Explosives Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "explosive-compound": 1,
+      "canister": 2
+    },
+    "recyclesInto": {
+      "oil": 1,
+      "rubber-parts-recipe": 2
+    }
+  },
+  {
+    "id": "heavy-gun-parts",
+    "name": "Heavy Gun Parts",
+    "type": "Topside Material",
+    "rarity": "rare",
+    "value": 700,
+    "weightKg": 0.5,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "simple-gun-parts": 4
+    },
+    "recyclesInto": {
+      "simple-gun-parts": 2
+    }
+  },
+  {
+    "id": "heavy-gun-parts-recipe",
+    "name": "Heavy Gun Parts Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": "Refiner II",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "simple-gun-parts": 4
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "heavy-shield",
+    "name": "Heavy Shield",
+    "type": "Shield",
+    "rarity": "epic",
+    "value": 5500,
+    "weightKg": 9,
+    "stackSize": 1,
+    "craftBench": "Gear Bench 3",
+    "updatedAt": "2026-02-01T20:31:00.747571+00:00",
+    "recipe": {
+      "power-rod": 1,
+      "voltage-converter": 2
+    },
+    "recyclesInto": {
+      "arc-circuitry": 2,
+      "voltage-converter": 1
+    }
+  },
+  {
+    "id": "helmet-radio-renegade-variant",
+    "name": "Helmet (Radio Renegade Variant)",
+    "type": "Misc",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "herbal-bandage",
+    "name": "Herbal Bandage",
+    "type": "Quick Use",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.15,
+    "stackSize": 5,
+    "craftBench": "Med Station",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "durable-cloth": 1,
+      "great-muullein": 1
+    },
+    "recyclesInto": {
+      "assorted-seeds": 2,
+      "fabric": 5
+    }
+  },
+  {
+    "id": "horizontal-grip",
+    "name": "Horizontal Grip",
+    "type": "Modification",
+    "rarity": "epic",
+    "value": 7000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-02-09T15:57:29.59593+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "mod-components": 1,
+      "duct-tape-recipe": 2
+    }
+  },
+  {
+    "id": "hornet-driver",
+    "name": "Hornet Driver",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 0.75,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 2,
+      "electrical-components": 2
+    }
+  },
+  {
+    "id": "household-cleaner",
+    "name": "Household Cleaner",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "chemicals": 11
+    }
+  },
+  {
+    "id": "hullcracker-blueprint",
+    "name": "Hullcracker Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "hullcracker-i",
+    "name": "Hullcracker I",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 10000,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "magnetic-accelerator": 1,
+      "heavy-gun-parts": 3,
+      "exodus-modules": 1
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 2,
+      "heavy-gun-parts": 2
+    }
+  },
+  {
+    "id": "hullcracker-ii",
+    "name": "Hullcracker II",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 13000,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-mechanical-components": 1,
+      "heavy-gun-parts": 2
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 2,
+      "heavy-gun-parts": 3
+    }
+  },
+  {
+    "id": "hullcracker-iii",
+    "name": "Hullcracker III",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 17000,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-mechanical-components": 2,
+      "heavy-gun-parts": 1
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 3,
+      "heavy-gun-parts": 4
+    }
+  },
+  {
+    "id": "hullcracker-iv",
+    "name": "Hullcracker IV ",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 22000,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-mechanical-components": 2,
+      "heavy-gun-parts": 3
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 4,
+      "heavy-gun-parts": 5
+    }
+  },
+  {
+    "id": "humidifier",
+    "name": "Humidifier",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "canister": 2,
+      "wires-recipe": 2
+    }
+  },
+  {
+    "id": "ice-cream-scooper",
+    "name": "Ice Cream Scooper",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 7
+    }
+  },
+  {
+    "id": "il-toro-recipe",
+    "name": "Il Toro Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "il-toro-i",
+    "name": "Il Toro I",
+    "type": "Weapon",
+    "rarity": "uncommon",
+    "value": 5000,
+    "weightKg": 8,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench 1",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 5,
+      "simple-gun-parts": 6
+    },
+    "recyclesInto": {
+      "mechanical-components": 2,
+      "simple-gun-parts": 2
+    }
+  },
+  {
+    "id": "il-toro-ii",
+    "name": "Il Toro II",
+    "type": "Weapon",
+    "rarity": "uncommon",
+    "value": 7000,
+    "weightKg": 8,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "il-toro-i": 1,
+      "mechanical-components": 3,
+      "simple-gun-parts": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 3,
+      "simple-gun-parts": 3
+    }
+  },
+  {
+    "id": "il-toro-iiii",
+    "name": "Il Toro III",
+    "type": "Weapon",
+    "rarity": "uncommon",
+    "value": 10000,
+    "weightKg": 8,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "il-toro-ii": 1,
+      "mechanical-components": 4,
+      "heavy-gun-parts": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 4,
+      "simple-gun-parts": 4
+    }
+  },
+  {
+    "id": "il-toro-iv",
+    "name": "Il Toro IV",
+    "type": "Weapon",
+    "rarity": "uncommon",
+    "value": 13000,
+    "weightKg": 8,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "il-toro-iiii": 1,
+      "mechanical-components": 4,
+      "heavy-gun-parts": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 5,
+      "simple-gun-parts": 5
+    }
+  },
+  {
+    "id": "impure-arc-coolant",
+    "name": "Impure ARC Coolant",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "chemicals": 12
+    }
+  },
+  {
+    "id": "industrial-battery",
+    "name": "Industrial Battery",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "battery": 2,
+      "chemicals": 7
+    }
+  },
+  {
+    "id": "industrial-charger",
+    "name": "Industrial Charger",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 5,
+      "voltage-converter": 1
+    }
+  },
+  {
+    "id": "industrial-magnet",
+    "name": "Industrial Magnet",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "magnet": 2,
+      "metal-parts": 4
+    }
+  },
+  {
+    "id": "ion-sputter",
+    "name": "Ion Sputter",
+    "type": "Recyclable",
+    "rarity": "epic",
+    "value": 6000,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "exodus-modules": 1,
+      "voltage-converter": 4
+    }
+  },
+  {
+    "id": "jolt-mine",
+    "name": "Jolt Mine",
+    "type": "Quick Use",
+    "rarity": "rare",
+    "value": 850,
+    "weightKg": 0.2,
+    "stackSize": 3,
+    "craftBench": "Explosives Bench II",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "electrical-components": 1,
+      "battery": 1
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "jolt-mine-recipe",
+    "name": "Jolt Mine Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "junior-outfit",
+    "name": "Junior (Outfit)",
+    "type": "Cosmetic",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "jupiter-i",
+    "name": "Jupiter",
+    "type": "Weapon",
+    "rarity": "legendary",
+    "value": 27500,
+    "weightKg": 9,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench 3",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "queen-reactor": 1,
+      "magnetic-accelerator": 3,
+      "complex-gun-parts": 3
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "jupiter-i-recipe",
+    "name": "Jupiter Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "kettle-i",
+    "name": "Kettle I",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 840,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "rubber-parts-recipe": 8,
+      "metal-parts": 6
+    },
+    "recyclesInto": {
+      "metal-parts": 3,
+      "rubber-parts-recipe": 2
+    }
+  },
+  {
+    "id": "kettle-ii",
+    "name": "Kettle II",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 2000,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": "Gunsmith I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "kettle-i": 1,
+      "metal-parts": 8,
+      "plastic-parts": 10
+    },
+    "recyclesInto": {
+      "metal-parts": 6,
+      "rubber-parts-recipe": 6
+    }
+  },
+  {
+    "id": "kettle-iii",
+    "name": "Kettle III",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 3000,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "kettle-ii": 1,
+      "metal-parts": 10,
+      "simple-gun-parts": 1
+    },
+    "recyclesInto": {
+      "metal-parts": 12,
+      "simple-gun-parts": 1
+    }
+  },
+  {
+    "id": "kettle-iv",
+    "name": "Kettle IV",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 5000,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": "Gunsmith I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "kettle-iii": 1,
+      "mechanical-components": 3,
+      "simple-gun-parts": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 2,
+      "simple-gun-parts": 2
+    }
+  },
+  {
+    "id": "kinetic-converter",
+    "name": "Kinetic Converter",
+    "type": "Modification",
+    "rarity": "legendary",
+    "value": 7000,
+    "weightKg": 0.75,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "mod-components": 1,
+      "duct-tape-recipe": 2
+    }
+  },
+  {
+    "id": "laboratory-reagents",
+    "name": "Laboratory Reagents",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "chemicals": 16,
+      "crude-explosives": 3
+    }
+  },
+  {
+    "id": "lances-mixtape-5th-edition",
+    "name": "Lance's Mixtape (5th Edition)",
+    "type": "Trinket",
+    "rarity": "epic",
+    "value": 10000,
+    "weightKg": 0.2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "laser-trap-lure-recipe",
+    "name": "Laser Trap: Lure",
+    "type": "Quick Use",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "launcher-ammo",
+    "name": "Launcher Ammo",
+    "type": "Ammunition",
+    "rarity": "rare",
+    "value": 250,
+    "weightKg": 1,
+    "stackSize": 1,
+    "craftBench": "Workbench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "arc-motion-core": 1,
+      "crude-explosives": 2
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "leaper-pulse-unit",
+    "name": "Leaper Pulse Unit",
+    "type": "Throwable",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 1,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "lemon",
+    "name": "Lemon",
+    "type": "Nature",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.2,
+    "stackSize": 10,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "assorted-seeds": 3
+    }
+  },
+  {
+    "id": "lidar-scanner",
+    "name": "Lidar Scanner",
+    "type": "Trinket",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "light-ammo",
+    "name": "Light Ammo",
+    "type": "Ammunition",
+    "rarity": "common",
+    "value": 4,
+    "weightKg": 0.017,
+    "stackSize": 100,
+    "craftBench": "Workbench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "metal-parts": 3,
+      "chemicals": 2
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "light-bulb",
+    "name": "Light Bulb",
+    "type": "Trinket",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "light-gun-parts",
+    "name": "Light Gun Parts",
+    "type": "Topside Material",
+    "rarity": "rare",
+    "value": 700,
+    "weightKg": 0.3,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "simple-gun-parts": 2,
+      "rubber-parts-recipe": 8
+    },
+    "recyclesInto": {
+      "simple-gun-parts": 2
+    }
+  },
+  {
+    "id": "light-gun-parts-recipe",
+    "name": "Light Gun Parts Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": "Refiner",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "light-impact-grenade",
+    "name": "Light Impact Grenade",
+    "type": "Quick Use",
+    "rarity": "common",
+    "value": 270,
+    "weightKg": 0.1,
+    "stackSize": 5,
+    "craftBench": "Explosive Bench 1 or Basic Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "plastic-parts": 2,
+      "chemicals": 3
+    },
+    "recyclesInto": {
+      "chemicals": 1,
+      "plastic-parts": 1
+    }
+  },
+  {
+    "id": "light-shield",
+    "name": "Light Shield",
+    "type": "Shield",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": "Equipment Bench 1",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "arc-alloy": 2,
+      "plastic-parts": 4
+    },
+    "recyclesInto": {
+      "plastic-parts": 4
+    }
+  },
+  {
+    "id": "lightweight-stock",
+    "name": "Lightweight Stock",
+    "type": "Modification",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mod-components": 2,
+      "duct-tape-recipe": 5
+    },
+    "recyclesInto": {
+      "duct-tape-recipe": 1,
+      "mod-components": 1
+    }
+  },
+  {
+    "id": "lightweight-stock-recipe",
+    "name": "Lightweight Stock Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "lil-smoke-grenade",
+    "name": "Li'l Smoke Grenade",
+    "type": "Quick Use",
+    "rarity": "common",
+    "value": 300,
+    "weightKg": 0.15,
+    "stackSize": 5,
+    "craftBench": "Utility Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "chemicals": 5,
+      "plastic-parts": 1
+    },
+    "recyclesInto": {
+      "chemicals": 1,
+      "plastic-parts": 1
+    }
+  },
+  {
+    "id": "looting-mk-1",
+    "name": "Looting Mk. 1",
+    "type": "Augment",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 1,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "plastic-parts": 6,
+      "rubber-parts-recipe": 6
+    },
+    "recyclesInto": {
+      "plastic-parts": 3,
+      "rubber-parts-recipe": 3
+    }
+  },
+  {
+    "id": "looting-mk-2",
+    "name": "Looting Mk. 2",
+    "type": "Augment",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 2,
+    "stackSize": 1,
+    "craftBench": "Equipment Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "electrical-components": 3,
+      "magnet": 2
+    },
+    "recyclesInto": {
+      "electrical-components": 1,
+      "magnet": 1
+    }
+  },
+  {
+    "id": "looting-mk-3-cautious",
+    "name": "Looting MK. 3 (Cautious)",
+    "type": "Augment",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 3,
+    "stackSize": 1,
+    "craftBench": "Equipment Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-electrical-components": 2,
+      "processor": 3
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "looting-mk-3-safekeeper",
+    "name": "Looting MK. 3 (Safekeeper)",
+    "type": "Augment",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T09:51:53.673615+00:00",
+    "recipe": {
+      "advanced-electrical-components": 2,
+      "processor": 3
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "looting-mk-3-safekeeper-blueprint",
+    "name": "Looting MK. 3 (Safekeeper) Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "looting-mk-3-survivor",
+    "name": "Looting MK. 3 (Survivor)",
+    "type": "Augment",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 4,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-electrical-components": 2,
+      "processor": 3
+    },
+    "recyclesInto": {
+      "advanced-electrical-components": 1,
+      "processor": 1
+    }
+  },
+  {
+    "id": "looting-mk-3-survivor-blueprint",
+    "name": "Looting MK. 3 (Survivor) Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "lure-grenade",
+    "name": "Lure Grenade",
+    "type": "Quick Use",
+    "rarity": "uncommon",
+    "value": 1000,
+    "weightKg": 0.4,
+    "stackSize": 3,
+    "craftBench": "Utility Bench 2",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "speaker-component": 2,
+      "plastic-parts": 2
+    },
+    "recyclesInto": {
+      "speaker-component": 1
+    }
+  },
+  {
+    "id": "lure-grenade-recipe",
+    "name": "Lure Grenade Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": "Utility Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "lure-grenade-trap",
+    "name": "Lure Grenade Trap",
+    "type": "Quick Use",
+    "rarity": "uncommon",
+    "value": 1000,
+    "weightKg": 0.25,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-02-16T15:25:32.357041+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "speaker-component": 1
+    }
+  },
+  {
+    "id": "magnet",
+    "name": "Magnet",
+    "type": "Topside Material",
+    "rarity": "uncommon",
+    "value": 300,
+    "weightKg": 0.25,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 2
+    }
+  },
+  {
+    "id": "magnetic-accelerator",
+    "name": "Magnetic Accelerator",
+    "type": "Refined Material",
+    "rarity": "epic",
+    "value": 5500,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": "Refiner",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-mechanical-components": 2,
+      "arc-motion-core": 2
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 1,
+      "arc-motion-core": 1
+    }
+  },
+  {
+    "id": "magnetron",
+    "name": "Magnetron",
+    "type": "Recyclable",
+    "rarity": "epic",
+    "value": 6000,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "magnetic-accelerator": 1,
+      "spring": 1
+    }
+  },
+  {
+    "id": "mastery-medal-backpack-charm",
+    "name": "Mastery Medal (Backpack Charm)",
+    "type": "Misc",
+    "rarity": null,
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "matriarch-reactor",
+    "name": "Matriarch Reactor",
+    "type": "Recyclable",
+    "rarity": "legendary",
+    "value": 13000,
+    "weightKg": 10,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "power-rod": 1,
+      "magnetic-accelerator": 1
+    }
+  },
+  {
+    "id": "mechanical-components",
+    "name": "Mechanical Components",
+    "type": "Refined Material",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.5,
+    "stackSize": 10,
+    "craftBench": "Refiner",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "metal-parts": 7,
+      "rubber-parts-recipe": 3
+    },
+    "recyclesInto": {
+      "metal-parts": 3,
+      "rubber-parts-recipe": 2
+    }
+  },
+  {
+    "id": "medium-ammo",
+    "name": "Medium Ammo",
+    "type": "Ammunition",
+    "rarity": "common",
+    "value": 6,
+    "weightKg": 0.025,
+    "stackSize": 80,
+    "craftBench": "Workbench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "metal-parts": 3,
+      "chemicals": 2
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "medium-gun-parts",
+    "name": "Medium Gun Parts",
+    "type": "Topside Material",
+    "rarity": "rare",
+    "value": 700,
+    "weightKg": 0.4,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "simple-gun-parts": 2
+    }
+  },
+  {
+    "id": "medium-gun-parts-recipe",
+    "name": "Medium Gun Parts Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "medium-shield",
+    "name": "Medium Shield",
+    "type": "Shield",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": "Equipment Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "arc-circuitry": 1,
+      "battery": 4
+    },
+    "recyclesInto": {
+      "arc-circuitry": 1
+    }
+  },
+  {
+    "id": "metal-brackets",
+    "name": "Metal Brackets",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 8
+    }
+  },
+  {
+    "id": "metal-parts",
+    "name": "Metal Parts",
+    "type": "Basic Material",
+    "rarity": "common",
+    "value": 75,
+    "weightKg": 0.15,
+    "stackSize": 50,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "microscope",
+    "name": "Microscope",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "advanced-mechanical-components": 1,
+      "magnet": 3
+    }
+  },
+  {
+    "id": "mini-centrifuge",
+    "name": "Mini Centrifuge",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "advanced-mechanical-components": 1,
+      "canister": 2
+    }
+  },
+  {
+    "id": "mod-components",
+    "name": "Mod Components",
+    "type": "Refined Material",
+    "rarity": "rare",
+    "value": 1750,
+    "weightKg": 1,
+    "stackSize": 5,
+    "craftBench": "Refiner",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 2,
+      "spring": 2
+    },
+    "recyclesInto": {
+      "mechanical-components": 1,
+      "spring": 1
+    }
+  },
+  {
+    "id": "moss",
+    "name": "Moss",
+    "type": "Topside Material",
+    "rarity": "rare",
+    "value": 500,
+    "weightKg": 0.3,
+    "stackSize": 10,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "assorted-seeds": 3
+    }
+  },
+  {
+    "id": "motor",
+    "name": "Motor",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "mechanical-components": 2,
+      "oil": 2
+    }
+  },
+  {
+    "id": "mushroom",
+    "name": "Mushroom",
+    "type": "Nature",
+    "rarity": "uncommon",
+    "value": 1000,
+    "weightKg": 0.2,
+    "stackSize": 10,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "music-album",
+    "name": "Music Album",
+    "type": "Trinket",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 0.3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "music-box",
+    "name": "Music Box",
+    "type": "Trinket",
+    "rarity": "rare",
+    "value": 5000,
+    "weightKg": 0.4,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "muzzle-brake-i",
+    "name": "Muzzle Brake I",
+    "type": "Modification",
+    "rarity": "common",
+    "value": 640,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "metal-parts": 6,
+      "wires-recipe": 1
+    },
+    "recyclesInto": {
+      "metal-parts": 5
+    }
+  },
+  {
+    "id": "muzzle-brake-ii",
+    "name": "Muzzle Brake II",
+    "type": "Modification",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 2,
+      "wires-recipe": 4
+    },
+    "recyclesInto": {
+      "mechanical-components": 1,
+      "wires-recipe": 1
+    }
+  },
+  {
+    "id": "muzzle-brake-ii-recipe",
+    "name": "Muzzle Brake II Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "muzzle-brake-iii",
+    "name": "Muzzle Brake III",
+    "type": "Modification",
+    "rarity": "rare",
+    "value": 5000,
+    "weightKg": 0.75,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mod-components": 2,
+      "wires-recipe": 8
+    },
+    "recyclesInto": {
+      "mod-components": 1,
+      "wires-recipe": 2
+    }
+  },
+  {
+    "id": "muzzle-brake-iii-recipe",
+    "name": "Muzzle Brake III Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "noisemaker",
+    "name": "Noisemaker",
+    "type": "Quick Use",
+    "rarity": "common",
+    "value": 640,
+    "weightKg": 0.3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "speaker-component": 1
+    }
+  },
+  {
+    "id": "number-plate",
+    "name": "Number Plate",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 270,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 3
+    }
+  },
+  {
+    "id": "oil",
+    "name": "Oil",
+    "type": "Topside Material",
+    "rarity": "uncommon",
+    "value": 300,
+    "weightKg": 0.25,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-02-11T09:25:35.593283+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "chemicals": 3
+    }
+  },
+  {
+    "id": "olives",
+    "name": "Olives",
+    "type": "Nature",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.2,
+    "stackSize": 10,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "orange-camo-origin-outfit",
+    "name": "Orange Camo (Origin Outfit)",
+    "type": "Misc",
+    "rarity": null,
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "osprey-recipe",
+    "name": "Osprey Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": "Gunsmith II",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "osprey-i",
+    "name": "Osprey I",
+    "type": "Weapon",
+    "rarity": "rare",
+    "value": 7000,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench 2",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-mechanical-components": 2,
+      "medium-gun-parts": 3,
+      "wires-recipe": 7
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 1,
+      "medium-gun-parts": 2
+    }
+  },
+  {
+    "id": "osprey-ii",
+    "name": "Osprey II",
+    "type": "Weapon",
+    "rarity": "rare",
+    "value": 10000,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "osprey-i": 1,
+      "advanced-mechanical-components": 1,
+      "medium-gun-parts": 2
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 1,
+      "medium-gun-parts": 2
+    }
+  },
+  {
+    "id": "osprey-iii",
+    "name": "Osprey III",
+    "type": "Weapon",
+    "rarity": "rare",
+    "value": 13000,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "osprey-ii": 1,
+      "advanced-mechanical-components": 1,
+      "medium-gun-parts": 2
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 2,
+      "medium-gun-parts": 3
+    }
+  },
+  {
+    "id": "osprey-iv",
+    "name": "Osprey IV",
+    "type": "Weapon",
+    "rarity": "rare",
+    "value": 17000,
+    "weightKg": 7,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "osprey-iii": 1,
+      "advanced-mechanical-components": 2,
+      "medium-gun-parts": 2
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 3,
+      "medium-gun-parts": 3
+    }
+  },
+  {
+    "id": "padded-stock",
+    "name": "Padded Stock",
+    "type": "Modification",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-02-09T14:52:14.092096+00:00",
+    "recipe": {
+      "mod-components": 2,
+      "duct-tape-recipe": 5
+    },
+    "recyclesInto": {
+      "mod-components": 1,
+      "duct-tape-recipe": 1
+    }
+  },
+  {
+    "id": "padded-stock-recipe",
+    "name": "Padded Stock Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "painted-box",
+    "name": "Painted Box",
+    "type": "Trinket",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "patrol-car-key",
+    "name": "Patrol Car Key",
+    "type": "Key",
+    "rarity": "uncommon",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "patrol-outfit",
+    "name": "Patrol (Outfit)",
+    "type": "Misc",
+    "rarity": null,
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "photoelectric-cloak",
+    "name": "Photoelectric Cloak",
+    "type": "Quick Use",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 1,
+    "stackSize": 1,
+    "craftBench": "Utility Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-electrical-components": 2,
+      "speaker-component": 4
+    },
+    "recyclesInto": {
+      "advanced-electrical-components": 1,
+      "speaker-component": 1
+    }
+  },
+  {
+    "id": "pilgrims-peak-security-code",
+    "name": "Pilgrim's Peak Security Code",
+    "type": "Key",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "plastic-parts",
+    "name": "Plastic Parts",
+    "type": "Basic Material",
+    "rarity": "common",
+    "value": 60,
+    "weightKg": 0.1,
+    "stackSize": 50,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "playing-cards",
+    "name": "Playing Cards",
+    "type": "Trinket",
+    "rarity": "rare",
+    "value": 5000,
+    "weightKg": 0.2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "polluted-air-filter",
+    "name": "Polluted Air Filter",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "fabric": 6,
+      "oil": 2
+    }
+  },
+  {
+    "id": "pop-trigger",
+    "name": "Pop Trigger",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "crude-explosives": 1,
+      "arc-alloy": 1
+    }
+  },
+  {
+    "id": "portable-television",
+    "name": "Portable TV",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 3,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "battery": 2,
+      "wires-recipe": 6
+    }
+  },
+  {
+    "id": "poster-natural-wonder",
+    "name": "Poster of Natural Wonder",
+    "type": "Trinket",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "pottery",
+    "name": "Pottery",
+    "type": "Trinket",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "power-bank",
+    "name": "Power Bank",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "battery": 2,
+      "wires-recipe": 2
+    }
+  },
+  {
+    "id": "power-cable",
+    "name": "Power Cable",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "wires-recipe": 4
+    }
+  },
+  {
+    "id": "power-rod",
+    "name": "Power Rod",
+    "type": "Advanced Material",
+    "rarity": "epic",
+    "value": 5500,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": "Refiner",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "arc-circuitry": 2,
+      "advanced-electrical-components": 2
+    },
+    "recyclesInto": {
+      "advanced-electrical-components": 1,
+      "arc-circuitry": 1
+    }
+  },
+  {
+    "id": "prickly-pear",
+    "name": "Prickly Pear",
+    "type": "Nature",
+    "rarity": "common",
+    "value": 640,
+    "weightKg": 0.2,
+    "stackSize": 10,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "assorted-seeds": 3
+    }
+  },
+  {
+    "id": "processor",
+    "name": "Processor",
+    "type": "Topside Material",
+    "rarity": "rare",
+    "value": 500,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "plastic-parts": 1,
+      "wires-recipe": 1
+    }
+  },
+  {
+    "id": "projector",
+    "name": "Projector",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "processor": 1,
+      "wires-recipe": 2
+    }
+  },
+  {
+    "id": "pulse-mine",
+    "name": "Pulse Mine",
+    "type": "Quick Use",
+    "rarity": "uncommon",
+    "value": 470,
+    "weightKg": 0.25,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "chemicals": 6
+    }
+  },
+  {
+    "id": "pulse-mine-blueprint",
+    "name": "Pulse Mine Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-02-16T15:26:32.935186+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "queen-reactor",
+    "name": "Queen Reactor",
+    "type": "Recyclable",
+    "rarity": "legendary",
+    "value": 13000,
+    "weightKg": 10,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-02-01T19:28:59.322584+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "magnetic-accelerator": 1,
+      "power-rod": 1
+    }
+  },
+  {
+    "id": "radio",
+    "name": "Radio",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "sensors-recipe": 1,
+      "speaker-component": 1
+    }
+  },
+  {
+    "id": "radio-relay",
+    "name": "Radio Relay",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "sensors-recipe": 2,
+      "speaker-component": 2
+    }
+  },
+  {
+    "id": "radio-renegade-outfit",
+    "name": "Radio Renegade (Outfit)",
+    "type": "Misc",
+    "rarity": null,
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "raider-hatch-key",
+    "name": "Raider Hatch Key",
+    "type": "Key",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 0.01,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-electrical-components": 1,
+      "sensors-recipe": 3
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "raiders-refuge-security-code",
+    "name": "Raider's Refuge Security Code",
+    "type": "Key",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "rattler-i",
+    "name": "Rattler I",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 1750,
+    "weightKg": 6,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "metal-parts": 16,
+      "rubber-parts-recipe": 12
+    },
+    "recyclesInto": {
+      "metal-parts": 8
+    }
+  },
+  {
+    "id": "rattler-ii",
+    "name": "Rattler II",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 3000,
+    "weightKg": 6,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "rattler-i": 1,
+      "metal-parts": 10,
+      "rubber-parts-recipe": 10
+    },
+    "recyclesInto": {
+      "metal-parts": 12
+    }
+  },
+  {
+    "id": "rattler-iii",
+    "name": "Rattler III",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 5000,
+    "weightKg": 6,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "rattler-ii": 1,
+      "mechanical-components": 3,
+      "simple-gun-parts": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 3,
+      "simple-gun-parts": 1
+    }
+  },
+  {
+    "id": "rattler-iv",
+    "name": "Rattler IV",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 7000,
+    "weightKg": 6,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 3,
+      "simple-gun-parts": 1,
+      "rattler-iii": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 4,
+      "simple-gun-parts": 2
+    }
+  },
+  {
+    "id": "recorder",
+    "name": "Recorder",
+    "type": "Quick Use",
+    "rarity": "uncommon",
+    "value": 1000,
+    "weightKg": 0.2,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "plastic-parts": 10
+    }
+  },
+  {
+    "id": "red-coral-jewelry",
+    "name": "Red Coral Jewelry",
+    "type": "Trinket",
+    "rarity": "rare",
+    "value": 5000,
+    "weightKg": 0.3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "red-light-stick",
+    "name": "Red Light Stick",
+    "type": "Quick Use",
+    "rarity": "common",
+    "value": 150,
+    "weightKg": 0.15,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "chemicals": 1
+    }
+  },
+  {
+    "id": "red-light-stick-blueprint",
+    "name": "Red Light Stick Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "reinforced-reception-security-code",
+    "name": "Reinforced Reception Security Code",
+    "type": "Key",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "remote-control",
+    "name": "Remote Control",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "plastic-parts": 7,
+      "sensors-recipe": 1
+    }
+  },
+  {
+    "id": "remote-raider-flare",
+    "name": "Remote Raider Flare",
+    "type": "Quick Use",
+    "rarity": "common",
+    "value": 270,
+    "weightKg": 0.2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "chemicals": 1,
+      "rubber-parts-recipe": 1
+    }
+  },
+  {
+    "id": "remote-raider-flare-blueprint",
+    "name": "Remote Raider Flare Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "renegade-i",
+    "name": "Renegade I",
+    "type": "Weapon",
+    "rarity": "rare",
+    "value": 7000,
+    "weightKg": 10,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench 2",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-mechanical-components": 2,
+      "medium-gun-parts": 3,
+      "oil": 5
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 1,
+      "medium-gun-parts": 2
+    }
+  },
+  {
+    "id": "renegade-ii",
+    "name": "Renegade II",
+    "type": "Weapon",
+    "rarity": "rare",
+    "value": 10000,
+    "weightKg": 10,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "renegade-i": 1,
+      "advanced-mechanical-components": 1,
+      "medium-gun-parts": 2
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 2,
+      "medium-gun-parts": 2
+    }
+  },
+  {
+    "id": "renegade-iii",
+    "name": "Renegade III",
+    "type": "Weapon",
+    "rarity": "rare",
+    "value": 13000,
+    "weightKg": 10,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "renegade-ii": 1,
+      "advanced-mechanical-components": 1,
+      "medium-gun-parts": 2
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 2,
+      "medium-gun-parts": 2
+    }
+  },
+  {
+    "id": "renegade-iv",
+    "name": "Renegade IV",
+    "type": "Weapon",
+    "rarity": "rare",
+    "value": 17000,
+    "weightKg": 10,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "renegade-iii": 1,
+      "advanced-mechanical-components": 2,
+      "medium-gun-parts": 2
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 3,
+      "medium-gun-parts": 3
+    }
+  },
+  {
+    "id": "resin",
+    "name": "Resin",
+    "type": "Nature",
+    "rarity": "common",
+    "value": 1000,
+    "weightKg": 0.4,
+    "stackSize": 10,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "ripped-safety-vest",
+    "name": "Ripped Safety Vest",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 1000,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "durable-cloth": 1,
+      "magnet": 1
+    }
+  },
+  {
+    "id": "rocketeer-part",
+    "name": "Rocketeer Driver",
+    "type": "Recyclable",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "advanced-electrical-components": 2,
+      "arc-alloy": 3
+    }
+  },
+  {
+    "id": "rocket-thruster",
+    "name": "Rocket Thruster",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "synthesized-fuel": 2,
+      "metal-parts": 6
+    }
+  },
+  {
+    "id": "roots",
+    "name": "Roots",
+    "type": "Nature",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.2,
+    "stackSize": 10,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "assorted-seeds": 1
+    }
+  },
+  {
+    "id": "rope",
+    "name": "Rope",
+    "type": "Topside Material",
+    "rarity": "rare",
+    "value": 500,
+    "weightKg": 0.3,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "fabric": 5
+    }
+  },
+  {
+    "id": "rosary",
+    "name": "Rosary",
+    "type": "Trinket",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 0.3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "rotary-encoder",
+    "name": "Rotary Encoder",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "electrical-components": 2,
+      "processor": 2
+    }
+  },
+  {
+    "id": "rubber-duck",
+    "name": "Rubber Duck",
+    "type": "Trinket",
+    "rarity": "common",
+    "value": 1000,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "rubber-pad",
+    "name": "Rubber Pad",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "rubber-parts-recipe": 18
+    }
+  },
+  {
+    "id": "rubber-parts-recipe",
+    "name": "Rubber Parts",
+    "type": "Basic Material",
+    "rarity": "common",
+    "value": 50,
+    "weightKg": 0.1,
+    "stackSize": 50,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "ruined-accordion",
+    "name": "Ruined Accordion",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "rubber-parts-recipe": 18,
+      "spring": 3
+    }
+  },
+  {
+    "id": "ruined-augment",
+    "name": "Ruined Augment",
+    "type": "Recyclable",
+    "rarity": "common",
+    "value": 270,
+    "weightKg": 3,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "ruined-baton",
+    "name": "Ruined Baton",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 6,
+      "rubber-parts-recipe": 3
+    }
+  },
+  {
+    "id": "ruined-handcuffs",
+    "name": "Ruined Handcuffs",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 8
+    }
+  },
+  {
+    "id": "ruined-parachute",
+    "name": "Ruined Parachute",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "fabric": 10
+    }
+  },
+  {
+    "id": "ruined-riot-shield",
+    "name": "Ruined Riot Shield",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "plastic-parts": 10,
+      "rubber-parts-recipe": 6
+    }
+  },
+  {
+    "id": "ruined-tactical-vest",
+    "name": "Ruined Tactical Vest",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "fabric": 5,
+      "magnet": 1
+    }
+  },
+  {
+    "id": "rusted-bolts",
+    "name": "Rusted Bolts",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 8
+    }
+  },
+  {
+    "id": "rusted-gear",
+    "name": "Rusted Gear",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "mechanical-components": 2,
+      "metal-parts": 4
+    }
+  },
+  {
+    "id": "rusted-shut-medical-kit",
+    "name": "Rusted Shut Medical Kit",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "antiseptic": 1,
+      "syringe": 2
+    }
+  },
+  {
+    "id": "rusted-tools",
+    "name": "Rusted Tools",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 8,
+      "spring": 1
+    }
+  },
+  {
+    "id": "rusty-arc-steel",
+    "name": "Rusty ARC Steel",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 8
+    }
+  },
+  {
+    "id": "sample-cleaner",
+    "name": "Sample Cleaner",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "assorted-seeds": 14,
+      "electrical-components": 2
+    }
+  },
+  {
+    "id": "seeker-grenade",
+    "name": "Seeker Grenade",
+    "type": "Quick Use",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.2,
+    "stackSize": 1,
+    "craftBench": "Explosives Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "crude-explosives": 1
+    }
+  },
+  {
+    "id": "seeker-grenade-blueprint",
+    "name": "Seeker Grenade Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "sensors-recipe",
+    "name": "Sensors",
+    "type": "Topside Material",
+    "rarity": "rare",
+    "value": 500,
+    "weightKg": 0.3,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 1,
+      "wires-recipe": 1
+    }
+  },
+  {
+    "id": "sentinel-part",
+    "name": "Sentinel Firing Core",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 2,
+      "mechanical-components": 3
+    }
+  },
+  {
+    "id": "shaker",
+    "name": "Shaker",
+    "type": "Quick Use",
+    "rarity": "uncommon",
+    "value": 1000,
+    "weightKg": 0.2,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "plastic-parts": 10
+    }
+  },
+  {
+    "id": "shield-recharger",
+    "name": "Shield Recharger",
+    "type": "Quick Use",
+    "rarity": "uncommon",
+    "value": 520,
+    "weightKg": 0.15,
+    "stackSize": 5,
+    "craftBench": "Equipment Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "rubber-parts-recipe": 5,
+      "arc-powercell": 1
+    },
+    "recyclesInto": {
+      "rubber-parts-recipe": 4
+    }
+  },
+  {
+    "id": "shotgun-ammo",
+    "name": "Shotgun ammo",
+    "type": "Ammunition",
+    "rarity": "common",
+    "value": 20,
+    "weightKg": 0.085,
+    "stackSize": 20,
+    "craftBench": "Workbench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "metal-parts": 3,
+      "chemicals": 2
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "shotgun-choke-i",
+    "name": "Shotgun Choke I",
+    "type": "Modification",
+    "rarity": "common",
+    "value": 640,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": "Gunsmith 1",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "metal-parts": 6,
+      "wires-recipe": 1
+    },
+    "recyclesInto": {
+      "metal-parts": 5
+    }
+  },
+  {
+    "id": "shotgun-choke-ii",
+    "name": "Shotgun Choke II",
+    "type": "Modification",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 2,
+      "wires-recipe": 4
+    },
+    "recyclesInto": {
+      "mechanical-components": 1,
+      "wires-recipe": 1
+    }
+  },
+  {
+    "id": "shotgun-choke-ii-recipe",
+    "name": "Shotgun Choke II Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "shotgun-choke-iii",
+    "name": "Shotgun Choke III",
+    "type": "Modification",
+    "rarity": "rare",
+    "value": 5000,
+    "weightKg": 0.75,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mod-components": 2,
+      "wires-recipe": 8
+    },
+    "recyclesInto": {
+      "mod-components": 1,
+      "wires-recipe": 2
+    }
+  },
+  {
+    "id": "shotgun-choke-iii-recipe",
+    "name": "Shotgun Choke III Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "shotgun-gun-parts",
+    "name": "Shotgun Parts",
+    "type": "Material",
+    "rarity": "rare",
+    "value": 700,
+    "weightKg": 0.4,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "simple-gun-parts": 2
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "shotgun-silencer",
+    "name": "Shotgun Silencer",
+    "type": "Mods",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mod-components": 1,
+      "wires-recipe": 9
+    },
+    "recyclesInto": {
+      "mod-components": 1,
+      "wires-recipe": 1
+    }
+  },
+  {
+    "id": "shotgun-silencer-blueprint",
+    "name": "Shotgun Silencer Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "showstopper",
+    "name": "Showstopper",
+    "type": "Throwable",
+    "rarity": "rare",
+    "value": 2200,
+    "weightKg": 0.4,
+    "stackSize": 5,
+    "craftBench": "Explosives Bench III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-electrical-components": 1,
+      "voltage-converter": 1
+    },
+    "recyclesInto": {
+      "battery": 2,
+      "electrical-components": 1
+    }
+  },
+  {
+    "id": "showstopper-blueprint",
+    "name": "Showstopper Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "shrapnel-grenade",
+    "name": "Shrapnel Grenade",
+    "type": "Throwable",
+    "rarity": "uncommon",
+    "value": 800,
+    "weightKg": 0.15,
+    "stackSize": 5,
+    "craftBench": "Explosives Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "crude-explosives": 1,
+      "spring": 2
+    },
+    "recyclesInto": {
+      "crude-explosives": 1,
+      "metal-parts": 1
+    }
+  },
+  {
+    "id": "shredder-gyro",
+    "name": "Shredder Gyro",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 3,
+      "mechanical-components": 3
+    }
+  },
+  {
+    "id": "signal-amplifier",
+    "name": "Signal Amplifier",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "electrical-components": 2,
+      "voltage-converter": 2
+    }
+  },
+  {
+    "id": "silencer-i",
+    "name": "Silencer I",
+    "type": "Modification",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": "Gunsmith I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "wires-recipe": 4,
+      "mechanical-components": 2
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "silencer-i-recipe",
+    "name": "Silencer I Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "silencer-ii",
+    "name": "Silencer II",
+    "type": "Modification",
+    "rarity": "rare",
+    "value": 5000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mod-components": 2,
+      "wires-recipe": 8
+    },
+    "recyclesInto": {
+      "mod-components": 1,
+      "wires-recipe": 2
+    }
+  },
+  {
+    "id": "silencer-ii-recipe",
+    "name": "Silencer II Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "silencer-iii",
+    "name": "Silencer III",
+    "type": "Modification",
+    "rarity": "epic",
+    "value": 7000,
+    "weightKg": 0.75,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "mod-components": 1,
+      "wires-recipe": 3
+    }
+  },
+  {
+    "id": "silver-teaspoon-set",
+    "name": "Silver Teaspoon Set",
+    "type": "Trinket",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 0.3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "simple-gun-parts",
+    "name": "Simple Gun Parts",
+    "type": "Topside Material",
+    "rarity": "uncommon",
+    "value": 330,
+    "weightKg": 0.3,
+    "stackSize": 10,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 2
+    }
+  },
+  {
+    "id": "smoke-grenade",
+    "name": "Smoke Grenade",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "craftBench": "Utility Bench 1 or Basic Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "chemicals": 14,
+      "canister": 1
+    },
+    "recyclesInto": {
+      "canister": 1,
+      "chemicals": 2
+    }
+  },
+  {
+    "id": "smoke-grenade-blueprint",
+    "name": "Smoke Grenade Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "laser-trap-smoke-recipe",
+    "name": "Smoke Grenade Trap",
+    "type": "Quick Use",
+    "rarity": "rare",
+    "value": 640,
+    "weightKg": 0.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-02-16T15:27:40.295722+00:00",
+    "recipe": {
+      "smoke-grenade": 1,
+      "wires-recipe": 1
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "snap-blast-grenade",
+    "name": "Snap Blast Grenade",
+    "type": "Quick Use",
+    "rarity": "uncommon",
+    "value": 800,
+    "weightKg": 0.2,
+    "stackSize": 3,
+    "craftBench": "Explosives Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "crude-explosives": 2,
+      "magnet": 1
+    },
+    "recyclesInto": {
+      "chemicals": 1,
+      "magnet": 1
+    }
+  },
+  {
+    "id": "snap-hook",
+    "name": "Snap Hook",
+    "type": "Quick Use",
+    "rarity": "legendary",
+    "value": 14000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": "Utility Bench 3",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "rope": 3,
+      "power-rod": 2,
+      "exodus-modules": 1
+    },
+    "recyclesInto": {
+      "power-rod": 1,
+      "rope": 3
+    }
+  },
+  {
+    "id": "snap-hook-recipe",
+    "name": "Snap Hook Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "snitch-scanner",
+    "name": "Snitch Scanner",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.75,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 1,
+      "electrical-components": 2
+    }
+  },
+  {
+    "id": "snowball",
+    "name": "Snowball",
+    "type": "Nature",
+    "rarity": "common",
+    "value": 10,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "spaceport-container-storage-key",
+    "name": "Spaceport Container Storage Key",
+    "type": "Key",
+    "rarity": "rare",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "spaceport-ground-control-key",
+    "name": "Spaceport Control Tower Key",
+    "type": "Key",
+    "rarity": "rare",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "spaceport-trench-tower-key",
+    "name": "Spaceport Trench Tower Key",
+    "type": "Key",
+    "rarity": "uncommon",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "spaceport-warehouse-key",
+    "name": "Spaceport Warehouse Key",
+    "type": "Key",
+    "rarity": "uncommon",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "speaker-component",
+    "name": "Speaker Component",
+    "type": "Topside Material",
+    "rarity": "rare",
+    "value": 500,
+    "weightKg": 0.3,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "plastic-parts": 2,
+      "rubber-parts-recipe": 3
+    }
+  },
+  {
+    "id": "spectrometer",
+    "name": "Spectrometer",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "advanced-electrical-components": 1,
+      "sensors-recipe": 1
+    }
+  },
+  {
+    "id": "spectrum-analyzer",
+    "name": "Spectrum Analyzer",
+    "type": "Recyclable",
+    "rarity": "epic",
+    "value": 3500,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "exodus-modules": 1,
+      "sensors-recipe": 1
+    }
+  },
+  {
+    "id": "spotter-relay",
+    "name": "Spotter Relay",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 1,
+      "electrical-components": 2
+    }
+  },
+  {
+    "id": "spring-cushion",
+    "name": "Spring Cushion",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "durable-cloth": 2,
+      "spring": 2
+    }
+  },
+  {
+    "id": "stable-stock-i",
+    "name": "Stable Stock I",
+    "type": "Modification",
+    "rarity": "common",
+    "value": 640,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": "Gunsmith",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "rubber-parts-recipe": 7,
+      "duct-tape-recipe": 1
+    },
+    "recyclesInto": {
+      "rubber-parts-recipe": 6
+    }
+  },
+  {
+    "id": "stable-stock-ii",
+    "name": "Stable Stock II",
+    "type": "Modification",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 2,
+      "duct-tape-recipe": 3
+    },
+    "recyclesInto": {
+      "duct-tape-recipe": 1,
+      "mechanical-components": 1
+    }
+  },
+  {
+    "id": "stable-stock-ii-recipe",
+    "name": "Stable Stock II Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "stable-stock-iii",
+    "name": "Stable Stock III",
+    "type": "Modification",
+    "rarity": "rare",
+    "value": 5000,
+    "weightKg": 0.75,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mod-components": 2,
+      "duct-tape-recipe": 5
+    },
+    "recyclesInto": {
+      "duct-tape-recipe": 2,
+      "mod-components": 1
+    }
+  },
+  {
+    "id": "stable-stock-iii-recipe",
+    "name": "Stable Stock III Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "stack-of-movie-tapes",
+    "name": "Stack of Movie Tapes",
+    "type": "Quest Item",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "statuette",
+    "name": "Statuette",
+    "type": "Trinket",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 0.3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "spring",
+    "name": "Steel Spring",
+    "type": "Topside Material",
+    "rarity": "uncommon",
+    "value": 300,
+    "weightKg": 0.25,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 2
+    }
+  },
+  {
+    "id": "stella-montis-archives-key",
+    "name": "Stella Montis Archives Key",
+    "type": "Key",
+    "rarity": "epic",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "stella-montis-assembly-admin-key",
+    "name": "Stella Montis Assembly Admin Key",
+    "type": "Key",
+    "rarity": "uncommon",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "stella-montis-medical-storage-key",
+    "name": "Stella Montis Medical Storage Key",
+    "type": "Key",
+    "rarity": "uncommon",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "stella-montis-security-checkpoint-key",
+    "name": "Stella Montis Security Checkpoint Key",
+    "type": "Key",
+    "rarity": "rare",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "sterilized-bandage",
+    "name": "Sterilized Bandage",
+    "type": "Quick Use",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 0.2,
+    "stackSize": 3,
+    "craftBench": "Med Station 2",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "antiseptic": 1,
+      "durable-cloth": 2
+    },
+    "recyclesInto": {
+      "antiseptic": 1,
+      "fabric": 1
+    }
+  },
+  {
+    "id": "stitcher-i",
+    "name": "Stitcher I",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 800,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "metal-parts": 8,
+      "rubber-parts-recipe": 4
+    },
+    "recyclesInto": {
+      "metal-parts": 3,
+      "rubber-parts-recipe": 2
+    }
+  },
+  {
+    "id": "stitcher-ii",
+    "name": "Stitcher II",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 2000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "stitcher-i": 1,
+      "metal-parts": 8,
+      "rubber-parts-recipe": 12
+    },
+    "recyclesInto": {
+      "metal-parts": 6,
+      "rubber-parts-recipe": 6
+    }
+  },
+  {
+    "id": "stitcher-iii",
+    "name": "Stitcher III",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 3000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "stitcher-ii": 1,
+      "metal-parts": 10,
+      "simple-gun-parts": 1
+    },
+    "recyclesInto": {
+      "metal-parts": 12,
+      "simple-gun-parts": 1
+    }
+  },
+  {
+    "id": "stitcher-iv",
+    "name": "Stitcher IV",
+    "type": "Weapon",
+    "rarity": "common",
+    "value": 5000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "stitcher-iii": 1,
+      "mechanical-components": 3,
+      "simple-gun-parts": 1
+    },
+    "recyclesInto": {
+      "mechanical-components": 2,
+      "simple-gun-parts": 2
+    }
+  },
+  {
+    "id": "succulent-backpack-charm",
+    "name": "Succulent (Backpack Charm)",
+    "type": "Misc",
+    "rarity": null,
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "surge-shield-recharger",
+    "name": "Surge Shield Recharger",
+    "type": "Quick Use",
+    "rarity": "rare",
+    "value": 1200,
+    "weightKg": 0.2,
+    "stackSize": 5,
+    "craftBench": "Medical Lab II",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "electrical-components": 1,
+      "advanced-arc-powercell": 1
+    },
+    "recyclesInto": {
+      "electrical-components": 1
+    }
+  },
+  {
+    "id": "surveyor-vault",
+    "name": "Surveyor Vault",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 2,
+      "mechanical-components": 2
+    }
+  },
+  {
+    "id": "synthesized-fuel",
+    "name": "Synthesized Fuel",
+    "type": "Topside Material",
+    "rarity": "rare",
+    "value": 700,
+    "weightKg": 0.5,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "oil": 1,
+      "plastic-parts": 1
+    }
+  },
+  {
+    "id": "syringe",
+    "name": "Syringe",
+    "type": "Topside Material",
+    "rarity": "rare",
+    "value": 500,
+    "weightKg": 0.3,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "chemicals": 2,
+      "plastic-parts": 3
+    }
+  },
+  {
+    "id": "tactical-mk-1",
+    "name": "Tactical Mk. 1",
+    "type": "Augment",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 2,
+    "stackSize": 1,
+    "craftBench": "Equipment Bench",
+    "updatedAt": "2026-02-16T15:33:20.350113+00:00",
+    "recipe": {
+      "plastic-parts": 6,
+      "rubber-parts-recipe": 6
+    },
+    "recyclesInto": {
+      "plastic-parts": 3,
+      "rubber-parts-recipe": 3
+    }
+  },
+  {
+    "id": "tactical-mk-2",
+    "name": "Tactical Mk. 2",
+    "type": "Augment",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 2,
+    "stackSize": 1,
+    "craftBench": "Equipment Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "electrical-components": 2,
+      "magnet": 3
+    },
+    "recyclesInto": {
+      "electrical-components": 1,
+      "magnet": 1
+    }
+  },
+  {
+    "id": "tactical-mk3-defensive",
+    "name": "Tactical Mk.3 (Defensive)",
+    "type": "Augment",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": "Gear Bench III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-electrical-components": 2,
+      "processor": 3
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "tactical-mk3-defensive-blueprint",
+    "name": "Tactical MK.3 (Defensive) Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "tactical-mk-3-healing",
+    "name": "Tactical Mk. 3 (Healing)",
+    "type": "Augment",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 4,
+    "stackSize": 1,
+    "craftBench": "Gear Bench III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-electrical-components": 2,
+      "processor": 3
+    },
+    "recyclesInto": {
+      "advanced-electrical-components": 1,
+      "processor": 1
+    }
+  },
+  {
+    "id": "tacical-mk3-healing-blueprint",
+    "name": "Tactical MK.3 (Healing) Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "tactical-mk-3-revival",
+    "name": "Tactical MK. 3 (Revival)",
+    "type": "Augment",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 3,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T09:44:01.085239+00:00",
+    "recipe": {
+      "advanced-electrical-components": 2,
+      "processor": 3
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "tactical-mk-3-revival-blueprint",
+    "name": "Tactical Mk. 3 (Revival) Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "tagging-grenade",
+    "name": "Tagging Grenade",
+    "type": "Quick Use",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 0.4,
+    "stackSize": 3,
+    "craftBench": "Utility Bench 3",
+    "updatedAt": "2026-02-11T14:18:38.670328+00:00",
+    "recipe": {
+      "electrical-components": 1,
+      "sensors-recipe": 1
+    },
+    "recyclesInto": {
+      "plastic-parts": 1,
+      "sensors-recipe": 1
+    }
+  },
+  {
+    "id": "tagging-grenade-recipe",
+    "name": "Tagging Grenade Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "tangerine-warden-color",
+    "name": "Tangerine (Warden Color)",
+    "type": "Misc",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "tattered-arc-lining",
+    "name": "Tattered ARC Lining",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "fabric": 12
+    }
+  },
+  {
+    "id": "tattered-clothes",
+    "name": "Tattered Clothes",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.8,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "fabric": 11
+    }
+  },
+  {
+    "id": "telemetry-transceiver",
+    "name": "Telemetry Transceiver",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 1.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "advanced-electrical-components": 1,
+      "processor": 1
+    }
+  },
+  {
+    "id": "tempest-i-recipe",
+    "name": "Tempest Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-02-13T23:40:14.138771+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "tempest-i",
+    "name": "Tempest I",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 13000,
+    "weightKg": 11,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench 3",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "magnetic-accelerator": 1,
+      "medium-gun-parts": 3,
+      "exodus-modules": 2
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 2,
+      "medium-gun-parts": 2
+    }
+  },
+  {
+    "id": "tempest-ii",
+    "name": "Tempest II",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 17000,
+    "weightKg": 11,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "tempest-i": 1,
+      "advanced-mechanical-components": 2,
+      "medium-gun-parts": 1
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 3,
+      "medium-gun-parts": 3
+    }
+  },
+  {
+    "id": "tempest-iii",
+    "name": "Tempest III",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 22000,
+    "weightKg": 11,
+    "stackSize": 1,
+    "craftBench": "Weapon bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "tempest-ii": 1,
+      "advanced-mechanical-components": 2,
+      "medium-gun-parts": 3
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 4,
+      "medium-gun-parts": 4
+    }
+  },
+  {
+    "id": "tempest-iv",
+    "name": "Tempest IV",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 27000,
+    "weightKg": 11,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench I",
+    "updatedAt": "2026-02-16T15:22:31.679212+00:00",
+    "recipe": {
+      "tempest-iii": 1,
+      "advanced-mechanical-components": 2,
+      "medium-gun-parts": 3
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 5,
+      "medium-gun-parts": 4
+    }
+  },
+  {
+    "id": "thermostat",
+    "name": "Thermostat",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "rubber-parts-recipe": 7,
+      "sensors-recipe": 1
+    }
+  },
+  {
+    "id": "tick-pod",
+    "name": "Tick Pod",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 640,
+    "weightKg": 0.5,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 2,
+      "chemicals": 2
+    }
+  },
+  {
+    "id": "toaster",
+    "name": "Toaster",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "plastic-parts": 5,
+      "wires-recipe": 3
+    }
+  },
+  {
+    "id": "torch-ginger",
+    "name": "Torch Ginger",
+    "type": "Material",
+    "rarity": "uncommon",
+    "value": 300,
+    "weightKg": 0.25,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "chemicals": 3
+    }
+  },
+  {
+    "id": "torn-blanket",
+    "name": "Torn Blanket",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 640,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "fabric": 12
+    }
+  },
+  {
+    "id": "torn-book",
+    "name": "Torn Book",
+    "type": "Trinket",
+    "rarity": "common",
+    "value": 1000,
+    "weightKg": 0.3,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "torrent-i-recipe",
+    "name": "Torrente Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": "Gunsmith II",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "torrente-i",
+    "name": "Torrente I",
+    "type": "Weapon",
+    "rarity": "rare",
+    "value": 7000,
+    "weightKg": 12,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench 2",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-mechanical-components": 2,
+      "medium-gun-parts": 3,
+      "spring": 6
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 1,
+      "medium-gun-parts": 2
+    }
+  },
+  {
+    "id": "torrente-ii",
+    "name": "Torrente II",
+    "type": "Weapon",
+    "rarity": "rare",
+    "value": 10000,
+    "weightKg": 12,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "torrente-i": 1,
+      "advanced-mechanical-components": 1,
+      "medium-gun-parts": 2
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 2,
+      "medium-gun-parts": 2
+    }
+  },
+  {
+    "id": "torrente-iii",
+    "name": "Torrente III",
+    "type": "Weapon",
+    "rarity": "rare",
+    "value": 13000,
+    "weightKg": 12,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "torrente-ii": 1,
+      "advanced-mechanical-components": 1,
+      "medium-gun-parts": 2
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 2,
+      "medium-gun-parts": 3
+    }
+  },
+  {
+    "id": "torrente-iv",
+    "name": "Torrente IV",
+    "type": "Weapon",
+    "rarity": "rare",
+    "value": 15000,
+    "weightKg": 12,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench I",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "medium-gun-parts": 2,
+      "torrente-iii": 1,
+      "advanced-mechanical-components": 2
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 3,
+      "medium-gun-parts": 3
+    }
+  },
+  {
+    "id": "trailblazer-grenade",
+    "name": "Trailblazer Grenade",
+    "type": "Quick Use",
+    "rarity": "rare",
+    "value": 1600,
+    "weightKg": 1,
+    "stackSize": 1,
+    "craftBench": "Explosives Bench II",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "crude-explosives": 2
+    }
+  },
+  {
+    "id": "trailblazer-grenade-blueprint",
+    "name": "Trailblazer Grenade Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-02-16T15:01:56.319602+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "trigger-nade",
+    "name": "Trigger Nade",
+    "type": "Quick Use",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 0.4,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "crude-explosives": 2,
+      "processor": 1
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "trigger-nade-recipe",
+    "name": "Trigger Nade Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "tropical-duck",
+    "name": "Tropical Duck",
+    "type": "Trinket",
+    "rarity": "uncommon",
+    "value": 1000,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "turbo-pump",
+    "name": "Turbo Pump",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "mechanical-components": 1,
+      "oil": 3
+    }
+  },
+  {
+    "id": "unusable-weapon",
+    "name": "Unusable Weapon",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 4,
+      "simple-gun-parts": 5
+    }
+  },
+  {
+    "id": "vase",
+    "name": "Vase",
+    "type": "Trinket",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 0.3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "venator-recipe",
+    "name": "Venator Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": "Gunsmith II",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "venator-i",
+    "name": "Venator I",
+    "type": "Weapon",
+    "rarity": "rare",
+    "value": 7000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench 2",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-mechanical-components": 2,
+      "magnet": 5,
+      "medium-gun-parts": 3
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 1,
+      "medium-gun-parts": 2
+    }
+  },
+  {
+    "id": "venator-ii",
+    "name": "Venator II",
+    "type": "Weapon",
+    "rarity": "rare",
+    "value": 10000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-mechanical-components": 1,
+      "medium-gun-parts": 2,
+      "venator-i": 1
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "venator-iii",
+    "name": "Venator III",
+    "type": "Weapon",
+    "rarity": "rare",
+    "value": 13000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "venator-ii": 1,
+      "advanced-mechanical-components": 1,
+      "medium-gun-parts": 2
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "venator-iv",
+    "name": "Venator IV",
+    "type": "Weapon",
+    "rarity": "rare",
+    "value": 17000,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-02-16T15:19:52.706889+00:00",
+    "recipe": {
+      "venator-iii": 1,
+      "advanced-mechanical-components": 1,
+      "medium-gun-parts": 2
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 3,
+      "medium-gun-parts": 3
+    }
+  },
+  {
+    "id": "vertical-grip-i",
+    "name": "Vertical Grip I",
+    "type": "Modification",
+    "rarity": "common",
+    "value": 640,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": "Gunsmith 1",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "plastic-parts": 6,
+      "duct-tape-recipe": 1
+    },
+    "recyclesInto": {
+      "plastic-parts": 6
+    }
+  },
+  {
+    "id": "vertical-grip-ii",
+    "name": "Vertical Grip II",
+    "type": "Modification",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mechanical-components": 2,
+      "duct-tape-recipe": 3
+    },
+    "recyclesInto": {
+      "duct-tape-recipe": 1,
+      "mechanical-components": 1
+    }
+  },
+  {
+    "id": "vertical-grip-ii-recipe",
+    "name": "Vertical Grip II Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "vertical-grip-iii",
+    "name": "Vertical Grip III",
+    "type": "Modification",
+    "rarity": "rare",
+    "value": 5000,
+    "weightKg": 0.75,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "mod-components": 2,
+      "duct-tape-recipe": 5
+    },
+    "recyclesInto": {
+      "mechanical-components": 2,
+      "duct-tape-recipe": 2
+    }
+  },
+  {
+    "id": "vertical-grip-iii-recipe",
+    "name": "Vertical Grip III Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "very-comfortable-pillow",
+    "name": "Very Comfortable Pillow",
+    "type": "Trinket",
+    "rarity": "uncommon",
+    "value": 2000,
+    "weightKg": 0.3,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "vita-shot",
+    "name": "Vita Shot",
+    "type": "Quick Use",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 0.4,
+    "stackSize": 3,
+    "craftBench": "Med Station 3",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "antiseptic": 2,
+      "syringe": 1
+    },
+    "recyclesInto": {
+      "chemicals": 4,
+      "syringe": 1
+    }
+  },
+  {
+    "id": "vita-shot-recipe",
+    "name": "Vita Shot Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": "Med Station",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "vita-spray",
+    "name": "Vita Spray",
+    "type": "Quick Use",
+    "rarity": "epic",
+    "value": 3000,
+    "weightKg": 1,
+    "stackSize": 1,
+    "craftBench": "Med Station",
+    "updatedAt": "2026-02-16T15:20:39.098439+00:00",
+    "recipe": {
+      "antiseptic": 2,
+      "canister": 4
+    },
+    "recyclesInto": null
+  },
+  {
+    "id": "vita-spray-recipe",
+    "name": "Vita Spray Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "volcanic-rock",
+    "name": "Volcanic Rock",
+    "type": "Misc",
+    "rarity": "common",
+    "value": 270,
+    "weightKg": 0.5,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "voltage-converter",
+    "name": "Voltage Converter",
+    "type": "Topside Material",
+    "rarity": "rare",
+    "value": 500,
+    "weightKg": 0.3,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "rubber-parts-recipe": 1,
+      "wires-recipe": 1
+    }
+  },
+  {
+    "id": "vulcano-blueprint",
+    "name": "Vulcano Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "vulcano-i",
+    "name": "Vulcano I",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 10000,
+    "weightKg": 8,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench 3",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "magnetic-accelerator": 1,
+      "heavy-gun-parts": 3,
+      "exodus-modules": 1
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 2,
+      "heavy-gun-parts": 2
+    }
+  },
+  {
+    "id": "vulcano-ii",
+    "name": "Vulcano II",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 13000,
+    "weightKg": 8,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "advanced-mechanical-components": 1,
+      "heavy-gun-parts": 2,
+      "vulcano-i": 1
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 2,
+      "heavy-gun-parts": 3
+    }
+  },
+  {
+    "id": "vulcano-iii",
+    "name": "Vulcano III",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 17000,
+    "weightKg": 8,
+    "stackSize": 1,
+    "craftBench": "Weapon Bench",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "vulcano-ii": 1,
+      "advanced-mechanical-components": 2,
+      "heavy-gun-parts": 1
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 3,
+      "heavy-gun-parts": 4
+    }
+  },
+  {
+    "id": "vulcano-iv",
+    "name": "Vulcano IV",
+    "type": "Weapon",
+    "rarity": "epic",
+    "value": 22000,
+    "weightKg": 8,
+    "stackSize": 1,
+    "craftBench": "Gunsmith III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "vulcano-iii": 1,
+      "advanced-mechanical-components": 2,
+      "heavy-gun-parts": 3
+    },
+    "recyclesInto": {
+      "advanced-mechanical-components": 4,
+      "heavy-gun-parts": 5
+    }
+  },
+  {
+    "id": "warden-outfit",
+    "name": "Warden (Outfit)",
+    "type": "Misc",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "wasp-driver",
+    "name": "Wasp Driver",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 0.6,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 1,
+      "electrical-components": 1
+    }
+  },
+  {
+    "id": "water-filter",
+    "name": "Water Filter",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "canister": 3,
+      "rubber-parts-recipe": 2
+    }
+  },
+  {
+    "id": "water-pump",
+    "name": "Water Pump",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 2,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "metal-parts": 4,
+      "oil": 2
+    }
+  },
+  {
+    "id": "wires-recipe",
+    "name": "Wires",
+    "type": "Topside Material",
+    "rarity": "uncommon",
+    "value": 200,
+    "weightKg": 0.25,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "rubber-parts-recipe": 2
+    }
+  },
+  {
+    "id": "wolfpack",
+    "name": "WolfPack",
+    "type": "Quick Use",
+    "rarity": "epic",
+    "value": 5000,
+    "weightKg": 1,
+    "stackSize": 1,
+    "craftBench": "Explosives Bench III",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "explosive-compound": 3,
+      "arc-motion-core": 2
+    },
+    "recyclesInto": {
+      "arc-motion-core": 1,
+      "explosive-compound": 1
+    }
+  },
+  {
+    "id": "wolfpack-recipe",
+    "name": "Wolfpack Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-02-11T16:22:40.683052+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "yellow-light-stick",
+    "name": "Yellow Light Stick",
+    "type": "Quick Use",
+    "rarity": "common",
+    "value": 150,
+    "weightKg": 0.15,
+    "stackSize": 5,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "chemicals": 1
+    }
+  },
+  {
+    "id": "yellow-light-stick-blueprint",
+    "name": "Yellow Light Stick Blueprint",
+    "type": "Blueprint",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "zipline",
+    "name": "Zipline",
+    "type": "Quick Use",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 0.4,
+    "stackSize": 3,
+    "craftBench": "Utility Station II",
+    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": {
+      "rope": 1,
+      "mechanical-components": 1
+    },
+    "recyclesInto": {
+      "metal-parts": 1,
+      "rope": 1
+    }
+  }
+]

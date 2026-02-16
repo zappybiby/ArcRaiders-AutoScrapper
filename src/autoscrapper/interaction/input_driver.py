@@ -4,6 +4,8 @@ import sys
 import time
 from typing import Optional
 
+from .keybinds import DEFAULT_STOP_KEY, normalize_stop_key
+
 if sys.platform == "win32":
     import ctypes
     from ctypes import wintypes
@@ -18,10 +20,51 @@ if sys.platform == "win32":
     _GetAsyncKeyState.argtypes = [wintypes.INT]
     _GetAsyncKeyState.restype = wintypes.SHORT
 
-    _VK_ESCAPE = 0x1B
+    _VkKeyScanW = _USER32.VkKeyScanW
+    _VkKeyScanW.argtypes = [wintypes.WCHAR]
+    _VkKeyScanW.restype = wintypes.SHORT
 
-    def escape_pressed() -> bool:
-        state = _GetAsyncKeyState(_VK_ESCAPE)
+    _SPECIAL_VK: dict[str, int] = {
+        "escape": 0x1B,
+        "enter": 0x0D,
+        "space": 0x20,
+        "tab": 0x09,
+        "backspace": 0x08,
+        "delete": 0x2E,
+        "insert": 0x2D,
+        "home": 0x24,
+        "end": 0x23,
+        "pageup": 0x21,
+        "pagedown": 0x22,
+        "left": 0x25,
+        "up": 0x26,
+        "right": 0x27,
+        "down": 0x28,
+    }
+
+    def _vk_code_for_stop_key(stop_key: str) -> Optional[int]:
+        key = normalize_stop_key(stop_key)
+        special = _SPECIAL_VK.get(key)
+        if special is not None:
+            return special
+        if key.startswith("f") and key[1:].isdigit():
+            number = int(key[1:])
+            if 1 <= number <= 12:
+                return 0x70 + (number - 1)
+        if len(key) == 1:
+            if key.isalpha() or key.isdigit():
+                return ord(key.upper())
+            vk_scan = int(_VkKeyScanW(key))
+            if vk_scan == -1:
+                return None
+            return vk_scan & 0xFF
+        return None
+
+    def key_pressed(stop_key: str = DEFAULT_STOP_KEY) -> bool:
+        vk = _vk_code_for_stop_key(stop_key)
+        if vk is None:
+            vk = _SPECIAL_VK["escape"]
+        state = _GetAsyncKeyState(vk)
         return bool(state & 0x8000) or bool(state & 0x0001)
 
     def moveTo(x: int, y: int, duration: float = 0.0) -> None:
@@ -49,9 +92,56 @@ elif sys.platform.startswith("linux"):
 
     _MOUSE = mouse.Controller()
     _KEY_STATE: set[object] = set()
-    _ESCAPE_PRESSED = threading.Event()
+    _KEY_LATCH: set[str] = set()
     _LISTENER: Optional[keyboard.Listener] = None
     _LISTENER_LOCK = threading.Lock()
+    _KEY_STATE_LOCK = threading.Lock()
+
+    _SPECIAL_KEYS: dict[object, str] = {}
+
+    def _register_special_key(attr: str, canonical: str) -> None:
+        key_obj = getattr(keyboard.Key, attr, None)
+        if key_obj is not None:
+            _SPECIAL_KEYS[key_obj] = canonical
+
+    for _attr, _canonical in (
+        ("esc", "escape"),
+        ("enter", "enter"),
+        ("space", "space"),
+        ("tab", "tab"),
+        ("backspace", "backspace"),
+        ("delete", "delete"),
+        ("insert", "insert"),
+        ("home", "home"),
+        ("end", "end"),
+        ("page_up", "pageup"),
+        ("page_down", "pagedown"),
+        ("up", "up"),
+        ("down", "down"),
+        ("left", "left"),
+        ("right", "right"),
+        ("f1", "f1"),
+        ("f2", "f2"),
+        ("f3", "f3"),
+        ("f4", "f4"),
+        ("f5", "f5"),
+        ("f6", "f6"),
+        ("f7", "f7"),
+        ("f8", "f8"),
+        ("f9", "f9"),
+        ("f10", "f10"),
+        ("f11", "f11"),
+        ("f12", "f12"),
+    ):
+        _register_special_key(_attr, _canonical)
+
+    def _canonical_linux_key(key: object) -> Optional[str]:
+        special = _SPECIAL_KEYS.get(key)
+        if special is not None:
+            return special
+        if isinstance(key, keyboard.KeyCode) and key.char:
+            return normalize_stop_key(key.char)
+        return None
 
     def _ensure_key_listener() -> None:
         global _LISTENER
@@ -62,26 +152,32 @@ elif sys.platform.startswith("linux"):
                 return
 
             def on_press(key) -> None:
-                _KEY_STATE.add(key)
-                if key == keyboard.Key.esc:
-                    _ESCAPE_PRESSED.set()
+                canonical = _canonical_linux_key(key)
+                with _KEY_STATE_LOCK:
+                    _KEY_STATE.add(key)
+                    if canonical:
+                        _KEY_LATCH.add(canonical)
 
             def on_release(key) -> None:
-                _KEY_STATE.discard(key)
+                with _KEY_STATE_LOCK:
+                    _KEY_STATE.discard(key)
 
             listener = keyboard.Listener(on_press=on_press, on_release=on_release)
             listener.daemon = True
             listener.start()
             _LISTENER = listener
 
-    def escape_pressed() -> bool:
+    def key_pressed(stop_key: str = DEFAULT_STOP_KEY) -> bool:
         _ensure_key_listener()
-        if keyboard.Key.esc in _KEY_STATE:
-            return True
-        if _ESCAPE_PRESSED.is_set():
-            _ESCAPE_PRESSED.clear()
-            return True
-        return False
+        canonical_target = normalize_stop_key(stop_key)
+        with _KEY_STATE_LOCK:
+            for active in _KEY_STATE:
+                if _canonical_linux_key(active) == canonical_target:
+                    return True
+            if canonical_target in _KEY_LATCH:
+                _KEY_LATCH.discard(canonical_target)
+                return True
+            return False
 
     def moveTo(x: int, y: int, duration: float = 0.0) -> None:
         x = int(x)

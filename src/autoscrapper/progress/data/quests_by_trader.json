@@ -1,0 +1,416 @@
+{
+  "generatedAt": "2026-02-16T19:04:45.033974Z",
+  "source": "quests.json",
+  "traders": {
+    "Celeste": [
+      {
+        "id": "a-bad-feeling",
+        "name": "A Bad Feeling",
+        "sortOrder": 800
+      },
+      {
+        "id": "cold-storage",
+        "name": "Cold Storage",
+        "sortOrder": 1278.8847623375223
+      },
+      {
+        "id": "greasing-her-palms",
+        "name": "Greasing Her Palms",
+        "sortOrder": 1520.3902829127408
+      },
+      {
+        "id": "doctors-orders",
+        "name": "Doctor's Orders",
+        "sortOrder": 1811.860157381871
+      },
+      {
+        "id": "straight-record",
+        "name": "Straight Record",
+        "sortOrder": 2699.773302130645
+      },
+      {
+        "id": "a-balanced-harvest",
+        "name": "A Balanced Harvest",
+        "sortOrder": 2772.6437696475923
+      },
+      {
+        "id": "keeping-the-memory",
+        "name": "Keeping the Memory",
+        "sortOrder": 2929.9041515567033
+      },
+      {
+        "id": "after-rain-comes",
+        "name": "After Rain Comes",
+        "sortOrder": 3001.204857358231
+      },
+      {
+        "id": "untended-garden",
+        "name": "Untended Garden",
+        "sortOrder": 3028.4876761730225
+      },
+      {
+        "id": "echoes-of-victory-ridge",
+        "name": "Echoes of Victory Ridge",
+        "sortOrder": 3162.736884149872
+      },
+      {
+        "id": "the-root-of-the-matter",
+        "name": "The Root of the Matter",
+        "sortOrder": 3268.4876761730225
+      },
+      {
+        "id": "water-troubles",
+        "name": "Water Troubles",
+        "sortOrder": 3539.252140564836
+      },
+      {
+        "id": "a-symbol-of-unification",
+        "name": "A Symbol of Unification",
+        "sortOrder": 3676.3707629417568
+      },
+      {
+        "id": "source-of-the-contamination",
+        "name": "Source of the Contamination",
+        "sortOrder": 3779.252140564836
+      },
+      {
+        "id": "celestes-journals",
+        "name": "Celeste's Journals",
+        "sortOrder": 3891.485408941247
+      },
+      {
+        "id": "switching-the-supply",
+        "name": "Switching the Supply",
+        "sortOrder": 4019.252140564836
+      },
+      {
+        "id": "back-on-top",
+        "name": "Back on Top",
+        "sortOrder": 4173.137708038272
+      },
+      {
+        "id": "power-out",
+        "name": "Power Out",
+        "sortOrder": 4739.252140564836
+      },
+      {
+        "id": "flickering-threat",
+        "name": "Flickering Threat",
+        "sortOrder": 4979.252140564836
+      },
+      {
+        "id": "bees",
+        "name": "Bees!",
+        "sortOrder": 5219.252140564836
+      },
+      {
+        "id": "tribute-to-toledo",
+        "name": "Tribute to Toledo",
+        "sortOrder": 5939.252140564836
+      },
+      {
+        "id": "digging-up-dirt",
+        "name": "Digging Up Dirt",
+        "sortOrder": 6179.252140564836
+      },
+      {
+        "id": "turnabout",
+        "name": "Turnabout",
+        "sortOrder": 6295.427563904591
+      }
+    ],
+    "TianWen": [
+      {
+        "id": "the-right-tool",
+        "name": "The Right Tool",
+        "sortOrder": 1040.3902829127408
+      },
+      {
+        "id": "a-better-use",
+        "name": "A Better Use",
+        "sortOrder": 1280.3902829127408
+      },
+      {
+        "id": "snap-and-salvage",
+        "name": "Snap and Salvage",
+        "sortOrder": 1518.8847623375223
+      },
+      {
+        "id": "mixed-signals",
+        "name": "Mixed Signals",
+        "sortOrder": 2006.475046689308
+      },
+      {
+        "id": "what-we-left-behind",
+        "name": "What We Left Behind",
+        "sortOrder": 2048.8797708209436
+      },
+      {
+        "id": "broken-monument",
+        "name": "Broken Monument",
+        "sortOrder": 2292.7044581548457
+      },
+      {
+        "id": "marked-for-death",
+        "name": "Marked for Death",
+        "sortOrder": 2475.855715426346
+      },
+      {
+        "id": "market-correction",
+        "name": "Market Correction",
+        "sortOrder": 2698.623904145423
+      },
+      {
+        "id": "eyes-on-the-prize",
+        "name": "Eyes on the Prize",
+        "sortOrder": 2934.700983655939
+      },
+      {
+        "id": "industrial-espionage",
+        "name": "Industrial Espionage",
+        "sortOrder": 3162.932222187488
+      },
+      {
+        "id": "unexpected-initiative",
+        "name": "Unexpected Initiative",
+        "sortOrder": 3406.951187812034
+      },
+      {
+        "id": "the-majors-footlocker",
+        "name": "The Majors Footlocker",
+        "sortOrder": 3808.281728989622
+      }
+    ],
+    "Shani": [
+      {
+        "id": "picking-up-the-pieces",
+        "name": "Picking Up The Pieces",
+        "sortOrder": 83.77692521396251
+      },
+      {
+        "id": "trash-into-treasure",
+        "name": "Trash Into Treasure",
+        "sortOrder": 319.4725833201698
+      },
+      {
+        "id": "clearer-skies",
+        "name": "Clearer Skies",
+        "sortOrder": 319.47311544888146
+      },
+      {
+        "id": "off-the-raider",
+        "name": "Off The Radar",
+        "sortOrder": 563.7351191683605
+      },
+      {
+        "id": "hatch-repairs",
+        "name": "Hatch Repairs",
+        "sortOrder": 1039.0611297924638
+      },
+      {
+        "id": "down-to-earth",
+        "name": "Down To Earth",
+        "sortOrder": 1279.0611297924638
+      },
+      {
+        "id": "the-trifecta",
+        "name": "The Trifecta",
+        "sortOrder": 1519.0611297924638
+      },
+      {
+        "id": "with-a-view",
+        "name": "With a View",
+        "sortOrder": 1754.6943973062562
+      },
+      {
+        "id": "dormant-barons",
+        "name": "Dormant Barons",
+        "sortOrder": 1813.6925197784376
+      },
+      {
+        "id": "a-lay-of-the-land",
+        "name": "A Lay of the Land",
+        "sortOrder": 2531.860157381871
+      },
+      {
+        "id": "eyes-in-the-sky",
+        "name": "Eyes in the Sky",
+        "sortOrder": 2771.860157381871
+      },
+      {
+        "id": "out-of-the-shadows",
+        "name": "Out of the Shadows",
+        "sortOrder": 3807.5478144224858
+      },
+      {
+        "id": "our-presence-up-there",
+        "name": "Our Presence Up There",
+        "sortOrder": 4436.473458081255
+      },
+      {
+        "id": "lost-in-transmission",
+        "name": "Lost in Transmission",
+        "sortOrder": 4676.473458081255
+      },
+      {
+        "id": "communication-hideout",
+        "name": "Communication Hideout",
+        "sortOrder": 4916.473458081255
+      },
+      {
+        "id": "into-the-fray",
+        "name": "Into the Fray",
+        "sortOrder": 5140.695307679854
+      },
+      {
+        "id": "combat-recon",
+        "name": "Combat Recon",
+        "sortOrder": 5257.189393285459
+      },
+      {
+        "id": "bombing-run",
+        "name": "Bombing Run",
+        "sortOrder": 5465.869255355122
+      },
+      {
+        "id": "deciphering-the-data",
+        "name": "Deciphering The Data",
+        "sortOrder": 5620.695307679854
+      },
+      {
+        "id": "a-toxic-trail",
+        "name": "A Toxic Trail",
+        "sortOrder": 5831.580186814919
+      },
+      {
+        "id": "the-stench-of-corruption",
+        "name": "The Stench Of Corruption",
+        "sortOrder": 6047.565315216083
+      },
+      {
+        "id": "a-first-foothold",
+        "name": "A First Foothold",
+        "sortOrder": 6196.983228767364
+      },
+      {
+        "id": "reduced-to-rubble",
+        "name": "Reduced To Rubble",
+        "sortOrder": 6436.983228767364
+      },
+      {
+        "id": "with-a-trace",
+        "name": "With a Trace",
+        "sortOrder": 6676.983228767364
+      },
+      {
+        "id": "armored-transports",
+        "name": "Armored Transports",
+        "sortOrder": 6970.490569947188
+      },
+      {
+        "id": "a-prime-specimen",
+        "name": "A Prime Specimen",
+        "sortOrder": 7209.777176880825
+      }
+    ],
+    "Lance": [
+      {
+        "id": "in-my-image",
+        "name": "In My Image",
+        "sortOrder": 1038.8847623375223
+      },
+      {
+        "id": "medical-merchandise",
+        "name": "Medical Merchandise",
+        "sortOrder": 2051.860157381871
+      },
+      {
+        "id": "esr-analyzer",
+        "name": "A Reveal in Ruins",
+        "sortOrder": 2291.860157381871
+      },
+      {
+        "id": "prescriptions-of-the-past",
+        "name": "Prescriptions of the Past",
+        "sortOrder": 4499.252140564836
+      },
+      {
+        "id": "life-of-a-pharmacist",
+        "name": "Life of a Pharmacist",
+        "sortOrder": 5699.252140564836
+      },
+      {
+        "id": "on-deaf-ears",
+        "name": "On Deaf Ears",
+        "sortOrder": 6098.557992881553
+      },
+      {
+        "id": "on-the-map",
+        "name": "On The Map",
+        "sortOrder": 6303.962520692375
+      },
+      {
+        "id": "a-new-type-of-plant",
+        "name": "A New Type of Plant",
+        "sortOrder": 6677.2338897110185
+      }
+    ],
+    "Apollo": [
+      {
+        "id": "safe-passage",
+        "name": "Safe Passage",
+        "sortOrder": 1039.9397757882718
+      },
+      {
+        "id": "what-goes-around",
+        "name": "What Goes Around",
+        "sortOrder": 1279.9397757882718
+      },
+      {
+        "id": "sparks-fly",
+        "name": "Sparks Fly",
+        "sortOrder": 1519.9397757882718
+      },
+      {
+        "id": "the-league",
+        "name": "The League",
+        "sortOrder": 1533.2327539462642
+      },
+      {
+        "id": "movie-night",
+        "name": "Movie Night",
+        "sortOrder": 1965.5143577290614
+      },
+      {
+        "id": "a-warm-place-to-rest",
+        "name": "A Warm Place to Rest",
+        "sortOrder": 4259.252140564836
+      },
+      {
+        "id": "paving-the-way",
+        "name": "Paving the Way",
+        "sortOrder": 5380.695307679854
+      },
+      {
+        "id": "espresso",
+        "name": "Espresso",
+        "sortOrder": 5459.252140564836
+      },
+      {
+        "id": "groundbreaking",
+        "name": "Groundbreaking",
+        "sortOrder": 5860.695307679854
+      },
+      {
+        "id": "building-a-library",
+        "name": "Building a Library",
+        "sortOrder": 6437.2338897110185
+      },
+      {
+        "id": "the-clean-dream",
+        "name": "The Clean Dream",
+        "sortOrder": 6970.340249561917
+      }
+    ]
+  }
+}

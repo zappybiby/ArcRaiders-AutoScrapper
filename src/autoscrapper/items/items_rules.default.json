@@ -1,0 +1,5450 @@
+{
+  "metadata": {
+    "generatedAt": "2026-02-16T19:13:53.235009Z",
+    "data": {
+      "lastUpdated": "2026-02-16T19:04:45.107168Z",
+      "source": "https://metaforge.app/arc-raiders",
+      "version": "autoscrapper-data-1"
+    },
+    "itemCount": 525,
+    "allQuestsCompleted": true
+  },
+  "items": [
+    {
+      "id": "acoustic-guitar",
+      "name": "Acoustic Guitar",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "adrenaline-shot",
+      "name": "Adrenaline Shot",
+      "value": 300,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "advanced-arc-powercell",
+      "name": "Advanced ARC Powercell",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Used in 2 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "advanced-electrical-components",
+      "name": "Advanced Electrical Components",
+      "value": 1750,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "advanced-mechanical-components",
+      "name": "Advanced Mechanical Components",
+      "value": 1750,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Gunsmith (Level 3)"
+      ]
+    },
+    {
+      "id": "agave",
+      "name": "Agave",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "agave-juice",
+      "name": "Agave Juice",
+      "value": 1800,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "air-freshener",
+      "name": "Air Freshener",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "High value (2000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "alarm-clock",
+      "name": "Alarm Clock",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 6x Plastic Parts, 1x Processor",
+        "Recycle value: Components (860 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "alien-duck",
+      "name": "Alien Duck",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "High value (1000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "ancient-fort-security-code",
+      "name": "Ancient Fort Security Code",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "angled-grip-i",
+      "name": "Angled Grip I",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "angled-grip-ii",
+      "name": "Angled Grip II",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "angled-grip-ii-recipe",
+      "name": "Angled Grip II Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "angled-grip-iii",
+      "name": "Angled Grip III",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "angled-grip-iii-recipe",
+      "name": "Angled Grip III Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "antiseptic",
+      "name": "Antiseptic",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Medical Lab (Level 3)"
+      ]
+    },
+    {
+      "id": "anvil-i",
+      "name": "Anvil I",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "anvil-ii",
+      "name": "Anvil II",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "anvil-iii",
+      "name": "Anvil III",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "anvil-iv",
+      "name": "Anvil IV",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "anvil-recipe",
+      "name": "Anvil Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "anvil-splitter",
+      "name": "Anvil Splitter",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "aphelion-rifle",
+      "name": "Aphelion Rifle",
+      "value": 27500,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "aphelion-rifle-blueprint",
+      "name": "Aphelion Rifle Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "apricot",
+      "name": "Apricot",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Scrappy (Level 3), Scrappy (Level 5)"
+      ]
+    },
+    {
+      "id": "arc-alloy",
+      "name": "ARC Alloy",
+      "value": 200,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "arc-circuitry",
+      "name": "ARC Circuitry",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Refiner (Level 3)"
+      ]
+    },
+    {
+      "id": "arc-coolant",
+      "name": "ARC Coolant",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 16x Chemicals",
+        "Recycle value: Components (800 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "arc-flex-rubber",
+      "name": "ARC Flex Rubber",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 16x Rubber Parts",
+        "Recycle value: Components (800 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "arc-motion-core",
+      "name": "ARC Motion Core",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Used in 3 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "arc-performance-steel",
+      "name": "ARC Performance Steel",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 12x Metal Parts",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "arc-powercell",
+      "name": "ARC Powercell",
+      "value": 270,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "arc-synthetic-resin",
+      "name": "ARC Synthetic Resin",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 14x Plastic Parts",
+        "Recycle value: Components (840 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "arc-thermo-lining",
+      "name": "ARC Thermo Lining",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 16x Fabric",
+        "Recycle value: Components (800 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "arpeggio-i",
+      "name": "Arpeggio I",
+      "value": 5500,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "arpeggio-ii",
+      "name": "Arpeggio II",
+      "value": 8000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "arpeggio-iii",
+      "name": "Arpeggio III",
+      "value": 11500,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "arpeggio-iv",
+      "name": "Arpeggio IV",
+      "value": 15000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "assorted-seeds",
+      "name": "Assorted Seeds",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Valuable currency item",
+        "Used for trading with Celeste"
+      ]
+    },
+    {
+      "id": "aviator-outfit",
+      "name": "Aviator (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "bag-radio-renegade-variant",
+      "name": "Bag (Radio Renegade Variant)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "banana-backpack-charm",
+      "name": "Banana (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "bandage",
+      "name": "Bandage",
+      "value": 250,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "barricade-kit",
+      "name": "Barricade Kit",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "barricade-kit-recipe",
+      "name": "Barricade Kit Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "bastion-part",
+      "name": "Bastion Cell",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Gear Bench (Level 3)"
+      ]
+    },
+    {
+      "id": "battery",
+      "name": "Battery",
+      "value": 250,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "bettina-blueprint",
+      "name": "Bettina Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "bettina-i",
+      "name": "Bettina I",
+      "value": 8000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "bettina-ii",
+      "name": "Bettina II",
+      "value": 11000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "bettina-iii",
+      "name": "Bettina III",
+      "value": 14000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "bettina-iv",
+      "name": "Bettina IV",
+      "value": 18000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "bicycle-pump",
+      "name": "Bicycle Pump",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 4x Canister, 10x Metal Parts",
+        "Recycle value: Components (1950 coins) worth less than Item (2000 coins)"
+      ]
+    },
+    {
+      "id": "binoculars",
+      "name": "Binoculars",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 4x Plastic Parts, 2x Rubber Parts",
+        "Recycle value: Components (340 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "bison-driver",
+      "name": "Bison Driver",
+      "value": 2500,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x ARC Motion Core, 2x ARC Alloy",
+        "Recycle value: Components (2400 coins) worth less than Item (2500 coins)"
+      ]
+    },
+    {
+      "id": "black-and-white-origin-color",
+      "name": "Black & White (Origin Color)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "black-eye-face-style",
+      "name": "Black Eye (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "black-hiker-colour",
+      "name": "Black (Hiker Colour)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "blaze-grenade",
+      "name": "Blaze Grenade",
+      "value": 1600,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 4x Metal Parts, 2x Oil",
+        "Recycle value: Components (900 coins) worth less than Item (1600 coins)"
+      ]
+    },
+    {
+      "id": "blaze-grenade-blueprint",
+      "name": "Blaze Grenade Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "blaze-grenade-trap",
+      "name": "Blaze Grenade Trap",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "bloated-tuna-can",
+      "name": "Bloated Tuna Can",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "High value (1000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "blue-gate-cellar-key",
+      "name": "Blue Gate Cellar Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "blue-gate-communication-tower-key",
+      "name": "Blue Gate Communication Tower Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "blue-gate-confiscation-room-key",
+      "name": "Blue Gate Confiscation Room Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "blue-gate-village-key",
+      "name": "Blue Gate Village Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "blue-light-stick",
+      "name": "Blue Light Stick",
+      "value": 150,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "blue-light-stick-blueprint",
+      "name": "Blue Light Stick Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "blue-radio-renegade-color",
+      "name": "Blue (Radio Renegade Color)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "blue-yellow-aviator-color",
+      "name": "Blue Yellow (Aviator Color)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "bobcat-i",
+      "name": "Bobcat I",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "bobcat-i-recipe",
+      "name": "Bobcat Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "bobcat-ii",
+      "name": "Bobcat II",
+      "value": 17000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "bobcat-iii",
+      "name": "Bobcat III",
+      "value": 22000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "bobcat-iv",
+      "name": "Bobcat IV",
+      "value": 27000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "bombardier-cell",
+      "name": "Bombardier Cell",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Refiner (Level 3)"
+      ]
+    },
+    {
+      "id": "bow-and-arrow-emote",
+      "name": "Bow and Arrow (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "breathtaking-snow-globe",
+      "name": "Breathtaking Snow Globe",
+      "value": 7000,
+      "action": "sell",
+      "analysis": [
+        "High value (7000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "briefcase-backpack-attachment",
+      "name": "Briefcase (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "broken-flashlight",
+      "name": "Broken Flashlight",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x Battery, 6x Metal Parts",
+        "Recycle value: Components (950 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "broken-guidance-system",
+      "name": "Broken Guidance System",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 4x Processor",
+        "Recycle value: Components (2000 coins) worth less than Item (2000 coins)"
+      ]
+    },
+    {
+      "id": "broken-handcuffs",
+      "name": "Broken Handcuffs",
+      "value": 270,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "broken-handheld-radio",
+      "name": "Broken Handheld Radio",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 3x Sensors, 2x Wires",
+        "Recycle value: Components (1900 coins) worth less than Item (2000 coins)"
+      ]
+    },
+    {
+      "id": "broken-taser",
+      "name": "Broken Taser",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x Battery, 2x Wires",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "burgerboy-backpack-charm",
+      "name": "Burgerboy (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "buried-city-hospital-key",
+      "name": "Buried City Hospital Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "buried-city-jkv-employee-access-card",
+      "name": "Buried City JKV Employee Access Card",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "buried-city-residential-master-key",
+      "name": "Buried City Residential Master Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "buried-city-town-hall-key",
+      "name": "Buried City Town Hall Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "burletta-i",
+      "name": "Burletta I",
+      "value": 2900,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "burletta-ii",
+      "name": "Burletta II",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "burletta-iiii",
+      "name": "Burletta III",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "burletta-iv",
+      "name": "Burletta IV",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "burltetta-recipe",
+      "name": "Burletta Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "burned-arc-circuitry",
+      "name": "Burned ARC Circuitry",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x ARC Alloy",
+        "Recycle value: Components (400 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "burnt-out-candles",
+      "name": "Burnt-Out Candles",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "camera-lens",
+      "name": "Camera Lens",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 8x Plastic Parts",
+        "Recycle value: Components (480 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "candle-holder",
+      "name": "Candle Holder",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 8x Metal Parts",
+        "Recycle value: Components (600 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "candleberries",
+      "name": "Candleberries",
+      "value": 460,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "canister",
+      "name": "Canister",
+      "value": 300,
+      "action": "keep",
+      "analysis": [
+        "Used in 4 crafting recipes",
+        "Common crafting ingredient",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "cans-backpack-attachment",
+      "name": "Cans (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "cat-bed",
+      "name": "Cat Bed",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Scrappy (Level 4)"
+      ]
+    },
+    {
+      "id": "cheer-emote",
+      "name": "Cheer (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "chemicals",
+      "name": "Chemicals",
+      "value": 50,
+      "action": "keep",
+      "analysis": [
+        "Used in 11 crafting recipes",
+        "Common crafting ingredient",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "coffee-pot",
+      "name": "Coffee Pot",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "High value (1000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "combat-mk-1",
+      "name": "Combat Mk. 1",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 3x Plastic Parts, 3x Rubber Parts",
+        "Recycle value: Components (330 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "combat-mk-2",
+      "name": "Combat Mk. 2",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "combat-mk-3-aggressive",
+      "name": "Combat Mk. 3 (Aggressive)",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "combat-mk-3-flanking",
+      "name": "Combat Mk. 3 (Flanking) Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "combat-mk3-aggressive-blueprint",
+      "name": "Combat Mk.3 (Aggressive) Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "combat-mk3-flanking",
+      "name": "Combat Mk.3 (Flanking) ",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "compensator-i",
+      "name": "Compensator I",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "compensator-ii",
+      "name": "Compensator II",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "compensator-ii-recipe",
+      "name": "Compensator II Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "compensator-iii",
+      "name": "Compensator III",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "compensator-iii-recipe",
+      "name": "Compensator III Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "complex-gun-parts",
+      "name": "Complex Gun Parts",
+      "value": 3000,
+      "action": "keep",
+      "analysis": [
+        "Used in 3 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "complex-gun-parts-blueprint",
+      "name": "Complex Gun Parts Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "coolant",
+      "name": "Coolant",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 5x Chemicals, 2x Oil",
+        "Recycle value: Components (850 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "cooling-coil",
+      "name": "Cooling Coil",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 6x Chemicals, 2x Steel Spring",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "cooling-fan",
+      "name": "Cooling Fan",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "cracked-bioscanner",
+      "name": "Cracked Bioscanner",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 3x Battery, 3x Rubber Parts",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "crimson-racer-aviator-colour",
+      "name": "Crimson Racer (Aviator Colour)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "crude-explosives",
+      "name": "Crude Explosives",
+      "value": 270,
+      "action": "keep",
+      "analysis": [
+        "Used in 5 crafting recipes",
+        "Common crafting ingredient",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "crumpled-plastic-bottle",
+      "name": "Crumpled Plastic Bottle",
+      "value": 270,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 4x Plastic Parts",
+        "Recycle value: Components (240 coins) worth less than Item (270 coins)"
+      ]
+    },
+    {
+      "id": "dam-control-center-tower-key",
+      "name": "Dam Control Center Tower Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "dam-staff-room-key",
+      "name": "Dam Staff Room Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "dam-surveillance-key",
+      "name": "Dam Surveillance Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "dam-testing-annex-key",
+      "name": "Dam Testing Annex Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "dam-utility-key",
+      "name": "Dam Utility Key",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "damaged-arc-motion-core",
+      "name": "Damaged ARC Motion Core",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x ARC Alloy",
+        "Recycle value: Components (400 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "damaged-arc-powercell",
+      "name": "Damaged ARC Powercell",
+      "value": 293,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x ARC Alloy",
+        "Recycle value: Components (200 coins) worth less than Item (293 coins)"
+      ]
+    },
+    {
+      "id": "damaged-fireball-burner",
+      "name": "Damaged Fireball Burner",
+      "value": 270,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x ARC Alloy",
+        "Recycle value: Components (200 coins) worth less than Item (270 coins)"
+      ]
+    },
+    {
+      "id": "damaged-heat-sink",
+      "name": "Damaged Heat Sink",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 6x Metal Parts, 2x Wires",
+        "Recycle value: Components (850 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "damaged-rocketeer-part",
+      "name": "Damaged Rocketeer Driver",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "damaged-tick-pod",
+      "name": "Damaged Tick Pod",
+      "value": 270,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x ARC Alloy",
+        "Recycle value: Components (200 coins) worth less than Item (270 coins)"
+      ]
+    },
+    {
+      "id": "damaged-wasp-driver",
+      "name": "Damaged Wasp Driver",
+      "value": 270,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x ARC Alloy",
+        "Recycle value: Components (200 coins) worth less than Item (270 coins)"
+      ]
+    },
+    {
+      "id": "danaged-hornet-driver",
+      "name": "Damaged Hornet Driver",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "dart-board",
+      "name": "Dart Board",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "High value (2000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "deadline",
+      "name": "Deadline",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "deadline-blueprint",
+      "name": "Deadline Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "defibrillator",
+      "name": "Defibrillator",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "defibrillator-recipe",
+      "name": "Defibrillator Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "deflated-football",
+      "name": "Deflated Football",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 9x Fabric, 9x Rubber Parts",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "degraded-arc-rubber",
+      "name": "Degraded ARC Rubber",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 11x Rubber Parts",
+        "Recycle value: Components (550 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "diving-googles",
+      "name": "Diving Goggles",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 12x Rubber Parts",
+        "Recycle value: Components (600 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "dog-collar",
+      "name": "Dog Collar",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 8x Fabric, 1x Metal Parts",
+        "Recycle value: Components (475 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "doodly-duck",
+      "name": "Doodly Duck",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "High value (3000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "door-blocker",
+      "name": "Door Blocker",
+      "value": 270,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "dried-out-arc-resin",
+      "name": "Dried-Out ARC Resin",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 9x Plastic Parts",
+        "Recycle value: Components (540 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "duct-tape-recipe",
+      "name": "Duct Tape",
+      "value": 300,
+      "action": "keep",
+      "analysis": [
+        "Used in 11 crafting recipes",
+        "Common crafting ingredient",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "durable-cloth",
+      "name": "Durable Cloth",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "electrical-components",
+      "name": "Electrical Components",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "empty-wine-bottle",
+      "name": "Empty Wine Bottle",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "High value (1000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "energy-ammo",
+      "name": "Energy Clip",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Ammunition - essential for weapons",
+        "Review based on your weapon loadout",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "equalizer-i",
+      "name": "Equalizer",
+      "value": 27500,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "equalizer-recipe",
+      "name": "Equalizer Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "esr-analyzer",
+      "name": "ESR Analyzer",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "exodus-modules",
+      "name": "Exodus Modules",
+      "value": 2750,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "expired-pasta",
+      "name": "Expired Pasta",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "High value (1000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "expired-respirator",
+      "name": "Expired Respirator",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 4x Fabric, 8x Rubber Parts",
+        "Recycle value: Components (600 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "explosive-compound",
+      "name": "Explosive Compound",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Explosives Station (Level 3)"
+      ]
+    },
+    {
+      "id": "explosive-mine",
+      "name": "Explosive Mine",
+      "value": 1500,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "explosive-mine-blueprint",
+      "name": "Explosive Mine Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "extended-barrel",
+      "name": "Extended Barrel",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "extended-barrel-recipe",
+      "name": "Extended Barrel Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "extended-light-mag-i",
+      "name": "Extended Light Mag I",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "extended-light-mag-ii",
+      "name": "Extended Light Mag II",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "extended-light-mag-ii-recipe",
+      "name": "Extended Light Mag II Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "extended-light-mag-iii",
+      "name": "Extended Light Mag III",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "extended-light-mag-iii-recipe",
+      "name": "Extended Light Mag III Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "extended-medium-mag-i",
+      "name": "Extended Medium Mag I",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "extended-medium-mag-ii",
+      "name": "Extended Medium Mag II",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "extended-medium-mag-ii-recipe",
+      "name": "Extended Medium Mag II Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "extended-medium-mag-iii",
+      "name": "Extended Medium Mag III",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "extended-medium-mag-iii-blueprint",
+      "name": "Extended Medium Mag III Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "extended-shotgun-mag-i",
+      "name": "Extended Shotgun Mag I",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "extended-shotgun-mag-ii",
+      "name": "Extended Shotgun Mag II",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "extended-shotgun-mag-ii-recipe",
+      "name": "Extended Shotgun Mag II Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "extended-shotgun-mag-iii",
+      "name": "Extended Shotgun Mag III",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "extended-shotgun-mag-iii-recipe",
+      "name": "Extended Shotgun Mag III Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "fabric",
+      "name": "Fabric",
+      "value": 50,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "faded-photograph",
+      "name": "Faded Photograph",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "familiar-duck",
+      "name": "Familiar Duck",
+      "value": 7000,
+      "action": "sell",
+      "analysis": [
+        "High value (7000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "ferro-i",
+      "name": "Ferro I",
+      "value": 475,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "ferro-ii",
+      "name": "Ferro II",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "ferro-iii",
+      "name": "Ferro III",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "ferro-iv",
+      "name": "Ferro IV",
+      "value": 2900,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "fertilizer",
+      "name": "Fertilizer",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "film-reel",
+      "name": "Film Reel",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "High value (2000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "fine-wristwatch",
+      "name": "Fine Wristwatch",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "High value (3000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "fireball-burner",
+      "name": "Fireball Burner",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x ARC Alloy, 1x Crude Explosives",
+        "Recycle value: Components (470 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "firecracker",
+      "name": "Firecracker",
+      "value": 270,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "fireworks-box",
+      "name": "Fireworks Box",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "fireworks-box-blueprint",
+      "name": "Fireworks Box Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "flame-spray",
+      "name": "Flame Spray",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "flashy-duck",
+      "name": "Flashy Duck",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "High value (3000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "flow-controller",
+      "name": "Flow Controller",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Advanced Mechanical Components, 1x Sensors",
+        "Recycle value: Components (2250 coins) worth less than Item (3000 coins)"
+      ]
+    },
+    {
+      "id": "flushing-terminal-key",
+      "name": "Flushing Terminal Key",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "fossilized-lightning",
+      "name": "Fossilized Lightning",
+      "value": 4000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 3x Explosive Compound",
+        "Recycle value: Components (3000 coins) worth less than Item (4000 coins)"
+      ]
+    },
+    {
+      "id": "free-loadout-augment",
+      "name": "Free Loadout Augment",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "frequency-modulation-box",
+      "name": "Frequency Modulation Box",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Advanced Electrical Components, 1x Speaker Component",
+        "Recycle value: Components (2250 coins) worth less than Item (3000 coins)"
+      ]
+    },
+    {
+      "id": "fried-motherboard",
+      "name": "Fried Motherboard",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Utility Station (Level 3)"
+      ]
+    },
+    {
+      "id": "fruit-mix",
+      "name": "Fruit Mix",
+      "value": 1800,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "frying-pan",
+      "name": "Frying Pan",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 8x Metal Parts",
+        "Recycle value: Components (600 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "garlic-press",
+      "name": "Garlic Press",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 12x Metal Parts",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "gas-grenade",
+      "name": "Gas Grenade",
+      "value": 270,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "gas-grenade-trap",
+      "name": "Gas Grenade Trap",
+      "value": 300,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "gas-mine",
+      "name": "Gas Mine",
+      "value": 270,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "gas-mine-blueprint",
+      "name": "Gas Mine Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "geiger-counter",
+      "name": "Geiger Counter",
+      "value": 3500,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 3x Battery, 1x Exodus Modules",
+        "Recycle value: Components (3500 coins) worth less than Item (3500 coins)"
+      ]
+    },
+    {
+      "id": "gentle-duck",
+      "name": "Gentle Duck",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "High value (1000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "goggles-radio-renegade-variant",
+      "name": "Goggles (Radio Renegade Variant)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "great-muullein",
+      "name": "Great Mullein",
+      "value": 300,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x Assorted Seeds",
+        "Recycle value: Components (200 coins) worth less than Item (300 coins)"
+      ]
+    },
+    {
+      "id": "green-light-stick",
+      "name": "Green Light Stick",
+      "value": 150,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "green-light-stick-blueprint",
+      "name": "Green Light Stick Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "hairpin-i",
+      "name": "Hairpin I",
+      "value": 450,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "hairpin-ii",
+      "name": "Hairpin II",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "hairpin-iii",
+      "name": "Hairpin III",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "hairpin-iv",
+      "name": "Hairpin IV",
+      "value": 2900,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "happy-jig-emote",
+      "name": "Happy Jig (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "headphones",
+      "name": "Headphones",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 7x Rubber Parts, 1x Speaker Component",
+        "Recycle value: Components (850 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "heavy-ammo",
+      "name": "Heavy Ammo",
+      "value": 12,
+      "action": "keep",
+      "analysis": [
+        "Ammunition - essential for weapons",
+        "Review based on your weapon loadout",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "heavy-fuze-grenade",
+      "name": "Heavy Fuze Grenade",
+      "value": 1600,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "heavy-gun-parts",
+      "name": "Heavy Gun Parts",
+      "value": 700,
+      "action": "keep",
+      "analysis": [
+        "Used in 17 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "heavy-gun-parts-recipe",
+      "name": "Heavy Gun Parts Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "heavy-shield",
+      "name": "Heavy Shield",
+      "value": 5500,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "helmet-radio-renegade-variant",
+      "name": "Helmet (Radio Renegade Variant)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "herbal-bandage",
+      "name": "Herbal Bandage",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "horizontal-grip",
+      "name": "Horizontal Grip",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "hornet-driver",
+      "name": "Hornet Driver",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x ARC Alloy, 2x Electrical Components",
+        "Recycle value: Components (1680 coins) worth less than Item (2000 coins)"
+      ]
+    },
+    {
+      "id": "household-cleaner",
+      "name": "Household Cleaner",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 11x Chemicals",
+        "Recycle value: Components (550 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "hullcracker-blueprint",
+      "name": "Hullcracker Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "hullcracker-i",
+      "name": "Hullcracker I",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "hullcracker-ii",
+      "name": "Hullcracker II",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "hullcracker-iii",
+      "name": "Hullcracker III",
+      "value": 17000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "hullcracker-iv",
+      "name": "Hullcracker IV ",
+      "value": 22000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "humidifier",
+      "name": "Humidifier",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "ice-cream-scooper",
+      "name": "Ice Cream Scooper",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 7x Metal Parts",
+        "Recycle value: Components (525 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "il-toro-i",
+      "name": "Il Toro I",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "il-toro-ii",
+      "name": "Il Toro II",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "il-toro-iiii",
+      "name": "Il Toro III",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "il-toro-iv",
+      "name": "Il Toro IV",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "il-toro-recipe",
+      "name": "Il Toro Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "impure-arc-coolant",
+      "name": "Impure ARC Coolant",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 12x Chemicals",
+        "Recycle value: Components (600 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "industrial-battery",
+      "name": "Industrial Battery",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Gear Bench (Level 3)"
+      ]
+    },
+    {
+      "id": "industrial-charger",
+      "name": "Industrial Charger",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 5x Metal Parts, 1x Voltage Converter",
+        "Recycle value: Components (875 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "industrial-magnet",
+      "name": "Industrial Magnet",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x Magnet, 4x Metal Parts",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "ion-sputter",
+      "name": "Ion Sputter",
+      "value": 6000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Exodus Modules, 4x Voltage Converter",
+        "Recycle value: Components (4750 coins) worth less than Item (6000 coins)"
+      ]
+    },
+    {
+      "id": "jolt-mine",
+      "name": "Jolt Mine",
+      "value": 850,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "jolt-mine-recipe",
+      "name": "Jolt Mine Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "junior-outfit",
+      "name": "Junior (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "jupiter-i",
+      "name": "Jupiter",
+      "value": 27500,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "jupiter-i-recipe",
+      "name": "Jupiter Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "kettle-i",
+      "name": "Kettle I",
+      "value": 840,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "kettle-ii",
+      "name": "Kettle II",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "kettle-iii",
+      "name": "Kettle III",
+      "value": 3000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "kettle-iv",
+      "name": "Kettle IV",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "kinetic-converter",
+      "name": "Kinetic Converter",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "laboratory-reagents",
+      "name": "Laboratory Reagents",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Explosives Station (Level 3)"
+      ]
+    },
+    {
+      "id": "lances-mixtape-5th-edition",
+      "name": "Lance's Mixtape (5th Edition)",
+      "value": 10000,
+      "action": "sell",
+      "analysis": [
+        "High value (10000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "laser-trap-lure-recipe",
+      "name": "Laser Trap: Lure",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "laser-trap-smoke-recipe",
+      "name": "Smoke Grenade Trap",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "launcher-ammo",
+      "name": "Launcher Ammo",
+      "value": 250,
+      "action": "keep",
+      "analysis": [
+        "Ammunition - essential for weapons",
+        "Review based on your weapon loadout",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "leaper-pulse-unit",
+      "name": "Leaper Pulse Unit",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "lemon",
+      "name": "Lemon",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Scrappy (Level 3)"
+      ]
+    },
+    {
+      "id": "lidar-scanner",
+      "name": "Lidar Scanner",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "light-ammo",
+      "name": "Light Ammo",
+      "value": 4,
+      "action": "keep",
+      "analysis": [
+        "Ammunition - essential for weapons",
+        "Review based on your weapon loadout",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "light-bulb",
+      "name": "Light Bulb",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "light-gun-parts",
+      "name": "Light Gun Parts",
+      "value": 700,
+      "action": "keep",
+      "analysis": [
+        "Used in 6 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "light-gun-parts-recipe",
+      "name": "Light Gun Parts Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "light-impact-grenade",
+      "name": "Light Impact Grenade",
+      "value": 270,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "light-shield",
+      "name": "Light Shield",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "lightweight-stock",
+      "name": "Lightweight Stock",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "lightweight-stock-recipe",
+      "name": "Lightweight Stock Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "lil-smoke-grenade",
+      "name": "Li'l Smoke Grenade",
+      "value": 300,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "looting-mk-1",
+      "name": "Looting Mk. 1",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 3x Plastic Parts, 3x Rubber Parts",
+        "Recycle value: Components (330 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "looting-mk-2",
+      "name": "Looting Mk. 2",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "looting-mk-3-cautious",
+      "name": "Looting MK. 3 (Cautious)",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "looting-mk-3-safekeeper",
+      "name": "Looting MK. 3 (Safekeeper)",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "looting-mk-3-safekeeper-blueprint",
+      "name": "Looting MK. 3 (Safekeeper) Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "looting-mk-3-survivor",
+      "name": "Looting MK. 3 (Survivor)",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "looting-mk-3-survivor-blueprint",
+      "name": "Looting MK. 3 (Survivor) Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "lure-grenade",
+      "name": "Lure Grenade",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "lure-grenade-recipe",
+      "name": "Lure Grenade Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "lure-grenade-trap",
+      "name": "Lure Grenade Trap",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "magnet",
+      "name": "Magnet",
+      "value": 300,
+      "action": "keep",
+      "analysis": [
+        "Used in 5 crafting recipes",
+        "Common crafting ingredient",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "magnetic-accelerator",
+      "name": "Magnetic Accelerator",
+      "value": 5500,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "magnetron",
+      "name": "Magnetron",
+      "value": 6000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Magnetic Accelerator, 1x Steel Spring",
+        "Recycle value: Components (5800 coins) worth less than Item (6000 coins)"
+      ]
+    },
+    {
+      "id": "mastery-medal-backpack-charm",
+      "name": "Mastery Medal (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "matriarch-reactor",
+      "name": "Matriarch Reactor",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "mechanical-components",
+      "name": "Mechanical Components",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Used in 34 crafting recipes",
+        "Common crafting ingredient",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "medium-ammo",
+      "name": "Medium Ammo",
+      "value": 6,
+      "action": "keep",
+      "analysis": [
+        "Ammunition - essential for weapons",
+        "Review based on your weapon loadout",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "medium-gun-parts",
+      "name": "Medium Gun Parts",
+      "value": 700,
+      "action": "keep",
+      "analysis": [
+        "Used in 22 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "medium-gun-parts-recipe",
+      "name": "Medium Gun Parts Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "medium-shield",
+      "name": "Medium Shield",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "metal-brackets",
+      "name": "Metal Brackets",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 8x Metal Parts",
+        "Recycle value: Components (600 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "metal-parts",
+      "name": "Metal Parts",
+      "value": 75,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "microscope",
+      "name": "Microscope",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Advanced Mechanical Components, 3x Magnet",
+        "Recycle value: Components (2650 coins) worth less than Item (3000 coins)"
+      ]
+    },
+    {
+      "id": "mini-centrifuge",
+      "name": "Mini Centrifuge",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Advanced Mechanical Components, 2x Canister",
+        "Recycle value: Components (2350 coins) worth less than Item (3000 coins)"
+      ]
+    },
+    {
+      "id": "mod-components",
+      "name": "Mod Components",
+      "value": 1750,
+      "action": "keep",
+      "analysis": [
+        "Used in 14 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "moss",
+      "name": "Moss",
+      "value": 500,
+      "action": "keep",
+      "analysis": [
+        "Used in 1 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "motor",
+      "name": "Motor",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Refiner (Level 3)"
+      ]
+    },
+    {
+      "id": "mushroom",
+      "name": "Mushroom",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Scrappy (Level 5)"
+      ]
+    },
+    {
+      "id": "music-album",
+      "name": "Music Album",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "High value (3000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "music-box",
+      "name": "Music Box",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "High value (5000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "muzzle-brake-i",
+      "name": "Muzzle Brake I",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "muzzle-brake-ii",
+      "name": "Muzzle Brake II",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "muzzle-brake-ii-recipe",
+      "name": "Muzzle Brake II Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "muzzle-brake-iii",
+      "name": "Muzzle Brake III",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "muzzle-brake-iii-recipe",
+      "name": "Muzzle Brake III Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "noisemaker",
+      "name": "Noisemaker",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "number-plate",
+      "name": "Number Plate",
+      "value": 270,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 3x Metal Parts",
+        "Recycle value: Components (225 coins) worth less than Item (270 coins)"
+      ]
+    },
+    {
+      "id": "oil",
+      "name": "Oil",
+      "value": 300,
+      "action": "keep",
+      "analysis": [
+        "Used in 3 crafting recipes",
+        "Common crafting ingredient",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "olives",
+      "name": "Olives",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Scrappy (Level 4)"
+      ]
+    },
+    {
+      "id": "orange-camo-origin-outfit",
+      "name": "Orange Camo (Origin Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "osprey-i",
+      "name": "Osprey I",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "osprey-ii",
+      "name": "Osprey II",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "osprey-iii",
+      "name": "Osprey III",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "osprey-iv",
+      "name": "Osprey IV",
+      "value": 17000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "osprey-recipe",
+      "name": "Osprey Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "padded-stock",
+      "name": "Padded Stock",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "padded-stock-recipe",
+      "name": "Padded Stock Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "painted-box",
+      "name": "Painted Box",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "High value (2000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "patrol-car-key",
+      "name": "Patrol Car Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "patrol-outfit",
+      "name": "Patrol (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "photoelectric-cloak",
+      "name": "Photoelectric Cloak",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "pilgrims-peak-security-code",
+      "name": "Pilgrim's Peak Security Code",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "plastic-parts",
+      "name": "Plastic Parts",
+      "value": 60,
+      "action": "keep",
+      "analysis": [
+        "Used in 18 crafting recipes",
+        "Common crafting ingredient",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "playing-cards",
+      "name": "Playing Cards",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "High value (5000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "polluted-air-filter",
+      "name": "Polluted Air Filter",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 6x Fabric, 2x Oil",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "pop-trigger",
+      "name": "Pop Trigger",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Crude Explosives, 1x ARC Alloy",
+        "Recycle value: Components (470 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "portable-television",
+      "name": "Portable TV",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x Battery, 6x Wires",
+        "Recycle value: Components (1700 coins) worth less than Item (2000 coins)"
+      ]
+    },
+    {
+      "id": "poster-natural-wonder",
+      "name": "Poster of Natural Wonder",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "High value (2000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "pottery",
+      "name": "Pottery",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "High value (2000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "power-bank",
+      "name": "Power Bank",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x Battery, 2x Wires",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "power-cable",
+      "name": "Power Cable",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 4x Wires",
+        "Recycle value: Components (800 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "power-rod",
+      "name": "Power Rod",
+      "value": 5500,
+      "action": "keep",
+      "analysis": [
+        "Used in 2 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "prickly-pear",
+      "name": "Prickly Pear",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Scrappy (Level 4)"
+      ]
+    },
+    {
+      "id": "processor",
+      "name": "Processor",
+      "value": 500,
+      "action": "keep",
+      "analysis": [
+        "Used in 9 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "projector",
+      "name": "Projector",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Processor, 2x Wires",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "pulse-mine",
+      "name": "Pulse Mine",
+      "value": 470,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "pulse-mine-blueprint",
+      "name": "Pulse Mine Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "queen-reactor",
+      "name": "Queen Reactor",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "radio",
+      "name": "Radio",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Sensors, 1x Speaker Component",
+        "Recycle value: Components (1000 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "radio-relay",
+      "name": "Radio Relay",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x Sensors, 2x Speaker Component",
+        "Recycle value: Components (2000 coins) worth less than Item (3000 coins)"
+      ]
+    },
+    {
+      "id": "radio-renegade-outfit",
+      "name": "Radio Renegade (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "raider-hatch-key",
+      "name": "Raider Hatch Key",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "raiders-refuge-security-code",
+      "name": "Raider's Refuge Security Code",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rattler-i",
+      "name": "Rattler I",
+      "value": 1750,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rattler-ii",
+      "name": "Rattler II",
+      "value": 3000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rattler-iii",
+      "name": "Rattler III",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rattler-iv",
+      "name": "Rattler IV",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "recorder",
+      "name": "Recorder",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "red-coral-jewelry",
+      "name": "Red Coral Jewelry",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "High value (5000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "red-light-stick",
+      "name": "Red Light Stick",
+      "value": 150,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "red-light-stick-blueprint",
+      "name": "Red Light Stick Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "reinforced-reception-security-code",
+      "name": "Reinforced Reception Security Code",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "remote-control",
+      "name": "Remote Control",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 7x Plastic Parts, 1x Sensors",
+        "Recycle value: Components (920 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "remote-raider-flare",
+      "name": "Remote Raider Flare",
+      "value": 270,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "remote-raider-flare-blueprint",
+      "name": "Remote Raider Flare Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "renegade-i",
+      "name": "Renegade I",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "renegade-ii",
+      "name": "Renegade II",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "renegade-iii",
+      "name": "Renegade III",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "renegade-iv",
+      "name": "Renegade IV",
+      "value": 17000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "resin",
+      "name": "Resin",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "ripped-safety-vest",
+      "name": "Ripped Safety Vest",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Durable Cloth, 1x Magnet",
+        "Recycle value: Components (940 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "rocket-thruster",
+      "name": "Rocket Thruster",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x Synthesized Fuel, 6x Metal Parts",
+        "Recycle value: Components (1850 coins) worth less than Item (2000 coins)"
+      ]
+    },
+    {
+      "id": "rocketeer-part",
+      "name": "Rocketeer Driver",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Explosives Station (Level 3)"
+      ]
+    },
+    {
+      "id": "roots",
+      "name": "Roots",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "rope",
+      "name": "Rope",
+      "value": 500,
+      "action": "keep",
+      "analysis": [
+        "Used in 2 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rosary",
+      "name": "Rosary",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "High value (2000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "rotary-encoder",
+      "name": "Rotary Encoder",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x Electrical Components, 2x Processor",
+        "Recycle value: Components (2280 coins) worth less than Item (3000 coins)"
+      ]
+    },
+    {
+      "id": "rubber-duck",
+      "name": "Rubber Duck",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "High value (1000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "rubber-pad",
+      "name": "Rubber Pad",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 18x Rubber Parts",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "rubber-parts-recipe",
+      "name": "Rubber Parts",
+      "value": 50,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "ruined-accordion",
+      "name": "Ruined Accordion",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 18x Rubber Parts, 3x Steel Spring",
+        "Recycle value: Components (1800 coins) worth less than Item (2000 coins)"
+      ]
+    },
+    {
+      "id": "ruined-augment",
+      "name": "Ruined Augment",
+      "value": 270,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "ruined-baton",
+      "name": "Ruined Baton",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 6x Metal Parts, 3x Rubber Parts",
+        "Recycle value: Components (600 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "ruined-handcuffs",
+      "name": "Ruined Handcuffs",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 8x Metal Parts",
+        "Recycle value: Components (600 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "ruined-parachute",
+      "name": "Ruined Parachute",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 10x Fabric",
+        "Recycle value: Components (500 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "ruined-riot-shield",
+      "name": "Ruined Riot Shield",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 10x Plastic Parts, 6x Rubber Parts",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "ruined-tactical-vest",
+      "name": "Ruined Tactical Vest",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 5x Fabric, 1x Magnet",
+        "Recycle value: Components (550 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "rusted-bolts",
+      "name": "Rusted Bolts",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 8x Metal Parts",
+        "Recycle value: Components (600 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "rusted-gear",
+      "name": "Rusted Gear",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Gunsmith (Level 3)"
+      ]
+    },
+    {
+      "id": "rusted-shut-medical-kit",
+      "name": "Rusted Shut Medical Kit",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Medical Lab (Level 3)"
+      ]
+    },
+    {
+      "id": "rusted-tools",
+      "name": "Rusted Tools",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 8x Metal Parts, 1x Steel Spring",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "rusty-arc-steel",
+      "name": "Rusty ARC Steel",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 8x Metal Parts",
+        "Recycle value: Components (600 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "sample-cleaner",
+      "name": "Sample Cleaner",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 14x Assorted Seeds, 2x Electrical Components",
+        "Recycle value: Components (2680 coins) worth less than Item (3000 coins)"
+      ]
+    },
+    {
+      "id": "seeker-grenade",
+      "name": "Seeker Grenade",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "seeker-grenade-blueprint",
+      "name": "Seeker Grenade Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "sensors-recipe",
+      "name": "Sensors",
+      "value": 500,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "sentinel-part",
+      "name": "Sentinel Firing Core",
+      "value": 3000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Gunsmith (Level 3)"
+      ]
+    },
+    {
+      "id": "shaker",
+      "name": "Shaker",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "shield-recharger",
+      "name": "Shield Recharger",
+      "value": 520,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "shotgun-ammo",
+      "name": "Shotgun ammo",
+      "value": 20,
+      "action": "keep",
+      "analysis": [
+        "Ammunition - essential for weapons",
+        "Review based on your weapon loadout",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "shotgun-choke-i",
+      "name": "Shotgun Choke I",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "shotgun-choke-ii",
+      "name": "Shotgun Choke II",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "shotgun-choke-ii-recipe",
+      "name": "Shotgun Choke II Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "shotgun-choke-iii",
+      "name": "Shotgun Choke III",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "shotgun-choke-iii-recipe",
+      "name": "Shotgun Choke III Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "shotgun-gun-parts",
+      "name": "Shotgun Parts",
+      "value": 700,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "shotgun-silencer",
+      "name": "Shotgun Silencer",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "shotgun-silencer-blueprint",
+      "name": "Shotgun Silencer Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "showstopper",
+      "name": "Showstopper",
+      "value": 2200,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x Battery, 1x Electrical Components",
+        "Recycle value: Components (1140 coins) worth less than Item (2200 coins)"
+      ]
+    },
+    {
+      "id": "showstopper-blueprint",
+      "name": "Showstopper Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "shrapnel-grenade",
+      "name": "Shrapnel Grenade",
+      "value": 800,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "shredder-gyro",
+      "name": "Shredder Gyro",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 3x ARC Alloy, 3x Mechanical Components",
+        "Recycle value: Components (2520 coins) worth less than Item (3000 coins)"
+      ]
+    },
+    {
+      "id": "signal-amplifier",
+      "name": "Signal Amplifier",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x Electrical Components, 2x Voltage Converter",
+        "Recycle value: Components (2280 coins) worth less than Item (3000 coins)"
+      ]
+    },
+    {
+      "id": "silencer-i",
+      "name": "Silencer I",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "silencer-i-recipe",
+      "name": "Silencer I Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "silencer-ii",
+      "name": "Silencer II",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "silencer-ii-recipe",
+      "name": "Silencer II Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "silencer-iii",
+      "name": "Silencer III",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "silver-teaspoon-set",
+      "name": "Silver Teaspoon Set",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "High value (3000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "simple-gun-parts",
+      "name": "Simple Gun Parts",
+      "value": 330,
+      "action": "keep",
+      "analysis": [
+        "Used in 24 crafting recipes",
+        "Common crafting ingredient",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "smoke-grenade",
+      "name": "Smoke Grenade",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Used in 1 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "smoke-grenade-blueprint",
+      "name": "Smoke Grenade Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "snap-blast-grenade",
+      "name": "Snap Blast Grenade",
+      "value": 800,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "snap-hook",
+      "name": "Snap Hook",
+      "value": 14000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "snap-hook-recipe",
+      "name": "Snap Hook Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "snitch-scanner",
+      "name": "Snitch Scanner",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x ARC Alloy, 2x Electrical Components",
+        "Recycle value: Components (1480 coins) worth less than Item (2000 coins)"
+      ]
+    },
+    {
+      "id": "snowball",
+      "name": "Snowball",
+      "value": 10,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "spaceport-container-storage-key",
+      "name": "Spaceport Container Storage Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "spaceport-ground-control-key",
+      "name": "Spaceport Control Tower Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "spaceport-trench-tower-key",
+      "name": "Spaceport Trench Tower Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "spaceport-warehouse-key",
+      "name": "Spaceport Warehouse Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "speaker-component",
+      "name": "Speaker Component",
+      "value": 500,
+      "action": "keep",
+      "analysis": [
+        "Used in 2 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "spectrometer",
+      "name": "Spectrometer",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Advanced Electrical Components, 1x Sensors",
+        "Recycle value: Components (2250 coins) worth less than Item (3000 coins)"
+      ]
+    },
+    {
+      "id": "spectrum-analyzer",
+      "name": "Spectrum Analyzer",
+      "value": 3500,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Exodus Modules, 1x Sensors",
+        "Recycle value: Components (3250 coins) worth less than Item (3500 coins)"
+      ]
+    },
+    {
+      "id": "spotter-relay",
+      "name": "Spotter Relay",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x ARC Alloy, 2x Electrical Components",
+        "Recycle value: Components (1480 coins) worth less than Item (2000 coins)"
+      ]
+    },
+    {
+      "id": "spring",
+      "name": "Steel Spring",
+      "value": 300,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "spring-cushion",
+      "name": "Spring Cushion",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x Durable Cloth, 2x Steel Spring",
+        "Recycle value: Components (1880 coins) worth less than Item (2000 coins)"
+      ]
+    },
+    {
+      "id": "stable-stock-i",
+      "name": "Stable Stock I",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "stable-stock-ii",
+      "name": "Stable Stock II",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "stable-stock-ii-recipe",
+      "name": "Stable Stock II Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "stable-stock-iii",
+      "name": "Stable Stock III",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "stable-stock-iii-recipe",
+      "name": "Stable Stock III Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "stack-of-movie-tapes",
+      "name": "Stack of Movie Tapes",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "statuette",
+      "name": "Statuette",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "High value (3000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "stella-montis-archives-key",
+      "name": "Stella Montis Archives Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "stella-montis-assembly-admin-key",
+      "name": "Stella Montis Assembly Admin Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "stella-montis-medical-storage-key",
+      "name": "Stella Montis Medical Storage Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "stella-montis-security-checkpoint-key",
+      "name": "Stella Montis Security Checkpoint Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "sterilized-bandage",
+      "name": "Sterilized Bandage",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "stitcher-i",
+      "name": "Stitcher I",
+      "value": 800,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "stitcher-ii",
+      "name": "Stitcher II",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "stitcher-iii",
+      "name": "Stitcher III",
+      "value": 3000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "stitcher-iv",
+      "name": "Stitcher IV",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "succulent-backpack-charm",
+      "name": "Succulent (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "surge-shield-recharger",
+      "name": "Surge Shield Recharger",
+      "value": 1200,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "surveyor-vault",
+      "name": "Surveyor Vault",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Medical Lab (Level 3)"
+      ]
+    },
+    {
+      "id": "synthesized-fuel",
+      "name": "Synthesized Fuel",
+      "value": 700,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Oil, 1x Plastic Parts",
+        "Recycle value: Components (360 coins) worth less than Item (700 coins)"
+      ]
+    },
+    {
+      "id": "syringe",
+      "name": "Syringe",
+      "value": 500,
+      "action": "keep",
+      "analysis": [
+        "Used in 1 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "tacical-mk3-healing-blueprint",
+      "name": "Tactical MK.3 (Healing) Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "tactical-mk-1",
+      "name": "Tactical Mk. 1",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 3x Plastic Parts, 3x Rubber Parts",
+        "Recycle value: Components (330 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "tactical-mk-2",
+      "name": "Tactical Mk. 2",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "tactical-mk-3-healing",
+      "name": "Tactical Mk. 3 (Healing)",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "tactical-mk-3-revival",
+      "name": "Tactical MK. 3 (Revival)",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "tactical-mk-3-revival-blueprint",
+      "name": "Tactical Mk. 3 (Revival) Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "tactical-mk3-defensive",
+      "name": "Tactical Mk.3 (Defensive)",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "tactical-mk3-defensive-blueprint",
+      "name": "Tactical MK.3 (Defensive) Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "tagging-grenade",
+      "name": "Tagging Grenade",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "tagging-grenade-recipe",
+      "name": "Tagging Grenade Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "tangerine-warden-color",
+      "name": "Tangerine (Warden Color)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "tattered-arc-lining",
+      "name": "Tattered ARC Lining",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 12x Fabric",
+        "Recycle value: Components (600 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "tattered-clothes",
+      "name": "Tattered Clothes",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 11x Fabric",
+        "Recycle value: Components (550 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "telemetry-transceiver",
+      "name": "Telemetry Transceiver",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Advanced Electrical Components, 1x Processor",
+        "Recycle value: Components (2250 coins) worth less than Item (3000 coins)"
+      ]
+    },
+    {
+      "id": "tempest-i",
+      "name": "Tempest I",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "tempest-i-recipe",
+      "name": "Tempest Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "tempest-ii",
+      "name": "Tempest II",
+      "value": 17000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "tempest-iii",
+      "name": "Tempest III",
+      "value": 22000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "tempest-iv",
+      "name": "Tempest IV",
+      "value": 27000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "thermostat",
+      "name": "Thermostat",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 7x Rubber Parts, 1x Sensors",
+        "Recycle value: Components (850 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "tick-pod",
+      "name": "Tick Pod",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x ARC Alloy, 2x Chemicals",
+        "Recycle value: Components (500 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "toaster",
+      "name": "Toaster",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 5x Plastic Parts, 3x Wires",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "torch-ginger",
+      "name": "Torch Ginger",
+      "value": 300,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "torn-blanket",
+      "name": "Torn Blanket",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 12x Fabric",
+        "Recycle value: Components (600 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "torn-book",
+      "name": "Torn Book",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "High value (1000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "torrent-i-recipe",
+      "name": "Torrente Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "torrente-i",
+      "name": "Torrente I",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "torrente-ii",
+      "name": "Torrente II",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "torrente-iii",
+      "name": "Torrente III",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "torrente-iv",
+      "name": "Torrente IV",
+      "value": 15000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "trailblazer-grenade",
+      "name": "Trailblazer Grenade",
+      "value": 1600,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "trailblazer-grenade-blueprint",
+      "name": "Trailblazer Grenade Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "trigger-nade",
+      "name": "Trigger Nade",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "trigger-nade-recipe",
+      "name": "Trigger Nade Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "tropical-duck",
+      "name": "Tropical Duck",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "High value (1000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "turbo-pump",
+      "name": "Turbo Pump",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Mechanical Components, 3x Oil",
+        "Recycle value: Components (1540 coins) worth less than Item (2000 coins)"
+      ]
+    },
+    {
+      "id": "unusable-weapon",
+      "name": "Unusable Weapon",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 4x Metal Parts, 5x Simple Gun Parts",
+        "Recycle value: Components (1950 coins) worth less than Item (2000 coins)"
+      ]
+    },
+    {
+      "id": "vase",
+      "name": "Vase",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "High value (3000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "venator-i",
+      "name": "Venator I",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "venator-ii",
+      "name": "Venator II",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "venator-iii",
+      "name": "Venator III",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "venator-iv",
+      "name": "Venator IV",
+      "value": 17000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "venator-recipe",
+      "name": "Venator Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "vertical-grip-i",
+      "name": "Vertical Grip I",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "vertical-grip-ii",
+      "name": "Vertical Grip II",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "vertical-grip-ii-recipe",
+      "name": "Vertical Grip II Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "vertical-grip-iii",
+      "name": "Vertical Grip III",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "vertical-grip-iii-recipe",
+      "name": "Vertical Grip III Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "very-comfortable-pillow",
+      "name": "Very Comfortable Pillow",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Scrappy (Level 5)"
+      ]
+    },
+    {
+      "id": "vita-shot",
+      "name": "Vita Shot",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "vita-shot-recipe",
+      "name": "Vita Shot Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "vita-spray",
+      "name": "Vita Spray",
+      "value": 3000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "vita-spray-recipe",
+      "name": "Vita Spray Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "volcanic-rock",
+      "name": "Volcanic Rock",
+      "value": 270,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "voltage-converter",
+      "name": "Voltage Converter",
+      "value": 500,
+      "action": "keep",
+      "analysis": [
+        "Used in 2 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "vulcano-blueprint",
+      "name": "Vulcano Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "vulcano-i",
+      "name": "Vulcano I",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "vulcano-ii",
+      "name": "Vulcano II",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "vulcano-iii",
+      "name": "Vulcano III",
+      "value": 17000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "vulcano-iv",
+      "name": "Vulcano IV",
+      "value": 22000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "warden-outfit",
+      "name": "Warden (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "wasp-driver",
+      "name": "Wasp Driver",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x ARC Alloy, 1x Electrical Components",
+        "Recycle value: Components (840 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "water-filter",
+      "name": "Water Filter",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 3x Canister, 2x Rubber Parts",
+        "Recycle value: Components (1000 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "water-pump",
+      "name": "Water Pump",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 4x Metal Parts, 2x Oil",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "wires-recipe",
+      "name": "Wires",
+      "value": 200,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "wolfpack",
+      "name": "WolfPack",
+      "value": 3000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "wolfpack-recipe",
+      "name": "Wolfpack Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "yellow-light-stick",
+      "name": "Yellow Light Stick",
+      "value": 150,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "yellow-light-stick-blueprint",
+      "name": "Yellow Light Stick Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "zipline",
+      "name": "Zipline",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    }
+  ]
+}

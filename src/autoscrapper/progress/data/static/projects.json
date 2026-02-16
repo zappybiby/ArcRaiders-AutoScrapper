@@ -1,0 +1,205 @@
+[
+  {
+    "id": "expedition_project",
+    "name": "Expedition Project",
+    "description": "Embark on a dangerous expedition beyond the Rust Belt. Expeditions are perilous. Your Raider will carry all their possessions into the unknown beyond the Rust Belt. In return, your next Raider gains a unique edge that lasts until the next Expedition departs.",
+    "phases": [
+      {
+        "phase": 1,
+        "name": "Foundation",
+        "requirementItemIds": [
+          {
+            "item_id": "metal-parts",
+            "quantity": 150
+          },
+          {
+            "item_id": "rubber-parts-recipe",
+            "quantity": 200
+          },
+          {
+            "item_id": "arc-alloy",
+            "quantity": 80
+          },
+          {
+            "item_id": "spring",
+            "quantity": 15
+          }
+        ]
+      },
+      {
+        "phase": 2,
+        "name": "Core Systems",
+        "description": {
+          "en": "Connecting wiring, ventilation, and essential power systems",
+          "de": "Verkabelung, Belüftung und wesentliche Stromversorgungssysteme verbinden",
+          "fr": "Connexion du câblage, de la ventilation et des systèmes électriques essentiels",
+          "es": "Conectando cableado, ventilación y sistemas de energía esenciales",
+          "pt": "Conectando fiação, ventilação e sistemas de energia essenciais",
+          "pl": "Podłączanie okablowania, wentylacji i podstawowych systemów zasilania",
+          "no": "Koble til ledninger, ventilasjon og essensielle strømsystemer",
+          "da": "Tilslutning af ledninger, ventilation og essentielle strømsystemer",
+          "ru": "Подключение проводки, вентиляции и основных энергосистем",
+          "ja": "配線、換気、必須電力システムの接続",
+          "it": "Collegamento di cablaggio, ventilazione e sistemi di alimentazione essenziali",
+          "kr": "배선, 환기 및 필수 전력 시스템 연결",
+          "zh-CN": "连接线路、通风和基本电力系统",
+          "zh-TW": "連接線路、通風和基本電力系統",
+          "uk": "Підключення проводки, вентиляції та основних енергосистем",
+          "tr": "Kablolama, havalandırma ve temel güç sistemlerinin bağlanması",
+          "hr": "Povezivanje ožičenja, ventilacije i osnovnih energetskih sustava",
+          "sr": "Povezivanje ožičenja, ventilacije i osnovnih energetskih sistema"
+        },
+        "requirementItemIds": [
+          {
+            "item_id": "durable-cloth",
+            "quantity": 35
+          },
+          {
+            "item_id": "wires-recipe",
+            "quantity": 30
+          },
+          {
+            "item_id": "electrical-components",
+            "quantity": 30
+          },
+          {
+            "item_id": "cooling-fan",
+            "quantity": 5
+          }
+        ]
+      },
+      {
+        "phase": 3,
+        "name": "Framework",
+        "description": {
+          "en": "Building the walls and roof, installing core systems and defining the interior layout",
+          "de": "Wände und Dach bauen, Kernsysteme installieren und Inneneinrichtung definieren",
+          "fr": "Construction des murs et du toit, installation des systèmes essentiels et définition de l'aménagement intérieur",
+          "es": "Construyendo las paredes y el techo, instalando sistemas centrales y definiendo el diseño interior",
+          "pt": "Construindo as paredes e o teto, instalando sistemas centrais e definindo o layout interior",
+          "pl": "Budowanie ścian i dachu, instalowanie głównych systemów i definiowanie układu wnętrza",
+          "no": "Bygge vegger og tak, installere kjernesystemer og definere det indre oppsettet",
+          "da": "Bygning af vægge og tag, installation af kernesystemer og definition af det indvendige layout",
+          "ru": "Возведение стен и крыши, установка основных систем и планировка внутреннего пространства",
+          "ja": "壁と屋根の建設、コアシステムの設置、内部レイアウトの決定",
+          "it": "Costruzione di pareti e tetto, installazione dei sistemi principali e definizione del layout interno",
+          "kr": "벽과 지붕 건설, 핵심 시스템 설치 및 내부 배치 설정",
+          "zh-CN": "建造墙壁和屋顶，安装核心系统并规划内部布局",
+          "zh-TW": "建造牆壁和屋頂，安裝核心系統並規劃內部佈局",
+          "uk": "Зведення стін і даху, встановлення основних систем та планування внутрішнього простору",
+          "tr": "Duvarların ve çatının inşası, temel sistemlerin kurulumu ve iç düzenin belirlenmesi",
+          "hr": "Gradnja zidova i krova, instalacija osnovnih sustava i definiranje unutarnjeg rasporeda",
+          "sr": "Gradnja zidova i krova, instalacija osnovnih sistema i definisanje unutrašnjeg rasporeda"
+        },
+        "requirementItemIds": [
+          {
+            "item_id": "light-bulb",
+            "quantity": 5
+          },
+          {
+            "item_id": "battery",
+            "quantity": 30
+          },
+          {
+            "item_id": "sensors-recipe",
+            "quantity": 20
+          },
+          {
+            "item_id": "exodus-modules",
+            "quantity": 1
+          }
+        ]
+      },
+      {
+        "phase": 4,
+        "name": "Outfitting",
+        "description": {
+          "en": "Adding storage, workbenches, utilities, and personal touches",
+          "de": "Lagerung, Werkbänke, Versorgungseinrichtungen und persönliche Akzente hinzufügen",
+          "fr": "Ajout de rangement, d'établis, d'utilitaires et de touches personnelles",
+          "es": "Añadiendo almacenamiento, bancos de trabajo, utilidades y toques personales",
+          "pt": "Adicionando armazenamento, bancadas de trabalho, utilidades e toques pessoais",
+          "pl": "Dodawanie magazynu, stółów warsztatowych, narzędzi i osobistych akcentów",
+          "no": "Legge til lagring, arbeidsbenker, verktøy og personlige detaljer",
+          "da": "Tilføjelse af opbevaring, arbejdsbænke, værktøj og personlige berøringer",
+          "ru": "Добавление хранилищ, верстаков, коммунальных систем и личных штрихов",
+          "ja": "収納、作業台、設備、個人的な装飾の追加",
+          "it": "Aggiunta di depositi, banchi da lavoro, utilità e tocchi personali",
+          "kr": "저장소, 작업대, 유틸리티 및 개인적인 요소 추가",
+          "zh-CN": "添加储物空间、工作台、设施和个性化装饰",
+          "zh-TW": "添加儲物空間、工作台、設施和個性化裝飾",
+          "uk": "Додавання сховищ, верстаків, комунальних систем та особистих штрихів",
+          "tr": "Depolama, tezgahlar, tesisatlar ve kişisel dokunuşların eklenmesi",
+          "hr": "Dodavanje skladišta, radnih stolova, komunalija i osobnih detalja",
+          "sr": "Dodavanje skladišta, radnih stolova, komunalija i ličnih detalja"
+        },
+        "requirementItemIds": [
+          {
+            "item_id": "humidifier",
+            "quantity": 5
+          },
+          {
+            "item_id": "advanced-electrical-components",
+            "quantity": 5
+          },
+          {
+            "item_id": "magnetic-accelerator",
+            "quantity": 3
+          },
+          {
+            "item_id": "leaper-pulse-unit",
+            "quantity": 3
+          }
+        ]
+      },
+      {
+        "phase": 5,
+        "name": "Load Stage",
+        "description": {
+          "en": "Loading the caravan with vital supplies. Combat gear, survival equipment, provisions, and repair materials are needed to fully prepare for the Expedition. You need to submit the coin value of items to each category.",
+          "de": "Beladen der Karawane mit lebenswichtigen Vorräten. Kampfausrüstung, Überlebensausrüstung, Proviant und Reparaturmaterialien werden benötigt, um sich vollständig auf die Expedition vorzubereiten. Sie müssen den Münzwert der Gegenstände für jede Kategorie einreichen.",
+          "fr": "Chargement de la caravane avec des fournitures vitales. Équipement de combat, équipement de survie, provisions et matériaux de réparation sont nécessaires pour préparer complètement l'expédition. Vous devez soumettre la valeur en pièces des objets pour chaque catégorie.",
+          "es": "Cargando la caravana con suministros vitales. Se necesita equipo de combate, equipo de supervivencia, provisiones y materiales de reparación para prepararse completamente para la Expedición. Necesitas enviar el valor en monedas de los objetos a cada categoría.",
+          "pt": "Carregando a caravana com suprimentos vitais. Equipamento de combate, equipamento de sobrevivência, provisões e materiais de reparo são necessários para se preparar totalmente para a Expedição. Você precisa enviar o valor em moedas dos itens para cada categoria.",
+          "pl": "Ładowanie karawany niezbędnymi zapasami. Sprzęt bojowy, sprzęt przetrwania, prowiant i materiały naprawcze są potrzebne do pełnego przygotowania się na ekspedycję. Musisz przesyłać wartość monet przedmiotów do każdej kategorii.",
+          "no": "Laste karavanen med vitale forsyninger. Kamputstyr, overlevingsutstyr, proviant og reparasjonsmaterialer er nødvendig for å forberede seg fullt ut på ekspedisjonen. Du må sende inn mynteverdien av gjenstander til hver kategori.",
+          "da": "Lastning af karavanen med vitale forsyninger. Kampudstyr, overlevelsesudstyr, proviant og reparationsmaterialer er nødvendige for fuldt ud at forberede sig på ekspeditionen. Du skal indsende møntværdien af ​​genstande til hver kategori.",
+          "ru": "Загрузка каравана жизненно важными припасами. Боевое снаряжение, оборудование для выживания, провизия и ремонтные материалы необходимы для полной подготовки к экспедиции. Вам нужно внести стоимость предметов в монетах для каждой категории.",
+          "ja": "キャラバンに重要な物資を積み込みます。探検の準備を完全に整えるには、戦闘装備、サバイバル装備、食料、修理材料が必要です。各カテゴリにアイテムのコイン価値を提出する必要があります。",
+          "it": "Caricamento della carovana con rifornimenti vitali. Equipaggiamento da combattimento, attrezzatura di sopravvivenza, provviste e materiali di riparazione sono necessari per prepararsi completamente alla Spedizione. È necessario fornire il valore in monete degli oggetti per ogni categoria.",
+          "kr": "필수 보급품으로 대상을 적재합니다. 원정을 완전히 준비하려면 전투 장비, 생존 장비, 식량 및 수리 재료가 필요합니다. 각 카테고리에 아이템의 코인 가치를 제출해야 합니다.",
+          "zh-CN": "为商队装载重要补给。需要战斗装备、生存装备、补给品和修理材料来充分准备远征。你需要为每个类别提交物品的金币价值。",
+          "zh-TW": "為商隊裝載重要補給。需要戰鬥裝備、生存裝備、補給品和修理材料來充分準備遠征。你需要為每個類別提交物品的金幣價值。",
+          "uk": "Завантаження каравану життєво важливими припасами. Бойове спорядження, обладнання для виживання, провізія та ремонтні матеріали необхідні для повної підготовки до експедиції. Вам потрібно внести вартість предметів у монетах для кожної категорії.",
+          "tr": "Kervanın hayati malzemelerle yüklenmesi. Keşif için tam olarak hazırlanmak üzere savaş ekipmanı, hayatta kalma ekipmanı, erzak ve onarım malzemeleri gereklidir. Her kategoriye öğelerin madeni para değerini göndermeniz gerekir.",
+          "hr": "Utovar karavane s vitalnim zalihama. Borbena oprema, oprema za preživljavanje, namirnice i materijali za popravak potrebni su za potpunu pripremu za Ekspediciju. Morate dostaviti vrijednost predmeta u novcu za svaku kategoriju.",
+          "sr": "Utovar karavana sa vitalnim zalihama. Borbena oprema, oprema za preživljavanje, namirnice i materijali za popravku potrebni su za potpunu pripremu za Ekspediciju. Morate dostaviti vrednost predmeta u novcu za svaku kategoriju."
+        },
+        "requirementItemIds": [],
+        "requirementCategories": [
+          {
+            "category": "Combat Items",
+            "valueRequired": 250000
+          },
+          {
+            "category": "Survival Items",
+            "valueRequired": 100000
+          },
+          {
+            "category": "Provisions",
+            "valueRequired": 180000
+          },
+          {
+            "category": "Materials",
+            "valueRequired": 300000
+          }
+        ]
+      },
+      {
+        "phase": 6,
+        "name": "Unknown",
+        "requirementItemIds": []
+      }
+    ]
+  }
+]

@@ -17,6 +17,7 @@ dependencies = [
     "pynput; sys_platform == 'linux'",
     "pywinctl",
     "rich",
+    "textual",
     "tessdata.fast-eng",
     "tesserocr==2.9.1; sys_platform == 'linux'",
     "tesserocr @ https://github.com/simonflueckiger/tesserocr-windows_build/releases/download/tesserocr-v2.9.1-tesseract-5.5.1/tesserocr-2.9.1-cp310-cp310-win_amd64.whl ; sys_platform == 'win32' and python_version == '3.10' and platform_machine == 'AMD64'",
@@ -45,7 +46,12 @@ include-package-data = true
 where = ["src"]
 
 [tool.setuptools.package-data]
-autoscrapper = ["items/items_actions.default.json"]
+autoscrapper = [
+    "items/items_rules.default.json",
+    "progress/data/*.json",
+    "progress/data/static/*.json",
+    "tui/*.tcss",
+]
 
 [tool.black]
 extend-exclude = '''

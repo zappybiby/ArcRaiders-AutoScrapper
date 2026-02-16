@@ -1,0 +1,150 @@
+Screen {
+    layout: vertical;
+    padding: 1 2;
+    background: #0f1117;
+    color: #e5e7eb;
+}
+
+StartupSplash {
+    align: center middle;
+    background: #020617 90%;
+}
+
+#startup-shell {
+    width: 90%;
+    max-width: 90;
+    border: heavy #38bdf8;
+    padding: 1 2;
+    background: #050b17;
+}
+
+#startup-title {
+    color: #7dd3fc;
+    text-style: bold;
+    text-align: center;
+}
+
+#startup-status {
+    margin-top: 1;
+    color: #e2e8f0;
+    text-align: center;
+}
+
+#startup-bar {
+    margin-top: 1;
+    color: #22d3ee;
+    text-style: bold;
+    text-align: center;
+}
+
+#startup-hint {
+    margin-top: 1;
+    color: #64748b;
+    text-align: center;
+}
+
+#menu-root {
+    width: 100%;
+}
+
+#status {
+    margin-bottom: 1;
+}
+
+.menu-title {
+    text-style: bold;
+    color: #7dd3fc;
+    margin: 1 0;
+}
+
+.section-title {
+    text-style: bold;
+    color: #a5b4fc;
+    margin-top: 1;
+}
+
+.hint {
+    color: #94a3b8;
+}
+
+#menu {
+    border: round #38bdf8;
+    padding: 1;
+    height: auto;
+    background: #111827;
+}
+
+OptionList {
+    border: round #334155;
+    padding: 1;
+    background: #0b1220;
+}
+
+OptionList:focus > .option-list--option-highlighted {
+    background: #1f2937;
+}
+
+Button {
+    margin-right: 1;
+}
+
+Input {
+    background: #111827;
+    border: tall #334155;
+}
+
+Static.modal-title {
+    text-style: bold;
+    color: #7dd3fc;
+}
+
+#scan-top {
+    height: auto;
+    margin-bottom: 1;
+}
+
+#scan-bottom {
+    height: auto;
+    margin-top: 1;
+}
+
+#scan-status,
+#scan-last,
+#scan-progress,
+#scan-counts,
+#scan-events,
+#scan-summary {
+    border: round #334155;
+    padding: 1 2;
+    background: #0b1220;
+}
+
+#scan-progress {
+    margin: 1 0;
+}
+
+#scan-status,
+#scan-counts {
+    width: 1fr;
+}
+
+#scan-last,
+#scan-events {
+    width: 2fr;
+}
+
+#scan-counts,
+#scan-events {
+    height: 12;
+}
+
+#scan-results-table {
+    height: 1fr;
+    border: round #334155;
+    background: #0b1220;
+}
+
+DataTable {
+    border: round #334155;
+    background: #0b1220;
+}

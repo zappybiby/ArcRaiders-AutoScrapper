@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import os
 import sys
+import threading
 import time
+from dataclasses import dataclass
 from typing import Optional, Tuple
 
 import mss
@@ -11,6 +13,7 @@ import pywinctl as pwc
 
 from .inventory_grid import Cell
 from . import input_driver as pdi
+from .keybinds import DEFAULT_STOP_KEY
 
 
 # Target window
@@ -27,6 +30,7 @@ WINDOW_POLL_INTERVAL = 0.05
 # Click pacing
 ACTION_DELAY = 0.05
 MOVE_DURATION = 0.05
+CELL_INFOBOX_LEFT_RIGHT_CLICK_GAP = 0.25
 SELL_RECYCLE_SPEED_MULT = (
     1.5  # extra slack vs default pacing (MOVE_DURATION/ACTION_DELAY)
 )
@@ -37,56 +41,102 @@ SELL_RECYCLE_POST_DELAY = 0.1  # seconds to allow item collapse after confirm
 # Scrolling
 # Alternate 16/17 downward scroll clicks to advance between 4x5 grids.
 SCROLL_CLICKS_PER_PAGE = 16
+SCROLL_ALT_CLICKS_PER_PAGE = 17
 SCROLL_MOVE_DURATION = 0.5
 SCROLL_INTERVAL = 0.04
 SCROLL_SETTLE_DELAY = 0.05
 
-_MSS: Optional["MSSBase"] = None
+_MSS_LOCAL = threading.local()
 
 
-def escape_pressed() -> bool:
-    """
-    Detect whether Escape is currently pressed.
-    """
-    return pdi.escape_pressed()
+@dataclass(frozen=True)
+class WindowSnapshot:
+    win_left: int
+    win_top: int
+    win_width: int
+    win_height: int
+    work_area: Tuple[int, int, int, int]
+    mon_left: int
+    mon_top: int
+    mon_right: int
+    mon_bottom: int
 
 
-def abort_if_escape_pressed() -> None:
+def get_active_target_window(target_app: str = TARGET_APP) -> Optional[pwc.Window]:
     """
-    Raise KeyboardInterrupt if Escape is down.
+    Return the active window if it matches the target app; otherwise None.
     """
-    if escape_pressed():
-        raise KeyboardInterrupt("Escape pressed")
+    win = pwc.getActiveWindow()
+    if win is None:
+        return None
+    target_lower = target_app.lower()
+    app = (win.getAppName() or "").lower()
+    title = ""
+    if hasattr(win, "title"):
+        title = getattr(win, "title") or ""
+    if not title and hasattr(win, "getTitle"):
+        try:
+            title = win.getTitle() or ""
+        except Exception:
+            title = ""
+    title_lower = title.lower()
+    if target_lower in app or (title_lower and target_lower in title_lower):
+        return win
+    return None
+
+
+def build_window_snapshot(win: pwc.Window) -> WindowSnapshot:
+    """
+    Capture window bounds and display metadata for the current target window.
+    """
+    _display_name, _display_size, work_area = window_display_info(win)
+    mon_left, mon_top, mon_right, mon_bottom = window_monitor_rect(win)
+    win_left, win_top, win_width, win_height = window_rect(win)
+    return WindowSnapshot(
+        win_left=win_left,
+        win_top=win_top,
+        win_width=win_width,
+        win_height=win_height,
+        work_area=work_area,
+        mon_left=mon_left,
+        mon_top=mon_top,
+        mon_right=mon_right,
+        mon_bottom=mon_bottom,
+    )
+
+
+def stop_key_pressed(stop_key: str = DEFAULT_STOP_KEY) -> bool:
+    """
+    Detect whether the configured stop key is currently pressed.
+    """
+    return pdi.key_pressed(stop_key)
+
+
+def abort_if_escape_pressed(stop_key: str = DEFAULT_STOP_KEY) -> None:
+    """
+    Raise KeyboardInterrupt if the configured stop key is down.
+    """
+    if stop_key_pressed(stop_key):
+        raise KeyboardInterrupt(f"{stop_key} pressed")
 
 
 def wait_for_target_window(
     target_app: str = TARGET_APP,
     timeout: float = WINDOW_TIMEOUT,
     poll_interval: float = WINDOW_POLL_INTERVAL,
+    stop_key: str = DEFAULT_STOP_KEY,
 ) -> pwc.Window:
     """
     Wait until the active window belongs to the target process.
     """
     start = time.monotonic()
-    target_lower = target_app.lower()
 
     while time.monotonic() - start < timeout:
-        abort_if_escape_pressed()
-        win = pwc.getActiveWindow()
+        abort_if_escape_pressed(stop_key)
+        win = get_active_target_window(target_app=target_app)
         if win is not None:
-            app = (win.getAppName() or "").lower()
-            title = ""
-            if hasattr(win, "title"):
-                title = getattr(win, "title") or ""
-            if not title and hasattr(win, "getTitle"):
-                try:
-                    title = win.getTitle() or ""
-                except Exception:
-                    title = ""
-            title_lower = title.lower()
-            if target_lower in app or (title_lower and target_lower in title_lower):
-                return win
-        sleep_with_abort(poll_interval)
+            return win
+        sleep_with_abort(poll_interval, stop_key=stop_key)
 
     raise TimeoutError(f"Timed out waiting for active window {target_app!r}")
 
@@ -150,17 +200,47 @@ def window_monitor_rect(win: pwc.Window) -> Tuple[int, int, int, int]:
 
 def _get_mss() -> "MSSBase":
     """
-    Lazily create an MSS instance for screen capture.
+    Lazily create a thread-local MSS instance for screen capture.
+
+    MSS stores platform capture handles in thread-local storage internally.
+    Reusing one MSS instance across threads on Windows can fail with errors like
+    missing `srcdc`, so each thread keeps its own instance.
     """
-    global _MSS
     if sys.platform not in ("win32", "linux"):
         raise RuntimeError(
             "Screen capture requires Windows or Linux; this build targets X11/XWayland."
         )
 
-    if _MSS is None:
-        _MSS = mss.mss()
-    return _MSS
+    sct = getattr(_MSS_LOCAL, "instance", None)
+    if sct is None:
+        sct = mss.mss()
+        _MSS_LOCAL.instance = sct
+    return sct
+
+
+def _reset_mss() -> None:
+    """
+    Drop the current thread-local MSS instance so the next capture recreates it.
+    """
+    sct = getattr(_MSS_LOCAL, "instance", None)
+    if sct is None:
+        return
+
+    close = getattr(sct, "close", None)
+    if callable(close):
+        try:
+            close()
+        except Exception:
+            pass
+    _MSS_LOCAL.instance = None
+
+
+def _is_mss_thread_handle_error(exc: Exception) -> bool:
+    """
+    Detect stale-thread-handle MSS failures that can recover by recreating MSS.
+    """
+    text = str(exc).lower()
+    return "srcdc" in text or "thread._local" in text
 
 
 def capture_region(region: Tuple[int, int, int, int]) -> np.ndarray:
@@ -182,9 +262,18 @@ def capture_region(region: Tuple[int, int, int, int]) -> np.ndarray:
     try:
         shot = sct.grab(bbox)
     except Exception as exc:
-        raise RuntimeError(
-            f"mss failed to capture the requested region {bbox}: {exc}"
-        ) from exc
+        if _is_mss_thread_handle_error(exc):
+            _reset_mss()
+            try:
+                shot = _get_mss().grab(bbox)
+            except Exception as retry_exc:
+                raise RuntimeError(
+                    f"mss failed to capture the requested region {bbox}: {retry_exc}"
+                ) from retry_exc
+        else:
+            raise RuntimeError(
+                f"mss failed to capture the requested region {bbox}: {exc}"
+            ) from exc
 
     frame = np.asarray(shot)
     if frame.shape[2] == 4:
@@ -192,32 +281,40 @@ def capture_region(region: Tuple[int, int, int, int]) -> np.ndarray:
     return np.ascontiguousarray(frame)
 
 
-def sleep_with_abort(duration: float) -> None:
+def sleep_with_abort(duration: float, *, stop_key: str = DEFAULT_STOP_KEY) -> None:
     """
-    Sleep for a specific duration and honor Escape aborts.
+    Sleep for a specific duration and honor configured abort key presses.
     """
     time.sleep(duration)
-    abort_if_escape_pressed()
+    abort_if_escape_pressed(stop_key)
 
 
-def pause_action(duration: float = ACTION_DELAY) -> None:
+def pause_action(
+    duration: float = ACTION_DELAY, *, stop_key: str = DEFAULT_STOP_KEY
+) -> None:
     """
     Standard pause to keep a safe delay between input/processing steps.
     """
-    sleep_with_abort(duration)
+    sleep_with_abort(duration, stop_key=stop_key)
 
 
-def timed_action(func, *args, **kwargs) -> None:
+def timed_action(func, *args, stop_key: str = DEFAULT_STOP_KEY, **kwargs) -> None:
     """
-    Run an input action while checking for Escape.
+    Run an input action while checking for configured abort key presses.
     """
-    abort_if_escape_pressed()
+    abort_if_escape_pressed(stop_key)
     func(*args, **kwargs)
 
 
-def click_absolute(x: int, y: int, pause: float = ACTION_DELAY) -> None:
-    timed_action(pdi.leftClick, x, y)
-    pause_action(pause)
+def click_absolute(
+    x: int,
+    y: int,
+    pause: float = ACTION_DELAY,
+    *,
+    stop_key: str = DEFAULT_STOP_KEY,
+) -> None:
+    timed_action(pdi.leftClick, x, y, stop_key=stop_key)
+    pause_action(pause, stop_key=stop_key)
 
 
 def click_window_relative(
@@ -226,8 +323,12 @@ def click_window_relative(
     window_left: int,
     window_top: int,
     pause: float = ACTION_DELAY,
+    *,
+    stop_key: str = DEFAULT_STOP_KEY,
 ) -> None:
-    click_absolute(int(window_left + x), int(window_top + y), pause=pause)
+    click_absolute(
+        int(window_left + x), int(window_top + y), pause=pause, stop_key=stop_key
+    )
 
 
 def move_absolute(
@@ -235,9 +336,11 @@ def move_absolute(
     y: int,
     duration: float = MOVE_DURATION,
     pause: float = ACTION_DELAY,
+    *,
+    stop_key: str = DEFAULT_STOP_KEY,
 ) -> None:
-    timed_action(pdi.moveTo, x, y, duration=duration)
-    pause_action(pause)
+    timed_action(pdi.moveTo, x, y, duration=duration, stop_key=stop_key)
+    pause_action(pause, stop_key=stop_key)
 
 
 def move_window_relative(
@@ -247,56 +350,79 @@ def move_window_relative(
     window_top: int,
     duration: float = MOVE_DURATION,
     pause: float = ACTION_DELAY,
+    *,
+    stop_key: str = DEFAULT_STOP_KEY,
 ) -> None:
     move_absolute(
-        int(window_left + x), int(window_top + y), duration=duration, pause=pause
+        int(window_left + x),
+        int(window_top + y),
+        duration=duration,
+        pause=pause,
+        stop_key=stop_key,
     )
 
 
-def open_cell_menu(cell: Cell, window_left: int, window_top: int) -> None:
+def open_cell_item_infobox(
+    cell: Cell,
+    window_left: int,
+    window_top: int,
+    *,
+    stop_key: str = DEFAULT_STOP_KEY,
+    pause: float = ACTION_DELAY,
+    move_duration: float = MOVE_DURATION,
+    left_right_click_gap: float = CELL_INFOBOX_LEFT_RIGHT_CLICK_GAP,
+) -> None:
     """
-    Hover the cell, then left-click and right-click to open its context menu.
+    Hover the cell, then left-click and right-click to open its item infobox.
     """
-    abort_if_escape_pressed()
+    abort_if_escape_pressed(stop_key)
     cx, cy = _cell_screen_center(cell, window_left, window_top)
-    timed_action(pdi.moveTo, cx, cy, duration=MOVE_DURATION)
-    pause_action()
-    timed_action(pdi.leftClick, cx, cy)
-    pause_action()
-    timed_action(pdi.rightClick, cx, cy)
-    pause_action()
+    timed_action(pdi.moveTo, cx, cy, duration=move_duration, stop_key=stop_key)
+    pause_action(pause, stop_key=stop_key)
+    timed_action(pdi.leftClick, cx, cy, stop_key=stop_key)
+    pause_action(left_right_click_gap, stop_key=stop_key)
+    timed_action(pdi.rightClick, cx, cy, stop_key=stop_key)
+    pause_action(pause, stop_key=stop_key)
 
 
 def scroll_to_next_grid_at(
     clicks: int,
     grid_center_abs: Tuple[int, int],
     safe_point_abs: Optional[Tuple[int, int]] = None,
+    *,
+    stop_key: str = DEFAULT_STOP_KEY,
+    pause: float = ACTION_DELAY,
+    move_duration: float = SCROLL_MOVE_DURATION,
+    scroll_interval: float = SCROLL_INTERVAL,
+    settle_delay: float = SCROLL_SETTLE_DELAY,
 ) -> None:
     """
     Scroll with the cursor positioned inside the grid to ensure the carousel moves.
     Optionally park the cursor back at a safe point afterwards.
     """
-    abort_if_escape_pressed()
+    abort_if_escape_pressed(stop_key)
     gx, gy = grid_center_abs
     scroll_clicks = -abs(clicks)
 
     # Match the working standalone script: slow move into position, click, then vertical scroll.
-    pdi.moveTo(gx, gy, duration=SCROLL_MOVE_DURATION)
-    pause_action()
-    abort_if_escape_pressed()
-    pdi.leftClick(gx, gy)
-    pause_action()
+    timed_action(pdi.moveTo, gx, gy, duration=move_duration, stop_key=stop_key)
+    pause_action(pause, stop_key=stop_key)
+    abort_if_escape_pressed(stop_key)
+    timed_action(pdi.leftClick, gx, gy, stop_key=stop_key)
+    pause_action(pause, stop_key=stop_key)
 
     print(
-        f"[scroll] vscroll clicks={scroll_clicks} interval={SCROLL_INTERVAL} at=({gx},{gy})",
+        f"[scroll] vscroll clicks={scroll_clicks} interval={scroll_interval} at=({gx},{gy})",
         flush=True,
     )
-    pdi.vscroll(clicks=scroll_clicks, interval=SCROLL_INTERVAL)
-    sleep_with_abort(SCROLL_SETTLE_DELAY)
+    timed_action(
+        pdi.vscroll, clicks=scroll_clicks, interval=scroll_interval, stop_key=stop_key
+    )
+    sleep_with_abort(settle_delay, stop_key=stop_key)
 
     if safe_point_abs is not None:
         sx, sy = safe_point_abs
-        move_absolute(sx, sy)
+        move_absolute(sx, sy, pause=pause, stop_key=stop_key)
 
 
 def _cell_screen_center(
