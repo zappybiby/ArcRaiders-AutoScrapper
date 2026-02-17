@@ -39,9 +39,36 @@ SELL_RECYCLE_ACTION_DELAY = ACTION_DELAY * SELL_RECYCLE_SPEED_MULT
 SELL_RECYCLE_POST_DELAY = 0.1  # seconds to allow item collapse after confirm
 
 # Scrolling
-# Alternate 16/17 downward scroll clicks to advance between 4x5 grids.
-SCROLL_CLICKS_PER_PAGE = 16
-SCROLL_ALT_CLICKS_PER_PAGE = 17
+# Pattern derivation (calibrator data):
+# - dy_per_scroll_px ~= 31.961 at 1920x1080
+# - row_height_px ~= 104.000, so rows_per_scroll ~= 0.3073
+# - target move per page is 5 rows (520 px)
+# The sequence below is the 20-step minimum-error pattern while allowing up to
+# 10 px of undershoot (old-row overlap) and is used as a repeating cycle.
+# Calibration at multiple resolutions was consistent with the same rows/scroll
+# ratio, so this fixed pattern is used across resolutions.
+SCROLL_CLICKS_PATTERN = (
+    16,
+    17,
+    16,
+    16,
+    17,
+    16,
+    16,
+    16,
+    17,
+    16,
+    16,
+    16,
+    17,
+    16,
+    16,
+    17,
+    16,
+    16,
+    16,
+    17,
+)
 SCROLL_MOVE_DURATION = 0.5
 SCROLL_INTERVAL = 0.04
 SCROLL_SETTLE_DELAY = 0.05

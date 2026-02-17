@@ -19,7 +19,6 @@ from ..config import (
     save_scan_settings,
 )
 from ..interaction.keybinds import stop_key_label, textual_key_to_stop_key
-from ..interaction.ui_windows import SCROLL_CLICKS_PER_PAGE
 
 
 class CaptureStopKeyScreen(ModalScreen[Optional[str]]):
@@ -272,8 +271,6 @@ class ScanControlsScreen(ScanSettingsScreen):
     TITLE = "Scan Controls"
     _FOCUS_ORDER = (
         "set-stop-key",
-        "scroll-clicks",
-        "scroll-clicks-alt",
         "save",
         "back",
     )
@@ -289,20 +286,6 @@ class ScanControlsScreen(ScanSettingsScreen):
                 yield Static("", id="stop-key-value", classes="setting-value")
                 yield Button("Set key", id="set-stop-key")
 
-        with HorizontalGroup(classes="setting-row"):
-            yield Static("Primary clicks per page", classes="setting-label-col")
-            yield Input(
-                id="scroll-clicks",
-                classes="field-input",
-            )
-
-        with HorizontalGroup(classes="setting-row"):
-            yield Static("Alternating clicks per page", classes="setting-label-col")
-            yield Input(
-                id="scroll-clicks-alt",
-                classes="field-input",
-            )
-
     def _refresh_stop_key_label(self) -> None:
         self.query_one("#stop-key-value", Static).update(stop_key_label(self._stop_key))
 
@@ -310,20 +293,6 @@ class ScanControlsScreen(ScanSettingsScreen):
         self.settings = load_scan_settings()
         self._stop_key = self.settings.stop_key
         self._refresh_stop_key_label()
-
-        primary_clicks = (
-            self.settings.scroll_clicks_per_page
-            if self.settings.scroll_clicks_per_page is not None
-            else SCROLL_CLICKS_PER_PAGE
-        )
-        alternating_clicks = (
-            self.settings.scroll_clicks_alt_per_page
-            if self.settings.scroll_clicks_alt_per_page is not None
-            else (primary_clicks + 1)
-        )
-
-        self.query_one("#scroll-clicks", Input).value = str(primary_clicks)
-        self.query_one("#scroll-clicks-alt", Input).value = str(alternating_clicks)
 
     def _set_stop_key(self) -> None:
         self.app.push_screen(CaptureStopKeyScreen(), self._on_stop_key_selected)
@@ -335,26 +304,8 @@ class ScanControlsScreen(ScanSettingsScreen):
         self._refresh_stop_key_label()
 
     def _save(self) -> None:
-        scroll_value = self._parse_int_field(
-            "#scroll-clicks",
-            label="scroll click count",
-            min_value=0,
-        )
-        if scroll_value is None:
-            return
-
-        scroll_alt_value = self._parse_int_field(
-            "#scroll-clicks-alt",
-            label="alternating scroll click count",
-            min_value=0,
-        )
-        if scroll_alt_value is None:
-            return
-
         updated = replace(
             self.settings,
-            scroll_clicks_per_page=scroll_value,
-            scroll_clicks_alt_per_page=scroll_alt_value,
             stop_key=self._stop_key,
         )
         self._save_settings(updated)

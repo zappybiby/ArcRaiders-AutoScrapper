@@ -24,8 +24,6 @@ from ..interaction.inventory_grid import (
 )
 from ..interaction.keybinds import DEFAULT_STOP_KEY, normalize_stop_key
 from ..interaction.ui_windows import (
-    SCROLL_ALT_CLICKS_PER_PAGE,
-    SCROLL_CLICKS_PER_PAGE,
     WindowSnapshot,
     WINDOW_TIMEOUT,
     abort_if_escape_pressed,
@@ -69,8 +67,6 @@ def _validate_scan_args(
     item_infobox_settle_delay_ms: int,
     post_sell_recycle_delay_ms: int,
     pages: Optional[int],
-    scroll_clicks_per_page: int,
-    scroll_clicks_alt_per_page: int,
 ) -> None:
     if infobox_retries < 1:
         raise ValueError("infobox_retries must be >= 1")
@@ -90,10 +86,6 @@ def _validate_scan_args(
         raise ValueError("post_sell_recycle_delay_ms must be >= 0")
     if pages is not None and pages < 1:
         raise ValueError("pages must be >= 1")
-    if scroll_clicks_per_page < 0:
-        raise ValueError("scroll_clicks_per_page must be >= 0")
-    if scroll_clicks_alt_per_page < 0:
-        raise ValueError("scroll_clicks_alt_per_page must be >= 0")
 
 
 def _build_timing_config(
@@ -220,8 +212,6 @@ def scan_inventory(
     post_sell_recycle_delay_ms: int = POST_SELL_RECYCLE_DELAY_MS,
     show_progress: bool = True,
     pages: Optional[int] = None,
-    scroll_clicks_per_page: int = SCROLL_CLICKS_PER_PAGE,
-    scroll_clicks_alt_per_page: int = SCROLL_ALT_CLICKS_PER_PAGE,
     apply_actions: bool = True,
     actions_path: Path = ITEM_RULES_PATH,
     actions_override: Optional[ActionMap] = None,
@@ -234,9 +224,9 @@ def scan_inventory(
     title, and apply the configured keep/recycle/sell decision when possible.
     Decisions come from the default rules file unless a custom rules file exists
     or an override map is provided.
-    Cells are detected via contours inside a normalized ROI, and scrolling
-    alternates between `scroll_clicks_per_page` and `scroll_clicks_alt_per_page`
-    to handle carousel offset. If `pages` is not provided, the script will
+    Cells are detected via contours inside a normalized ROI, and scrolling uses
+    a calibrated repeating click pattern to handle carousel offset. If `pages`
+    is not provided, the script will
     OCR the always-visible stash count label to automatically determine how
     many 4x5 grids to scan.
     """
@@ -250,8 +240,6 @@ def scan_inventory(
         item_infobox_settle_delay_ms=item_infobox_settle_delay_ms,
         post_sell_recycle_delay_ms=post_sell_recycle_delay_ms,
         pages=pages,
-        scroll_clicks_per_page=scroll_clicks_per_page,
-        scroll_clicks_alt_per_page=scroll_clicks_alt_per_page,
     )
 
     stop_key = normalize_stop_key(stop_key)
@@ -392,8 +380,6 @@ def scan_inventory(
             context=context,
             initial_cells=cells,
             pages_to_scan=pages_to_scan,
-            scroll_clicks_per_page=scroll_clicks_per_page,
-            scroll_clicks_alt_per_page=scroll_clicks_alt_per_page,
             infobox_retries=infobox_retries,
             ocr_unreadable_retries=ocr_unreadable_retries,
             profile_timing=profile_timing,

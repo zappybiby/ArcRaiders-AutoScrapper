@@ -284,9 +284,6 @@ class ScanScreen(Screen):
         start_background_warmup()
         try:
             from ..core.item_actions import ITEM_RULES_PATH
-            from ..interaction.ui_windows import (
-                SCROLL_CLICKS_PER_PAGE,
-            )
             from ..ocr.inventory_vision import enable_ocr_debug
             from ..scanner.engine import scan_inventory
 
@@ -297,24 +294,11 @@ class ScanScreen(Screen):
                     style="yellow",
                 )
 
-            scroll_clicks_default = (
-                settings.scroll_clicks_per_page
-                if settings.scroll_clicks_per_page is not None
-                else SCROLL_CLICKS_PER_PAGE
-            )
-            scroll_clicks_alt_default = (
-                settings.scroll_clicks_alt_per_page
-                if settings.scroll_clicks_alt_per_page is not None
-                else (scroll_clicks_default + 1)
-            )
-
             if settings.debug_ocr:
                 enable_ocr_debug(Path("ocr_debug"))
 
             results, stats = scan_inventory(
                 show_progress=False,
-                scroll_clicks_per_page=scroll_clicks_default,
-                scroll_clicks_alt_per_page=scroll_clicks_alt_default,
                 apply_actions=not self.dry_run,
                 actions_path=ITEM_RULES_PATH,
                 profile_timing=settings.profile,

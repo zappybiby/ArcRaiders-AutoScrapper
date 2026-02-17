@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import time
 from dataclasses import dataclass, field
+from itertools import cycle
 from typing import Any, Iterable, List, Optional, Tuple
 
 from .actions import ActionExecutionContext, resolve_action_taken
@@ -10,6 +11,7 @@ from .progress import ScanProgress
 from ..core.item_actions import ActionMap, Decision, ItemActionResult, choose_decision
 from ..interaction.inventory_grid import Cell, Grid
 from ..interaction.ui_windows import (
+    SCROLL_CLICKS_PATTERN,
     abort_if_escape_pressed,
     capture_region,
     move_absolute,
@@ -111,16 +113,16 @@ def _queue_event(
         startup_events.append((message, style))
 
 
-def _scroll_clicks_sequence(start_clicks: int, alt_clicks: int) -> Iterable[int]:
+def _scroll_clicks_sequence(click_pattern: Iterable[int]) -> Iterable[int]:
     """
-    Yield alternating scroll counts: start_clicks, alt_clicks, repeat.
+    Yield repeating calibrated scroll counts.
     """
-    base = abs(start_clicks)
-    alt = abs(alt_clicks)
-    use_alt = False
-    while True:
-        yield alt if use_alt else base
-        use_alt = not use_alt
+    pattern = tuple(int(clicks) for clicks in click_pattern)
+    if not pattern:
+        raise ValueError("scroll click pattern must not be empty")
+    if any(clicks <= 0 for clicks in pattern):
+        raise ValueError("scroll click pattern values must be > 0")
+    return cycle(pattern)
 
 
 def detect_grid(
@@ -588,8 +590,6 @@ def scan_pages(
     context: ScanContext,
     initial_cells: List[Cell],
     pages_to_scan: int,
-    scroll_clicks_per_page: int,
-    scroll_clicks_alt_per_page: int,
     infobox_retries: int,
     ocr_unreadable_retries: int,
     profile_timing: bool,
@@ -604,10 +604,7 @@ def scan_pages(
         profile_timing=profile_timing,
         items_total=items_total,
     )
-    scroll_sequence = _scroll_clicks_sequence(
-        scroll_clicks_per_page,
-        scroll_clicks_alt_per_page,
-    )
+    scroll_sequence = _scroll_clicks_sequence(SCROLL_CLICKS_PATTERN)
     runner = _ScanRunner(
         context=context,
         initial_cells=initial_cells,

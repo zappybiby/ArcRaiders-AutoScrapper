@@ -15,8 +15,6 @@ CONFIG_FILE_NAME = "config.json"
 
 @dataclass(frozen=True)
 class ScanSettings:
-    scroll_clicks_per_page: Optional[int] = None
-    scroll_clicks_alt_per_page: Optional[int] = None
     stop_key: str = DEFAULT_STOP_KEY
     infobox_retries: int = 3
     infobox_retry_interval_ms: int = 50
@@ -101,8 +99,6 @@ def _from_raw_scan_settings(raw: Any) -> ScanSettings:
     if not isinstance(raw, dict):
         return ScanSettings()
 
-    scroll_clicks_raw = raw.get("scroll_clicks_per_page")
-    scroll_clicks_alt_raw = raw.get("scroll_clicks_alt_per_page")
     stop_key_raw = raw.get("stop_key")
     infobox_retries_raw = raw.get("infobox_retries")
     infobox_retry_interval_ms_raw = _raw_with_aliases(
@@ -134,9 +130,6 @@ def _from_raw_scan_settings(raw: Any) -> ScanSettings:
         "post_sell_recycle_delay_ms",
         "sell_recycle_post_delay_ms",
     )
-
-    scroll_clicks_per_page = _coerce_non_negative_int(scroll_clicks_raw)
-    scroll_clicks_alt_per_page = _coerce_non_negative_int(scroll_clicks_alt_raw)
 
     infobox_retries = _coerce_positive_int(infobox_retries_raw)
     if infobox_retries is None:
@@ -179,8 +172,6 @@ def _from_raw_scan_settings(raw: Any) -> ScanSettings:
         post_sell_recycle_delay_ms = ScanSettings.post_sell_recycle_delay_ms
 
     return ScanSettings(
-        scroll_clicks_per_page=scroll_clicks_per_page,
-        scroll_clicks_alt_per_page=scroll_clicks_alt_per_page,
         stop_key=normalize_stop_key(stop_key_raw),
         infobox_retries=infobox_retries,
         infobox_retry_interval_ms=infobox_retry_interval_ms,
