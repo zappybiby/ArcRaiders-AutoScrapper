@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-16T19:04:45.033974Z",
+  "generatedAt": "2026-03-04T20:35:34.493236Z",
   "source": "quests.json",
   "traders": {
     "Celeste": [
@@ -117,6 +117,21 @@
         "id": "turnabout",
         "name": "Turnabout",
         "sortOrder": 6295.427563904591
+      },
+      {
+        "id": "keeping-an-eye-out",
+        "name": "Keeping An Eye Out",
+        "sortOrder": 7659.964996301514
+      },
+      {
+        "id": "a-rising-tide",
+        "name": "A Rising Tide",
+        "sortOrder": 7660.760516276671
+      },
+      {
+        "id": "worth-your-salt",
+        "name": "Worth Your Salt",
+        "sortOrder": 7663.633629104386
       }
     ],
     "TianWen": [
@@ -179,6 +194,11 @@
         "id": "the-majors-footlocker",
         "name": "The Majors Footlocker",
         "sortOrder": 3808.281728989622
+      },
+      {
+        "id": "stable-housing",
+        "name": "Stable Housing",
+        "sortOrder": 7660.037216135203
       }
     ],
     "Shani": [
@@ -311,6 +331,11 @@
         "id": "a-prime-specimen",
         "name": "A Prime Specimen",
         "sortOrder": 7209.777176880825
+      },
+      {
+        "id": "a-dead-end",
+        "name": "A Dead End",
+        "sortOrder": 7664.223834246595
       }
     ],
     "Lance": [

@@ -8,7 +8,7 @@
     "weightKg": 1,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-02-26T10:57:34.466655+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -735,11 +735,11 @@
     "name": "Bastion Cell",
     "type": "Recyclable",
     "rarity": "epic",
-    "value": 5000,
+    "value": 3000,
     "weightKg": 0.25,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-02-24T17:41:22.342406+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 2,
@@ -1732,6 +1732,22 @@
     "recyclesInto": null
   },
   {
+    "id": "comet-igniter",
+    "name": "Comet Igniter",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 1,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-02-25T14:13:46.52305+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 2,
+      "crude-explosives": 2
+    }
+  },
+  {
     "id": "compensator-i",
     "name": "Compensator I",
     "type": "Modification",
@@ -2087,6 +2103,19 @@
     "recyclesInto": null
   },
   {
+    "id": "dam-controlled-access-zone-key",
+    "name": "Dam Controlled Access Zone Key",
+    "type": "Key",
+    "rarity": "rare",
+    "value": 100,
+    "weightKg": 0.25,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-03-04T15:01:26.218563+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
     "id": "dam-staff-room-key",
     "name": "Dam Staff Room Key",
     "type": "Key",
@@ -2156,14 +2185,15 @@
     "name": "Deadline",
     "type": "Quick Use",
     "rarity": "epic",
-    "value": 5000,
+    "value": 6000,
     "weightKg": 1,
     "stackSize": 1,
     "craftBench": "Explosives Bench III",
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-02-24T12:40:11.539583+00:00",
     "recipe": {
       "explosive-compound": 3,
-      "arc-circuitry": 2
+      "arc-circuitry": 2,
+      "comet-igniter": 1
     },
     "recyclesInto": {
       "explosive-compound": 1
@@ -2426,7 +2456,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-03-04T19:23:37.207017+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2452,7 +2482,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-03-04T19:25:14.886362+00:00",
     "recipe": null,
     "recyclesInto": {
       "magnet": 2,
@@ -2978,7 +3008,7 @@
     "weightKg": 0.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-03-04T17:01:13.708936+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 1,
@@ -2998,6 +3028,22 @@
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 3
+    }
+  },
+  {
+    "id": "firefly-burner",
+    "name": "Firefly Burner",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 1000,
+    "weightKg": 0.75,
+    "stackSize": 3,
+    "craftBench": null,
+    "updatedAt": "2026-02-25T14:10:49.800199+00:00",
+    "recipe": null,
+    "recyclesInto": {
+      "arc-alloy": 2,
+      "crude-explosives": 2
     }
   },
   {
@@ -3588,11 +3634,11 @@
     "name": "Hornet Driver",
     "type": "Recyclable",
     "rarity": "rare",
-    "value": 2000,
+    "value": 1000,
     "weightKg": 0.75,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-03-04T17:11:05.417596+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 2,
@@ -4431,7 +4477,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-03-04T18:56:58.895533+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4505,7 +4551,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": "Refiner",
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-03-04T19:25:49.476699+00:00",
     "recipe": {
       "advanced-mechanical-components": 2,
       "arc-motion-core": 2
@@ -5190,7 +5236,7 @@
     "weightKg": 0.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-03-04T17:08:11.841354+00:00",
     "recipe": null,
     "recyclesInto": {
       "crude-explosives": 1,
@@ -5369,11 +5415,11 @@
     "name": "Queen Reactor",
     "type": "Recyclable",
     "rarity": "legendary",
-    "value": 13000,
+    "value": 11000,
     "weightKg": 10,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-02-01T19:28:59.322584+00:00",
+    "updatedAt": "2026-02-24T17:41:47.036707+00:00",
     "recipe": null,
     "recyclesInto": {
       "magnetic-accelerator": 1,
@@ -5763,7 +5809,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-03-04T17:10:24.495962+00:00",
     "recipe": null,
     "recyclesInto": {
       "advanced-electrical-components": 2,
@@ -6136,11 +6182,11 @@
     "name": "Sentinel Firing Core",
     "type": "Recyclable",
     "rarity": "rare",
-    "value": 3000,
+    "value": 2000,
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-02-24T17:42:33.112843+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 2,
@@ -6330,13 +6376,14 @@
     "name": "Showstopper",
     "type": "Throwable",
     "rarity": "rare",
-    "value": 2200,
+    "value": 2100,
     "weightKg": 0.4,
     "stackSize": 5,
     "craftBench": "Explosives Bench III",
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-02-24T12:51:19.307305+00:00",
     "recipe": {
-      "advanced-electrical-components": 1,
+      "electrical-components": 1,
+      "hornet-driver": 1,
       "voltage-converter": 1
     },
     "recyclesInto": {
@@ -6385,7 +6432,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-03-04T17:00:24.968368+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 3,
@@ -6609,7 +6656,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-03-04T18:38:30.924114+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6622,7 +6669,7 @@
     "weightKg": 0.75,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-03-04T17:06:51.543716+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 1,
@@ -6638,7 +6685,7 @@
     "weightKg": 0.2,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-03-04T17:02:01.546183+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6747,11 +6794,11 @@
     "name": "Spotter Relay",
     "type": "Recyclable",
     "rarity": "uncommon",
-    "value": 2000,
+    "value": 1000,
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-02-24T17:43:22.212104+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 1,
@@ -7083,11 +7130,11 @@
     "name": "Surveyor Vault",
     "type": "Recyclable",
     "rarity": "rare",
-    "value": 2000,
+    "value": 1000,
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-02-24T17:42:57.920255+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 2,
@@ -7627,12 +7674,16 @@
     "name": "Trailblazer Grenade",
     "type": "Quick Use",
     "rarity": "rare",
-    "value": 1600,
+    "value": 2200,
     "weightKg": 1,
     "stackSize": 1,
     "craftBench": "Explosives Bench II",
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
-    "recipe": null,
+    "updatedAt": "2026-02-24T12:47:31.846273+00:00",
+    "recipe": {
+      "synthesized-fuel": 1,
+      "crude-explosives": 2,
+      "firefly-burner": 1
+    },
     "recyclesInto": {
       "crude-explosives": 2
     }
@@ -7956,14 +8007,15 @@
     "name": "Vita Spray",
     "type": "Quick Use",
     "rarity": "epic",
-    "value": 3000,
+    "value": 3400,
     "weightKg": 1,
     "stackSize": 1,
     "craftBench": "Med Station",
-    "updatedAt": "2026-02-16T15:20:39.098439+00:00",
+    "updatedAt": "2026-02-24T12:49:46.810764+00:00",
     "recipe": {
-      "antiseptic": 2,
-      "canister": 4
+      "canister": 1,
+      "tick-pod": 1,
+      "antiseptic": 3
     },
     "recyclesInto": null
   },
@@ -8120,11 +8172,11 @@
     "name": "Wasp Driver",
     "type": "Recyclable",
     "rarity": "rare",
-    "value": 1000,
+    "value": 640,
     "weightKg": 0.6,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-02-24T17:41:00.192005+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 1,
@@ -8180,17 +8232,18 @@
   },
   {
     "id": "wolfpack",
-    "name": "WolfPack",
+    "name": "Wolfpack",
     "type": "Quick Use",
     "rarity": "epic",
-    "value": 5000,
+    "value": 6000,
     "weightKg": 1,
     "stackSize": 1,
     "craftBench": "Explosives Bench III",
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-03-04T18:26:02.759581+00:00",
     "recipe": {
-      "explosive-compound": 3,
-      "arc-motion-core": 2
+      "arc-motion-core": 2,
+      "explosive-compound": 1,
+      "rocketeer-part": 1
     },
     "recyclesInto": {
       "arc-motion-core": 1,

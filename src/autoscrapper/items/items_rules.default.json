@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "generatedAt": "2026-02-16T19:13:53.235009Z",
+    "generatedAt": "2026-03-04T20:35:34.509012Z",
     "data": {
-      "lastUpdated": "2026-02-16T19:04:45.107168Z",
+      "lastUpdated": "2026-03-04T20:35:34.493548Z",
       "source": "https://metaforge.app/arc-raiders",
       "version": "autoscrapper-data-1"
     },
-    "itemCount": 525,
+    "itemCount": 528,
     "allQuestsCompleted": true
   },
   "items": [
@@ -484,7 +484,7 @@
     {
       "id": "bastion-part",
       "name": "Bastion Cell",
-      "value": 5000,
+      "value": 3000,
       "action": "keep",
       "analysis": [
         "Required for hideout upgrade: Gear Bench (Level 3)"
@@ -1166,6 +1166,17 @@
       ]
     },
     {
+      "id": "comet-igniter",
+      "name": "Comet Igniter",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Used in 1 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "compensator-i",
       "name": "Compensator I",
       "value": 640,
@@ -1294,7 +1305,7 @@
       "value": 270,
       "action": "keep",
       "analysis": [
-        "Used in 5 crafting recipes",
+        "Used in 6 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -1312,6 +1323,17 @@
     {
       "id": "dam-control-center-tower-key",
       "name": "Dam Control Center Tower Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "dam-controlled-access-zone-key",
+      "name": "Dam Controlled Access Zone Key",
       "value": 100,
       "action": "keep",
       "analysis": [
@@ -1456,7 +1478,7 @@
     {
       "id": "deadline",
       "name": "Deadline",
-      "value": 5000,
+      "value": 6000,
       "action": "keep",
       "analysis": [
         "Consumable item - grenades, healing items, etc.",
@@ -2011,6 +2033,17 @@
       ]
     },
     {
+      "id": "firefly-burner",
+      "name": "Firefly Burner",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Used in 1 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "fireworks-box",
       "name": "Fireworks Box",
       "value": 2000,
@@ -2399,11 +2432,12 @@
     {
       "id": "hornet-driver",
       "name": "Hornet Driver",
-      "value": 2000,
-      "action": "sell",
+      "value": 1000,
+      "action": "keep",
       "analysis": [
-        "Recycles into: 2x ARC Alloy, 2x Electrical Components",
-        "Recycle value: Components (1680 coins) worth less than Item (2000 coins)"
+        "Used in 1 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -3568,7 +3602,7 @@
     {
       "id": "queen-reactor",
       "name": "Queen Reactor",
-      "value": 13000,
+      "value": 11000,
       "action": "keep",
       "analysis": [
         "Legendary rarity - extremely valuable",
@@ -4069,7 +4103,7 @@
     {
       "id": "sentinel-part",
       "name": "Sentinel Firing Core",
-      "value": 3000,
+      "value": 2000,
       "action": "keep",
       "analysis": [
         "Required for hideout upgrade: Gunsmith (Level 3)"
@@ -4196,11 +4230,11 @@
     {
       "id": "showstopper",
       "name": "Showstopper",
-      "value": 2200,
+      "value": 2100,
       "action": "sell",
       "analysis": [
         "Recycles into: 2x Battery, 1x Electrical Components",
-        "Recycle value: Components (1140 coins) worth less than Item (2200 coins)"
+        "Recycle value: Components (1140 coins) worth less than Item (2100 coins)"
       ]
     },
     {
@@ -4467,11 +4501,11 @@
     {
       "id": "spotter-relay",
       "name": "Spotter Relay",
-      "value": 2000,
-      "action": "sell",
+      "value": 1000,
+      "action": "recycle",
       "analysis": [
         "Recycles into: 1x ARC Alloy, 2x Electrical Components",
-        "Recycle value: Components (1480 coins) worth less than Item (2000 coins)"
+        "Recycle value: Components (1480 coins) worth MORE than Item (1000 coins)"
       ]
     },
     {
@@ -4689,7 +4723,7 @@
     {
       "id": "surveyor-vault",
       "name": "Surveyor Vault",
-      "value": 2000,
+      "value": 1000,
       "action": "keep",
       "analysis": [
         "Required for hideout upgrade: Medical Lab (Level 3)"
@@ -4699,10 +4733,11 @@
       "id": "synthesized-fuel",
       "name": "Synthesized Fuel",
       "value": 700,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "Recycles into: 1x Oil, 1x Plastic Parts",
-        "Recycle value: Components (360 coins) worth less than Item (700 coins)"
+        "Used in 1 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -5032,7 +5067,7 @@
     {
       "id": "trailblazer-grenade",
       "name": "Trailblazer Grenade",
-      "value": 1600,
+      "value": 2200,
       "action": "keep",
       "analysis": [
         "Consumable item - grenades, healing items, etc.",
@@ -5251,7 +5286,7 @@
     {
       "id": "vita-spray",
       "name": "Vita Spray",
-      "value": 3000,
+      "value": 3400,
       "action": "keep",
       "analysis": [
         "Consumable item - grenades, healing items, etc.",
@@ -5357,11 +5392,11 @@
     {
       "id": "wasp-driver",
       "name": "Wasp Driver",
-      "value": 1000,
-      "action": "sell",
+      "value": 640,
+      "action": "recycle",
       "analysis": [
         "Recycles into: 1x ARC Alloy, 1x Electrical Components",
-        "Recycle value: Components (840 coins) worth less than Item (1000 coins)"
+        "Recycle value: Components (840 coins) worth MORE than Item (640 coins)"
       ]
     },
     {
@@ -5395,8 +5430,8 @@
     },
     {
       "id": "wolfpack",
-      "name": "WolfPack",
-      "value": 3000,
+      "name": "Wolfpack",
+      "value": 6000,
       "action": "keep",
       "analysis": [
         "Consumable item - grenades, healing items, etc.",
