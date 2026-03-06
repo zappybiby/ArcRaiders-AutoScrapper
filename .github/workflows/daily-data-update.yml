@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: read
   contents: write
   pull-requests: write
 
@@ -52,25 +53,108 @@ jobs:
       - name: Check for tracked changes
         id: changes
         run: |
-          if [[ -n "$(git status --porcelain -- src/autoscrapper/progress/data src/autoscrapper/items/items_rules.default.json)" ]]; then
+          if [[ -n "$(git status --porcelain -- \
+            src/autoscrapper/progress/data/items.json \
+            src/autoscrapper/progress/data/quests.json \
+            src/autoscrapper/progress/data/quests_by_trader.json \
+            src/autoscrapper/progress/data/metadata.json \
+            src/autoscrapper/items/items_rules.default.json)" ]]; then
             echo "has_changes=true" >> "$GITHUB_OUTPUT"
           else
             echo "has_changes=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Create or update pull request
+      - name: Commit and push update branch
         if: steps.changes.outputs.has_changes == 'true'
-        uses: peter-evans/create-pull-request@v6
-        with:
-          branch: bot/daily-data-update
-          base: main
-          commit-message: "chore(data): daily Metaforge snapshot + default rules"
-          title: "chore(data): daily Metaforge snapshot + default rules"
-          body-path: artifacts/update-report.md
-          labels: automated,data-update
-          add-paths: |
-            src/autoscrapper/progress/data/items.json
-            src/autoscrapper/progress/data/quests.json
-            src/autoscrapper/progress/data/quests_by_trader.json
-            src/autoscrapper/progress/data/metadata.json
+        id: commit_push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git switch -C bot/daily-data-update
+          git add \
+            src/autoscrapper/progress/data/items.json \
+            src/autoscrapper/progress/data/quests.json \
+            src/autoscrapper/progress/data/quests_by_trader.json \
+            src/autoscrapper/progress/data/metadata.json \
             src/autoscrapper/items/items_rules.default.json
+
+          if git diff --cached --quiet; then
+            echo "has_commit=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git commit -m "chore(data): daily Metaforge snapshot + default rules"
+          git push --force-with-lease origin HEAD:bot/daily-data-update
+          echo "has_commit=true" >> "$GITHUB_OUTPUT"
+
+      - name: Create or update pull request
+        if: steps.commit_push.outputs.has_commit == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.parse
+          import urllib.request
+          from urllib.error import HTTPError
+
+          token = os.environ["GITHUB_TOKEN"]
+          repo = os.environ["GITHUB_REPOSITORY"]
+          owner = repo.split("/", 1)[0]
+
+          title = "chore(data): daily Metaforge snapshot + default rules"
+          head = "bot/daily-data-update"
+          base = "main"
+          labels = ["automated", "data-update"]
+
+          with open("artifacts/update-report.md", "r", encoding="utf-8") as f:
+              body = f.read()
+
+          headers = {
+              "Authorization": f"Bearer {token}",
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28",
+              "User-Agent": "daily-data-update-workflow",
+          }
+
+          def api(method, path, data=None, query=None):
+              url = f"https://api.github.com/repos/{repo}{path}"
+              if query:
+                  url += "?" + urllib.parse.urlencode(query)
+              payload = None
+              request = urllib.request.Request(url, method=method, headers=headers)
+              if data is not None:
+                  payload = json.dumps(data).encode("utf-8")
+                  request.add_header("Content-Type", "application/json")
+              with urllib.request.urlopen(request, payload) as response:
+                  text = response.read().decode("utf-8")
+              return json.loads(text) if text else {}
+
+          pulls = api(
+              "GET",
+              "/pulls",
+              query={
+                  "state": "open",
+                  "head": f"{owner}:{head}",
+                  "base": base,
+                  "per_page": "1",
+              },
+          )
+
+          if pulls:
+              number = pulls[0]["number"]
+              api("PATCH", f"/pulls/{number}", data={"title": title, "body": body, "base": base})
+              print(f"Updated PR #{number}")
+          else:
+              pr = api("POST", "/pulls", data={"title": title, "head": head, "base": base, "body": body})
+              number = pr["number"]
+              print(f"Created PR #{number}")
+
+          try:
+              api("POST", f"/issues/{number}/labels", data={"labels": labels})
+          except HTTPError as exc:
+              print(f"Warning: failed to set labels ({exc.code})")
+          PY
