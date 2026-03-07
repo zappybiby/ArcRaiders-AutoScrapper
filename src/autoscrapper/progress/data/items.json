@@ -1636,6 +1636,19 @@
     "recyclesInto": null
   },
   {
+    "id": "coins",
+    "name": "Coins",
+    "type": "Misc",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-03-06T10:25:00.19931+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
     "id": "combat-mk-1",
     "name": "Combat Mk. 1",
     "type": "Augment",
@@ -2857,6 +2870,19 @@
     "recyclesInto": null
   },
   {
+    "id": "faded-flush-aviator-color",
+    "name": "Faded Flush (Aviator Color)",
+    "type": "Misc",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-03-06T07:48:22.942986+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
     "id": "faded-photograph",
     "name": "Faded Photograph",
     "type": "Trinket",
@@ -2996,6 +3022,19 @@
     "stackSize": 3,
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "finger-gun-single-shot-emote",
+    "name": "Finger Gun Single Shot (Emote)",
+    "type": "Misc",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-03-06T13:32:27.15035+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5128,6 +5167,19 @@
     "recyclesInto": null
   },
   {
+    "id": "patchwork-warden-color",
+    "name": "Patchwork (Warden Color)",
+    "type": "Misc",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-03-06T13:32:52.792239+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
     "id": "patrol-car-key",
     "name": "Patrol Car Key",
     "type": "Key",
@@ -5501,6 +5553,19 @@
     "recyclesInto": null
   },
   {
+    "id": "raider-tokens",
+    "name": "Raider Tokens",
+    "type": "Misc",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-03-06T10:25:36.349154+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
     "id": "rattler-i",
     "name": "Rattler I",
     "type": "Weapon",
@@ -5630,6 +5695,19 @@
     "stackSize": 1,
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "red-radio-renegade-color",
+    "name": "Red (Radio Renegade Color)",
+    "type": "Misc",
+    "rarity": "common",
+    "value": 0,
+    "weightKg": 0,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-03-06T08:14:51.346143+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7342,7 +7420,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-03-06T13:33:09.815134+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8163,7 +8241,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-01-31T06:29:13.011643+00:00",
+    "updatedAt": "2026-03-06T13:33:29.401859+00:00",
     "recipe": null,
     "recyclesInto": null
   },
