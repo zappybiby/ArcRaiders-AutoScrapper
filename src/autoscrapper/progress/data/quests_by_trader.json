@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-04T20:35:34.493236Z",
+  "generatedAt": "2026-03-07T14:12:48.960650Z",
   "source": "quests.json",
   "traders": {
     "Celeste": [
@@ -9,19 +9,9 @@
         "sortOrder": 800
       },
       {
-        "id": "cold-storage",
-        "name": "Cold Storage",
-        "sortOrder": 1278.8847623375223
-      },
-      {
         "id": "greasing-her-palms",
         "name": "Greasing Her Palms",
         "sortOrder": 1520.3902829127408
-      },
-      {
-        "id": "doctors-orders",
-        "name": "Doctor's Orders",
-        "sortOrder": 1811.860157381871
       },
       {
         "id": "straight-record",
@@ -82,11 +72,6 @@
         "id": "switching-the-supply",
         "name": "Switching the Supply",
         "sortOrder": 4019.252140564836
-      },
-      {
-        "id": "back-on-top",
-        "name": "Back on Top",
-        "sortOrder": 4173.137708038272
       },
       {
         "id": "power-out",
@@ -151,11 +136,6 @@
         "sortOrder": 1518.8847623375223
       },
       {
-        "id": "mixed-signals",
-        "name": "Mixed Signals",
-        "sortOrder": 2006.475046689308
-      },
-      {
         "id": "what-we-left-behind",
         "name": "What We Left Behind",
         "sortOrder": 2048.8797708209436
@@ -196,6 +176,16 @@
         "sortOrder": 3808.281728989622
       },
       {
+        "id": "back-on-top",
+        "name": "Back on Top",
+        "sortOrder": 4173.137708038272
+      },
+      {
+        "id": "armored-transports",
+        "name": "Armored Transports",
+        "sortOrder": 6970.490569947188
+      },
+      {
         "id": "stable-housing",
         "name": "Stable Housing",
         "sortOrder": 7660.037216135203
@@ -228,6 +218,11 @@
         "sortOrder": 1039.0611297924638
       },
       {
+        "id": "cold-storage",
+        "name": "Cold Storage",
+        "sortOrder": 1278.8847623375223
+      },
+      {
         "id": "down-to-earth",
         "name": "Down To Earth",
         "sortOrder": 1279.0611297924638
@@ -246,6 +241,11 @@
         "id": "dormant-barons",
         "name": "Dormant Barons",
         "sortOrder": 1813.6925197784376
+      },
+      {
+        "id": "mixed-signals",
+        "name": "Mixed Signals",
+        "sortOrder": 2006.475046689308
       },
       {
         "id": "a-lay-of-the-land",
@@ -308,11 +308,6 @@
         "sortOrder": 6047.565315216083
       },
       {
-        "id": "a-first-foothold",
-        "name": "A First Foothold",
-        "sortOrder": 6196.983228767364
-      },
-      {
         "id": "reduced-to-rubble",
         "name": "Reduced To Rubble",
         "sortOrder": 6436.983228767364
@@ -323,11 +318,6 @@
         "sortOrder": 6676.983228767364
       },
       {
-        "id": "armored-transports",
-        "name": "Armored Transports",
-        "sortOrder": 6970.490569947188
-      },
-      {
         "id": "a-prime-specimen",
         "name": "A Prime Specimen",
         "sortOrder": 7209.777176880825
@@ -336,48 +326,6 @@
         "id": "a-dead-end",
         "name": "A Dead End",
         "sortOrder": 7664.223834246595
-      }
-    ],
-    "Lance": [
-      {
-        "id": "in-my-image",
-        "name": "In My Image",
-        "sortOrder": 1038.8847623375223
-      },
-      {
-        "id": "medical-merchandise",
-        "name": "Medical Merchandise",
-        "sortOrder": 2051.860157381871
-      },
-      {
-        "id": "esr-analyzer",
-        "name": "A Reveal in Ruins",
-        "sortOrder": 2291.860157381871
-      },
-      {
-        "id": "prescriptions-of-the-past",
-        "name": "Prescriptions of the Past",
-        "sortOrder": 4499.252140564836
-      },
-      {
-        "id": "life-of-a-pharmacist",
-        "name": "Life of a Pharmacist",
-        "sortOrder": 5699.252140564836
-      },
-      {
-        "id": "on-deaf-ears",
-        "name": "On Deaf Ears",
-        "sortOrder": 6098.557992881553
-      },
-      {
-        "id": "on-the-map",
-        "name": "On The Map",
-        "sortOrder": 6303.962520692375
-      },
-      {
-        "id": "a-new-type-of-plant",
-        "name": "A New Type of Plant",
-        "sortOrder": 6677.2338897110185
       }
     ],
     "Apollo": [
@@ -427,6 +375,11 @@
         "sortOrder": 5860.695307679854
       },
       {
+        "id": "a-first-foothold",
+        "name": "A First Foothold",
+        "sortOrder": 6196.983228767364
+      },
+      {
         "id": "building-a-library",
         "name": "Building a Library",
         "sortOrder": 6437.2338897110185
@@ -435,6 +388,53 @@
         "id": "the-clean-dream",
         "name": "The Clean Dream",
         "sortOrder": 6970.340249561917
+      }
+    ],
+    "Lance": [
+      {
+        "id": "in-my-image",
+        "name": "In My Image",
+        "sortOrder": 1038.8847623375223
+      },
+      {
+        "id": "doctors-orders",
+        "name": "Doctor's Orders",
+        "sortOrder": 1811.860157381871
+      },
+      {
+        "id": "medical-merchandise",
+        "name": "Medical Merchandise",
+        "sortOrder": 2051.860157381871
+      },
+      {
+        "id": "esr-analyzer",
+        "name": "A Reveal in Ruins",
+        "sortOrder": 2291.860157381871
+      },
+      {
+        "id": "prescriptions-of-the-past",
+        "name": "Prescriptions of the Past",
+        "sortOrder": 4499.252140564836
+      },
+      {
+        "id": "life-of-a-pharmacist",
+        "name": "Life of a Pharmacist",
+        "sortOrder": 5699.252140564836
+      },
+      {
+        "id": "on-deaf-ears",
+        "name": "On Deaf Ears",
+        "sortOrder": 6098.557992881553
+      },
+      {
+        "id": "on-the-map",
+        "name": "On The Map",
+        "sortOrder": 6303.962520692375
+      },
+      {
+        "id": "a-new-type-of-plant",
+        "name": "A New Type of Plant",
+        "sortOrder": 6677.2338897110185
       }
     ]
   }
