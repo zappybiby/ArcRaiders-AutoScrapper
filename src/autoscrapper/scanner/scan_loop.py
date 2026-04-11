@@ -3,7 +3,7 @@ from __future__ import annotations
 import time
 from dataclasses import dataclass, field
 from itertools import cycle
-from typing import Any, Iterable, List, Optional, Tuple
+from typing import Any, Iterable, Iterator, List, Optional, Tuple
 
 from .actions import ActionExecutionContext, resolve_action_taken
 from .outcomes import _describe_action
@@ -116,7 +116,7 @@ def _queue_event(
         startup_events.append((message, style))
 
 
-def _scroll_clicks_sequence(click_pattern: Iterable[int]) -> Iterable[int]:
+def _scroll_clicks_sequence(click_pattern: Iterable[int]) -> Iterator[int]:
     """
     Yield repeating calibrated scroll counts.
     """
@@ -339,13 +339,15 @@ class _ScanRunner:
                 )
 
         # --- Attempt 2: color-based infobox detection with retries ---
-        # Also run when context-menu mode is active but the crop returned
-        # nothing (brightness guard rejected it — the menu was not visible).
-        # Falling back to infobox detection in that case prevents a permanent
-        # UNREADABLE for items where the context menu is absent but the
-        # hover-infobox is still showing.
-        ctx_menu_missed = skip_infobox and infobox_rect is None
-        if not skip_infobox or ctx_menu_missed:
+        # Only run when infobox mode is active or no mode has been
+        # established yet.  When context-menu mode is established
+        # (skip_infobox=True) but the crop returned nothing, the menu
+        # simply was not visible for this cell (e.g. empty slot or
+        # timing issue).  Falling through to infobox color detection
+        # adds multiple capture+sleep cycles with zero benefit because
+        # the game's current dark UI never matches the legacy
+        # INFOBOX_COLOR_BGR cream color.
+        if not skip_infobox:
             for attempt in range(1, self.config.infobox_retries + 1):
                 capture_attempts += 1
                 abort_if_escape_pressed(self.context.stop_key)
