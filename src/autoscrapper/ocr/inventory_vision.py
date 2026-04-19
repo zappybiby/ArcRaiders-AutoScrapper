@@ -1169,6 +1169,7 @@ def ocr_title_strip(
     title_strip_bgr: np.ndarray,
     *,
     use_fallback_psm: bool = False,
+    restrict_otsu_to_left: bool = False,
 ) -> InfoboxOcrResult:
     """
     OCR a pre-cropped infobox title strip to derive the item title.
@@ -1192,9 +1193,9 @@ def ocr_title_strip(
     # the same binarized image are not incorrectly served each other's result.
     # Encode PSM mode into the hash so a fallback-PSM retry never serves a cached
     # result from a normal-PSM call (or vice versa).
-    roi_hash = _hash_roi(title_strip_bgr) + (b"\x01" if use_fallback_psm else b"\x00")
+    roi_hash = _hash_roi(title_strip_bgr) + (b"\x01" if use_fallback_psm else b"\x00") + (b"\x01" if restrict_otsu_to_left else b"\x00")
     preprocess_start = time.perf_counter()
-    processed = preprocess_for_ocr(title_strip_bgr)
+    processed = preprocess_for_ocr(title_strip_bgr, restrict_otsu_to_left=restrict_otsu_to_left)
     _save_debug_image("infobox_processed", processed)
     preprocess_time = time.perf_counter() - preprocess_start
     if _last_roi_hash == roi_hash and _last_ocr_result is not None:
@@ -1240,7 +1241,7 @@ def ocr_title_strip(
     if not match_result.matched_name:
         # Fallback: retry without 2x upscale. Upscale-induced interpolation
         # artefacts can confuse Tesseract on certain low-contrast strips.
-        processed_no_up = preprocess_for_ocr(title_strip_bgr, upscale=False)
+        processed_no_up = preprocess_for_ocr(title_strip_bgr, upscale=False, restrict_otsu_to_left=restrict_otsu_to_left)
         try:
             raw_text_no_up = image_to_string(
                 processed_no_up,
@@ -1362,7 +1363,7 @@ def ocr_context_menu(
         # Preserve the global OCR cache so the infobox path is unaffected.
         _saved_hash, _saved_result = _last_roi_hash, _last_ocr_result
         try:
-            title_result = ocr_title_strip(title_band_bgr, use_fallback_psm=use_fallback_psm)
+            title_result = ocr_title_strip(title_band_bgr, use_fallback_psm=use_fallback_psm, restrict_otsu_to_left=True)
         finally:
             # Restore cache — context-menu title strips must not evict infobox
             # cache entries even if ocr_title_strip raises.
@@ -1456,9 +1457,17 @@ def ocr_context_menu(
         line_text = " ".join(p for p in cleaned_parts if p).strip()
         line_lower = line_text.lower()
         # Strip leading non-alpha chars (e.g. OCR'd game icons) before
-        # checking action prefixes.
+        # checking action prefixes.  Also slide up to 5 positions to catch
+        # short alpha garble from icon glyphs (e.g. "ame Split Stack").
         stripped_lower = re.sub(r"^[^a-z]+", "", line_lower)
-        if any(line_lower.startswith(p) or stripped_lower.startswith(p) for p in _ACTION_PREFIXES):
+        _is_action = any(line_lower.startswith(p) or stripped_lower.startswith(p) for p in _ACTION_PREFIXES)
+        if not _is_action:
+            for _trim in range(1, 6):
+                remainder = line_lower[_trim:]
+                if len(remainder) >= 4 and any(remainder.startswith(p) for p in _ACTION_PREFIXES):
+                    _is_action = True
+                    break
+        if _is_action:
             continue
         # Skip very short fragments (stash quantity labels like "1", "3") —
         # they false-match item names via partial_ratio in WRatio.  Threshold
