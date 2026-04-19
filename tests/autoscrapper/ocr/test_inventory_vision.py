@@ -19,6 +19,7 @@ from autoscrapper.ocr.inventory_vision import (  # noqa: E402
     ItemNameMatchResult,
     _extract_cropped_title_from_data,
     _extract_title_from_data,
+    _odd,
     find_context_menu_crop,
     isolate_menu_panel,
     match_item_name_result,
@@ -675,6 +676,7 @@ class TestIsolateMenuPanel:
         assert x + w <= crop_w
         assert y + h <= crop_h
 
+
 # ---------------------------------------------------------------------------
 # match_item_name_result — case-insensitivity regression
 # ---------------------------------------------------------------------------
@@ -708,7 +710,30 @@ class TestMatchItemNameCaseInsensitive:
     )
     def test_all_caps_title_matches_catalog(self, raw: str, expected: str) -> None:
         result = match_item_name_result(raw)
-        assert result.matched_name == expected, (
-            f"raw={raw!r} expected={expected!r} got={result.matched_name!r}"
-        )
+        assert result.matched_name == expected, f"raw={raw!r} expected={expected!r} got={result.matched_name!r}"
 
+
+# ---------------------------------------------------------------------------
+# _odd - Bug/Edge Case regression
+# ---------------------------------------------------------------------------
+
+
+class TestOdd:
+    def test_even_number(self):
+        assert _odd(2) == 3
+        assert _odd(4) == 5
+
+    def test_odd_number(self):
+        assert _odd(1) == 1
+        assert _odd(3) == 3
+
+    def test_zero(self):
+        assert _odd(0) == 1
+
+    def test_negative_even(self):
+        assert _odd(-2) == -1
+        assert _odd(-4) == -3
+
+    def test_negative_odd(self):
+        assert _odd(-1) == -1
+        assert _odd(-3) == -3
