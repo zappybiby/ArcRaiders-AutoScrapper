@@ -1,4 +1,4 @@
-name: Ruff
+name: CI
 on:
   workflow_dispatch:
   push:
@@ -8,11 +8,11 @@ on:
     branches:
       - main
 concurrency:
-  group: ruff-${{ github.ref }}
+  group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  ruff:
+  validate:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -22,7 +22,7 @@ jobs:
           persist-credentials: false
       - name: Install Tesseract OCR system dependencies
         run: |
-          sudo apt-get update -qq >/dev/null 2>&1 && sudo apt-get install -yqq --no-install-recommends tesseract-ocr libtesseract-dev libleptonica-dev build-essential pkg-config python3-evdev
+          sudo apt-get update -qq >/dev/null 2>&1 && sudo apt-get install -yqq --no-install-recommends build-essential libevdev-dev libleptonica-dev libtesseract-dev pkg-config tesseract-ocr libwebp7
       - name: Install uv
         uses: astral-sh/setup-uv@v7
         with:

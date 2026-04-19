@@ -8,7 +8,7 @@ Run after a game patch or when Metaforge data is known to have changed.
 ## Step 1 — Dry-run first
 
 ```bash
-python3 -m uv run python scripts/update_snapshot_and_defaults.py --dry-run
+uv run python scripts/update_snapshot_and_defaults.py --dry-run
 ```
 
 Review the diff. If only timestamps changed (no item/quest/rule deltas), stop — nothing to do.
@@ -16,7 +16,7 @@ Review the diff. If only timestamps changed (no item/quest/rule deltas), stop �
 ## Step 2 — Apply update
 
 ```bash
-python3 -m uv run python scripts/update_snapshot_and_defaults.py
+uv run python scripts/update_snapshot_and_defaults.py
 ```
 
 Protected files updated automatically:
@@ -32,7 +32,7 @@ Do not hand-edit these files.
 After regeneration, identify items present in the new snapshot that have no custom rule:
 
 ```bash
-python3 -m uv run python - <<'EOF'
+uv run python - <<'EOF'
 import orjson
 from pathlib import Path
 
@@ -56,9 +56,9 @@ For each gap item, use `/add-rule` to assign a KEEP/SELL/RECYCLE action.
 ## Step 4 — Validate
 
 ```bash
-python3 -m uv run ruff check src/ tests/
-python3 -m uv run basedpyright src/
-python3 -m uv run pytest
+uv run ruff check src/ tests/
+uv run basedpyright src/
+uv run pytest
 ```
 
 All three must pass before committing. Then use `/ci-promote` to push.

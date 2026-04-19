@@ -30,11 +30,11 @@
       "Bash(uv run basedpyright:*)",
       "Bash(uv run autoscrapper scan --dry-run:*)",
       "Bash(uv sync:*)",
-      "Bash(python3 -m uv run pytest:*)",
-      "Bash(python3 -m uv run ruff check:*)",
-      "Bash(python3 -m uv run basedpyright:*)",
+      "Bash(uv run pytest:*)",
+      "Bash(uv run ruff check:*)",
+      "Bash(uv run basedpyright:*)",
       "Bash(uv run ty:*)",
-      "Bash(python3 -m uv run ty:*)",
+      "Bash(uv run ty:*)",
       "Bash(rtk:*)",
       "Bash(git status:*)",
       "Bash(git diff:*)",
@@ -69,33 +69,51 @@
         "hooks": [
           {
             "type": "command",
-            "command": "f=$(jq -r '.tool_input.file_path // .tool_response.filePath' 2>/dev/null); if [ -n \"$f\" ] && [ \"${f##*.}\" = 'py' ]; then python3 -m uv run ruff format \"$f\" 2>/dev/null || true; fi",
+            "command": "f=$(jq -r '.tool_input.file_path // .tool_response.filePath' 2>/dev/null); if [ -n \"$f\" ] && [ \"${f##*.}\" = 'py' ]; then uv run ruff format \"$f\" 2>/dev/null || true; fi",
             "statusMessage": "Formatting Python code with Ruff...",
             "async": true
           },
           {
             "type": "command",
-            "command": "f=$(jq -r '.tool_input.file_path // .tool_response.filePath' 2>/dev/null); if [ -n \"$f\" ] && [ \"${f##*.}\" = 'py' ]; then python3 -m uv run ruff check \"$f\" 2>/dev/null || true; fi",
+            "command": "f=$(jq -r '.tool_input.file_path // .tool_response.filePath' 2>/dev/null); if [ -n \"$f\" ] && [ \"${f##*.}\" = 'py' ]; then uv run ruff check \"$f\" 2>/dev/null || true; fi",
             "statusMessage": "Linting Python code with Ruff...",
             "async": true
           },
           {
             "type": "command",
-            "command": "f=$(jq -r '.tool_input.file_path // .tool_response.filePath' 2>/dev/null); if [ -n \"$f\" ] && [ \"${f##*.}\" = 'py' ]; then python3 -m uv run basedpyright \"$f\" 2>/dev/null || true; fi",
+            "command": "f=$(jq -r '.tool_input.file_path // .tool_response.filePath' 2>/dev/null); if [ -n \"$f\" ] && [ \"${f##*.}\" = 'py' ]; then uv run basedpyright \"$f\" 2>/dev/null || true; fi",
             "statusMessage": "Type-checking with basedpyright...",
             "async": true
           },
           {
             "type": "command",
-            "command": "f=$(jq -r '.tool_input.file_path // .tool_response.filePath' 2>/dev/null); if [ -n \"$f\" ] && [ \"${f##*.}\" = 'py' ]; then python3 -m uv run ty check \"$f\" 2>/dev/null || true; fi",
+            "command": "f=$(jq -r '.tool_input.file_path // .tool_response.filePath' 2>/dev/null); if [ -n \"$f\" ] && [ \"${f##*.}\" = 'py' ]; then uv run ty check \"$f\" 2>/dev/null || true; fi",
             "statusMessage": "Type-checking with ty...",
             "async": true
           },
           {
             "type": "command",
-            "command": "f=$(jq -r '.tool_input.file_path // .tool_response.filePath' 2>/dev/null); if [ -n \"$f\" ] && [ \"${f##*.}\" = 'py' ] && [[ \"$f\" == */src/autoscrapper/* ]] && ! [[ \"$f\" == *data* ]]; then base=$(basename \"${f%.py}\"); for tfile in \"tests/test_${base}.py\" \"tests/${base}_test.py\" \"${f%/*}/test_${base}.py\"; do if [ -f \"$tfile\" ]; then python3 -m uv run pytest -xvs \"$tfile\" 2>&1 | head -100 || true; break; fi; done; fi",
+            "command": "f=$(jq -r '.tool_input.file_path // .tool_response.filePath' 2>/dev/null); if [ -n \"$f\" ] && [ \"${f##*.}\" = 'py' ] && [[ \"$f\" == */src/autoscrapper/* ]] && ! [[ \"$f\" == *data* ]]; then base=$(basename \"${f%.py}\"); for tfile in \"tests/test_${base}.py\" \"tests/${base}_test.py\" \"${f%/*}/test_${base}.py\"; do if [ -f \"$tfile\" ]; then uv run pytest -xvs \"$tfile\" 2>&1 | head -100 || true; break; fi; done; fi",
             "statusMessage": "Running related pytest suite...",
             "async": true
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/ven0m0/.local/share/fnm/node-versions/v24.14.1/installation/bin/node /home/ven0m0/.npm/_npx/3c6ec659f659d129/node_modules/token-pilot/dist/index.js hook-post-bash"
+          }
+        ]
+      },
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/ven0m0/.local/share/fnm/node-versions/v24.14.1/installation/bin/node /home/ven0m0/.npm/_npx/3c6ec659f659d129/node_modules/token-pilot/dist/index.js hook-post-task"
           }
         ]
       }
@@ -128,6 +146,24 @@
             "command": "/home/ven0m0/.local/share/fnm/node-versions/v24.14.1/installation/bin/node /home/ven0m0/.npm/_npx/3c6ec659f659d129/node_modules/token-pilot/dist/index.js hook-edit"
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/ven0m0/.local/share/fnm/node-versions/v24.14.1/installation/bin/node /home/ven0m0/.npm/_npx/3c6ec659f659d129/node_modules/token-pilot/dist/index.js hook-pre-bash"
+          }
+        ]
+      },
+      {
+        "matcher": "Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/ven0m0/.local/share/fnm/node-versions/v24.14.1/installation/bin/node /home/ven0m0/.npm/_npx/3c6ec659f659d129/node_modules/token-pilot/dist/index.js hook-pre-grep"
+          }
+        ]
       }
     ],
     "UserPromptSubmit": [
@@ -136,8 +172,18 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cmd=$(jq -r '.tool_input.command // empty' 2>/dev/null); if echo \"$cmd\" | grep -qE '^git commit'; then branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); if echo \"$branch\" | grep -qE '^(main|master)$'; then echo '{\"systemMessage\":\"\u26a0\ufe0f Warning: You are committing to main/master. Ensure this is intended.\"}'; else echo '{\"continue\":true}'; fi; else echo '{\"continue\":true}'; fi",
+            "command": "cmd=$(jq -r '.tool_input.command // empty' 2>/dev/null); if echo \"$cmd\" | grep -qE '^git commit'; then branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); if echo \"$branch\" | grep -qE '^(main|master)$'; then echo '{\"systemMessage\":\"⚠️ Warning: You are committing to main/master. Ensure this is intended.\"}'; else echo '{\"continue\":true}'; fi; else echo '{\"continue\":true}'; fi",
             "statusMessage": "Checking git branch..."
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/ven0m0/.local/share/fnm/node-versions/v24.14.1/installation/bin/node /home/ven0m0/.npm/_npx/3c6ec659f659d129/node_modules/token-pilot/dist/index.js hook-session-start"
           }
         ]
       }

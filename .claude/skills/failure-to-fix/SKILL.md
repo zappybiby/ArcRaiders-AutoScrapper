@@ -8,7 +8,7 @@ Use when a scan produces wrong actions, misread item names, or crashes. Chains d
 ## Step 1 — Capture dry-run output
 
 ```bash
-python3 -m uv run autoscrapper scan --dry-run 2>&1 | tee /tmp/scan-diag.txt
+uv run autoscrapper scan --dry-run 2>&1 | tee /tmp/scan-diag.txt
 ```
 
 Debug images land in `ocr_debug/`. Key patterns:
@@ -61,22 +61,22 @@ Use `/triage-failures` first if the failure corpus has relevant samples.
 Re-run dry-run and confirm the original failure is gone:
 
 ```bash
-python3 -m uv run autoscrapper scan --dry-run 2>&1 | tail -30
+uv run autoscrapper scan --dry-run 2>&1 | tail -30
 ```
 
 Then run the full suite:
 
 ```bash
-python3 -m uv run ruff check src/ tests/
-python3 -m uv run basedpyright src/
-python3 -m uv run pytest
+uv run ruff check src/ tests/
+uv run basedpyright src/
+uv run pytest
 ```
 
 ## Step 5 — Cleanup
 
 ```bash
 # Prune ocr_debug/ images from this session (keep 1 day)
-python3 -m uv run autoscrapper clean-debug 1
+uv run autoscrapper clean-debug 1
 ```
 
 Then use `/ci-promote` to push the fix.

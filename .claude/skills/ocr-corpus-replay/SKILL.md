@@ -39,7 +39,7 @@ Replay recorded OCR failures to validate vision/preprocessing changes don't caus
 
 ## Behind the Scenes
 
-Runs: `python3 -m uv run python scripts/replay_ocr_failure_corpus.py [args]`
+Runs: `uv run python scripts/replay_ocr_failure_corpus.py [args]`
 
 Validates:
 - ✅ Text extraction accuracy (fuzzy match threshold T001)

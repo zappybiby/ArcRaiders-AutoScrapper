@@ -10,8 +10,8 @@ Finds unreferenced code using two complementary tools and removes confirmed dead
 ## Step 1 — Run scanners
 
 ```bash
-python3 -m uv run deadcode src/ 2>&1
-python3 -m uv run vulture src/ --min-confidence 80 2>&1
+uv run deadcode src/ 2>&1
+uv run vulture src/ --min-confidence 80 2>&1
 ```
 
 ## Step 2 — Filter false positives
@@ -46,8 +46,8 @@ Only remove when grep confirms zero callers and the symbol has no interface obli
 After removal, run:
 
 ```bash
-python3 -m uv run ruff check src/ tests/
-python3 -m uv run pytest --tb=short -q
+uv run ruff check src/ tests/
+uv run pytest --tb=short -q
 ```
 
 Both must pass before committing.

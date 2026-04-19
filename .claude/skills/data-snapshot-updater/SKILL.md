@@ -42,7 +42,7 @@ Refresh Arc Tracker / Metaforge data snapshots and regenerate bundled default it
 
 ## Behind the Scenes
 
-Runs: `python3 -m uv run python scripts/update_snapshot_and_defaults.py [--dry-run]`
+Runs: `uv run python scripts/update_snapshot_and_defaults.py [--dry-run]`
 
 Protected files (auto-generated—do not hand-edit):
 - `src/autoscrapper/progress/data/items.json`

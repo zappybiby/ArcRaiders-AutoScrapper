@@ -6,10 +6,10 @@ description: Use when user wants to Run the full validation suite (lint + types 
 Run these commands in sequence from the project root. Stop and report on the first failure.
 
 ```bash
-python3 -m uv run ruff check src/ tests/
-python3 -m uv run basedpyright src/
-python3 -m uv run ty check src/
-python3 -m uv run pytest
+uv run ruff check src/ tests/
+uv run basedpyright src/
+uv run ty check src/
+uv run pytest
 ```
 
 **ty vs basedpyright disagreements**: If only `ty` reports an error and basedpyright is clean, check whether it's a known ty false positive before fixing (e.g., `dict[object, object]` key narrowing after `isinstance(value, dict)` — fix with `isinstance(key, str)` guard; `dict[Never, Never]` narrowing after type-narrowed isinstance — known ty limitation, suppress with `# type: ignore[union-attr]`).
