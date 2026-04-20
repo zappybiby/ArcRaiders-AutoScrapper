@@ -676,6 +676,24 @@ class TestIsolateMenuPanel:
         assert x + w <= crop_w
         assert y + h <= crop_h
 
+    def test_returns_none_for_thin_horizontal_strip(self):
+        """A bright rect that is too wide/short (aspect < 0.3) must not be returned."""
+        img = np.zeros((100, 100, 3), dtype=np.uint8)
+        img[40:50, 10:90] = (220, 220, 220)
+        assert isolate_menu_panel(img) is None
+
+    def test_returns_none_for_thin_vertical_strip(self):
+        """A bright rect that is too tall/narrow (aspect > 3.0) must not be returned."""
+        img = np.zeros((100, 100, 3), dtype=np.uint8)
+        img[10:90, 45:55] = (220, 220, 220)
+        assert isolate_menu_panel(img) is None
+
+    def test_returns_none_for_short_panel(self):
+        """A bright rect covering < 50% of crop height must not be returned."""
+        img = np.zeros((100, 100, 3), dtype=np.uint8)
+        img[20:60, 20:60] = (220, 220, 220)
+        assert isolate_menu_panel(img) is None
+
 
 # ---------------------------------------------------------------------------
 # match_item_name_result — case-insensitivity regression
