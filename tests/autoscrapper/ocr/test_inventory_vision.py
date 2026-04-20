@@ -719,21 +719,19 @@ class TestMatchItemNameCaseInsensitive:
 
 
 class TestOdd:
-    def test_even_number(self):
-        assert _odd(2) == 3
-        assert _odd(4) == 5
-
-    def test_odd_number(self):
-        assert _odd(1) == 1
-        assert _odd(3) == 3
-
-    def test_zero(self):
-        assert _odd(0) == 1
-
-    def test_negative_even(self):
-        assert _odd(-2) == -1
-        assert _odd(-4) == -3
-
-    def test_negative_odd(self):
-        assert _odd(-1) == -1
-        assert _odd(-3) == -3
+    @pytest.mark.parametrize(
+        ("value", "expected"),
+        [
+            (2, 3),
+            (4, 5),
+            (1, 1),
+            (3, 3),
+            (0, 1),
+            (-2, -1),
+            (-4, -3),
+            (-1, -1),
+            (-3, -3),
+        ],
+    )
+    def test_odd_logic(self, value: int, expected: int) -> None:
+        assert _odd(value) == expected
