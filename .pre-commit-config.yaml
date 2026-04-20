@@ -1,3 +1,5 @@
+default_stages: [pre-commit]
+
 repos:
   # Ruff - Python linting and formatting
   - repo: https://github.com/astral-sh/ruff-pre-commit
@@ -31,18 +33,20 @@ repos:
       - id: uv-lock-upgrade
         name: Run uv lock --upgrade
         entry: uv lock --upgrade
-        language: python
+        language: system
         pass_filenames: false
-      - id: pre-commit autoupdate
+        stages: [manual]
+      - id: pre-commit-autoupdate
         name: autoupdate pre-commit
         entry: pre-commit autoupdate
         language: system
         pass_filenames: false
+        stages: [manual]
       - id: biome-check
         name: biome check
         entry: bunx @biomejs/biome check --write
         language: node
-        types_or: [javascript, typescript, jsx, tsx, json, jsonc]
+        files: \.(?:[cm]?[jt]sx?|jsonc?)$
         pass_filenames: true
   # Pre-commit hooks (official)
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -50,50 +54,36 @@ repos:
     hooks:
       # General checks
       - id: trailing-whitespace
-        stages: [pre-commit]
       - id: end-of-file-fixer
-        stages: [pre-commit]
       - id: check-yaml
         args: [--allow-multiple-documents]
-        stages: [pre-commit]
       - id: check-json
-        stages: [pre-commit]
       - id: check-toml
-        stages: [pre-commit]
       - id: check-xml
-        stages: [pre-commit]
       - id: fix-byte-order-marker
       - id: mixed-line-ending
       # Security checks
       - id: detect-private-key
-        stages: [pre-commit]
 
       # File checks
       - id: check-added-large-files
         args: [--maxkb=1000]
-        stages: [pre-commit]
       - id: check-case-conflict
-        stages: [pre-commit]
       - id: check-executables-have-shebangs
-        stages: [pre-commit]
       - id: check-shebang-scripts-are-executable
-        stages: [pre-commit]
       - id: forbid-submodules
-        stages: [pre-commit]
 
   # Gitleaks - Secret scanning
   - repo: https://github.com/gitleaks/gitleaks
     rev: v8.30.1
     hooks:
       - id: gitleaks
-        stages: [pre-commit]
 
   # Zizmor - GitHub Actions security analysis
   - repo: https://github.com/woodruffw/zizmor-pre-commit
     rev: v1.24.1
     hooks:
       - id: zizmor
-        stages: [pre-commit]
 
   # Tombi - TOML linting and formatting
   - repo: https://github.com/tombi-toml/tombi-pre-commit
@@ -101,17 +91,14 @@ repos:
     hooks:
       - id: tombi-format
         exclude: ^(pyproject\.toml|uv\.lock)$
-        stages: [pre-commit]
       - id: tombi-lint
         exclude: ^(pyproject\.toml|uv\.lock)$
-        stages: [pre-commit]
 
   # Renovate config validator
   - repo: https://github.com/renovatebot/pre-commit-hooks
     rev: 43.132.1
     hooks:
       - id: renovate-config-validator
-        stages: [pre-commit]
 
   # Shellcheck - Shell script linting
   - repo: https://github.com/shellcheck-py/shellcheck-py
@@ -120,7 +107,6 @@ repos:
       - id: shellcheck
         args: [-x, --severity=warning]
         files: \.(sh|bash)$
-        stages: [pre-commit]
 
   - repo: https://github.com/yawlabs/ctxlint
     rev: v0.9.17
@@ -137,6 +123,7 @@ repos:
     rev: v0.1
     hooks:
       - id: gha-update
+        stages: [manual]
 
   - repo: https://github.com/rvben/rumdl-pre-commit
     rev: v0.1.76
