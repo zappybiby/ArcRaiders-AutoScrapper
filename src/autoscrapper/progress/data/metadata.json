@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-20T03:55:08.029502Z",
+  "lastUpdated": "2026-04-20T14:38:50.903073Z",
   "source": "https://metaforge.app/arc-raiders/api",
   "version": "autoscrapper-data-1",
   "itemCount": 573,
@@ -26,8 +26,8 @@
       },
       "wikiEnrichment": {
         "url": "https://arcraiders.wiki/wiki/Loot",
-        "available": true,
-        "enrichedCount": 90,
+        "available": false,
+        "enrichedCount": 0,
         "error": null,
         "fields": [
           "wikiUses"
