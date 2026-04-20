@@ -47,21 +47,20 @@ def test_ocr_fixture_matches_expected(image_path: Path, expected_name: str) -> N
     """OCR pipeline on a fixture image must match the expected item name."""
     pytest.importorskip("tesserocr", reason="tesserocr not installed")
 
-    from unittest.mock import patch
-
     from autoscrapper.ocr.inventory_vision import match_item_name_result
     from autoscrapper.ocr.tesseract import image_to_string, initialize_ocr
 
     initialize_ocr()
 
-    with patch("cv2.imread") as mock_imread:
-        import numpy as np
+    import cv2
 
-        mock_img = np.zeros((100, 200, 3), dtype=np.uint8)
-        mock_imread.return_value = mock_img
+    img = cv2.imread(str(image_path))
+    if img is None:
+        pytest.skip(f"could not load fixture image: {image_path}")
+    img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-        raw_text = image_to_string(mock_img)
-        result = match_item_name_result(raw_text)
+    raw_text = image_to_string(img_rgb)
+    result = match_item_name_result(raw_text)
 
     assert result.matched_name == expected_name, (
         f"fixture '{image_path.stem}': expected '{expected_name}', "

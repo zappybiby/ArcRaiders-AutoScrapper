@@ -30,10 +30,11 @@ def _make_cv2_stub() -> ModuleType:
     stub = ModuleType("cv2")
 
     def _threshold(img, thresh, maxval, typ):
+        import numpy as np
 
-        if typ & 2:
-            return (thresh, (img > thresh) * maxval)
-        return (thresh, img)
+        is_inv = bool(typ & 1)
+        mask = (img <= thresh) if is_inv else (img > thresh)
+        return (thresh, mask.astype(np.uint8) * maxval)
 
     def _cvtColor(img, code):
         import numpy as np
@@ -55,8 +56,22 @@ def _make_cv2_stub() -> ModuleType:
             return np.zeros((*dsize[::-1], 3) if len(img.shape) == 3 else dsize[::-1], dtype=np.uint8)
         return img
 
+    def _imread(path: str, flags=None):
+        try:
+            from PIL import Image
+            import numpy as np
+
+            img = Image.open(path)
+            img = img.convert("RGB")
+            return np.array(img)
+        except Exception:
+            import numpy as np
+
+            return np.zeros((100, 100, 3), dtype=np.uint8)
+
     stub.threshold = _threshold
     stub.cvtColor = _cvtColor
+    stub.imread = _imread
     stub.findContours = MagicMock(return_value=([], []))
     stub.contourArea = MagicMock(return_value=1000)
     stub.boundingRect = MagicMock(return_value=(0, 0, 100, 100))
@@ -96,7 +111,6 @@ def _make_cv2_stub() -> ModuleType:
     stub.INTER_LANCZOS4 = 4
 
     for attr, val in {
-        "imread": MagicMock(),
         "imwrite": MagicMock(),
         "imshow": MagicMock(),
         "waitKey": MagicMock(),
@@ -144,6 +158,12 @@ if not _has_cv2:
 def _reset_cv2_stub_per_test() -> None:
     """Reset cv2 stub state between tests to prevent cross-test contamination."""
     yield
+    if "cv2" in sys.modules:
+        stub = sys.modules["cv2"]
+        for attr in dir(stub):
+            val = getattr(stub, attr, None)
+            if isinstance(val, MagicMock):
+                val.reset_mock()
 
 
 def pytest_configure(config: pytest.Config) -> None:
@@ -151,9 +171,3 @@ def pytest_configure(config: pytest.Config) -> None:
         "markers",
         "requires_cv2: mark test as requiring cv2/OpenCV to be fully functional (needs libGL)",
     )
-
-
-@pytest.fixture
-def tmp_path_factory(tmp_path_factory):
-    """Provide a temporary path factory scoped to each test."""
-    return tmp_path_factory
