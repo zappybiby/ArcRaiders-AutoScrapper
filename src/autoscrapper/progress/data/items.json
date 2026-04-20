@@ -36,8 +36,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects High-Gain Antenna (15x)"
+    "recyclesInto": null
   },
   {
     "id": "advanced-electrical-components",
@@ -50,8 +49,7 @@
     "craftBench": "Refiner",
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Gear Bench 3 (5x) Utility Station 3 (5x) Projects Expedition 1 (5x) Expedition 2 (5x) Expedition 3 (5x)"
+    "recyclesInto": null
   },
   {
     "id": "advanced-mechanical-components",
@@ -64,8 +62,7 @@
     "craftBench": "Refiner",
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Gunsmith 3 (5x)"
+    "recyclesInto": null
   },
   {
     "id": "agave",
@@ -221,8 +218,7 @@
     "craftBench": "Refiner",
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Medical Lab 3 (8x) Quests Doctor's Orders (2x)"
+    "recyclesInto": null
   },
   {
     "id": "anvil-recipe",
@@ -339,8 +335,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Scrappy 3 (3x) Scrappy 5 (12x)"
+    "recyclesInto": null
   },
   {
     "id": "arc-alloy",
@@ -353,8 +348,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Explosives Station 1 (6x) Medical Lab 1 (6x) Utility Station 1 (6x) Quests Clearer Skies (3x) Projects Expedition 1 (80x) Expedition 2 (80x) Expedition 3 (80x) High-Gain Antenna (50x)"
+    "recyclesInto": null
   },
   {
     "id": "arc-circuitry",
@@ -367,8 +361,7 @@
     "craftBench": "Refiner II",
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Refiner 3 (10x)"
+    "recyclesInto": null
   },
   {
     "id": "arc-coolant",
@@ -381,8 +374,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects High-Gain Antenna (15x)"
+    "recyclesInto": null
   },
   {
     "id": "arc-flex-rubber",
@@ -395,8 +387,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects High-Gain Antenna (10x)"
+    "recyclesInto": null
   },
   {
     "id": "arc-motion-core",
@@ -409,8 +400,7 @@
     "craftBench": "Refiner II",
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Refiner 2 (5x)"
+    "recyclesInto": null
   },
   {
     "id": "arc-performance-steel",
@@ -423,8 +413,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects High-Gain Antenna (10x) Trophy Display (10x)"
+    "recyclesInto": null
   },
   {
     "id": "arc-powercell",
@@ -437,8 +426,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Refiner 1 (5x)"
+    "recyclesInto": null
   },
   {
     "id": "arc-synthetic-resin",
@@ -451,8 +439,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects High-Gain Antenna (20x) Trophy Display (10x)"
+    "recyclesInto": null
   },
   {
     "id": "arc-thermo-lining",
@@ -465,8 +452,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects High-Gain Antenna (15x)"
+    "recyclesInto": null
   },
   {
     "id": "arpeggio-i",
@@ -531,8 +517,7 @@
     "craftBench": null,
     "updatedAt": "2026-03-31T10:07:17.014017+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects High-Gain Antenna (18x) High-Gain Antenna (6x)"
+    "recyclesInto": null
   },
   {
     "id": "assorted-seeds",
@@ -636,8 +621,7 @@
     "craftBench": null,
     "updatedAt": "2026-04-07T20:56:46.075515+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Gear Bench 3 (6x) Quests Settled in Full (1x) Projects Trophy Display (5x)"
+    "recyclesInto": null
   },
   {
     "id": "battery",
@@ -650,8 +634,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Quests After Rain Comes (2x) Clamoring for Attention (1x) Trash Into Treasure (1x) Projects Expedition 1 (30x) Expedition 2 (30x) Expedition 3 (25x)"
+    "recyclesInto": null
   },
   {
     "id": "bettina-blueprint",
@@ -729,8 +712,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Quests The League (1x)"
+    "recyclesInto": null
   },
   {
     "id": "binoculars",
@@ -1029,8 +1011,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Refiner 3 (6x) Projects Expedition 3 (2x) Trophy Display (8x)"
+    "recyclesInto": null
   },
   {
     "id": "bow-and-arrow-emote",
@@ -1056,8 +1037,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Expedition 3 (3x)"
+    "recyclesInto": null
   },
   {
     "id": "briefcase-backpack-attachment",
@@ -1096,8 +1076,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Expedition 3 (1x)"
+    "recyclesInto": null
   },
   {
     "id": "broken-handcuffs",
@@ -1435,8 +1414,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Scrappy 4 (1x)"
+    "recyclesInto": null
   },
   {
     "id": "cheer-emote",
@@ -1462,8 +1440,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Explosives Station 1 (50x) Projects Expedition 3 (100x)"
+    "recyclesInto": null
   },
   {
     "id": "coffee-pot",
@@ -1476,8 +1453,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Expedition 3 (1x)"
+    "recyclesInto": null
   },
   {
     "id": "coins",
@@ -1698,8 +1674,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Expedition 2 (4x)"
+    "recyclesInto": null
   },
   {
     "id": "cooling-fan",
@@ -1712,8 +1687,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Expedition 1 (5x)"
+    "recyclesInto": null
   },
   {
     "id": "cracked-bioscanner",
@@ -1726,8 +1700,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Medical Lab 2 (2x)"
+    "recyclesInto": null
   },
   {
     "id": "crimson-racer-aviator-colour",
@@ -1753,8 +1726,7 @@
     "craftBench": "Refiner",
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Explosives Station 2 (5x)"
+    "recyclesInto": null
   },
   {
     "id": "crumpled-plastic-bottle",
@@ -1819,8 +1791,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Utility Station 2 (2x)"
+    "recyclesInto": null
   },
   {
     "id": "danaged-hornet-driver",
@@ -2028,8 +1999,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Quests The League (1x)"
+    "recyclesInto": null
   },
   {
     "id": "degraded-arc-rubber",
@@ -2068,8 +2038,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Scrappy 2 (1x)"
+    "recyclesInto": null
   },
   {
     "id": "dolabra",
@@ -2160,8 +2129,7 @@
     "craftBench": "Refiner",
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Medical Lab 2 (5x) Quests Doctor's Orders (1x) Projects Expedition 1 (35x) Expedition 2 (35x) Expedition 3 (30x)"
+    "recyclesInto": null
   },
   {
     "id": "electrical-components",
@@ -2174,8 +2142,7 @@
     "craftBench": "Refiner",
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Gear Bench 2 (5x) Utility Station 2 (5x) Quests Fragmented Logs (1x) Projects Expedition 1 (30x) Expedition 2 (20x) Expedition 3 (20x)"
+    "recyclesInto": null
   },
   {
     "id": "empty-wine-bottle",
@@ -2253,8 +2220,7 @@
     "craftBench": null,
     "updatedAt": "2026-03-04T19:25:14.886362+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Expedition 1 (1x) Expedition 2 (1x) Expedition 3 (1x) Trophy Display (5x)"
+    "recyclesInto": null
   },
   {
     "id": "expired-pasta",
@@ -2280,8 +2246,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Trophy Display (3x)"
+    "recyclesInto": null
   },
   {
     "id": "explosive-compound",
@@ -2294,8 +2259,7 @@
     "craftBench": "Refiner",
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Explosives Station 3 (5x)"
+    "recyclesInto": null
   },
   {
     "id": "explosive-mine",
@@ -2555,8 +2519,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Gear Bench 1 (30x) Medical Lab 1 (50x)"
+    "recyclesInto": null
   },
   {
     "id": "faded-flush-aviator-color",
@@ -2712,8 +2675,7 @@
     "craftBench": null,
     "updatedAt": "2026-03-04T17:01:13.708936+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Refiner 2 (8x) Quests Test Case (1x)"
+    "recyclesInto": null
   },
   {
     "id": "firecracker",
@@ -2739,8 +2701,7 @@
     "craftBench": null,
     "updatedAt": "2026-04-07T09:06:28.941343+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Quests Test Case (1x) Projects Expedition 3 (5x)"
+    "recyclesInto": null
   },
   {
     "id": "fireworks-box",
@@ -2805,8 +2766,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Quests Snap And Salvage (1x)"
+    "recyclesInto": null
   },
   {
     "id": "flushing-terminal-key",
@@ -2858,8 +2818,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Expedition 2 (5x)"
+    "recyclesInto": null
   },
   {
     "id": "fried-motherboard",
@@ -2872,8 +2831,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Utility Station 3 (3x)"
+    "recyclesInto": null
   },
   {
     "id": "fruit-mix",
@@ -2977,8 +2935,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Trophy Display (3x)"
+    "recyclesInto": null
   },
   {
     "id": "gentle-duck",
@@ -3030,8 +2987,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Quests Doctor's Orders (1x)"
+    "recyclesInto": null
   },
   {
     "id": "green-light-stick",
@@ -3252,8 +3208,7 @@
     "craftBench": null,
     "updatedAt": "2026-03-04T17:11:05.417596+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Gear Bench 2 (5x) Quests Test Case (1x) The Trifecta (2x) Projects Trophy Display (15x)"
+    "recyclesInto": null
   },
   {
     "id": "household-cleaner",
@@ -3344,8 +3299,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Expedition 1 (5x)"
+    "recyclesInto": null
   },
   {
     "id": "ice-cream-scooper",
@@ -3449,8 +3403,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Gear Bench 3 (3x)"
+    "recyclesInto": null
   },
   {
     "id": "industrial-charger",
@@ -3463,8 +3416,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Expedition 3 (3x)"
+    "recyclesInto": null
   },
   {
     "id": "industrial-magnet",
@@ -3490,8 +3442,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Quests With A View (1x) Projects Expedition 2 (3x)"
+    "recyclesInto": null
   },
   {
     "id": "jolt-mine",
@@ -3634,8 +3585,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Explosives Station 3 (3x)"
+    "recyclesInto": null
   },
   {
     "id": "lances-mixtape-5th-edition",
@@ -3687,8 +3637,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Utility Station 3 (4x) Quests Into The Fray (1x) Projects Expedition 1 (3x) Expedition 2 (3x) Trophy Display (10x)"
+    "recyclesInto": null
   },
   {
     "id": "lemon",
@@ -3701,8 +3650,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Scrappy 3 (3x)"
+    "recyclesInto": null
   },
   {
     "id": "lidar-scanner",
@@ -3741,8 +3689,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Expedition 1 (5x) Expedition 2 (4x)"
+    "recyclesInto": null
   },
   {
     "id": "light-gun-parts",
@@ -3989,8 +3936,7 @@
     "craftBench": "Refiner",
     "updatedAt": "2026-03-04T19:25:49.476699+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Expedition 1 (3x) Trophy Display (10x)"
+    "recyclesInto": null
   },
   {
     "id": "magnetron",
@@ -4003,8 +3949,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Quests Snap And Salvage (1x)"
+    "recyclesInto": null
   },
   {
     "id": "mastery-medal-backpack-charm",
@@ -4030,8 +3975,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Trophy Display (3x)"
+    "recyclesInto": null
   },
   {
     "id": "mechanical-components",
@@ -4044,8 +3988,7 @@
     "craftBench": "Refiner",
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Gunsmith 2 (5x)"
+    "recyclesInto": null
   },
   {
     "id": "medium-ammo",
@@ -4123,8 +4066,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Gunsmith 1 (20x) Refiner 1 (60x) Projects Expedition 1 (150x) Expedition 2 (150x) Expedition 3 (150x)"
+    "recyclesInto": null
   },
   {
     "id": "microscope",
@@ -4189,8 +4131,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Refiner 3 (3x)"
+    "recyclesInto": null
   },
   {
     "id": "mushroom",
@@ -4203,8 +4144,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Scrappy 5 (12x)"
+    "recyclesInto": null
   },
   {
     "id": "music-album",
@@ -4347,8 +4287,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Scrappy 4 (6x)"
+    "recyclesInto": null
   },
   {
     "id": "orange-camo-origin-outfit",
@@ -4543,8 +4482,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Gear Bench 1 (25x) Utility Station 1 (50x) Projects Expedition 2 (200x)"
+    "recyclesInto": null
   },
   {
     "id": "playing-cards",
@@ -4583,8 +4521,7 @@
     "craftBench": null,
     "updatedAt": "2026-03-04T17:08:11.841354+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Explosives Station 2 (5x) Projects Trophy Display (15x)"
+    "recyclesInto": null
   },
   {
     "id": "portable-television",
@@ -4597,8 +4534,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Quests Movie Night (1x)"
+    "recyclesInto": null
   },
   {
     "id": "poster-natural-wonder",
@@ -4650,8 +4586,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Gear Bench 2 (3x)"
+    "recyclesInto": null
   },
   {
     "id": "power-rod",
@@ -4664,8 +4599,7 @@
     "craftBench": "Refiner",
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Quests Tribute To Toledo (1x)"
+    "recyclesInto": null
   },
   {
     "id": "prickly-pear",
@@ -4678,8 +4612,7 @@
     "craftBench": null,
     "updatedAt": "2026-04-15T14:50:47.786663+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Scrappy 4 (6x)"
+    "recyclesInto": null
   },
   {
     "id": "processor",
@@ -4744,8 +4677,7 @@
     "craftBench": null,
     "updatedAt": "2026-02-24T17:41:47.036707+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Trophy Display (3x)"
+    "recyclesInto": null
   },
   {
     "id": "radio",
@@ -5083,8 +5015,7 @@
     "craftBench": null,
     "updatedAt": "2026-03-04T17:10:24.495962+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Explosives Station 3 (3x) Quests Out of the Shadows (1x) Projects Trophy Display (8x)"
+    "recyclesInto": null
   },
   {
     "id": "rocket-thruster",
@@ -5149,8 +5080,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Quests With A View (1x)"
+    "recyclesInto": null
   },
   {
     "id": "rubber-duck",
@@ -5189,8 +5119,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Gunsmith 1 (30x) Projects Expedition 1 (200x)"
+    "recyclesInto": null
   },
   {
     "id": "ruined-accordion",
@@ -5294,8 +5223,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Trophy Display (3x)"
+    "recyclesInto": null
   },
   {
     "id": "rusted-gear",
@@ -5308,8 +5236,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Gunsmith 3 (3x)"
+    "recyclesInto": null
   },
   {
     "id": "rusted-shut-medical-kit",
@@ -5322,8 +5249,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Medical Lab 3 (3x)"
+    "recyclesInto": null
   },
   {
     "id": "rusted-tools",
@@ -5336,8 +5262,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Gunsmith 2 (3x)"
+    "recyclesInto": null
   },
   {
     "id": "rusty-arc-steel",
@@ -5402,8 +5327,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Expedition 1 (20x)"
+    "recyclesInto": null
   },
   {
     "id": "sentinel-part",
@@ -5416,8 +5340,7 @@
     "craftBench": null,
     "updatedAt": "2026-02-24T17:42:33.112843+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Gunsmith 3 (4x)"
+    "recyclesInto": null
   },
   {
     "id": "shaker",
@@ -5612,8 +5535,7 @@
     "craftBench": null,
     "updatedAt": "2026-03-04T17:00:24.968368+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Expedition 2 (10x) Trophy Display (5x)"
+    "recyclesInto": null
   },
   {
     "id": "signal-amplifier",
@@ -5808,8 +5730,7 @@
     "craftBench": null,
     "updatedAt": "2026-03-04T17:06:51.543716+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Utility Station 2 (6x) Quests The Trifecta (2x)"
+    "recyclesInto": null
   },
   {
     "id": "snowball",
@@ -5926,8 +5847,7 @@
     "craftBench": null,
     "updatedAt": "2026-02-24T17:43:22.212104+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Trophy Display (10x)"
+    "recyclesInto": null
   },
   {
     "id": "spring-cushion",
@@ -6044,8 +5964,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects Expedition 1 (15x) Expedition 2 (15x) Expedition 3 (15x)"
+    "recyclesInto": null
   },
   {
     "id": "stella-montis-archives-key",
@@ -6227,8 +6146,7 @@
     "craftBench": null,
     "updatedAt": "2026-02-24T17:42:57.920255+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Medical Lab 3 (5x) Quests Mixed Signals (1x) Projects High-Gain Antenna (10x) Trophy Display (5x)"
+    "recyclesInto": null
   },
   {
     "id": "synthesized-fuel",
@@ -6241,8 +6159,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Explosives Station 2 (3x)"
+    "recyclesInto": null
   },
   {
     "id": "syringe",
@@ -6255,8 +6172,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Quests Doctor's Orders (1x)"
+    "recyclesInto": null
   },
   {
     "id": "tactical-mk-1",
@@ -6529,8 +6445,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Medical Lab 2 (8x) Projects Trophy Display (15x)"
+    "recyclesInto": null
   },
   {
     "id": "toaster",
@@ -6543,8 +6458,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Refiner 2 (3x)"
+    "recyclesInto": null
   },
   {
     "id": "torch-ginger",
@@ -6752,8 +6666,7 @@
     "craftBench": null,
     "updatedAt": "2026-03-31T10:14:53.413604+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Projects High-Gain Antenna (15x) High-Gain Antenna (4x)"
+    "recyclesInto": null
   },
   {
     "id": "vase",
@@ -6909,8 +6822,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Scrappy 5 (3x)"
+    "recyclesInto": null
   },
   {
     "id": "vita-shot",
@@ -7079,8 +6991,7 @@
     "craftBench": null,
     "updatedAt": "2026-02-24T17:41:00.192005+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Workshop Gunsmith 1 (8x) Quests The Trifecta (2x) Projects Trophy Display (20x)"
+    "recyclesInto": null
   },
   {
     "id": "water-filter",
@@ -7132,8 +7043,7 @@
     "craftBench": null,
     "updatedAt": "2026-01-31T06:29:13.011643+00:00",
     "recipe": null,
-    "recyclesInto": null,
-    "wikiUses": "Quests After Rain Comes (5x) Clamoring for Attention (3x) Eyes On The Prize (3x) Trash Into Treasure (6x) Projects Expedition 1 (30x) Expedition 2 (25x) Expedition 3 (25x)"
+    "recyclesInto": null
   },
   {
     "id": "wolfpack",
