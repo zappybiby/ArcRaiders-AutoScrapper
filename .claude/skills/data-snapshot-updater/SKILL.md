@@ -1,7 +1,7 @@
 ---
 name: data-snapshot-updater
-description: Update Metaforge snapshots and bundled default rules
-context: same-thread
+description: Use when user wants to Update Metaforge snapshots and bundled default rules
+context: fork
 ---
 
 # Data Snapshot Updater Skill

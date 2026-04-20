@@ -1,3 +1,7 @@
+---
+name: rules-reviewer
+description: Use when you need to review rule-resolution changes and generated rule outputs.
+---
 # Rules Reviewer Skill
 
 Reviews changes to `src/autoscrapper/core/item_actions.py`, `src/autoscrapper/items/rules_store.py`, and related rule files.

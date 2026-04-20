@@ -1,6 +1,6 @@
 ---
 name: config-bump
-description: Workflow for safely adding, removing, or renaming persisted config fields in config.py. Use whenever editing dataclass fields in src/autoscrapper/config.py. Covers: incrementing CONFIG_VERSION, writing a migration function, and validating the round-trip.
+description: "Workflow for safely adding, removing, or renaming persisted config fields in config.py. Use whenever editing dataclass fields in src/autoscrapper/config.py. Covers incrementing CONFIG_VERSION, writing a migration function, and validating the round-trip."
 disable-model-invocation: true
 ---
 

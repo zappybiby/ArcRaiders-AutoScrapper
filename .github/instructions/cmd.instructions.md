@@ -1,5 +1,4 @@
 ---
-description: "CMD/Batch scripting standards for Windows batch file development"
 applyTo: "**/*.{bat,cmd}"
 ---
 

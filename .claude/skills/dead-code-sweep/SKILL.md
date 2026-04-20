@@ -1,6 +1,6 @@
 ---
 name: dead-code-sweep
-description: Find and remove genuine dead code using deadcode + vulture. Filters known false positives (dataclass fields, protocol methods, dunder hooks). Run before a cleanup commit.
+description: Use when user wants to Find and remove genuine dead code using deadcode + vulture. Filters known false positives (dataclass fields, protocol methods, dunder hooks). Run before a cleanup commit.
 ---
 
 # Dead Code Sweep

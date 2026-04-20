@@ -1,6 +1,6 @@
 ---
 name: ocr-unavailable
-description: Triage guide for scans where item labels show "UNAVAILABLE" — root cause is context-menu OCR fuzzy-matching the game's greyed-out button label as the item name, not a missing action enum
+description: Use when user wants to Triage guide for scans where item labels show "UNAVAILABLE" — root cause is context-menu OCR fuzzy-matching the game's greyed-out button label as the item name, not a missing action enum
 user-invocable: false
 ---
 

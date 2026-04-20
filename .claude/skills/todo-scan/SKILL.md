@@ -1,6 +1,6 @@
 ---
 name: todo-scan
-description: Scan the repo for TODO code comments, TODO-titled GitHub issues, and predict the next best work item to tackle. Reusable across any git repository.
+description: Use when user wants to Scan the repo for TODO code comments, TODO-titled GitHub issues, and predict the next best work item to tackle. Reusable across any git repository.
 ---
 
 # TODO Scan + Next-Step Predictor
