@@ -110,7 +110,7 @@ dev = [
     { name = "prek", specifier = ">=0.3.9" },
     { name = "pytest", specifier = ">=9.0.3" },
     { name = "ruff", specifier = ">=0.15.11" },
-    { name = "tombi", specifier = ">=0.9.18" },
+    { name = "tombi", specifier = ">=0.9.20" },
     { name = "ty", specifier = ">=0.0.31" },
     { name = "vulture", specifier = ">=2.16" },
 ]
