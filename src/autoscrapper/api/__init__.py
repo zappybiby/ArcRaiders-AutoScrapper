@@ -1,18 +1,9 @@
 """ArcTracker API integration module."""
 
 from .client import (
-    APIInventoryResult,
-    APIItemDecision,
     APIOrchestrator,
     ArcTrackerClient,
     HAS_REQUESTS,
-    HideoutModule,
-    ItemDecision,
-    ProjectPhase,
-    ProjectProgress,
-    RateLimitState,
-    StashData,
-    StashItem,
     create_client_from_config,
 )
 from .datasource import (
@@ -22,6 +13,21 @@ from .datasource import (
     sync_hideout_to_progress,
     sync_projects_to_progress,
 )
+from .models import (
+    APIInventoryResult,
+    APIItemDecision,
+    Blueprint,
+    HideoutModule,
+    ItemDecision,
+    ProjectPhase,
+    ProjectProgress,
+    RateLimitState,
+    RoundEntry,
+    StashData,
+    StashItem,
+    UserProfile,
+    UserQuest,
+)
 
 __all__ = [
     "APIInventoryResult",
@@ -29,14 +35,18 @@ __all__ = [
     "APIOrchestrator",
     "APIDataSource",
     "ArcTrackerClient",
+    "Blueprint",
     "HAS_REQUESTS",
     "HideoutModule",
     "ItemDecision",
     "ProjectPhase",
     "ProjectProgress",
     "RateLimitState",
+    "RoundEntry",
     "StashData",
     "StashItem",
+    "UserProfile",
+    "UserQuest",
     "create_client_from_config",
     "fetch_stash_as_scan_results",
     "get_data_source",

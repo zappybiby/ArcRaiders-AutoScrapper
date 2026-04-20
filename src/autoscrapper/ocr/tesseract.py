@@ -282,11 +282,15 @@ def _build_data_dict(iterator) -> dict[str, list]:
     return data
 
 
+DEFAULT_WHITELIST = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 '-/(),.!?:&+"
+
+
 def image_to_string(
     image: np.ndarray,
     *,
     single_line: bool = False,
     use_single_word: bool = False,
+    whitelist: str | None = None,
 ) -> str:
     """
     OCR the provided image and return raw UTF-8 text.
@@ -294,6 +298,7 @@ def image_to_string(
     - ``use_single_word=True`` → PSM.SINGLE_WORD (fallback on retry for title strips).
     - ``single_line=True``     → PSM.SINGLE_LINE (default title-strip mode).
     - Neither set              → PSM.SINGLE_BLOCK.
+    - ``whitelist``            → Restrict OCR to these characters (T026).
     """
     if use_single_word:
         api = _get_api_single_word()
@@ -307,8 +312,12 @@ def image_to_string(
     pil_img = _as_pil_image(np.ascontiguousarray(image))
 
     with lock:
+        if whitelist:
+            api.SetVariable("tessedit_char_whitelist", whitelist)
         api.SetImage(pil_img)
         text = api.GetUTF8Text() or ""
+        if whitelist:
+            api.SetVariable("tessedit_char_whitelist", DEFAULT_WHITELIST)
 
     return text
 
@@ -318,6 +327,7 @@ def image_to_data(
     *,
     single_line: bool = False,
     use_sparse: bool = False,
+    whitelist: str | None = None,
 ) -> dict[str, list]:
     """
     OCR the provided image and return a dict shaped like pytesseract Output.DICT.
@@ -325,6 +335,7 @@ def image_to_data(
     - ``use_sparse=True``  → PSM.SPARSE_TEXT (fallback on retry for context-menu crops).
     - ``single_line=True`` → PSM.SINGLE_LINE.
     - Neither set          → PSM.SINGLE_BLOCK.
+    - ``whitelist``        → Restrict OCR to these characters (T026).
     """
     if use_sparse:
         api = _get_api_sparse()
@@ -338,9 +349,14 @@ def image_to_data(
     pil_img = _as_pil_image(np.ascontiguousarray(image))
 
     with lock:
+        if whitelist:
+            api.SetVariable("tessedit_char_whitelist", whitelist)
         api.SetImage(pil_img)
         api.Recognize()
         iterator = api.GetIterator()
+        if whitelist:
+            api.SetVariable("tessedit_char_whitelist", DEFAULT_WHITELIST)
+
         if iterator is None:
             return _empty_data_dict()
         return _build_data_dict(iterator)

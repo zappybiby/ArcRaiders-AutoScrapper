@@ -21,3 +21,5 @@ You review changes to `src/autoscrapper/core/item_actions.py`, `src/autoscrapper
 7. **Fuzzy threshold coupling** - rule matching uses `rapidfuzz`. If a threshold constant changed, verify it is the same constant used in both the rule lookup and the OCR item-name matching path. Divergent thresholds cause items to match OCR but fail rule lookup.
 
 Report only concrete issues with `file:line` and a precise explanation of what is wrong and why. Do not report style issues or speculative improvements.
+
+**Related:** Skills: `scan-failed`, `add-rule` | Commands: `/add-rule`, `/scan-report`

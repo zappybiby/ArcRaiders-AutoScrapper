@@ -47,7 +47,6 @@ class APIDataSource:
             decision = decision_list[0] if decision_list else None
 
             # Create a synthetic cell for the result
-            # Use the actual slot index from the API if available, else fallback to iteration index
             slot_idx = item.slot if item.slot is not None else idx
             page = slot_idx // 20  # 20 items per page (4x5 grid)
             cell_index = slot_idx % 20
@@ -143,14 +142,7 @@ def fetch_stash_as_scan_results(
 
 
 def sync_hideout_to_progress(api_settings: ApiSettings | None = None) -> ProgressSettings:
-    """Sync hideout levels from API to progress settings.
-
-    Args:
-        api_settings: Optional API settings. If None, loads from config.
-
-    Returns:
-        Updated progress settings.
-    """
+    """Sync hideout levels from API to progress settings."""
     if api_settings is None:
         api_settings = load_api_settings()
 
@@ -190,14 +182,7 @@ def sync_hideout_to_progress(api_settings: ApiSettings | None = None) -> Progres
 
 
 def sync_projects_to_progress(api_settings: ApiSettings | None = None) -> ProgressSettings:
-    """Sync project progress from API to progress settings.
-
-    Args:
-        api_settings: Optional API settings. If None, loads from config.
-
-    Returns:
-        Updated progress settings.
-    """
+    """Sync project progress from API to progress settings."""
     if api_settings is None:
         api_settings = load_api_settings()
 
@@ -238,17 +223,7 @@ def get_data_source(
     api_settings: ApiSettings | None = None,
     dry_run: bool = False,
 ) -> APIDataSource | None:
-    """Get a data source by type.
-
-    Args:
-        source_type: Type of data source ("api" or "ocr").
-        actions: Action map for item decisions.
-        api_settings: Optional API settings.
-        dry_run: Whether this is a dry run.
-
-    Returns:
-        APIDataSource if source_type is "api" and configured, None otherwise.
-    """
+    """Get a data source by type."""
     if source_type != "api":
         return None
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 import time
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass, field
@@ -31,6 +32,8 @@ from ..ocr.inventory_vision import (
     ocr_infobox_with_context,
     reset_ocr_caches,
 )
+
+_log = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True, slots=True)
@@ -437,15 +440,21 @@ class _ScanRunner:
                     self.context.timing.ocr_retry_interval,
                     stop_key=self.context.stop_key,
                 )
-                try:
-                    infobox_bgr = capture_region((self.context.win_left + x, self.context.win_top + y, w, h))
-                except Exception:
-                    window_bgr = capture_region((
-                        self.context.win_left,
-                        self.context.win_top,
-                        self.context.win_width,
-                        self.context.win_height,
-                    ))
+                # T010: Refresh window and infobox rect on retry to avoid stale crops
+                fresh_window, _ = self._capture_window()
+                if fresh_window is not None:
+                    window_bgr = fresh_window
+                    if capture_result.context_menu_fallback:
+                        new_rect = self._try_context_menu_crop(window_bgr)
+                    else:
+                        new_rect = find_infobox(window_bgr)
+
+                    if new_rect is None:
+                        _log.debug("scanner: Infobox disappeared during OCR retry")
+                        break
+
+                    infobox_rect = new_rect
+                    x, y, w, h = infobox_rect
                     infobox_bgr = window_bgr[y : y + h, x : x + w]
             else:
                 infobox_bgr = window_bgr[y : y + h, x : x + w]

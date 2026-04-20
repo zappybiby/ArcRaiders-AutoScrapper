@@ -127,6 +127,7 @@ class ItemNameMatchResult:
     chosen_name: str
     matched_name: str | None
     threshold: int
+    score: int = 0
 
 
 @dataclass(slots=True)
@@ -580,10 +581,10 @@ _MENU_PANEL_GRAY_THRESH = 190
 _DARK_PANEL_GRAY_THRESH = 80  # max gray level considered "dark" for title band detection
 # Fraction of the context-menu crop occupied by the title band.
 # At 1080p the crop is ~450px tall; the dark title band is ~40px raw
-# plus padding above.  0.18 * 450 = 81px gives safe margin without
+# plus padding above.  0.15 * 450 = 67px gives safe margin without
 # capturing the first menu option text.  SINGLE_LINE PSM in
 # ocr_title_strip mitigates any partial line contamination.
-_CTX_MENU_TITLE_HEIGHT_REL = 0.18
+_CTX_MENU_TITLE_HEIGHT_REL = 0.15
 
 
 def find_context_menu_crop(
@@ -703,14 +704,23 @@ def isolate_menu_panel(crop_bgr: np.ndarray) -> tuple[int, int, int, int] | None
     return best
 
 
-def isolate_dark_title_panel(crop_bgr: np.ndarray) -> tuple[int, int, int, int] | None:
+def isolate_dark_title_panel(
+    crop_bgr: np.ndarray,
+    *,
+    x_offset: int | None = None,
+) -> tuple[int, int, int, int] | None:
     """
     Detect and return the bounding rect of the dark context-menu title band
     within a wider context-menu crop.
 
     The title band has a very dark background (~gray 0-80) with light text,
     unlike the cream panel body detected by ``isolate_menu_panel``.  We search
-    only the top half of the crop so the cream body does not interfere.
+    only the top ~15 % of the crop so the cream body and left sidebar do not
+    interfere.
+
+    ``x_offset`` skips the left N pixels (e.g. the dark sidebar).  When
+    ``None`` it defaults to ``crop_w // 4`` so the sidebar icon column is
+    excluded from the search.
 
     Returns ``(x, y, w, h)`` relative to ``crop_bgr``, or ``None`` if no
     qualifying dark region is found (caller falls back to the raw slice).
@@ -718,10 +728,14 @@ def isolate_dark_title_panel(crop_bgr: np.ndarray) -> tuple[int, int, int, int] 
     if crop_bgr.size == 0:
         return None
     crop_h, crop_w = crop_bgr.shape[:2]
-    search_h = max(1, crop_h // 2)
+    search_h = max(1, int(crop_h * 0.15))
+    x_off = x_offset if x_offset is not None else crop_w // 4
+    x_off = min(x_off, crop_w - 1)
     # search is a view of crop_bgr starting at y=0, so contour coords are
     # already in crop_bgr space — no offset adjustment is needed.
-    search = crop_bgr[:search_h, :]
+    search = crop_bgr[:search_h, x_off:]
+    if search.size == 0:
+        return None
     gray = cv2.cvtColor(search, cv2.COLOR_BGR2GRAY)
     _, dark_mask = cv2.threshold(gray, _DARK_PANEL_GRAY_THRESH, 255, cv2.THRESH_BINARY_INV)
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (15, 15))
@@ -729,24 +743,26 @@ def isolate_dark_title_panel(crop_bgr: np.ndarray) -> tuple[int, int, int, int] 
     contours, _ = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     if not contours:
         return None
-    search_area = max(1, search_h * crop_w)
+    search_w = crop_w - x_off
+    search_area = max(1, search_h * search_w)
     best: tuple[int, int, int, int] | None = None
     best_area = 0
     for cnt in contours:
         bx, by, bw, bh = cv2.boundingRect(cnt)
         area = bw * bh
-        if area < 0.05 * search_area:
+        if area < 0.02 * search_area:
             continue
         aspect = bw / max(1, bh)
         if aspect < 2.0:
             continue
-        if bw < 0.35 * crop_w:
+        if bw < 0.20 * search_w:
             continue
         if by > 0.05 * search_h:
             continue
+        # Translate x back to crop_bgr coordinates
         if area > best_area:
             best_area = area
-            best = (bx, by, bw, bh)
+            best = (bx + x_off, by, bw, bh)
     return best
 
 
@@ -759,8 +775,10 @@ def title_roi(infobox_rect: tuple[int, int, int, int]) -> tuple[int, int, int, i
     return x, y, w, max(1, title_h)
 
 
-_TITLE_LEFT_PAD = 4  # px — keeps leftmost glyph column away from x=0 so
-# Tesseract doesn't clip the leading character edge.
+_TITLE_PAD = 4  # px — keeps text away from edges to improve OCR accuracy.
+
+# Whitelist for item names: alpha, digits, space, hyphen, apostrophe, period (T026)
+ITEM_NAME_WHITELIST = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 '-."
 
 
 def _crop_title_strip(infobox_bgr: np.ndarray) -> np.ndarray:
@@ -768,14 +786,19 @@ def _crop_title_strip(infobox_bgr: np.ndarray) -> np.ndarray:
         return infobox_bgr
     title_h = max(1, int(round(infobox_bgr.shape[0] * TITLE_HEIGHT_REL)))
     strip = infobox_bgr[:title_h, :]
-    if strip.shape[1] > _TITLE_LEFT_PAD * 2:
-        median_val = np.median(strip)
-        pad = np.full(
-            strip.shape[:1] + (int(_TITLE_LEFT_PAD),) + strip.shape[2:],
-            median_val,
-            dtype=strip.dtype,
+
+    # Pad all sides with median background color to prevent edge clipping (T028)
+    if strip.size > 0:
+        median_val = np.median(strip, axis=(0, 1))
+        return cv2.copyMakeBorder(
+            strip,
+            _TITLE_PAD,
+            _TITLE_PAD,
+            _TITLE_PAD,
+            _TITLE_PAD,
+            cv2.BORDER_CONSTANT,
+            value=median_val.tolist(),
         )
-        strip = np.concatenate([pad, strip], axis=1)
     return strip
 
 
@@ -807,14 +830,16 @@ def match_item_name_result(raw: str, threshold: int | None = None) -> ItemNameMa
             chosen_name=cleaned,
             matched_name=None,
             threshold=resolved_threshold,
+            score=0,
         )
 
-    matched_name = str(match[0])
+    matched_name, score, _ = match
     return ItemNameMatchResult(
         cleaned_text=cleaned,
-        chosen_name=matched_name,
-        matched_name=matched_name,
+        chosen_name=str(matched_name),
+        matched_name=str(matched_name),
         threshold=resolved_threshold,
+        score=int(score),
     )
 
 
@@ -935,7 +960,10 @@ def preprocess_for_ocr(
     if apply_clahe:
         # Normalize local luminance so Otsu stays stable on rarity-colored
         # backgrounds (yellow, magenta, purple glow).
-        clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+        h_g, w_g = gray.shape[:2]
+        tile_cols = max(2, min(8, w_g // 16))  # tiles at least 16 px wide
+        tile_rows = max(2, min(8, h_g // 16))  # tiles at least 16 px tall
+        clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(tile_cols, tile_rows))
         gray = clahe.apply(gray)
     if upscale:
         gray = cv2.resize(gray, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)  # type: ignore[arg-type]
@@ -1308,6 +1336,7 @@ def ocr_title_strip(
             processed,
             single_line=not use_fallback_psm,
             use_single_word=use_fallback_psm,
+            whitelist=ITEM_NAME_WHITELIST,
         )
         ocr_time = time.perf_counter() - ocr_start
     except Exception as exc:  # pragma: no cover - OCR backend dependent
@@ -1331,24 +1360,55 @@ def ocr_title_strip(
     raw_item_text = match_result.cleaned_text
     item_name = match_result.matched_name or ""
     if not match_result.matched_name:
-        # Fallback: retry without 2x upscale. Upscale-induced interpolation
-        # artefacts can confuse Tesseract on certain low-contrast strips.
+        # Fallback: retry without 2x upscale AND try dual polarity (T024)
         processed_no_up = preprocess_for_ocr(
             title_strip_bgr, upscale=False, restrict_otsu_to_left=restrict_otsu_to_left
         )
+
+        # Try original polarity without upscale
         try:
-            raw_text_no_up = image_to_string(
+            raw_no_up = image_to_string(
                 processed_no_up,
                 single_line=not use_fallback_psm,
                 use_single_word=use_fallback_psm,
+                whitelist=ITEM_NAME_WHITELIST,
             )
-        except Exception:  # pragma: no cover
-            raw_text_no_up = ""
-        fallback = match_item_name_result(raw_text_no_up)
-        if fallback.matched_name:
-            raw_item_text = fallback.cleaned_text
-            item_name = fallback.matched_name
+        except Exception:
+            raw_no_up = ""
+
+        # Try inverted polarity (dual-pass arbitration T024)
+        processed_inverted = cv2.bitwise_not(processed)
+        try:
+            raw_inverted = image_to_string(
+                processed_inverted,
+                single_line=not use_fallback_psm,
+                use_single_word=use_fallback_psm,
+                whitelist=ITEM_NAME_WHITELIST,
+            )
+        except Exception:
+            raw_inverted = ""
+
+        res_no_up = match_item_name_result(raw_no_up)
+        res_inverted = match_item_name_result(raw_inverted)
+
+        # Arbitrate: pick the best score
+        best_fallback = match_result
+        if (res_no_up.score or 0) > (best_fallback.score or 0):
+            best_fallback = res_no_up
             processed = processed_no_up
+
+        if (res_inverted.score or 0) > (best_fallback.score or 0):
+            best_fallback = res_inverted
+            processed = processed_inverted
+
+        if best_fallback.matched_name:
+            raw_item_text = best_fallback.cleaned_text
+            item_name = best_fallback.matched_name
+            # If we picked inverted, update processed for debug dump
+            if best_fallback == res_inverted:
+                processed = processed_inverted
+            elif best_fallback == res_no_up:
+                processed = processed_no_up
     if item_name:
         _last_roi_hash = roi_hash
         _last_ocr_result = (item_name, raw_item_text)
@@ -1356,6 +1416,8 @@ def ocr_title_strip(
         # Emit debug artifacts so failures can be promoted to fixtures.
         _save_debug_image("title_strip_fail_raw", title_strip_bgr)
         _save_debug_image("title_strip_fail_processed", processed)
+        # T025: Dump alternate polarity on failure for debugging
+        _save_debug_image("title_strip_fail_inverted", cv2.bitwise_not(processed))
     return InfoboxOcrResult(
         item_name=item_name,
         raw_item_text=raw_item_text,
@@ -1450,19 +1512,24 @@ def ocr_context_menu(
     # opposite polarity to the cream menu body.  isolate_menu_panel
     # excludes it (gray < 190), so we OCR it separately first.
     # ocr_title_strip auto-inverts dark backgrounds via preprocess_for_ocr.
-    ctx_h = context_crop_bgr.shape[0]
+    ctx_h, ctx_w = context_crop_bgr.shape[:2]
     title_band_h = max(1, int(round(ctx_h * _CTX_MENU_TITLE_HEIGHT_REL)))
     dark_rect = isolate_dark_title_panel(context_crop_bgr)
     if dark_rect is not None:
         dx, dy, dw, dh = dark_rect
         effective_h = min(title_band_h, dh)
-        # Skip the icon column on the left of the header (item icon + quantity
-        # multiplier). The icon is drawn as an ~square glyph; dropping 1/3 of
-        # the panel width removes the icon zone while leaving the item name.
-        icon_skip = min(effective_h, dw // 3)
+        # Skip a small margin on the left to clear any anti-aliased icon edge
+        # that protrudes into the detected rect.  The sidebar was already
+        # excluded by isolate_dark_title_panel's x_offset, so we only need a
+        # modest padding (~8 px at 1080p, scaled by crop width).
+        icon_skip = min(effective_h, max(4, ctx_w // 50))
         title_band_bgr = context_crop_bgr[dy : dy + effective_h, dx + icon_skip : dx + dw]
     else:
-        title_band_bgr = context_crop_bgr[:title_band_h, :]
+        # Fallback: the dark title band was not detected (e.g. the menu is
+        # very short or the title background is not uniformly dark).  Crop
+        # the top portion and skip the left sidebar icon column.
+        sidebar_skip = ctx_w // 4
+        title_band_bgr = context_crop_bgr[:title_band_h, sidebar_skip:]
     if title_band_bgr.size > 0:
         # Preserve the global OCR cache so the infobox path is unaffected.
         _saved_hash, _saved_result = _last_roi_hash, _last_ocr_result

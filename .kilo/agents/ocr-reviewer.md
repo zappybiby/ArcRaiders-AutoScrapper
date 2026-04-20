@@ -19,3 +19,5 @@ You review changes to `src/autoscrapper/ocr/` and `src/autoscrapper/scanner/` fo
 6. **Empty slot detection logic** - in `_find_first_empty_slot`, zero-size crops (`slot_bgr.size == 0`) must not modify `prev_empty`; only valid crops should update the consecutive-empty counter.
 
 Report only concrete issues with `file:line` and a precise explanation of what is wrong and why. Do not report style issues or speculative future improvements.
+
+**Related:** Skills: `ocr-corpus-replay`, `calibrate-vision`, `threshold-change`, `add-fixture` | Commands: `/ocr-corpus-replay`, `/calibrate-vision`, `/add-fixture`, `/threshold-change`

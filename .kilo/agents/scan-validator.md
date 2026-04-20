@@ -21,3 +21,5 @@ You review changes to `src/autoscrapper/scanner/` and `src/autoscrapper/interact
 7. **Dry-run completeness** - dry-run must exercise the full decision pipeline (OCR → fuzzy match → rule lookup → action resolve) but skip all click/input calls. Flag any logic branch that is skipped entirely in dry-run instead of just gating the input call.
 
 Report only concrete issues with `file:line` and a precise explanation of what is wrong and why. Do not report style issues or speculative improvements.
+
+**Related:** Skills: `diagnose-scan`, `scan-report`, `failure-to-fix` | Commands: `/diagnose-scan`, `/scan-report`, `/scan-dryrun`

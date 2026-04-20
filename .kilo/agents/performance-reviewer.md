@@ -47,3 +47,5 @@ For each finding:
 - **Fix**: concrete suggestion (code snippet preferred)
 
 Flag regressions introduced by the diff under review, not pre-existing issues, unless they are directly in the call path of changed code.
+
+**Related:** Skill: `benchmark` | Command: `/benchmark`

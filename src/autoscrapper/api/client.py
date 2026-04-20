@@ -4,16 +4,29 @@ from __future__ import annotations
 
 import logging
 import functools
+from pathlib import Path
 from types import MappingProxyType
 import time
-from dataclasses import dataclass, field
-from pathlib import Path
-from typing import TYPE_CHECKING, Any, Literal
+from typing import TYPE_CHECKING, Any
 
 import orjson
 
+from .models import (
+    Blueprint,
+    HideoutModule,
+    ItemDecision,
+    ProjectProgress,
+    RateLimitState,
+    RoundEntry,
+    StashData,
+    StashItem,
+    UserProfile,
+    UserQuest,
+)
+
 if TYPE_CHECKING:
     from ..config import ApiSettings
+    from ..core.item_actions import ActionMap
 
 # requests is in optional-dependencies "scraper"
 try:
@@ -38,9 +51,6 @@ RETRY_DELAY_SECONDS = 1.0
 MIN_REQUEST_INTERVAL_SECONDS = 8.0
 
 
-type ItemDecision = Literal["KEEP", "SELL", "RECYCLE"]
-
-
 @functools.cache
 def _get_cached_item_mappings() -> tuple[MappingProxyType[str, str], MappingProxyType[str, str]]:
     """Load and cache item ID to display name mapping from items.json."""
@@ -60,113 +70,6 @@ def _get_cached_item_mappings() -> tuple[MappingProxyType[str, str], MappingProx
     except Exception as exc:
         _log.warning("api: Failed to load item mapping: %s", exc)
     return MappingProxyType(id_to_name), MappingProxyType(name_to_id)
-
-
-@dataclass(slots=True)
-class RateLimitState:
-    """Tracks rate limit information from API responses."""
-
-    limit: int = 500
-    remaining: int = 500
-    reset_timestamp: float = 0.0
-    last_request_timestamp: float = 0.0
-
-    @property
-    def is_rate_limited(self) -> bool:
-        """Check if we're currently rate limited."""
-        if self.remaining <= 0:
-            now = time.time()
-            if now < self.reset_timestamp:
-                return True
-        return False
-
-    @property
-    def seconds_until_reset(self) -> float:
-        """Seconds until rate limit resets."""
-        now = time.time()
-        return max(0.0, self.reset_timestamp - now)
-
-    def time_until_next_request(self) -> float:
-        """Calculate time to wait before next request."""
-        now = time.time()
-        time_since_last = now - self.last_request_timestamp
-        cooldown = max(0.0, MIN_REQUEST_INTERVAL_SECONDS - time_since_last)
-
-        if self.is_rate_limited:
-            return max(cooldown, self.seconds_until_reset)
-        return cooldown
-
-
-@dataclass(slots=True)
-class StashItem:
-    """An item in the user's stash from API."""
-
-    item_id: str
-    name: str
-    quantity: int
-    slot: int | None
-    item_type: str
-    rarity: str
-    value: int
-
-
-@dataclass(slots=True)
-class StashData:
-    """Complete stash data from API."""
-
-    items: list[StashItem] = field(default_factory=list)
-    total_slots: int = 0
-    used_slots: int = 0
-    api_error: str | None = None
-
-
-@dataclass(slots=True)
-class HideoutModule:
-    """Hideout module progress from API."""
-
-    module_id: str
-    name: str
-    current_level: int
-    max_level: int
-
-
-@dataclass(slots=True)
-class ProjectPhase:
-    """A single phase of a project."""
-
-    phase_number: int
-    name: str
-    completed: bool
-
-
-@dataclass(slots=True)
-class ProjectProgress:
-    """Project progress from API."""
-
-    project_id: str
-    name: str
-    current_phase: int
-    max_phases: int
-    completed: bool
-    phases: list[ProjectPhase] = field(default_factory=list)
-
-
-@dataclass(slots=True)
-class APIItemDecision:
-    """Single item decision from API."""
-
-    item_id: str
-    decision: ItemDecision
-    item_name: str | None = None  # populated from items.json mapping
-
-
-@dataclass(slots=True)
-class APIInventoryResult:
-    """Result from API inventory fetch."""
-
-    decisions: list[APIItemDecision] = field(default_factory=list)
-    from_cache: bool = False
-    api_error: str | None = None
 
 
 class ArcTrackerClient:
@@ -194,7 +97,7 @@ class ArcTrackerClient:
 
     def _wait_for_rate_limit(self) -> None:
         """Pre-emptively throttle requests to respect rate limits."""
-        wait_time = self.rate_limit.time_until_next_request()
+        wait_time = self.rate_limit.time_until_next_request(MIN_REQUEST_INTERVAL_SECONDS)
         if wait_time > 0:
             _log.debug("api: Rate limit cooldown: %.2fs", wait_time)
             time.sleep(wait_time)
@@ -270,7 +173,7 @@ class ArcTrackerClient:
                 _log.warning("api: Unauthorized (401) - check your app/user keys")
                 return None
             if response.status_code == 403:
-                _log.warning("api: Forbidden (403) - invalid keys")
+                _log.warning("api: Forbidden (403) - insufficient scope or app suspended")
                 return None
 
             response.raise_for_status()
@@ -308,17 +211,9 @@ class ArcTrackerClient:
         locale: str = "en",
         page: int = 1,
         per_page: int = 500,
+        sort: str = "slot",
     ) -> StashData:
-        """Fetch user's stash from /api/v2/user/stash (auth required).
-
-        Args:
-            locale: Language code (e.g., "en", "de", "fr").
-            page: Page number for pagination.
-            per_page: Items per page (max 500).
-
-        Returns:
-            StashData with items and metadata.
-        """
+        """Fetch user's stash from /api/v2/user/stash (auth required)."""
         result = StashData()
 
         if not self.is_configured():
@@ -333,6 +228,7 @@ class ArcTrackerClient:
                 "locale": locale,
                 "page": page,
                 "per_page": min(per_page, 500),
+                "sort": sort,
             },
         )
 
@@ -343,14 +239,7 @@ class ArcTrackerClient:
         return self._parse_stash_response(data)
 
     def get_all_stash_items(self, locale: str = "en") -> StashData:
-        """Fetch all stash items across all pages.
-
-        Args:
-            locale: Language code.
-
-        Returns:
-            StashData with all items merged.
-        """
+        """Fetch all stash items across all pages."""
         all_items: list[StashItem] = []
         total_slots = 0
         used_slots = 0
@@ -369,17 +258,12 @@ class ArcTrackerClient:
             total_slots = page_data.total_slots
             used_slots = page_data.used_slots
 
-            # Check if we've fetched all items
             if len(page_data.items) < per_page:
                 break
-
-            # Safety check: if we somehow got no items, stop
             if not page_data.items:
                 break
 
             page += 1
-
-            # Sanity limit
             if page > 100:
                 _log.warning("api: Stash pagination exceeded 100 pages, stopping")
                 break
@@ -394,8 +278,6 @@ class ArcTrackerClient:
     def _parse_stash_response(self, data: dict[str, Any]) -> StashData:
         """Parse API stash response into structured result."""
         result = StashData()
-
-        # The response envelope has data and meta
         stash_data = data.get("data", data)
         if not isinstance(stash_data, dict):
             _log.warning("api: Unexpected stash response format")
@@ -410,38 +292,13 @@ class ArcTrackerClient:
             return result
 
         for item_data in items_data:
-            if not isinstance(item_data, dict):
-                continue
-
-            item_id = item_data.get("id")
-            name = item_data.get("name")
-
-            if not isinstance(item_id, str) or not isinstance(name, str):
-                continue
-
-            result.items.append(
-                StashItem(
-                    item_id=item_id,
-                    name=name,
-                    quantity=int(item_data.get("quantity", 1)),
-                    slot=item_data.get("slot"),
-                    item_type=str(item_data.get("type", "")),
-                    rarity=str(item_data.get("rarity", "")),
-                    value=int(item_data.get("value", 0)),
-                )
-            )
+            if isinstance(item_data, dict):
+                result.items.append(StashItem.from_api(item_data))
 
         return result
 
     def get_user_hideout(self, locale: str = "en") -> list[HideoutModule]:
-        """Fetch user's hideout progress from /api/v2/user/hideout (auth required).
-
-        Args:
-            locale: Language code.
-
-        Returns:
-            List of hideout modules with progress.
-        """
+        """Fetch user's hideout progress from /api/v2/user/hideout (auth required)."""
         if not self.is_configured():
             _log.warning("api: Cannot fetch hideout - API not configured")
             return []
@@ -461,42 +318,14 @@ class ArcTrackerClient:
             _log.warning("api: Unexpected hideout response format")
             return []
 
-        modules: list[HideoutModule] = []
-        for module_data in modules_data:
-            if not isinstance(module_data, dict):
-                continue
-
-            module_id = module_data.get("id")
-            name = module_data.get("name")
-
-            if not isinstance(module_id, str) or not isinstance(name, str):
-                continue
-
-            modules.append(
-                HideoutModule(
-                    module_id=module_id,
-                    name=name,
-                    current_level=int(module_data.get("currentLevel", 0)),
-                    max_level=int(module_data.get("maxLevel", 0)),
-                )
-            )
-
-        return modules
+        return [HideoutModule.from_api(m) for m in modules_data if isinstance(m, dict)]
 
     def get_user_projects(
         self,
         locale: str = "en",
         season: int | None = None,
     ) -> list[ProjectProgress]:
-        """Fetch user's project progress from /api/v2/user/projects (auth required).
-
-        Args:
-            locale: Language code.
-            season: Filter by expedition season.
-
-        Returns:
-            List of projects with progress.
-        """
+        """Fetch user's project progress from /api/v2/user/projects (auth required)."""
         if not self.is_configured():
             _log.warning("api: Cannot fetch projects - API not configured")
             return []
@@ -520,84 +349,108 @@ class ArcTrackerClient:
             _log.warning("api: Unexpected projects response format")
             return []
 
-        projects: list[ProjectProgress] = []
-        for project_data in projects_data:
-            if not isinstance(project_data, dict):
-                continue
+        return [ProjectProgress.from_api(p) for p in projects_data if isinstance(p, dict)]
 
-            project_id = project_data.get("id")
-            name = project_data.get("name")
+    def get_user_profile(self) -> UserProfile | None:
+        """Fetch user profile from /api/v2/user/profile (auth required)."""
+        if not self.is_configured():
+            return None
+        data = self._make_request("GET", "/api/v2/user/profile", require_auth=True)
+        if data is None:
+            return None
+        profile_data = data.get("data", data)
+        if not isinstance(profile_data, dict):
+            return None
+        return UserProfile.from_api(profile_data)
 
-            if not isinstance(project_id, str) or not isinstance(name, str):
-                continue
+    def get_user_quests(
+        self,
+        locale: str = "en",
+        filter: str | None = None,
+    ) -> list[UserQuest]:
+        """Fetch user quest progress from /api/v2/user/quests (auth required)."""
+        if not self.is_configured():
+            return []
+        params: dict[str, Any] = {"locale": locale}
+        if filter is not None:
+            params["filter"] = filter
+        data = self._make_request("GET", "/api/v2/user/quests", require_auth=True, params=params)
+        if data is None:
+            return []
+        quests_data = data.get("data", [])
+        if not isinstance(quests_data, list):
+            _log.warning("api: Unexpected quests response format")
+            return []
+        return [UserQuest.from_api(q) for q in quests_data if isinstance(q, dict)]
 
-            # Parse phases
-            phases: list[ProjectPhase] = []
-            phases_data = project_data.get("phases", [])
-            if isinstance(phases_data, list):
-                for phase_data in phases_data:
-                    if isinstance(phase_data, dict):
-                        phases.append(
-                            ProjectPhase(
-                                phase_number=int(phase_data.get("phase", 0)),
-                                name=str(phase_data.get("name", "")),
-                                completed=bool(phase_data.get("completed", False)),
-                            )
-                        )
+    def get_user_rounds(
+        self,
+        locale: str = "en",
+        limit: int = 50,
+        offset: int = 0,
+        outcome: str | None = None,
+        map_slug: str | None = None,
+        season: int | None = None,
+    ) -> list[RoundEntry]:
+        """Fetch user round history from /api/v2/user/rounds (auth required)."""
+        if not self.is_configured():
+            return []
+        params: dict[str, Any] = {
+            "locale": locale,
+            "limit": min(limit, 200),
+            "offset": offset,
+        }
+        if outcome is not None:
+            params["outcome"] = outcome
+        if map_slug is not None:
+            params["map"] = map_slug
+        if season is not None:
+            params["season"] = season
+        data = self._make_request("GET", "/api/v2/user/rounds", require_auth=True, params=params)
+        if data is None:
+            return []
+        rounds_data = data.get("data", [])
+        if not isinstance(rounds_data, list):
+            _log.warning("api: Unexpected rounds response format")
+            return []
+        return [RoundEntry.from_api(r) for r in rounds_data if isinstance(r, dict)]
 
-            projects.append(
-                ProjectProgress(
-                    project_id=project_id,
-                    name=name,
-                    current_phase=int(project_data.get("currentPhase", 0)),
-                    max_phases=int(project_data.get("maxPhases", 0)),
-                    completed=bool(project_data.get("completed", False)),
-                    phases=phases,
-                )
-            )
+    def get_user_loadout(self, locale: str = "en") -> dict[str, Any] | None:
+        """Fetch user loadout from /api/v2/user/loadout (auth required)."""
+        if not self.is_configured():
+            return None
+        data = self._make_request("GET", "/api/v2/user/loadout", require_auth=True, params={"locale": locale})
+        if data is None:
+            return None
+        return data.get("data", data)
 
-        return projects
+    def get_user_blueprints(
+        self,
+        locale: str = "en",
+        filter: str | None = None,
+    ) -> list[Blueprint]:
+        """Fetch user blueprints from /api/v2/user/blueprints (auth required)."""
+        if not self.is_configured():
+            return []
+        params: dict[str, Any] = {"locale": locale}
+        if filter is not None:
+            params["filter"] = filter
+        data = self._make_request("GET", "/api/v2/user/blueprints", require_auth=True, params=params)
+        if data is None:
+            return []
+        blueprints_data = data.get("data", [])
+        if not isinstance(blueprints_data, list):
+            _log.warning("api: Unexpected blueprints response format")
+            return []
+        return [Blueprint.from_api(b) for b in blueprints_data if isinstance(b, dict)]
 
     def test_connection(self) -> dict[str, Any] | None:
-        """Test API connection and authentication.
-
-        Returns:
-            User profile data if successful, None if failed.
-        """
+        """Test API connection and authentication."""
         if not self.is_configured():
             _log.warning("api: Cannot test connection - API not configured")
             return None
 
         return self._make_request("GET", "/api/v2/user/profile", require_auth=True)
-
-    def get_item_decisions(self, *, fallback_to_ocr: bool = True) -> APIInventoryResult:
-        """
-        Get item decisions from API with automatic fallback.
-
-        First tries user-specific endpoint (if keys configured),
-        then falls back to OCR if API fails.
-        """
-        result = APIInventoryResult()
-
-        # Try user stash endpoint first if keys are available
-        if self.app_key and self.user_key:
-            stash_data = self.get_all_stash_items()
-            if stash_data.api_error:
-                _log.debug("api: Stash fetch failed: %s", stash_data.api_error)
-                if not fallback_to_ocr:
-                    result.api_error = stash_data.api_error
-                    return result
-            else:
-                # Convert stash items to decisions using action rules
-                # This is done in the datasource module
-                result.api_error = None  # Success
-                return result
-        else:
-            _log.debug("api: No API keys configured, skipping API lookup")
-
-        # API failed or not configured, fallback will be handled by caller
-        result.api_error = "API not configured or unavailable"
-        return result
 
     def is_configured(self) -> bool:
         """Check if API client has necessary configuration."""
@@ -611,43 +464,55 @@ class ArcTrackerClient:
 class APIOrchestrator:
     """Orchestrates API and OCR data sources with automatic fallback."""
 
-    def __init__(self, client: ArcTrackerClient | None = None) -> None:
-        self.client = client or ArcTrackerClient()
+    def __init__(self, client: ArcTrackerClient, actions: ActionMap) -> None:
+        self.client = client
+        self.actions = actions
         self._log = logging.getLogger(__name__)
 
     def get_item_decisions(
         self,
-        ocr_items: list[str] | None = None,
         *,
         prefer_api: bool = True,
     ) -> dict[str, ItemDecision]:
         """
-        Get decisions for items, preferring API when available.
+        Get decisions for items from the API.
 
-        Returns a mapping of item names (from OCR) to decisions.
-        Falls back to OCR-only if API fails.
+        Returns a mapping of item names to decisions.
+        Falls back to empty dict if API fails or is not preferred.
         """
         decisions: dict[str, ItemDecision] = {}
 
-        # Try API first if preferred and configured
-        if prefer_api and self.client.is_configured():
-            api_result = self.client.get_item_decisions(fallback_to_ocr=True)
-            if api_result and not api_result.api_error:
-                for item in api_result.decisions:
-                    # Use display name if available, otherwise item ID
-                    key = item.item_name or item.item_id
-                    decisions[key] = item.decision
-                self._log.info(
-                    "api: Retrieved %d decisions from API",
-                    len(api_result.decisions),
-                )
-                return decisions
-            self._log.warning("api: API lookup failed, will fallback")
+        if not prefer_api or not self.client.is_configured():
+            return decisions
 
-        # Fallback: if OCR items provided, we return empty dict
-        # Caller should use their own decision logic
-        if ocr_items:
-            self._log.debug("api: Using OCR fallback for %d items", len(ocr_items))
+        try:
+            stash_data = self.client.get_all_stash_items()
+            if stash_data.api_error:
+                self._log.warning("api: Stash fetch failed: %s", stash_data.api_error)
+                return decisions
+
+            from ..core.item_actions import normalize_item_name
+            from ..ocr.inventory_vision import match_item_name
+
+            for item in stash_data.items:
+                normalized_name = normalize_item_name(item.name)
+                decision_list = self.actions.get(normalized_name)
+                if decision_list:
+                    decisions[item.name] = decision_list[0]
+                else:
+                    # Fallback to fuzzy match if exact match fails
+                    matched_name = match_item_name(item.name)
+                    if matched_name:
+                        decision_list = self.actions.get(matched_name)
+                        if decision_list:
+                            decisions[item.name] = decision_list[0]
+
+            self._log.info(
+                "api: Retrieved %d decisions from API stash",
+                len(decisions),
+            )
+        except Exception as exc:
+            self._log.error("api: Unexpected error during decision orchestration: %s", exc)
 
         return decisions
 
@@ -663,16 +528,19 @@ def create_client_from_config(
         return ArcTrackerClient(
             app_key=settings.app_key or None,
             user_key=settings.user_key or None,
+            base_url=settings.base_url,
         )
 
     if isinstance(config, dict):
         return ArcTrackerClient(
             app_key=config.get("app_key") or None,
             user_key=config.get("user_key") or None,
+            base_url=config.get("base_url", ARCTRACKER_BASE_URL),
         )
 
     # It's an ApiSettings object
     return ArcTrackerClient(
         app_key=config.app_key or None,
         user_key=config.user_key or None,
+        base_url=config.base_url,
     )

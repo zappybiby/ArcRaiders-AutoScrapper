@@ -292,7 +292,7 @@ def scan_inventory(
             try:
                 api_client = create_client_from_config(api_settings)
                 if api_client.is_configured():
-                    orchestrator = APIOrchestrator(api_client)
+                    orchestrator = APIOrchestrator(api_client, actions)
                     api_decisions = orchestrator.get_item_decisions(prefer_api=api_settings.prefer_api)
                     if api_decisions:
                         # Merge API decisions into actions (API takes precedence)

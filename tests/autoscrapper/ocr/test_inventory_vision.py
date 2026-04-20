@@ -338,10 +338,13 @@ class TestOcrTitleStripCache:
             _vision.ocr_title_strip(img)
             _vision.ocr_title_strip(img)  # same image
 
-        # Each ocr_title_strip call makes 2 image_to_string calls when empty:
-        # once with upscale, once without (no-upscale fallback). 2 × 2 = 4.
-        assert mock_ocr.call_count == 4, (
-            "image_to_string called 4 times: 2 per invocation (upscale + no-upscale fallback)"
+        # Each ocr_title_strip call makes 3 image_to_string calls when empty:
+        # 1. upscale
+        # 2. no-upscale fallback
+        # 3. inverted polarity fallback (T024)
+        # 3 × 2 = 6.
+        assert mock_ocr.call_count == 6, (
+            "image_to_string called 6 times: 3 per invocation (upscale + no-upscale + inverted)"
         )
 
     def test_non_empty_result_is_cached(self):

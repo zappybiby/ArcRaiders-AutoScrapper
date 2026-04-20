@@ -40,7 +40,7 @@ repos:
         stages: [manual]
       - id: biome-check
         name: biome check
-        entry: biome check --write
+        entry: biome check --write --no-errors-on-unmatched
         language: node
         additional_dependencies: ["@biomejs/biome@2.4.12"]
         files: \.(?:[cm]?[jt]sx?|jsonc?)$

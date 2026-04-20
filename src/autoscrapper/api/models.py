@@ -2,8 +2,47 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Any
+import time
+from dataclasses import dataclass, field
+from typing import Any, Literal
+
+
+type ItemDecision = Literal["KEEP", "SELL", "RECYCLE"]
+
+
+@dataclass(slots=True)
+class RateLimitState:
+    """Tracks rate limit information from API responses."""
+
+    limit: int = 500
+    remaining: int = 500
+    reset_timestamp: float = 0.0
+    last_request_timestamp: float = 0.0
+
+    @property
+    def is_rate_limited(self) -> bool:
+        """Check if we're currently rate limited."""
+        if self.remaining <= 0:
+            now = time.time()
+            if now < self.reset_timestamp:
+                return True
+        return False
+
+    @property
+    def seconds_until_reset(self) -> float:
+        """Seconds until rate limit resets."""
+        now = time.time()
+        return max(0.0, self.reset_timestamp - now)
+
+    def time_until_next_request(self, min_interval: float = 8.0) -> float:
+        """Calculate time to wait before next request."""
+        now = time.time()
+        time_since_last = now - self.last_request_timestamp
+        cooldown = max(0.0, min_interval - time_since_last)
+
+        if self.is_rate_limited:
+            return max(cooldown, self.seconds_until_reset)
+        return cooldown
 
 
 @dataclass(frozen=True, slots=True)
@@ -32,32 +71,14 @@ class StashItem:
         )
 
 
-@dataclass(frozen=True, slots=True)
-class StashResponse:
-    """Response from the stash API endpoint."""
+@dataclass(slots=True)
+class StashData:
+    """Complete stash data from API."""
 
-    items: list[StashItem]
-    total_slots: int
-    used_slots: int
-    page: int
-    per_page: int
-    total_items: int
-
-    @classmethod
-    def from_api(cls, data: dict[str, Any]) -> StashResponse:
-        """Create a StashResponse from API response data."""
-        items_data = data.get("items", [])
-        items = [StashItem.from_api(item) for item in items_data if isinstance(item, dict)]
-
-        meta = data.get("meta", {})
-        return cls(
-            items=items,
-            total_slots=int(data.get("totalSlots", 0)),
-            used_slots=int(data.get("usedSlots", 0)),
-            page=int(meta.get("page", 1)),
-            per_page=int(meta.get("perPage", 50)),
-            total_items=int(meta.get("total", 0)),
-        )
+    items: list[StashItem] = field(default_factory=list)
+    total_slots: int = 0
+    used_slots: int = 0
+    api_error: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -125,29 +146,99 @@ class ProjectProgress:
         )
 
 
-@dataclass(frozen=True, slots=True)
-class PublicItem:
-    """A public item from the /api/items endpoint (no auth required)."""
+@dataclass(slots=True)
+class APIItemDecision:
+    """Single item decision from API."""
 
     item_id: str
-    name: str
-    item_type: str
-    rarity: str
-    value: int
-    weight_kg: float
-    stack_size: int
-    craft_bench: str | None
+    decision: ItemDecision
+    item_name: str | None = None
+
+
+@dataclass(slots=True)
+class APIInventoryResult:
+    """Result from API inventory fetch."""
+
+    decisions: list[APIItemDecision] = field(default_factory=list)
+    from_cache: bool = False
+    api_error: str | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class UserProfile:
+    """User profile information."""
+
+    username: str
+    level: int
+    member_since: str
 
     @classmethod
-    def from_api(cls, data: dict[str, Any]) -> PublicItem:
-        """Create a PublicItem from API response data."""
+    def from_api(cls, data: dict[str, Any]) -> UserProfile:
         return cls(
-            item_id=str(data.get("id", "")),
+            username=str(data.get("username", "")),
+            level=int(data.get("level", 0)),
+            member_since=str(data.get("memberSince", "")),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class UserQuest:
+    """A quest with user completion status."""
+
+    quest_id: str
+    name: str
+    completed: bool
+    objectives: list[Any]
+
+    @classmethod
+    def from_api(cls, data: dict[str, Any]) -> UserQuest:
+        return cls(
+            quest_id=str(data.get("id", "")),
             name=str(data.get("name", "")),
-            item_type=str(data.get("type", "")),
-            rarity=str(data.get("rarity", "")),
-            value=int(data.get("value", 0)),
-            weight_kg=float(data.get("weightKg", 0)),
-            stack_size=int(data.get("stackSize", 1)),
-            craft_bench=data.get("craftBench"),
+            completed=bool(data.get("completed", False)),
+            objectives=data.get("objectives", []),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class RoundEntry:
+    """A single round from the user's round history."""
+
+    round_id: str
+    outcome: str
+    map_slug: str
+    kills: int
+    damage: float
+    season: int | None
+    looted_items: list[Any]
+
+    @classmethod
+    def from_api(cls, data: dict[str, Any]) -> RoundEntry:
+        return cls(
+            round_id=str(data.get("id", "")),
+            outcome=str(data.get("outcome", "unknown")),
+            map_slug=str(data.get("map", "")),
+            kills=int(data.get("kills", 0)),
+            damage=float(data.get("damage", 0.0)),
+            season=data.get("season"),
+            looted_items=data.get("lootedItems", []),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class Blueprint:
+    """A blueprint with learned status."""
+
+    blueprint_id: str
+    name: str
+    category: str
+    learned: bool
+
+    @classmethod
+    def from_api(cls, data: dict[str, Any]) -> Blueprint:
+        return cls(
+            blueprint_id=str(data.get("id", "")),
+            name=str(data.get("name", "")),
+            category=str(data.get("category", "")),
+            learned=bool(data.get("learned", False)),
         )

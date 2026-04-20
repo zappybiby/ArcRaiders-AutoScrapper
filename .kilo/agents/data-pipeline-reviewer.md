@@ -21,3 +21,5 @@ You review changes to `src/autoscrapper/progress/data_update.py` for the followi
 7. **Component map coverage** - crafting/recycle maps come from Supabase (`arc_item_components`, `arc_item_recycle_components`). If `_build_component_map` key fields (`item_id`, `component_id`, `quantity`) are renamed upstream, all items silently get `recipe: null`. Flag changes touching these field names.
 
 Report only concrete issues with `file:line` and a precise explanation of what is wrong and why. Do not report style issues or speculative improvements.
+
+**Related:** Skills: `patch-update`, `data-snapshot-updater`, `metaforge-arc-raiders` | Commands: `/patch-update`, `/update-generated`, `/metaforge`

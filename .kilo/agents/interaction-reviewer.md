@@ -27,3 +27,5 @@ When reviewing changes to `interaction/` or `input-driver/`:
 ## Validation
 
 Run: `uv run autoscrapper scan --dry-run`
+
+**Related:** Skills: `diagnose-scan`, `calibrate-vision` | Commands: `/diagnose-scan`, `/calibrate-vision`, `/scan-dryrun`
