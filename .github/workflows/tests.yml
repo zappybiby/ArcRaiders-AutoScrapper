@@ -31,7 +31,7 @@ jobs:
           sudo apt-get update -qq >/dev/null 2>&1
           sudo apt-get install -yqq --no-install-recommends \
             build-essential libevdev-dev libleptonica-dev libtesseract-dev \
-            pkg-config tesseract-ocr libwebp7 libgl1-mesa-glx
+            pkg-config tesseract-ocr libwebp7 libgl1
       - name: Install uv
         uses: astral-sh/setup-uv@v8.1.0
         with:
