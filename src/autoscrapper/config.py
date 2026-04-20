@@ -131,12 +131,24 @@ def _raw_with_aliases(raw: ConfigDict, *keys: str) -> Any:
 
 
 def _migrate_v1_to_v2(payload: ConfigDict) -> ConfigDict:
-    """Stub: no structural changes between v1 and v2."""
+    """Add progress settings section (v2)."""
+    if "progress" not in payload:
+        payload["progress"] = {
+            "all_quests_completed": False,
+            "active_quests": [],
+            "completed_quests": [],
+            "hideout_levels": {},
+            "last_updated": None,
+        }
     return payload
 
 
 def _migrate_v2_to_v3(payload: ConfigDict) -> ConfigDict:
-    """Stub: no structural changes between v2 and v3."""
+    """Add UI settings section (v3)."""
+    if "ui" not in payload:
+        payload["ui"] = {
+            "default_rules_warning_shown": False,
+        }
     return payload
 
 

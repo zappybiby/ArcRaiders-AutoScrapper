@@ -2,7 +2,73 @@ import json
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
-from autoscrapper.config import CONFIG_VERSION, _load_config_dict, _migrate_config
+from autoscrapper.config import (
+    CONFIG_VERSION,
+    _load_config_dict,
+    _migrate_config,
+    _migrate_v1_to_v2,
+    _migrate_v2_to_v3,
+    _migrate_v5_to_v6,
+)
+
+
+def test_migrate_v1_to_v2():
+    """Test that v1 to v2 migration adds the progress section."""
+    payload = {"version": 1}
+    result = _migrate_v1_to_v2(payload.copy())
+    assert "progress" in result
+    assert result["progress"]["all_quests_completed"] is False
+    assert result["progress"]["active_quests"] == []
+
+
+def test_migrate_v1_to_v2_idempotent():
+    """Test that v1 to v2 migration does not overwrite existing progress section."""
+    payload = {"version": 1, "progress": {"all_quests_completed": True}}
+    result = _migrate_v1_to_v2(payload.copy())
+    assert result["progress"]["all_quests_completed"] is True
+
+
+def test_migrate_v2_to_v3():
+    """Test that v2 to v3 migration adds the ui section."""
+    payload = {"version": 2}
+    result = _migrate_v2_to_v3(payload.copy())
+    assert "ui" in result
+    assert result["ui"]["default_rules_warning_shown"] is False
+
+
+def test_migrate_v2_to_v3_idempotent():
+    """Test that v2 to v3 migration does not overwrite existing ui section."""
+    payload = {"version": 2, "ui": {"default_rules_warning_shown": True}}
+    result = _migrate_v2_to_v3(payload.copy())
+    assert result["ui"]["default_rules_warning_shown"] is True
+
+
+def test_migrate_v5_to_v6():
+    """Test that v5 to v6 migration adds the api section."""
+    payload = {"version": 5}
+    result = _migrate_v5_to_v6(payload.copy())
+    assert "api" in result
+    assert result["api"]["enabled"] is False
+    assert result["api"]["base_url"] == "https://arctracker.io"
+
+
+def test_migrate_v5_to_v6_idempotent():
+    """Test that v5 to v6 migration does not overwrite existing api section."""
+    payload = {"version": 5, "api": {"enabled": True}}
+    result = _migrate_v5_to_v6(payload.copy())
+    assert result["api"]["enabled"] is True
+
+
+def test_migrate_full_chain():
+    """Test that a v1 config is migrated through the entire chain to the current version."""
+    payload = {"version": 1, "scan": {"debug_ocr": True}}
+    result = _migrate_config(payload.copy())
+
+    assert result["version"] == CONFIG_VERSION
+    assert result["scan"]["debug_ocr"] is True
+    assert "progress" in result
+    assert "ui" in result
+    assert "api" in result
 
 
 def test_migrate_config_no_version():
