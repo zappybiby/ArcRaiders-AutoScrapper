@@ -22,12 +22,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - name: Install Linux system dependencies
         run: |
           sudo apt-get update -qq
           sudo apt-get install -yqq --no-install-recommends \
             build-essential \
-            libevdev-dev \
             libleptonica-dev \
             libtesseract-dev \
             pkg-config \
@@ -41,4 +42,9 @@ jobs:
             uv.lock
             pyproject.toml
       - name: Install project dependencies
-        run: uv sync --all-groups --all-extras --all-packages --locked
+        run: uv sync --frozen
+      - name: Verify core Python tooling
+        run: |
+          uv run ruff --version
+          uv run basedpyright --version
+          uv run pytest --version

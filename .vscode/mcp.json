@@ -2,9 +2,6 @@
   "servers": {
     "github-mcp-server": {
       "type": "http",
-      "tools": [
-        "*"
-      ],
       "url": "https://api.githubcopilot.com/mcp/",
       "headers": {
         "X-MCP-Toolsets": "default,actions,code_security,copilot,git,github_support_docs_search,stargazers,dependabot"
@@ -17,27 +14,14 @@
         "-y",
         "@playwright/mcp@latest",
         "--headless"
-      ],
-      "tools": [
-        "browser_navigate",
-        "browser_click",
-        "browser_type",
-        "browser_evaluate",
-        "browser_take_screenshot"
       ]
     },
     "vercel": {
       "type": "http",
-      "url": "https://mcp.vercel.com/mcp",
-      "tools": [
-        "*"
-      ]
+      "url": "https://mcp.vercel.com/mcp"
     },
     "exa": {
       "type": "http",
-      "tools": [
-        "*"
-      ],
       "url": "https://mcp.exa.ai/mcp?tools=web_search_exa,web_search_advanced_exa,crawling_exa",
       "headers": {
         "EXA_API_KEY": "$EXA_API_KEY"
@@ -46,9 +30,6 @@
     "ref-tools": {
       "type": "http",
       "url": "https://api.ref.tools/mcp",
-      "tools": [
-        "*"
-      ],
       "headers": {
         "x-ref-api-key": "$REF_API_KEY"
       }
@@ -62,21 +43,7 @@
       ],
       "env": {
         "MCP_SILENT_ERRORS": "true"
-      },
-      "tools": [
-        "fast_read_file",
-        "fast_read_multiple_files",
-        "fast_write_file",
-        "fast_large_write_file",
-        "fast_search_files",
-        "fast_search_code",
-        "fast_edit_block",
-        "fast_extract_lines",
-        "fast_copy_file",
-        "fast_move_file",
-        "fast_delete_file",
-        "fast_batch_file_operations"
-      ]
+      }
     },
     "octocode": {
       "type": "stdio",
@@ -89,16 +56,7 @@
         "GITHUB_TOKEN": "$GITHUB_PERSONAL_ACCESS_TOKEN",
         "ENABLE_LOCAL": "true",
         "LOG": "false"
-      },
-      "tools": [
-        "githubSearchCode",
-        "githubGetFileContent",
-        "githubViewRepoStructure",
-        "githubSearchRepositories",
-        "lspGotoDefinition",
-        "lspFindReferences",
-        "lspCallHierarchy"
-      ]
+      }
     }
   }
 }

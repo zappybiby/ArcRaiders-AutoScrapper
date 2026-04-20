@@ -1,160 +1,43 @@
 ---
 name: workflow-development
-description: Create, debug, and optimize GitHub Actions workflows with security best practices. Use when asked to "create workflow", "fix workflow", "add CI", or needs help with GitHub Actions.
+description: Create, debug, and optimize GitHub Actions workflows for this Python 3.13 / uv repository.
 allowed-tools: "Bash, Read, Write, Edit, Glob, Grep"
 ---
 
 # Workflow Development
 
-Create, debug, and optimize GitHub Actions workflows.
+Create or update GitHub Actions workflows for this Python 3.13 / uv repo.
 
-Standards: `instructions/cicd-standards.instructions.md`
+## Repo defaults
 
-<instructions>
+- Start with `AGENTS.md` and `.github/instructions/cicd-standards.instructions.md`.
+- Pin actions to versions already used here: `actions/checkout@v6`,
+  `astral-sh/setup-uv@v7`, and `actions/upload-artifact@v7`.
+- Set `persist-credentials: false` on checkout unless the job must push.
+- Prefer `uv sync --frozen`; add extras only when a workflow truly needs them.
+- OCR and Tesseract jobs usually need `build-essential`, `pkg-config`,
+  `tesseract-ocr`, `libtesseract-dev`, and `libleptonica-dev`.
+- Add Linux input or evdev packages only when the workflow actually exercises
+  Linux input automation.
 
-## Workflow
+## Existing workflow purposes
 
-Think through the requirements step-by-step:
+- `ruff.yml`: Ruff, BasedPyright, and pytest validation.
+- `biome.yml`: repo formatting and lint guard.
+- `daily-data-update.yml`: scheduled snapshot and default-rule refresh.
+- `copilot-setup-steps.yml`: agent bootstrap environment.
 
-1. **Understand the goal**: What should the workflow do? (CI, CD, scheduled task, etc.)
-2. **Choose triggers**: `push`, `pull_request`, `workflow_dispatch`, `schedule`, `workflow_call`?
-3. **Design jobs**: What steps are needed? Can anything run in parallel?
-4. **Apply security**: Minimal permissions, pinned action versions, no exposed secrets
-5. **Optimize**: Caching, concurrency controls, matrix strategies where beneficial
-6. **Test**: Validate YAML syntax, verify triggers, check permissions
+## Workflow process
 
-</instructions>
+1. Match the trigger set to the workflow's real purpose.
+2. Keep permissions minimal.
+3. Use the repository's real commands and lockfiles.
+4. Reuse existing jobs when coverage already exists.
+5. Validate workflow edits with `uv run prek run --files .github/workflows/<name>.yml`.
 
-<security>
+## Guardrails
 
-Non-negotiable security requirements:
-
-```yaml
-permissions:
-  contents: read
-
-steps:
-  - uses: actions/checkout@v4 # Always pin to major version tag
-```
-
-- Pin all actions to version tags (never `@main` or `@master`)
-- Set minimal `permissions:` at workflow or job level
-- Use `secrets: inherit` or explicit secret passing for reusable workflows
-- Never echo secrets in logs
-
-</security>
-
-<patterns>
-
-## Reusable Workflow
-
-```yaml
-# Caller
-jobs:
-  ci:
-    uses: Ven0m0/.github/.github/workflows/reusable-ci-python.yml@main
-    with:
-      python-version: "3.12"
-    secrets: inherit
-
-# Definition (on: workflow_call)
-on:
-  workflow_call:
-    inputs:
-      python-version:
-        type: string
-        default: "3.12"
-```
-
-## Caching
-
-```yaml
-- uses: actions/cache@v4
-  with:
-    path: ~/.cache/uv
-    key: ${{ runner.os }}-uv-${{ hashFiles('uv.lock') }}
-```
-
-## Concurrency
-
-```yaml
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-```
-
-## Matrix Strategy
-
-```yaml
-strategy:
-  fail-fast: false
-  matrix:
-    os: [ubuntu-latest, macos-latest]
-    python-version: ["3.11", "3.12"]
-```
-
-</patterns>
-
-<debugging>
-
-| Symptom                                  | Likely Cause            | Fix                                               |
-| ---------------------------------------- | ----------------------- | ------------------------------------------------- |
-| "Resource not accessible by integration" | Missing permissions     | Add to `permissions:` block                       |
-| Cache never hits                         | Wrong hash path         | Check `hashFiles()` glob matches actual lock file |
-| Secrets unavailable in reusable workflow | Not passed through      | Add `secrets: inherit` or pass explicitly         |
-| Workflow not triggered                   | Wrong event config      | Verify `on:` triggers, check branch filters       |
-| "Path does not exist"                    | Wrong working-directory | Verify path relative to repo root                 |
-| Matrix job fails inconsistently          | OS-specific issue       | Add OS conditionals or separate jobs              |
-
-</debugging>
-
-<examples>
-
-### Python CI workflow
-
-```yaml
-name: CI
-on:
-  push:
-    branches: [main]
-  pull_request:
-
-permissions:
-  contents: read
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v4
-      - run: uv sync
-      - run: uv run ruff check .
-      - run: uv run pytest -x
-```
-
-### Release workflow with tag trigger
-
-```yaml
-name: Release
-on:
-  push:
-  tags: "'v*'"
-permissions:
-  contents: write
-
-jobs:
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: gh release create ${{ github.ref_name }} --generate-notes
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
-
-</examples>
+- Do not claim a workflow is safe unless referenced commands, paths, and
+  secrets exist.
+- Avoid `--all-extras` in setup-only workflows.
+- Do not add workflows for languages or tools this repo does not use.

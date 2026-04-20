@@ -2,19 +2,27 @@
   "mcpServers": {
     "fast-filesystem": {
       "type": "stdio",
-      "command": "bunx",
+      "command": "npx",
       "args": [
-        "--bun",
+        "-y",
         "fast-filesystem-mcp@latest"
-      ]
+      ],
+      "env": {
+        "MCP_SILENT_ERRORS": "true"
+      }
     },
     "octocode": {
       "type": "stdio",
-      "command": "bunx",
+      "command": "npx",
       "args": [
-        "--bun",
+        "-y",
         "octocode-mcp@latest"
-      ]
+      ],
+      "env": {
+        "GITHUB_TOKEN": "$GITHUB_PERSONAL_ACCESS_TOKEN",
+        "ENABLE_LOCAL": "true",
+        "LOG": "false"
+      }
     },
     "ast-grep": {
       "type": "stdio",
@@ -47,7 +55,7 @@
         "@modelcontextprotocol/server-github"
       ],
       "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "$GITHUB_PERSONAL_ACCESS_TOKEN"
       }
     },
     "context7": {

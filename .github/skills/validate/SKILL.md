@@ -1,74 +1,68 @@
 ---
 name: validate
-description: Run the correct validation checks for changed files in this repository (Bun frontend checks, uv Python checks, and workflow or guidance verification).
+description: Run the correct validation checks for changed files in this repository (Python, workflows, guidance, and generated data).
 allowed-tools: 'Read, Bash, Grep, Glob'
 ---
 
 # Validate
 
-Run the narrowest checks that cover the files you have changed.
+Run the narrowest checks that cover the files you changed.
 
-## Triggers
+## Identify the changed area
 
-Use this skill when asked to validate, lint, type-check, or test changes before committing.
+- `src/**/*.py`, `tests/**/*.py`, `scripts/**/*.py`, or `pyproject.toml`
+- OCR, scanner, interaction, or input code under `src/autoscrapper/ocr/`,
+  `src/autoscrapper/scanner/`, or `src/autoscrapper/interaction/`
+- Generated data or bundled default rules
+- `.github/` workflows, instructions, or skills
+- Repo guidance such as `AGENTS.md`, `CLAUDE.md`, or
+  `.github/copilot-instructions.md`
 
-## Steps
+## Checks
 
-1. Identify which repo areas changed:
-   - `apps/web`
-   - `apps/api`
-   - `packages/config`
-   - `packages/llm-core`
-   - `packages/shared/python`
-   - `packages/code-index`
-   - `.github/` workflows, instructions, or skills
+**Python source**
 
-2. Run only the checks relevant to changed files:
+```bash
+uv sync
+uv run ruff check src/ tests/ scripts/
+uv run basedpyright src/
+uv run pytest
+```
 
-   **Frontend (`apps/web/**/*.{js,jsx,ts,tsx}`)**
+**OCR, scanner, interaction, or input changes**
 
-   ```bash
-   cd apps/web
-   bun install
-   bun run lint
-   bun run typecheck
-   bun run build
-   ```
+Run the Python source checks above, then also run this only when a live Arc
+Raiders window is available:
 
-   **API (`apps/api/**/*.py`)**
+```bash
+uv run autoscrapper scan --dry-run
+```
 
-   ```bash
-   cd apps/api
-   export PYTHONPATH=src:../../packages/config/src
-   uv sync --all-extras
-   uv run ruff format --check
-   uv run ruff check
-   uv run pyrefly check
-   uv run pytest
-   ```
+**Generated data or bundled default rules**
 
-   **Shared Python packages (`packages/config`, `packages/shared/python`, `packages/code-index`, `packages/llm-core`)**
+Use the updater rather than hand-editing generated files:
 
-   ```bash
-   cd <package>
-   uv sync
-   uv run ruff format --check src/
-   uv run ruff check src/
-   ```
+```bash
+uv sync
+uv run python scripts/update_snapshot_and_defaults.py --dry-run
+```
 
-   **Workflow, instruction, or skill changes under `.github/`**
+**Workflow files**
 
-   ```bash
-   Verify every referenced path and command exists.
-   Re-run the repo commands referenced by the changed guidance when practical.
-   ```
+```bash
+uv sync
+uv run prek run --files .github/workflows/<name>.yml
+```
 
-3. Fix reported issues in the changed files only. Do not touch unrelated files.
+**Instructions, skills, or repo guidance**
 
-4. Re-run the affected check to confirm it passes before reporting success.
+- Verify every referenced path, command, and workflow still exists.
+- Re-run referenced repo commands when practical.
+- Keep `AGENTS.md` as the canonical long-form guide and keep
+  `.github/copilot-instructions.md` short.
 
-## Invariants
+## Guardrails
 
-- Never remove or skip a check to make it pass.
-- Do not modify test files to suppress failures unless the test itself is wrong.
-- Report any pre-existing failures that are unrelated to your changes rather than silently fixing them.
+- Never skip a required check just to get a green result.
+- Report pre-existing failures that are unrelated to your change.
+- Do not claim live OCR validation unless you actually used a live game window.
