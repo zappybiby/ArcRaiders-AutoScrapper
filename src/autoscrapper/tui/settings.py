@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from abc import abstractmethod
 from dataclasses import replace
+from functools import cached_property
 
 from textual import events
 from textual.app import ComposeResult
@@ -206,14 +207,12 @@ class ScanSettingsScreen(AppScreen):
         self._load_into_fields()
         self.action_focus_next_field()
 
+    @cached_property
+    def _cached_focus_widgets(self) -> tuple[Widget, ...]:
+        return tuple(self.query_one(f"#{widget_id}") for widget_id in self._FOCUS_ORDER)
+
     def _focus_candidates(self) -> list[Widget]:
-        candidates: list[Widget] = []
-        for widget_id in self._FOCUS_ORDER:
-            widget = self.query_one(f"#{widget_id}")
-            if getattr(widget, "disabled", False):
-                continue
-            candidates.append(widget)
-        return candidates
+        return [w for w in self._cached_focus_widgets if w.is_mounted and not w.disabled]
 
     def _cycle_focus(self, delta: int) -> None:
         candidates = self._focus_candidates()
