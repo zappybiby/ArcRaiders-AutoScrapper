@@ -1,5 +1,4 @@
 default_stages: [pre-commit]
-
 repos:
   # Ruff - Python linting and formatting
   - repo: https://github.com/astral-sh/ruff-pre-commit
@@ -7,14 +6,13 @@ repos:
     hooks:
       # Run linter and auto-fix issues
       - id: ruff
-        args: [--fix --exit-non-zero-on-fix]
+        args: [--fix, --exit-non-zero-on-fix]
         types_or: [python, pyi]
         stages: [pre-commit]
       # Format code
       - id: ruff-format
         types_or: [python, pyi]
         stages: [pre-commit]
-
   - repo: https://github.com/rhysd/actionlint
     rev: v1.7.12
     hooks:
@@ -27,7 +25,6 @@ repos:
     rev: v3.21.2
     hooks:
       - id: pyupgrade
-  
   - repo: local
     hooks:
       - id: uv-lock-upgrade
@@ -44,8 +41,9 @@ repos:
         stages: [manual]
       - id: biome-check
         name: biome check
-        entry: bunx @biomejs/biome check --write
+        entry: biome check --write
         language: node
+        additional_dependencies: ["@biomejs/biome@2.4.12"]
         files: \.(?:[cm]?[jt]sx?|jsonc?)$
         pass_filenames: true
   # Pre-commit hooks (official)
@@ -64,7 +62,6 @@ repos:
       - id: mixed-line-ending
       # Security checks
       - id: detect-private-key
-
       # File checks
       - id: check-added-large-files
         args: [--maxkb=1000]
@@ -72,19 +69,16 @@ repos:
       - id: check-executables-have-shebangs
       - id: check-shebang-scripts-are-executable
       - id: forbid-submodules
-
   # Gitleaks - Secret scanning
   - repo: https://github.com/gitleaks/gitleaks
     rev: v8.30.1
     hooks:
       - id: gitleaks
-
   # Zizmor - GitHub Actions security analysis
   - repo: https://github.com/woodruffw/zizmor-pre-commit
     rev: v1.24.1
     hooks:
       - id: zizmor
-
   # Tombi - TOML linting and formatting
   - repo: https://github.com/tombi-toml/tombi-pre-commit
     rev: v0.9.19
@@ -93,26 +87,22 @@ repos:
         exclude: ^(pyproject\.toml|uv\.lock)$
       - id: tombi-lint
         exclude: ^(pyproject\.toml|uv\.lock)$
-
   # Renovate config validator
   - repo: https://github.com/renovatebot/pre-commit-hooks
     rev: 43.132.1
     hooks:
       - id: renovate-config-validator
-
   # Shellcheck - Shell script linting
   - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.11.0
+    rev: v0.11.0.1
     hooks:
       - id: shellcheck
         args: [-x, --severity=warning]
         files: \.(sh|bash)$
-
   - repo: https://github.com/yawlabs/ctxlint
     rev: v0.9.17
     hooks:
       - id: ctxlint
-
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.37.1
     hooks:
@@ -124,7 +114,6 @@ repos:
     hooks:
       - id: gha-update
         stages: [manual]
-
   - repo: https://github.com/rvben/rumdl-pre-commit
     rev: v0.1.76
     hooks:
