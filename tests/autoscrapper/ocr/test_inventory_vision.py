@@ -598,6 +598,41 @@ class TestFindContextMenuCrop:
         _, _, w, _ = result
         assert w >= 400, f"crop width {w} is too narrow for long item titles"
 
+    def test_shifts_left_at_right_screen_edge(self):
+        """Crop shifts left if it would overflow the right edge, preserving its width."""
+        cx = self._W - 50
+        cy = 540
+        result = self._crop(cx, cy)
+        assert result is not None
+        x, _, w, _ = result
+        assert x + w == self._W, "crop right edge should align with screen right edge"
+        expected_w = int(round(450 / 1920 * self._W))
+        assert w == expected_w, "crop width must be preserved despite shifting"
+
+    def test_shifts_up_at_bottom_screen_edge(self):
+        """Crop shifts up if it would overflow the bottom edge, preserving its height."""
+        cx = 800
+        cy = self._H - 50
+        result = self._crop(cx, cy)
+        assert result is not None
+        _, y, _, h = result
+        assert y + h == self._H, "crop bottom edge should align with screen bottom edge"
+        expected_h = int(round(450 / 1080 * self._H))
+        assert h == expected_h, "crop height must be preserved despite shifting"
+
+    def test_returns_none_if_crop_too_small(self):
+        """If the input image is too small to yield min_dim, returns None."""
+        tiny_img = np.full((50, 50, 3), 100, dtype=np.uint8)
+        tiny_img[::4, :] = 20
+        result = find_context_menu_crop(tiny_img, 25, 25)
+        assert result is None, "should return None when crop dims < min_dim"
+
+    def test_returns_none_on_low_dark_fraction(self):
+        """Left half of crop must have >= 20% dark pixels (sidebar icons), else None."""
+        bright_img = np.full((self._H, self._W, 3), 200, dtype=np.uint8)
+        result = find_context_menu_crop(bright_img, 800, 540)
+        assert result is None, "bright crop without dark sidebar fraction should be rejected"
+
 
 # ---------------------------------------------------------------------------
 # isolate_menu_panel — panel bounding-rect detection
