@@ -735,3 +735,138 @@ class TestOdd:
     )
     def test_odd_logic(self, value: int, expected: int) -> None:
         assert _odd(value) == expected
+
+
+from autoscrapper.ocr.inventory_vision import isolate_dark_title_panel  # noqa: E402
+
+
+# ---------------------------------------------------------------------------
+# isolate_dark_title_panel — dark title-band detection
+# ---------------------------------------------------------------------------
+
+
+class TestIsolateDarkTitlePanel:
+    """Unit tests for isolate_dark_title_panel().
+
+    The function must find the dark header rectangle in the top half of a
+    context-menu crop and return its bounding rect, or None when none exists.
+    """
+
+    def _make_crop_with_dark_title(
+        self,
+        crop_w: int = 450,
+        crop_h: int = 450,
+        title_x: int = 0,
+        title_w: int = 450,
+        title_h: int = 60,
+    ) -> np.ndarray:
+        """Bright background with a dark horizontal title band at the top."""
+        img = np.full((crop_h, crop_w, 3), 220, dtype=np.uint8)
+        img[:title_h, title_x : title_x + title_w] = 40
+        return img
+
+    def test_detects_dark_title_band_at_top(self) -> None:
+        """A dark band in the top half must be detected and returned."""
+        img = self._make_crop_with_dark_title()
+        result = isolate_dark_title_panel(img)
+        assert result is not None, "should detect the dark title band"
+
+    def test_returned_rect_overlaps_dark_region(self) -> None:
+        """Returned rect must overlap the known dark title region."""
+        img = self._make_crop_with_dark_title(title_x=0, title_w=450, title_h=60)
+        result = isolate_dark_title_panel(img)
+        assert result is not None
+        _x, y, _w, h = result
+        assert y < 60 and y + h > 0, f"rect y={y} h={h} does not overlap top 60px"
+
+    def test_returns_none_for_uniform_bright_image(self) -> None:
+        """No dark panel in a uniform bright image — expect None."""
+        img = np.full((450, 450, 3), 200, dtype=np.uint8)
+        assert isolate_dark_title_panel(img) is None
+
+    def test_dark_band_in_bottom_half_not_detected(self) -> None:
+        """Dark rect only in the bottom half must not be returned."""
+        img = np.full((400, 450, 3), 200, dtype=np.uint8)
+        img[250:310, :] = 40  # dark band in lower half only
+        assert isolate_dark_title_panel(img) is None
+
+    def test_returns_none_for_empty_array(self) -> None:
+        """Empty array must return None without raising."""
+        img = np.zeros((0, 0, 3), dtype=np.uint8)
+        assert isolate_dark_title_panel(img) is None
+
+    def test_rect_within_crop_bounds(self) -> None:
+        """Returned rect must be fully inside the input image."""
+        img = self._make_crop_with_dark_title()
+        result = isolate_dark_title_panel(img)
+        if result is None:
+            pytest.skip("panel not detected — bounds check irrelevant")
+        x, y, w, h = result
+        crop_h, crop_w = img.shape[:2]
+        assert x >= 0 and y >= 0
+        assert x + w <= crop_w
+        assert y + h <= crop_h
+
+
+# ---------------------------------------------------------------------------
+# preprocess_for_ocr — new kwargs: apply_clahe, robust_polarity, close_gaps
+# ---------------------------------------------------------------------------
+
+
+class TestPreprocessForOcrNewKwargs:
+    """Regression tests for the new kwargs added to preprocess_for_ocr."""
+
+    def _white_text_on_black(self, h: int = 40, w: int = 200) -> np.ndarray:
+        """White letters (value 240) on black (value 0) — inverted polarity."""
+        img = np.zeros((h, w, 3), dtype=np.uint8)
+        img[8:32, 10:190] = 240
+        return img
+
+    def _black_text_on_white(self, h: int = 40, w: int = 200) -> np.ndarray:
+        """Black letters (value 10) on white (value 245) — correct polarity."""
+        img = np.full((h, w, 3), 245, dtype=np.uint8)
+        img[8:32, 10:190] = 10
+        return img
+
+    def test_apply_clahe_produces_valid_binary(self) -> None:
+        """apply_clahe=True must not crash and must return a 2D binary image."""
+        img = self._black_text_on_white()
+        result = preprocess_for_ocr(img, apply_clahe=True)
+        assert result.ndim == 2
+        assert set(np.unique(result)).issubset({0, 255})
+
+    def test_apply_clahe_false_still_works(self) -> None:
+        """apply_clahe=False must still return a valid binary image."""
+        img = self._black_text_on_white()
+        result = preprocess_for_ocr(img, apply_clahe=False)
+        assert result.ndim == 2
+        assert set(np.unique(result)).issubset({0, 255})
+
+    def test_robust_polarity_inverts_white_on_black(self) -> None:
+        """robust_polarity=True must produce dark-on-light for white-on-black input."""
+        img = self._white_text_on_black()
+        result = preprocess_for_ocr(img, robust_polarity=True)
+        unique, counts = np.unique(result, return_counts=True)
+        majority = unique[np.argmax(counts)]
+        assert majority == 255, f"expected white background after polarity fix, got majority={majority}"
+
+    def test_robust_polarity_false_preserves_legacy_behavior(self) -> None:
+        """robust_polarity=False must not crash and must return a valid binary."""
+        img = self._black_text_on_white()
+        result = preprocess_for_ocr(img, robust_polarity=False)
+        assert result.ndim == 2
+        assert set(np.unique(result)).issubset({0, 255})
+
+    def test_close_gaps_with_upscale(self) -> None:
+        """close_gaps=True + upscale=True must not crash and must return valid binary."""
+        img = self._black_text_on_white()
+        result = preprocess_for_ocr(img, close_gaps=True, upscale=True)
+        assert result.ndim == 2
+        assert set(np.unique(result)).issubset({0, 255})
+
+    def test_close_gaps_skipped_without_upscale(self) -> None:
+        """close_gaps=True but upscale=False must still return a valid binary."""
+        img = self._black_text_on_white()
+        result = preprocess_for_ocr(img, close_gaps=True, upscale=False)
+        assert result.ndim == 2
+        assert set(np.unique(result)).issubset({0, 255})

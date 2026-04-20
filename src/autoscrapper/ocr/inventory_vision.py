@@ -576,6 +576,8 @@ _CONTEXT_MENU_HEIGHT_NORM = 450 / 1080
 # menu background.  The panel body is ~220-250; background is 20-40.  190 gives
 # a comfortable margin for anti-aliased edges and variable monitor brightness.
 _MENU_PANEL_GRAY_THRESH = 190
+
+_DARK_PANEL_GRAY_THRESH = 80  # max gray level considered "dark" for title band detection
 # Fraction of the context-menu crop occupied by the title band.
 # At 1080p the crop is ~450px tall; the dark title band is ~40px raw
 # plus padding above.  0.18 * 450 = 81px gives safe margin without
@@ -694,6 +696,53 @@ def isolate_menu_panel(crop_bgr: np.ndarray) -> tuple[int, int, int, int] | None
             continue
         # Must span at least 50% of the crop height (panel is tall).
         if bh < 0.50 * crop_h:
+            continue
+        if area > best_area:
+            best_area = area
+            best = (bx, by, bw, bh)
+    return best
+
+
+def isolate_dark_title_panel(crop_bgr: np.ndarray) -> tuple[int, int, int, int] | None:
+    """
+    Detect and return the bounding rect of the dark context-menu title band
+    within a wider context-menu crop.
+
+    The title band has a very dark background (~gray 0-80) with light text,
+    unlike the cream panel body detected by ``isolate_menu_panel``.  We search
+    only the top half of the crop so the cream body does not interfere.
+
+    Returns ``(x, y, w, h)`` relative to ``crop_bgr``, or ``None`` if no
+    qualifying dark region is found (caller falls back to the raw slice).
+    """
+    if crop_bgr.size == 0:
+        return None
+    crop_h, crop_w = crop_bgr.shape[:2]
+    search_h = max(1, crop_h // 2)
+    # search is a view of crop_bgr starting at y=0, so contour coords are
+    # already in crop_bgr space — no offset adjustment is needed.
+    search = crop_bgr[:search_h, :]
+    gray = cv2.cvtColor(search, cv2.COLOR_BGR2GRAY)
+    _, dark_mask = cv2.threshold(gray, _DARK_PANEL_GRAY_THRESH, 255, cv2.THRESH_BINARY_INV)
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (15, 15))
+    closed = cv2.morphologyEx(dark_mask, cv2.MORPH_CLOSE, kernel)
+    contours, _ = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    if not contours:
+        return None
+    search_area = max(1, search_h * crop_w)
+    best: tuple[int, int, int, int] | None = None
+    best_area = 0
+    for cnt in contours:
+        bx, by, bw, bh = cv2.boundingRect(cnt)
+        area = bw * bh
+        if area < 0.05 * search_area:
+            continue
+        aspect = bw / max(1, bh)
+        if aspect < 2.0:
+            continue
+        if bw < 0.35 * crop_w:
+            continue
+        if by > 0.05 * search_h:
             continue
         if area > best_area:
             best_area = area
@@ -871,10 +920,23 @@ def recycle_confirm_button_center(
     return rect_center(recycle_confirm_button_rect(window_left, window_top, window_width, window_height))
 
 
-def preprocess_for_ocr(roi_bgr: np.ndarray, *, restrict_otsu_to_left: bool = False, upscale: bool = True) -> np.ndarray:
+def preprocess_for_ocr(
+    roi_bgr: np.ndarray,
+    *,
+    restrict_otsu_to_left: bool = False,
+    upscale: bool = True,
+    apply_clahe: bool = True,
+    robust_polarity: bool = True,
+    close_gaps: bool = True,
+) -> np.ndarray:
     if roi_bgr.size == 0:
         raise ValueError(f"preprocess_for_ocr: empty input array (shape={roi_bgr.shape})")
     gray = cv2.cvtColor(roi_bgr, cv2.COLOR_BGR2GRAY)
+    if apply_clahe:
+        # Normalize local luminance so Otsu stays stable on rarity-colored
+        # backgrounds (yellow, magenta, purple glow).
+        clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+        gray = clahe.apply(gray)
     if upscale:
         gray = cv2.resize(gray, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)  # type: ignore[arg-type]
     if restrict_otsu_to_left:
@@ -889,20 +951,43 @@ def preprocess_for_ocr(roi_bgr: np.ndarray, *, restrict_otsu_to_left: bool = Fal
         _, binary = cv2.threshold(gray, thresh, 255, cv2.THRESH_BINARY)
     else:
         _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-    # Tesseract expects dark text on light background. If the background is dark
-    # (e.g. the game's new dark context-menu UI), invert so text becomes dark.
-    # Sample only the left half of the image for the inversion check. The
-    # context-menu panel is always on the left side of the crop; the right side
-    # contains the game's inventory grid which can be bright (light item icons)
-    # and would flip the polarity decision if included in the sample.
-    h, w = binary.shape[:2]
-    centre = binary[h // 4 : 3 * h // 4, 0 : w // 2]
-    if centre.size == 0:
-        centre = binary[:, 0 : w // 2]
-    if centre.size == 0:
-        centre = binary
-    if float(np.mean(centre)) < 128.0:
-        binary = cv2.bitwise_not(binary)
+    # Tesseract expects dark text on light background.
+    if robust_polarity:
+        # Count glyph-sized connected components in both polarities and keep
+        # whichever orientation produces more — more reliable than the mean
+        # heuristic when the dark panel dominates the left-half sample.
+        h, w = binary.shape[:2]
+        sample = binary if min(h, w) < 8 else binary[h // 6 : 5 * h // 6, :]
+
+        def _glyph_cc_count(img: np.ndarray) -> int:
+            _, _, stats, _ = cv2.connectedComponentsWithStats(img, connectivity=8)
+            return int(
+                np.sum(
+                    (stats[1:, cv2.CC_STAT_HEIGHT] >= 4)
+                    & (stats[1:, cv2.CC_STAT_HEIGHT] <= max(8, h))
+                    & (stats[1:, cv2.CC_STAT_AREA] >= 8)
+                )
+            )
+
+        if _glyph_cc_count(cv2.bitwise_not(sample)) > _glyph_cc_count(sample):
+            binary = cv2.bitwise_not(binary)
+    else:
+        # Legacy mean-based polarity check — sample only the left half so that
+        # bright inventory-grid icons on the right do not flip the decision.
+        h, w = binary.shape[:2]
+        centre = binary[h // 4 : 3 * h // 4, 0 : w // 2]
+        if centre.size == 0:
+            centre = binary[:, 0 : w // 2]
+        if centre.size == 0:
+            centre = binary
+        if float(np.mean(centre)) < 128.0:
+            binary = cv2.bitwise_not(binary)
+    if close_gaps and upscale:
+        # Reconnect thin-stroke fragments from over-thresholding (1-2 px strokes
+        # on rarity-gradient backgrounds). Kernel acts on the 2x-upscaled image
+        # so 1x2 px ≈ 0.5 px in source coords.
+        kernel = np.ones((1, 2), np.uint8)
+        binary = cv2.morphologyEx(binary, cv2.MORPH_CLOSE, kernel)
     return binary
 
 
@@ -923,6 +1008,9 @@ def enable_ocr_debug(debug_dir: Path) -> None:
 def _save_debug_image(name: str, image: np.ndarray) -> None:
     """
     Write a debug image if a debug directory has been configured.
+
+    Images are written in BGR channel order (OpenCV native) via cv2.imwrite.
+    All input arrays must be BGR — do not convert to RGB before passing here.
     """
     if _OCR_DEBUG_DIR is None:
         return
@@ -1193,7 +1281,11 @@ def ocr_title_strip(
     # the same binarized image are not incorrectly served each other's result.
     # Encode PSM mode into the hash so a fallback-PSM retry never serves a cached
     # result from a normal-PSM call (or vice versa).
-    roi_hash = _hash_roi(title_strip_bgr) + (b"\x01" if use_fallback_psm else b"\x00") + (b"\x01" if restrict_otsu_to_left else b"\x00")
+    roi_hash = (
+        _hash_roi(title_strip_bgr)
+        + (b"\x01" if use_fallback_psm else b"\x00")
+        + (b"\x01" if restrict_otsu_to_left else b"\x00")
+    )
     preprocess_start = time.perf_counter()
     processed = preprocess_for_ocr(title_strip_bgr, restrict_otsu_to_left=restrict_otsu_to_left)
     _save_debug_image("infobox_processed", processed)
@@ -1241,7 +1333,9 @@ def ocr_title_strip(
     if not match_result.matched_name:
         # Fallback: retry without 2x upscale. Upscale-induced interpolation
         # artefacts can confuse Tesseract on certain low-contrast strips.
-        processed_no_up = preprocess_for_ocr(title_strip_bgr, upscale=False, restrict_otsu_to_left=restrict_otsu_to_left)
+        processed_no_up = preprocess_for_ocr(
+            title_strip_bgr, upscale=False, restrict_otsu_to_left=restrict_otsu_to_left
+        )
         try:
             raw_text_no_up = image_to_string(
                 processed_no_up,
@@ -1358,12 +1452,24 @@ def ocr_context_menu(
     # ocr_title_strip auto-inverts dark backgrounds via preprocess_for_ocr.
     ctx_h = context_crop_bgr.shape[0]
     title_band_h = max(1, int(round(ctx_h * _CTX_MENU_TITLE_HEIGHT_REL)))
-    title_band_bgr = context_crop_bgr[:title_band_h, :]
+    dark_rect = isolate_dark_title_panel(context_crop_bgr)
+    if dark_rect is not None:
+        dx, dy, dw, dh = dark_rect
+        effective_h = min(title_band_h, dh)
+        # Skip the icon column on the left of the header (item icon + quantity
+        # multiplier). The icon is drawn as an ~square glyph; dropping 1/3 of
+        # the panel width removes the icon zone while leaving the item name.
+        icon_skip = min(effective_h, dw // 3)
+        title_band_bgr = context_crop_bgr[dy : dy + effective_h, dx + icon_skip : dx + dw]
+    else:
+        title_band_bgr = context_crop_bgr[:title_band_h, :]
     if title_band_bgr.size > 0:
         # Preserve the global OCR cache so the infobox path is unaffected.
         _saved_hash, _saved_result = _last_roi_hash, _last_ocr_result
         try:
-            title_result = ocr_title_strip(title_band_bgr, use_fallback_psm=use_fallback_psm, restrict_otsu_to_left=True)
+            title_result = ocr_title_strip(
+                title_band_bgr, use_fallback_psm=use_fallback_psm, restrict_otsu_to_left=True
+            )
         finally:
             # Restore cache — context-menu title strips must not evict infobox
             # cache entries even if ocr_title_strip raises.
