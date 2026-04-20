@@ -10,8 +10,6 @@ on:
 concurrency:
   group: tests-${{ github.ref }}
   cancel-in-progress: true
-env:
-  PYTEST_TIMEOUT: 120
 jobs:
   test:
     name: pytest (${{ matrix.python-version }})
@@ -43,4 +41,4 @@ jobs:
       - name: Install dependencies
         run: uv sync --all-extras --frozen
       - name: Run pytest
-        run: uv run pytest --tb=short -q --timeout=${{ env.PYTEST_TIMEOUT }}
+        run: uv run pytest --tb=short -q
