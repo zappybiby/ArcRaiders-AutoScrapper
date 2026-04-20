@@ -109,14 +109,12 @@ def resolve_active_quests(
         by_name_match = by_name.get(_normalize_quest_name(entry))
         found = by_id_match or by_name_match
         if found:
-            resolved.append(
-                {
-                    "id": found.get("id"),
-                    "name": found.get("name"),
-                    "trader": found.get("trader"),
-                    "index": found.get("index"),
-                }
-            )
+            resolved.append({
+                "id": found.get("id"),
+                "name": found.get("name"),
+                "trader": found.get("trader"),
+                "index": found.get("index"),
+            })
         else:
             missing.append(entry)
 

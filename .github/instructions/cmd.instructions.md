@@ -1,6 +1,6 @@
 ---
+
 applyTo: "**/*.{bat,cmd}"
----
 
 # CMD/Batch Scripting Standards
 
@@ -29,7 +29,6 @@ setlocal enableextensions
 
 </Standards>
 
-```batch
 :: Subroutine with parameters
 call :process_file "input.txt"
 goto :eof
@@ -39,7 +38,6 @@ set "filename=%~1"
 set "fullpath=%~f1"
 echo Processing: %fullpath%
 exit /b 0
-```
 
 <Limitations>
 

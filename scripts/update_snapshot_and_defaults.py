@@ -218,15 +218,13 @@ def _update_dry_run(source_data_dir: Path) -> dict:
 
         target_paths = [REPO_ROOT / relative for relative in TARGET_RELATIVE_FILES]
         before_bytes = _capture_file_bytes(target_paths)
-        after_bytes = _capture_file_bytes(
-            [
-                temp_data_dir / "items.json",
-                temp_data_dir / "quests.json",
-                temp_data_dir / "quests_by_trader.json",
-                temp_data_dir / "metadata.json",
-                temp_rules_path,
-            ]
-        )
+        after_bytes = _capture_file_bytes([
+            temp_data_dir / "items.json",
+            temp_data_dir / "quests.json",
+            temp_data_dir / "quests_by_trader.json",
+            temp_data_dir / "metadata.json",
+            temp_rules_path,
+        ])
         mapped_after = {
             target_paths[0]: after_bytes[temp_data_dir / "items.json"],
             target_paths[1]: after_bytes[temp_data_dir / "quests.json"],

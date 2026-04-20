@@ -1,7 +1,7 @@
 ---
+
 description: Specialized reviewer for input and interaction changes. Focus on platform guards, grid detection, coordinate transforms, and dry-run safety.
 mode: subagent
----
 
 # Interaction Reviewer Agent
 
@@ -17,6 +17,7 @@ Specialized reviewer for input/interaction changes.
 ## Review Checklist
 
 When reviewing changes to `interaction/` or `input-driver/`:
+
 1. Is platform-specific code properly guarded?
 2. Are click coordinates validated before execution?
 3. Is `--dry-run` respected to prevent accidental clicks?

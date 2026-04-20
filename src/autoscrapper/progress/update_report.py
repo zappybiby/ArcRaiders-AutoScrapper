@@ -121,13 +121,11 @@ def diff_quests(before_quests: Sequence[object], after_quests: Sequence[object])
                 }
         if not changes:
             continue
-        changed.append(
-            {
-                "id": quest_id,
-                "name": after.get("name") or before.get("name"),
-                "changes": changes,
-            }
-        )
+        changed.append({
+            "id": quest_id,
+            "name": after.get("name") or before.get("name"),
+            "changes": changes,
+        })
 
     changed.sort(key=lambda entry: (str(entry.get("name") or ""), str(entry.get("id"))))
 
@@ -221,54 +219,44 @@ def diff_rules(before_payload: Mapping[str, object], after_payload: Mapping[str,
         if before_value != after_value:
             change = {"before": before_value, "after": after_value}
             changes["value"] = change
-            value_changed.append(
-                {
-                    "id": after_id_or_before,
-                    "name": after_name_or_before,
-                    **change,
-                }
-            )
+            value_changed.append({
+                "id": after_id_or_before,
+                "name": after_name_or_before,
+                **change,
+            })
 
         if before_action != after_action:
             change = {"before": before_action, "after": after_action}
             changes["action"] = change
-            action_changed.append(
-                {
-                    "id": after_id_or_before,
-                    "name": after_name_or_before,
-                    **change,
-                }
-            )
+            action_changed.append({
+                "id": after_id_or_before,
+                "name": after_name_or_before,
+                **change,
+            })
 
         before_analysis = before_analysis_raw if isinstance(before_analysis_raw, list) else []
         after_analysis = after_analysis_raw if isinstance(after_analysis_raw, list) else []
         if before_analysis != after_analysis:
             changes["analysis"] = {"before": before_analysis, "after": after_analysis}
-            analysis_changed.append(
-                {
-                    "id": after_id_or_before,
-                    "name": after_name_or_before,
-                }
-            )
+            analysis_changed.append({
+                "id": after_id_or_before,
+                "name": after_name_or_before,
+            })
 
         if before_name != after_name:
             change = {"before": before_name, "after": after_name}
             changes["name"] = change
-            name_changed.append(
-                {
-                    "id": after_id_or_before,
-                    **change,
-                }
-            )
+            name_changed.append({
+                "id": after_id_or_before,
+                **change,
+            })
 
         if changes:
-            modified.append(
-                {
-                    "id": after_id_or_before,
-                    "name": after_name_or_before,
-                    "changes": changes,
-                }
-            )
+            modified.append({
+                "id": after_id_or_before,
+                "name": after_name_or_before,
+                "changes": changes,
+            })
 
     modified.sort(key=lambda entry: (str(entry.get("name") or ""), str(entry.get("id"))))
     value_changed.sort(key=lambda entry: (str(entry.get("name") or ""), str(entry.get("id"))))
@@ -313,14 +301,12 @@ def graph_gap_report(quests: Sequence[object], quest_graph: Mapping[str, object]
         quest_name = _normalize_quest_name(quest.get("name"))
         if not quest_name or quest_name in node_names_normalized:
             continue
-        missing_quests.append(
-            {
-                "id": quest.get("id"),
-                "name": quest.get("name"),
-                "trader": quest.get("trader"),
-                "sortOrder": quest.get("sortOrder"),
-            }
-        )
+        missing_quests.append({
+            "id": quest.get("id"),
+            "name": quest.get("name"),
+            "trader": quest.get("trader"),
+            "sortOrder": quest.get("sortOrder"),
+        })
 
     missing_quests.sort(
         key=lambda quest: (

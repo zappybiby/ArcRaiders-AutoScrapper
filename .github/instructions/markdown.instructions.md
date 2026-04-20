@@ -1,6 +1,6 @@
 ---
+
 applyTo: "**/*.md"
----
 
 # Markdown Content Standards
 

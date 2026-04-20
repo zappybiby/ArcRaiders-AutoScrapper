@@ -92,17 +92,15 @@ def _run_worker(manifest_path: Path, label: str) -> dict[str, object]:
         is_correct = result.item_name == sample.expected_name
         if is_correct:
             correct_count += 1
-        sample_reports.append(
-            {
-                "sample_id": sample.sample_id,
-                "image_path": image_path.as_posix(),
-                "expected_name": sample.expected_name,
-                "recognized_name": result.item_name,
-                "raw_item_text": result.raw_item_text,
-                "correct": is_correct,
-                "elapsed_seconds": elapsed,
-            }
-        )
+        sample_reports.append({
+            "sample_id": sample.sample_id,
+            "image_path": image_path.as_posix(),
+            "expected_name": sample.expected_name,
+            "recognized_name": result.item_name,
+            "raw_item_text": result.raw_item_text,
+            "correct": is_correct,
+            "elapsed_seconds": elapsed,
+        })
 
     sample_count = len(sample_reports)
     accuracy = (correct_count / sample_count) if sample_count else 0.0
@@ -233,23 +231,21 @@ def main() -> int:
             run_report["package_name"] = package_name
             runs.append(run_report)
         except Exception as exc:
-            runs.append(
-                {
-                    "label": label,
-                    "package_name": package_name,
-                    "sample_count": 0,
-                    "correct_count": 0,
-                    "accuracy": 0.0,
-                    "elapsed_seconds": 0.0,
-                    "backend": {
-                        "tesseract_version": "",
-                        "tessdata_dir": None,
-                        "languages": [],
-                    },
-                    "samples": [],
-                    "error": str(exc),
-                }
-            )
+            runs.append({
+                "label": label,
+                "package_name": package_name,
+                "sample_count": 0,
+                "correct_count": 0,
+                "accuracy": 0.0,
+                "elapsed_seconds": 0.0,
+                "backend": {
+                    "tesseract_version": "",
+                    "tessdata_dir": None,
+                    "languages": [],
+                },
+                "samples": [],
+                "error": str(exc),
+            })
 
     fast_report = next(
         (report for report in runs if report["label"] == "fast-eng"),

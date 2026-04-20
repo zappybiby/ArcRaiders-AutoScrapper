@@ -1,6 +1,6 @@
 ---
+
 applyTo: "**/*.{sh,bash}"
----
 
 # Bash/Shell Scripting Standards
 
@@ -15,20 +15,19 @@ applyTo: "**/*.{sh,bash}"
 
 ## Tooling
 
-| Task       | Preferred | Fallback |
-| ---------- | --------- | -------- |
-| Search     | `rg`      | `grep`   |
-| Find files | `fd`      | `find`   |
-| JSON/YAML  | `jq`/`yq` | -        |
-| Edit       | `sd`      | `sed`    |
-| List       | `eza`     | `ls`     |
-| View       | `bat`     | `cat`    |
-| Download   | `aria2c`  | `curl`   |
+Search, Preferred=`rg`, Fallback=`grep`
+Find files, Preferred=`fd`, Fallback=`find`
+JSON/YAML, Preferred=`jq`/`yq`, Fallback=-
+Edit, Preferred=`sd`, Fallback=`sed`
+List, Preferred=`eza`, Fallback=`ls`
+View, Preferred=`bat`, Fallback=`cat`
+Download, Preferred=`aria2c`, Fallback=`curl`
 
 ## Template
 
 ```bash
 #!/usr/bin/env bash
+
 # shellcheck enable=all shell=bash source-path=SCRIPTDIR
 set -euo pipefail; shopt -s nullglob globstar
 IFS=$'\n\t' LC_ALL=C
@@ -43,8 +42,8 @@ cleanup(){ [[ -n "${TEMP_DIR:-}" && -d "$TEMP_DIR" ]] && rm -rf "$TEMP_DIR"; }
 trap cleanup EXIT
 
 main(){
-    # Main logic here
-    :
+ # Main logic here
+ :
 }
 main "$@"
 ```
@@ -61,34 +60,32 @@ main "$@"
 
 </Standards>
 
-## Key Patterns
+## Process substitution preserves variable scope
 
-```bash
-# Process substitution preserves variable scope
 while IFS= read -r line; do
-    count=$((count + 1))
+ count=$((count + 1))
 done < <(command | filter)
 
-# Array from file
+## Array from file
+
 mapfile -t lines < "$file"
 
-# Precompile patterns
+## Precompile patterns
+
 pattern="^[0-9]{3}-[0-9]{4}$"
 for item in "${items[@]}"; do
-    [[ "$item" =~ $pattern ]] && echo "Valid"
+ ["$item" =~ $pattern] && echo "Valid"
 done
 
-# Temp files with cleanup
+## Temp files with cleanup
+
 TEMP_DIR="$(mktemp -d)"
-```
 
-## Linting
+### Linting
 
-```bash
 shellcheck script.sh
 shellharden script.sh --replace
 shfmt -i 2 -bn -ci -s -w script.sh
-```
 
 <Limitations>
 

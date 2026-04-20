@@ -141,21 +141,17 @@ def _collect_window_bounds_warnings(
 
     startup_events: list[tuple[str, str]] = []
     if win_left < mon_left or win_top < mon_top or win_right > mon_right or win_bottom > mon_bottom:
-        startup_events.append(
-            (
-                "Target window extends beyond its display bounds; ensure it is fully visible.",
-                "yellow",
-            )
-        )
+        startup_events.append((
+            "Target window extends beyond its display bounds; ensure it is fully visible.",
+            "yellow",
+        ))
     elif not win_is_full_monitor and (
         win_left < work_left or win_top < work_top or win_right > work_right or win_bottom > work_bottom
     ):
-        startup_events.append(
-            (
-                "Target window overlaps the OS taskbar/dock area; ensure no UI is obscured.",
-                "yellow",
-            )
-        )
+        startup_events.append((
+            "Target window overlaps the OS taskbar/dock area; ensure no UI is obscured.",
+            "yellow",
+        ))
 
     return startup_events
 
@@ -305,9 +301,10 @@ def scan_inventory(
                             if normalized_name:
                                 actions[normalized_name] = [decision]
                         if progress_impl is not None:
-                            startup_events.append(
-                                (f"API: Loaded {len(api_decisions)} decisions from ArcTracker", "green")
-                            )
+                            startup_events.append((
+                                f"API: Loaded {len(api_decisions)} decisions from ArcTracker",
+                                "green",
+                            ))
                     else:
                         if progress_impl is not None:
                             startup_events.append(("API: No decisions available, using local rules only", "yellow"))

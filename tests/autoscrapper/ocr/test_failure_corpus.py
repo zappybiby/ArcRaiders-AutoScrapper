@@ -127,18 +127,16 @@ def test_coerce_sample_invalid() -> None:
 
 
 def test_coerce_sample_defaults_old_unlabeled_rows_to_pending() -> None:
-    sample = _coerce_sample(
-        {
-            "sample_id": "123",
-            "captured_at": "2023-01-01T00:00:00Z",
-            "outcome": "SKIP_UNLISTED",
-            "source": "infobox",
-            "raw_text": "raw",
-            "cleaned_text": "clean",
-            "chosen_name": "chosen",
-            "matched_name": None,
-        }
-    )
+    sample = _coerce_sample({
+        "sample_id": "123",
+        "captured_at": "2023-01-01T00:00:00Z",
+        "outcome": "SKIP_UNLISTED",
+        "source": "infobox",
+        "raw_text": "raw",
+        "cleaned_text": "clean",
+        "chosen_name": "chosen",
+        "matched_name": None,
+    })
     assert sample is not None
     assert sample.schema_version == 1
     assert sample.label_status == "pending"
@@ -147,19 +145,17 @@ def test_coerce_sample_defaults_old_unlabeled_rows_to_pending() -> None:
 
 
 def test_coerce_sample_infers_match_label_for_old_fixed_corpus_rows() -> None:
-    sample = _coerce_sample(
-        {
-            "sample_id": "123",
-            "captured_at": "2023-01-01T00:00:00Z",
-            "outcome": "SKIP_UNLISTED",
-            "source": "infobox",
-            "raw_text": "raw",
-            "cleaned_text": "clean",
-            "chosen_name": "chosen",
-            "matched_name": "Arc Alloy",
-            "expected_name": "Arc Alloy",
-        }
-    )
+    sample = _coerce_sample({
+        "sample_id": "123",
+        "captured_at": "2023-01-01T00:00:00Z",
+        "outcome": "SKIP_UNLISTED",
+        "source": "infobox",
+        "raw_text": "raw",
+        "cleaned_text": "clean",
+        "chosen_name": "chosen",
+        "matched_name": "Arc Alloy",
+        "expected_name": "Arc Alloy",
+    })
     assert sample is not None
     assert sample.label_status == "match"
     assert sample.expected_match_status == "match"
@@ -167,20 +163,18 @@ def test_coerce_sample_infers_match_label_for_old_fixed_corpus_rows() -> None:
 
 
 def test_coerce_sample_no_match_label_is_authoritative() -> None:
-    sample = _coerce_sample(
-        {
-            "schema_version": OCR_FAILURE_SAMPLE_SCHEMA_VERSION,
-            "sample_id": "123",
-            "captured_at": "2023-01-01T00:00:00Z",
-            "outcome": "SKIP_UNLISTED",
-            "source": "context_menu",
-            "raw_text": "Unavailable",
-            "cleaned_text": "Unavailable",
-            "chosen_name": "Unavailable",
-            "matched_name": None,
-            "label_status": "no_match",
-        }
-    )
+    sample = _coerce_sample({
+        "schema_version": OCR_FAILURE_SAMPLE_SCHEMA_VERSION,
+        "sample_id": "123",
+        "captured_at": "2023-01-01T00:00:00Z",
+        "outcome": "SKIP_UNLISTED",
+        "source": "context_menu",
+        "raw_text": "Unavailable",
+        "cleaned_text": "Unavailable",
+        "chosen_name": "Unavailable",
+        "matched_name": None,
+        "label_status": "no_match",
+    })
     assert sample is not None
     assert sample.is_authoritative is True
     assert sample.expected_match_status == "no_match"
@@ -188,20 +182,18 @@ def test_coerce_sample_no_match_label_is_authoritative() -> None:
 
 
 def test_coerce_sample_rejects_match_label_without_expected_name() -> None:
-    sample = _coerce_sample(
-        {
-            "schema_version": OCR_FAILURE_SAMPLE_SCHEMA_VERSION,
-            "sample_id": "123",
-            "captured_at": "2023-01-01T00:00:00Z",
-            "outcome": "SKIP_UNLISTED",
-            "source": "context_menu",
-            "raw_text": "Arc Alloy",
-            "cleaned_text": "Arc Alloy",
-            "chosen_name": "Arc Alloy",
-            "matched_name": "Arc Alloy",
-            "label_status": "match",
-        }
-    )
+    sample = _coerce_sample({
+        "schema_version": OCR_FAILURE_SAMPLE_SCHEMA_VERSION,
+        "sample_id": "123",
+        "captured_at": "2023-01-01T00:00:00Z",
+        "outcome": "SKIP_UNLISTED",
+        "source": "context_menu",
+        "raw_text": "Arc Alloy",
+        "cleaned_text": "Arc Alloy",
+        "chosen_name": "Arc Alloy",
+        "matched_name": "Arc Alloy",
+        "label_status": "match",
+    })
     assert sample is None
 
 

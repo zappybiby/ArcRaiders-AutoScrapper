@@ -1,6 +1,6 @@
 ---
+
 applyTo: "**"
----
 
 ## Response style
 

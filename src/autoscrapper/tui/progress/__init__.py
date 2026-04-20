@@ -574,13 +574,11 @@ class ProgressSummaryScreen(ProgressScreen):
         completed_set = set(self.inferred_completed_ids)
         inferred_requirement_completed = [entry.name for entry in requirement_entries if entry.id in completed_set]
         inferred_requirement_remaining = [entry.name for entry in requirement_entries if entry.id not in completed_set]
-        lines.extend(
-            [
-                "",
-                f"Inferred completed quests: {len(self.inferred_completed_ids)} / {len(self.state.quest_entries)}",
-                f"Requirement quests completed: {len(inferred_requirement_completed)} / {len(requirement_entries)}",
-            ]
-        )
+        lines.extend([
+            "",
+            f"Inferred completed quests: {len(self.inferred_completed_ids)} / {len(self.state.quest_entries)}",
+            f"Requirement quests completed: {len(inferred_requirement_completed)} / {len(requirement_entries)}",
+        ])
         if inferred_requirement_remaining:
             lines.append("Requirement quests still incomplete:")
             lines.extend(f"- {name}" for name in inferred_requirement_remaining)

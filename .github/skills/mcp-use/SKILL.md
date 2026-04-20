@@ -1,7 +1,7 @@
 ---
+
 name: mcp-use
 description: Proactively discover and use MCP servers and MCP tools before native CLI tools. Use when searching, reading, editing, refactoring, planning, or researching so Copilot gets higher-signal results with less context waste
----
 
 # MCP Use
 
@@ -81,72 +81,38 @@ rg "TODO|FIXME" .
 
 Prefer:
 
-```text
 ast-grep/find_code -> search for syntax-aware patterns in the target language
 fast-filesystem/fast_read_file -> inspect only the matching file ranges
-```
 
 ### Example: perform a safe refactor
 
-Instead of:
-
-```text
 rg "oldFunction" . && sed -i ...
-```
 
-Prefer:
-
-```text
 ast-grep/find_code -> locate exact call sites
 ast-grep/rewrite_code -> apply the structural replacement
 ast-grep/scan-code -> check for follow-up issues
-```
 
 ### Example: edit a tracked file
 
-Instead of:
-
-```text
 cat file && python script.py && mv tmp file
-```
 
-Prefer:
-
-```text
 fast-filesystem/fast_read_file -> read the current content
 fast-filesystem/fast_edit_block -> patch a precise block
 fast-filesystem/fast_write_file -> write a new file when needed
-```
 
 ### Example: research a library or pattern
 
-Instead of:
-
-```text
 generic web search + manual browsing
-```
 
-Prefer:
-
-```text
 exa/web_search_advanced_exa -> find current docs/articles
 octocode/githubSearchCode -> inspect real GitHub usage patterns
 sequential-thinking/sequentialthinking -> compare options before implementation
-```
 
 ### Example: coordinate multiple file operations
 
-Instead of:
-
-```text
 cp file1 file2 && mv file3 dir/ && rm file4
-```
 
-Prefer:
-
-```text
 fast-filesystem/fast_batch_file_operations -> execute the full batch safely
-```
 
 ## Decision Rule
 

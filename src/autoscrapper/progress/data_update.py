@@ -571,13 +571,11 @@ def _build_quests_by_trader(quests: list[dict]) -> dict[str, list[dict]]:
     by_trader: dict[str, list[dict]] = {}
     for quest in quests:
         trader = quest.get("trader") or "Unknown"
-        by_trader.setdefault(trader, []).append(
-            {
-                "id": quest.get("id"),
-                "name": quest.get("name"),
-                "sortOrder": quest.get("sortOrder", 0),
-            }
-        )
+        by_trader.setdefault(trader, []).append({
+            "id": quest.get("id"),
+            "name": quest.get("name"),
+            "sortOrder": quest.get("sortOrder", 0),
+        })
 
     for trader, quests_list in by_trader.items():
         quests_list.sort(key=lambda q: q.get("sortOrder") or 0)

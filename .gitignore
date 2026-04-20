@@ -211,3 +211,4 @@ artifacts/
 
 .token-pilot/
 .kilocode/package-lock.json
+memory/

@@ -187,12 +187,10 @@ class ArcTrackerClient:
 
         if requests is not None:
             self._session = requests.Session()
-            self._session.headers.update(
-                {
-                    "Accept": "application/json",
-                    "User-Agent": "ArcRaiders-AutoScrapper/0.2.0",
-                }
-            )
+            self._session.headers.update({
+                "Accept": "application/json",
+                "User-Agent": "ArcRaiders-AutoScrapper/0.2.0",
+            })
 
     def _wait_for_rate_limit(self) -> None:
         """Pre-emptively throttle requests to respect rate limits."""
@@ -655,7 +653,7 @@ class APIOrchestrator:
 
 
 def create_client_from_config(
-    config: dict[str, Any] | "ApiSettings" | None = None,
+    config: dict[str, Any] | ApiSettings | None = None,
 ) -> ArcTrackerClient:
     """Create API client from config dict or ApiSettings (loaded from settings)."""
     if config is None:

@@ -13,6 +13,7 @@ Use this file for startup guidance only. Keep detailed repo rules in
 - Prefer MCP tools and repo skills before broad shell or web searches.
 - Keep edits minimal, targeted, and repo-specific.
 - Do not hand-edit generated progress data or
+
   `src/autoscrapper/items/items_rules.default.json`.
 
 ## Core commands
@@ -32,7 +33,9 @@ rules, or config code.
 
 - `initialize_ocr()` must run on the main thread before scan threads start.
 - Keep capture-space image coordinates separate from screen-space input
+
   coordinates.
+
 - Keep OCR fuzzy matching aligned with rule lookup thresholds.
 - Bump `CONFIG_VERSION` and add a migration when persisted config fields change.
 

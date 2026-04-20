@@ -267,15 +267,13 @@ def _synthetic_grid(
             iy1 = y + pad_y
             ix2 = x + w - pad_x
             iy2 = y + h - pad_y
-            cells.append(
-                {
-                    "x": x,
-                    "y": y,
-                    "w": w,
-                    "h": h,
-                    "safe_bounds": (ix1, iy1, ix2, iy2),
-                }
-            )
+            cells.append({
+                "x": x,
+                "y": y,
+                "w": w,
+                "h": h,
+                "safe_bounds": (ix1, iy1, ix2, iy2),
+            })
     return cells
 
 
@@ -348,15 +346,13 @@ def _detect_cells_by_contours(inv_bgr: np.ndarray, cell_size: int) -> list[dict]
         if ix2 <= ix1 or iy2 <= iy1:
             continue
 
-        cells.append(
-            {
-                "x": x1,
-                "y": y1,
-                "w": vis_w,
-                "h": vis_h,
-                "safe_bounds": (ix1, iy1, ix2, iy2),
-            }
-        )
+        cells.append({
+            "x": x1,
+            "y": y1,
+            "w": vis_w,
+            "h": vis_h,
+            "safe_bounds": (ix1, iy1, ix2, iy2),
+        })
 
     # Sort row-major: group by row (y divided by cell_size), then by x within row
     # This ensures left-to-right order even if y values vary slightly

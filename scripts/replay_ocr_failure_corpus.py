@@ -49,9 +49,9 @@ def _build_parser() -> argparse.ArgumentParser:
 
 def _default_thresholds() -> list[int]:
     current = DEFAULT_ITEM_NAME_MATCH_THRESHOLD
-    return sorted(
-        {value for value in (current + offset for offset in CANDIDATE_THRESHOLD_OFFSETS) if 0 <= value <= 100}
-    )
+    return sorted({
+        value for value in (current + offset for offset in CANDIDATE_THRESHOLD_OFFSETS) if 0 <= value <= 100
+    })
 
 
 def _authoritative_samples(samples: list[OcrFailureSample]) -> list[OcrFailureSample]:
@@ -67,22 +67,20 @@ def _evaluate_threshold(samples: list[OcrFailureSample], threshold: int) -> dict
         is_correct = (expects_no_match and result.matched_name is None) or result.matched_name == sample.expected_name
         if is_correct:
             correct_count += 1
-        sample_reports.append(
-            {
-                "sample_id": sample.sample_id,
-                "source": sample.source,
-                "raw_text": sample.raw_text,
-                "cleaned_text": result.cleaned_text,
-                "captured_cleaned_text": sample.cleaned_text,
-                "label_status": sample.label_status,
-                "expected_status": sample.expected_match_status,
-                "expected": sample.expected_display,
-                "match_status": "matched" if result.matched_name is not None else "no_match",
-                "chosen_name": result.chosen_name,
-                "matched_name": result.matched_name,
-                "correct": is_correct,
-            }
-        )
+        sample_reports.append({
+            "sample_id": sample.sample_id,
+            "source": sample.source,
+            "raw_text": sample.raw_text,
+            "cleaned_text": result.cleaned_text,
+            "captured_cleaned_text": sample.cleaned_text,
+            "label_status": sample.label_status,
+            "expected_status": sample.expected_match_status,
+            "expected": sample.expected_display,
+            "match_status": "matched" if result.matched_name is not None else "no_match",
+            "chosen_name": result.chosen_name,
+            "matched_name": result.matched_name,
+            "correct": is_correct,
+        })
 
     sample_count = len(samples)
     passes = sample_count > 0 and correct_count == sample_count

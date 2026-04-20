@@ -1,6 +1,6 @@
 ---
+
 applyTo: "**/*.{ps1,psm1,psd1}"
----
 
 # PowerShell Scripting Standards
 
@@ -16,9 +16,9 @@ applyTo: "**/*.{ps1,psm1,psd1}"
 
 ```powershell
 param(
-    [Parameter(Mandatory=$true)]
-    [string]$Path,
-    [int]$Timeout = 30
+ [Parameter(Mandatory=$true)]
+ [string]$Path,
+ [int]$Timeout = 30
 )
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
@@ -33,17 +33,15 @@ $ErrorActionPreference = "Stop"
 
 </Standards>
 
-```powershell
 try {
-    $result = Get-Item $Path -ErrorAction Stop
+ $result = Get-Item $Path -ErrorAction Stop
 } catch [ItemNotFoundException] {
-    Write-Error "Item not found: $Path"
-    exit 1
+ Write-Error "Item not found: $Path"
+ exit 1
 } catch {
-    Write-Error "Unexpected error: $_"
-    exit 2
+ Write-Error "Unexpected error: $_"
+ exit 2
 }
-```
 
 **Linting**: `Invoke-ScriptAnalyzer -Path script.ps1`
 **Testing**: `Invoke-Pester -Path tests/`

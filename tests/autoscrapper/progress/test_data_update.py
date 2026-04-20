@@ -75,31 +75,27 @@ def test_load_raidtheory_fallback_data_maps_archive_entries():
     with zipfile.ZipFile(archive_buffer, "w") as archive:
         archive.writestr(
             "arcraiders-data-main/items/metal_parts.json",
-            orjson.dumps(
-                {
-                    "id": "metal_parts",
-                    "name": {"en": "Metal Parts"},
-                    "type": "Basic Material",
-                    "rarity": "Common",
-                    "value": 100,
-                    "weightKg": 0.25,
-                    "stackSize": 5,
-                    "recyclesInto": {"wires": 2},
-                }
-            ),
+            orjson.dumps({
+                "id": "metal_parts",
+                "name": {"en": "Metal Parts"},
+                "type": "Basic Material",
+                "rarity": "Common",
+                "value": 100,
+                "weightKg": 0.25,
+                "stackSize": 5,
+                "recyclesInto": {"wires": 2},
+            }),
         )
         archive.writestr(
             "arcraiders-data-main/quests/a_bad_feeling.json",
-            orjson.dumps(
-                {
-                    "id": "a_bad_feeling",
-                    "name": {"en": "A Bad Feeling"},
-                    "trader": "Celeste",
-                    "objectives": [{"en": "Search an ARC Probe"}],
-                    "rewardItemIds": [{"itemId": "metal_parts", "quantity": 3}],
-                    "xp": 500,
-                }
-            ),
+            orjson.dumps({
+                "id": "a_bad_feeling",
+                "name": {"en": "A Bad Feeling"},
+                "trader": "Celeste",
+                "objectives": [{"en": "Search an ARC Probe"}],
+                "rewardItemIds": [{"itemId": "metal_parts", "quantity": 3}],
+                "xp": 500,
+            }),
         )
 
     with mock.patch(

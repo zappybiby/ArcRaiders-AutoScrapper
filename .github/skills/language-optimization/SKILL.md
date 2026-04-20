@@ -1,12 +1,15 @@
 ---
+
 name: language-optimization
 description: Optimize code for readability, performance, maintainability, and security across Python. Use when asked to improve code quality, optimize performance, add type safety, or refactor for idioms
----
+
 # Language Optimization
+
 Optimize code across languages following universal principles and language-specific idioms.
 <instructions>
 
 ## Workflow
+
 Think through optimization systematically:
 
 1. **Analyze**: Identify issues - lint errors, type errors, performance bottlenecks, security gaps
@@ -15,18 +18,18 @@ Think through optimization systematically:
 4. **Verify**: All tests pass, metrics improved, no regressions
 
 ## Universal Principles
+
 <principles>
 
-| Principle | Rule                                                 |
-| --------- | ---------------------------------------------------- |
-| KISS      | Simple over clever; readability first                |
-| YAGNI     | Don't build before needed; no premature optimization |
-| DRY       | Extract repeated logic; single source of truth       |
-| Fail Fast | Validate early; specific error messages              |
-| Security  | No secrets in code; validate at boundaries           |
+- KISS: Simple over clever; readability first
+- YAGNI: Don't build before needed; no premature optimization
+- DRY: Extract repeated logic; single source of truth
+- Fail Fast: Validate early; specific error messages
+- Security: No secrets in code; validate at boundaries
 </principles>
 
 ## Optimization Targets (Priority Order)
+
 1. **Correctness**: Fix bugs, handle edge cases
 2. **Type safety**: Add/improve type annotations
 3. **Readability**: Clear names, reduce nesting, simplify logic
@@ -36,6 +39,7 @@ Think through optimization systematically:
 <language_specific>
 
 ## Python
+
 - Standards: `.github/instructions/python.instructions.md`
 - Always: type hints on public functions, `T | None` not `Optional[T]`
 - Tools: `ruff` (lint+format), `mypy` (types), `pytest` (tests)
@@ -44,15 +48,15 @@ Think through optimization systematically:
 <performance_patterns>
 
 ## Common Optimizations
-| Pattern   | Before                | After                     |
-| --------- | --------------------- | ------------------------- |
-| Algorithm | O(n^2) nested loops   | O(n) hash map lookup      |
-| Caching   | Recompute every call  | Memoize/cache result      |
-| Lazy eval | Build full list       | Generator/iterator        |
-| Batching  | N individual calls    | Single batch operation    |
-| Built-ins | Custom implementation | Standard library function |
+
+Algorithm, Before=O(n^2) nested loops, After=O(n) hash map lookup
+Caching, Before=Recompute every call, After=Memoize/cache result
+Lazy eval, Before=Build full list, After=Generator/iterator
+Batching, Before=N individual calls, After=Single batch operation
+Built-ins, Before=Custom implementation, After=Standard library function
 
 ## Performance Workflow
+
 1. Set baseline benchmark
 2. Profile to find bottleneck (not guess)
 3. Apply targeted optimization
@@ -62,25 +66,28 @@ Think through optimization systematically:
 <examples>
 
 ### Python: Add type safety
+
 ```python
+
 # Before
 def get_user(id, include_posts=False):
-    user = db.find(id)
-    if include_posts:
-        user['posts'] = db.posts(id)
-    return user
+ user = db.find(id)
+ if include_posts:
+ user['posts'] = db.posts(id)
+ return user
+
 # After
 def get_user(user_id: int, *, include_posts: bool = False) -> User | None:
-    user = db.find(user_id)
-    if user is None:
-        return None
-    if include_posts:
-        user.posts = db.posts(user_id)
-    return user
+ user = db.find(user_id)
+ if user is None:
+ return None
+ user.posts = db.posts(user_id)
 ```
+
 </examples>
 
 ## Success Criteria
+
 Optimization is complete when:
 
 - All linter/type checks pass with zero warnings

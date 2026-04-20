@@ -284,19 +284,19 @@ def test_coerce_non_negative_int():
 
 def _assert_reset_settings(reset_func, section_name: str, expected_settings: object) -> None:
     with (
-        patch("autoscrapper.config._load_config_dict", return_value={"version": 1, "some_other_key": "value"}) as mock_load,
+        patch(
+            "autoscrapper.config._load_config_dict", return_value={"version": 1, "some_other_key": "value"}
+        ) as mock_load,
         patch("autoscrapper.config._save_config_dict") as mock_save,
     ):
         reset_func()
 
     mock_load.assert_called_once()
-    mock_save.assert_called_once_with(
-        {
-            "version": CONFIG_VERSION,
-            "some_other_key": "value",
-            section_name: asdict(expected_settings),
-        }
-    )
+    mock_save.assert_called_once_with({
+        "version": CONFIG_VERSION,
+        "some_other_key": "value",
+        section_name: asdict(expected_settings),
+    })
 
 
 def test_reset_scan_settings():

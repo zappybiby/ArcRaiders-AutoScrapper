@@ -117,4 +117,6 @@ repos:
     rev: v0.1.76
     hooks:
       - id: rumdl
+        exclude: '^(\.claude|\.kilo|\.opencode|\.github/(skills|instructions|copilot))/'
       - id: rumdl-fmt
+        exclude: '^(\.claude|\.kilo|\.opencode|\.github/(skills|instructions|copilot))/'

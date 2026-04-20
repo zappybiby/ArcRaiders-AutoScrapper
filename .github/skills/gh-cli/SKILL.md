@@ -1,7 +1,7 @@
 ---
+
 name: gh-cli
 description: Routes GitHub tasks to the right `gh` or `git` command family. Use when working with repositories, issues, pull requests, Actions, releases, or GitHub search from the terminal.
----
 
 # GitHub CLI (gh)
 
@@ -13,16 +13,14 @@ Use `gh` for GitHub-hosted state and `git` for local branch/history work.
 
 ## When to use
 
-| Need                                | Command family                   |
-| ----------------------------------- | -------------------------------- |
-| Inspect or edit a repository        | `gh repo ...`                    |
-| Work with issues                    | `gh issue ...`                   |
-| Work with pull requests             | `gh pr ...`                      |
-| Investigate CI or trigger workflows | `gh run ...` / `gh workflow ...` |
-| Manage releases                     | `gh release ...`                 |
-| Search GitHub                       | `gh search ...`                  |
-| Fall back to raw APIs               | `gh api ...`                     |
-| Local branch/history work           | `git ...`                        |
+- Inspect or edit a repository: `gh repo ...`
+- Work with issues: `gh issue ...`
+- Work with pull requests: `gh pr ...`
+- Investigate CI or trigger workflows: `gh run ...` / `gh workflow ...`
+- Manage releases: `gh release ...`
+- Search GitHub: `gh search ...`
+- Fall back to raw APIs: `gh api ...`
+- Local branch/history work: `git ...`
 
 ## Workflow
 
@@ -33,13 +31,11 @@ Use `gh` for GitHub-hosted state and `git` for local branch/history work.
 
 ## Common paths
 
-| Task                      | Minimal command set                                      |
-| ------------------------- | -------------------------------------------------------- |
-| Inspect a PR              | `gh pr view <number> --comments --json title,body,files` |
-| Check CI for a PR/branch  | `gh run list` -> `gh run view <run-id> --log`            |
-| Create or update an issue | `gh issue create ...` / `gh issue edit ...`              |
-| Search across GitHub      | `gh search code ...` / `gh search prs ...`               |
-| Inspect local changes     | `git status` -> `git diff` -> `git log --oneline`        |
+- Inspect a PR: `gh pr view <number> --comments --json title,body,files`
+- Check CI for a PR/branch: `gh run list` -> `gh run view <run-id> --log`
+- Create or update an issue: `gh issue create ...` / `gh issue edit ...`
+- Search across GitHub: `gh search code ...` / `gh search prs ...`
+- Inspect local changes: `git status` -> `git diff` -> `git log --oneline`
 
 ## Guardrails
 
@@ -57,20 +53,14 @@ gh pr view 123 --comments --json title,body,files
 
 ### Trigger and watch a workflow
 
-```bash
 gh workflow run ci.yml --ref main
 gh run list --workflow ci.yml --limit 1 --json databaseId \
-  --jq '.[0].databaseId' | xargs gh run watch
-```
+ --jq '.[0].databaseId' | xargs gh run watch
 
 ### Search for matching pull requests
 
-```bash
 gh search prs "is:open review:required label:bugfix"
-```
 
 ## References
 
-- Manual: https://cli.github.com/manual/
-- REST API: https://docs.github.com/en/rest
-- GraphQL API: https://docs.github.com/en/graphql
+- Manual: <https://cli.github.com/manual/>, REST API: <https://docs.github.com/en/rest>, GraphQL API: <https://docs.github.com/en/graphql>

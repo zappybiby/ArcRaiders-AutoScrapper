@@ -1,0 +1,24 @@
+# rumdl configuration — relaxed rules for this project.
+# MD013 (line length) is too strict at 80 chars for agent/skill/instruction
+# files and the README. MD041 conflicts with YAML frontmatter files that don't
+# start with an H1. MD033 is needed by README for image/badge HTML.
+[MD013]
+enabled = false
+
+[MD041]
+enabled = false
+
+[MD033]
+enabled = false
+
+[MD076]
+enabled = false
+
+[MD075]
+enabled = false
+
+[MD066]
+enabled = false
+
+[MD053]
+enabled = false

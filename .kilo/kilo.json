@@ -23,7 +23,18 @@
     "openslimedit@1.0.4",
     "opencode-ignore@1.1.0",
     "@gotgenes/opencode-agent-identity@3.0.1",
-    "opencode-websearch@0.5.0"
+    "opencode-websearch@0.5.0",
+    "opencode-kcp-plugin@latest",
+    "opencode-kilo-auth@latest",
+    "github:joshuadavidthomas/opencode-agent-memory",
+    "opencode-agent-skills",
+    "opencode-beads",
+    "github:kdcokenny/opencode-background-agents",
+    "github:Opencode-DCP/opencode-dynamic-context-pruning",
+    "github:JRedeker/opencode-shell-strategy",
+    "github:VincentHardouin/opencode-snip",
+    "github:itertea/opencode-rtk-rewrite",
+    "github:spoons-and-mirrors/subtask2"
   ],
   "formatter": {
     "biome": {
@@ -36,11 +47,9 @@
     "ref-tools": {
       "type": "remote",
       "url": "https://api.ref.tools/mcp",
-      "enabled": true,
-      "headers": { "x-ref-api-key": "{env:REF_API_KEY}" },
-      "oauth": false
+      "enabled": true
     },
-    "github-mcp-server": {
+    "github": {
       "type": "remote",
       "url": "https://api.githubcopilot.com/mcp/",
       "enabled": true
@@ -54,23 +63,30 @@
       "type": "remote",
       "url": "https://mcp.exa.ai/mcp?tools=web_search_exa,web_search_advanced_exa,get_code_context_exa,crawling_exa",
       "enabled": true,
-      "headers": { "x-api-key": "{env:EXA_API_KEY}" },
-      "oauth": false
+      "headers": { "x-api-key": "{env:EXA_API_KEY}" }
     },
-    "git-mcp": {
-      "type": "remote",
-      "url": "https://gitmcp.io/Ven0m0/arc-raiders-autoscrapper",
+    "fast-filesystem": {
+      "type": "local",
+      "command": ["npx", "-y", "fast-filesystem@latest"],
       "enabled": true
     }
   },
   "lsp": {
-    "pyright": {
+    "basedpyright": {
       "command": ["basedpyright-langserver", "--stdio"],
+      "extensions": [".py", ".pyw", ".pyi"]
+    },
+    "ty": {
+      "command": ["ty", "check"],
       "extensions": [".py", ".pyw", ".pyi"]
     },
     "bash": {
       "command": ["bash-language-server", "start"],
       "extensions": [".sh", ".bash", ".zsh"]
+    },
+    "vtsls": {
+      "command": ["vtsls", "--stdio"],
+      "extensions": [".ts", ".tsx", ".js", ".jsx", ".mjs", ".mts"]
     },
     "yaml-ls": {
       "command": ["yaml-language-server", "--stdio"],
