@@ -1,0 +1,83 @@
+# .kilocodeignore — paths Kilo Code MUST NOT access via any tool
+# Syntax: gitignore patterns. Use ! to un-ignore.
+
+# ─── Secrets & Credentials ──────────────────────────────────────────────────
+.gitconfig
+.gitconfig.local
+.github-personal-access-token
+*.env
+*.env.*
+token
+*credentials*
+*secret*
+*.key
+*.pem
+*.pfx
+*.crt
+*.p12
+.ssh/*
+!.ssh/config
+.gnupg/
+.config/gh/hosts.yml
+user/.dotfiles/config/powershell/local.ps1
+
+# ─── Build Output & Generated Files ─────────────────────────────────────────
+build/
+dist/
+target/
+[Dd]ebug/
+[Rr]elease/
+[Oo]bj/
+[Oo]ut/
+artifacts/
+*.min.ps1
+*.minified.ps1
+
+# ─── Lock Files (no AI value) ────────────────────────────────────────────────
+*.lock
+*.lck
+/package-lock.json
+
+# ─── Large Binary / Cache Dirs ───────────────────────────────────────────────
+.cache/
+.nv/ComputeCache/
+node_modules/
+__pycache__/
+.ruff_cache/
+.cargo/
+.rustup/
+
+# ─── OS / Editor Noise ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.bak
+*.tmp
+*.log
+*.log.*
+.vs/
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# ─── User XDG Dirs (not repo content) ────────────────────────────────────────
+Desktop/
+Documents/
+Downloads/
+Music/
+Pictures/
+Videos/
+
+# ─── CI Reports ──────────────────────────────────────────────────────────────
+megalinter-reports/
+results.sarif
+github-step-summary.md
+
+# execute_command restriction
+# The following shell commands MUST NOT be run against blocked paths above,
+# as execute_command bypasses read_file restrictions:
+#   cat, head, tail, sed, awk, less, more, grep, rg, strings
+# Never: cat .gitconfig | ..., grep -r token .ssh/, etc.
