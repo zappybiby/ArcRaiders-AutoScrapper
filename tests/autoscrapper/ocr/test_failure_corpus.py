@@ -10,6 +10,7 @@ import orjson
 import pytest
 
 from autoscrapper.ocr.failure_corpus import (
+    OcrFailureLabelStatus,
     CorpusPaths,
     OCR_FAILURE_SAMPLE_SCHEMA_VERSION,
     OcrFailureSample,
@@ -417,3 +418,28 @@ def test_resolve_image_path_traversal(tmp_path: Path) -> None:
 
         resolved = resolve_image_path(sample, manifest_path=manifest_path)
         assert resolved is None
+
+
+@pytest.mark.parametrize(
+    ("label_status", "expected"),
+    [
+        ("match", True),
+        ("no_match", True),
+        ("pending", False),
+        ("ambiguous", False),
+    ],
+)
+def test_ocr_failure_sample_is_authoritative(label_status: OcrFailureLabelStatus, expected: bool) -> None:
+    sample = OcrFailureSample(
+        schema_version=OCR_FAILURE_SAMPLE_SCHEMA_VERSION,
+        sample_id="123",
+        captured_at="2023-01-01T00:00:00Z",
+        outcome="SKIP",
+        source="infobox",
+        raw_text="raw",
+        cleaned_text="clean",
+        chosen_name="chosen",
+        matched_name=None,
+        label_status=label_status,
+    )
+    assert sample.is_authoritative is expected
