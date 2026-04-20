@@ -1,6 +1,6 @@
 ---
 name: failure-to-fix
-description: End-to-end scan failure pipeline — diagnose, identify root cause, fix, corpus replay, verify.
+description: Use when user wants to End-to-end scan failure pipeline — diagnose, identify root cause, fix, corpus replay, verify.
 ---
 
 Use when a scan produces wrong actions, misread item names, or crashes. Chains diagnose → fix → validate without manual hand-offs.

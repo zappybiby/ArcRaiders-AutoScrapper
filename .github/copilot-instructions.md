@@ -1,46 +1,44 @@
-# Arc Raiders AutoScrapper
-
-Canonical repo guidance lives in `AGENTS.md`. Keep `CLAUDE.md` as a
-symlink to that file.
+Arc Raiders AutoScrapper uses Python 3.13, `uv`, Textual, Tesseract OCR,
+OpenCV, screen capture, and optional desktop input automation. Start with
+`/home/runner/work/arc-raiders-autoscrapper/arc-raiders-autoscrapper/AGENTS.md`
+for the full repo map, validation rules, and invariants.
 
 ## Start here
 
-- Read `AGENTS.md` first for the repo map, invariants, and validation rules.
-- Use `mcp-use` and `language-optimization` by default; add
-  `codebase-index`, `workflow-development`, `docs-writer`, or `update-data`
-  when the task matches.
-- Prefer MCP tools such as `octocode`, `exa`, `ref-tools`, and `gh_grep`
-  before broad shell or web searches.
-- Keep edits minimal and avoid duplicating large rule blocks outside
-  `AGENTS.md`.
+Use this file for startup guidance only. Keep detailed repo rules in
+`AGENTS.md`, and keep path-specific instructions in
+`.github/instructions/*.instructions.md`.
 
-## Working norms
+- Keep `CLAUDE.md` as a symlink to `AGENTS.md`.
+- Prefer MCP tools and repo skills before broad shell or web searches.
+- Keep edits minimal, targeted, and repo-specific.
+- Do not hand-edit generated progress data or
+  `src/autoscrapper/items/items_rules.default.json`.
 
-- Runtime: Python 3.13 with `uv`; prefer `python3 -m uv ...` in automation.
-- Validate Python changes with `python3 -m uv run ruff check src/ tests/ scripts/`,
-  `python3 -m uv run basedpyright src/`, and `python3 -m uv run pytest`.
-- Validate workflow changes with `python3 -m uv run prek run --files .github/workflows/<name>.yml`.
-- For docs and agent-guidance changes, verify paths, links, commands, and the
-  instruction hierarchy.
+## Core commands
 
-## Repo guardrails
+Use these commands for the common setup and validation path in this repo.
 
-- Do not hand-edit `src/autoscrapper/progress/data/*` or
-  `src/autoscrapper/items/items_rules.default.json`; regenerate via
-  `scripts/update_snapshot_and_defaults.py`.
-- Bump `CONFIG_VERSION` and add a migration when persisted config fields
-  change.
+- `python3 -m uv sync`
+- `python3 -m uv run ruff check src/ tests/ scripts/`
+- `python3 -m uv run basedpyright src/`
+- `python3 -m uv run pytest`
+- `python3 -m uv run prek run --files .github/workflows/<name>.yml`
+
+## High-risk invariants
+
+Treat these rules as non-negotiable when you edit OCR, scanner, interaction,
+rules, or config code.
+
 - `initialize_ocr()` must run on the main thread before scan threads start.
 - Keep capture-space image coordinates separate from screen-space input
   coordinates.
-- Keep the OCR item-name fuzzy-match threshold aligned with rule lookup.
+- Keep OCR fuzzy matching aligned with rule lookup thresholds.
+- Bump `CONFIG_VERSION` and add a migration when persisted config fields change.
 
-## Hotspots
+## Preferred repo skills
 
-- `src/autoscrapper/ocr/`, `src/autoscrapper/interaction/`, and
-  `src/autoscrapper/scanner/` are tightly coupled.
-- `src/autoscrapper/ocr/inventory_vision.py` is the most calibration-sensitive
-  file.
-- `src/autoscrapper/core/item_actions.py`,
-  `src/autoscrapper/items/rules_store.py`, and `src/autoscrapper/config.py`
-  control core scan behavior and persisted config.
+Use these skills first when they match the task: `mcp-use`,
+`language-optimization`, `codebase-index`, `workflow-development`,
+`docs-writer`, `update-data`, `validate`, `lint-and-validate`, and
+`copilot-init`.

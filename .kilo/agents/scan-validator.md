@@ -1,4 +1,5 @@
 ---
+name: scan-validator
 description: Reviews changes to src/autoscrapper/scanner/ and src/autoscrapper/interaction/ for timing regressions, page detection bugs, action dispatch errors, and window targeting issues. Use after editing scan_loop.py or interaction code.
 mode: subagent
 ---

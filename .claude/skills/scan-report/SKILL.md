@@ -1,6 +1,6 @@
 ---
 name: scan-report
-description: Summarize the last dry-run scan output from /tmp/scan-diag.txt and classify failures by type
+description: Use when user wants to Summarize the last dry-run scan output from /tmp/scan-diag.txt and classify failures by type
 ---
 
 Read and classify the most recent dry-run output:

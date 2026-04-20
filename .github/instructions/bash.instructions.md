@@ -1,5 +1,4 @@
 ---
-description: "Bash/Shell scripting standards: safety, performance, modern idioms"
 applyTo: "**/*.{sh,bash}"
 ---
 

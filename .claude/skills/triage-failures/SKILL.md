@@ -1,6 +1,6 @@
 ---
 name: triage-failures
-description: Analyze OCR failure corpus to find systematic misreads, top error patterns, and whether unlisted items need rules added
+description: Use when user wants to Analyze OCR failure corpus to find systematic misreads, top error patterns, and whether unlisted items need rules added
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: threshold-corpus-replay
-description: Replay OCR corpus against a candidate threshold value to validate before shipping a threshold change. Use specifically for changes to fuzzy match threshold or score_cutoff. For general OCR code changes, use /ocr-corpus-replay instead.
+description: Use when user wants to Replay OCR corpus against a candidate threshold value to validate before shipping a threshold change. Use specifically for changes to fuzzy match threshold or score_cutoff. For general OCR code changes, use /ocr-corpus-replay instead.
 disable-model-invocation: true
 ---
 

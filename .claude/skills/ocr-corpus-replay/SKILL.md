@@ -1,8 +1,8 @@
 ---
 name: ocr-corpus-replay
-description: Validate OCR changes against failure corpus before shipping
+description: Use when user wants to Validate OCR changes against failure corpus before shipping
 disable-model-invocation: true
-context: same-thread
+context: fork
 ---
 
 # OCR Corpus Replay Skill

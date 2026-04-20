@@ -1,6 +1,6 @@
 ---
 name: add-rule
-description: Guided workflow for adding or editing a custom item rule in items_rules.json
+description: Use when user wants to Guided workflow for adding or editing a custom item rule in items_rules.json
 disable-model-invocation: true
 ---
 

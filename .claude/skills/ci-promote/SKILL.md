@@ -1,6 +1,6 @@
 ---
 name: ci-promote
-description: Run full validation, push branch, and open a PR with appropriate context notes
+description: Use when user wants to Run full validation, push branch, and open a PR with appropriate context notes
 disable-model-invocation: true
 ---
 

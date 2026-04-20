@@ -1,4 +1,5 @@
 ---
+name: rules-reviewer
 description: Specialized reviewer for item rules and generated data changes. Focus on custom rule precedence, generated outputs, and fuzzy-threshold consistency.
 mode: subagent
 ---

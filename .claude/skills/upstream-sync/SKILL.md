@@ -1,6 +1,6 @@
 ---
 name: upstream-sync
-description: Sync fork from upstream (zappybiby/ArcRaiders-AutoScrapper) before pushing. Run this before any push or PR creation to avoid merge conflicts.
+description: Use when user wants to Sync fork from upstream (zappybiby/ArcRaiders-AutoScrapper) before pushing. Run this before any push or PR creation to avoid merge conflicts.
 disable-model-invocation: true
 ---
 

@@ -1,14 +1,26 @@
-# AGENTS.md
+This file is the canonical repository guide for contributors and coding
+agents working in Arc Raiders AutoScrapper. Keep `CLAUDE.md` as a symlink
+to this file. Keep `.github/copilot-instructions.md` short and startup-
+focused, and put path-specific rules in `.github/instructions/*.instructions.md`.
 
-Canonical agent guide for this repository. `CLAUDE.md` is a symlink to this file.
+## Start here
 
-## Project
+Read this file before you edit code, workflows, or agent guidance. It gives
+you the repository map, the validation commands, and the rules that must stay
+true across OCR, scanner, interaction, and config changes.
 
-Arc Raiders AutoScrapper is a Python 3.13 desktop automation app for Arc Raiders inventory management.
-It uses Textual for the TUI, screen capture + OCR for item detection, rule lookup for `KEEP | SELL | RECYCLE`, and optional desktop input automation.
-It does **not** hook into the game process.
+- Use Python 3.13.
+- Prefer `python3 -m uv ...` in automation because `uv` may not be on `PATH`.
+- Keep edits minimal and repo-specific.
+- Use script-driven updates for generated assets instead of hand edits.
+- Verify every command, file path, and link you touch.
 
-## Stack
+## Project overview
+
+Arc Raiders AutoScrapper is a desktop automation app for Arc Raiders inventory
+management. It uses Textual for the TUI, screen capture plus OCR for item
+detection, rule lookup for `KEEP | SELL | RECYCLE`, and optional desktop input
+automation. It does not hook into the game process.
 
 | Area | Details |
 | --- | --- |
@@ -17,328 +29,168 @@ It does **not** hook into the game process.
 | OCR | `tesserocr`, `tessdata.fast-eng` |
 | Vision | `opencv-python-headless`, `Pillow`, `mss` |
 | Matching | `rapidfuzz` |
-| Input | `pydirectinput-rgx` (Windows), `pynput` via `linux-input` extra (Linux) |
+| Input | `pydirectinput-rgx` on Windows, `pynput` via `linux-input` on Linux |
 
-## Commands
+## Repository map
 
-Prefer `python3 -m uv ...` in automation because `uv` may not be on `PATH`.
-
-| Task | Command |
-| --- | --- |
-| Setup | `python3 -m uv sync` |
-| Setup with Linux input | `python3 -m uv sync --extra linux-input` |
-| Run TUI | `python3 -m uv run autoscrapper` |
-| Scan | `python3 -m uv run autoscrapper scan` |
-| Safe scan validation | `python3 -m uv run autoscrapper scan --dry-run` |
-| Lint | `python3 -m uv run ruff check src/ tests/` |
-| Format | `python3 -m uv run ruff format src/ tests/ scripts/` |
-| Tests | `python3 -m uv run pytest` |
-| Types | `python3 -m uv run basedpyright src/` |
-| Broad repo checks | `python3 -m uv run prek run --all-files` |
-| Refresh generated data/rules | `python3 -m uv run python scripts/update_snapshot_and_defaults.py` |
-| Dry-run data refresh | `python3 -m uv run python scripts/update_snapshot_and_defaults.py --dry-run` |
-| Qlty check | `qlty check -a` |
-| Qlty metrics | `qlty metrics -a` |
-| Qlty smells | `qlty smells -a` |
-
-## Python Tooling
-
-| Tool | Purpose | Config |
-| --- | --- | --- |
-| `basedpyright` | Type checking (replaces mypy) | `[tool.basedpyright]` in `pyproject.toml` |
-| `ty` | Secondary type checker (Astral) — catches narrowing gaps basedpyright misses | runs via PostToolUse hook |
-| `ruff` | Lint (`E`, `F` rules) + format | `[tool.ruff]` in `pyproject.toml` |
-
-- **basedpyright** runs on every `.py` edit via PostToolUse hook in `.claude/settings.json`. It logs errors to the terminal — no auto-fix.
-- **ty** also runs on every `.py` edit. Known false positives: `dict[object, object]` key narrowing after `isinstance(value, dict)` — fix with `isinstance(key, str)` guard; `dict[Never, Never]` after type-narrowed isinstance — suppress with `# type: ignore[union-attr]`; `sys.stdout.reconfigure` — suppress same way.
-- **ruff** auto-fixes lint issues and formats on every edit via the same hook.
-- mypy was removed; basedpyright + ty together cover equivalent type safety.
-- If `python3 -m uv run <cmd>` fails with "No module named uv", use `uv run <cmd>` directly.
-
-## Validation
-
-| Change type | Minimum validation |
-| --- | --- |
-| Python source | `python3 -m uv run ruff check src/ tests/` + `python3 -m uv run pytest` |
-| Dead code pass | `/dead-code-sweep` — run deadcode + vulture, grep before removing (deadcode misses cross-module script usage) |
-| Tech debt / quality pass | `qlty check -a` + `qlty metrics -a` + `qlty smells -a` |
-| OCR / scanner / interaction / input | Standard validation + `python3 -m uv run autoscrapper scan --dry-run` against a live Arc Raiders window |
-| Generated data / default rules | Use the updater script; usually run `--dry-run` first |
-| Docs / agent guidance only | Verify affected files, links, and instructions stay accurate |
-
-Notes:
-- Local tests exist and should be run for code changes even though GitHub Actions currently runs Ruff only.
-- Do not claim end-to-end validation unless a live Arc Raiders window was used.
-- Prefer `--dry-run` before anything that could click in-game.
-
-## Repository Map
+Use this map to find the right module before editing. The OCR, interaction,
+and scanner paths are tightly coupled, so read adjacent modules before you
+change behavior there.
 
 | Path | Purpose |
 | --- | --- |
 | `src/autoscrapper/tui/` | Textual screens; `scan.py` starts the scan flow |
-| `src/autoscrapper/scanner/` | Engine, page loop, reporting, action execution |
+| `src/autoscrapper/scanner/` | Scan engine, page loop, reporting, action execution |
 | `src/autoscrapper/interaction/` | Screen capture, grid detection, platform input |
-| `src/autoscrapper/ocr/` | Tesseract init, preprocessing, infobox/item extraction |
+| `src/autoscrapper/ocr/` | Tesseract init, preprocessing, infobox and item extraction |
 | `src/autoscrapper/core/item_actions.py` | Rule lookup and fuzzy decision logic |
-| `src/autoscrapper/items/rules_store.py` | Load/save custom rules; custom overrides bundled defaults |
-| `src/autoscrapper/progress/` | Quest/hideout/crafting data and default-rule generation |
-| `scripts/update_snapshot_and_defaults.py` | Regenerates progress snapshots and bundled default rules |
+| `src/autoscrapper/items/rules_store.py` | Load and save custom rules; custom overrides bundled defaults |
+| `src/autoscrapper/progress/` | Quest, hideout, crafting data and default-rule generation |
+| `scripts/update_snapshot_and_defaults.py` | Regenerates bundled progress data and default rules |
 | `src/autoscrapper/config.py` | Persisted config dataclasses and versioning |
 | `tests/` | Pytest suite |
 
-## Critical Invariants
+## Setup and daily commands
 
+Use these commands as the source of truth for local setup, validation, and
+safe data refresh tasks.
+
+| Task | Command |
+| --- | --- |
+| Install dependencies | `python3 -m uv sync` |
+| Install Linux input extra | `python3 -m uv sync --extra linux-input` |
+| Run the TUI | `python3 -m uv run autoscrapper` |
+| Run a scan | `python3 -m uv run autoscrapper scan` |
+| Run a safe dry-run scan | `python3 -m uv run autoscrapper scan --dry-run` |
+| Lint Python | `python3 -m uv run ruff check src/ tests/ scripts/` |
+| Format Python | `python3 -m uv run ruff format src/ tests/ scripts/` |
+| Type-check Python | `python3 -m uv run basedpyright src/` |
+| Run tests | `python3 -m uv run pytest` |
+| Validate workflows | `python3 -m uv run prek run --files .github/workflows/<name>.yml` |
+| Run broad repo checks | `python3 -m uv run prek run --all-files` |
+| Refresh generated data and rules | `python3 -m uv run python scripts/update_snapshot_and_defaults.py` |
+| Dry-run data refresh | `python3 -m uv run python scripts/update_snapshot_and_defaults.py --dry-run` |
+
+If `python3 -m uv run <cmd>` fails with `No module named uv`, use
+`uv run <cmd>` directly.
+
+## Validation expectations
+
+Run the smallest validation set that fully covers your change. For Python code,
+run lint, types, and tests. For workflows, run the workflow-specific `prek`
+check. For docs and guidance, verify that the referenced files, commands, and
+links are accurate.
+
+| Change type | Minimum validation |
+| --- | --- |
+| Python source | `python3 -m uv run ruff check src/ tests/ scripts/` + `python3 -m uv run basedpyright src/` + `python3 -m uv run pytest` |
+| Workflow files | `python3 -m uv run prek run --files .github/workflows/<name>.yml` |
+| Generated data or default rules | Use the updater script, usually with `--dry-run` first |
+| Docs or agent guidance only | Verify affected paths, commands, links, and instruction hierarchy |
+| OCR, scanner, interaction, or input behavior | Standard Python validation plus `python3 -m uv run autoscrapper scan --dry-run` against a live Arc Raiders window |
+
+Do not claim end-to-end OCR or scanner validation unless you used a real Arc
+Raiders window. Prefer `--dry-run` before anything that could click in-game.
+
+## Generated files and persisted config
+
+These rules prevent accidental drift in generated assets and saved user state.
+Follow them any time you touch progress data, item rules, or persisted config.
+
+- Do not hand-edit `src/autoscrapper/progress/data/*`.
+- Do not hand-edit `src/autoscrapper/items/items_rules.default.json`.
+- Regenerate both through `scripts/update_snapshot_and_defaults.py`.
+- When persisted config fields change, bump `CONFIG_VERSION` in
+  `src/autoscrapper/config.py` and add a migration.
 - Preserve custom-over-default rule precedence.
-- Do **not** hand-edit `src/autoscrapper/progress/data/*` or `src/autoscrapper/items/items_rules.default.json`; regenerate via `scripts/update_snapshot_and_defaults.py`.
-- Bump the config version in `src/autoscrapper/config.py` when changing persisted config fields.
-- `initialize_ocr()` must run on the main thread before the scan thread starts; it eagerly inits all four PSM APIs (`SINGLE_BLOCK`, `SINGLE_LINE`, `SINGLE_WORD`, `SPARSE_TEXT`).
-- Each Tesseract API instance has its own lock (`_api_lock`, `_api_line_lock`, `_api_single_word_lock`, `_api_sparse_lock`); do **not** collapse them back to a single shared lock.
-- Image-processing coordinates are capture-space pixels; screen-space translation belongs in `src/autoscrapper/interaction/ui_windows.py`.
-- The dark context menu opens to the **left** of the clicked cell; `_CONTEXT_MENU_*` constants in `inventory_vision.py` are normalized by 1920. The positional offsets are still uncalibrated — prefer `find_infobox` path and live recalibration via `/calibrate-vision` before shipping positional-crop changes.
-- `ocr_infobox_with_context(window_bgr, rect)` is the preferred infobox OCR call (passes full window for upward title-band extension). Use `ocr_infobox(crop)` only when the full window is not available.
-- `find_context_menu_crop` rejects crops with `dark_fraction < 0.20` on the left half (gray < 40); this threshold is calibration-sensitive — do not tighten without corpus replay.
-- Keep the fuzzy-match threshold shared between OCR matching and rule lookup. Changing `threshold`/`score_cutoff` values (T001) requires corpus replay before shipping.
-- `ocr_debug/` is disposable debug output and is safe to clear between sessions. Failure-path artifacts (`title_strip_fail_raw`, `title_strip_fail_processed`, `ctx_menu_lines_fail.json`) are written automatically and consumed by `/add-fixture` and `/triage-failures`.
+
+## OCR and interaction invariants
+
+These are the highest-risk behavior rules in the repository. Changes in these
+areas need extra caution and often need live validation or corpus replay.
+
+- `initialize_ocr()` must run on the main thread before scan threads start.
+- Keep the four Tesseract API locks separate: `_api_lock`, `_api_line_lock`,
+  `_api_single_word_lock`, and `_api_sparse_lock`.
+- Keep capture-space image coordinates separate from screen-space input
+  coordinates. Screen translation belongs in
+  `src/autoscrapper/interaction/ui_windows.py`.
+- `inventory_vision.py` upscales OCR images by 2x. Convert OCR boxes back to
+  original-space coordinates before you reuse them.
+- The dark context menu opens to the left of the clicked cell. The
+  `_CONTEXT_MENU_*` constants in `inventory_vision.py` are normalized by 1920.
+- Prefer `ocr_infobox_with_context(window_bgr, rect)` when the full window is
+  available.
+- `find_context_menu_crop` rejects crops with `dark_fraction < 0.20` on the
+  left half. Treat that threshold as calibration-sensitive.
+- Keep the fuzzy-match threshold shared between OCR item matching and rule
+  lookup. Changing threshold or `score_cutoff` values requires corpus replay
+  before shipping.
 
 ## Hotspots
 
-- `src/autoscrapper/ocr/`, `src/autoscrapper/interaction/`, and `src/autoscrapper/scanner/` are tightly coupled.
-- `src/autoscrapper/ocr/inventory_vision.py` is the hottest and most calibration-sensitive file.
-- `src/autoscrapper/core/item_actions.py` and `src/autoscrapper/items/rules_store.py` define action resolution behavior.
-- `src/autoscrapper/progress/` changes often imply regenerating bundled data.
+Focus extra review time on these files and modules because they drive the most
+critical behavior.
 
-## Remotes
+- `src/autoscrapper/ocr/inventory_vision.py`
+- `src/autoscrapper/ocr/`
+- `src/autoscrapper/interaction/`
+- `src/autoscrapper/scanner/`
+- `src/autoscrapper/core/item_actions.py`
+- `src/autoscrapper/items/rules_store.py`
+- `src/autoscrapper/config.py`
 
-- `upstream` → `https://github.com/zappybiby/ArcRaiders-AutoScrapper.git` (canonical source)
-- `origin` → your fork; sync from upstream before pushing: `git pull --autostash upstream main`
+## Copilot and agent guidance
 
-## Git Workflow
+Use the smallest guidance surface that fits the task. Keep startup guidance
+short, and move detailed rules into stable repo files.
 
-- Conventional commits: `feat:`, `fix:`, `chore:`, `docs:` prefixes on commit messages and branch names.
-- Sync from upstream before pushing: `git pull --autostash upstream main`
+- Treat this file as the canonical long-form guide.
+- Keep `.github/copilot-instructions.md` short and focused on startup.
+- Put path-specific rules in `.github/instructions/*.instructions.md`.
+- Keep `.github/workflows/copilot-setup-steps.yml` aligned with the real
+  bootstrap path: `actions/checkout@v6`, `astral-sh/setup-uv@v7`, OCR system
+  packages, and `uv sync --frozen`.
+- Reuse existing workflows instead of adding overlapping CI or validation jobs.
+- Do not broaden setup or CI to optional extras unless the workflow actually
+  needs them.
 
-## Windows Setup
+## Preferred skills and specialist reviews
 
-- Tesseract system deps installed via `pwsh -NoProfile -ExecutionPolicy Bypass -File scripts\setup-windows.ps1`
-- tesserocr wheel is pinned in `pyproject.toml` via a Windows-specific GitHub release URL; do not upgrade without testing.
+Use the existing skills and reviewer agents instead of inventing new guidance
+or duplicate workflows. Start with the repo-wide skills, then add a specialist
+only when the task touches a hotspot.
 
-## Agent Workflow
+### GitHub Copilot skills
 
-- Make minimal, targeted edits.
-- Use project skills in `.claude/skills/` and specialist agents in `.claude/agents/` when the task matches — see table below.
-- Read the relevant module before editing; update adjacent docs only when behavior or workflow changes.
-- Use script-driven or tool-driven changes instead of manual rewrites for generated assets.
-- Call out any unverified behavior clearly in summaries and PR text.
-- **Search**: Use `Grep` (ripgrep) for text search — never bash `grep`. Use AST-grep for structural/syntactic search. Use LSP symbol tools for definition/reference navigation.
-- **File writing on WSL**: "Error writing file" on `/mnt/c/...` paths means the parent directory doesn't exist — run `mkdir -p <dir>` via Bash before `Write`. Always use the `Write` tool, never bash echo/heredoc.
+Use these first when they match the task:
 
-## Skills & Agents
+- `mcp-use`
+- `language-optimization`
+- `codebase-index`
+- `workflow-development`
+- `docs-writer`
+- `update-data`
+- `validate`
+- `lint-and-validate`
+- `copilot-init`
 
-Invoke skills with `/skill-name`. Use agents via `Agent(subagent_type="agent-name")`.
+### Claude skills and agents
 
-### Workflow Skills (`.claude/skills/`)
+If you are working in a Claude-style agent environment, these specialist tools
+already exist in `.claude/skills/` and `.claude/agents/`.
 
-| Skill | When to use |
-| --- | --- |
-| `/diagnose-scan` | First stop for any scan failure — runs dry-run, classifies output, dispatches to specialist |
-| `/verify` | Full lint + types + tests before committing |
-| `/ci-promote` | Pre-push checklist + PR creation |
-| `/data-snapshot-updater` | Regenerate progress data and default rules from Metaforge |
-| `/upstream-sync` | Sync fork from upstream before pushing |
-| `/threshold-change` | Safe fuzzy-threshold tuning with before/after corpus replay |
-| `/threshold-corpus-replay` | Validate a specific threshold candidate against corpus |
-| `/ocr-corpus-replay` | Validate OCR code changes against failure corpus |
-| `/calibrate-vision` | Recalibrate context-menu crop constants in `inventory_vision.py` |
-| `/add-fixture` | Lock in a new OCR regression fixture from `ocr_debug/` |
-| `/add-rule` | Add or edit a custom item rule |
-| `/config-bump` | Safely version-bump a config field change with migration |
-| `/scan-report` | Classify and summarize last dry-run output from `/tmp/scan-diag.txt` |
-| `/triage-failures` | Analyze OCR failure corpus for systematic misread patterns |
-| `/clean-debug` | Prune stale `ocr_debug/` images |
-| `/benchmark` | Benchmark tessdata model variants (fast vs best) |
-| `/dead-code-sweep` | Find and remove genuine dead code (deadcode + vulture, with false-positive guidance) |
+- Use workflow skills such as `/verify`, `/data-snapshot-updater`,
+  `/ocr-corpus-replay`, `/threshold-change`, `/config-bump`, and
+  `/dead-code-sweep` when the task matches.
+- Use reviewer agents such as `ocr-reviewer`, `scan-validator`,
+  `rules-reviewer`, `config-reviewer`, `progress-reviewer`,
+  `data-pipeline-reviewer`, `tui-reviewer`, and `security-reviewer` after
+  hotspot edits.
 
-Context docs (not user-invocable, referenced by other skills): `ocr-debug`, `scan-failed`, `ocr-unavailable`.
+## Documentation updates
 
-### Specialist Agents (`.claude/agents/`)
-
-| Agent | When to use |
-| --- | --- |
-| `ocr-reviewer` | After editing `ocr/` or `scanner/` — coordinate space bugs, upscale artifacts, threshold regressions |
-| `scan-validator` | After editing `scanner/` or `interaction/` — timing, page detection, action dispatch |
-| `rules-reviewer` | After editing `item_actions.py` or `rules_store.py` — precedence bugs, action mapping |
-| `config-reviewer` | After editing `config.py` — version bump, migration path, serialization |
-| `tui-reviewer` | After editing `tui/` — threading violations, reactive state bugs, worker lifecycle |
-| `progress-reviewer` | After editing `progress/` — quest inference, crafting overrides, generated-file bypass |
-| `data-pipeline-reviewer` | After editing `data_update.py` — field mapping, pagination, merge bugs |
-| `api-reviewer` | After editing `api/` — slot mapping, None-guards, Cell coordinate plumbing |
-| `security-reviewer` | After editing `interaction/` or `scanner/` — input validation, window targeting |
-| `visual-analysis-ocr` | Inspect `ocr_debug/` PNG images for visual diagnosis |
-
-<!-- rtk-instructions v2 -->
-# RTK (Rust Token Killer) - Token-Optimized Commands
-
-## Golden Rule
-
-**Always prefix commands with `rtk`**. If RTK has a dedicated filter, it uses it. If not, it passes through unchanged. This means RTK is always safe to use.
-
-**Important**: Even in command chains with `&&`, use `rtk`:
-```bash
-# ❌ Wrong
-git add . && git commit -m "msg" && git push
-
-# ✅ Correct
-rtk git add . && rtk git commit -m "msg" && rtk git push
-```
-
-## RTK Commands by Workflow
-
-### Build & Compile (80-90% savings)
-```bash
-rtk cargo build         # Cargo build output
-rtk cargo check         # Cargo check output
-rtk cargo clippy        # Clippy warnings grouped by file (80%)
-rtk tsc                 # TypeScript errors grouped by file/code (83%)
-rtk lint                # ESLint/Biome violations grouped (84%)
-rtk prettier --check    # Files needing format only (70%)
-rtk next build          # Next.js build with route metrics (87%)
-```
-
-### Test (90-99% savings)
-```bash
-rtk cargo test          # Cargo test failures only (90%)
-rtk vitest run          # Vitest failures only (99.5%)
-rtk playwright test     # Playwright failures only (94%)
-rtk test <cmd>          # Generic test wrapper - failures only
-```
-
-### Git (59-80% savings)
-```bash
-rtk git status          # Compact status
-rtk git log             # Compact log (works with all git flags)
-rtk git diff            # Compact diff (80%)
-rtk git show            # Compact show (80%)
-rtk git add             # Ultra-compact confirmations (59%)
-rtk git commit          # Ultra-compact confirmations (59%)
-rtk git push            # Ultra-compact confirmations
-rtk git pull            # Ultra-compact confirmations
-rtk git branch          # Compact branch list
-rtk git fetch           # Compact fetch
-rtk git stash           # Compact stash
-rtk git worktree        # Compact worktree
-```
-
-Note: Git passthrough works for ALL subcommands, even those not explicitly listed.
-
-### GitHub (26-87% savings)
-```bash
-rtk gh pr view <num>    # Compact PR view (87%)
-rtk gh pr checks        # Compact PR checks (79%)
-rtk gh run list         # Compact workflow runs (82%)
-rtk gh issue list       # Compact issue list (80%)
-rtk gh api              # Compact API responses (26%)
-```
-
-### JavaScript/TypeScript Tooling (70-90% savings)
-```bash
-rtk pnpm list           # Compact dependency tree (70%)
-rtk pnpm outdated       # Compact outdated packages (80%)
-rtk pnpm install        # Compact install output (90%)
-rtk npm run <script>    # Compact npm script output
-rtk npx <cmd>           # Compact npx command output
-rtk prisma              # Prisma without ASCII art (88%)
-```
-
-### Files & Search (60-75% savings)
-```bash
-rtk ls <path>           # Tree format, compact (65%)
-rtk read <file>         # Code reading with filtering (60%)
-rtk grep <pattern>      # Search grouped by file (75%)
-rtk find <pattern>      # Find grouped by directory (70%)
-```
-
-### Analysis & Debug (70-90% savings)
-```bash
-rtk err <cmd>           # Filter errors only from any command
-rtk log <file>          # Deduplicated logs with counts
-rtk json <file>         # JSON structure without values
-rtk deps                # Dependency overview
-rtk env                 # Environment variables compact
-rtk summary <cmd>       # Smart summary of command output
-rtk diff                # Ultra-compact diffs
-```
-
-### Infrastructure (85% savings)
-```bash
-rtk docker ps           # Compact container list
-rtk docker images       # Compact image list
-rtk docker logs <c>     # Deduplicated logs
-rtk kubectl get         # Compact resource list
-rtk kubectl logs        # Deduplicated pod logs
-```
-
-### Network (65-70% savings)
-```bash
-rtk curl <url>          # Compact HTTP responses (70%)
-rtk wget <url>          # Compact download output (65%)
-```
-
-### Meta Commands
-```bash
-rtk gain                # View token savings statistics
-rtk gain --history      # View command history with savings
-rtk discover            # Analyze Claude Code sessions for missed RTK usage
-rtk proxy <cmd>         # Run command without filtering (for debugging)
-rtk init                # Add RTK instructions to CLAUDE.md
-rtk init --global       # Add RTK to ~/.claude/CLAUDE.md
-```
-
-## Token Savings Overview
-
-| Category | Commands | Typical Savings |
-|----------|----------|-----------------|
-| Tests | vitest, playwright, cargo test | 90-99% |
-| Build | next, tsc, lint, prettier | 70-87% |
-| Git | status, log, diff, add, commit | 59-80% |
-| GitHub | gh pr, gh run, gh issue | 26-87% |
-| Package Managers | pnpm, npm, npx | 70-90% |
-| Files | ls, read, grep, find | 60-75% |
-| Infrastructure | docker, kubectl | 85% |
-| Network | curl, wget | 65-70% |
-
-Overall average: **60-90% token reduction** on common development operations.
-<!-- /rtk-instructions -->
-
-## vexp <!-- vexp v1.3.11 -->
-
-**MANDATORY: use `run_pipeline` — do NOT grep or glob the codebase.**
-vexp returns pre-indexed, graph-ranked context in a single call.
-
-### Workflow
-1. `run_pipeline` with your task description — ALWAYS FIRST (replaces all other tools)
-2. Make targeted changes based on the context returned
-3. `run_pipeline` again only if you need more context
-
-### Available MCP tools
-- `run_pipeline` — **PRIMARY TOOL**. Runs capsule + impact + memory in 1 call.
-  Auto-detects intent. Includes file content. Example: `run_pipeline({ "task": "fix auth bug" })`
-- `get_context_capsule` — lightweight, for simple questions only
-- `get_impact_graph` — impact analysis of a specific symbol
-- `search_logic_flow` — execution paths between functions
-- `get_skeleton` — compact file structure
-- `index_status` — indexing status
-- `get_session_context` — recall observations from sessions
-- `search_memory` — cross-session search
-- `save_observation` — persist insights (prefer run_pipeline's observation param)
-
-### Agentic search
-- Do NOT use built-in file search, grep, or codebase indexing — always call `run_pipeline` first
-- If you spawn sub-agents or background tasks, pass them the context from `run_pipeline`
-  rather than letting them search the codebase independently
-
-### Smart Features
-Intent auto-detection, hybrid ranking, session memory, auto-expanding budget.
-
-### Multi-Repo
-`run_pipeline` auto-queries all indexed repos. Use `repos: ["alias"]` to scope. Run `index_status` to see aliases.
-<!-- /vexp -->
+When you update docs or agent guidance, keep the hierarchy clear. Put stable,
+repo-wide rules here, keep startup instructions short in
+`.github/copilot-instructions.md`, and avoid duplicating large rule blocks
+across multiple files.
