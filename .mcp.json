@@ -3,10 +3,7 @@
     "fast-filesystem": {
       "type": "stdio",
       "command": "npx",
-      "args": [
-        "-y",
-        "fast-filesystem-mcp@latest"
-      ],
+      "args": ["-y", "fast-filesystem-mcp@latest"],
       "env": {
         "MCP_SILENT_ERRORS": "true"
       }
@@ -14,10 +11,7 @@
     "octocode": {
       "type": "stdio",
       "command": "npx",
-      "args": [
-        "-y",
-        "octocode-mcp@latest"
-      ],
+      "args": ["-y", "octocode-mcp@latest"],
       "env": {
         "GITHUB_TOKEN": "$GITHUB_PERSONAL_ACCESS_TOKEN",
         "ENABLE_LOCAL": "true",
@@ -27,9 +21,7 @@
     "ast-grep": {
       "type": "stdio",
       "command": "bunx",
-      "args": [
-        "@notprolands/ast-grep-mcp@latest"
-      ]
+      "args": ["@notprolands/ast-grep-mcp@latest"]
     },
     "ref-tools": {
       "type": "http",
@@ -50,10 +42,7 @@
     "github": {
       "type": "stdio",
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-github"
-      ],
+      "args": ["-y", "@modelcontextprotocol/server-github"],
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "$GITHUB_PERSONAL_ACCESS_TOKEN"
       }
@@ -61,10 +50,7 @@
     "context7": {
       "type": "stdio",
       "command": "bunx",
-      "args": [
-        "--bun",
-        "@upstash/context7-mcp"
-      ]
+      "args": ["--bun", "@upstash/context7-mcp"]
     }
   }
 }

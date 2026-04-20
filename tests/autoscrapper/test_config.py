@@ -1,14 +1,24 @@
 import json
+from dataclasses import asdict
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 from autoscrapper.config import (
+    ApiSettings,
     CONFIG_VERSION,
+    ProgressSettings,
+    ScanSettings,
+    _coerce_non_negative_int,
+    _coerce_positive_int,
     _load_config_dict,
     _migrate_config,
     _migrate_v1_to_v2,
     _migrate_v2_to_v3,
     _migrate_v5_to_v6,
+    has_saved_progress,
+    reset_api_settings,
+    reset_progress_settings,
+    reset_scan_settings,
 )
 
 
@@ -214,3 +224,88 @@ def test_load_config_dict_success(mock_config_path):
     result = _load_config_dict()
     assert result["version"] == CONFIG_VERSION
     assert result["scan"]["debug_ocr"] is True
+
+
+def test_has_saved_progress_empty():
+    assert not has_saved_progress(ProgressSettings())
+
+
+def test_has_saved_progress_all_quests_completed():
+    assert has_saved_progress(ProgressSettings(all_quests_completed=True))
+
+
+def test_has_saved_progress_active_quests():
+    assert has_saved_progress(ProgressSettings(active_quests=["Quest 1"]))
+
+
+def test_has_saved_progress_completed_quests():
+    assert has_saved_progress(ProgressSettings(completed_quests=["Quest 2"]))
+
+
+def test_has_saved_progress_hideout_levels():
+    assert has_saved_progress(ProgressSettings(hideout_levels={"stash": 1}))
+
+
+def test_has_saved_progress_only_last_updated():
+    assert not has_saved_progress(ProgressSettings(last_updated="2023-01-01"))
+
+
+def test_coerce_positive_int():
+    assert _coerce_positive_int(5) == 5
+    assert _coerce_positive_int("5") == 5
+    assert _coerce_positive_int(0) is None
+    assert _coerce_positive_int("0") is None
+    assert _coerce_positive_int(-1) is None
+    assert _coerce_positive_int("-1") is None
+    assert _coerce_positive_int(True) is None
+    assert _coerce_positive_int(False) is None
+    assert _coerce_positive_int(1.5) is None
+    assert _coerce_positive_int("1.5") is None
+    assert _coerce_positive_int(None) is None
+    assert _coerce_positive_int("abc") is None
+    assert _coerce_positive_int([]) is None
+
+
+def test_coerce_non_negative_int():
+    assert _coerce_non_negative_int(5) == 5
+    assert _coerce_non_negative_int("5") == 5
+    assert _coerce_non_negative_int(0) == 0
+    assert _coerce_non_negative_int("0") == 0
+    assert _coerce_non_negative_int(-1) is None
+    assert _coerce_non_negative_int("-1") is None
+    assert _coerce_non_negative_int(True) is None
+    assert _coerce_non_negative_int(False) is None
+    assert _coerce_non_negative_int(1.5) is None
+    assert _coerce_non_negative_int("1.5") is None
+    assert _coerce_non_negative_int(None) is None
+    assert _coerce_non_negative_int("abc") is None
+    assert _coerce_non_negative_int([]) is None
+
+
+def _assert_reset_settings(reset_func, section_name: str, expected_settings: object) -> None:
+    with (
+        patch("autoscrapper.config._load_config_dict", return_value={"version": 1, "some_other_key": "value"}) as mock_load,
+        patch("autoscrapper.config._save_config_dict") as mock_save,
+    ):
+        reset_func()
+
+    mock_load.assert_called_once()
+    mock_save.assert_called_once_with(
+        {
+            "version": CONFIG_VERSION,
+            "some_other_key": "value",
+            section_name: asdict(expected_settings),
+        }
+    )
+
+
+def test_reset_scan_settings():
+    _assert_reset_settings(reset_scan_settings, "scan", ScanSettings())
+
+
+def test_reset_progress_settings():
+    _assert_reset_settings(reset_progress_settings, "progress", ProgressSettings())
+
+
+def test_reset_api_settings():
+    _assert_reset_settings(reset_api_settings, "api", ApiSettings())

@@ -61,13 +61,7 @@
     ]
   },
   "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": [
-    "fast-filesystem",
-    "octocode",
-    "ast-grep",
-    "ref-tools",
-    "github"
-  ],
+  "enabledMcpjsonServers": ["fast-filesystem", "octocode", "ast-grep", "ref-tools", "github"],
   "hooks": {
     "PostToolUse": [
       {

@@ -3,49 +3,34 @@
   "languages": {
     "python": {
       "command": "basedpyright-langserver",
-      "args": [
-        "--stdio"
-      ],
+      "args": ["--stdio"],
       "initializationOptions": {
         "pythonVersion": "3.13"
       }
     },
     "bash": {
       "command": "bash-language-server",
-      "args": [
-        "start"
-      ]
+      "args": ["start"]
     },
     "yaml": {
       "command": "yaml-language-server",
-      "args": [
-        "--stdio"
-      ]
+      "args": ["--stdio"]
     },
     "json": {
       "command": "json-language-server",
-      "args": [
-        "--stdio"
-      ]
+      "args": ["--stdio"]
     },
     "toml": {
       "command": "taplo",
-      "args": [
-        "lsp",
-        "stdio"
-      ]
+      "args": ["lsp", "stdio"]
     },
     "typescript": {
       "command": "vtsls",
-      "args": [
-        "--stdio"
-      ]
+      "args": ["--stdio"]
     },
     "javascript": {
       "command": "vtsls",
-      "args": [
-        "--stdio"
-      ]
+      "args": ["--stdio"]
     }
   }
 }

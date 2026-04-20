@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 import os
 import sys
 import threading
@@ -14,6 +15,8 @@ import pywinctl as pwc
 from .inventory_grid import Cell
 from . import input_driver as pdi
 from .keybinds import DEFAULT_STOP_KEY
+
+_log = logging.getLogger(__name__)
 
 
 class LiveWindow(Protocol):
@@ -262,7 +265,7 @@ def _reset_mss() -> None:
         try:
             close()
         except Exception:
-            pass
+            _log.warning("Failed to close MSS instance", exc_info=True)
     _MSS_LOCAL.instance = None
 
 

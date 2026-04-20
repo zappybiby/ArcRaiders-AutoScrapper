@@ -5,9 +5,7 @@
     "https://raw.githubusercontent.com/JRedeker/opencode-shell-strategy/trunk/shell_strategy.md"
   ],
   "skills": {
-    "paths": [
-      ".kilo/skill", ".opencode/skill", ".claude/skills"
-    ]
+    "paths": [".kilo/skill", ".opencode/skill", ".claude/skills"]
   },
   "permission": {
     "*": "allow",
@@ -33,7 +31,7 @@
       "extensions": [".json", ".js"]
     }
   },
-  "watcher": { "ignore": ["node_modules/**", "dist/**", ".git/**", ".venv/**", "__pycache__/**", ".ruff_cache/**",] },
+  "watcher": { "ignore": ["node_modules/**", "dist/**", ".git/**", ".venv/**", "__pycache__/**", ".ruff_cache/**"] },
   "mcp": {
     "ref-tools": {
       "type": "remote",

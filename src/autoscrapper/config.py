@@ -81,15 +81,23 @@ def _coerce_bool(value: Any, default: bool) -> bool:
 
 
 def _coerce_positive_int(value: Any) -> int | None:
-    if isinstance(value, int) and value > 0:
-        return value
-    return None
+    if value is None or isinstance(value, (bool, float)):
+        return None
+    try:
+        result = int(value)
+    except (TypeError, ValueError):
+        return None
+    return result if result > 0 else None
 
 
 def _coerce_non_negative_int(value: Any) -> int | None:
-    if isinstance(value, int) and value >= 0:
-        return value
-    return None
+    if value is None or isinstance(value, (bool, float)):
+        return None
+    try:
+        result = int(value)
+    except (TypeError, ValueError):
+        return None
+    return result if result >= 0 else None
 
 
 def _clamp_delay_ms(value: int, field_name: str) -> int:
