@@ -28,7 +28,7 @@ repos:
     hooks:
       - id: uv-lock-upgrade
         name: Run uv lock --upgrade
-        entry: python3 -m uv lock --upgrade
+        entry: uv lock --upgrade
         language: system
         pass_filenames: false
         stages: [manual]
