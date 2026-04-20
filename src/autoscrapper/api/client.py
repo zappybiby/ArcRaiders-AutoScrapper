@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import logging
+import functools
+from types import MappingProxyType
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -37,6 +39,27 @@ MIN_REQUEST_INTERVAL_SECONDS = 8.0
 
 
 type ItemDecision = Literal["KEEP", "SELL", "RECYCLE"]
+
+
+@functools.cache
+def _get_cached_item_mappings() -> tuple[MappingProxyType[str, str], MappingProxyType[str, str]]:
+    """Load and cache item ID to display name mapping from items.json."""
+    id_to_name: dict[str, str] = {}
+    name_to_id: dict[str, str] = {}
+    try:
+        items_path = DATA_DIR / "items.json"
+        raw = orjson.loads(items_path.read_bytes())
+        if isinstance(raw, list):
+            for item in raw:
+                if isinstance(item, dict):
+                    item_id = item.get("id")
+                    item_name = item.get("name")
+                    if isinstance(item_id, str) and isinstance(item_name, str):
+                        id_to_name[item_id] = item_name
+                        name_to_id[item_name.lower()] = item_id
+    except Exception as exc:
+        _log.warning("api: Failed to load item mapping: %s", exc)
+    return MappingProxyType(id_to_name), MappingProxyType(name_to_id)
 
 
 @dataclass(slots=True)
@@ -160,9 +183,7 @@ class ArcTrackerClient:
         self.base_url = base_url.rstrip("/")
         self.rate_limit = RateLimitState()
         self._session: Any = None
-        self._item_id_to_name: dict[str, str] = {}
-        self._item_name_to_id: dict[str, str] = {}
-        self._load_item_mapping()
+        self._item_id_to_name, self._item_name_to_id = _get_cached_item_mappings()
 
         if requests is not None:
             self._session = requests.Session()
@@ -172,22 +193,6 @@ class ArcTrackerClient:
                     "User-Agent": "ArcRaiders-AutoScrapper/0.2.0",
                 }
             )
-
-    def _load_item_mapping(self) -> None:
-        """Load item ID to display name mapping from items.json."""
-        try:
-            items_path = DATA_DIR / "items.json"
-            raw = orjson.loads(items_path.read_bytes())
-            if isinstance(raw, list):
-                for item in raw:
-                    if isinstance(item, dict):
-                        item_id = item.get("id")
-                        item_name = item.get("name")
-                        if isinstance(item_id, str) and isinstance(item_name, str):
-                            self._item_id_to_name[item_id] = item_name
-                            self._item_name_to_id[item_name.lower()] = item_id
-        except Exception as exc:
-            _log.warning("api: Failed to load item mapping: %s", exc)
 
     def _wait_for_rate_limit(self) -> None:
         """Pre-emptively throttle requests to respect rate limits."""
