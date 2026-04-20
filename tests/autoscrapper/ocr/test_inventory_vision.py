@@ -20,6 +20,7 @@ from autoscrapper.ocr.inventory_vision import (  # noqa: E402
     _extract_cropped_title_from_data,
     _extract_title_from_data,
     _odd,
+    find_infobox_with_debug,
     find_context_menu_crop,
     isolate_menu_panel,
     match_item_name_result,
@@ -870,3 +871,67 @@ class TestPreprocessForOcrNewKwargs:
         result = preprocess_for_ocr(img, close_gaps=True, upscale=False)
         assert result.ndim == 2
         assert set(np.unique(result)).issubset({0, 255})
+
+
+class TestFindInfoboxWithDebug:
+    """Tests for the internal find_infobox_with_debug function."""
+
+    def test_empty_image_returns_early(self) -> None:
+        empty_image = np.array([])
+        result = find_infobox_with_debug(empty_image)
+
+        assert result.rect is None
+        assert result.failure_reason == "empty_image"
+        assert result.bbox_method is None
+        assert result.contour_count == 0
+        assert result.candidate_count == 0
+
+    def test_no_contours_returns_early(self) -> None:
+        # Pure black image, far from INFOBOX_COLOR_BGR
+        black_image = np.zeros((100, 100, 3), dtype=np.uint8)
+        result = find_infobox_with_debug(black_image)
+
+        assert result.rect is None
+        assert result.failure_reason == "no_contours"
+        assert result.bbox_method is None
+        assert result.contour_count == 0
+        assert result.candidate_count == 0
+
+    def test_no_scored_contours_returns_early(self) -> None:
+        # Black image with a tiny 10x10 square of the infobox color.
+        # This will create a contour, but area is 100, which is < INFOBOX_MIN_AREA (1000).
+        image = np.zeros((100, 100, 3), dtype=np.uint8)
+        infobox_color = _vision.INFOBOX_COLOR_BGR
+        image[10:20, 10:20] = infobox_color
+
+        result = find_infobox_with_debug(image)
+
+        assert result.rect is None
+        assert result.failure_reason == "no_scored_contours"
+        assert result.bbox_method is None
+        assert result.contour_count > 0
+        assert result.candidate_count == 0
+
+    @patch("autoscrapper.ocr.inventory_vision._dominant_edge_bbox", return_value=None)
+    @patch("autoscrapper.ocr.inventory_vision._percentile_bbox_from_filled_contour", return_value=None)
+    def test_percentile_fallback_failed_returns_early(
+        self,
+        mock_percentile_bbox: MagicMock,
+        mock_dominant_edge: MagicMock,
+    ) -> None:
+        # Create an image that will yield at least one valid contour > INFOBOX_MIN_AREA
+        # to pass the "no_scored_contours" check.
+        # INFOBOX_MIN_AREA is 1000, so a 40x40 square area = 1600.
+        image = np.zeros((100, 100, 3), dtype=np.uint8)
+        infobox_color = _vision.INFOBOX_COLOR_BGR
+        image[10:50, 10:50] = infobox_color
+
+        result = find_infobox_with_debug(image)
+
+        assert result.rect is None
+        assert result.failure_reason == "percentile_fallback_failed"
+        assert result.bbox_method is None
+        assert result.contour_count > 0
+        assert result.candidate_count > 0
+        mock_dominant_edge.assert_called_once()
+        mock_percentile_bbox.assert_called_once()
