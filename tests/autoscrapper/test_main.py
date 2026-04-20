@@ -10,9 +10,9 @@ from autoscrapper.__main__ import _print_usage, main
 
 def test_main_no_args() -> None:
     with patch("autoscrapper.__main__._run_tui") as mock_run_tui:
-        mock_run_tui.return_value = 0
+        mock_run_tui.return_value = 1
         result = main([])
-        assert result == 0
+        assert result == 1
         mock_run_tui.assert_called_once()
 
 
