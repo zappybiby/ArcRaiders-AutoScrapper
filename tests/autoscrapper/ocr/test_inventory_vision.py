@@ -677,9 +677,9 @@ class TestIsolateMenuPanel:
         assert y + h <= crop_h
 
     def test_returns_none_for_thin_horizontal_strip(self):
-        """A bright rect that is too wide/short (aspect < 0.3) must not be returned."""
-        img = np.zeros((100, 100, 3), dtype=np.uint8)
-        img[40:50, 10:90] = (220, 220, 220)
+        """A bright rect that is too wide/short (aspect > 3.0) must not be returned."""
+        img = np.zeros((100, 400, 3), dtype=np.uint8)
+        img[20:80, 50:350] = (220, 220, 220)  # bw=300, bh=60, area=18000, aspect=5.0
         assert isolate_menu_panel(img) is None
 
     def test_returns_none_for_thin_vertical_strip(self):
