@@ -35,9 +35,9 @@ def test_main_help(capsys, arg) -> None:
 
 def test_main_scan() -> None:
     with patch("autoscrapper.scanner.cli.main") as mock_scan_main:
-        mock_scan_main.return_value = 0
+        mock_scan_main.return_value = 1
         result = main(["scan", "--dry-run"])
-        assert result == 0
+        assert result == 1
         mock_scan_main.assert_called_once_with(["--dry-run"])
 
 
