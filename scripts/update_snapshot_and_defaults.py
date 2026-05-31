@@ -37,6 +37,7 @@ TARGET_RELATIVE_FILES = (
     "src/autoscrapper/progress/data/quests.json",
     "src/autoscrapper/progress/data/quests_by_trader.json",
     "src/autoscrapper/progress/data/metadata.json",
+    "src/autoscrapper/progress/data/metaforge_sources.json",
     "src/autoscrapper/items/items_rules.default.json",
 )
 EXCLUDED_LEVEL2_IDS = {"stash", "workbench"}
@@ -169,6 +170,10 @@ def _copy_support_files_for_temp_run(
     else:
         temp_static.mkdir(parents=True, exist_ok=True)
 
+    source_sources_path = source_data_dir / "metaforge_sources.json"
+    if source_sources_path.exists():
+        shutil.copy2(source_sources_path, temp_data_dir / "metaforge_sources.json")
+
 
 def _update_in_place(data_dir: Path, rules_path: Path) -> dict:
     snapshot_metadata = update_data_snapshot(data_dir)
@@ -221,6 +226,7 @@ def _update_dry_run(source_data_dir: Path) -> dict:
                 temp_data_dir / "quests.json",
                 temp_data_dir / "quests_by_trader.json",
                 temp_data_dir / "metadata.json",
+                temp_data_dir / "metaforge_sources.json",
                 temp_rules_path,
             ]
         )
@@ -229,7 +235,8 @@ def _update_dry_run(source_data_dir: Path) -> dict:
             target_paths[1]: after_bytes[temp_data_dir / "quests.json"],
             target_paths[2]: after_bytes[temp_data_dir / "quests_by_trader.json"],
             target_paths[3]: after_bytes[temp_data_dir / "metadata.json"],
-            target_paths[4]: after_bytes[temp_rules_path],
+            target_paths[4]: after_bytes[temp_data_dir / "metaforge_sources.json"],
+            target_paths[5]: after_bytes[temp_rules_path],
         }
         changed_files = _diff_changed_files(
             before_bytes,

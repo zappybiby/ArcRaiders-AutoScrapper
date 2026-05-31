@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+import html
 import json
 import os
+import re
 import time
+from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -12,25 +15,63 @@ from urllib.request import Request, urlopen
 from .data_loader import DATA_DIR
 from .quest_overrides import apply_quest_overrides
 
+METAFORGE_APP_URL = "https://metaforge.app/arc-raiders"
 METAFORGE_API_BASE = "https://metaforge.app/api/arc-raiders"
+METAFORGE_SOURCES_FILENAME = "metaforge_sources.json"
+DEFAULT_SUPABASE_URL = "https://sb.metaforge.app/rest/v1"
+DEFAULT_SUPABASE_ANON_KEY = "sb_publishable_C7SqVOoZBPFy4W0DxKcOGQ_emEIw-rj"
 SUPABASE_URL = os.environ.get(
     "METAFORGE_SUPABASE_URL",
-    "https://sb.metaforge.app/rest/v1",
+    DEFAULT_SUPABASE_URL,
 ).rstrip("/")
 
 SUPABASE_ANON_KEY = os.environ.get(
     "METAFORGE_SUPABASE_ANON_KEY",
-    "sb_publishable_C7SqVOoZBPFy4W0DxKcOGQ_emEIw-rj",
+    DEFAULT_SUPABASE_ANON_KEY,
 )
+
+SUPABASE_AUTH_ERROR_MARKERS = (
+    "unauthorized",
+    "invalid api key",
+    "legacy api keys are disabled",
+    "unauthorized_disabled_legacy_key",
+    "jwt",
+)
+_discovered_supabase_config: Optional["SupabaseConfig"] = None
+
+
+@dataclass(frozen=True)
+class SupabaseConfig:
+    url: str
+    anon_key: str
+    source: str
+    persist_discovery: bool
 
 
 class DownloadError(RuntimeError):
     pass
 
 
-def _fetch_json(url: str, headers: Optional[Dict[str, str]] = None) -> object:
+class HttpDownloadError(DownloadError):
+    def __init__(self, url: str, status_code: int, body: str) -> None:
+        self.url = url
+        self.status_code = status_code
+        self.body = body
+        details = body.strip().replace("\n", " ")[:300]
+        message = f"HTTP {status_code} for {url}"
+        if details:
+            message = f"{message}: {details}"
+        super().__init__(message)
+
+
+def _fetch_text(
+    url: str,
+    headers: Optional[Dict[str, str]] = None,
+    *,
+    accept: str = "application/json",
+) -> str:
     request_headers = {
-        "Accept": "application/json",
+        "Accept": accept,
         "User-Agent": (
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
             "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -43,12 +84,20 @@ def _fetch_json(url: str, headers: Optional[Dict[str, str]] = None) -> object:
     req = Request(url, headers=request_headers)
     try:
         with urlopen(req, timeout=30) as resp:
-            payload = resp.read().decode("utf-8")
-            return json.loads(payload)
+            return resp.read().decode("utf-8")
     except HTTPError as exc:
-        raise DownloadError(f"HTTP {exc.code} for {url}") from exc
+        body = exc.read().decode("utf-8", "replace")
+        raise HttpDownloadError(url, exc.code, body) from exc
     except URLError as exc:
         raise DownloadError(f"Failed to reach {url}: {exc}") from exc
+
+
+def _fetch_json(url: str, headers: Optional[Dict[str, str]] = None) -> object:
+    payload = _fetch_text(url, headers)
+    try:
+        return json.loads(payload)
+    except json.JSONDecodeError as exc:
+        raise DownloadError(f"Invalid JSON response for {url}") from exc
 
 
 def _fetch_all_items() -> List[dict]:
@@ -97,17 +146,182 @@ def _fetch_all_quests() -> List[dict]:
     return quests
 
 
-def _fetch_supabase_all(table: str) -> List[dict]:
+def _normalize_supabase_rest_url(supabase_url: str) -> str:
+    normalized = supabase_url.strip().rstrip("/")
+    if normalized.endswith("/rest/v1"):
+        return normalized
+    return f"{normalized}/rest/v1"
+
+
+def _sources_path(data_dir: Path) -> Path:
+    return data_dir / METAFORGE_SOURCES_FILENAME
+
+
+def _load_sources_config(path: Path) -> Optional[SupabaseConfig]:
+    if not path.exists():
+        return None
+
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise DownloadError(f"Could not parse {path}: {exc}") from exc
+
+    if not isinstance(payload, dict):
+        raise DownloadError(f"{path} must contain a JSON object")
+
+    supabase_url = payload.get("supabaseUrl")
+    anon_key = payload.get("supabaseAnonKey")
+    if not isinstance(supabase_url, str) or not supabase_url.strip():
+        raise DownloadError(f"{path} is missing supabaseUrl")
+    if not isinstance(anon_key, str) or not anon_key.strip():
+        raise DownloadError(f"{path} is missing supabaseAnonKey")
+
+    return SupabaseConfig(
+        url=_normalize_supabase_rest_url(supabase_url),
+        anon_key=anon_key,
+        source=str(path),
+        persist_discovery=True,
+    )
+
+
+def _configured_supabase_config(sources_path: Path) -> SupabaseConfig:
+    env_url = os.environ.get("METAFORGE_SUPABASE_URL")
+    env_key = os.environ.get("METAFORGE_SUPABASE_ANON_KEY")
+
+    if env_url and env_key:
+        return SupabaseConfig(
+            url=_normalize_supabase_rest_url(env_url),
+            anon_key=env_key,
+            source="environment",
+            persist_discovery=False,
+        )
+
+    try:
+        file_config = _load_sources_config(sources_path)
+    except DownloadError:
+        if not env_url and not env_key:
+            raise
+        file_config = None
+
+    if env_url or env_key:
+        fallback = file_config or SupabaseConfig(
+            url=DEFAULT_SUPABASE_URL,
+            anon_key=DEFAULT_SUPABASE_ANON_KEY,
+            source="defaults",
+            persist_discovery=False,
+        )
+        return SupabaseConfig(
+            url=_normalize_supabase_rest_url(env_url) if env_url else fallback.url,
+            anon_key=env_key if env_key else fallback.anon_key,
+            source="environment",
+            persist_discovery=False,
+        )
+
+    if file_config is not None:
+        return file_config
+
+    return SupabaseConfig(
+        url=DEFAULT_SUPABASE_URL,
+        anon_key=DEFAULT_SUPABASE_ANON_KEY,
+        source="defaults",
+        persist_discovery=True,
+    )
+
+
+def _sources_config_matches(path: Path, config: SupabaseConfig) -> bool:
+    if not path.exists():
+        return False
+
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return False
+
+    if not isinstance(payload, dict):
+        return False
+
+    supabase_url = payload.get("supabaseUrl")
+    anon_key = payload.get("supabaseAnonKey")
+    if not isinstance(supabase_url, str) or not isinstance(anon_key, str):
+        return False
+
+    return (
+        _normalize_supabase_rest_url(supabase_url) == config.url
+        and anon_key == config.anon_key
+        and payload.get("sourcePage") == METAFORGE_APP_URL
+    )
+
+
+def _write_sources_config(path: Path, config: SupabaseConfig) -> None:
+    if _sources_config_matches(path, config):
+        return
+
+    payload = {
+        "sourcePage": METAFORGE_APP_URL,
+        "supabaseUrl": config.url,
+        "supabaseAnonKey": config.anon_key,
+        "lastDiscoveredAt": datetime.now(timezone.utc)
+        .isoformat()
+        .replace("+00:00", "Z"),
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
+def _extract_public_env_value(source: str, key: str) -> str:
+    unescaped_source = html.unescape(source)
+    match = re.search(
+        rf'"{re.escape(key)}"\s*:\s*("(?:\\.|[^"\\])*")',
+        unescaped_source,
+    )
+    if not match:
+        raise DownloadError(f"Could not find {key} in {METAFORGE_APP_URL}")
+    value = json.loads(match.group(1))
+    if not isinstance(value, str) or not value.strip():
+        raise DownloadError(f"Invalid {key} in {METAFORGE_APP_URL}")
+    return value
+
+
+def _discover_supabase_config() -> SupabaseConfig:
+    global _discovered_supabase_config
+
+    if _discovered_supabase_config is not None:
+        return _discovered_supabase_config
+
+    page = _fetch_text(METAFORGE_APP_URL, accept="text/html,application/xhtml+xml")
+    supabase_url = _normalize_supabase_rest_url(
+        _extract_public_env_value(page, "PUBLIC_SUPABASE_URL")
+    )
+    anon_key = _extract_public_env_value(page, "PUBLIC_SUPABASE_ANON_KEY")
+    _discovered_supabase_config = SupabaseConfig(
+        url=supabase_url,
+        anon_key=anon_key,
+        source=METAFORGE_APP_URL,
+        persist_discovery=False,
+    )
+    return _discovered_supabase_config
+
+
+def _is_supabase_auth_error(exc: DownloadError) -> bool:
+    if not isinstance(exc, HttpDownloadError):
+        return False
+    if exc.status_code in {401, 403}:
+        return True
+    body = exc.body.lower()
+    return any(marker in body for marker in SUPABASE_AUTH_ERROR_MARKERS)
+
+
+def _fetch_supabase_all_with_config(table: str, config: SupabaseConfig) -> List[dict]:
     headers = {
-        "apikey": SUPABASE_ANON_KEY,
-        "Authorization": f"Bearer {SUPABASE_ANON_KEY}",
+        "apikey": config.anon_key,
+        "Authorization": f"Bearer {config.anon_key}",
     }
     page_size = 1000
     offset = 0
     all_rows: List[dict] = []
 
     while True:
-        url = f"{SUPABASE_URL}/{table}?select=*&limit={page_size}&offset={offset}"
+        url = f"{config.url}/{table}?select=*&limit={page_size}&offset={offset}"
         batch = _fetch_json(url, headers=headers)
         if not isinstance(batch, list):
             raise DownloadError(f"Unexpected response for {table}: expected array")
@@ -118,6 +332,31 @@ def _fetch_supabase_all(table: str) -> List[dict]:
         time.sleep(0.1)
 
     return all_rows
+
+
+def _fetch_supabase_all(table: str, sources_path: Path) -> List[dict]:
+    configured = _configured_supabase_config(sources_path)
+    if _discovered_supabase_config is not None:
+        if configured.persist_discovery:
+            _write_sources_config(sources_path, _discovered_supabase_config)
+        supabase_config = _discovered_supabase_config
+    else:
+        supabase_config = configured
+    try:
+        return _fetch_supabase_all_with_config(table, supabase_config)
+    except DownloadError as exc:
+        if not _is_supabase_auth_error(exc):
+            raise
+
+        discovered = _discover_supabase_config()
+        if discovered == supabase_config:
+            raise DownloadError(
+                "Supabase auth failed and Metaforge page discovery returned "
+                "the same public Supabase config."
+            ) from exc
+        if configured.persist_discovery:
+            _write_sources_config(sources_path, discovered)
+        return _fetch_supabase_all_with_config(table, discovered)
 
 
 def _build_component_map(components: List[dict]) -> Dict[str, Dict[str, int]]:
@@ -220,12 +459,15 @@ def _build_quests_by_trader(quests: List[dict]) -> Dict[str, List[dict]]:
 def update_data_snapshot(data_dir: Optional[Path] = None) -> dict:
     data_dir = data_dir or DATA_DIR
     (data_dir / "static").mkdir(parents=True, exist_ok=True)
+    sources_path = _sources_path(data_dir)
 
     metaforge_items = _fetch_all_items()
     metaforge_quests = _fetch_all_quests()
 
-    components = _fetch_supabase_all("arc_item_components")
-    recycle_components = _fetch_supabase_all("arc_item_recycle_components")
+    components = _fetch_supabase_all("arc_item_components", sources_path)
+    recycle_components = _fetch_supabase_all(
+        "arc_item_recycle_components", sources_path
+    )
 
     crafting_map = _build_component_map(components)
     recycle_map = _build_component_map(recycle_components)
