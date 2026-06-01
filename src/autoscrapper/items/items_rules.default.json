@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "generatedAt": "2026-03-31T14:53:23.149493Z",
+    "generatedAt": "2026-06-01T19:14:32.356646Z",
     "data": {
-      "lastUpdated": "2026-03-31T14:53:23.133520Z",
+      "lastUpdated": "2026-06-01T19:14:32.340613Z",
       "source": "https://metaforge.app/arc-raiders",
       "version": "autoscrapper-data-1"
     },
-    "itemCount": 540,
+    "itemCount": 581,
     "allQuestsCompleted": true
   },
   "items": [
@@ -1057,7 +1057,7 @@
       "value": 300,
       "action": "keep",
       "analysis": [
-        "Used in 4 crafting recipes",
+        "Used in 5 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -1074,8 +1074,8 @@
     },
     {
       "id": "canto",
-      "name": "Canto",
-      "value": 0,
+      "name": "Canto I",
+      "value": 7000,
       "action": "keep",
       "analysis": [
         "Weapon - review based on your current loadout",
@@ -1091,6 +1091,39 @@
       "analysis": [
         "Legendary rarity - extremely valuable",
         "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "canto-ii",
+      "name": "Canto II",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "canto-iii",
+      "name": "Canto III",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "canto-iv",
+      "name": "Canto IV",
+      "value": 17000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -1331,6 +1364,27 @@
       ]
     },
     {
+      "id": "crash-mat",
+      "name": "Crash Mat",
+      "value": 1200,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "crash-mat-blueprint",
+      "name": "Crash Mat Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
       "id": "crimson-racer-aviator-colour",
       "name": "Crimson Racer (Aviator Colour)",
       "value": 0,
@@ -1363,7 +1417,7 @@
     },
     {
       "id": "dam-control-center-tower-key",
-      "name": "Dam Control Center Tower Key",
+      "name": "Dam Control Tower Key",
       "value": 100,
       "action": "keep",
       "analysis": [
@@ -1589,6 +1643,16 @@
       ]
     },
     {
+      "id": "dockmasters-detector",
+      "name": "Dockmaster\u2019s Detector",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "dog-collar",
       "name": "Dog Collar",
       "value": 640,
@@ -1790,7 +1854,7 @@
     },
     {
       "id": "extended-barrel",
-      "name": "Extended Barrel",
+      "name": "Extended Barrel IIII",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -1800,8 +1864,40 @@
       ]
     },
     {
+      "id": "extended-barrel-i",
+      "name": "Extended Barrel I ",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "extended-barrel-ii",
+      "name": "Extended Barrel II",
+      "value": 3000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "extended-barrel-ii-blueprint",
+      "name": "Extended Barrel II Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
       "id": "extended-barrel-recipe",
-      "name": "Extended Barrel Blueprint",
+      "name": "Extended Barrel III Blueprint",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -1972,10 +2068,11 @@
       "id": "fabric",
       "name": "Fabric",
       "value": 50,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
+        "Used in 3 crafting recipes",
+        "Common crafting ingredient",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -2200,10 +2297,10 @@
       "id": "free-loadout-augment",
       "name": "Free Loadout Augment",
       "value": 100,
-      "action": "sell",
+      "action": "recycle",
       "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
+        "Recycles into: 6x Plastic Parts, 6x Rubber Parts",
+        "Recycle value: Components (660 coins) worth MORE than Item (100 coins)"
       ]
     },
     {
@@ -2322,6 +2419,16 @@
     {
       "id": "goggles-radio-renegade-variant",
       "name": "Goggles (Radio Renegade Variant)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "gothic-graffiti-aviator-color",
+      "name": "Gothic Graffiti (Aviator Color)",
       "value": 0,
       "action": "sell",
       "analysis": [
@@ -2452,7 +2559,7 @@
       "value": 700,
       "action": "keep",
       "analysis": [
-        "Used in 17 crafting recipes",
+        "Used in 21 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -2516,7 +2623,7 @@
       "value": 1000,
       "action": "keep",
       "analysis": [
-        "Used in 1 crafting recipes",
+        "Used in 2 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -2883,6 +2990,16 @@
       ]
     },
     {
+      "id": "leviathans-crown-ship-model",
+      "name": "\"Leviathan's Crown\" Ship Model",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
       "id": "lidar-scanner",
       "name": "Lidar Scanner",
       "value": 0,
@@ -3148,7 +3265,7 @@
       "value": 640,
       "action": "keep",
       "analysis": [
-        "Used in 34 crafting recipes",
+        "Used in 35 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -3170,7 +3287,7 @@
       "value": 700,
       "action": "keep",
       "analysis": [
-        "Used in 23 crafting recipes",
+        "Used in 26 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -3543,7 +3660,7 @@
       "value": 60,
       "action": "keep",
       "analysis": [
-        "Used in 18 crafting recipes",
+        "Used in 19 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -3640,6 +3757,27 @@
       ]
     },
     {
+      "id": "powered-descender",
+      "name": "Powered Descender",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "powered-descender-blueprint",
+      "name": "Powered Descender Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
       "id": "prickly-pear",
       "name": "Prickly Pear",
       "value": 640,
@@ -3654,7 +3792,7 @@
       "value": 500,
       "action": "keep",
       "analysis": [
-        "Used in 9 crafting recipes",
+        "Used in 10 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -3759,6 +3897,60 @@
       "analysis": [
         "Key - opens locked areas and containers",
         "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rascal",
+      "name": "Rascal",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rascal-blueprint",
+      "name": "Rascal Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "rascal-ii",
+      "name": "Rascal II ",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rascal-iii",
+      "name": "Rascal III",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rascal-iv",
+      "name": "Rascal IV",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
         "Override: treat 'Your Call' as Keep"
       ]
     },
@@ -3962,6 +4154,116 @@
       "analysis": [
         "Recycles into: 1x Durable Cloth, 1x Magnet",
         "Recycle value: Components (940 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "riven-tides-classifed-records-keycard",
+      "name": "Riven Tides Classifed Records Keycard",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "riven-tides-crane-house-keycard",
+      "name": "Riven Tides Crane House Keycard",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "riven-tides-hotel-keycard-no-102",
+      "name": "Riven Tides Hotel Keycard No. 102",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "riven-tides-hotel-keycard-no-107",
+      "name": "Riven Tides Hotel Keycard No. 107",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "riven-tides-hotel-keycard-no-113",
+      "name": "Riven Tides Hotel Keycard No. 113",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "riven-tides-hotel-keycard-no-205",
+      "name": "Riven Tides Hotel Keycard No. 205",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "riven-tides-hotel-keycard-no-208",
+      "name": "Riven Tides Hotel Keycard No. 208",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "riven-tides-hotel-keycard-no-311",
+      "name": "Riven Tides Hotel Keycard No. 311",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "riven-tides-hotel-keycard-no-404",
+      "name": "Riven Tides Hotel Keycard No. 404",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "riven-tides-secure-storage-keycard",
+      "name": "Riven Tides Secure Storage Keycard",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -4244,7 +4546,7 @@
     },
     {
       "id": "shotgun-ammo",
-      "name": "Shotgun ammo",
+      "name": "Shotgun Ammo",
       "value": 20,
       "action": "keep",
       "analysis": [
@@ -4461,6 +4763,16 @@
         "Used in 24 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "sirena-dorata-ship-model",
+      "name": "\"Sirena Dorata\" Ship Model",
+      "value": 7000,
+      "action": "sell",
+      "analysis": [
+        "High value (7000 coins)",
+        "No crafting or upgrade use"
       ]
     },
     {
@@ -4822,6 +5134,27 @@
       ]
     },
     {
+      "id": "surge-coil",
+      "name": "Surge Coil",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "surge-coil-blueprint",
+      "name": "Surge Coil Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
       "id": "surge-shield-recharger",
       "name": "Surge Shield Recharger",
       "value": 1200,
@@ -4924,6 +5257,17 @@
       "analysis": [
         "Legendary rarity - extremely valuable",
         "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "tactical-mk-3-smoke",
+      "name": "Tactical Mk. 3 (Smoke)",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -5229,6 +5573,17 @@
       ]
     },
     {
+      "id": "turbine-compressor",
+      "name": "Turbine Compressor",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "turbo-pump",
       "name": "Turbo Pump",
       "value": 2000,
@@ -5239,6 +5594,16 @@
       ]
     },
     {
+      "id": "twilight-compass-ship-model",
+      "name": "\"Twilight Compass\" Ship Model",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "High value (1000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
       "id": "unusable-weapon",
       "name": "Unusable Weapon",
       "value": 2000,
@@ -5246,6 +5611,16 @@
       "analysis": [
         "Recycles into: 4x Metal Parts, 5x Simple Gun Parts",
         "Recycle value: Components (1950 coins) worth less than Item (2000 coins)"
+      ]
+    },
+    {
+      "id": "utility-augment-t3-smoke-blueprint",
+      "name": "Tactical MK.3 (Smoke) Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
       ]
     },
     {
@@ -5262,6 +5637,16 @@
     {
       "id": "vase",
       "name": "Vase",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "High value (3000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "velocity-ship-model",
+      "name": "\"Velocity\" Ship Model",
       "value": 3000,
       "action": "sell",
       "analysis": [
@@ -5543,6 +5928,47 @@
       ]
     },
     {
+      "id": "white-flag",
+      "name": "White Flag",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "white-flag-blueprint",
+      "name": "White Flag Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "white-indigo-warden-color",
+      "name": "White Indigo (Warden Color)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "wind-sprite-ship-model",
+      "name": "\"Wind Sprite\" Ship Model",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "High value (1000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
       "id": "wires-recipe",
       "name": "Wires",
       "value": 200,
@@ -5591,6 +6017,16 @@
       "analysis": [
         "Legendary rarity - extremely valuable",
         "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "yellow-radio-renegade-color",
+      "name": "Yellow (Radio Renegade Color)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
