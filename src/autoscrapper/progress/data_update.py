@@ -4,6 +4,7 @@ import html
 import json
 import os
 import re
+import sys
 import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -20,6 +21,9 @@ METAFORGE_API_BASE = "https://metaforge.app/api/arc-raiders"
 METAFORGE_SOURCES_FILENAME = "metaforge_sources.json"
 DEFAULT_SUPABASE_URL = "https://sb.metaforge.app/rest/v1"
 DEFAULT_SUPABASE_ANON_KEY = "sb_publishable_C7SqVOoZBPFy4W0DxKcOGQ_emEIw-rj"
+HTTP_TIMEOUT_SECONDS = 30
+HTTP_RETRY_DELAYS_SECONDS = (2.0, 5.0, 10.0, 20.0)
+HTTP_RETRYABLE_STATUS_CODES = {408, 429, 500, 502, 503, 504}
 SUPABASE_URL = os.environ.get(
     "METAFORGE_SUPABASE_URL",
     DEFAULT_SUPABASE_URL,
@@ -64,6 +68,26 @@ class HttpDownloadError(DownloadError):
         super().__init__(message)
 
 
+def _retry_after_seconds(headers: object) -> Optional[float]:
+    retry_after = headers.get("Retry-After") if headers is not None else None
+    if retry_after is None:
+        return None
+
+    try:
+        return max(0.0, min(float(retry_after), 60.0))
+    except ValueError:
+        return None
+
+
+def _log_fetch_retry(url: str, reason: str, attempt: int, delay: float) -> None:
+    max_attempts = len(HTTP_RETRY_DELAYS_SECONDS) + 1
+    print(
+        f"Transient fetch failure for {url}: {reason}. "
+        f"Retrying in {delay:g}s ({attempt + 1}/{max_attempts}).",
+        file=sys.stderr,
+    )
+
+
 def _fetch_text(
     url: str,
     headers: Optional[Dict[str, str]] = None,
@@ -81,15 +105,26 @@ def _fetch_text(
     if headers:
         request_headers.update(headers)
 
-    req = Request(url, headers=request_headers)
-    try:
-        with urlopen(req, timeout=30) as resp:
-            return resp.read().decode("utf-8")
-    except HTTPError as exc:
-        body = exc.read().decode("utf-8", "replace")
-        raise HttpDownloadError(url, exc.code, body) from exc
-    except URLError as exc:
-        raise DownloadError(f"Failed to reach {url}: {exc}") from exc
+    for attempt, delay in enumerate((*HTTP_RETRY_DELAYS_SECONDS, 0.0)):
+        req = Request(url, headers=request_headers)
+        try:
+            with urlopen(req, timeout=HTTP_TIMEOUT_SECONDS) as resp:
+                return resp.read().decode("utf-8")
+        except HTTPError as exc:
+            body = exc.read().decode("utf-8", "replace")
+            error = HttpDownloadError(url, exc.code, body)
+            if exc.code not in HTTP_RETRYABLE_STATUS_CODES or delay == 0.0:
+                raise error from exc
+            retry_delay = _retry_after_seconds(exc.headers) or delay
+            _log_fetch_retry(url, f"HTTP {exc.code}", attempt, retry_delay)
+            time.sleep(retry_delay)
+        except (TimeoutError, URLError) as exc:
+            if delay == 0.0:
+                raise DownloadError(f"Failed to reach {url}: {exc}") from exc
+            _log_fetch_retry(url, str(exc), attempt, delay)
+            time.sleep(delay)
+
+    raise DownloadError(f"Failed to reach {url}")
 
 
 def _fetch_json(url: str, headers: Optional[Dict[str, str]] = None) -> object:
