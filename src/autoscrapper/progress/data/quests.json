@@ -519,7 +519,7 @@
         "id": "f574c105-44b4-4b0f-ac66-357bb72c5c9f",
         "item": {
           "id": "surge-shield-recharger",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
+          "icon": "https://static.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
           "name": "Surge Shield Recharger",
           "rarity": "Rare",
           "item_type": "Quick Use"
@@ -579,7 +579,7 @@
         "item": {
           "id": "extended-barrel",
           "icon": "https://cdn.metaforge.app/arc-raiders/icons/extended-barrel.webp",
-          "name": "Extended Barrel IIII",
+          "name": "Extended Barrel III",
           "rarity": "Epic",
           "item_type": "Modification"
         },
@@ -1395,7 +1395,7 @@
         "id": "5452401f-cdd3-4a32-8469-7813c2c44299",
         "item": {
           "id": "light-shield",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/light-shield.webp",
+          "icon": "https://static.metaforge.app/arc-raiders/icons/light-shield.webp",
           "name": "Light Shield",
           "rarity": "Uncommon",
           "item_type": "Shield"
@@ -1811,7 +1811,7 @@
         "id": "59b095ed-fefb-4423-9e01-151e2bbe2185",
         "item": {
           "id": "surge-shield-recharger",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
+          "icon": "https://static.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
           "name": "Surge Shield Recharger",
           "rarity": "Rare",
           "item_type": "Quick Use"
@@ -1884,7 +1884,7 @@
         "id": "e9da39ae-d912-457c-b3fd-2754f5b6c316",
         "item": {
           "id": "medium-shield",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/medium-shield.webp",
+          "icon": "https://static.metaforge.app/arc-raiders/icons/medium-shield.webp",
           "name": "Medium Shield",
           "rarity": "Rare",
           "item_type": "Shield"
@@ -2810,7 +2810,7 @@
         "id": "b98e3c05-77d5-417b-9902-5a25afaa35ae",
         "item": {
           "id": "surge-shield-recharger",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
+          "icon": "https://static.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
           "name": "Surge Shield Recharger",
           "rarity": "Rare",
           "item_type": "Quick Use"
@@ -3318,7 +3318,7 @@
         "id": "bbd60c4b-7b6f-4a40-a796-8c3f2a5f1208",
         "item": {
           "id": "surge-shield-recharger",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
+          "icon": "https://static.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
           "name": "Surge Shield Recharger",
           "rarity": "Rare",
           "item_type": "Quick Use"
@@ -3429,7 +3429,7 @@
         "id": "afcfd0d9-bc75-4a01-990a-024739195659",
         "item": {
           "id": "surge-shield-recharger",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
+          "icon": "https://static.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
           "name": "Surge Shield Recharger",
           "rarity": "Rare",
           "item_type": "Quick Use"
@@ -5225,7 +5225,7 @@
         "id": "ad52d7f7-5ea0-45d8-ac5a-669c9a50c357",
         "item": {
           "id": "surge-shield-recharger",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
+          "icon": "https://static.metaforge.app/arc-raiders/icons/surge-shield-recharger.webp",
           "name": "Surge Shield Recharger",
           "rarity": "Rare",
           "item_type": "Quick Use"
@@ -5448,7 +5448,7 @@
         "id": "5b20c967-2032-4cdd-b0b9-c260e3f5a3e7",
         "item": {
           "id": "medium-shield",
-          "icon": "https://cdn.metaforge.app/arc-raiders/icons/medium-shield.webp",
+          "icon": "https://static.metaforge.app/arc-raiders/icons/medium-shield.webp",
           "name": "Medium Shield",
           "rarity": "Rare",
           "item_type": "Shield"

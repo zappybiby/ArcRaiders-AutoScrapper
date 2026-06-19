@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "generatedAt": "2026-06-01T19:14:32.356646Z",
+    "generatedAt": "2026-06-19T16:25:20.011611Z",
     "data": {
-      "lastUpdated": "2026-06-01T19:14:32.340613Z",
+      "lastUpdated": "2026-06-19T16:25:19.994351Z",
       "source": "https://metaforge.app/arc-raiders",
       "version": "autoscrapper-data-1"
     },
-    "itemCount": 581,
+    "itemCount": 590,
     "allQuestsCompleted": true
   },
   "items": [
@@ -1177,6 +1177,36 @@
       ]
     },
     {
+      "id": "colorful-shoes",
+      "name": "Colorful Shoes",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "colorful-shoes-epic",
+      "name": "Colorful Shoes",
+      "value": 7000,
+      "action": "sell",
+      "analysis": [
+        "High value (7000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "colorful-shoes-rare",
+      "name": "Colorful Shoes",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "High value (3000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
       "id": "combat-mk-1",
       "name": "Combat Mk. 1",
       "value": 640,
@@ -1743,6 +1773,16 @@
       ]
     },
     {
+      "id": "elephant-obelisk",
+      "name": "Elephant Obelisk",
+      "value": 9996,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
       "id": "empty-wine-bottle",
       "name": "Empty Wine Bottle",
       "value": 1000,
@@ -1781,6 +1821,16 @@
       "analysis": [
         "Legendary rarity - extremely valuable",
         "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "equatorial-sundial",
+      "name": "Equatorial Sundial",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "High value (3000 coins)",
+        "No crafting or upgrade use"
       ]
     },
     {
@@ -1854,7 +1904,7 @@
     },
     {
       "id": "extended-barrel",
-      "name": "Extended Barrel IIII",
+      "name": "Extended Barrel III",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -4523,6 +4573,16 @@
       ]
     },
     {
+      "id": "sextant",
+      "name": "Sextant",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "High value (2000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
       "id": "shaker",
       "name": "Shaker",
       "value": 1000,
@@ -5353,6 +5413,17 @@
       ]
     },
     {
+      "id": "tellurion",
+      "name": "Tellurion",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "tempest-i",
       "name": "Tempest I",
       "value": 13000,
@@ -5539,6 +5610,16 @@
       "analysis": [
         "Legendary rarity - extremely valuable",
         "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "train-model",
+      "name": "Train Model",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "High value (1000 coins)",
+        "No crafting or upgrade use"
       ]
     },
     {
@@ -5768,6 +5849,16 @@
       "action": "keep",
       "analysis": [
         "Required for hideout upgrade: Scrappy (Level 5)"
+      ]
+    },
+    {
+      "id": "vintage-steering-wheel",
+      "name": "Vintage Steering Wheel",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "High value (2000 coins)",
+        "No crafting or upgrade use"
       ]
     },
     {
