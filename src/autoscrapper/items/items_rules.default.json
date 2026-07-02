@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "generatedAt": "2026-06-19T16:25:20.011611Z",
+    "generatedAt": "2026-07-02T15:57:22.201906Z",
     "data": {
-      "lastUpdated": "2026-06-19T16:25:19.994351Z",
+      "lastUpdated": "2026-07-02T15:57:22.184142Z",
       "source": "https://metaforge.app/arc-raiders",
       "version": "autoscrapper-data-1"
     },
@@ -3302,7 +3302,7 @@
     {
       "id": "matriarch-reactor",
       "name": "Matriarch Reactor",
-      "value": 13000,
+      "value": 11000,
       "action": "keep",
       "analysis": [
         "Legendary rarity - extremely valuable",
@@ -3798,7 +3798,7 @@
     {
       "id": "power-rod",
       "name": "Power Rod",
-      "value": 5500,
+      "value": 4997,
       "action": "keep",
       "analysis": [
         "Used in 2 crafting recipes",
