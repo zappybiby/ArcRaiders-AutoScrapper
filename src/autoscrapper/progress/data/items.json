@@ -8,7 +8,7 @@
     "weightKg": 1,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:29.52993+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -21,7 +21,7 @@
     "weightKg": 0.2,
     "stackSize": 5,
     "craftBench": "Med Stations 1",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:29.650815+00:00",
     "recipe": {
       "plastic-parts": 3,
       "chemicals": 3
@@ -55,7 +55,7 @@
     "weightKg": 1,
     "stackSize": 5,
     "craftBench": "Refiner",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:29.765617+00:00",
     "recipe": {
       "wires-recipe": 3,
       "electrical-components": 2
@@ -74,7 +74,7 @@
     "weightKg": 1,
     "stackSize": 5,
     "craftBench": "Refiner",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:29.881443+00:00",
     "recipe": {
       "spring": 2,
       "mechanical-components": 2
@@ -93,7 +93,7 @@
     "weightKg": 0.2,
     "stackSize": 10,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:30.000347+00:00",
     "recipe": null,
     "recyclesInto": {
       "assorted-seeds": 3
@@ -108,7 +108,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:30.12777+00:00",
     "recipe": {
       "agave": 1,
       "empty-wine-bottle": 1
@@ -124,7 +124,7 @@
     "weightKg": 0.3,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:30.242168+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -137,7 +137,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:30.353888+00:00",
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 6,
@@ -153,7 +153,7 @@
     "weightKg": 0.3,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:30.479436+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -166,7 +166,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:30.621472+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -179,7 +179,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:30.75776+00:00",
     "recipe": {
       "plastic-parts": 6,
       "duct-tape-recipe": 1
@@ -197,7 +197,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:30.90057+00:00",
     "recipe": {
       "mechanical-components": 2,
       "duct-tape-recipe": 3
@@ -216,7 +216,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:31.344335+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -229,7 +229,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:31.043669+00:00",
     "recipe": {
       "mod-components": 2,
       "duct-tape-recipe": 5
@@ -248,7 +248,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:31.191212+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -261,7 +261,7 @@
     "weightKg": 1,
     "stackSize": 5,
     "craftBench": "Refiner",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:31.490123+00:00",
     "recipe": {
       "chemicals": 10,
       "great-muullein": 2
@@ -279,7 +279,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:32.094422+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -292,7 +292,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": "Weapon Bench 2",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:31.635113+00:00",
     "recipe": {
       "mechanical-components": 5,
       "simple-gun-parts": 6,
@@ -312,7 +312,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": "Weapon Bench II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:31.747632+00:00",
     "recipe": {
       "anvil-i": 1,
       "mechanical-components": 3,
@@ -332,7 +332,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:31.861974+00:00",
     "recipe": {
       "anvil-ii": 1,
       "mechanical-components": 4,
@@ -352,7 +352,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:31.983504+00:00",
     "recipe": {
       "mechanical-components": 4,
       "heavy-gun-parts": 1,
@@ -372,7 +372,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:32.209024+00:00",
     "recipe": null,
     "recyclesInto": {
       "mod-components": 1,
@@ -388,7 +388,7 @@
     "weightKg": 10,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:32.322868+00:00",
     "recipe": {
       "magnetic-accelerator": 3,
       "complex-gun-parts": 3,
@@ -408,7 +408,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:32.436711+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -421,7 +421,7 @@
     "weightKg": 0.2,
     "stackSize": 10,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:32.552166+00:00",
     "recipe": null,
     "recyclesInto": {
       "assorted-seeds": 3
@@ -436,7 +436,7 @@
     "weightKg": 0.25,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:32.692349+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 2
@@ -451,7 +451,7 @@
     "weightKg": 0.3,
     "stackSize": 5,
     "craftBench": "Refiner II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:32.808937+00:00",
     "recipe": {
       "arc-alloy": 8
     },
@@ -468,7 +468,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:32.921918+00:00",
     "recipe": null,
     "recyclesInto": {
       "chemicals": 16
@@ -483,7 +483,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:33.044434+00:00",
     "recipe": null,
     "recyclesInto": {
       "rubber-parts-recipe": 16
@@ -498,7 +498,7 @@
     "weightKg": 0.3,
     "stackSize": 5,
     "craftBench": "Refiner II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:33.157771+00:00",
     "recipe": {
       "arc-alloy": 8
     },
@@ -515,7 +515,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:33.272896+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 12
@@ -530,7 +530,7 @@
     "weightKg": 0.5,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:33.388992+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -543,7 +543,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:33.503715+00:00",
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 14
@@ -558,7 +558,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:33.615596+00:00",
     "recipe": null,
     "recyclesInto": {
       "fabric": 16
@@ -573,7 +573,7 @@
     "weightKg": 6,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:33.729327+00:00",
     "recipe": {
       "mechanical-components": 6,
       "simple-gun-parts": 6
@@ -589,7 +589,7 @@
     "weightKg": 6,
     "stackSize": 1,
     "craftBench": "Weapon Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:33.844399+00:00",
     "recipe": {
       "arpeggio-i": 1,
       "metal-parts": 14,
@@ -606,7 +606,7 @@
     "weightKg": 6,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:33.962415+00:00",
     "recipe": {
       "arpeggio-ii": 1,
       "metal-parts": 10,
@@ -623,7 +623,7 @@
     "weightKg": 6,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:34.079013+00:00",
     "recipe": {
       "mechanical-components": 1,
       "medium-gun-parts": 2,
@@ -640,7 +640,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:34.2067+00:00",
     "recipe": null,
     "recyclesInto": {
       "advanced-mechanical-components": 1,
@@ -656,7 +656,7 @@
     "weightKg": 0.05,
     "stackSize": 100,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:34.32022+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -669,7 +669,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:34.440851+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -682,7 +682,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:34.553458+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -695,7 +695,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:34.66804+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -708,7 +708,7 @@
     "weightKg": 0.1,
     "stackSize": 5,
     "craftBench": "Basic Bench or Med Station 1",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:34.782545+00:00",
     "recipe": {
       "fabric": 5
     },
@@ -725,7 +725,7 @@
     "weightKg": 0.4,
     "stackSize": 3,
     "craftBench": "Utility Bench 1",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:34.918026+00:00",
     "recipe": {
       "mechanical-components": 1
     },
@@ -742,7 +742,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:35.030075+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -755,7 +755,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:35.143718+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 3,
@@ -771,7 +771,7 @@
     "weightKg": 0.25,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:35.256166+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 2
@@ -786,7 +786,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:35.368319+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -799,7 +799,7 @@
     "weightKg": 11,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:35.49966+00:00",
     "recipe": {
       "advanced-mechanical-components": 3,
       "heavy-gun-parts": 3,
@@ -816,7 +816,7 @@
     "weightKg": 11,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:35.649395+00:00",
     "recipe": {
       "advanced-mechanical-components": 1,
       "heavy-gun-parts": 2
@@ -835,7 +835,7 @@
     "weightKg": 11,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:35.797431+00:00",
     "recipe": {
       "advanced-mechanical-components": 1,
       "heavy-gun-parts": 2
@@ -854,7 +854,7 @@
     "weightKg": 11,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:35.94703+00:00",
     "recipe": {
       "advanced-mechanical-components": 2,
       "heavy-gun-parts": 2
@@ -873,7 +873,7 @@
     "weightKg": 3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:36.091774+00:00",
     "recipe": null,
     "recyclesInto": {
       "canister": 4,
@@ -889,7 +889,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": "Utility Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:36.251381+00:00",
     "recipe": {
       "plastic-parts": 8,
       "rubber-parts-recipe": 4
@@ -908,7 +908,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:36.397903+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-motion-core": 2,
@@ -924,7 +924,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:36.692963+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -937,7 +937,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:36.836206+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -950,7 +950,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:36.545161+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -963,7 +963,7 @@
     "weightKg": 0.2,
     "stackSize": 5,
     "craftBench": "Explosive Bench 3",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:36.990975+00:00",
     "recipe": {
       "oil": 2,
       "explosive-compound": 1
@@ -982,7 +982,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:37.136288+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -995,7 +995,7 @@
     "weightKg": 0.3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:37.279993+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1008,7 +1008,7 @@
     "weightKg": 0.2,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:37.396139+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1021,7 +1021,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:37.52059+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1034,7 +1034,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:37.642619+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1047,7 +1047,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:37.763827+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1060,7 +1060,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:37.898889+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1073,7 +1073,7 @@
     "weightKg": 0.15,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:38.028864+00:00",
     "recipe": null,
     "recyclesInto": {
       "chemicals": 1
@@ -1088,7 +1088,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:38.15971+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1101,7 +1101,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:38.285025+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1114,7 +1114,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:38.416035+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1127,7 +1127,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:38.955329+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1140,7 +1140,7 @@
     "weightKg": 7,
     "stackSize": 1,
     "craftBench": "Weapon Bench 3",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:38.545534+00:00",
     "recipe": {
       "magnetic-accelerator": 1,
       "light-gun-parts": 3,
@@ -1158,7 +1158,7 @@
     "weightKg": 7,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:38.68269+00:00",
     "recipe": {
       "bobcat-i": 1,
       "advanced-mechanical-components": 2,
@@ -1178,7 +1178,7 @@
     "weightKg": 7,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:38.817144+00:00",
     "recipe": {
       "advanced-mechanical-components": 2,
       "light-gun-parts": 3,
@@ -1198,7 +1198,7 @@
     "weightKg": 7,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:39.087582+00:00",
     "recipe": {
       "bobcat-iii": 1,
       "advanced-mechanical-components": 2,
@@ -1218,7 +1218,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:39.217555+00:00",
     "recipe": null,
     "recyclesInto": {
       "advanced-mechanical-components": 2,
@@ -1234,7 +1234,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:39.329985+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1247,7 +1247,7 @@
     "weightKg": 0.2,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:39.453041+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1260,7 +1260,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:39.565785+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1273,7 +1273,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:39.683307+00:00",
     "recipe": null,
     "recyclesInto": {
       "battery": 2,
@@ -1289,7 +1289,7 @@
     "weightKg": 3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:39.803644+00:00",
     "recipe": null,
     "recyclesInto": {
       "processor": 4
@@ -1304,7 +1304,7 @@
     "weightKg": 0.8,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:39.934386+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1317,7 +1317,7 @@
     "weightKg": 3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:40.06677+00:00",
     "recipe": null,
     "recyclesInto": {
       "sensors-recipe": 3,
@@ -1333,7 +1333,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:40.209587+00:00",
     "recipe": null,
     "recyclesInto": {
       "battery": 2,
@@ -1349,7 +1349,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:40.335068+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1362,7 +1362,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:40.466867+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1375,7 +1375,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:40.773159+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1388,7 +1388,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:40.911946+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1401,7 +1401,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:41.043137+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1414,7 +1414,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:41.710436+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1427,7 +1427,7 @@
     "weightKg": 4,
     "stackSize": 1,
     "craftBench": "Weapon Bench 2",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:41.177047+00:00",
     "recipe": {
       "mechanical-components": 3,
       "simple-gun-parts": 3,
@@ -1447,7 +1447,7 @@
     "weightKg": 4,
     "stackSize": 1,
     "craftBench": "Weapon Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:41.306566+00:00",
     "recipe": {
       "burletta-i": 1,
       "mechanical-components": 3,
@@ -1467,7 +1467,7 @@
     "weightKg": 4,
     "stackSize": 1,
     "craftBench": "Weapon Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:41.441838+00:00",
     "recipe": {
       "burletta-ii": 1,
       "mechanical-components": 3,
@@ -1487,7 +1487,7 @@
     "weightKg": 4,
     "stackSize": 1,
     "craftBench": "Weapon Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:41.57266+00:00",
     "recipe": {
       "burletta-iiii": 1,
       "mechanical-components": 4,
@@ -1507,7 +1507,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:41.851207+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 2
@@ -1522,7 +1522,7 @@
     "weightKg": 0.2,
     "stackSize": 16,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:41.966608+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1535,7 +1535,7 @@
     "weightKg": 0.8,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:42.087396+00:00",
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 8
@@ -1550,7 +1550,7 @@
     "weightKg": 0.5,
     "stackSize": 10,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:42.202864+00:00",
     "recipe": null,
     "recyclesInto": {
       "assorted-seeds": 2
@@ -1565,7 +1565,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:42.316166+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 8
@@ -1580,7 +1580,7 @@
     "weightKg": 0.25,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:42.429889+00:00",
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 3
@@ -1595,7 +1595,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:42.544029+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1608,7 +1608,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:42.769723+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1621,7 +1621,7 @@
     "weightKg": 4,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:42.65782+00:00",
     "recipe": {
       "advanced-mechanical-components": 2,
       "magnet": 5,
@@ -1641,7 +1641,7 @@
     "weightKg": 4,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:42.883257+00:00",
     "recipe": {
       "advanced-mechanical-components": 1,
       "medium-gun-parts": 2
@@ -1660,7 +1660,7 @@
     "weightKg": 4,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:42.997373+00:00",
     "recipe": {
       "advanced-mechanical-components": 1,
       "medium-gun-parts": 2
@@ -1679,7 +1679,7 @@
     "weightKg": 4,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:43.110388+00:00",
     "recipe": {
       "advanced-mechanical-components": 2,
       "medium-gun-parts": 2
@@ -1698,7 +1698,7 @@
     "weightKg": 0.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:43.222836+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1711,7 +1711,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:43.335285+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1724,7 +1724,7 @@
     "weightKg": 0.1,
     "stackSize": 50,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:43.450921+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1737,7 +1737,7 @@
     "weightKg": 0.3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:43.569129+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1750,7 +1750,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:43.680995+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1802,7 +1802,7 @@
     "weightKg": 2,
     "stackSize": 1,
     "craftBench": "Equipment Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:43.793161+00:00",
     "recipe": {
       "plastic-parts": 6,
       "rubber-parts-recipe": 6
@@ -1821,7 +1821,7 @@
     "weightKg": 3,
     "stackSize": 1,
     "craftBench": "Equipment Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:43.904727+00:00",
     "recipe": {
       "electrical-components": 2,
       "magnet": 3
@@ -1840,7 +1840,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": "Gear Bench III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:44.028998+00:00",
     "recipe": {
       "advanced-electrical-components": 2,
       "processor": 3
@@ -1856,7 +1856,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:44.141219+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1869,7 +1869,7 @@
     "weightKg": 3,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:44.365304+00:00",
     "recipe": {
       "advanced-electrical-components": 2,
       "processor": 3
@@ -1885,7 +1885,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:44.254377+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1898,7 +1898,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:44.48792+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 2,
@@ -1914,7 +1914,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": "Gunsmith",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:44.629416+00:00",
     "recipe": {
       "metal-parts": 6,
       "wires-recipe": 1
@@ -1932,7 +1932,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": "Gunsmith II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:44.742875+00:00",
     "recipe": {
       "mechanical-components": 2,
       "wires-recipe": 4
@@ -1951,7 +1951,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:45.141928+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1964,7 +1964,7 @@
     "weightKg": 0.75,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:44.861393+00:00",
     "recipe": {
       "mod-components": 2,
       "wires-recipe": 8
@@ -1983,7 +1983,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:44.974652+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -1996,7 +1996,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": "Refiner",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:45.258867+00:00",
     "recipe": {
       "light-gun-parts": 2,
       "medium-gun-parts": 2,
@@ -2015,7 +2015,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:45.375238+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2028,7 +2028,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:45.492239+00:00",
     "recipe": null,
     "recyclesInto": {
       "chemicals": 5,
@@ -2044,7 +2044,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:45.606773+00:00",
     "recipe": null,
     "recyclesInto": {
       "chemicals": 6,
@@ -2060,7 +2060,7 @@
     "weightKg": 3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:45.719203+00:00",
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 14,
@@ -2076,7 +2076,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:45.830069+00:00",
     "recipe": null,
     "recyclesInto": {
       "battery": 3,
@@ -2092,7 +2092,7 @@
     "weightKg": 0.3,
     "stackSize": 5,
     "craftBench": "Utility Station II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:45.943415+00:00",
     "recipe": {
       "electrical-components": 1,
       "durable-cloth": 1
@@ -2111,7 +2111,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:46.055401+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2124,7 +2124,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:46.168535+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2137,7 +2137,7 @@
     "weightKg": 0.5,
     "stackSize": 10,
     "craftBench": "Refiner",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:46.280248+00:00",
     "recipe": {
       "chemicals": 6
     },
@@ -2154,7 +2154,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:46.393575+00:00",
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 4
@@ -2169,7 +2169,7 @@
     "weightKg": 0.25,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:46.504441+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 2
@@ -2184,7 +2184,7 @@
     "weightKg": 0.25,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:46.617842+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 1
@@ -2199,7 +2199,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:46.729211+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 1
@@ -2214,7 +2214,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:46.85329+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 6,
@@ -2230,7 +2230,7 @@
     "weightKg": 0.3,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:48.011857+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2243,7 +2243,7 @@
     "weightKg": 0.25,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:46.964739+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 3
@@ -2258,7 +2258,7 @@
     "weightKg": 0.25,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:47.092496+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 1
@@ -2273,7 +2273,7 @@
     "weightKg": 0.25,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:47.213479+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 1
@@ -2288,7 +2288,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:47.442211+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2301,7 +2301,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:47.327153+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2314,7 +2314,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:47.558729+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2327,7 +2327,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:47.671041+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2340,7 +2340,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:47.785153+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2353,7 +2353,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:47.898318+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2366,7 +2366,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:48.12951+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2379,7 +2379,7 @@
     "weightKg": 1,
     "stackSize": 1,
     "craftBench": "Explosives Bench III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:48.242299+00:00",
     "recipe": {
       "explosive-compound": 3,
       "arc-circuitry": 2,
@@ -2398,7 +2398,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:48.35494+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2411,7 +2411,7 @@
     "weightKg": 0.75,
     "stackSize": 3,
     "craftBench": "Med Station 3",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:48.467688+00:00",
     "recipe": {
       "plastic-parts": 3,
       "moss": 1
@@ -2430,7 +2430,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": "Medical Lab II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:48.580018+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2443,7 +2443,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:48.697109+00:00",
     "recipe": null,
     "recyclesInto": {
       "fabric": 9,
@@ -2459,7 +2459,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:48.809411+00:00",
     "recipe": null,
     "recyclesInto": {
       "rubber-parts-recipe": 11
@@ -2474,7 +2474,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:48.925059+00:00",
     "recipe": null,
     "recyclesInto": {
       "rubber-parts-recipe": 12
@@ -2489,7 +2489,7 @@
     "weightKg": 1,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:49.037735+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2502,7 +2502,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:49.154001+00:00",
     "recipe": null,
     "recyclesInto": {
       "fabric": 8,
@@ -2518,7 +2518,7 @@
     "weightKg": 8,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:49.271647+00:00",
     "recipe": {
       "shredder-gyro": 3,
       "magnetic-accelerator": 3,
@@ -2537,7 +2537,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:49.384871+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2550,7 +2550,7 @@
     "weightKg": 0.3,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:49.497401+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2563,7 +2563,7 @@
     "weightKg": 0.2,
     "stackSize": 1,
     "craftBench": "Utility Bench I ",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:49.62608+00:00",
     "recipe": {
       "metal-parts": 3,
       "rubber-parts-recipe": 3
@@ -2579,7 +2579,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:49.739943+00:00",
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 9
@@ -2594,7 +2594,7 @@
     "weightKg": 0.25,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:49.852969+00:00",
     "recipe": null,
     "recyclesInto": {
       "fabric": 3
@@ -2609,7 +2609,7 @@
     "weightKg": 0.25,
     "stackSize": 10,
     "craftBench": "Refiner",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:49.966106+00:00",
     "recipe": {
       "fabric": 14
     },
@@ -2626,7 +2626,7 @@
     "weightKg": 0.5,
     "stackSize": 10,
     "craftBench": "Refiner",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:50.080236+00:00",
     "recipe": {
       "plastic-parts": 8,
       "rubber-parts-recipe": 4
@@ -2658,7 +2658,7 @@
     "weightKg": 0.2,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:50.194993+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2671,7 +2671,7 @@
     "weightKg": 0.3,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:50.312841+00:00",
     "recipe": {
       "advanced-arc-powercell": 1,
       "battery": 2
@@ -2687,7 +2687,7 @@
     "weightKg": 14,
     "stackSize": 1,
     "craftBench": "Weapon Bench 3",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:50.425345+00:00",
     "recipe": {
       "queen-reactor": 1,
       "magnetic-accelerator": 3,
@@ -2704,7 +2704,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:50.541304+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2730,7 +2730,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:50.654407+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2743,7 +2743,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:50.76755+00:00",
     "recipe": null,
     "recyclesInto": {
       "magnet": 2,
@@ -2759,7 +2759,7 @@
     "weightKg": 0.1,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:50.880725+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2772,7 +2772,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:50.994734+00:00",
     "recipe": null,
     "recyclesInto": {
       "fabric": 4,
@@ -2788,7 +2788,7 @@
     "weightKg": 0.3,
     "stackSize": 5,
     "craftBench": "Refiner",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:51.106586+00:00",
     "recipe": {
       "crude-explosives": 2,
       "oil": 2
@@ -2806,7 +2806,7 @@
     "weightKg": 0.4,
     "stackSize": 3,
     "craftBench": "Explosives Bench 3",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:51.230199+00:00",
     "recipe": {
       "sensors-recipe": 1,
       "explosive-compound": 1
@@ -2822,7 +2822,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:51.355517+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2835,7 +2835,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:51.469086+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2848,7 +2848,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:51.580954+00:00",
     "recipe": {
       "mechanical-components": 3,
       "wires-recipe": 6
@@ -2867,7 +2867,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:51.69609+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2880,7 +2880,7 @@
     "weightKg": 0.75,
     "stackSize": 1,
     "craftBench": "Gunsmith I",
-    "updatedAt": "2026-06-17T14:40:30.724601+00:00",
+    "updatedAt": "2026-06-20T20:31:32.128901+00:00",
     "recipe": {
       "mod-components": 2,
       "wires-recipe": 8
@@ -2899,7 +2899,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-20T20:31:10.392263+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2912,7 +2912,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": "Gunsmith",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:51.808382+00:00",
     "recipe": {
       "plastic-parts": 6,
       "spring": 1
@@ -2930,7 +2930,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": "Weapon Bench II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:51.921323+00:00",
     "recipe": {
       "mechanical-components": 2,
       "spring": 3
@@ -2949,7 +2949,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:52.26305+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2962,7 +2962,7 @@
     "weightKg": 0.75,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:52.033054+00:00",
     "recipe": {
       "mod-components": 2,
       "spring": 5
@@ -2981,7 +2981,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:52.144895+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -2994,7 +2994,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": "Weapon Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:52.377842+00:00",
     "recipe": {
       "plastic-parts": 6,
       "spring": 1
@@ -3012,7 +3012,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:52.5296+00:00",
     "recipe": {
       "mechanical-components": 2,
       "spring": 3
@@ -3031,7 +3031,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:52.895508+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3044,7 +3044,7 @@
     "weightKg": 0.75,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:52.643561+00:00",
     "recipe": {
       "mod-components": 1,
       "spring": 6
@@ -3063,7 +3063,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:52.777133+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3076,7 +3076,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": "Gunsmith",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:53.007509+00:00",
     "recipe": {
       "plastic-parts": 6,
       "spring": 1
@@ -3094,7 +3094,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": "Gunsmith II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:53.11995+00:00",
     "recipe": {
       "mechanical-components": 2,
       "spring": 3
@@ -3113,7 +3113,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:53.458201+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3126,7 +3126,7 @@
     "weightKg": 0.75,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:53.232264+00:00",
     "recipe": {
       "mod-components": 1,
       "spring": 2
@@ -3145,7 +3145,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:53.345505+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3158,7 +3158,7 @@
     "weightKg": 0.1,
     "stackSize": 50,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:53.57274+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3171,7 +3171,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:53.685153+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3184,7 +3184,7 @@
     "weightKg": 0.3,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:53.799049+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3197,7 +3197,7 @@
     "weightKg": 0.3,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:53.911514+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3210,7 +3210,7 @@
     "weightKg": 8,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:54.027946+00:00",
     "recipe": {
       "metal-parts": 5,
       "rubber-parts-recipe": 2
@@ -3229,7 +3229,7 @@
     "weightKg": 8,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:54.143535+00:00",
     "recipe": {
       "ferro-i": 1,
       "metal-parts": 7
@@ -3248,7 +3248,7 @@
     "weightKg": 8,
     "stackSize": 1,
     "craftBench": "Weapon Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:54.255991+00:00",
     "recipe": {
       "ferro-ii": 1,
       "metal-parts": 9,
@@ -3268,7 +3268,7 @@
     "weightKg": 8,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:54.368254+00:00",
     "recipe": {
       "ferro-iii": 1,
       "mechanical-components": 1,
@@ -3288,7 +3288,7 @@
     "weightKg": 0.4,
     "stackSize": 10,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:54.480876+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3301,7 +3301,7 @@
     "weightKg": 0.2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:54.593333+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3314,7 +3314,7 @@
     "weightKg": 0.2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:54.721859+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3327,7 +3327,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:54.837509+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3340,7 +3340,7 @@
     "weightKg": 0.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:54.951936+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 1,
@@ -3356,7 +3356,7 @@
     "weightKg": 0.05,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:55.063542+00:00",
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 3
@@ -3371,7 +3371,7 @@
     "weightKg": 0.75,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:55.175919+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 2,
@@ -3387,7 +3387,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:55.287271+00:00",
     "recipe": {
       "explosive-compound": 1,
       "pop-trigger": 3
@@ -3405,7 +3405,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:55.468194+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3418,7 +3418,7 @@
     "weightKg": 1,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:55.665431+00:00",
     "recipe": {
       "air-freshener": 1,
       "fireball-burner": 1
@@ -3434,7 +3434,7 @@
     "weightKg": 0.3,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:55.843868+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3447,7 +3447,7 @@
     "weightKg": 1.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:56.021756+00:00",
     "recipe": null,
     "recyclesInto": {
       "advanced-mechanical-components": 1,
@@ -3463,7 +3463,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:56.198232+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3476,7 +3476,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:56.311494+00:00",
     "recipe": null,
     "recyclesInto": {
       "explosive-compound": 3
@@ -3491,7 +3491,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:56.423446+00:00",
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 6,
@@ -3507,7 +3507,7 @@
     "weightKg": 1.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:56.533859+00:00",
     "recipe": null,
     "recyclesInto": {
       "advanced-electrical-components": 1,
@@ -3523,7 +3523,7 @@
     "weightKg": 3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:56.652532+00:00",
     "recipe": null,
     "recyclesInto": {
       "electrical-components": 2,
@@ -3539,7 +3539,7 @@
     "weightKg": 0,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:56.765721+00:00",
     "recipe": {
       "lemon": 1,
       "apricot": 1,
@@ -3556,7 +3556,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:56.878772+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 8
@@ -3571,7 +3571,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:56.991939+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 12
@@ -3586,7 +3586,7 @@
     "weightKg": 0.2,
     "stackSize": 3,
     "craftBench": "Explosive Bench 1",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:57.134686+00:00",
     "recipe": {
       "chemicals": 4,
       "rubber-parts-recipe": 2
@@ -3605,7 +3605,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:57.248737+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3618,7 +3618,7 @@
     "weightKg": 0.25,
     "stackSize": 3,
     "craftBench": "Explosives Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:57.360283+00:00",
     "recipe": null,
     "recyclesInto": {
       "chemicals": 1,
@@ -3634,7 +3634,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:57.480891+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3647,7 +3647,7 @@
     "weightKg": 1.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:57.594856+00:00",
     "recipe": null,
     "recyclesInto": {
       "battery": 3,
@@ -3663,7 +3663,7 @@
     "weightKg": 0.3,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:57.708204+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3676,7 +3676,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:57.824877+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3689,7 +3689,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:57.939114+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3702,7 +3702,7 @@
     "weightKg": 0.25,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:58.059022+00:00",
     "recipe": null,
     "recyclesInto": {
       "assorted-seeds": 2
@@ -3717,7 +3717,7 @@
     "weightKg": 0.15,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:58.17285+00:00",
     "recipe": null,
     "recyclesInto": {
       "chemicals": 1
@@ -3732,7 +3732,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:58.287192+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3745,7 +3745,7 @@
     "weightKg": 3,
     "stackSize": 1,
     "craftBench": "Weapon Bench 1 or Basic Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:58.402753+00:00",
     "recipe": {
       "metal-parts": 2,
       "plastic-parts": 5
@@ -3764,7 +3764,7 @@
     "weightKg": 3,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:58.516655+00:00",
     "recipe": {
       "hairpin-i": 1,
       "metal-parts": 8
@@ -3783,7 +3783,7 @@
     "weightKg": 3,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:58.630045+00:00",
     "recipe": {
       "hairpin-ii": 1,
       "metal-parts": 9,
@@ -3803,7 +3803,7 @@
     "weightKg": 3,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:58.742839+00:00",
     "recipe": {
       "hairpin-iii": 1,
       "mechanical-components": 1,
@@ -3823,7 +3823,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:58.855775+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3836,7 +3836,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:58.970867+00:00",
     "recipe": null,
     "recyclesInto": {
       "rubber-parts-recipe": 7,
@@ -3852,7 +3852,7 @@
     "weightKg": 0.05,
     "stackSize": 40,
     "craftBench": "Workbench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:59.082531+00:00",
     "recipe": {
       "metal-parts": 3,
       "chemicals": 2
@@ -3868,7 +3868,7 @@
     "weightKg": 0.2,
     "stackSize": 3,
     "craftBench": "Explosives Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:59.196019+00:00",
     "recipe": {
       "explosive-compound": 1,
       "canister": 2
@@ -3887,7 +3887,7 @@
     "weightKg": 0.5,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:59.307097+00:00",
     "recipe": {
       "simple-gun-parts": 4
     },
@@ -3904,7 +3904,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": "Refiner II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:59.419034+00:00",
     "recipe": {
       "simple-gun-parts": 4
     },
@@ -3919,7 +3919,7 @@
     "weightKg": 9,
     "stackSize": 1,
     "craftBench": "Gear Bench 3",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:59.531212+00:00",
     "recipe": {
       "power-rod": 1,
       "voltage-converter": 2
@@ -3938,7 +3938,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:59.642466+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -3951,7 +3951,7 @@
     "weightKg": 0.15,
     "stackSize": 5,
     "craftBench": "Med Station",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:59.753781+00:00",
     "recipe": {
       "durable-cloth": 1,
       "great-muullein": 1
@@ -3970,7 +3970,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:59.879005+00:00",
     "recipe": null,
     "recyclesInto": {
       "mod-components": 1,
@@ -3986,7 +3986,7 @@
     "weightKg": 0.75,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:23:59.990521+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 2,
@@ -4002,7 +4002,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:00.103084+00:00",
     "recipe": null,
     "recyclesInto": {
       "chemicals": 11
@@ -4017,7 +4017,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:00.218748+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4030,7 +4030,7 @@
     "weightKg": 7,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:00.33277+00:00",
     "recipe": {
       "magnetic-accelerator": 1,
       "heavy-gun-parts": 3,
@@ -4050,7 +4050,7 @@
     "weightKg": 7,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:00.443332+00:00",
     "recipe": {
       "advanced-mechanical-components": 1,
       "heavy-gun-parts": 2
@@ -4069,7 +4069,7 @@
     "weightKg": 7,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:00.554973+00:00",
     "recipe": {
       "advanced-mechanical-components": 2,
       "heavy-gun-parts": 1
@@ -4088,7 +4088,7 @@
     "weightKg": 7,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:00.667065+00:00",
     "recipe": {
       "advanced-mechanical-components": 2,
       "heavy-gun-parts": 3
@@ -4107,7 +4107,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:00.778358+00:00",
     "recipe": null,
     "recyclesInto": {
       "canister": 2,
@@ -4123,7 +4123,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:00.896784+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 7
@@ -4138,7 +4138,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:01.460797+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4151,7 +4151,7 @@
     "weightKg": 8,
     "stackSize": 1,
     "craftBench": "Weapon Bench 1",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:01.008597+00:00",
     "recipe": {
       "mechanical-components": 5,
       "simple-gun-parts": 6
@@ -4170,7 +4170,7 @@
     "weightKg": 8,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:01.120115+00:00",
     "recipe": {
       "il-toro-i": 1,
       "mechanical-components": 3,
@@ -4190,7 +4190,7 @@
     "weightKg": 8,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:01.232077+00:00",
     "recipe": {
       "il-toro-ii": 1,
       "mechanical-components": 4,
@@ -4210,7 +4210,7 @@
     "weightKg": 8,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:01.344129+00:00",
     "recipe": {
       "il-toro-iiii": 1,
       "mechanical-components": 4,
@@ -4230,7 +4230,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:01.577144+00:00",
     "recipe": null,
     "recyclesInto": {
       "chemicals": 12
@@ -4245,7 +4245,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:01.689514+00:00",
     "recipe": null,
     "recyclesInto": {
       "battery": 2,
@@ -4261,7 +4261,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:01.801529+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 5,
@@ -4277,7 +4277,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:01.935301+00:00",
     "recipe": null,
     "recyclesInto": {
       "magnet": 2,
@@ -4293,7 +4293,7 @@
     "weightKg": 1.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:02.048731+00:00",
     "recipe": null,
     "recyclesInto": {
       "exodus-modules": 1,
@@ -4309,7 +4309,7 @@
     "weightKg": 0.2,
     "stackSize": 3,
     "craftBench": "Explosives Bench II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:02.16115+00:00",
     "recipe": {
       "electrical-components": 1,
       "battery": 1
@@ -4325,7 +4325,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:02.274393+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4338,7 +4338,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:02.390414+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4351,7 +4351,7 @@
     "weightKg": 9,
     "stackSize": 1,
     "craftBench": "Weapon Bench 3",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:02.514188+00:00",
     "recipe": {
       "queen-reactor": 1,
       "magnetic-accelerator": 3,
@@ -4368,7 +4368,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:02.627372+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4381,7 +4381,7 @@
     "weightKg": 7,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:02.739921+00:00",
     "recipe": {
       "rubber-parts-recipe": 8,
       "metal-parts": 6
@@ -4400,7 +4400,7 @@
     "weightKg": 7,
     "stackSize": 1,
     "craftBench": "Gunsmith I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:02.853071+00:00",
     "recipe": {
       "kettle-i": 1,
       "metal-parts": 8,
@@ -4420,7 +4420,7 @@
     "weightKg": 7,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:02.966441+00:00",
     "recipe": {
       "kettle-ii": 1,
       "metal-parts": 10,
@@ -4440,7 +4440,7 @@
     "weightKg": 7,
     "stackSize": 1,
     "craftBench": "Gunsmith I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:03.119205+00:00",
     "recipe": {
       "kettle-iii": 1,
       "mechanical-components": 3,
@@ -4460,7 +4460,7 @@
     "weightKg": 0.75,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:03.235+00:00",
     "recipe": null,
     "recyclesInto": {
       "mod-components": 1,
@@ -4476,7 +4476,7 @@
     "weightKg": 3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:03.349283+00:00",
     "recipe": null,
     "recyclesInto": {
       "chemicals": 16,
@@ -4492,7 +4492,7 @@
     "weightKg": 0.2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:03.462366+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4505,7 +4505,7 @@
     "weightKg": 0.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:03.578399+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4518,7 +4518,7 @@
     "weightKg": 1,
     "stackSize": 1,
     "craftBench": "Workbench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:03.985392+00:00",
     "recipe": {
       "arc-motion-core": 1,
       "crude-explosives": 2
@@ -4534,7 +4534,7 @@
     "weightKg": 1,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:04.100451+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4547,7 +4547,7 @@
     "weightKg": 0.2,
     "stackSize": 10,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:04.215329+00:00",
     "recipe": null,
     "recyclesInto": {
       "assorted-seeds": 3
@@ -4562,7 +4562,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:04.330946+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4575,7 +4575,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:04.445829+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4588,7 +4588,7 @@
     "weightKg": 0.017,
     "stackSize": 100,
     "craftBench": "Workbench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:04.559999+00:00",
     "recipe": {
       "metal-parts": 3,
       "chemicals": 2
@@ -4604,7 +4604,7 @@
     "weightKg": 0.2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:04.676111+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4617,7 +4617,7 @@
     "weightKg": 0.3,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:04.792062+00:00",
     "recipe": {
       "simple-gun-parts": 2,
       "rubber-parts-recipe": 8
@@ -4635,7 +4635,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": "Refiner",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:04.916327+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4648,7 +4648,7 @@
     "weightKg": 0.1,
     "stackSize": 5,
     "craftBench": "Explosive Bench 1 or Basic Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:05.035201+00:00",
     "recipe": {
       "plastic-parts": 2,
       "chemicals": 3
@@ -4685,7 +4685,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:05.158266+00:00",
     "recipe": {
       "mod-components": 2,
       "duct-tape-recipe": 5
@@ -4704,7 +4704,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:05.273413+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4717,7 +4717,7 @@
     "weightKg": 0.15,
     "stackSize": 5,
     "craftBench": "Utility Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:05.389973+00:00",
     "recipe": {
       "chemicals": 5,
       "plastic-parts": 1
@@ -4736,7 +4736,7 @@
     "weightKg": 1,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:05.506351+00:00",
     "recipe": {
       "plastic-parts": 6,
       "rubber-parts-recipe": 6
@@ -4755,7 +4755,7 @@
     "weightKg": 2,
     "stackSize": 1,
     "craftBench": "Equipment Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:05.622287+00:00",
     "recipe": {
       "electrical-components": 3,
       "magnet": 2
@@ -4774,7 +4774,7 @@
     "weightKg": 3,
     "stackSize": 1,
     "craftBench": "Equipment Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:05.738455+00:00",
     "recipe": {
       "advanced-electrical-components": 2,
       "processor": 3
@@ -4790,7 +4790,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:05.855889+00:00",
     "recipe": {
       "advanced-electrical-components": 2,
       "processor": 3
@@ -4806,7 +4806,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:05.973598+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4819,7 +4819,7 @@
     "weightKg": 4,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:06.093683+00:00",
     "recipe": {
       "advanced-electrical-components": 2,
       "processor": 3
@@ -4838,7 +4838,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:06.209908+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4851,7 +4851,7 @@
     "weightKg": 0.4,
     "stackSize": 3,
     "craftBench": "Utility Bench 2",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:06.324881+00:00",
     "recipe": {
       "speaker-component": 2,
       "plastic-parts": 2
@@ -4869,7 +4869,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": "Utility Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:06.443037+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4882,7 +4882,7 @@
     "weightKg": 0.25,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:06.559843+00:00",
     "recipe": null,
     "recyclesInto": {
       "speaker-component": 1
@@ -4897,7 +4897,7 @@
     "weightKg": 0.25,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:06.673669+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 2
@@ -4912,7 +4912,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": "Refiner",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:06.788313+00:00",
     "recipe": {
       "advanced-mechanical-components": 2,
       "arc-motion-core": 2
@@ -4931,7 +4931,7 @@
     "weightKg": 1.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:06.902301+00:00",
     "recipe": null,
     "recyclesInto": {
       "magnetic-accelerator": 1,
@@ -4947,7 +4947,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:07.029261+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -4956,11 +4956,11 @@
     "name": "Matriarch Reactor",
     "type": "Recyclable",
     "rarity": "legendary",
-    "value": 13000,
+    "value": 11000,
     "weightKg": 10,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:07.173526+00:00",
     "recipe": null,
     "recyclesInto": {
       "power-rod": 1,
@@ -4976,7 +4976,7 @@
     "weightKg": 0.5,
     "stackSize": 10,
     "craftBench": "Refiner",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:07.289384+00:00",
     "recipe": {
       "metal-parts": 7,
       "rubber-parts-recipe": 3
@@ -4995,7 +4995,7 @@
     "weightKg": 0.025,
     "stackSize": 80,
     "craftBench": "Workbench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:07.403726+00:00",
     "recipe": {
       "metal-parts": 3,
       "chemicals": 2
@@ -5011,7 +5011,7 @@
     "weightKg": 0.4,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:07.51859+00:00",
     "recipe": null,
     "recyclesInto": {
       "simple-gun-parts": 2
@@ -5026,7 +5026,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:07.639314+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5057,7 +5057,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:07.752649+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 8
@@ -5072,7 +5072,7 @@
     "weightKg": 0.15,
     "stackSize": 50,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:07.868988+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5085,7 +5085,7 @@
     "weightKg": 1.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:07.99222+00:00",
     "recipe": null,
     "recyclesInto": {
       "advanced-mechanical-components": 1,
@@ -5101,7 +5101,7 @@
     "weightKg": 1.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:08.149409+00:00",
     "recipe": null,
     "recyclesInto": {
       "advanced-mechanical-components": 1,
@@ -5117,7 +5117,7 @@
     "weightKg": 1,
     "stackSize": 5,
     "craftBench": "Refiner",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:08.270188+00:00",
     "recipe": {
       "mechanical-components": 2,
       "spring": 2
@@ -5136,7 +5136,7 @@
     "weightKg": 0.3,
     "stackSize": 10,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:08.386036+00:00",
     "recipe": null,
     "recyclesInto": {
       "assorted-seeds": 3
@@ -5151,7 +5151,7 @@
     "weightKg": 3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:08.504123+00:00",
     "recipe": null,
     "recyclesInto": {
       "mechanical-components": 2,
@@ -5167,7 +5167,7 @@
     "weightKg": 0.2,
     "stackSize": 10,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:08.619024+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5180,7 +5180,7 @@
     "weightKg": 0.3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:08.737148+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5193,7 +5193,7 @@
     "weightKg": 0.4,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:08.851372+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5206,7 +5206,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:08.968899+00:00",
     "recipe": {
       "metal-parts": 6,
       "wires-recipe": 1
@@ -5224,7 +5224,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:09.082879+00:00",
     "recipe": {
       "mechanical-components": 2,
       "wires-recipe": 4
@@ -5243,7 +5243,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:09.430925+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5256,7 +5256,7 @@
     "weightKg": 0.75,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:09.199092+00:00",
     "recipe": {
       "mod-components": 2,
       "wires-recipe": 8
@@ -5275,7 +5275,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:09.313795+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5288,7 +5288,7 @@
     "weightKg": 0.3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:09.544269+00:00",
     "recipe": null,
     "recyclesInto": {
       "speaker-component": 1
@@ -5303,7 +5303,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:09.659613+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 3
@@ -5318,7 +5318,7 @@
     "weightKg": 0.25,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:09.773003+00:00",
     "recipe": null,
     "recyclesInto": {
       "chemicals": 3
@@ -5333,7 +5333,7 @@
     "weightKg": 0.2,
     "stackSize": 10,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:09.888136+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5346,7 +5346,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:10.003317+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5359,7 +5359,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": "Gunsmith II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:10.630854+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5372,7 +5372,7 @@
     "weightKg": 7,
     "stackSize": 1,
     "craftBench": "Weapon Bench 2",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:10.148986+00:00",
     "recipe": {
       "advanced-mechanical-components": 2,
       "medium-gun-parts": 3,
@@ -5392,7 +5392,7 @@
     "weightKg": 7,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:10.269095+00:00",
     "recipe": {
       "osprey-i": 1,
       "advanced-mechanical-components": 1,
@@ -5412,7 +5412,7 @@
     "weightKg": 7,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:10.38651+00:00",
     "recipe": {
       "osprey-ii": 1,
       "advanced-mechanical-components": 1,
@@ -5432,7 +5432,7 @@
     "weightKg": 7,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:10.504275+00:00",
     "recipe": {
       "osprey-iii": 1,
       "advanced-mechanical-components": 2,
@@ -5452,7 +5452,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:10.746507+00:00",
     "recipe": {
       "mod-components": 2,
       "duct-tape-recipe": 5
@@ -5471,7 +5471,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:10.86262+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5484,7 +5484,7 @@
     "weightKg": 0.3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:10.978268+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5497,7 +5497,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:11.093482+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5510,7 +5510,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:11.209993+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5523,7 +5523,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:11.325283+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5536,7 +5536,7 @@
     "weightKg": 1,
     "stackSize": 1,
     "craftBench": "Utility Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:11.43858+00:00",
     "recipe": {
       "advanced-electrical-components": 2,
       "speaker-component": 4
@@ -5555,7 +5555,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:11.559825+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5568,7 +5568,7 @@
     "weightKg": 0.1,
     "stackSize": 50,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:11.674514+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5581,7 +5581,7 @@
     "weightKg": 0.2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:11.790141+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5594,7 +5594,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:11.905592+00:00",
     "recipe": null,
     "recyclesInto": {
       "fabric": 6,
@@ -5610,7 +5610,7 @@
     "weightKg": 0.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:12.023458+00:00",
     "recipe": null,
     "recyclesInto": {
       "crude-explosives": 1,
@@ -5626,7 +5626,7 @@
     "weightKg": 3,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:12.140444+00:00",
     "recipe": null,
     "recyclesInto": {
       "battery": 2,
@@ -5642,7 +5642,7 @@
     "weightKg": 0.3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:12.256417+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5655,7 +5655,7 @@
     "weightKg": 0.3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:12.372457+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5668,7 +5668,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:12.48952+00:00",
     "recipe": null,
     "recyclesInto": {
       "battery": 2,
@@ -5684,7 +5684,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:12.671002+00:00",
     "recipe": null,
     "recyclesInto": {
       "wires-recipe": 4
@@ -5699,7 +5699,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:12.787052+00:00",
     "recipe": null,
     "recyclesInto": {
       "advanced-electrical-components": 1,
@@ -5715,7 +5715,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:12.912072+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5724,11 +5724,11 @@
     "name": "Power Rod",
     "type": "Advanced Material",
     "rarity": "epic",
-    "value": 5500,
+    "value": 4997,
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": "Refiner",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:13.032421+00:00",
     "recipe": {
       "arc-circuitry": 2,
       "advanced-electrical-components": 2
@@ -5747,7 +5747,7 @@
     "weightKg": 0.2,
     "stackSize": 10,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:13.149017+00:00",
     "recipe": null,
     "recyclesInto": {
       "assorted-seeds": 3
@@ -5762,7 +5762,7 @@
     "weightKg": 0.2,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:13.26439+00:00",
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 1,
@@ -5778,7 +5778,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:13.380569+00:00",
     "recipe": null,
     "recyclesInto": {
       "processor": 1,
@@ -5794,7 +5794,7 @@
     "weightKg": 0.25,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:13.496096+00:00",
     "recipe": null,
     "recyclesInto": {
       "chemicals": 6
@@ -5809,7 +5809,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:13.61299+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5822,7 +5822,7 @@
     "weightKg": 10,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:13.729521+00:00",
     "recipe": null,
     "recyclesInto": {
       "magnetic-accelerator": 1,
@@ -5838,7 +5838,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:13.850639+00:00",
     "recipe": null,
     "recyclesInto": {
       "sensors-recipe": 1,
@@ -5854,7 +5854,7 @@
     "weightKg": 1.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:13.979366+00:00",
     "recipe": null,
     "recyclesInto": {
       "sensors-recipe": 2,
@@ -5870,7 +5870,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:14.093771+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5883,7 +5883,7 @@
     "weightKg": 0.01,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:14.209058+00:00",
     "recipe": {
       "advanced-electrical-components": 1,
       "sensors-recipe": 3
@@ -5899,7 +5899,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:14.404014+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5912,7 +5912,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:14.563068+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5925,7 +5925,7 @@
     "weightKg": 4,
     "stackSize": 1,
     "craftBench": "Gunsmith II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:14.679203+00:00",
     "recipe": {
       "advanced-mechanical-components": 2,
       "heavy-gun-parts": 3,
@@ -5945,7 +5945,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:14.79527+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -5958,7 +5958,7 @@
     "weightKg": 4,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:14.911504+00:00",
     "recipe": {
       "advanced-mechanical-components": 1,
       "heavy-gun-parts": 1
@@ -5977,7 +5977,7 @@
     "weightKg": 4,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:15.026973+00:00",
     "recipe": {
       "advanced-mechanical-components": 1,
       "heavy-gun-parts": 1
@@ -5996,7 +5996,7 @@
     "weightKg": 4,
     "stackSize": 1,
     "craftBench": "Gunsmith II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:15.142391+00:00",
     "recipe": {
       "advanced-mechanical-components": 2,
       "heavy-gun-parts": 1
@@ -6015,7 +6015,7 @@
     "weightKg": 6,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:15.273343+00:00",
     "recipe": {
       "metal-parts": 16,
       "rubber-parts-recipe": 12
@@ -6033,7 +6033,7 @@
     "weightKg": 6,
     "stackSize": 1,
     "craftBench": "Weapon Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:15.387492+00:00",
     "recipe": {
       "rattler-i": 1,
       "metal-parts": 10,
@@ -6052,7 +6052,7 @@
     "weightKg": 6,
     "stackSize": 1,
     "craftBench": "Weapon Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:15.503846+00:00",
     "recipe": {
       "rattler-ii": 1,
       "mechanical-components": 3,
@@ -6072,7 +6072,7 @@
     "weightKg": 6,
     "stackSize": 1,
     "craftBench": "Weapon Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:15.618866+00:00",
     "recipe": {
       "mechanical-components": 3,
       "simple-gun-parts": 1,
@@ -6092,7 +6092,7 @@
     "weightKg": 0.2,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:15.734983+00:00",
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 10
@@ -6107,7 +6107,7 @@
     "weightKg": 0.3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:15.850255+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6120,7 +6120,7 @@
     "weightKg": 0.15,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:15.967114+00:00",
     "recipe": null,
     "recyclesInto": {
       "chemicals": 1
@@ -6135,7 +6135,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:16.082109+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6148,7 +6148,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:16.197765+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6161,7 +6161,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:16.312203+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6174,7 +6174,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:16.435605+00:00",
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 7,
@@ -6190,7 +6190,7 @@
     "weightKg": 0.2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:16.550827+00:00",
     "recipe": null,
     "recyclesInto": {
       "chemicals": 1,
@@ -6206,7 +6206,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:16.668488+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6219,7 +6219,7 @@
     "weightKg": 10,
     "stackSize": 1,
     "craftBench": "Weapon Bench 2",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:16.784904+00:00",
     "recipe": {
       "advanced-mechanical-components": 2,
       "medium-gun-parts": 3,
@@ -6239,7 +6239,7 @@
     "weightKg": 10,
     "stackSize": 1,
     "craftBench": "Weapon Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:16.901126+00:00",
     "recipe": {
       "renegade-i": 1,
       "advanced-mechanical-components": 1,
@@ -6259,7 +6259,7 @@
     "weightKg": 10,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:17.018171+00:00",
     "recipe": {
       "renegade-ii": 1,
       "advanced-mechanical-components": 1,
@@ -6279,7 +6279,7 @@
     "weightKg": 10,
     "stackSize": 1,
     "craftBench": "Weapon Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:17.136832+00:00",
     "recipe": {
       "renegade-iii": 1,
       "advanced-mechanical-components": 2,
@@ -6299,7 +6299,7 @@
     "weightKg": 0.4,
     "stackSize": 10,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:17.251469+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6312,7 +6312,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:17.36751+00:00",
     "recipe": null,
     "recyclesInto": {
       "durable-cloth": 1,
@@ -6328,7 +6328,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:17.48243+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6341,7 +6341,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:17.603132+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6354,7 +6354,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:17.725301+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6367,7 +6367,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:17.844324+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6380,7 +6380,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:17.967412+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6393,7 +6393,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:18.099192+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6406,7 +6406,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:18.218023+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6419,7 +6419,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:18.339805+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6432,7 +6432,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:18.458226+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6445,7 +6445,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:18.574237+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6458,7 +6458,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:18.688712+00:00",
     "recipe": null,
     "recyclesInto": {
       "advanced-electrical-components": 2,
@@ -6474,7 +6474,7 @@
     "weightKg": 3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:18.803976+00:00",
     "recipe": null,
     "recyclesInto": {
       "synthesized-fuel": 2,
@@ -6490,7 +6490,7 @@
     "weightKg": 0.2,
     "stackSize": 10,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:18.920766+00:00",
     "recipe": null,
     "recyclesInto": {
       "assorted-seeds": 1
@@ -6505,7 +6505,7 @@
     "weightKg": 0.3,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:19.036921+00:00",
     "recipe": null,
     "recyclesInto": {
       "fabric": 5
@@ -6520,7 +6520,7 @@
     "weightKg": 0.3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:19.155599+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6533,7 +6533,7 @@
     "weightKg": 1.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:19.278822+00:00",
     "recipe": null,
     "recyclesInto": {
       "electrical-components": 2,
@@ -6549,7 +6549,7 @@
     "weightKg": 0.3,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:19.395914+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6562,7 +6562,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:19.51052+00:00",
     "recipe": null,
     "recyclesInto": {
       "rubber-parts-recipe": 18
@@ -6590,7 +6590,7 @@
     "weightKg": 3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:19.628504+00:00",
     "recipe": null,
     "recyclesInto": {
       "rubber-parts-recipe": 18,
@@ -6606,7 +6606,7 @@
     "weightKg": 3,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:19.744491+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6619,7 +6619,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:19.861352+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 6,
@@ -6635,7 +6635,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:19.976316+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 8
@@ -6650,7 +6650,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:20.092711+00:00",
     "recipe": null,
     "recyclesInto": {
       "fabric": 10
@@ -6665,7 +6665,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:20.208935+00:00",
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 10,
@@ -6681,7 +6681,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:20.325649+00:00",
     "recipe": null,
     "recyclesInto": {
       "fabric": 5,
@@ -6697,7 +6697,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:20.459265+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 8
@@ -6712,7 +6712,7 @@
     "weightKg": 3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:20.575407+00:00",
     "recipe": null,
     "recyclesInto": {
       "mechanical-components": 2,
@@ -6728,7 +6728,7 @@
     "weightKg": 3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:20.691192+00:00",
     "recipe": null,
     "recyclesInto": {
       "antiseptic": 1,
@@ -6744,7 +6744,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:20.809398+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 8,
@@ -6760,7 +6760,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:20.92578+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 8
@@ -6775,7 +6775,7 @@
     "weightKg": 1.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:21.058198+00:00",
     "recipe": null,
     "recyclesInto": {
       "assorted-seeds": 14,
@@ -6791,7 +6791,7 @@
     "weightKg": 0.2,
     "stackSize": 1,
     "craftBench": "Explosives Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:21.18012+00:00",
     "recipe": null,
     "recyclesInto": {
       "crude-explosives": 1
@@ -6806,7 +6806,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:21.297795+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6819,7 +6819,7 @@
     "weightKg": 0.3,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:21.418151+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 1,
@@ -6835,7 +6835,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:21.534988+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 2,
@@ -6864,7 +6864,7 @@
     "weightKg": 0.2,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:21.653739+00:00",
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 10
@@ -6897,7 +6897,7 @@
     "weightKg": 0.085,
     "stackSize": 20,
     "craftBench": "Workbench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:21.768644+00:00",
     "recipe": {
       "metal-parts": 3,
       "chemicals": 2
@@ -6913,7 +6913,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": "Gunsmith 1",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:21.887365+00:00",
     "recipe": {
       "metal-parts": 6,
       "wires-recipe": 1
@@ -6931,7 +6931,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:22.012067+00:00",
     "recipe": {
       "mechanical-components": 2,
       "wires-recipe": 4
@@ -6950,7 +6950,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:22.361113+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6963,7 +6963,7 @@
     "weightKg": 0.75,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:22.131257+00:00",
     "recipe": {
       "mod-components": 2,
       "wires-recipe": 8
@@ -6982,7 +6982,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:22.24567+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -6995,7 +6995,7 @@
     "weightKg": 0.4,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:22.476905+00:00",
     "recipe": {
       "simple-gun-parts": 2
     },
@@ -7010,7 +7010,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:22.59267+00:00",
     "recipe": {
       "mod-components": 1,
       "wires-recipe": 9
@@ -7029,7 +7029,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:22.707943+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7042,7 +7042,7 @@
     "weightKg": 0.4,
     "stackSize": 5,
     "craftBench": "Explosives Bench III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:22.824029+00:00",
     "recipe": {
       "electrical-components": 1,
       "hornet-driver": 1,
@@ -7062,7 +7062,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:22.945538+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7075,7 +7075,7 @@
     "weightKg": 0.15,
     "stackSize": 5,
     "craftBench": "Explosives Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:23.061528+00:00",
     "recipe": {
       "crude-explosives": 1,
       "spring": 2
@@ -7094,7 +7094,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:23.181539+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 3,
@@ -7110,7 +7110,7 @@
     "weightKg": 1.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:23.298347+00:00",
     "recipe": null,
     "recyclesInto": {
       "electrical-components": 2,
@@ -7126,7 +7126,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": "Gunsmith I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:23.413344+00:00",
     "recipe": {
       "wires-recipe": 4,
       "mechanical-components": 2
@@ -7142,7 +7142,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:23.883721+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7155,7 +7155,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:23.532067+00:00",
     "recipe": {
       "mod-components": 2,
       "wires-recipe": 8
@@ -7174,7 +7174,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:23.766974+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7187,7 +7187,7 @@
     "weightKg": 0.75,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:23.647312+00:00",
     "recipe": null,
     "recyclesInto": {
       "mod-components": 1,
@@ -7203,7 +7203,7 @@
     "weightKg": 0.3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:24.00435+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7216,7 +7216,7 @@
     "weightKg": 0.3,
     "stackSize": 10,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:24.118271+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 2
@@ -7231,7 +7231,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:24.233081+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7244,7 +7244,7 @@
     "weightKg": 0.2,
     "stackSize": 5,
     "craftBench": "Utility Bench 1 or Basic Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:24.349586+00:00",
     "recipe": {
       "chemicals": 14,
       "canister": 1
@@ -7263,7 +7263,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:24.543352+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7276,7 +7276,7 @@
     "weightKg": 0.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:03.690581+00:00",
     "recipe": {
       "smoke-grenade": 1,
       "wires-recipe": 1
@@ -7292,7 +7292,7 @@
     "weightKg": 0.2,
     "stackSize": 3,
     "craftBench": "Explosives Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:24.68503+00:00",
     "recipe": {
       "crude-explosives": 2,
       "magnet": 1
@@ -7311,7 +7311,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": "Utility Bench 3",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:24.890999+00:00",
     "recipe": {
       "rope": 3,
       "power-rod": 2,
@@ -7331,7 +7331,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:25.010998+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7344,7 +7344,7 @@
     "weightKg": 0.75,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:25.204536+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 1,
@@ -7360,7 +7360,7 @@
     "weightKg": 0.2,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:25.343848+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7373,7 +7373,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:25.552439+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7386,7 +7386,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:25.72338+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7399,7 +7399,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:25.840131+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7412,7 +7412,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:25.956769+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7425,7 +7425,7 @@
     "weightKg": 0.3,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:26.076831+00:00",
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 2,
@@ -7441,7 +7441,7 @@
     "weightKg": 1.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:26.194549+00:00",
     "recipe": null,
     "recyclesInto": {
       "advanced-electrical-components": 1,
@@ -7457,7 +7457,7 @@
     "weightKg": 1.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:26.310034+00:00",
     "recipe": null,
     "recyclesInto": {
       "exodus-modules": 1,
@@ -7473,7 +7473,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:26.425276+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 1,
@@ -7489,7 +7489,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:26.662609+00:00",
     "recipe": null,
     "recyclesInto": {
       "durable-cloth": 2,
@@ -7505,7 +7505,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": "Gunsmith",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:26.780624+00:00",
     "recipe": {
       "rubber-parts-recipe": 7,
       "duct-tape-recipe": 1
@@ -7523,7 +7523,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:26.897897+00:00",
     "recipe": {
       "mechanical-components": 2,
       "duct-tape-recipe": 3
@@ -7542,7 +7542,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:27.279449+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7555,7 +7555,7 @@
     "weightKg": 0.75,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:27.034621+00:00",
     "recipe": {
       "mod-components": 2,
       "duct-tape-recipe": 5
@@ -7574,7 +7574,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:27.152582+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7587,7 +7587,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:27.395203+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7600,7 +7600,7 @@
     "weightKg": 0.3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:27.511963+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7613,7 +7613,7 @@
     "weightKg": 0.25,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:26.543006+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 2
@@ -7628,7 +7628,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:27.647923+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7641,7 +7641,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:27.765792+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7654,7 +7654,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:27.882739+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7667,7 +7667,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:28.000968+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7680,7 +7680,7 @@
     "weightKg": 0.2,
     "stackSize": 3,
     "craftBench": "Med Station 2",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:28.14672+00:00",
     "recipe": {
       "antiseptic": 1,
       "durable-cloth": 2
@@ -7699,7 +7699,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:28.269474+00:00",
     "recipe": {
       "metal-parts": 8,
       "rubber-parts-recipe": 4
@@ -7718,7 +7718,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:28.400455+00:00",
     "recipe": {
       "stitcher-i": 1,
       "metal-parts": 8,
@@ -7738,7 +7738,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:28.516276+00:00",
     "recipe": {
       "stitcher-ii": 1,
       "metal-parts": 10,
@@ -7758,7 +7758,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:28.646225+00:00",
     "recipe": {
       "stitcher-iii": 1,
       "mechanical-components": 3,
@@ -7778,7 +7778,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:28.764432+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7791,7 +7791,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": "Explosives Bench III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:28.884158+00:00",
     "recipe": {
       "electrical-components": 1,
       "sensors-recipe": 1,
@@ -7808,7 +7808,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:28.998574+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7839,7 +7839,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:29.11516+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 2,
@@ -7855,7 +7855,7 @@
     "weightKg": 0.5,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:29.233006+00:00",
     "recipe": null,
     "recyclesInto": {
       "oil": 1,
@@ -7871,7 +7871,7 @@
     "weightKg": 0.3,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:29.347762+00:00",
     "recipe": null,
     "recyclesInto": {
       "chemicals": 2,
@@ -7887,7 +7887,7 @@
     "weightKg": 2,
     "stackSize": 1,
     "craftBench": "Equipment Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:29.586864+00:00",
     "recipe": {
       "plastic-parts": 6,
       "rubber-parts-recipe": 6
@@ -7906,7 +7906,7 @@
     "weightKg": 2,
     "stackSize": 1,
     "craftBench": "Equipment Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:29.703336+00:00",
     "recipe": {
       "electrical-components": 2,
       "magnet": 3
@@ -7925,7 +7925,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": "Gear Bench III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:29.818283+00:00",
     "recipe": {
       "advanced-electrical-components": 2,
       "processor": 3
@@ -7941,7 +7941,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:29.992625+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7954,7 +7954,7 @@
     "weightKg": 4,
     "stackSize": 1,
     "craftBench": "Gear Bench III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:30.129046+00:00",
     "recipe": {
       "advanced-electrical-components": 2,
       "processor": 3
@@ -7973,7 +7973,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:29.467471+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -7986,7 +7986,7 @@
     "weightKg": 3,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:30.289457+00:00",
     "recipe": {
       "advanced-electrical-components": 2,
       "processor": 3
@@ -8002,7 +8002,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:30.418091+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8015,7 +8015,7 @@
     "weightKg": 4,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:30.605419+00:00",
     "recipe": {
       "advanced-electrical-components": 2,
       "processor": 3
@@ -8034,7 +8034,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:34.828408+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8047,7 +8047,7 @@
     "weightKg": 0.4,
     "stackSize": 3,
     "craftBench": "Utility Bench 3",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:30.730387+00:00",
     "recipe": {
       "electrical-components": 1,
       "sensors-recipe": 1
@@ -8066,7 +8066,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:30.846989+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8079,7 +8079,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:31.023497+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8092,7 +8092,7 @@
     "weightKg": 1,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:31.206089+00:00",
     "recipe": null,
     "recyclesInto": {
       "fabric": 12
@@ -8107,7 +8107,7 @@
     "weightKg": 0.8,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:31.334952+00:00",
     "recipe": null,
     "recyclesInto": {
       "fabric": 11
@@ -8122,7 +8122,7 @@
     "weightKg": 1.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:31.516535+00:00",
     "recipe": null,
     "recyclesInto": {
       "advanced-electrical-components": 1,
@@ -8151,7 +8151,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:32.05835+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8164,7 +8164,7 @@
     "weightKg": 11,
     "stackSize": 1,
     "craftBench": "Weapon Bench 3",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:31.634427+00:00",
     "recipe": {
       "magnetic-accelerator": 1,
       "medium-gun-parts": 3,
@@ -8184,7 +8184,7 @@
     "weightKg": 11,
     "stackSize": 1,
     "craftBench": "Weapon Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:31.771946+00:00",
     "recipe": {
       "tempest-i": 1,
       "advanced-mechanical-components": 2,
@@ -8204,7 +8204,7 @@
     "weightKg": 11,
     "stackSize": 1,
     "craftBench": "Weapon bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:31.900596+00:00",
     "recipe": {
       "tempest-ii": 1,
       "advanced-mechanical-components": 2,
@@ -8224,7 +8224,7 @@
     "weightKg": 11,
     "stackSize": 1,
     "craftBench": "Weapon Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:32.235169+00:00",
     "recipe": {
       "tempest-iii": 1,
       "advanced-mechanical-components": 2,
@@ -8244,7 +8244,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:32.351912+00:00",
     "recipe": null,
     "recyclesInto": {
       "rubber-parts-recipe": 7,
@@ -8260,7 +8260,7 @@
     "weightKg": 0.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:32.495252+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 2,
@@ -8276,7 +8276,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:32.612187+00:00",
     "recipe": null,
     "recyclesInto": {
       "plastic-parts": 5,
@@ -8292,7 +8292,7 @@
     "weightKg": 0.25,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:32.726868+00:00",
     "recipe": null,
     "recyclesInto": {
       "chemicals": 3
@@ -8307,7 +8307,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:32.842242+00:00",
     "recipe": null,
     "recyclesInto": {
       "fabric": 12
@@ -8322,7 +8322,7 @@
     "weightKg": 0.3,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:32.964908+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8335,7 +8335,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": "Gunsmith II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:33.570933+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8348,7 +8348,7 @@
     "weightKg": 12,
     "stackSize": 1,
     "craftBench": "Weapon Bench 2",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:33.08129+00:00",
     "recipe": {
       "advanced-mechanical-components": 2,
       "medium-gun-parts": 3,
@@ -8368,7 +8368,7 @@
     "weightKg": 12,
     "stackSize": 1,
     "craftBench": "Weapon Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:33.20577+00:00",
     "recipe": {
       "torrente-i": 1,
       "advanced-mechanical-components": 1,
@@ -8388,7 +8388,7 @@
     "weightKg": 12,
     "stackSize": 1,
     "craftBench": "Weapon Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:33.32448+00:00",
     "recipe": {
       "torrente-ii": 1,
       "advanced-mechanical-components": 1,
@@ -8408,7 +8408,7 @@
     "weightKg": 12,
     "stackSize": 1,
     "craftBench": "Weapon Bench I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:33.454967+00:00",
     "recipe": {
       "medium-gun-parts": 2,
       "torrente-iii": 1,
@@ -8428,7 +8428,7 @@
     "weightKg": 1,
     "stackSize": 1,
     "craftBench": "Explosives Bench II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:33.700898+00:00",
     "recipe": {
       "synthesized-fuel": 1,
       "crude-explosives": 2,
@@ -8447,7 +8447,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:33.816205+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8473,7 +8473,7 @@
     "weightKg": 0.4,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:33.932625+00:00",
     "recipe": {
       "crude-explosives": 2,
       "processor": 1
@@ -8489,7 +8489,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:34.047755+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8502,7 +8502,7 @@
     "weightKg": 0.3,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:34.163831+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8515,7 +8515,7 @@
     "weightKg": 0.5,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:34.280219+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-circuitry": 1,
@@ -8531,7 +8531,7 @@
     "weightKg": 3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:34.404578+00:00",
     "recipe": null,
     "recyclesInto": {
       "mechanical-components": 1,
@@ -8547,7 +8547,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:34.522498+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8560,7 +8560,7 @@
     "weightKg": 3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:34.714101+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 4,
@@ -8576,7 +8576,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:34.963439+00:00",
     "recipe": null,
     "recyclesInto": {
       "advanced-electrical-components": 1,
@@ -8592,7 +8592,7 @@
     "weightKg": 0.3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:35.079124+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8605,7 +8605,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:35.195665+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8618,7 +8618,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": "Gunsmith II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:35.805452+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8631,7 +8631,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": "Weapon Bench 2",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:35.313938+00:00",
     "recipe": {
       "advanced-mechanical-components": 2,
       "magnet": 5,
@@ -8651,7 +8651,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:35.430216+00:00",
     "recipe": {
       "advanced-mechanical-components": 1,
       "medium-gun-parts": 2,
@@ -8668,7 +8668,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:35.550224+00:00",
     "recipe": {
       "venator-ii": 1,
       "advanced-mechanical-components": 1,
@@ -8685,7 +8685,7 @@
     "weightKg": 5,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:35.666609+00:00",
     "recipe": {
       "venator-iii": 1,
       "advanced-mechanical-components": 1,
@@ -8705,7 +8705,7 @@
     "weightKg": 0.25,
     "stackSize": 1,
     "craftBench": "Gunsmith 1",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:35.923996+00:00",
     "recipe": {
       "plastic-parts": 6,
       "duct-tape-recipe": 1
@@ -8723,7 +8723,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:36.039972+00:00",
     "recipe": {
       "mechanical-components": 2,
       "duct-tape-recipe": 3
@@ -8742,7 +8742,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:36.385262+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8755,7 +8755,7 @@
     "weightKg": 0.75,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:36.155574+00:00",
     "recipe": {
       "mod-components": 2,
       "duct-tape-recipe": 5
@@ -8774,7 +8774,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:36.269818+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8787,7 +8787,7 @@
     "weightKg": 0.3,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:36.500981+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8813,7 +8813,7 @@
     "weightKg": 0.4,
     "stackSize": 3,
     "craftBench": "Med Station 3",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:36.633813+00:00",
     "recipe": {
       "antiseptic": 2,
       "syringe": 1
@@ -8832,7 +8832,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": "Med Station",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:36.749048+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8845,7 +8845,7 @@
     "weightKg": 1,
     "stackSize": 1,
     "craftBench": "Med Station",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:36.863567+00:00",
     "recipe": {
       "canister": 1,
       "tick-pod": 1,
@@ -8862,7 +8862,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:36.97908+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8875,7 +8875,7 @@
     "weightKg": 0.5,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:37.098936+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8888,7 +8888,7 @@
     "weightKg": 0.3,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:37.215875+00:00",
     "recipe": null,
     "recyclesInto": {
       "rubber-parts-recipe": 1,
@@ -8904,7 +8904,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:37.333775+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -8917,7 +8917,7 @@
     "weightKg": 8,
     "stackSize": 1,
     "craftBench": "Weapon Bench 3",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:37.451467+00:00",
     "recipe": {
       "magnetic-accelerator": 1,
       "heavy-gun-parts": 3,
@@ -8937,7 +8937,7 @@
     "weightKg": 8,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:37.569583+00:00",
     "recipe": {
       "advanced-mechanical-components": 1,
       "heavy-gun-parts": 2,
@@ -8957,7 +8957,7 @@
     "weightKg": 8,
     "stackSize": 1,
     "craftBench": "Weapon Bench",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:37.684782+00:00",
     "recipe": {
       "vulcano-ii": 1,
       "advanced-mechanical-components": 2,
@@ -8977,7 +8977,7 @@
     "weightKg": 8,
     "stackSize": 1,
     "craftBench": "Gunsmith III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:37.800235+00:00",
     "recipe": {
       "vulcano-iii": 1,
       "advanced-mechanical-components": 2,
@@ -8997,7 +8997,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:37.916611+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -9010,7 +9010,7 @@
     "weightKg": 0.6,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:38.031698+00:00",
     "recipe": null,
     "recyclesInto": {
       "arc-alloy": 1,
@@ -9026,7 +9026,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:38.182068+00:00",
     "recipe": null,
     "recyclesInto": {
       "canister": 3,
@@ -9042,7 +9042,7 @@
     "weightKg": 2,
     "stackSize": 3,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:38.296035+00:00",
     "recipe": null,
     "recyclesInto": {
       "metal-parts": 4,
@@ -9058,7 +9058,7 @@
     "weightKg": 0.2,
     "stackSize": 5,
     "craftBench": "Medical Lab I",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:38.410354+00:00",
     "recipe": {
       "fabric": 10,
       "plastic-parts": 3
@@ -9077,7 +9077,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:38.526071+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -9090,7 +9090,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:38.643107+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -9103,7 +9103,7 @@
     "weightKg": 0.5,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:38.75923+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -9116,7 +9116,7 @@
     "weightKg": 0.25,
     "stackSize": 15,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:38.876578+00:00",
     "recipe": null,
     "recyclesInto": {
       "rubber-parts-recipe": 2
@@ -9131,7 +9131,7 @@
     "weightKg": 1,
     "stackSize": 1,
     "craftBench": "Explosives Bench III",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:39.00467+00:00",
     "recipe": {
       "arc-motion-core": 2,
       "explosive-compound": 1,
@@ -9151,7 +9151,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:39.12024+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -9164,7 +9164,7 @@
     "weightKg": 0.15,
     "stackSize": 5,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:39.243633+00:00",
     "recipe": null,
     "recyclesInto": {
       "chemicals": 1
@@ -9179,7 +9179,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:39.360925+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -9192,7 +9192,7 @@
     "weightKg": 0,
     "stackSize": 1,
     "craftBench": null,
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:39.476569+00:00",
     "recipe": null,
     "recyclesInto": null
   },
@@ -9205,7 +9205,7 @@
     "weightKg": 0.4,
     "stackSize": 3,
     "craftBench": "Utility Station II",
-    "updatedAt": "2026-06-15T07:45:11.797307+00:00",
+    "updatedAt": "2026-06-29T16:24:39.599111+00:00",
     "recipe": {
       "rope": 1,
       "mechanical-components": 1
