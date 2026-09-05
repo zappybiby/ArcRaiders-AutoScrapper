@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "generatedAt": "2026-08-11T14:47:15.499762Z",
+    "generatedAt": "2026-09-05T16:18:43.641396Z",
     "data": {
-      "lastUpdated": "2026-08-11T14:47:15.481860Z",
+      "lastUpdated": "2026-09-05T16:18:43.624007Z",
       "source": "https://metaforge.app/arc-raiders",
       "version": "autoscrapper-data-1"
     },
-    "itemCount": 592,
+    "itemCount": 596,
     "allQuestsCompleted": true
   },
   "items": [
@@ -2477,6 +2477,58 @@
       ]
     },
     {
+      "id": "glitched-arc-circuitry",
+      "name": "Glitched ARC Circuitry",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "glitched-arc-light-ring",
+      "name": "Glitched ARC Light Ring",
+      "value": 3000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "glitched-arc-phased-array",
+      "name": "Glitched ARC Phased Array",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "glitched-arc-power-converter",
+      "name": "Glitched ARC Power Converter",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "glitched-arc-transmitter",
+      "name": "Glitched ARC Transmitter",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "goggles-radio-renegade-variant",
       "name": "Goggles (Radio Renegade Variant)",
       "value": 0,
@@ -4689,17 +4741,6 @@
       ]
     },
     {
-      "id": "shotgun-gun-parts",
-      "name": "Shotgun Parts",
-      "value": 700,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
       "id": "shotgun-silencer",
       "name": "Shotgun Silencer",
       "value": 5000,
@@ -4840,7 +4881,7 @@
       "value": 330,
       "action": "keep",
       "analysis": [
-        "Used in 24 crafting recipes",
+        "Used in 23 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
       ]

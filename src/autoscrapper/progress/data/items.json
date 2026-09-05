@@ -3681,6 +3681,71 @@
     "recyclesInto": null
   },
   {
+    "id": "glitched-arc-circuitry",
+    "name": "Glitched ARC Circuitry",
+    "type": "Recyclable",
+    "rarity": "legendary",
+    "value": 5000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-08-18T10:38:59.761868+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "glitched-arc-light-ring",
+    "name": "Glitched ARC Light Ring",
+    "type": "Recyclable",
+    "rarity": "epic",
+    "value": 3000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-08-18T10:38:30.976408+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "glitched-arc-phased-array",
+    "name": "Glitched ARC Phased Array",
+    "type": "Recyclable",
+    "rarity": "rare",
+    "value": 2000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-08-18T10:39:41.485832+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "glitched-arc-power-converter",
+    "name": "Glitched ARC Power Converter",
+    "type": "Recyclable",
+    "rarity": "common",
+    "value": 640,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-08-18T10:40:11.712901+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "glitched-arc-transmitter",
+    "name": "Glitched ARC Transmitter",
+    "type": "Recyclable",
+    "rarity": "uncommon",
+    "value": 1000,
+    "weightKg": 0.5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-08-18T10:40:27.442581+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
     "id": "goggles-radio-renegade-variant",
     "name": "Goggles (Radio Renegade Variant)",
     "type": "Misc",
@@ -7010,21 +7075,6 @@
     "craftBench": null,
     "updatedAt": "2026-06-29T16:24:22.24567+00:00",
     "recipe": null,
-    "recyclesInto": null
-  },
-  {
-    "id": "shotgun-gun-parts",
-    "name": "Shotgun Parts",
-    "type": "Material",
-    "rarity": "rare",
-    "value": 700,
-    "weightKg": 0.4,
-    "stackSize": 5,
-    "craftBench": null,
-    "updatedAt": "2026-08-01T09:18:36.768295+00:00",
-    "recipe": {
-      "simple-gun-parts": 2
-    },
     "recyclesInto": null
   },
   {
