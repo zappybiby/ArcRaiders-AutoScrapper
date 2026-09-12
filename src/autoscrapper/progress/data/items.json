@@ -428,6 +428,19 @@
     }
   },
   {
+    "id": "arcade-duck",
+    "name": "Arcade Duck",
+    "type": "Trinket",
+    "rarity": "epic",
+    "value": 7000,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-09-12T10:02:57.528725+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
     "id": "arc-alloy",
     "name": "ARC Alloy",
     "type": "Topside Material",
@@ -3544,6 +3557,19 @@
     }
   },
   {
+    "id": "frosty-duck",
+    "name": "Frosty Duck",
+    "type": "Trinket",
+    "rarity": "rare",
+    "value": 3000,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-09-12T10:00:29.014776+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
     "id": "fruit-mix",
     "name": "Fruit Mix",
     "type": "Quick Use",
@@ -5248,6 +5274,19 @@
       "mechanical-components": 2,
       "oil": 2
     }
+  },
+  {
+    "id": "mri-duck",
+    "name": "MRI Duck",
+    "type": "Trinket",
+    "rarity": "legendary",
+    "value": 10000,
+    "weightKg": 0.3,
+    "stackSize": 15,
+    "craftBench": null,
+    "updatedAt": "2026-09-12T10:02:18.79196+00:00",
+    "recipe": null,
+    "recyclesInto": null
   },
   {
     "id": "mushroom",
