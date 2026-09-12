@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "generatedAt": "2026-09-10T17:19:54.004261Z",
+    "generatedAt": "2026-09-12T16:34:30.824930Z",
     "data": {
-      "lastUpdated": "2026-09-10T17:19:53.991261Z",
+      "lastUpdated": "2026-09-12T16:34:30.806845Z",
       "source": "https://metaforge.app/arc-raiders",
       "version": "autoscrapper-data-1"
     },
-    "itemCount": 596,
+    "itemCount": 599,
     "allQuestsCompleted": true
   },
   "items": [
@@ -363,6 +363,16 @@
       "analysis": [
         "Recycles into: 16x Fabric",
         "Recycle value: Components (800 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "arcade-duck",
+      "name": "Arcade Duck",
+      "value": 7000,
+      "action": "sell",
+      "analysis": [
+        "High value (7000 coins)",
+        "No crafting or upgrade use"
       ]
     },
     {
@@ -2383,6 +2393,16 @@
       ]
     },
     {
+      "id": "frosty-duck",
+      "name": "Frosty Duck",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "High value (3000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
       "id": "fruit-mix",
       "name": "Fruit Mix",
       "value": 1800,
@@ -3503,6 +3523,16 @@
       "action": "keep",
       "analysis": [
         "Required for hideout upgrade: Refiner (Level 3)"
+      ]
+    },
+    {
+      "id": "mri-duck",
+      "name": "MRI Duck",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
       ]
     },
     {
