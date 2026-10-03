@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "generatedAt": "2026-09-13T17:05:49.432372Z",
+    "generatedAt": "2026-10-03T17:39:19.252509Z",
     "data": {
-      "lastUpdated": "2026-09-13T17:05:49.414651Z",
+      "lastUpdated": "2026-10-03T17:39:19.235123Z",
       "source": "https://metaforge.app/arc-raiders",
       "version": "autoscrapper-data-1"
     },
-    "itemCount": 599,
+    "itemCount": 608,
     "allQuestsCompleted": true
   },
   "items": [
@@ -74,10 +74,11 @@
       "id": "agave-juice",
       "name": "Agave Juice",
       "value": 1800,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -259,7 +260,7 @@
     },
     {
       "id": "aphelion-rifle-blueprint",
-      "name": "Aphelion Rifle Blueprint",
+      "name": "Aphelion Blueprint",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -481,6 +482,27 @@
       ]
     },
     {
+      "id": "banjo",
+      "name": "Banjo",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "bantam",
+      "name": "Bantam",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "barricade-kit",
       "name": "Barricade Kit",
       "value": 640,
@@ -587,10 +609,11 @@
       "id": "binoculars",
       "name": "Binoculars",
       "value": 640,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "Recycles into: 4x Plastic Parts, 2x Rubber Parts",
-        "Recycle value: Components (340 coins) worth less than Item (640 coins)"
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -637,10 +660,11 @@
       "id": "blaze-grenade",
       "name": "Blaze Grenade",
       "value": 1600,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "Recycles into: 4x Metal Parts, 2x Oil",
-        "Recycle value: Components (900 coins) worth less than Item (1600 coins)"
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -903,6 +927,16 @@
       ]
     },
     {
+      "id": "bronze-statuette",
+      "name": "Bronze Statuette",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
       "id": "burgerboy-backpack-charm",
       "name": "Burgerboy (Backpack Charm)",
       "value": 0,
@@ -1022,8 +1056,18 @@
     },
     {
       "id": "burnt-out-candles",
-      "name": "Burnt-Out Candles",
+      "name": "Burnt-out Candles",
       "value": 640,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "camera",
+      "name": "Camera",
+      "value": 0,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -1260,7 +1304,7 @@
     },
     {
       "id": "combat-mk3-aggressive-blueprint",
-      "name": "Combat Mk.3 (Aggressive) Blueprint",
+      "name": "Combat Mk. 3 (Aggressive) Blueprint",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -1270,7 +1314,7 @@
     },
     {
       "id": "combat-mk3-flanking",
-      "name": "Combat Mk.3 (Flanking) ",
+      "name": "Combat Mk. 3 (Flanking)",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -1694,12 +1738,13 @@
     },
     {
       "id": "dockmasters-detector",
-      "name": "Dockmaster\u2019s Detector",
+      "name": "Dockmaster's Detector",
       "value": 1000,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -1795,7 +1840,7 @@
     {
       "id": "elephant-obelisk",
       "name": "Elephant Obelisk",
-      "value": 9996,
+      "value": 10000,
       "action": "keep",
       "analysis": [
         "Legendary rarity - extremely valuable",
@@ -1935,7 +1980,7 @@
     },
     {
       "id": "extended-barrel-i",
-      "name": "Extended Barrel I ",
+      "name": "Extended Barrel I",
       "value": 1000,
       "action": "keep",
       "analysis": [
@@ -2366,11 +2411,11 @@
     {
       "id": "free-loadout-augment",
       "name": "Free Loadout Augment",
-      "value": 100,
-      "action": "recycle",
+      "value": 660,
+      "action": "sell",
       "analysis": [
         "Recycles into: 6x Plastic Parts, 6x Rubber Parts",
-        "Recycle value: Components (660 coins) worth MORE than Item (100 coins)"
+        "Recycle value: Components (660 coins) worth less than Item (660 coins)"
       ]
     },
     {
@@ -2569,6 +2614,16 @@
       ]
     },
     {
+      "id": "grappling-hook",
+      "name": "Grappling Hook",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "great-muullein",
       "name": "Great Mullein",
       "value": 300,
@@ -2646,6 +2701,16 @@
     {
       "id": "happy-jig-emote",
       "name": "Happy Jig (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "harmonica",
+      "name": "Harmonica",
       "value": 0,
       "action": "sell",
       "analysis": [
@@ -3062,7 +3127,7 @@
     },
     {
       "id": "lances-mixtape-5th-edition",
-      "name": "Lance's Mixtape (5th Edition)",
+      "name": "Lance's Mixtape (5th edition)",
       "value": 10000,
       "action": "sell",
       "analysis": [
@@ -3123,7 +3188,7 @@
     },
     {
       "id": "leviathans-crown-ship-model",
-      "name": "\"Leviathan's Crown\" Ship Model",
+      "name": "\u201cLeviathan's Crown\u201d Ship Model",
       "value": 10000,
       "action": "keep",
       "analysis": [
@@ -3133,7 +3198,7 @@
     },
     {
       "id": "lidar-scanner",
-      "name": "Lidar Scanner",
+      "name": "LiDAR Scanner",
       "value": 0,
       "action": "sell",
       "analysis": [
@@ -3258,7 +3323,7 @@
     },
     {
       "id": "looting-mk-3-cautious",
-      "name": "Looting MK. 3 (Cautious)",
+      "name": "Looting Mk. 3 (Cautious)",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -3269,7 +3334,7 @@
     },
     {
       "id": "looting-mk-3-safekeeper",
-      "name": "Looting MK. 3 (Safekeeper)",
+      "name": "Looting Mk. 3 (Safekeeper)",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -3280,7 +3345,7 @@
     },
     {
       "id": "looting-mk-3-safekeeper-blueprint",
-      "name": "Looting MK. 3 (Safekeeper) Blueprint",
+      "name": "Looting Mk. 3 (Safekeeper) Blueprint",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -3290,7 +3355,7 @@
     },
     {
       "id": "looting-mk-3-survivor",
-      "name": "Looting MK. 3 (Survivor)",
+      "name": "Looting Mk. 3 (Survivor)",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -3301,7 +3366,7 @@
     },
     {
       "id": "looting-mk-3-survivor-blueprint",
-      "name": "Looting MK. 3 (Survivor) Blueprint",
+      "name": "Looting Mk. 3 (Survivor) Blueprint",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -3859,7 +3924,7 @@
     },
     {
       "id": "poster-natural-wonder",
-      "name": "Poster of Natural Wonder",
+      "name": "Poster of Natural Wonders",
       "value": 2000,
       "action": "sell",
       "analysis": [
@@ -3900,7 +3965,7 @@
     {
       "id": "power-rod",
       "name": "Power Rod",
-      "value": 4997,
+      "value": 5000,
       "action": "keep",
       "analysis": [
         "Used in 2 crafting recipes",
@@ -3914,8 +3979,8 @@
       "value": 10000,
       "action": "keep",
       "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
         "Override: treat 'Your Call' as Keep"
       ]
     },
@@ -4310,7 +4375,7 @@
     },
     {
       "id": "riven-tides-classifed-records-keycard",
-      "name": "Riven Tides Classifed Records Keycard",
+      "name": "Riven Tides Classified Records Keycard",
       "value": 100,
       "action": "keep",
       "analysis": [
@@ -4795,10 +4860,11 @@
       "id": "showstopper",
       "name": "Showstopper",
       "value": 2100,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "Recycles into: 2x Battery, 1x Electrical Components",
-        "Recycle value: Components (1140 coins) worth less than Item (2100 coins)"
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -4815,10 +4881,11 @@
       "id": "shrapnel-grenade",
       "name": "Shrapnel Grenade",
       "value": 800,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -4932,8 +4999,8 @@
       "value": 1000,
       "action": "keep",
       "analysis": [
-        "Used in 1 crafting recipes",
-        "Rare crafting material",
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
         "Override: treat 'Your Call' as Keep"
       ]
     },
@@ -5077,10 +5144,10 @@
       "id": "spotter-relay",
       "name": "Spotter Relay",
       "value": 1000,
-      "action": "recycle",
+      "action": "sell",
       "analysis": [
-        "Recycles into: 1x ARC Alloy, 2x Electrical Components",
-        "Recycle value: Components (1480 coins) worth MORE than Item (1000 coins)"
+        "Recycles into: 1x ARC Alloy, 1x Electrical Components",
+        "Recycle value: Components (840 coins) worth less than Item (1000 coins)"
       ]
     },
     {
@@ -5231,6 +5298,17 @@
       ]
     },
     {
+      "id": "stiletto",
+      "name": "Stiletto",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "stitcher-i",
       "name": "Stitcher I",
       "value": 800,
@@ -5290,8 +5368,8 @@
       "value": 0,
       "action": "keep",
       "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
         "Override: treat 'Your Call' as Keep"
       ]
     },
@@ -5349,7 +5427,7 @@
     },
     {
       "id": "tacical-mk3-healing-blueprint",
-      "name": "Tactical MK.3 (Healing) Blueprint",
+      "name": "Tactical Mk. 3 (Healing) Blueprint",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -5391,7 +5469,7 @@
     },
     {
       "id": "tactical-mk-3-revival",
-      "name": "Tactical MK. 3 (Revival)",
+      "name": "Tactical Mk. 3 (Revival)",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -5423,7 +5501,7 @@
     },
     {
       "id": "tactical-mk3-defensive",
-      "name": "Tactical Mk.3 (Defensive)",
+      "name": "Tactical Mk. 3 (Defensive)",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -5434,7 +5512,7 @@
     },
     {
       "id": "tactical-mk3-defensive-blueprint",
-      "name": "Tactical MK.3 (Defensive) Blueprint",
+      "name": "Tactical Mk. 3 (Defensive) Blueprint",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -5569,6 +5647,16 @@
       ]
     },
     {
+      "id": "tether-launcher",
+      "name": "Tether Launcher",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "thermostat",
       "name": "Thermostat",
       "value": 1000,
@@ -5684,7 +5772,7 @@
     },
     {
       "id": "trailblazer-grenade",
-      "name": "Trailblazer Grenade",
+      "name": "Trailblazer",
       "value": 2200,
       "action": "keep",
       "analysis": [
@@ -5695,7 +5783,7 @@
     },
     {
       "id": "trailblazer-grenade-blueprint",
-      "name": "Trailblazer Grenade Blueprint",
+      "name": "Trailblazer Blueprint",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -5715,7 +5803,7 @@
     },
     {
       "id": "trigger-nade",
-      "name": "Trigger Nade",
+      "name": "Trigger 'Nade",
       "value": 1000,
       "action": "keep",
       "analysis": [
@@ -5787,7 +5875,7 @@
     },
     {
       "id": "utility-augment-t3-smoke-blueprint",
-      "name": "Tactical MK.3 (Smoke) Blueprint",
+      "name": "Tactical Mk. 3 (Smoke) Blueprint",
       "value": 5000,
       "action": "keep",
       "analysis": [
@@ -6178,6 +6266,16 @@
       "analysis": [
         "Legendary rarity - extremely valuable",
         "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "yank-grenade",
+      "name": "Yank Grenade",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
