@@ -1,15 +1,25 @@
 {
   "metadata": {
-    "generatedAt": "2026-10-08T19:32:08.890159Z",
+    "generatedAt": "2026-10-10T18:05:25.982827Z",
     "data": {
-      "lastUpdated": "2026-10-08T19:32:08.871044Z",
+      "lastUpdated": "2026-10-10T18:05:25.947514Z",
       "source": "https://metaforge.app/arc-raiders",
       "version": "autoscrapper-data-1"
     },
-    "itemCount": 584,
+    "itemCount": 1003,
     "allQuestsCompleted": true
   },
   "items": [
+    {
+      "id": "abyss-outfit",
+      "name": "Abyss (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
     {
       "id": "acoustic-guitar",
       "name": "Acoustic Guitar",
@@ -43,6 +53,28 @@
       ]
     },
     {
+      "id": "advanced-camera",
+      "name": "Advanced Camera",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "advanced-camera-blueprint",
+      "name": "Advanced Camera Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Blueprint - valuable for unlocking crafting recipes",
+        "Review carefully before selling or recycling",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "advanced-electrical-components",
       "name": "Advanced Electrical Components",
       "value": 1750,
@@ -58,6 +90,16 @@
       "action": "keep",
       "analysis": [
         "Required for hideout upgrade: Gunsmith (Level 3)"
+      ]
+    },
+    {
+      "id": "aeronaut-outfit",
+      "name": "Aeronaut (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -95,11 +137,10 @@
       "id": "alarm-clock",
       "name": "Alarm Clock",
       "value": 1000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 6x Plastic Parts, 1x Processor",
+        "Recycle value: Components (860 coins) worth less than Item (1000 coins)"
       ]
     },
     {
@@ -110,6 +151,278 @@
       "analysis": [
         "High value (1000 coins)",
         "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "alpine-wardrobe",
+      "name": "Alpine Wardrobe",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "alpine-wardrobe-design",
+      "name": "Alpine Wardrobe Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "alpino-outfit",
+      "name": "Alpino (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "amplification-module-mk-i",
+      "name": "Amplification Module MK. I",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplification-module-mk-ii",
+      "name": "Amplification Module MK. II",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplification-module-mk-iii",
+      "name": "Amplification Module MK. III",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplification-module-mk-iv",
+      "name": "Amplification Module MK. IV",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplification-module-mk-v",
+      "name": "Amplification Module MK. V",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-anvil",
+      "name": "Amplified Anvil",
+      "value": 20800,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-aphelion",
+      "name": "Amplified Aphelion",
+      "value": 35200,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-bettina",
+      "name": "Amplified Bettina",
+      "value": 27200,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-burletta",
+      "name": "Amplified Burletta",
+      "value": 16000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-canto",
+      "name": "Amplified Canto",
+      "value": 20800,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-equalizer",
+      "name": "Amplified Equalizer",
+      "value": 35200,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-fragments",
+      "name": "Amplified Fragments",
+      "value": 500,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-hairpin",
+      "name": "Amplified Hairpin",
+      "value": 11200,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-hullcracker",
+      "name": "Amplified Hullcracker",
+      "value": 27200,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-il-toro",
+      "name": "Amplified Il Toro",
+      "value": 16000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-jupiter",
+      "name": "Amplified Jupiter",
+      "value": 35200,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-kettle",
+      "name": "Amplified Kettle",
+      "value": 11200,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-osprey",
+      "name": "Amplified Osprey",
+      "value": 20800,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-rascal",
+      "name": "Amplified Rascal",
+      "value": 20800,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-rattler",
+      "name": "Amplified Rattler",
+      "value": 11200,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-renegade",
+      "name": "Amplified Renegade",
+      "value": 20800,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "anchor-outfit",
+      "name": "Anchor (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -174,6 +487,16 @@
       "analysis": [
         "Legendary rarity - extremely valuable",
         "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "anomalia-outfit",
+      "name": "Anomalia (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -297,12 +620,33 @@
       ]
     },
     {
+      "id": "arc-conductive-coupler",
+      "name": "ARC Conductive Coupler",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "arc-coolant",
       "name": "ARC Coolant",
       "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 16x Chemicals",
+        "Recycle value: Components (800 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "arc-data-module",
+      "name": "ARC Data Module",
+      "value": 2000,
       "action": "keep",
       "analysis": [
-        "Rare rarity",
+        "Epic rarity",
         "May have future use - review carefully",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -315,6 +659,17 @@
       "analysis": [
         "Recycles into: 16x Rubber Parts",
         "Recycle value: Components (800 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "arc-insulated-coupler",
+      "name": "ARC Insulated Coupler",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -339,6 +694,17 @@
       ]
     },
     {
+      "id": "arc-plated-coupler",
+      "name": "ARC Plated Coupler",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "arc-powercell",
       "name": "ARC Powercell",
       "value": 270,
@@ -352,11 +718,10 @@
       "id": "arc-synthetic-resin",
       "name": "ARC Synthetic Resin",
       "value": 1000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 14x Plastic Parts",
+        "Recycle value: Components (840 coins) worth less than Item (1000 coins)"
       ]
     },
     {
@@ -377,6 +742,37 @@
       "analysis": [
         "High value (7000 coins)",
         "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "archive-desk-lamp",
+      "name": "Archive Desk Lamp",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "High value (5000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "archive-floor-lamp",
+      "name": "Archive Floor Lamp",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "archive-floor-lamp-design",
+      "name": "Archive Floor Lamp Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -444,8 +840,28 @@
       ]
     },
     {
+      "id": "astrolite-outfit",
+      "name": "Astrolite (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "aviator-outfit",
       "name": "Aviator (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "azimuth-outfit",
+      "name": "Azimuth (Outfit)",
       "value": 0,
       "action": "sell",
       "analysis": [
@@ -487,6 +903,28 @@
     {
       "id": "banjo",
       "name": "Banjo",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "banjo-blueprint",
+      "name": "Banjo Blueprint",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Blueprint - valuable for unlocking crafting recipes",
+        "Review carefully before selling or recycling",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "banshee-outfit",
+      "name": "Banshee (Outfit)",
       "value": 0,
       "action": "sell",
       "analysis": [
@@ -496,13 +934,67 @@
     },
     {
       "id": "bantam",
-      "name": "Bantam",
-      "value": 0,
+      "name": "Bantam I",
+      "value": 3800,
       "action": "keep",
       "analysis": [
         "Weapon - review based on your current loadout",
         "Consider tier and your play style",
         "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "bantam-blueprint",
+      "name": "Bantam Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Blueprint - valuable for unlocking crafting recipes",
+        "Review carefully before selling or recycling",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "bantam-ii",
+      "name": "Bantam II",
+      "value": 6000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "bantam-iii",
+      "name": "Bantam III",
+      "value": 8000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "bantam-iv",
+      "name": "Bantam IV",
+      "value": 11000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "bar-table-design",
+      "name": "Bar Table Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -524,6 +1016,26 @@
       "analysis": [
         "Legendary rarity - extremely valuable",
         "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "barstool",
+      "name": "Barstool",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "barstool-design",
+      "name": "Barstool Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -778,7 +1290,7 @@
     {
       "id": "bent-clothes-hanger",
       "name": "Bent Clothes Hanger",
-      "value": 0,
+      "value": 640,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -955,7 +1467,7 @@
     {
       "id": "blown-fuses",
       "name": "Blown Fuses",
-      "value": 0,
+      "value": 640,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -1224,11 +1736,10 @@
       "id": "broken-guidance-system",
       "name": "Broken Guidance System",
       "value": 2000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 4x Processor",
+        "Recycle value: Components (2000 coins) worth less than Item (2000 coins)"
       ]
     },
     {
@@ -1274,7 +1785,7 @@
     {
       "id": "bully-fragmenter",
       "name": "Bully Fragmenter",
-      "value": 3000,
+      "value": 5000,
       "action": "keep",
       "analysis": [
         "Epic rarity",
@@ -1285,7 +1796,7 @@
     {
       "id": "bulwark-stencil",
       "name": "Bulwark Stencil",
-      "value": 0,
+      "value": 5000,
       "action": "keep",
       "analysis": [
         "Legendary rarity - extremely valuable",
@@ -1492,13 +2003,24 @@
       ]
     },
     {
+      "id": "camera",
+      "name": "Basic Camera",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "camera-lens",
       "name": "Camera Lens",
       "value": 640,
       "action": "sell",
       "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
+        "Recycles into: 8x Plastic Parts",
+        "Recycle value: Components (480 coins) worth less than Item (640 coins)"
       ]
     },
     {
@@ -1528,7 +2050,7 @@
       "value": 300,
       "action": "keep",
       "analysis": [
-        "Used in 7 crafting recipes",
+        "Used in 5 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -1565,6 +2087,1480 @@
       ]
     },
     {
+      "id": "canto-ii",
+      "name": "Canto II",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "canto-iii",
+      "name": "Canto III",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "canto-iv",
+      "name": "Canto IV",
+      "value": 17000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "caposta-outfit",
+      "name": "Caposta (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "carriga-outfit",
+      "name": "Carriga (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "carrion-outfit",
+      "name": "Carrion (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "castaway-outfit",
+      "name": "Castaway (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "cat-bed",
+      "name": "Cat Bed",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Scrappy (Level 4)"
+      ]
+    },
+    {
+      "id": "cavalier-outfit",
+      "name": "Cavalier (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "celeste-s-journal",
+      "name": "Celeste's Journal",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "cerulean-stencil",
+      "name": "Cerulean Stencil",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "chambers-lamp",
+      "name": "Chambers Lamp",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "chambers-lamp-design",
+      "name": "Chambers Lamp Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "chambers-nightstand",
+      "name": "Chambers Nightstand",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "chambers-nightstand-design",
+      "name": "Chambers Nightstand Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "chambers-shelf",
+      "name": "Chambers Shelf",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "chambers-shelf-design",
+      "name": "Chambers Shelf Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "chandelier",
+      "name": "Chandelier",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "chandelier-design",
+      "name": "Chandelier Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "chap-outfit",
+      "name": "Chap (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "cheer-emote",
+      "name": "Cheer (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "chemicals",
+      "name": "Chemicals",
+      "value": 50,
+      "action": "keep",
+      "analysis": [
+        "Used in 11 crafting recipes",
+        "Common crafting ingredient",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "clinic-medical-cabinet",
+      "name": "Clinic Medical Cabinet",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "clinic-medical-cabinet-design",
+      "name": "Clinic Medical Cabinet Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "coffee-pot",
+      "name": "Coffee Pot",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "High value (1000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "coins",
+      "name": "Coins",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "colorful-shoes",
+      "name": "Colorful Shoes",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "colorful-shoes-epic",
+      "name": "Colorful Shoes",
+      "value": 7000,
+      "action": "sell",
+      "analysis": [
+        "High value (7000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "colorful-shoes-rare",
+      "name": "Colorful Shoes",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "High value (3000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "combat-mk-1",
+      "name": "Combat Mk. 1",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 3x Plastic Parts, 3x Rubber Parts",
+        "Recycle value: Components (330 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "combat-mk-2",
+      "name": "Combat Mk. 2",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "combat-mk-3-aggressive",
+      "name": "Combat Mk. 3 (Aggressive)",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "combat-mk-3-flanking",
+      "name": "Combat Mk. 3 (Flanking) Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "combat-mk3-aggressive-blueprint",
+      "name": "Combat Mk. 3 (Aggressive) Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "combat-mk3-flanking",
+      "name": "Combat Mk. 3 (Flanking)",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "comet-igniter",
+      "name": "Comet Igniter",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Used in 1 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "compact-combustion-charges",
+      "name": "Compact Combustion Charges",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "compensator-i",
+      "name": "Compensator I",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "compensator-ii",
+      "name": "Compensator II",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "compensator-ii-recipe",
+      "name": "Compensator II Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "compensator-iii",
+      "name": "Compensator III",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "compensator-iii-recipe",
+      "name": "Compensator III Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "complex-gun-parts",
+      "name": "Complex Gun Parts",
+      "value": 3000,
+      "action": "keep",
+      "analysis": [
+        "Used in 3 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "complex-gun-parts-blueprint",
+      "name": "Complex Gun Parts Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "console-chest",
+      "name": "Console Chest",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "console-chest-design",
+      "name": "Console Chest Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "coolant",
+      "name": "Coolant",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 5x Chemicals, 2x Oil",
+        "Recycle value: Components (850 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "cooling-coil",
+      "name": "Cooling Coil",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 6x Chemicals, 2x Steel Spring",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "cooling-fan",
+      "name": "Cooling Fan",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "corsaro-outfit",
+      "name": "Corsaro (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "cosmo-outfit",
+      "name": "Cosmo (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "cracked-bioscanner",
+      "name": "Cracked Bioscanner",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 3x Battery, 3x Rubber Parts",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "crash-mat",
+      "name": "Crash Mat",
+      "value": 1200,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "crash-mat-blueprint",
+      "name": "Crash Mat Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "cresta-outfit",
+      "name": "Cresta (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "crimson-racer-aviator-colour",
+      "name": "Crimson Racer (Aviator Colour)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "crude-explosives",
+      "name": "Crude Explosives",
+      "value": 270,
+      "action": "keep",
+      "analysis": [
+        "Used in 6 crafting recipes",
+        "Common crafting ingredient",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "crumpled-plastic-bottle",
+      "name": "Crumpled Plastic Bottle",
+      "value": 270,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 4x Plastic Parts",
+        "Recycle value: Components (240 coins) worth less than Item (270 coins)"
+      ]
+    },
+    {
+      "id": "dam-control-center-tower-key",
+      "name": "Dam Control Tower Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "dam-controlled-access-zone-key",
+      "name": "Dam Controlled Access Zone Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "dam-staff-room-key",
+      "name": "Dam Staff Room Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "dam-surveillance-key",
+      "name": "Dam Surveillance Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "dam-testing-annex-key",
+      "name": "Dam Testing Annex Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "dam-utility-key",
+      "name": "Dam Utility Key",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "damaged-arc-motion-core",
+      "name": "Damaged ARC Motion Core",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x ARC Alloy",
+        "Recycle value: Components (400 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "damaged-arc-powercell",
+      "name": "Damaged ARC Powercell",
+      "value": 293,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x ARC Alloy",
+        "Recycle value: Components (200 coins) worth less than Item (293 coins)"
+      ]
+    },
+    {
+      "id": "damaged-fireball-burner",
+      "name": "Damaged Fireball Burner",
+      "value": 270,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x ARC Alloy",
+        "Recycle value: Components (200 coins) worth less than Item (270 coins)"
+      ]
+    },
+    {
+      "id": "damaged-heat-sink",
+      "name": "Damaged Heat Sink",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 6x Metal Parts, 2x Wires",
+        "Recycle value: Components (850 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "damaged-leaper-pulse-unit",
+      "name": "Damaged Leaper Pulse Unit",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "damaged-rocketeer-part",
+      "name": "Damaged Rocketeer Driver",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 3x ARC Alloy",
+        "Recycle value: Components (600 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "damaged-snitch-scanner",
+      "name": "Damaged Snitch Scanner",
+      "value": 659,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "damaged-tick-pod",
+      "name": "Damaged Tick Pod",
+      "value": 270,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x ARC Alloy",
+        "Recycle value: Components (200 coins) worth less than Item (270 coins)"
+      ]
+    },
+    {
+      "id": "damaged-wasp-driver",
+      "name": "Damaged Wasp Driver",
+      "value": 270,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x ARC Alloy",
+        "Recycle value: Components (200 coins) worth less than Item (270 coins)"
+      ]
+    },
+    {
+      "id": "danaged-hornet-driver",
+      "name": "Damaged Hornet Driver",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "dart-board",
+      "name": "Dart Board",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "High value (2000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "deadline",
+      "name": "Deadline",
+      "value": 6000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "deadline-blueprint",
+      "name": "Deadline Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "deadwire-outfit",
+      "name": "Deadwire (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "defibrillator",
+      "name": "Defibrillator",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "defibrillator-recipe",
+      "name": "Defibrillator Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "deflated-football",
+      "name": "Deflated Football",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 9x Fabric, 9x Rubber Parts",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "degraded-arc-rubber",
+      "name": "Degraded ARC Rubber",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 11x Rubber Parts",
+        "Recycle value: Components (550 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "desk-lamp",
+      "name": "Desk Lamp",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "High value (2000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "devotee-outfit",
+      "name": "Devotee (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "differential-microphone",
+      "name": "Differential Microphone",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "diner-ceiling-lamp",
+      "name": "Diner Ceiling Lamp",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "diner-ceiling-lamp-design",
+      "name": "Diner Ceiling Lamp Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "diner-cupboard",
+      "name": "Diner Cupboard",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "diner-cupboard-design",
+      "name": "Diner Cupboard Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "diner-shelf",
+      "name": "Diner Shelf",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "diner-shelf-design",
+      "name": "Diner Shelf Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "diner-sofa",
+      "name": "Diner Sofa",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "diner-sofa-design",
+      "name": "Diner Sofa Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "diner-stool",
+      "name": "Diner Stool",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "diner-stool-design",
+      "name": "Diner Stool Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "diner-table-design",
+      "name": "Diner Table Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "diving-googles",
+      "name": "Diving Goggles",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 12x Rubber Parts",
+        "Recycle value: Components (600 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "dockmasters-detector",
+      "name": "Dockmaster's Detector",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "dodger-s-note",
+      "name": "Dodger's Note",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "dog-collar",
+      "name": "Dog Collar",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 8x Fabric, 1x Metal Parts",
+        "Recycle value: Components (475 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "dolabra",
+      "name": "Dolabra",
+      "value": 27500,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "dolabra-blueprint",
+      "name": "Dolabra Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "doodly-duck",
+      "name": "Doodly Duck",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "High value (3000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "door-blocker",
+      "name": "Door Blocker",
+      "value": 270,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "dragons-breath-stencil",
+      "name": "Dragon's Breath Stencil",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "draped-debris-a",
+      "name": "Draped Debris A",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "draped-debris-a-design",
+      "name": "Draped Debris A Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "draped-debris-b",
+      "name": "Draped Debris B",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "draped-debris-b-design",
+      "name": "Draped Debris B Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "draped-debris-c",
+      "name": "Draped Debris C",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "draped-debris-c-design",
+      "name": "Draped Debris C Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "draped-debris-e",
+      "name": "Draped Debris E",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "draped-debris-e-design",
+      "name": "Draped Debris E Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "draped-debris-f",
+      "name": "Draped Debris F",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "draped-debris-f-design",
+      "name": "Draped Debris F Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "draped-debris-g",
+      "name": "Draped Debris G",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "draped-debris-g-design",
+      "name": "Draped Debris G Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "dried-out-arc-resin",
+      "name": "Dried-Out ARC Resin",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 9x Plastic Parts",
+        "Recycle value: Components (540 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "driftcoat-outfit",
+      "name": "Driftcoat (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "duct-tape-recipe",
+      "name": "Duct Tape",
+      "value": 300,
+      "action": "keep",
+      "analysis": [
+        "Used in 11 crafting recipes",
+        "Common crafting ingredient",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "durable-cloth",
+      "name": "Durable Cloth",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "dusty-camo-stencil",
+      "name": "Dusty Camo Stencil",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "dusty-film-reel",
+      "name": "Dusty Film Reel",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "dweller-outfit",
+      "name": "Dweller (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "electrical-components",
+      "name": "Electrical Components",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "elephant-obelisk",
+      "name": "Elephant Obelisk",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "embedded-blast-engineering",
+      "name": "Embedded Blast Engineering",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "emperor-beacon",
+      "name": "Emperor Beacon",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "emperor-gateway-conduit",
+      "name": "Emperor Gateway Conduit",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "emperor-gateway-conduit-blueprint",
+      "name": "Emperor Gateway Conduit Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Blueprint - valuable for unlocking crafting recipes",
+        "Review carefully before selling or recycling",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "emperor-modulator",
+      "name": "Emperor Modulator",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "empty-wine-bottle",
+      "name": "Empty Wine Bottle",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "High value (1000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "empyrean-stencil",
+      "name": "Empyrean Stencil",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "energy-ammo",
+      "name": "Energy Clip",
+      "value": 200,
+      "action": "keep",
+      "analysis": [
+        "Ammunition - essential for weapons",
+        "Review based on your weapon loadout",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "epoxy-bucket",
+      "name": "Epoxy Bucket",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "equalizer-i",
+      "name": "Equalizer",
+      "value": 27500,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "equalizer-recipe",
+      "name": "Equalizer Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "equatorial-sundial",
+      "name": "Equatorial Sundial",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "High value (3000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "espresso-machine-parts",
+      "name": "Espresso Machine Parts",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "esr-analyzer",
+      "name": "ESR Analyzer",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "exodus-modules",
+      "name": "Exodus Modules",
+      "value": 2750,
+      "action": "keep",
+      "analysis": [
+        "Needed for project: Expedition Project"
+      ]
+    },
+    {
+      "id": "exodus-technical-handbook",
+      "name": "Exodus Technical Handbook",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "experimental-seed-sample",
+      "name": "Experimental Seed Sample",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "expired-pasta",
+      "name": "Expired Pasta",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "High value (1000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
       "id": "expired-respirator",
       "name": "Expired Respirator",
       "value": 640,
@@ -1577,7 +3573,7 @@
     {
       "id": "expired-security-code",
       "name": "Expired Security Code",
-      "value": 0,
+      "value": 10,
       "action": "keep",
       "analysis": [
         "Key - opens locked areas and containers",
@@ -1859,6 +3855,17 @@
       ]
     },
     {
+      "id": "faculty-closet-design",
+      "name": "Faculty Closet Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "faculty-dresser",
       "name": "Faculty Dresser",
       "value": 0,
@@ -1866,6 +3873,17 @@
       "analysis": [
         "No immediate use found",
         "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "faculty-dresser-design",
+      "name": "Faculty Dresser Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -1953,6 +3971,16 @@
       ]
     },
     {
+      "id": "fiero-outfit",
+      "name": "Fiero (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "film-reel",
       "name": "Film Reel",
       "value": 2000,
@@ -1988,8 +4016,8 @@
       "value": 640,
       "action": "sell",
       "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
+        "Recycles into: 1x ARC Alloy, 1x Crude Explosives",
+        "Recycle value: Components (470 coins) worth less than Item (640 coins)"
       ]
     },
     {
@@ -2009,7 +4037,7 @@
       "value": 1000,
       "action": "keep",
       "analysis": [
-        "Used in 2 crafting recipes",
+        "Used in 1 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -2038,7 +4066,7 @@
     {
       "id": "first-wave-compass",
       "name": "First Wave Compass",
-      "value": 0,
+      "value": 100,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -2048,7 +4076,7 @@
     {
       "id": "first-wave-rations",
       "name": "First Wave Rations",
-      "value": 0,
+      "value": 100,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -2058,7 +4086,7 @@
     {
       "id": "first-wave-tape",
       "name": "First Wave Tape",
-      "value": 0,
+      "value": 100,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -2097,6 +4125,17 @@
       ]
     },
     {
+      "id": "floor-lamp-design",
+      "name": "Floor Lamp Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "flow-controller",
       "name": "Flow Controller",
       "value": 3000,
@@ -2119,7 +4158,7 @@
     {
       "id": "fluted-rotor-core",
       "name": "Fluted Rotor Core",
-      "value": 1,
+      "value": 5000,
       "action": "keep",
       "analysis": [
         "Epic rarity",
@@ -2130,11 +4169,22 @@
     {
       "id": "food-wrapper",
       "name": "Food Wrapper",
-      "value": 0,
+      "value": 640,
       "action": "sell",
       "analysis": [
         "No immediate use found",
         "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "fortuna-stencil",
+      "name": "Fortuna Stencil",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -2153,8 +4203,8 @@
       "value": 660,
       "action": "sell",
       "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
+        "Recycles into: 6x Plastic Parts, 6x Rubber Parts",
+        "Recycle value: Components (660 coins) worth less than Item (660 coins)"
       ]
     },
     {
@@ -2228,6 +4278,16 @@
       ]
     },
     {
+      "id": "g-suit-outfit",
+      "name": "G-Suit (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "garlic-press",
       "name": "Garlic Press",
       "value": 1000,
@@ -2235,6 +4295,16 @@
       "analysis": [
         "Recycles into: 12x Metal Parts",
         "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "garnet-stencil",
+      "name": "Garnet Stencil",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -2281,14 +4351,23 @@
       ]
     },
     {
+      "id": "gearshifter-outfit",
+      "name": "Gearshifter (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "geiger-counter",
       "name": "Geiger Counter",
       "value": 3500,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 3x Battery, 1x Exodus Modules",
+        "Recycle value: Components (3500 coins) worth less than Item (3500 coins)"
       ]
     },
     {
@@ -2302,6 +4381,17 @@
       ]
     },
     {
+      "id": "geometric-fabric-chair-design",
+      "name": "Geometric Fabric Chair Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "glass-ceiling-lamp",
       "name": "Glass Ceiling Lamp",
       "value": 0,
@@ -2309,6 +4399,17 @@
       "analysis": [
         "No immediate use found",
         "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "glass-ceiling-lamp-design",
+      "name": "Glass Ceiling Lamp Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -2364,6 +4465,16 @@
       ]
     },
     {
+      "id": "goalie-outfit",
+      "name": "Goalie (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "goggles-radio-renegade-variant",
       "name": "Goggles (Radio Renegade Variant)",
       "value": 0,
@@ -2409,10 +4520,42 @@
       "id": "great-muullein",
       "name": "Great Mullein",
       "value": 300,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x Assorted Seeds",
+        "Recycle value: Components (200 coins) worth less than Item (300 coins)"
+      ]
+    },
+    {
+      "id": "green-geometric-chair-design",
+      "name": "Green Geometric Chair Design",
+      "value": 5000,
       "action": "keep",
       "analysis": [
-        "Used in 3 crafting recipes",
-        "Common crafting ingredient",
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "green-geometric-sofa-design",
+      "name": "Green Geometric Sofa Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "green-lab-sofa-design",
+      "name": "Green Lab Sofa Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
         "Override: treat 'Your Call' as Keep"
       ]
     },
@@ -2514,6 +4657,16 @@
       ]
     },
     {
+      "id": "hawker-outfit",
+      "name": "Hawker (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "headphones",
       "name": "Headphones",
       "value": 1000,
@@ -2551,7 +4704,7 @@
       "value": 700,
       "action": "keep",
       "analysis": [
-        "Used in 30 crafting recipes",
+        "Used in 22 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -2599,9 +4752,19 @@
       ]
     },
     {
+      "id": "hi-tech-hiker-outfit",
+      "name": "Hi-Tech Hiker (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "hidden-bunker-key",
       "name": "Hidden Bunker Key",
-      "value": 0,
+      "value": 100,
       "action": "keep",
       "analysis": [
         "Key - opens locked areas and containers",
@@ -2630,6 +4793,17 @@
       ]
     },
     {
+      "id": "holly-bush-design",
+      "name": "Holly Bush Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "horizontal-grip",
       "name": "Horizontal Grip",
       "value": 7000,
@@ -2646,9 +4820,29 @@
       "value": 1000,
       "action": "keep",
       "analysis": [
-        "Used in 3 crafting recipes",
+        "Used in 2 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "hornet-hunter-outfit",
+      "name": "Hornet Hunter (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "hotel-chair-design",
+      "name": "Hotel Chair Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -2657,8 +4851,8 @@
       "value": 640,
       "action": "sell",
       "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
+        "Recycles into: 11x Chemicals",
+        "Recycle value: Components (550 coins) worth less than Item (640 coins)"
       ]
     },
     {
@@ -2725,13 +4919,23 @@
       ]
     },
     {
-      "id": "husk-lily",
-      "name": "Husk Lily",
+      "id": "huntsman-outfit",
+      "name": "Huntsman (Outfit)",
       "value": 0,
       "action": "sell",
       "analysis": [
         "No immediate use found",
         "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "husk-lily",
+      "name": "Husk Lily",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "High value (5000 coins)",
+        "No crafting or upgrade use"
       ]
     },
     {
@@ -2742,6 +4946,16 @@
       "analysis": [
         "Recycles into: 7x Metal Parts",
         "Recycle value: Components (525 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "ice-giant-outfit",
+      "name": "Ice Giant (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -2804,8 +5018,8 @@
       "value": 640,
       "action": "sell",
       "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
+        "Recycles into: 12x Chemicals",
+        "Recycle value: Components (600 coins) worth less than Item (640 coins)"
       ]
     },
     {
@@ -2885,11 +5099,10 @@
       "id": "ion-sputter",
       "name": "Ion Sputter",
       "value": 6000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 1x Exodus Modules, 4x Voltage Converter",
+        "Recycle value: Components (4750 coins) worth less than Item (6000 coins)"
       ]
     },
     {
@@ -2916,6 +5129,16 @@
     {
       "id": "junior-outfit",
       "name": "Junior (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "junkyard-astronaut-outfit",
+      "name": "Junkyard Astronaut (Outfit)",
       "value": 0,
       "action": "sell",
       "analysis": [
@@ -3008,9 +5231,29 @@
       ]
     },
     {
+      "id": "lab-ceiling-light-design",
+      "name": "Lab Ceiling Light Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "lab-stool",
       "name": "Lab Stool",
       "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "lab-stool-design",
+      "name": "Lab Stool Design",
+      "value": 5000,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -3099,6 +5342,16 @@
       ]
     },
     {
+      "id": "leviathan-outfit",
+      "name": "Leviathan (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "leviathans-crown-ship-model",
       "name": "\u201cLeviathan's Crown\u201d Ship Model",
       "value": 10000,
@@ -3111,7 +5364,7 @@
     {
       "id": "library-book",
       "name": "Library Book",
-      "value": 0,
+      "value": 100,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -3154,7 +5407,7 @@
       "value": 700,
       "action": "keep",
       "analysis": [
-        "Used in 10 crafting recipes",
+        "Used in 6 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -3228,8 +5481,8 @@
       "value": 640,
       "action": "sell",
       "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
+        "Recycles into: 3x Plastic Parts, 3x Rubber Parts",
+        "Recycle value: Components (330 coins) worth less than Item (640 coins)"
       ]
     },
     {
@@ -3297,6 +5550,16 @@
       ]
     },
     {
+      "id": "luna-outfit",
+      "name": "Luna (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "lure-grenade",
       "name": "Lure Grenade",
       "value": 1000,
@@ -3329,6 +5592,26 @@
       ]
     },
     {
+      "id": "macrame-outfit",
+      "name": "Macrame (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "maestro-outfit",
+      "name": "Maestro (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "magazine-geometry-101",
       "name": "Magazine Geometry 101",
       "value": 0,
@@ -3344,7 +5627,7 @@
       "value": 300,
       "action": "keep",
       "analysis": [
-        "Used in 7 crafting recipes",
+        "Used in 6 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -3371,7 +5654,7 @@
     {
       "id": "major-aiva-s-mementos",
       "name": "Major Aiva's Mementos",
-      "value": 0,
+      "value": 100,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -3381,7 +5664,7 @@
     {
       "id": "major-aiva-s-patch",
       "name": "Major Aiva's Patch",
-      "value": 0,
+      "value": 100,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -3399,8 +5682,28 @@
       ]
     },
     {
+      "id": "marco-outfit",
+      "name": "Marco (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "mastery-medal-backpack-charm",
       "name": "Mastery Medal (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "matador-outfit",
+      "name": "Matador (Outfit)",
       "value": 0,
       "action": "sell",
       "analysis": [
@@ -3424,7 +5727,7 @@
       "value": 640,
       "action": "keep",
       "analysis": [
-        "Used in 47 crafting recipes",
+        "Used in 34 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -3446,7 +5749,7 @@
       "value": 700,
       "action": "keep",
       "analysis": [
-        "Used in 26 crafting recipes",
+        "Used in 27 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -3502,6 +5805,17 @@
       ]
     },
     {
+      "id": "milky-terraccota-stencil",
+      "name": "Milky Terraccota Stencil",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "mini-centrifuge",
       "name": "Mini Centrifuge",
       "value": 3000,
@@ -3515,6 +5829,26 @@
       "id": "mini-pump",
       "name": "Mini Pump",
       "value": 640,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "mirage-outfit",
+      "name": "Mirage (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "misthorn-outfit",
+      "name": "Misthorn (Outfit)",
+      "value": 0,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -3537,7 +5871,7 @@
       "value": 1750,
       "action": "keep",
       "analysis": [
-        "Used in 15 crafting recipes",
+        "Used in 14 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -3545,7 +5879,7 @@
     {
       "id": "moisture-meter",
       "name": "Moisture Meter",
-      "value": 0,
+      "value": 100,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -3556,10 +5890,11 @@
       "id": "moss",
       "name": "Moss",
       "value": 500,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "Recycles into: 3x Assorted Seeds",
-        "Recycle value: Components (300 coins) worth less than Item (500 coins)"
+        "Used in 1 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -3590,6 +5925,17 @@
       "analysis": [
         "Legendary rarity - extremely valuable",
         "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "multicolored-geometric-sofa-design",
+      "name": "Multicolored Geometric Sofa Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -3651,6 +5997,1353 @@
       "analysis": [
         "Legendary rarity - extremely valuable",
         "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "muzzle-brake-iii",
+      "name": "Muzzle Brake III",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "muzzle-brake-iii-recipe",
+      "name": "Muzzle Brake III Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "nascosto-outfit",
+      "name": "Nascosto (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "noisemaker",
+      "name": "Noisemaker",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "number-plate",
+      "name": "Number Plate",
+      "value": 270,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 3x Metal Parts",
+        "Recycle value: Components (225 coins) worth less than Item (270 coins)"
+      ]
+    },
+    {
+      "id": "nutrient-meter",
+      "name": "Nutrient Meter",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "ochre-stencil",
+      "name": "Ochre Stencil",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "official-shutdown-documentation",
+      "name": "Official Shutdown Documentation",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "oil",
+      "name": "Oil",
+      "value": 300,
+      "action": "keep",
+      "analysis": [
+        "Used in 3 crafting recipes",
+        "Common crafting ingredient",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "old-world-books",
+      "name": "Old World Books",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "olives",
+      "name": "Olives",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Scrappy (Level 4)"
+      ]
+    },
+    {
+      "id": "ombra-outfit",
+      "name": "Ombra (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "orange-camo-origin-outfit",
+      "name": "Orange Camo (Origin Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "origin-outfit",
+      "name": "Origin (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "ornate-den-bed-design",
+      "name": "Ornate Den Bed Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "ornate-den-shelf",
+      "name": "Ornate Den Shelf",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "ornate-den-shelf-design",
+      "name": "Ornate Den Shelf Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "ornate-stash",
+      "name": "Ornate Stash",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "ornate-stash-design",
+      "name": "Ornate Stash Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "ornate-wardrobe",
+      "name": "Ornate Wardrobe",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "ornate-wardrobe-design",
+      "name": "Ornate Wardrobe Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "osprey-i",
+      "name": "Osprey I",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "osprey-ii",
+      "name": "Osprey II",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "osprey-iii",
+      "name": "Osprey III",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "osprey-iv",
+      "name": "Osprey IV",
+      "value": 17000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "osprey-recipe",
+      "name": "Osprey Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "padded-stock",
+      "name": "Padded Stock",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "padded-stock-recipe",
+      "name": "Padded Stock Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "painted-box",
+      "name": "Painted Box",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "High value (2000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "patchwork-outfit",
+      "name": "Patchwork (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "patchwork-warden-color",
+      "name": "Patchwork (Warden Color)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "patrol-car-key",
+      "name": "Patrol Car Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "patrol-outfit",
+      "name": "Patrol (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "pendola-pass-observatory-key",
+      "name": "Pendola Pass Observatory Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "pendola-pass-old-town-key",
+      "name": "Pendola Pass Old Town Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "pendola-pass-railyard-key",
+      "name": "Pendola Pass Railyard Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "pendola-pass-train-station-key",
+      "name": "Pendola Pass Train Station Key",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "photoelectric-cloak",
+      "name": "Photoelectric Cloak",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "pilgrims-peak-security-code",
+      "name": "Pilgrim's Peak Security Code",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "planks",
+      "name": "Planks",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "plastic-parts",
+      "name": "Plastic Parts",
+      "value": 60,
+      "action": "keep",
+      "analysis": [
+        "Used in 19 crafting recipes",
+        "Common crafting ingredient",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "plastic-trash",
+      "name": "Plastic Trash",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "playing-cards",
+      "name": "Playing Cards",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "High value (5000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "pneumatic-actuator",
+      "name": "Pneumatic Actuator",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "polished-den-bed-design",
+      "name": "Polished Den Bed Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "polished-den-shelf",
+      "name": "Polished Den Shelf",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "polished-den-shelf-design",
+      "name": "Polished Den Shelf Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "polished-diner-chair-design",
+      "name": "Polished Diner Chair Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "polished-faculty-chair-design",
+      "name": "Polished Faculty Chair Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "polished-faculty-table-design",
+      "name": "Polished Faculty Table Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "polished-round-sofa",
+      "name": "Polished Round Sofa",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "polished-round-sofa-design",
+      "name": "Polished Round Sofa Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "polished-stash",
+      "name": "Polished Stash",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "polished-stash-design",
+      "name": "Polished Stash Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "polished-study-sofa",
+      "name": "Polished Study Sofa",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "polished-study-sofa-design",
+      "name": "Polished Study Sofa Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "polished-wardrobe",
+      "name": "Polished Wardrobe",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "polished-wardrobe-design",
+      "name": "Polished Wardrobe Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "polished-weapon-rack",
+      "name": "Polished Weapon Rack",
+      "value": 150,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "polished-weapon-rack-design",
+      "name": "Polished Weapon Rack Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "polluted-air-filter",
+      "name": "Polluted Air Filter",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 6x Fabric, 2x Oil",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "pop-trigger",
+      "name": "Pop Trigger",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Crude Explosives, 1x ARC Alloy",
+        "Recycle value: Components (470 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "portable-television",
+      "name": "Portable TV",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x Battery, 6x Wires",
+        "Recycle value: Components (1700 coins) worth less than Item (2000 coins)"
+      ]
+    },
+    {
+      "id": "possibly-toxic-plant",
+      "name": "Possibly Toxic Plant",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "poster-natural-wonder",
+      "name": "Poster of Natural Wonders",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "High value (2000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "potted-plant",
+      "name": "Potted Plant",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "High value (1000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "pottery",
+      "name": "Pottery",
+      "value": 2000,
+      "action": "sell",
+      "analysis": [
+        "High value (2000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "power-bank",
+      "name": "Power Bank",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x Battery, 2x Wires",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "power-cable",
+      "name": "Power Cable",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 4x Wires",
+        "Recycle value: Components (800 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "power-rod",
+      "name": "Power Rod",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Used in 2 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "powered-descender",
+      "name": "Powered Descender",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "powered-descender-blueprint",
+      "name": "Powered Descender Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "precision-gimbal",
+      "name": "Precision Gimbal",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "pressure-regulator",
+      "name": "Pressure Regulator",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "prickly-pear",
+      "name": "Prickly Pear",
+      "value": 640,
+      "action": "keep",
+      "analysis": [
+        "Required for hideout upgrade: Scrappy (Level 4)"
+      ]
+    },
+    {
+      "id": "printed-fabric-chair-design",
+      "name": "Printed Fabric Chair Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "printed-lab-sofa-design",
+      "name": "Printed Lab Sofa Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "processor",
+      "name": "Processor",
+      "value": 500,
+      "action": "keep",
+      "analysis": [
+        "Used in 10 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "project-heartwood-blueprints",
+      "name": "Project Heartwood Blueprints",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "project-pathos-empathy-core",
+      "name": "Project Pathos Empathy Core",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "projector",
+      "name": "Projector",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Processor, 2x Wires",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "propellant-valve-assembly",
+      "name": "Propellant Valve Assembly",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "pulse-mine",
+      "name": "Pulse Mine",
+      "value": 470,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "pulse-mine-blueprint",
+      "name": "Pulse Mine Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "purification-system-blueprint",
+      "name": "Purification System Blueprint",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "queen-reactor",
+      "name": "Queen Reactor",
+      "value": 11000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "rachetta-outfit",
+      "name": "Rachetta (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "radial-press",
+      "name": "Radial Press",
+      "value": 3000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "radio",
+      "name": "Radio",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Sensors, 1x Speaker Component",
+        "Recycle value: Components (1000 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "radio-relay",
+      "name": "Radio Relay",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 2x Sensors, 2x Speaker Component",
+        "Recycle value: Components (2000 coins) worth less than Item (3000 coins)"
+      ]
+    },
+    {
+      "id": "radio-renegade-outfit",
+      "name": "Radio Renegade (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "raider-flag",
+      "name": "Raider Flag",
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "raider-hatch-key",
+      "name": "Raider Hatch Key",
+      "value": 2000,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "raider-logbook",
+      "name": "Raider Logbook",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "raider-tokens",
+      "name": "Raider Tokens",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "raiders-refuge-security-code",
+      "name": "Raider's Refuge Security Code",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rascal",
+      "name": "Rascal",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rascal-blueprint",
+      "name": "Rascal Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "rascal-ii",
+      "name": "Rascal II",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rascal-iii",
+      "name": "Rascal III",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rascal-iv",
+      "name": "Rascal IV",
+      "value": 17000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rattler-i",
+      "name": "Rattler I",
+      "value": 1750,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rattler-ii",
+      "name": "Rattler II",
+      "value": 3000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rattler-iii",
+      "name": "Rattler III",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rattler-iv",
+      "name": "Rattler IV",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "rawhide-outfit",
+      "name": "Rawhide (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "reaver-outfit",
+      "name": "Reaver (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "recorder",
+      "name": "Recorder",
+      "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "red-coral-jewelry",
+      "name": "Red Coral Jewelry",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "High value (5000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "red-light-stick",
+      "name": "Red Light Stick",
+      "value": 150,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "red-light-stick-blueprint",
+      "name": "Red Light Stick Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "red-radio-renegade-color",
+      "name": "Red (Radio Renegade Color)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "red-study-sofa",
+      "name": "Red Study Sofa",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "red-study-sofa-design",
+      "name": "Red Study Sofa Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "reinforced-reception-security-code",
+      "name": "Reinforced Reception Security Code",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "remote-control",
+      "name": "Remote Control",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 7x Plastic Parts, 1x Sensors",
+        "Recycle value: Components (920 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "remote-raider-flare",
+      "name": "Remote Raider Flare",
+      "value": 270,
+      "action": "keep",
+      "analysis": [
+        "Consumable item - grenades, healing items, etc.",
+        "Review based on your current inventory needs",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "remote-raider-flare-blueprint",
+      "name": "Remote Raider Flare Blueprint",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "renegade-i",
+      "name": "Renegade I",
+      "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "renegade-ii",
+      "name": "Renegade II",
+      "value": 10000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "renegade-iii",
+      "name": "Renegade III",
+      "value": 13000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "renegade-iv",
+      "name": "Renegade IV",
+      "value": 17000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "renzo-outfit",
+      "name": "Renzo (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "resin",
+      "name": "Resin",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "restaurant-table-design",
+      "name": "Restaurant Table Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "riot-outfit",
+      "name": "Riot (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "riposta-outfit",
+      "name": "Riposta (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "ripped-safety-vest",
+      "name": "Ripped Safety Vest",
+      "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 1x Durable Cloth, 1x Magnet",
+        "Recycle value: Components (940 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "riven-tides-classifed-records-keycard",
+      "name": "Riven Tides Classified Records Keycard",
+      "value": 100,
+      "action": "keep",
+      "analysis": [
+        "Key - opens locked areas and containers",
+        "Review based on areas you want to access",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -3753,6 +7446,16 @@
       ]
     },
     {
+      "id": "roamer-outfit",
+      "name": "Roamer (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "rocket-thruster",
       "name": "Rocket Thruster",
       "value": 2000,
@@ -3785,11 +7488,10 @@
       "id": "rope",
       "name": "Rope",
       "value": 300,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Used in 2 crafting recipes",
-        "Rare crafting material",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 5x Fabric",
+        "Recycle value: Components (250 coins) worth less than Item (300 coins)"
       ]
     },
     {
@@ -3806,11 +7508,10 @@
       "id": "rotary-encoder",
       "name": "Rotary Encoder",
       "value": 3000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 2x Electrical Components, 2x Processor",
+        "Recycle value: Components (2280 coins) worth less than Item (3000 coins)"
       ]
     },
     {
@@ -3886,7 +7587,7 @@
     {
       "id": "ruined-emperor-beacon",
       "name": "Ruined Emperor Beacon",
-      "value": 0,
+      "value": 1000,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -3917,11 +7618,10 @@
       "id": "ruined-riot-shield",
       "name": "Ruined Riot Shield",
       "value": 1000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 10x Plastic Parts, 6x Rubber Parts",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
       ]
     },
     {
@@ -3983,20 +7683,80 @@
       ]
     },
     {
-      "id": "sample-cleaner",
-      "name": "Sample Cleaner",
-      "value": 3000,
+      "id": "ryder-outfit",
+      "name": "Ryder (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "sacrifice-stencil",
+      "name": "Sacrifice Stencil",
+      "value": 5000,
       "action": "keep",
       "analysis": [
-        "Rare rarity",
+        "Epic rarity",
         "May have future use - review carefully",
         "Override: treat 'Your Call' as Keep"
       ]
     },
     {
+      "id": "saltwalker-outfit",
+      "name": "Saltwalker (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "sample-cleaner",
+      "name": "Sample Cleaner",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "Recycles into: 14x Assorted Seeds, 2x Electrical Components",
+        "Recycle value: Components (2680 coins) worth less than Item (3000 coins)"
+      ]
+    },
+    {
+      "id": "sandveil-outfit",
+      "name": "Sandveil (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "sandwalker-outfit",
+      "name": "Sandwalker (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "scorta-outfit",
+      "name": "Scorta (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "scout-patrol-note",
       "name": "Scout Patrol Note",
-      "value": 0,
+      "value": 100,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -4006,7 +7766,17 @@
     {
       "id": "secret-meeting-info",
       "name": "Secret Meeting Info",
-      "value": 0,
+      "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "security-chair-design",
+      "name": "Security Chair Design",
+      "value": 5000,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -4016,7 +7786,7 @@
     {
       "id": "seed-vault-box-key",
       "name": "Seed Vault Box Key",
-      "value": 0,
+      "value": 100,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -4063,6 +7833,16 @@
       ]
     },
     {
+      "id": "serac-stencil",
+      "name": "Serac Stencil",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
       "id": "sextant",
       "name": "Sextant",
       "value": 2000,
@@ -4070,6 +7850,16 @@
       "analysis": [
         "High value (2000 coins)",
         "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "sforza-outfit",
+      "name": "Sforza (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -4081,6 +7871,16 @@
         "Consumable item - grenades, healing items, etc.",
         "Review based on your current inventory needs",
         "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "sheath-outfit",
+      "name": "Sheath (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -4235,21 +8035,21 @@
       "id": "shredder-gyro",
       "name": "Shredder Gyro",
       "value": 2000,
-      "action": "recycle",
+      "action": "keep",
       "analysis": [
-        "Recycles into: 3x ARC Alloy, 3x Mechanical Components",
-        "Recycle value: Components (2520 coins) worth MORE than Item (2000 coins)"
+        "Used in 1 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
       "id": "signal-amplifier",
       "name": "Signal Amplifier",
       "value": 3000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 2x Electrical Components, 2x Voltage Converter",
+        "Recycle value: Components (2280 coins) worth less than Item (3000 coins)"
       ]
     },
     {
@@ -4321,7 +8121,7 @@
       "value": 330,
       "action": "keep",
       "analysis": [
-        "Used in 36 crafting recipes",
+        "Used in 21 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -4358,9 +8158,40 @@
       ]
     },
     {
+      "id": "slipstream-stencil",
+      "name": "Slipstream Stencil",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "slugger-outfit",
+      "name": "Slugger (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "small-lab-cabinet",
       "name": "Small Lab Cabinet",
       "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "small-lab-cabinet-design",
+      "name": "Small Lab Cabinet Design",
+      "value": 5000,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -4423,6 +8254,16 @@
       "id": "snitch-scanner",
       "name": "Snitch Scanner",
       "value": 1000,
+      "action": "recycle",
+      "analysis": [
+        "Recycles into: 1x ARC Alloy, 2x Electrical Components",
+        "Recycle value: Components (1480 coins) worth MORE than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "snowball",
+      "name": "Snowball",
+      "value": 10,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -4430,9 +8271,9 @@
       ]
     },
     {
-      "id": "snowball",
-      "name": "Snowball",
-      "value": 10,
+      "id": "solare-outfit",
+      "name": "Solare (Outfit)",
+      "value": 0,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -4447,6 +8288,17 @@
       "analysis": [
         "No immediate use found",
         "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "solid-green-chair-design",
+      "name": "Solid Green Chair Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -4499,7 +8351,7 @@
       "value": 500,
       "action": "keep",
       "analysis": [
-        "Used in 1 crafting recipes",
+        "Used in 2 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -4518,11 +8370,10 @@
       "id": "spectrum-analyzer",
       "name": "Spectrum Analyzer",
       "value": 3500,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 1x Exodus Modules, 1x Sensors",
+        "Recycle value: Components (3250 coins) worth less than Item (3500 coins)"
       ]
     },
     {
@@ -4531,8 +8382,8 @@
       "value": 1000,
       "action": "sell",
       "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
+        "Recycles into: 1x ARC Alloy, 1x Electrical Components",
+        "Recycle value: Components (840 coins) worth less than Item (1000 coins)"
       ]
     },
     {
@@ -4548,11 +8399,10 @@
       "id": "spring-cushion",
       "name": "Spring Cushion",
       "value": 2000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 2x Durable Cloth, 2x Steel Spring",
+        "Recycle value: Components (1880 coins) worth less than Item (2000 coins)"
       ]
     },
     {
@@ -4612,6 +8462,16 @@
       "id": "stack-of-movie-tapes",
       "name": "Stack of Movie Tapes",
       "value": 100,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "static-outfit",
+      "name": "Static (Outfit)",
+      "value": 0,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -4805,9 +8665,39 @@
       ]
     },
     {
+      "id": "striker-outfit",
+      "name": "Striker (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "study-armchair",
       "name": "Study Armchair",
       "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "study-armchair-design-res-armchair-01-a",
+      "name": "Study Armchair Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "study-armchair-design-res-sofa-01-y150-a",
+      "name": "Study Armchair Design",
+      "value": 5000,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -4825,6 +8715,17 @@
       ]
     },
     {
+      "id": "study-ceiling-lamp-design",
+      "name": "Study Ceiling Lamp Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "study-piano",
       "name": "Study Piano",
       "value": 0,
@@ -4835,9 +8736,29 @@
       ]
     },
     {
+      "id": "study-piano-design",
+      "name": "Study Piano Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
       "id": "study-tv-stand",
       "name": "Study TV Stand",
       "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "study-tv-stand-design",
+      "name": "Study TV Stand Design",
+      "value": 5000,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -4855,9 +8776,50 @@
       ]
     },
     {
+      "id": "sturdy-aviary-table-design",
+      "name": "Sturdy Aviary Table Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "sturdy-bureau-chair-design",
+      "name": "Sturdy Bureau Chair Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "sturdy-bureau-sofa",
       "name": "Sturdy Bureau Sofa",
       "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "sturdy-bureau-sofa-design",
+      "name": "Sturdy Bureau Sofa Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "sturdy-den-bed-design",
+      "name": "Sturdy Den Bed Design",
+      "value": 5000,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -4875,9 +8837,50 @@
       ]
     },
     {
+      "id": "sturdy-den-shelf-design",
+      "name": "Sturdy Den Shelf Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "sturdy-faculty-chair-design",
+      "name": "Sturdy Faculty Chair Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "sturdy-faculty-table-design",
+      "name": "Sturdy Faculty Table Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "sturdy-lab-cabinet",
       "name": "Sturdy Lab Cabinet",
       "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "sturdy-lab-cabinet-design",
+      "name": "Sturdy Lab Cabinet Design",
+      "value": 5000,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -4895,9 +8898,39 @@
       ]
     },
     {
+      "id": "sturdy-lab-cabinet-wide-design",
+      "name": "Sturdy Lab Cabinet (Wide) Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "sturdy-lab-chair-design",
+      "name": "Sturdy Lab Chair Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "sturdy-shelf",
       "name": "Sturdy Shelf",
       "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "sturdy-shelf-design",
+      "name": "Sturdy Shelf Design",
+      "value": 5000,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -4915,6 +8948,16 @@
       ]
     },
     {
+      "id": "sturdy-stash-design",
+      "name": "Sturdy Stash Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "sturdy-wardrobe",
       "name": "Sturdy Wardrobe",
       "value": 0,
@@ -4925,8 +8968,38 @@
       ]
     },
     {
+      "id": "sturdy-wardrobe-design",
+      "name": "Sturdy Wardrobe Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "sturdy-weapon-rack",
       "name": "Sturdy Weapon Rack",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "sturdy-weapon-rack-design",
+      "name": "Sturdy Weapon Rack Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "subterranean-outfit",
+      "name": "Subterranean (Outfit)",
       "value": 0,
       "action": "sell",
       "analysis": [
@@ -4977,6 +9050,16 @@
       ]
     },
     {
+      "id": "surgeon-outfit",
+      "name": "Surgeon (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "surveyor-vault",
       "name": "Surveyor Vault",
       "value": 1000,
@@ -4991,7 +9074,7 @@
       "value": 700,
       "action": "keep",
       "analysis": [
-        "Used in 2 crafting recipes",
+        "Used in 1 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -5002,7 +9085,7 @@
       "value": 500,
       "action": "keep",
       "analysis": [
-        "Used in 2 crafting recipes",
+        "Used in 1 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -5023,8 +9106,8 @@
       "value": 640,
       "action": "sell",
       "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
+        "Recycles into: 3x Plastic Parts, 3x Rubber Parts",
+        "Recycle value: Components (330 coins) worth less than Item (640 coins)"
       ]
     },
     {
@@ -5169,8 +9252,8 @@
       "value": 3000,
       "action": "sell",
       "analysis": [
-        "Recycles into: 1x Advanced Electrical Components",
-        "Recycle value: Components (1750 coins) worth less than Item (3000 coins)"
+        "Recycles into: 1x Advanced Electrical Components, 1x Processor",
+        "Recycle value: Components (2250 coins) worth less than Item (3000 coins)"
       ]
     },
     {
@@ -5291,13 +9374,23 @@
       ]
     },
     {
+      "id": "tick-hunter-outfit",
+      "name": "Tick Hunter (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "tick-pod",
       "name": "Tick Pod",
       "value": 640,
       "action": "sell",
       "analysis": [
-        "Recycles into: 2x ARC Alloy",
-        "Recycle value: Components (400 coins) worth less than Item (640 coins)"
+        "Recycles into: 2x ARC Alloy, 2x Chemicals",
+        "Recycle value: Components (500 coins) worth less than Item (640 coins)"
       ]
     },
     {
@@ -5306,8 +9399,8 @@
       "value": 1000,
       "action": "sell",
       "analysis": [
-        "Recycles into: 3x Wires",
-        "Recycle value: Components (600 coins) worth less than Item (1000 coins)"
+        "Recycles into: 5x Plastic Parts, 3x Wires",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
       ]
     },
     {
@@ -5348,6 +9441,26 @@
       "analysis": [
         "High value (1000 coins)",
         "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "torpedo-outfit",
+      "name": "Torpedo (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "torque-outfit",
+      "name": "Torque (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -5401,6 +9514,17 @@
       "analysis": [
         "Weapon - review based on your current loadout",
         "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "tortoise-stencil",
+      "name": "Tortoise Stencil",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
         "Override: treat 'Your Call' as Keep"
       ]
     },
@@ -5467,6 +9591,16 @@
       ]
     },
     {
+      "id": "triumph-outfit",
+      "name": "Triumph (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "tropical-duck",
       "name": "Tropical Duck",
       "value": 1000,
@@ -5487,6 +9621,17 @@
       ]
     },
     {
+      "id": "tufted-sofa-design",
+      "name": "Tufted Sofa Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "turbine-compressor",
       "name": "Turbine Compressor",
       "value": 5000,
@@ -5501,11 +9646,10 @@
       "id": "turbo-pump",
       "name": "Turbo Pump",
       "value": 2000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 1x Mechanical Components, 3x Oil",
+        "Recycle value: Components (1540 coins) worth less than Item (2000 coins)"
       ]
     },
     {
@@ -5549,13 +9693,34 @@
       ]
     },
     {
+      "id": "valente-outfit",
+      "name": "Valente (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "vanguard-outfit",
+      "name": "Vanguard (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "vaporizer-regulator",
       "name": "Vaporizer Regulator",
       "value": 6000,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "Recycles into: 1x Advanced Electrical Components, 2x ARC Circuitry",
-        "Recycle value: Components (3750 coins) worth less than Item (6000 coins)"
+        "Used in 1 crafting recipes",
+        "Rare crafting material",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -5566,6 +9731,16 @@
       "analysis": [
         "High value (3000 coins)",
         "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "velati-outfit",
+      "name": "Velati (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -5636,6 +9811,27 @@
       "id": "venetian-dresser",
       "name": "Venetian Dresser",
       "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "venetian-dresser-design",
+      "name": "Venetian Dresser Design",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "verdigris-stencil",
+      "name": "Verdigris Stencil",
+      "value": 5000,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -5757,6 +9953,16 @@
       ]
     },
     {
+      "id": "volare-outfit",
+      "name": "Volare (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "volcanic-rock",
       "name": "Volcanic Rock",
       "value": 270,
@@ -5772,9 +9978,29 @@
       "value": 500,
       "action": "keep",
       "analysis": [
-        "Used in 3 crafting recipes",
+        "Used in 2 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "voltedge-outfit",
+      "name": "Voltedge (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "voyager-outfit",
+      "name": "Voyager (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -5842,9 +10068,29 @@
       ]
     },
     {
+      "id": "warehouse-chair-design",
+      "name": "Warehouse Chair Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "warehouse-desk",
       "name": "Warehouse Desk",
       "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "warehouse-desk-design",
+      "name": "Warehouse Desk Design",
+      "value": 5000,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -5862,14 +10108,33 @@
       ]
     },
     {
+      "id": "warehouse-dresser-design",
+      "name": "Warehouse Dresser Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "wasp-driver",
       "name": "Wasp Driver",
       "value": 640,
-      "action": "keep",
+      "action": "recycle",
       "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 1x ARC Alloy, 1x Electrical Components",
+        "Recycle value: Components (840 coins) worth MORE than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "wasp-hunter-outfit",
+      "name": "Wasp Hunter (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -5886,11 +10151,10 @@
       "id": "water-pump",
       "name": "Water Pump",
       "value": 1000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 4x Metal Parts, 2x Oil",
+        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
       ]
     },
     {
@@ -5904,9 +10168,29 @@
       ]
     },
     {
+      "id": "weather-station-chair-design",
+      "name": "Weather Station Chair Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "weather-station-table",
       "name": "Weather Station Table",
       "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "weather-station-table-design",
+      "name": "Weather Station Table Design",
+      "value": 5000,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -5965,6 +10249,16 @@
       ]
     },
     {
+      "id": "winter-table-design",
+      "name": "Winter Table Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "wires-recipe",
       "name": "Wires",
       "value": 200,
@@ -5997,6 +10291,26 @@
     {
       "id": "work-light",
       "name": "Work Light",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "work-light-design",
+      "name": "Work Light Design",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "wreck-outfit",
+      "name": "Wreck (Outfit)",
       "value": 0,
       "action": "sell",
       "analysis": [
@@ -6050,6 +10364,16 @@
     {
       "id": "yellow-radio-renegade-color",
       "name": "Yellow (Radio Renegade Color)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "zenith-outfit",
+      "name": "Zenith (Outfit)",
       "value": 0,
       "action": "sell",
       "analysis": [
