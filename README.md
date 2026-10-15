@@ -21,7 +21,12 @@ From a terminal:
 ### Windows 10/11 (64-bit)
 **From the repo root, run the setup script**
 
-`powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup-windows.ps1`
+In PowerShell:
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+.\scripts\setup-windows.ps1
+```
 
 ### Linux
 **From the repo root, run the setup script**
