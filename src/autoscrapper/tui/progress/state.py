@@ -97,9 +97,10 @@ def build_wizard_state() -> ProgressWizardState:
     quest_entries = build_quest_entries(game_data.quests)
     hideout_modules = build_hideout_modules(game_data.hideout_modules)
     settings = load_progress_settings()
+    completed_ids = set(settings.completed_quests)
 
     return ProgressWizardState(
-        all_quests_completed=settings.all_quests_completed,
+        all_quests_completed=all(entry.id in completed_ids for entry in quest_entries),
         active_ids=set(settings.active_quests),
         hideout_levels=dict(settings.hideout_levels),
         quest_entries=quest_entries,

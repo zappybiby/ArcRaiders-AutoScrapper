@@ -49,15 +49,15 @@ def generate_rules_from_active(
     active_resolved: List[dict] = []
     if active_quests:
         active_resolved, missing = resolve_active_quests(active_quests, quest_index)
-        if missing:
+        if missing and completed_quests_override is None:
             raise ValueError(f"Active quests not found: {', '.join(missing)}")
 
-    if all_quests_completed:
+    if completed_quests_override is not None:
+        completed_quests = completed_quests_override
+    elif all_quests_completed:
         completed_quests = [
             quest.get("id") for quest in game_data.quests if quest.get("id")
         ]
-    elif completed_quests_override is not None:
-        completed_quests = completed_quests_override
     else:
         if not active_resolved:
             raise ValueError("No active quests provided.")
@@ -103,7 +103,10 @@ def generate_rules_from_active(
             }
             for quest in active_resolved
         ]
-    if all_quests_completed:
+    current_quest_ids = {
+        quest.get("id") for quest in game_data.quests if quest.get("id")
+    }
+    if current_quest_ids.issubset(completed_quests):
         metadata["allQuestsCompleted"] = True
 
     return {"metadata": metadata, "items": out_items}

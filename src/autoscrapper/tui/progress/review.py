@@ -263,7 +263,9 @@ class ReviewQuestsScreen(ProgressScreen):
             if quest_id not in self.completed
         ]
         persist_progress_settings(
-            all_quests_completed=(len(self.completed) == len(self.quest_entries)),
+            all_quests_completed=all(
+                entry.id in self.completed for entry in self.quest_entries
+            ),
             active_quests=active_quests,
             completed_quests=list(self.completed),
             hideout_levels=self.original.hideout_levels,
