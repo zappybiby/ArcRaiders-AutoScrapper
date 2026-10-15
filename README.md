@@ -19,6 +19,8 @@ From a terminal:
 - `cd ArcRaiders-AutoScrapper`
 
 ### Windows 10/11 (64-bit)
+Requires [Microsoft Visual C++ Redistributable (x64)](https://aka.ms/vc14/vc_redist.x64.exe).
+
 **From the repo root, run the setup script**
 
 `powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup-windows.ps1`

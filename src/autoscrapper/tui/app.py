@@ -129,10 +129,13 @@ class StartupSplash(ModalScreen[None]):
         return "[" + ("#" * filled) + ("." * (_SPLASH_BAR_WIDTH - filled)) + "]"
 
     def _render_frame(self) -> None:
+        status = warmup_status()
+        if status.error is not None:
+            return
+
         if self._completed:
             return
 
-        status = warmup_status()
         elapsed = time.monotonic() - self._started_at
         ready = status.completed
         if not ready and elapsed >= _SPLASH_MAX_SECONDS:
@@ -143,9 +146,7 @@ class StartupSplash(ModalScreen[None]):
         percent = self._progress_percent(ready=ready, elapsed=elapsed)
 
         phase = "Initializing..."
-        if status.completed and status.failed:
-            phase = "Warmup issue detected, continuing safely..."
-        elif status.completed:
+        if status.completed:
             phase = "Initialization complete."
         elif self._timed_out:
             phase = "Warmup taking longer than expected, continuing..."
@@ -361,6 +362,7 @@ class AutoScrapperApp(App[None]):
         self._scan_dry_run = scan_dry_run
 
     def on_mount(self) -> None:
+        self._warmup_timer = self.set_interval(_SPLASH_TICK_SECONDS, self._check_warmup)
         self.push_screen(HomeScreen())
         self.push_screen(
             StartupSplash(
@@ -368,6 +370,13 @@ class AutoScrapperApp(App[None]):
                 scan_dry_run=self._scan_dry_run,
             )
         )
+
+    def _check_warmup(self) -> None:
+        status = warmup_status()
+        if status.completed:
+            self._warmup_timer.pause()
+            if status.error is not None:
+                raise status.error
 
     def action_main_menu(self) -> None:
         if isinstance(self.screen, ScanScreen):
@@ -464,4 +473,4 @@ def run_tui(*, start_screen: str = "home", dry_run: bool = False) -> int:
         raise ValueError("start_screen must be 'home' or 'scan'")
     app = AutoScrapperApp(start_screen=start_screen, scan_dry_run=dry_run)
     app.run(mouse=True)
-    return 0
+    return app.return_code or 0

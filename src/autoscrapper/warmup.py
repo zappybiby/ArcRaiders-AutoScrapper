@@ -8,7 +8,7 @@ from typing import Optional
 _WARMUP_LOCK = threading.Lock()
 _WARMUP_DONE = threading.Event()
 _WARMUP_STARTED = False
-_WARMUP_ERROR: Optional[str] = None
+_WARMUP_ERROR: Optional[Exception] = None
 
 _HEAVY_MODULES = (
     "autoscrapper.core.item_actions",
@@ -24,16 +24,16 @@ class WarmupStatus:
     started: bool
     completed: bool
     failed: bool
-    error: Optional[str]
+    error: Optional[Exception]
 
 
-def _set_warmup_error(error: Optional[str]) -> None:
+def _set_warmup_error(error: Optional[Exception]) -> None:
     global _WARMUP_ERROR
     with _WARMUP_LOCK:
         _WARMUP_ERROR = error
 
 
-def _get_warmup_error() -> Optional[str]:
+def _get_warmup_error() -> Optional[Exception]:
     with _WARMUP_LOCK:
         return _WARMUP_ERROR
 
@@ -45,8 +45,8 @@ def _run_background_warmup() -> None:
         from .ocr.tesseract import initialize_ocr
 
         initialize_ocr()
-    except Exception as exc:  # pragma: no cover - defensive warmup fallback
-        _set_warmup_error(f"{type(exc).__name__}: {exc}")
+    except Exception as exc:
+        _set_warmup_error(exc)
     finally:
         _WARMUP_DONE.set()
 
@@ -68,8 +68,8 @@ def start_background_warmup() -> None:
 def warmup_status() -> WarmupStatus:
     with _WARMUP_LOCK:
         started = _WARMUP_STARTED
-    error = _get_warmup_error()
     completed = _WARMUP_DONE.is_set()
+    error = _get_warmup_error()
     return WarmupStatus(
         started=started,
         completed=completed,
