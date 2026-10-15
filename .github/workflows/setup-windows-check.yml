@@ -36,8 +36,8 @@ jobs:
           "Original terminal finds uv after setup: $parentFindsUv"
           "| ${{ matrix.shell }}: fresh install | Passed |" >> $env:GITHUB_STEP_SUMMARY
           "| ${{ matrix.shell }}: original terminal finds uv | $parentFindsUv |" >> $env:GITHUB_STEP_SUMMARY
-          "TEST_UV=$uvPath" >> $env:GITHUB_ENV
-          (Split-Path $uvPath) >> $env:GITHUB_PATH
+          "TEST_UV=$uvPath" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          (Split-Path $uvPath) | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - name: Native imports and actual OCR initialization
         run: |
           & $env:TEST_UV run python -c "import sys, platform, cv2, numpy, PIL, tesserocr, pydirectinput; from autoscrapper.ocr.tesseract import initialize_ocr; info = initialize_ocr(); print(sys.version); print(platform.machine()); print(info); assert sys.version_info[:2] == (3, 14); assert platform.machine() == 'AMD64'; assert 'eng' in info.languages"
@@ -45,6 +45,9 @@ jobs:
           "| ${{ matrix.shell }}: native imports and OCR | Passed |" >> $env:GITHUB_STEP_SUMMARY
       - name: Rerun setup
         run: |
+          $env:Path = "$(Split-Path $env:TEST_UV);$env:Path"
+          $resolvedUv = (Get-Command uv -CommandType Application -ErrorAction Stop).Path
+          if ($resolvedUv -ne $env:TEST_UV) { throw "Unexpected uv for rerun: $resolvedUv" }
           $hostExe = (Get-Process -Id $PID).Path
           @('y', 'y', 'y') | & $hostExe -NoProfile -ExecutionPolicy Bypass -File scripts/setup-windows.ps1
           if ($LASTEXITCODE -ne 0) { throw "Setup rerun exited $LASTEXITCODE" }
@@ -80,3 +83,36 @@ jobs:
           & $minUv run python -c "from autoscrapper.ocr.tesseract import initialize_ocr; print(initialize_ocr())"
           if ($LASTEXITCODE -ne 0) { throw 'Minimum-uv environment failed OCR startup' }
           "| ${{ matrix.shell }}: uv 0.9.8 and OCR | Passed |" >> $env:GITHUB_STEP_SUMMARY
+      - name: Isolate the OCR C++ runtime dependency
+        run: |
+          @'
+          import ctypes
+          import importlib.util
+          import os
+          from pathlib import Path
+
+          kernel = ctypes.WinDLL('kernel32', use_last_error=True)
+          kernel.GetModuleHandleW.argtypes = [ctypes.c_wchar_p]
+          kernel.GetModuleHandleW.restype = ctypes.c_void_p
+          for name in ('user32', 'gdi32', 'ws2_32'):
+              ctypes.WinDLL(name)
+          assert not kernel.GetModuleHandleW('msvcp140.dll'), 'Runtime already loaded; test cannot isolate it'
+          package = Path(importlib.util.find_spec('tesserocr').origin).parent
+          target = package / 'tesseract55.dll'
+          # Search bundled and explicitly added DLL directories, omitting System32.
+          flags = 0x100 | 0x200 | 0x400
+          try:
+              ctypes.WinDLL(str(target), winmode=flags)
+          except OSError as exc:
+              assert exc.winerror == 126, exc
+              print('Without the shared C++ runtime: WinError 126')
+          else:
+              raise AssertionError('DLL unexpectedly loaded without shared C++ runtime')
+          runtime_path = Path(os.environ['WINDIR']) / 'System32' / 'msvcp140.dll'
+          runtime = ctypes.WinDLL(str(runtime_path))
+          restored = ctypes.WinDLL(str(target), winmode=flags)
+          print('With only MSVCP140.dll made available: native OCR library loads')
+          print('Runtime location:', runtime_path)
+          '@ | Set-Content -LiteralPath "$env:RUNNER_TEMP/ocr-runtime-check.py" -Encoding utf8
+          & $env:TEST_UV run python "$env:RUNNER_TEMP/ocr-runtime-check.py"
+          if ($LASTEXITCODE -ne 0) { throw 'Isolated runtime check did not produce the expected result' }
