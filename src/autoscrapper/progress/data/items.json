@@ -327,6 +327,19 @@
     "recyclesInto": null
   },
   {
+    "id": "amplified-anvil",
+    "name": "Amplified Anvil",
+    "type": "Weapon",
+    "rarity": "amplified",
+    "value": 20800,
+    "weightKg": 5,
+    "stackSize": 1,
+    "craftBench": null,
+    "updatedAt": "2026-10-10T13:53:02.568149+00:00",
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
     "id": "amplified-anvil-projectile-splitter",
     "name": "Amplified Anvil (Anvil Splitter)",
     "type": "Weapon",
@@ -15822,19 +15835,6 @@
     "stackSize": 1,
     "craftBench": null,
     "updatedAt": "2026-10-09T09:06:05.083+00:00",
-    "recipe": null,
-    "recyclesInto": null
-  },
-  {
-    "id": "work-light",
-    "name": "Work Light",
-    "type": "Furniture",
-    "rarity": "common",
-    "value": 0,
-    "weightKg": 0,
-    "stackSize": 1,
-    "craftBench": null,
-    "updatedAt": "2026-10-10T13:53:02.568149+00:00",
     "recipe": null,
     "recyclesInto": null
   },

@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "generatedAt": "2026-10-14T18:11:56.905415Z",
+    "generatedAt": "2026-10-15T17:54:36.609993Z",
     "data": {
-      "lastUpdated": "2026-10-14T18:11:56.869701Z",
+      "lastUpdated": "2026-10-15T17:54:36.574331Z",
       "source": "https://metaforge.app/arc-raiders",
       "version": "autoscrapper-data-1"
     },
-    "itemCount": 1109,
+    "itemCount": 1110,
     "allQuestsCompleted": true
   },
   "items": [
@@ -242,6 +242,17 @@
       "id": "amplification-module-mk-v",
       "name": "Amplification Module MK. V",
       "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-anvil",
+      "name": "Amplified Anvil",
+      "value": 20800,
       "action": "keep",
       "analysis": [
         "Weapon - review based on your current loadout",
