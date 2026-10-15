@@ -1,0 +1,82 @@
+name: Windows setup execution check
+
+on:
+  push:
+    branches: [codex/windows-setup-check-20261015]
+    paths: [.github/workflows/setup-windows-check.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  setup:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        shell: [powershell, pwsh]
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Fresh setup through the documented child-process invocation
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $uvDirs = @(Get-Command uv -CommandType Application -All -ErrorAction SilentlyContinue | ForEach-Object { Split-Path $_.Path })
+          $env:Path = ($env:Path -split ';' | Where-Object { $_.TrimEnd('\') -notin $uvDirs }) -join ';'
+          if (Get-Command uv -ErrorAction SilentlyContinue) { throw 'Fresh-install test still finds uv' }
+          $hostExe = (Get-Process -Id $PID).Path
+          @('y', 'y', 'y', 'y') | & $hostExe -NoProfile -ExecutionPolicy Bypass -File scripts/setup-windows.ps1
+          if ($LASTEXITCODE -ne 0) { throw "Fresh setup exited $LASTEXITCODE" }
+          $uvPath = Join-Path $HOME '.local/bin/uv.exe'
+          if (-not (Test-Path -LiteralPath $uvPath)) { throw 'Installer did not create uv.exe' }
+          $parentFindsUv = [bool](Get-Command uv -ErrorAction SilentlyContinue)
+          "Original terminal finds uv after setup: $parentFindsUv"
+          "| ${{ matrix.shell }}: fresh install | Passed |" >> $env:GITHUB_STEP_SUMMARY
+          "| ${{ matrix.shell }}: original terminal finds uv | $parentFindsUv |" >> $env:GITHUB_STEP_SUMMARY
+          "TEST_UV=$uvPath" >> $env:GITHUB_ENV
+          (Split-Path $uvPath) >> $env:GITHUB_PATH
+      - name: Native imports and actual OCR initialization
+        run: |
+          & $env:TEST_UV run python -c "import sys, platform, cv2, numpy, PIL, tesserocr, pydirectinput; from autoscrapper.ocr.tesseract import initialize_ocr; info = initialize_ocr(); print(sys.version); print(platform.machine()); print(info); assert sys.version_info[:2] == (3, 14); assert platform.machine() == 'AMD64'; assert 'eng' in info.languages"
+          if ($LASTEXITCODE -ne 0) { throw 'Native imports or OCR initialization failed' }
+          "| ${{ matrix.shell }}: native imports and OCR | Passed |" >> $env:GITHUB_STEP_SUMMARY
+      - name: Rerun setup
+        run: |
+          $hostExe = (Get-Process -Id $PID).Path
+          @('y', 'y', 'y') | & $hostExe -NoProfile -ExecutionPolicy Bypass -File scripts/setup-windows.ps1
+          if ($LASTEXITCODE -ne 0) { throw "Setup rerun exited $LASTEXITCODE" }
+          "| ${{ matrix.shell }}: rerun | Passed |" >> $env:GITHUB_STEP_SUMMARY
+      - name: Upgrade a Python 3.13 environment
+        run: |
+          & $env:TEST_UV python install cpython-3.13-windows-x86_64-none
+          if ($LASTEXITCODE -ne 0) { throw 'Could not install Python 3.13 fixture' }
+          & $env:TEST_UV venv --clear --python cpython-3.13-windows-x86_64-none .venv
+          if ($LASTEXITCODE -ne 0) { throw 'Could not create Python 3.13 fixture' }
+          Set-Content -LiteralPath .python-version -Value '3.13' -Encoding Ascii
+          $hostExe = (Get-Process -Id $PID).Path
+          @('y', 'y', 'y') | & $hostExe -NoProfile -ExecutionPolicy Bypass -File scripts/setup-windows.ps1
+          if ($LASTEXITCODE -ne 0) { throw "Upgrade setup exited $LASTEXITCODE" }
+          & $env:TEST_UV run python -c "import sys; from autoscrapper.ocr.tesseract import initialize_ocr; assert sys.version_info[:2] == (3, 14); print(initialize_ocr())"
+          if ($LASTEXITCODE -ne 0) { throw 'Upgraded environment failed OCR startup' }
+          "| ${{ matrix.shell }}: upgrade from Python 3.13 | Passed |" >> $env:GITHUB_STEP_SUMMARY
+      - name: Test the minimum supported uv version
+        run: |
+          $minDir = Join-Path $env:RUNNER_TEMP 'uv-minimum'
+          $env:UV_INSTALL_DIR = $minDir
+          Invoke-RestMethod https://astral.sh/uv/0.9.8/install.ps1 | Invoke-Expression
+          Remove-Item Env:UV_INSTALL_DIR
+          $env:Path = "$minDir;$env:Path"
+          $minUv = Join-Path $minDir 'uv.exe'
+          & $minUv --version
+          if ($LASTEXITCODE -ne 0) { throw 'Minimum uv could not start' }
+          Remove-Item -LiteralPath .venv -Recurse -Force
+          Remove-Item -LiteralPath uv.lock -Force
+          $hostExe = (Get-Process -Id $PID).Path
+          @('y', 'y', 'y') | & $hostExe -NoProfile -ExecutionPolicy Bypass -File scripts/setup-windows.ps1
+          if ($LASTEXITCODE -ne 0) { throw "Minimum-uv setup exited $LASTEXITCODE" }
+          & $minUv run python -c "from autoscrapper.ocr.tesseract import initialize_ocr; print(initialize_ocr())"
+          if ($LASTEXITCODE -ne 0) { throw 'Minimum-uv environment failed OCR startup' }
+          "| ${{ matrix.shell }}: uv 0.9.8 and OCR | Passed |" >> $env:GITHUB_STEP_SUMMARY
