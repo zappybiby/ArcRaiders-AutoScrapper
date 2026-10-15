@@ -127,7 +127,7 @@ if (-not $uvExe) {
   foreach ($dir in $candidateDirs) {
     $candidate = Join-Path $dir "uv.exe"
     $searched += $candidate
-    if (Test-Path -Path $candidate -PathType Leaf) {
+    if (Test-Path -LiteralPath $candidate -PathType Leaf) {
       $uvExe = $candidate
       break
     }
