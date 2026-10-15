@@ -89,6 +89,7 @@ jobs:
           import ctypes
           import importlib.util
           import os
+          import sys
           from pathlib import Path
 
           kernel = ctypes.WinDLL('kernel32', use_last_error=True)
@@ -96,21 +97,24 @@ jobs:
           kernel.GetModuleHandleW.restype = ctypes.c_void_p
           for name in ('user32', 'gdi32', 'ws2_32'):
               ctypes.WinDLL(name)
+          for name in ('vcruntime140.dll', 'vcruntime140_1.dll'):
+              ctypes.WinDLL(str(Path(sys.base_prefix) / name))
           assert not kernel.GetModuleHandleW('msvcp140.dll'), 'Runtime already loaded; test cannot isolate it'
+          kernel.LoadLibraryExW.argtypes = [ctypes.c_wchar_p, ctypes.c_void_p, ctypes.c_uint32]
+          kernel.LoadLibraryExW.restype = ctypes.c_void_p
           package = Path(importlib.util.find_spec('tesserocr').origin).parent
           target = package / 'tesseract55.dll'
           # Search bundled and explicitly added DLL directories, omitting System32.
           flags = 0x100 | 0x200 | 0x400
-          try:
-              ctypes.WinDLL(str(target), winmode=flags)
-          except OSError as exc:
-              assert exc.winerror == 126, exc
-              print('Without the shared C++ runtime: WinError 126')
-          else:
-              raise AssertionError('DLL unexpectedly loaded without shared C++ runtime')
+          assert target.is_file(), target
+          missing = kernel.LoadLibraryExW(str(target), None, flags)
+          error = ctypes.get_last_error()
+          assert not missing and error == 126, (missing, error)
+          print('Without the shared C++ runtime: WinError 126')
           runtime_path = Path(os.environ['WINDIR']) / 'System32' / 'msvcp140.dll'
           runtime = ctypes.WinDLL(str(runtime_path))
-          restored = ctypes.WinDLL(str(target), winmode=flags)
+          restored = kernel.LoadLibraryExW(str(target), None, flags)
+          assert restored, ctypes.get_last_error()
           print('With only MSVCP140.dll made available: native OCR library loads')
           print('Runtime location:', runtime_path)
           '@ | Set-Content -LiteralPath "$env:RUNNER_TEMP/ocr-runtime-check.py" -Encoding utf8
