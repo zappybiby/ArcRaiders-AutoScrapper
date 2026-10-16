@@ -4,9 +4,12 @@ import json
 import re
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Literal, Optional, Tuple, cast
+from typing import TYPE_CHECKING, Dict, List, Literal, Optional, Tuple, cast
 
-from ..interaction.inventory_grid import Cell
+from ..items.rules_store import load_rules
+
+if TYPE_CHECKING:
+    from ..interaction.inventory_grid import Cell
 
 Decision = Literal["KEEP", "RECYCLE", "SELL"]
 DecisionList = List[Decision]
@@ -78,9 +81,18 @@ def _normalize_action(value: object) -> Optional[Decision]:
 
 
 def load_item_actions(path: Optional[Path] = None) -> ActionMap:
+    use_active_rules = path is None or path in {
+        ITEM_RULES_DEFAULT_PATH,
+        ITEM_RULES_PATH,
+        ITEM_RULES_CUSTOM_PATH,
+    }
     path = resolve_item_actions_path(path)
     try:
-        raw = json.loads(path.read_text(encoding="utf-8"))
+        raw = (
+            load_rules()
+            if use_active_rules
+            else json.loads(path.read_text(encoding="utf-8"))
+        )
     except FileNotFoundError:
         print(
             f"[warn] Item rules file not found at {path}; defaulting to skip actions."
@@ -108,8 +120,10 @@ def load_item_actions(path: Optional[Path] = None) -> ActionMap:
         if not isinstance(entry, dict):
             continue
         name = entry.get("name")
+        if not isinstance(name, str):
+            continue
         normalized_name = normalize_item_name(name)
-        if not isinstance(name, str) or not normalized_name:
+        if not normalized_name:
             continue
 
         action_value = entry.get("action")

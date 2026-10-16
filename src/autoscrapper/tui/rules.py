@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Literal, Optional
+from typing import Callable, List, Literal, Optional
 
 from rich.text import Text
 from textual import events
@@ -15,12 +15,16 @@ from textual.widgets.option_list import Option
 from .common import AppScreen, MessageScreen, update_inline_filter
 from ..items.rules_diff import RuleChange
 from ..items.rules_store import (
-    CUSTOM_RULES_PATH,
-    DEFAULT_RULES_PATH,
     active_rules_path,
+    clear_rule_override,
+    legacy_rules_pending,
+    load_base_rules,
     load_rules,
     normalize_action,
-    save_custom_rules,
+    reset_rules,
+    rule_override_keys,
+    rules_key,
+    set_rule_action,
 )
 
 
@@ -63,7 +67,7 @@ def _action_label_style(action: Optional[str]) -> tuple[str, str]:
         return ("SELL", "bold #E69F00")
     if action == "recycle":
         return ("RECYCLE", "bold #009E73")
-    return ("UNKNOWN", "dim")
+    return ("SKIP", "dim")
 
 
 def _action_badge(item: dict) -> tuple[str, str]:
@@ -282,6 +286,16 @@ class RulesScreen(AppScreen):
         height: 9;
     }
 
+    #rules-bottom.is-adding {
+        height: 10;
+    }
+
+    #rules-bottom.is-adding #action-automatic,
+    #rules-bottom.is-adding #actions-spacer,
+    #rules-bottom.is-adding #rule-management-actions {
+        display: none;
+    }
+
     #rules-actions-panel {
         width: 38%;
         min-width: 20;
@@ -324,6 +338,19 @@ class RulesScreen(AppScreen):
     #action-recycle {
         background: #0f3c31;
         color: #dffaf0;
+    }
+
+    #action-automatic {
+        width: 100%;
+        height: 2;
+        min-height: 2;
+        margin: 0;
+        padding: 0 1;
+        border: none;
+    }
+
+    #action-automatic.is-current-action {
+        text-style: bold reverse;
     }
 
     #action-keep:focus,
@@ -395,20 +422,23 @@ class RulesScreen(AppScreen):
     }
 
     #new-rule-panel {
-        margin-top: 1;
+        margin-top: 0;
         height: auto;
-        border: round #334155;
-        padding: 1;
-        background: #0b1220;
+        padding: 0;
     }
 
     #new-rule-actions {
-        margin-top: 1;
+        margin-top: 0;
         height: auto;
     }
 
     #new-rule-actions Button {
         width: 1fr;
+        min-width: 0;
+        height: 2;
+        min-height: 2;
+        padding: 0;
+        border: none;
         margin-right: 0;
     }
 
@@ -424,24 +454,15 @@ class RulesScreen(AppScreen):
     SORT_LABELS: dict[str, str] = {
         "name_asc": "Name",
         "action": "Action",
-        "modified": "Changed",
+        "modified": "Custom",
     }
     SORT_SEQUENCE: tuple[str, ...] = ("name_asc", "action", "modified")
     ACTION_SORT_ORDER: dict[str, int] = {"keep": 0, "sell": 1, "recycle": 2}
 
     def __init__(self) -> None:
         super().__init__()
-        self.payload = load_rules()
-        self.items = list(self.payload.get("items", []))
-        defaults = load_rules(DEFAULT_RULES_PATH)
-        (
-            self.default_actions_by_id,
-            self.default_actions_by_name,
-        ) = self._build_default_action_indexes(list(defaults.get("items", [])))
-        (
-            self.default_items_by_id,
-            self.default_items_by_name,
-        ) = self._build_default_item_indexes(list(defaults.get("items", [])))
+        self.payload: dict = {}
+        self.items: list[dict] = []
         self.filtered: List[int] = []
         self.modified_map: dict[int, bool] = {}
         self.search_query = ""
@@ -450,6 +471,7 @@ class RulesScreen(AppScreen):
         self.mode: str = "edit"
         self.current_action: str = "keep"
         self._save_flash_timer = None
+        self._reload_rules()
 
     def compose(self) -> ComposeResult:
         with Horizontal(id="rules-topbar"):
@@ -475,15 +497,15 @@ class RulesScreen(AppScreen):
                         yield Button("Keep", id="action-keep")
                         yield Button("Sell", id="action-sell")
                         yield Button("Recycle", id="action-recycle")
+                    yield Button("Automatic", id="action-automatic")
                     yield Static("", id="actions-spacer")
                     with Horizontal(id="rule-management-actions"):
                         yield Button("New", id="new-rule", variant="primary")
                         yield Button("Delete", id="delete-rule", variant="warning")
                         yield Button("Reset", id="reset-rules", variant="error")
                     with Vertical(id="new-rule-panel", classes="is-hidden"):
-                        yield Static("New rule name", classes="hint")
                         yield Input(
-                            placeholder="Enter a name for the new rule",
+                            placeholder="Item name",
                             id="new-rule-name",
                         )
                         with Horizontal(id="new-rule-actions"):
@@ -491,7 +513,7 @@ class RulesScreen(AppScreen):
                             yield Button("Cancel", id="cancel-add")
                 with Vertical(id="rules-reasons-panel"):
                     yield Static(
-                        "Default Reasons", id="reasons-title", classes="section-title"
+                        "Automatic Reasons", id="reasons-title", classes="section-title"
                     )
                     yield Static(id="rule-reasons")
         yield Footer()
@@ -501,6 +523,19 @@ class RulesScreen(AppScreen):
         self._refresh_details()
         self._set_save_chip(self._last_saved_label(), state="saved")
         self.query_one("#rules-list", OptionList).focus()
+        if legacy_rules_pending():
+            from .rules_migration import RulesMigrationScreen
+
+            self.app.push_screen(RulesMigrationScreen(), self._handle_migration)
+
+    def _handle_migration(self, applied: bool) -> None:
+        if not applied:
+            self.app.pop_screen()
+            return
+        self._reload_rules()
+        self._refresh_list()
+        self._refresh_details()
+        self._set_saved_with_timestamp()
 
     def on_resize(self, _event: events.Resize) -> None:
         if not self.is_mounted:
@@ -520,26 +555,34 @@ class RulesScreen(AppScreen):
             pass
         return "Last saved: unknown"
 
-    def _build_default_action_indexes(
-        self, items: list[object]
-    ) -> tuple[dict[str, str], dict[str, str]]:
-        by_id: dict[str, str] = {}
-        by_name: dict[str, str] = {}
-        for item in items:
-            if not isinstance(item, dict):
-                continue
-            action = _normalized_action(item)
-            if not action:
-                continue
-            item_id = _lookup_key(item.get("id"))
-            if item_id:
-                by_id[item_id] = action
-            name = _lookup_key(item.get("name"))
-            if name:
-                by_name[name] = action
-        return by_id, by_name
+    def _reload_rules(self) -> None:
+        selected_key = None
+        if self.selected_index is not None and self.selected_index < len(self.items):
+            selected_key = rules_key(self.items[self.selected_index])
+        self.payload = load_rules()
+        self.items = list(self.payload.get("items", []))
+        self.override_keys = rule_override_keys()
+        base_items = list(load_base_rules().get("items", []))
+        (
+            self.base_items_by_id,
+            self.base_items_by_name,
+        ) = self._build_base_item_indexes(base_items)
+        visible_keys = {rules_key(item) for item in self.items}
+        for item in base_items:
+            if rules_key(item) not in visible_keys and self._is_modified(item):
+                skipped = {**item, "action": None}
+                skipped.pop("decision", None)
+                self.items.append(skipped)
+        self.selected_index = next(
+            (
+                index
+                for index, item in enumerate(self.items)
+                if rules_key(item) == selected_key
+            ),
+            None,
+        )
 
-    def _build_default_item_indexes(
+    def _build_base_item_indexes(
         self, items: list[object]
     ) -> tuple[dict[str, dict], dict[str, dict]]:
         by_id: dict[str, dict] = {}
@@ -555,36 +598,27 @@ class RulesScreen(AppScreen):
                 by_name[name] = item
         return by_id, by_name
 
-    def _default_action_for_item(self, item: dict) -> Optional[str]:
+    def _base_item_for_item(self, item: dict) -> Optional[dict]:
         item_id = _lookup_key(item.get("id"))
-        if item_id and item_id in self.default_actions_by_id:
-            return self.default_actions_by_id[item_id]
+        if item_id and item_id in self.base_items_by_id:
+            return self.base_items_by_id[item_id]
         name = _lookup_key(item.get("name"))
-        if name and name in self.default_actions_by_name:
-            return self.default_actions_by_name[name]
+        if name and name in self.base_items_by_name:
+            return self.base_items_by_name[name]
         return None
 
-    def _default_item_for_item(self, item: dict) -> Optional[dict]:
-        item_id = _lookup_key(item.get("id"))
-        if item_id and item_id in self.default_items_by_id:
-            return self.default_items_by_id[item_id]
-        name = _lookup_key(item.get("name"))
-        if name and name in self.default_items_by_name:
-            return self.default_items_by_name[name]
-        return None
-
-    def _default_reason_lines(self, item: dict) -> tuple[list[str], bool]:
-        default_item = self._default_item_for_item(item)
-        if default_item is None:
+    def _base_reason_lines(self, item: dict) -> tuple[list[str], bool]:
+        base_item = self._base_item_for_item(item)
+        if base_item is None:
             return ([], False)
 
-        default_analysis = default_item.get("analysis")
-        if not isinstance(default_analysis, list):
+        base_analysis = base_item.get("analysis")
+        if not isinstance(base_analysis, list):
             return ([], True)
 
         lines = [
             reason.strip()
-            for reason in default_analysis
+            for reason in base_analysis
             if isinstance(reason, str)
             and reason.strip()
             and not _should_hide_reason(reason)
@@ -592,13 +626,10 @@ class RulesScreen(AppScreen):
         return (lines, True)
 
     def _is_modified(self, item: dict) -> bool:
-        default_action = self._default_action_for_item(item)
-        current_action = _normalized_action(item)
-        if default_action is None:
-            return True
-        if current_action is None:
-            return True
-        return current_action != default_action
+        return bool(
+            {rules_key(item), rules_key({"name": item.get("name")})}
+            & self.override_keys
+        )
 
     def _is_modified_index(self, index: int) -> bool:
         return self.modified_map.get(index, False)
@@ -639,7 +670,7 @@ class RulesScreen(AppScreen):
         self.query_one("#rules-sort", Button).label = f"Sort: {sort_label}"
         summary_parts = [
             f"{len(self.filtered)}/{len(self.items)} shown",
-            f"{changed_count} changed",
+            f"{changed_count} custom",
             f"sort {sort_label}",
         ]
         self.query_one("#rules-list-summary", Static).update(" | ".join(summary_parts))
@@ -647,8 +678,8 @@ class RulesScreen(AppScreen):
     def _list_name_limit(self, menu: OptionList) -> int:
         if menu.size.width <= 0:
             return 42
-        # Reserve space for list index, spacing, and action badge.
-        return max(18, menu.size.width - 16)
+        # Reserve space for list index, action badge, and override marker.
+        return max(18, menu.size.width - 26)
 
     def _refresh_list(self, *, preserve_scroll: bool = False) -> None:
         previous_selection = self.selected_index
@@ -671,6 +702,7 @@ class RulesScreen(AppScreen):
                 (item_name, name_style),
                 ("  ", ""),
                 (action_label, action_style),
+                (" · Custom" if self._is_modified_index(item_index) else "", "dim"),
             )
             options.append(Option(label, id=str(item_index)))
         menu.set_options(options)
@@ -684,7 +716,7 @@ class RulesScreen(AppScreen):
             self.selected_index = self.filtered[highlighted]
             if self.mode != "add":
                 self.current_action = (
-                    _normalized_action(self.items[self.selected_index]) or "keep"
+                    _normalized_action(self.items[self.selected_index]) or "skip"
                 )
         else:
             self.selected_index = None
@@ -700,6 +732,7 @@ class RulesScreen(AppScreen):
         self._refresh_list_summary()
 
     def _set_add_mode(self, enabled: bool) -> None:
+        self.query_one("#rules-bottom", Horizontal).set_class(enabled, "is-adding")
         panel = self.query_one("#new-rule-panel", Vertical)
         if enabled:
             panel.remove_class("is-hidden")
@@ -713,10 +746,7 @@ class RulesScreen(AppScreen):
 
         if self.mode == "add":
             title.update("Create New Rule")
-            reasons.update(
-                "Default reasons are shown for existing rules.\n"
-                "Enter a new rule name and choose an action."
-            )
+            reasons.update("")
             self._refresh_action_buttons()
             return
 
@@ -725,7 +755,7 @@ class RulesScreen(AppScreen):
             if self.search_query:
                 reasons.update("No matching rules for this filter.")
             else:
-                reasons.update("Select a rule to view default reasons.")
+                reasons.update("")
             self._refresh_action_buttons()
             return
 
@@ -736,19 +766,19 @@ class RulesScreen(AppScreen):
         )
         title.update(Text(name, style=name_style))
 
-        current_action = _normalized_action(item) or "keep"
+        current_action = _normalized_action(item) or "skip"
         self.current_action = current_action
 
-        reason_lines, has_default_rule = self._default_reason_lines(item)
+        reason_lines, has_base_rule = self._base_reason_lines(item)
         lines = []
         if reason_lines:
             lines.extend([f"- {reason}" for reason in reason_lines[:12]])
             if len(reason_lines) > 12:
                 lines.append(f"- ... +{len(reason_lines) - 12} more")
-        elif has_default_rule:
-            lines.append("No default reasons recorded.")
+        elif has_base_rule:
+            lines.append("No automatic reasons recorded.")
         else:
-            lines.append("No default rule found (custom rule).")
+            lines.append("Custom item.")
         reasons.update("\n".join(lines))
         self._refresh_action_buttons()
 
@@ -783,6 +813,11 @@ class RulesScreen(AppScreen):
         self._save_flash_timer = None
 
     def _refresh_action_buttons(self) -> None:
+        item = (
+            self.items[self.selected_index] if self.selected_index is not None else None
+        )
+        is_custom = item is not None and self._is_modified(item)
+        has_base = item is not None and self._base_item_for_item(item) is not None
         button_ids = {
             "keep": "action-keep",
             "sell": "action-sell",
@@ -790,16 +825,26 @@ class RulesScreen(AppScreen):
         }
         for action, button_id in button_ids.items():
             button = self.query_one(f"#{button_id}", Button)
-            if action == self.current_action:
+            button.disabled = self.mode != "add" and item is None
+            if action == self.current_action and (self.mode == "add" or is_custom):
                 button.add_class("is-current-action")
             else:
                 button.remove_class("is-current-action")
+        automatic = self.query_one("#action-automatic", Button)
+        automatic.disabled = self.mode == "add" or not has_base
+        automatic.set_class(
+            self.mode != "add" and item is not None and not is_custom,
+            "is-current-action",
+        )
+        delete = self.query_one("#delete-rule", Button)
+        delete.label = "Skip" if has_base else "Delete"
+        delete.disabled = self.mode == "add" or item is None
 
-    def _persist_rules(self) -> bool:
-        self.payload["items"] = self.items
+    def _save_change(self, operation: Callable[[], None]) -> bool:
         self._set_save_chip("Saving...", state="saving")
         try:
-            save_custom_rules(self.payload)
+            operation()
+            self._reload_rules()
         except Exception as exc:
             self._set_save_chip("Save failed", state="error")
             self.app.push_screen(MessageScreen(f"Failed to save rules: {exc}"))
@@ -823,17 +868,19 @@ class RulesScreen(AppScreen):
             return
 
         item = self.items[self.selected_index]
-        current_action = _normalized_action(item) or "keep"
-        if current_action == action_value:
-            self.current_action = action_value
-            self._refresh_action_buttons()
+        if not self._save_change(lambda: set_rule_action(item, action_value)):
             return
-
-        item["action"] = action_value
         self.current_action = action_value
-        self._persist_rules()
         self._refresh_list(preserve_scroll=True)
         self._refresh_details()
+
+    def _set_automatic(self) -> None:
+        if self.mode == "add" or self.selected_index is None:
+            return
+        item = self.items[self.selected_index]
+        if self._save_change(lambda: clear_rule_override(item)):
+            self._refresh_list(preserve_scroll=True)
+            self._refresh_details()
 
     def _add_rule(self) -> None:
         name = self.query_one("#new-rule-name", Input).value.strip()
@@ -841,13 +888,25 @@ class RulesScreen(AppScreen):
             self.app.push_screen(MessageScreen("Enter a name before adding a rule."))
             self.query_one("#new-rule-name", Input).focus()
             return
+        normalized_name = name.casefold()
+        if any(
+            str(item.get("name", "")).strip().casefold() == normalized_name
+            for item in self.items
+        ):
+            self.app.push_screen(MessageScreen(f"A rule for '{name}' already exists."))
+            return
         action = normalize_action(self.current_action) or "keep"
-        self.items.append({"name": name, "action": action})
-        self.selected_index = len(self.items) - 1
+        item = {"name": name}
+        if not self._save_change(lambda: set_rule_action(item, action)):
+            return
+        self.selected_index = next(
+            index
+            for index, saved in enumerate(self.items)
+            if rules_key(saved) == rules_key(item)
+        )
         self.mode = "edit"
         self.search_query = name
         self.query_one("#rules-search", Input).value = name
-        self._persist_rules()
         self._refresh_list()
         self._refresh_details()
         self.query_one("#rules-search", Input).focus()
@@ -863,17 +922,15 @@ class RulesScreen(AppScreen):
         if self.selected_index is None:
             self.app.push_screen(MessageScreen("No rule selected."))
             return
-        item = self.items.pop(self.selected_index)
-        self._persist_rules()
+        item = self.items[self.selected_index]
+        if not self._save_change(lambda: set_rule_action(item, None)):
+            return
         self._refresh_list()
         self._refresh_details()
-        self.app.push_screen(MessageScreen(f"Removed '{item.get('name', '')}'."))
 
     def _reset_default(self) -> None:
-        if CUSTOM_RULES_PATH.exists():
-            CUSTOM_RULES_PATH.unlink(missing_ok=True)
-        self.payload = load_rules(DEFAULT_RULES_PATH)
-        self.items = list(self.payload.get("items", []))
+        if not self._save_change(reset_rules):
+            return
         self.mode = "edit"
         self.current_action = "keep"
         self._set_saved_with_timestamp()
@@ -1034,6 +1091,8 @@ class RulesScreen(AppScreen):
             self._set_action("sell")
         elif button_id == "action-recycle":
             self._set_action("recycle")
+        elif button_id == "action-automatic":
+            self._set_automatic()
         elif button_id == "add-rule":
             self._add_rule()
         elif button_id == "cancel-add":

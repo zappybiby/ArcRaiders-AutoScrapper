@@ -6,7 +6,7 @@ from textual.widgets import Button, Footer, Static
 
 from .common import AppScreen, MessageScreen
 from ..config import ProgressSettings, save_progress_settings
-from ..core.item_actions import ITEM_RULES_CUSTOM_PATH
+from ..items.rules_store import reset_rules
 
 
 class ResetProgressScreen(AppScreen):
@@ -68,7 +68,7 @@ class ResetRulesScreen(AppScreen):
         if event.button.id == "cancel":
             self.app.pop_screen()
         elif event.button.id == "reset":
-            ITEM_RULES_CUSTOM_PATH.unlink(missing_ok=True)
+            reset_rules()
             self.app.pop_screen()
             self.app.push_screen(
                 MessageScreen("Custom rules removed. Defaults restored.")

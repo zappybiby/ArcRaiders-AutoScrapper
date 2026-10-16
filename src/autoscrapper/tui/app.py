@@ -13,7 +13,7 @@ from textual.screen import ModalScreen
 from textual.widgets import Footer, OptionList, Static
 from textual.widgets.option_list import Option
 
-from .common import AppScreen
+from .common import AppScreen, MessageScreen
 from .maintenance import ResetProgressScreen, ResetRulesScreen
 from .progress import (
     launch_edit_workshops,
@@ -22,6 +22,7 @@ from .progress import (
     launch_review_quests,
 )
 from .rules import RulesScreen
+from .rules_migration import RulesMigrationScreen
 from .scan import ScanScreen
 from .settings import (
     ResetScanSettingsScreen,
@@ -32,6 +33,7 @@ from .settings import (
 )
 from .status import build_status_panel, has_progress
 from ..warmup import start_background_warmup, warmup_status
+from ..items.rules_store import legacy_rules_pending
 
 MenuAction = Callable[["MenuScreen"], None]
 _SPLASH_MAX_SECONDS = 8.0
@@ -170,11 +172,7 @@ class StartupSplash(ModalScreen[None]):
         if self._timer is not None:
             self._timer.pause()
         self.dismiss()
-        if self._start_screen == "scan":
-            self.app.set_timer(
-                0.01,
-                lambda: self.app.push_screen(ScanScreen(dry_run=self._scan_dry_run)),
-            )
+        self.app.set_timer(0.01, self.app.finish_startup)
 
 
 class MenuScreen(AppScreen):
@@ -377,6 +375,19 @@ class AutoScrapperApp(App[None]):
             self._warmup_timer.pause()
             if status.error is not None:
                 raise status.error
+
+    def finish_startup(self) -> None:
+        def resume(migrated: bool = True) -> None:
+            if migrated and self._start_screen == "scan":
+                self.push_screen(ScanScreen(dry_run=self._scan_dry_run))
+
+        try:
+            if legacy_rules_pending():
+                self.push_screen(RulesMigrationScreen(), resume)
+            else:
+                resume()
+        except (OSError, ValueError) as exc:
+            self.push_screen(MessageScreen(str(exc)))
 
     def action_main_menu(self) -> None:
         if isinstance(self.screen, ScanScreen):
