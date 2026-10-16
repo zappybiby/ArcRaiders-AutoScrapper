@@ -42,21 +42,24 @@ class ScanOverlay:
                     raise RuntimeError(message["error"])
                 if message.get("ready"):
                     self.ready = True
-                    break
-            else:
-                raise RuntimeError(output)
+                    output = "Overlay window closed."
+                    threading.Thread(target=self._send_updates, daemon=True).start()
+            raise RuntimeError(output)
+        except (OSError, ValueError, RuntimeError) as exc:
+            if not self._closed.is_set():
+                self.error = str(exc)
 
-            while not self._closed.is_set():
-                if self._process.poll() is not None:
-                    raise RuntimeError("Overlay window closed.")
+    def _send_updates(self) -> None:
+        try:
+            while not self._closed.is_set() and not self.error:
                 try:
                     state = self._updates.get(timeout=0.1)
                 except queue.Empty:
                     continue
                 self._write(state)
-        except (OSError, ValueError, RuntimeError) as exc:
-            if not self._closed.is_set():
-                self.error = str(exc)
+        except OSError, ValueError:
+            # Let the stdout reader preserve any final error sent by the child.
+            return
 
     def _write(self, message: dict) -> None:
         self._process.stdin.write(json.dumps(message) + "\n")
