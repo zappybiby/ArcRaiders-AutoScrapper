@@ -283,6 +283,8 @@ class _ScanRunner:
         found_on_attempt = 0
 
         for attempt in range(1, self.config.infobox_retries + 1):
+            if attempt > 1 and self.progress_impl is not None:
+                self.progress_impl.update_activity(retrying=True)
             capture_attempts += 1
             abort_if_escape_pressed(self.context.stop_key)
 
@@ -357,6 +359,8 @@ class _ScanRunner:
 
         for ocr_attempt in range(self.config.ocr_unreadable_retries + 1):
             if ocr_attempt > 0:
+                if self.progress_impl is not None:
+                    self.progress_impl.update_activity(retrying=True)
                 sleep_with_abort(
                     self.context.timing.ocr_retry_interval,
                     stop_key=self.context.stop_key,
@@ -399,6 +403,8 @@ class _ScanRunner:
         )
 
     def _process_cell(self, *, page: int, cell: Cell) -> _CellScanResult:
+        if self.progress_impl is not None:
+            self.progress_impl.update_activity(page=page + 1)
         global_idx = page * self.context.cells_per_page + cell.index
         cell_start = time.perf_counter()
 

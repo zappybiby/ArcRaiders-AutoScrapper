@@ -16,6 +16,7 @@ CONFIG_FILE_NAME = "config.json"
 @dataclass(frozen=True)
 class ScanSettings:
     stop_key: str = DEFAULT_STOP_KEY
+    overlay: bool = True
     infobox_retries: int = 3
     infobox_retry_interval_ms: int = 50
     ocr_unreadable_retries: int = 1
@@ -173,6 +174,7 @@ def _from_raw_scan_settings(raw: Any) -> ScanSettings:
 
     return ScanSettings(
         stop_key=normalize_stop_key(stop_key_raw),
+        overlay=_coerce_bool(raw.get("overlay"), ScanSettings.overlay),
         infobox_retries=infobox_retries,
         infobox_retry_interval_ms=infobox_retry_interval_ms,
         ocr_unreadable_retries=ocr_unreadable_retries,

@@ -4,6 +4,7 @@ from collections import Counter, deque
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 import queue
+import sys
 import threading
 import time
 import traceback
@@ -29,6 +30,7 @@ from ..interaction.ui_windows import (
 from ..scanner.outcomes import _describe_action, _outcome_style
 from ..scanner.progress import ScanProgress
 from ..scanner.types import ScanStats
+from ..overlay import ScanOverlay
 from ..warmup import start_background_warmup, warmup_status
 from .common import AppScreen, MessageScreen
 
@@ -60,6 +62,8 @@ class ScanState:
     counts: Counter[str] = field(default_factory=Counter)
     events: Deque[Text] = field(default_factory=lambda: deque(maxlen=EVENT_LIMIT))
     start_time: Optional[float] = None
+    page: int = 1
+    retrying: bool = False
 
 
 def _format_duration(seconds: Optional[float]) -> str:
@@ -163,6 +167,11 @@ class TextualScanProgress(ScanProgress):
             outcome=outcome,
         )
 
+    def update_activity(
+        self, *, page: Optional[int] = None, retrying: bool = False
+    ) -> None:
+        self._emit("activity", page=page, retrying=retrying)
+
 
 class ScanScreen(Screen):
     def __init__(self, *, dry_run: bool) -> None:
@@ -178,6 +187,9 @@ class ScanScreen(Screen):
         self._scan_started = False
         self._results: list["ItemActionResult"] = []
         self._stats: Optional[ScanStats] = None
+        self._overlay: Optional[ScanOverlay] = None
+        self._overlay_attempted = False
+        self._overlay_hwnd: Optional[int] = None
 
     def compose(self) -> ComposeResult:
         with Vertical(id="scan-layout"):
@@ -200,8 +212,24 @@ class ScanScreen(Screen):
 
     def on_mount(self) -> None:
         self._refresh_panels()
-        self._scan_update_timer = self.set_interval(0.25, self._drain_updates)
+        interval = 0.05 if self._settings.overlay and sys.platform == "win32" else 0.25
+        self._scan_update_timer = self.set_interval(interval, self._drain_updates)
         self._start_window_wait()
+
+    def on_unmount(self) -> None:
+        self._close_overlay()
+
+    def _close_overlay(self) -> None:
+        if self._overlay is not None:
+            self._overlay.close()
+            self._overlay = None
+
+    def _overlay_failed(self, message: str) -> None:
+        self._close_overlay()
+        self._updates.put(
+            ScanUpdate("event", {"message": f"Overlay: {message}", "style": "yellow"})
+        )
+        self.app.notify(message, title="Overlay unavailable", severity="warning")
 
     def on_screen_resume(self, _event) -> None:  # type: ignore[override]
         if self._scan_complete:
@@ -256,7 +284,36 @@ class ScanScreen(Screen):
         if window is None:
             return
         try:
+            if self._settings.overlay and sys.platform == "win32":
+                if not self._overlay_attempted:
+                    self._overlay_attempted = True
+                    self._overlay_hwnd = int(window.getHandle())
+                    initial = build_window_snapshot(window)
+                    rect = (
+                        initial.win_left,
+                        initial.win_top,
+                        initial.win_width,
+                        initial.win_height,
+                    )
+                    try:
+                        self._overlay = ScanOverlay(self._overlay_hwnd, rect)
+                    except OSError as exc:
+                        self._overlay_failed(str(exc))
+                    return
+                if self._overlay is not None:
+                    if not self._overlay.ready:
+                        return
+                    # Showing the overlay must finish before this final focus check.
+                    window = get_active_target_window()
+                    if window is None:
+                        return
+                    if int(window.getHandle()) != self._overlay_hwnd:
+                        self._close_overlay()
+                        self._overlay_attempted = False
+                        return
             snapshot = build_window_snapshot(window)
+            if self._overlay is not None:
+                self._send_overlay_state()
         except Exception as exc:
             self._stop_window_wait()
             message = _format_exception_for_ui(
@@ -350,6 +407,9 @@ class ScanScreen(Screen):
 
     def _drain_updates(self) -> None:
         dirty = False
+        if self._overlay is not None and self._overlay.error:
+            self._overlay_failed(self._overlay.error)
+            dirty = True
         while True:
             try:
                 update = self._updates.get_nowait()
@@ -371,6 +431,10 @@ class ScanScreen(Screen):
                 self._state.total = int(total) if isinstance(total, int) else None
             elif kind == "timer":
                 self._state.start_time = time.perf_counter()
+            elif kind == "activity":
+                if payload.get("page") is not None:
+                    self._state.page = int(payload["page"])
+                self._state.retrying = bool(payload.get("retrying"))
             elif kind == "event":
                 message = str(payload.get("message", ""))
                 style = str(payload.get("style", "dim"))
@@ -381,6 +445,7 @@ class ScanScreen(Screen):
                 line.append(message, style=style)
                 self._state.events.append(line)
             elif kind == "item":
+                self._state.retrying = False
                 self._state.completed += 1
                 self._state.current_label = str(payload.get("current_label", ""))
                 self._state.last_item_label = str(payload.get("item_label", ""))
@@ -389,6 +454,7 @@ class ScanScreen(Screen):
                 if outcome:
                     self._state.counts[outcome] += 1
             elif kind == "error":
+                self._close_overlay()
                 self._scan_complete = True
                 message = str(payload.get("message", "Scan failed."))
                 self.app.push_screen(MessageScreen(message, title="Scan stopped"))
@@ -396,6 +462,7 @@ class ScanScreen(Screen):
                     self._scan_update_timer.pause()
                 return
             elif kind == "done":
+                self._close_overlay()
                 self._scan_complete = True
                 self._results = payload.get("results", [])
                 self._stats = payload.get("stats")
@@ -417,11 +484,48 @@ class ScanScreen(Screen):
             self._refresh_panels()
 
     def _refresh_panels(self) -> None:
+        overlay_active = self._overlay is not None and self._overlay.ready
+        for widget_id in ("scan-top", "scan-progress", "scan-bottom"):
+            self.query_one(f"#{widget_id}").display = not overlay_active
+        if overlay_active:
+            self.query_one("#scan-hint", Static).update("Scanning…")
+            self._send_overlay_state()
+            return
         self.query_one("#scan-status", Static).update(self._render_status())
         self.query_one("#scan-last", Static).update(self._render_last_item())
         self.query_one("#scan-progress", Static).update(self._render_progress())
         self.query_one("#scan-counts", Static).update(self._render_counts())
         self.query_one("#scan-events", Static).update(self._render_events())
+
+    def _send_overlay_state(self) -> None:
+        if self._overlay is None:
+            return
+        elapsed = (
+            time.perf_counter() - self._state.start_time
+            if self._state.start_time is not None
+            else None
+        )
+        outcome = self._state.last_outcome_label.removeprefix("DRY-")
+        counts = Counter()
+        for key, count in self._state.counts.items():
+            counts[key.removeprefix("DRY-")] += count
+        self._overlay.update(
+            {
+                "phase": self._state.phase,
+                "page": self._state.page,
+                "item": (
+                    "Unknown"
+                    if self._state.retrying or outcome == "UNREADABLE"
+                    else self._state.last_item_label
+                ),
+                "outcome": outcome,
+                "retrying": self._state.retrying,
+                "completed": self._state.completed,
+                "counts": dict(counts),
+                "elapsed": elapsed,
+                "dry_run": self.dry_run,
+            }
+        )
 
     def _render_status(self) -> Text:
         text = Text()

@@ -37,6 +37,11 @@ class ScanProgress:
     def update_item(self, current_label: str, item_label: str, outcome: str) -> None:
         raise NotImplementedError
 
+    def update_activity(
+        self, *, page: Optional[int] = None, retrying: bool = False
+    ) -> None:
+        pass
+
 
 class NullScanProgress(ScanProgress):
     def start(self) -> None:

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import sys
 from dataclasses import replace
 from typing import Optional
 
@@ -271,6 +272,7 @@ class ScanControlsScreen(ScanSettingsScreen):
     TITLE = "Scan Controls"
     _FOCUS_ORDER = (
         "set-stop-key",
+        "overlay",
         "save",
         "back",
     )
@@ -285,6 +287,9 @@ class ScanControlsScreen(ScanSettingsScreen):
             with Horizontal(classes="setting-control-row"):
                 yield Static("", id="stop-key-value", classes="setting-value")
                 yield Button("Set key", id="set-stop-key")
+        with HorizontalGroup(classes="setting-row"):
+            yield Static("In-game overlay", classes="setting-label-col")
+            yield Checkbox(id="overlay", disabled=sys.platform != "win32")
 
     def _refresh_stop_key_label(self) -> None:
         self.query_one("#stop-key-value", Static).update(stop_key_label(self._stop_key))
@@ -293,6 +298,7 @@ class ScanControlsScreen(ScanSettingsScreen):
         self.settings = load_scan_settings()
         self._stop_key = self.settings.stop_key
         self._refresh_stop_key_label()
+        self.query_one("#overlay", Checkbox).value = self.settings.overlay
 
     def _set_stop_key(self) -> None:
         self.app.push_screen(CaptureStopKeyScreen(), self._on_stop_key_selected)
@@ -307,6 +313,7 @@ class ScanControlsScreen(ScanSettingsScreen):
         updated = replace(
             self.settings,
             stop_key=self._stop_key,
+            overlay=self.query_one("#overlay", Checkbox).value,
         )
         self._save_settings(updated)
 
