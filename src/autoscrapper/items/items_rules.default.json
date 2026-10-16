@@ -3241,28 +3241,25 @@
       "value": 10000,
       "action": "keep",
       "analysis": [
-        "Legendary rarity - extremely valuable",
-        "Keep all legendaries"
+        "Multiple rarities share this name; the scanner can’t distinguish between them."
       ]
     },
     {
       "id": "colorful-shoes-epic",
       "name": "Colorful Shoes",
       "value": 7000,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "High value (7000 coins)",
-        "No crafting or upgrade use"
+        "Multiple rarities share this name; the scanner can’t distinguish between them."
       ]
     },
     {
       "id": "colorful-shoes-rare",
       "name": "Colorful Shoes",
       "value": 3000,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "High value (3000 coins)",
-        "No crafting or upgrade use"
+        "Multiple rarities share this name; the scanner can’t distinguish between them."
       ]
     },
     {
@@ -9771,10 +9768,9 @@
       "id": "study-armchair",
       "name": "Study Armchair",
       "value": 0,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
+        "Multiple rarities share this name; the scanner can’t distinguish between them."
       ]
     },
     {
@@ -9783,18 +9779,16 @@
       "value": 5000,
       "action": "keep",
       "analysis": [
-        "Legendary rarity - extremely valuable",
-        "Keep all legendaries"
+        "Multiple rarities share this name; the scanner can’t distinguish between them."
       ]
     },
     {
       "id": "study-armchair-design-res-sofa-01-y150-a",
       "name": "Study Armchair Design",
       "value": 5000,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
+        "Multiple rarities share this name; the scanner can’t distinguish between them."
       ]
     },
     {
@@ -9803,8 +9797,7 @@
       "value": 0,
       "action": "keep",
       "analysis": [
-        "Legendary rarity - extremely valuable",
-        "Keep all legendaries"
+        "Multiple rarities share this name; the scanner can’t distinguish between them."
       ]
     },
     {

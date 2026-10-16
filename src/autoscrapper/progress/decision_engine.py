@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import Counter
 from dataclasses import dataclass
 from typing import Dict, List, Optional
 
@@ -38,6 +39,11 @@ class DecisionEngine:
         projects: List[dict],
     ) -> None:
         self.items = {item.get("id"): item for item in items}
+        self.item_name_counts = Counter(
+            str(item.get("name") or "").strip().lower()
+            for item in self.items.values()
+            if item.get("id") and str(item.get("name") or "").strip()
+        )
         self.hideout_modules = hideout_modules
         self.quests = quests
         self.projects = projects
@@ -70,6 +76,16 @@ class DecisionEngine:
         return final_decision
 
     def get_decision(self, item: dict, user_progress: dict) -> DecisionReason:
+        name = str(item.get("name") or "").strip().lower()
+        if self.item_name_counts[name] > 1:
+            # TODO: Detect variant rarity before allowing separate automatic decisions.
+            return DecisionReason(
+                decision="keep",
+                reasons=[
+                    "Multiple rarities share this name; the scanner can’t distinguish between them."
+                ],
+            )
+
         item_type = str(item.get("type", "")).lower()
         rarity = str(item.get("rarity", "")).lower()
 

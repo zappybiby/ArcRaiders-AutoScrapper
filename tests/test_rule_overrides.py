@@ -115,6 +115,54 @@ class RuleOverridesTests(RuleTestCase):
         self.assertEqual(3, len(rules_store.load_rules()["items"]))
         self.assertEqual("keep", self.actions()["My Trophy"])
 
+    def test_shared_name_choice_applies_to_current_and_new_variants(self) -> None:
+        battery = {**self.battery, "action": "keep"}
+        variant = {**battery, "id": "battery-rare", "name": " BATTERY "}
+        self.write_defaults(battery, variant)
+
+        rules_store.set_rule_action(battery, "sell")
+
+        self.assertEqual(
+            ["sell", "sell"],
+            [item["action"] for item in rules_store.load_rules()["items"]],
+        )
+        self.assertTrue(rules_store.is_rule_overridden(variant))
+        self.assertEqual({"battery": ["SELL"]}, load_item_actions())
+
+        new_variant = {**battery, "id": "battery-epic"}
+        self.write_defaults(battery, variant, new_variant)
+        self.assertEqual(
+            ["sell"] * 3, [item["action"] for item in rules_store.load_rules()["items"]]
+        )
+
+        rules_store.clear_rule_override(new_variant)
+        self.assertEqual(
+            ["keep"] * 3, [item["action"] for item in rules_store.load_rules()["items"]]
+        )
+        self.assertEqual({"battery": ["KEEP"]}, load_item_actions())
+
+    def test_shared_name_skip_and_automatic_cover_every_variant(self) -> None:
+        battery = {**self.battery, "action": "keep"}
+        variant = {**battery, "id": "battery-rare"}
+        self.write_defaults(battery, variant, self.wire)
+        self.custom_path.write_text(
+            json.dumps(
+                {
+                    "version": 2,
+                    "base": "default",
+                    "overrides": [{**battery, "action": "sell"}],
+                }
+            )
+        )
+
+        rules_store.set_rule_action(variant, None)
+        self.assertEqual({"wire": ["RECYCLE"]}, load_item_actions())
+
+        rules_store.clear_rule_override(battery)
+        self.assertEqual(
+            {"battery": ["KEEP"], "wire": ["RECYCLE"]}, load_item_actions()
+        )
+
     def test_skip_survives_updates_and_clearing_restores_current_rule(self) -> None:
         rules_store.set_rule_action(self.battery, None)
         updated_battery = {**self.battery, "name": "Power Cell", "action": "keep"}
@@ -248,6 +296,45 @@ class RuleMigrationTests(RuleTestCase):
         )
 
         self.assertEqual({"Battery": "keep", "Wire": "keep"}, self.actions())
+
+    def test_shared_name_has_one_migration_choice_for_all_variants(self) -> None:
+        battery = {**self.battery, "action": "keep"}
+        variant = {**battery, "id": "battery-rare"}
+        self.write_defaults(battery, variant)
+        for retain in (False, True):
+            with self.subTest(retain=retain):
+                self.custom_path.write_text(
+                    json.dumps(
+                        [
+                            {**battery, "action": "sell"},
+                            {**variant, "action": "recycle"},
+                        ]
+                    )
+                )
+                migration = rules_store.build_rule_migration()
+                self.assertEqual(1, len(migration.changes))
+                change = migration.changes[0]
+                self.assertEqual(
+                    ("recycle", "keep"), (change.before_action, change.after_action)
+                )
+
+                rules_store.complete_rule_migration(
+                    migration, {change.key} if retain else set()
+                )
+
+                expected = "recycle" if retain else "keep"
+                self.assertEqual(
+                    [expected, expected],
+                    [item["action"] for item in rules_store.load_rules()["items"]],
+                )
+                self.assertEqual({"battery": [expected.upper()]}, load_item_actions())
+
+    def test_unchanged_shared_name_rules_have_no_migration_differences(self) -> None:
+        battery = {**self.battery, "action": "keep"}
+        self.write_defaults(battery, {**battery, "id": "battery-rare"})
+        self.custom_path.write_bytes(self.default_path.read_bytes())
+
+        self.assertEqual([], rules_store.build_rule_migration().changes)
 
     def test_select_missing_rule_as_skip_override(self) -> None:
         self.write_legacy()

@@ -557,22 +557,42 @@ class RulesScreen(AppScreen):
 
     def _reload_rules(self) -> None:
         selected_key = None
+        selected_name = None
         if self.selected_index is not None and self.selected_index < len(self.items):
-            selected_key = rules_key(self.items[self.selected_index])
+            selected_item = self.items[self.selected_index]
+            selected_key = rules_key(selected_item)
+            selected_name = _lookup_key(selected_item.get("name"))
         self.payload = load_rules()
-        self.items = list(self.payload.get("items", []))
         self.override_keys = rule_override_keys()
         base_items = list(load_base_rules().get("items", []))
         (
             self.base_items_by_id,
             self.base_items_by_name,
         ) = self._build_base_item_indexes(base_items)
-        visible_keys = {rules_key(item) for item in self.items}
+        self.base_rule_keys_by_name: dict[str, set[str]] = {}
         for item in base_items:
-            if rules_key(item) not in visible_keys and self._is_modified(item):
+            name = _lookup_key(item.get("name"))
+            if name:
+                self.base_rule_keys_by_name.setdefault(name, set()).add(rules_key(item))
+
+        visible_by_name: dict[str, dict] = {}
+        for item in self.payload.get("items", []):
+            name = _lookup_key(item.get("name"))
+            if not name:
+                continue
+            # The scanner can only distinguish names and uses the last valid rule.
+            if name not in visible_by_name or _normalized_action(item) is not None:
+                visible_by_name[name] = dict(item)
+        for item in base_items:
+            name = _lookup_key(item.get("name"))
+            if name and name not in visible_by_name and self._is_modified(item):
                 skipped = {**item, "action": None}
                 skipped.pop("decision", None)
-                self.items.append(skipped)
+                visible_by_name[name] = skipped
+        for name, item in visible_by_name.items():
+            if len(self.base_rule_keys_by_name.get(name, ())) > 1:
+                item.pop("id", None)
+        self.items = list(visible_by_name.values())
         self.selected_index = next(
             (
                 index
@@ -581,6 +601,15 @@ class RulesScreen(AppScreen):
             ),
             None,
         )
+        if self.selected_index is None and selected_name:
+            self.selected_index = next(
+                (
+                    index
+                    for index, item in enumerate(self.items)
+                    if _lookup_key(item.get("name")) == selected_name
+                ),
+                None,
+            )
 
     def _build_base_item_indexes(
         self, items: list[object]
@@ -626,8 +655,12 @@ class RulesScreen(AppScreen):
         return (lines, True)
 
     def _is_modified(self, item: dict) -> bool:
+        name = _lookup_key(item.get("name"))
         return bool(
-            {rules_key(item), rules_key({"name": item.get("name")})}
+            (
+                {rules_key(item), rules_key({"name": item.get("name")})}
+                | self.base_rule_keys_by_name.get(name, set())
+            )
             & self.override_keys
         )
 

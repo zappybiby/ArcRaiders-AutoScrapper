@@ -210,7 +210,12 @@ def set_rule_action(item: dict, action: str | None) -> None:
             (entry for entry in base_items if _name_key(entry) == _name_key(item)), None
         )
     target = match or item
-    keys = {rules_key(target), rules_key(item), _name_key(target)}
+    variants = [entry for entry in base_items if _name_key(entry) == _name_key(target)]
+    keys = {rules_key(target), rules_key(item), _name_key(target)} | {
+        rules_key(entry) for entry in variants
+    }
+    if len(variants) > 1:
+        target = {"name": target["name"]}
     doc["overrides"] = [
         entry for entry in doc["overrides"] if rules_key(entry) not in keys
     ]
@@ -221,7 +226,11 @@ def set_rule_action(item: dict, action: str | None) -> None:
 
 def clear_rule_override(item: dict) -> None:
     doc = _document()
-    keys = {rules_key(item), _name_key(item)}
+    keys = {rules_key(item), _name_key(item)} | {
+        rules_key(entry)
+        for entry in load_base_rules(doc["base"])["items"]
+        if _name_key(entry) == _name_key(item)
+    }
     doc["overrides"] = [
         entry for entry in doc["overrides"] if rules_key(entry) not in keys
     ]
@@ -288,9 +297,16 @@ def build_rule_migration(base: str | None = None) -> RuleMigration:
         and _action(item) is not None
     }
     legacy_by_key = {rules_key(item): item for item in legacy_by_name.values()}
+    generated_by_name = {}
+    for item in generated["items"]:
+        name_key = _name_key(item)
+        if name_key in generated_by_name:
+            # One scanner name needs one migration choice for all its variants.
+            item = {"name": item["name"], "action": _action(item)}
+        generated_by_name[name_key] = item
     matched_names = set()
     changes = []
-    for item in generated["items"]:
+    for item in generated_by_name.values():
         old = legacy_by_key.get(rules_key(item))
         if old is None:
             candidate = legacy_by_name.get(_name_key(item))
