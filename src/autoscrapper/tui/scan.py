@@ -574,6 +574,7 @@ class ScanResultsScreen(AppScreen):
         self._results = results
         self._stats = stats
         self._dry_run = dry_run
+        self._highlighted_row = None
 
     def compose(self) -> ComposeResult:
         title = "Scan results (Dry Run)" if self._dry_run else "Scan results"
@@ -582,13 +583,19 @@ class ScanResultsScreen(AppScreen):
         if not self._results:
             yield Static("No results to display.", classes="hint")
         else:
-            yield DataTable(id="scan-results-table")
+            yield DataTable(
+                id="scan-results-table",
+                zebra_stripes=True,
+                cursor_type="row",
+                fixed_columns=1,
+            )
         yield Footer()
 
     def on_mount(self) -> None:
         if not self._results:
             return
         table = self.query_one("#scan-results-table", DataTable)
+        table.add_column("", key="cursor", width=1)
         table.add_columns("Pg", "Idx", "Cell", "Item", "Outcome", "Notes")
         for result in self._results:
             outcome_label, details = _describe_action(result.action_taken)
@@ -599,6 +606,7 @@ class ScanResultsScreen(AppScreen):
             notes = "; ".join(details)
             global_idx = result.page * CELLS_PER_PAGE + result.cell.index
             table.add_row(
+                "",
                 f"{result.page + 1:02d}",
                 f"{global_idx:03d}",
                 f"r{result.cell.row}c{result.cell.col}",
@@ -607,6 +615,12 @@ class ScanResultsScreen(AppScreen):
                 notes,
             )
         table.focus()
+
+    def on_data_table_row_highlighted(self, event: DataTable.RowHighlighted) -> None:
+        if self._highlighted_row is not None:
+            event.data_table.update_cell(self._highlighted_row, "cursor", "")
+        event.data_table.update_cell(event.row_key, "cursor", "›")
+        self._highlighted_row = event.row_key
 
     def action_back(self) -> None:
         self.app.pop_screen()

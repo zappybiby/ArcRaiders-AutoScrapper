@@ -264,6 +264,7 @@ class MigrationChange:
     before_action: str | None
     after_action: str | None
     item: dict
+    before_item: dict | None = None
 
 
 @dataclass(frozen=True)
@@ -300,7 +301,11 @@ def build_rule_migration(base: str | None = None) -> RuleMigration:
         name_key = _name_key(item)
         if name_key in generated_by_name:
             # One scanner name needs one migration choice for all its variants.
-            item = {"name": item["name"], "action": _action(item)}
+            item = {
+                "name": item["name"],
+                "action": _action(item),
+                "analysis": item.get("analysis", []),
+            }
         generated_by_name[name_key] = item
     matched_names = set()
     changes = []
@@ -316,7 +321,7 @@ def build_rule_migration(base: str | None = None) -> RuleMigration:
         after = _action(item)
         if before != after:
             changes.append(
-                MigrationChange(rules_key(item), item["name"], before, after, item)
+                MigrationChange(rules_key(item), item["name"], before, after, item, old)
             )
     for name_key, item in legacy_by_name.items():
         if name_key not in matched_names and _action(item) is not None:
@@ -325,7 +330,7 @@ def build_rule_migration(base: str | None = None) -> RuleMigration:
             custom_item = {"name": item["name"]}
             changes.append(
                 MigrationChange(
-                    name_key, item["name"], _action(item), None, custom_item
+                    name_key, item["name"], _action(item), None, custom_item, item
                 )
             )
     changes.sort(key=lambda change: change.name.lower())

@@ -279,6 +279,14 @@ class RuleMigrationTests(RuleTestCase):
         self.assertEqual(
             {"Battery", "Wire", "My Trophy"}, set(self.changes_by_name(migration))
         )
+        changes = self.changes_by_name(migration)
+        self.assertEqual(
+            {**self.battery, "action": "keep"}, changes["Battery"].before_item
+        )
+        self.assertIsNone(changes["Wire"].before_item)
+        self.assertEqual(
+            {"name": "My Trophy", "action": "keep"}, changes["My Trophy"].before_item
+        )
 
     def test_migration_backs_up_original_bytes_exactly(self) -> None:
         original = self.write_legacy()
@@ -304,8 +312,11 @@ class RuleMigrationTests(RuleTestCase):
         self.assertEqual({"Battery": "keep", "Wire": "keep"}, self.actions())
 
     def test_shared_name_has_one_migration_choice_for_all_variants(self) -> None:
-        battery = {**self.battery, "action": "keep"}
-        variant = {**battery, "id": "battery-rare"}
+        reasons = [
+            "Multiple rarities share this name; the scanner can’t distinguish between them."
+        ]
+        battery = {**self.battery, "action": "keep", "value": 1000, "analysis": reasons}
+        variant = {**battery, "id": "battery-rare", "value": 500}
         self.write_defaults(battery, variant)
         for retain in (False, True):
             with self.subTest(retain=retain):
@@ -322,6 +333,11 @@ class RuleMigrationTests(RuleTestCase):
                 change = migration.changes[0]
                 self.assertEqual(
                     ("recycle", "keep"), (change.before_action, change.after_action)
+                )
+                self.assertEqual({**variant, "action": "recycle"}, change.before_item)
+                self.assertEqual(
+                    {"name": "Battery", "action": "keep", "analysis": reasons},
+                    change.item,
                 )
 
                 rules_store.complete_rule_migration(

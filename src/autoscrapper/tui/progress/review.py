@@ -11,7 +11,7 @@ from textual.widgets import Button, Footer, Input, OptionList, Static
 from textual.widgets.option_list import Option
 
 from ...config import ProgressSettings
-from ..common import MessageScreen, update_inline_filter
+from ..common import MessageScreen, StripedOptionList, update_inline_filter
 from .base import ProgressScreen
 from .state import QuestEntry, normalize_quest_value, persist_progress_settings
 
@@ -111,7 +111,7 @@ class ReviewQuestsScreen(ProgressScreen):
             )
             yield Button("Sort: Name A-Z", id="review-sort", variant="primary")
         yield Static(id="review-list-summary", classes="hint")
-        yield OptionList(id="review-list")
+        yield StripedOptionList(id="review-list")
         yield Static(id="review-count", classes="hint")
         with Horizontal(id="review-actions"):
             yield Button("Cancel", id="cancel")

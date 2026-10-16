@@ -12,7 +12,13 @@ from textual.screen import ModalScreen
 from textual.widgets import Button, Footer, Input, OptionList, Static
 from textual.widgets.option_list import Option
 
-from .common import AppScreen, MessageScreen, update_inline_filter
+from .common import (
+    AppScreen,
+    MessageScreen,
+    RuleOptionList,
+    rule_columns,
+    update_inline_filter,
+)
 from ..items.rules_diff import RuleChange
 from ..items.rules_store import (
     active_rules_path,
@@ -26,16 +32,6 @@ from ..items.rules_store import (
     rules_key,
     set_rule_action,
 )
-
-
-def _display_action(item: dict) -> str:
-    action = item.get("action")
-    if isinstance(action, str) and action.strip():
-        return action.strip().upper()
-    decisions = item.get("decision")
-    if isinstance(decisions, list):
-        return ", ".join(str(d).upper() for d in decisions if isinstance(d, str))
-    return ""
 
 
 def _normalized_action(item: dict) -> Optional[str]:
@@ -60,27 +56,6 @@ def _lookup_key(value: object) -> Optional[str]:
     return None
 
 
-def _action_label_style(action: Optional[str]) -> tuple[str, str]:
-    if action == "keep":
-        return ("KEEP", "bold #56B4E9")
-    if action == "sell":
-        return ("SELL", "bold #E69F00")
-    if action == "recycle":
-        return ("RECYCLE", "bold #009E73")
-    return ("SKIP", "dim")
-
-
-def _action_badge(item: dict) -> tuple[str, str]:
-    action = _normalized_action(item)
-    label, style = _action_label_style(action)
-    if action:
-        return (label, style)
-    display = _display_action(item).strip().upper()
-    if display:
-        return (display, "cyan")
-    return (label, style)
-
-
 def _should_hide_reason(reason: str) -> bool:
     return reason.strip().lower().startswith("override:")
 
@@ -96,14 +71,6 @@ def _filter_indices(items: List[dict], query: str) -> List[int]:
         if q in name or (item_id and q in item_id):
             matches.append(idx)
     return matches
-
-
-def _truncate_label(text: str, limit: int) -> str:
-    if limit <= 3:
-        return text[:limit]
-    if len(text) <= limit:
-        return text
-    return f"{text[: limit - 3]}..."
 
 
 class ConfirmResetRulesScreen(ModalScreen[bool]):
@@ -173,288 +140,92 @@ class RulesScreen(AppScreen):
             show=False,
             priority=True,
         ),
-        Binding("ctrl+f", "cycle_sort", "filter", priority=True),
+        Binding("ctrl+f", "cycle_sort", "Sort", priority=True),
     ]
 
     DEFAULT_CSS = """
-    RulesScreen {
-        padding: 0 1;
-    }
-
     #rules-topbar {
-        height: auto;
-        align: left top;
-        margin-bottom: 0;
-    }
-
-    #rules-title-block {
-        width: 1fr;
-        height: auto;
-        align: left middle;
-    }
-
-    #rules-top-actions {
-        width: auto;
-        height: auto;
-        align: right top;
-    }
-
-    #back {
-        width: auto;
-        min-width: 6;
-        min-height: 3;
-        padding: 0 1;
-        margin-right: 0;
+        height: 1;
     }
 
     #rules-title {
         width: auto;
-        text-style: bold;
-        color: #7dd3fc;
     }
 
     #rules-save-chip {
-        width: auto;
-        margin-left: 1;
+        width: 1fr;
+        margin-left: 2;
+        text-align: right;
+        text-style: none;
         color: #94a3b8;
     }
 
-    #rules-save-chip.is-saved {
-        color: #86efac;
-    }
-
-    #rules-save-chip.is-saving {
-        color: #fbbf24;
-    }
-
-    #rules-save-chip.is-error {
-        color: #fca5a5;
-    }
-
-    #rules-save-chip.is-save-flash {
-        text-style: bold reverse;
-    }
-
-    #rules-content {
-        height: 1fr;
-    }
-
-    #rules-list-card {
-        height: 1fr;
-        border: round #334155;
-        padding: 0;
-        background: #0b1220;
-        margin-bottom: 0;
-    }
+    #rules-save-chip.is-saved { color: #86efac; }
+    #rules-save-chip.is-saving { color: #fbbf24; }
+    #rules-save-chip.is-error { color: #fca5a5; }
+    #rules-save-chip.is-save-flash { text-style: bold reverse; }
 
     #rules-filterbar {
-        height: auto;
-        align: left middle;
-        margin-bottom: 0;
+        height: 3;
     }
 
     #rules-search {
         width: 1fr;
-        min-height: 3;
         margin-right: 1;
     }
 
     #rules-sort {
         width: 16;
-        min-height: 3;
-        padding: 0 1;
-        text-style: bold;
-    }
-
-    #rules-list-summary {
-        margin-bottom: 0;
-    }
-
-    #rules-list {
-        height: 1fr;
-    }
-
-    #rules-list > .option-list--option {
-        padding: 0;
-    }
-
-    #rules-list > .option-list--option-highlighted {
-        text-style: bold;
-    }
-
-    #rules-bottom {
-        height: 9;
-    }
-
-    #rules-bottom.is-adding {
-        height: 10;
-    }
-
-    #rules-bottom.is-adding #action-automatic,
-    #rules-bottom.is-adding #actions-spacer,
-    #rules-bottom.is-adding #rule-management-actions {
-        display: none;
-    }
-
-    #rules-actions-panel {
-        width: 38%;
-        min-width: 20;
-        margin-right: 1;
-        border: none;
-        padding: 1 0 0 0;
-        background: transparent;
+        min-width: 0;
     }
 
     #rule-selected {
+        height: 1;
         text-style: bold;
-        margin-bottom: 0;
-    }
-
-    #action-buttons {
-        height: auto;
-        margin-bottom: 0;
-    }
-
-    #action-buttons Button {
-        width: 1fr;
-        min-width: 0;
-        height: 2;
-        margin-right: 0;
-        margin-bottom: 0;
-        padding: 0 1;
-        border: none;
-    }
-
-    #action-keep {
-        background: #10384f;
-        color: #e0f4ff;
-    }
-
-    #action-sell {
-        background: #4a3400;
-        color: #fff2d0;
-    }
-
-    #action-recycle {
-        background: #0f3c31;
-        color: #dffaf0;
-    }
-
-    #action-automatic {
-        width: 100%;
-        height: 2;
-        min-height: 2;
-        margin: 0;
-        padding: 0 1;
-        border: none;
-    }
-
-    #action-automatic.is-current-action {
-        text-style: bold reverse;
-    }
-
-    #action-keep:focus,
-    #action-sell:focus,
-    #action-recycle:focus {
-        text-style: bold;
-    }
-
-    #action-keep.is-current-action {
-        background: #56B4E9;
-        color: #0a2534;
-        text-style: bold;
-    }
-
-    #action-sell.is-current-action {
-        background: #E69F00;
-        color: #392600;
-        text-style: bold;
-    }
-
-    #action-recycle.is-current-action {
-        background: #009E73;
-        color: #03251c;
-        text-style: bold;
-    }
-
-    #action-keep.is-current-action:focus,
-    #action-sell.is-current-action:focus,
-    #action-recycle.is-current-action:focus {
-        text-style: bold reverse;
-    }
-
-    #rule-management-actions {
-        height: auto;
-    }
-
-    #rule-management-actions Button {
-        width: 1fr;
-        min-width: 0;
-        height: 2;
-        margin-right: 0;
-        margin-bottom: 0;
-        padding: 0 1;
-        border: none;
-    }
-
-    #actions-spacer {
-        height: 1fr;
-    }
-
-    #rules-reasons-panel {
-        width: 62%;
-        min-width: 20;
-        border: none;
-        padding: 0;
-        background: transparent;
-    }
-
-    #reasons-title {
-        margin-bottom: 0;
     }
 
     #rule-reasons {
-        height: 1fr;
-        border: round #334155;
-        padding: 0;
-        overflow-y: auto;
-        background: #111827;
-    }
-
-    #new-rule-panel {
-        margin-top: 0;
-        height: auto;
-        padding: 0;
-    }
-
-    #new-rule-actions {
-        margin-top: 0;
         height: auto;
     }
 
-    #new-rule-actions Button {
-        width: 1fr;
+    #rules-actions, #action-buttons, #rule-management-actions {
+        height: auto;
+    }
+
+    #action-buttons, #rule-management-actions {
+        width: auto;
+    }
+
+    #rules-actions Button {
+        width: auto;
         min-width: 0;
-        height: 2;
-        min-height: 2;
         padding: 0;
-        border: none;
-        margin-right: 0;
+    }
+
+    #rules-actions Button.is-current-action {
+        text-style: bold reverse;
+    }
+
+    RulesScreen.is-adding #action-automatic,
+    RulesScreen.is-adding #rule-management-actions,
+    RulesScreen.is-adding #back,
+    RulesScreen.is-adding #rules-details {
+        display: none;
+    }
+
+    #new-rule-panel, #new-rule-actions {
+        height: auto;
     }
 
     .is-hidden {
         display: none;
-    }
-
-    .hint {
-        color: $text-muted;
     }
     """
 
     SORT_LABELS: dict[str, str] = {
         "name_asc": "Name",
         "action": "Action",
-        "modified": "Custom",
+        "modified": "Source",
     }
     SORT_SEQUENCE: tuple[str, ...] = ("name_asc", "action", "modified")
     ACTION_SORT_ORDER: dict[str, int] = {"keep": 0, "sell": 1, "recycle": 2}
@@ -474,48 +245,33 @@ class RulesScreen(AppScreen):
         self._reload_rules()
 
     def compose(self) -> ComposeResult:
-        with Horizontal(id="rules-topbar"):
-            with Horizontal(id="rules-title-block"):
-                yield Static("Review Rules", id="rules-title")
-                yield Static(id="rules-save-chip", classes="is-saved")
-            with Horizontal(id="rules-top-actions"):
-                yield Button("Back", id="back")
-        with Vertical(id="rules-content"):
-            with Vertical(id="rules-list-card"):
-                with Horizontal(id="rules-filterbar"):
-                    yield Input(
-                        placeholder="Search rules... (type to filter)",
-                        id="rules-search",
-                    )
-                    yield Button("Sort: Name", id="rules-sort", variant="primary")
-                yield Static(id="rules-list-summary", classes="hint")
-                yield OptionList(id="rules-list")
-            with Horizontal(id="rules-bottom"):
-                with Vertical(id="rules-actions-panel"):
-                    yield Static(id="rule-selected")
-                    with Horizontal(id="action-buttons"):
-                        yield Button("Keep", id="action-keep")
-                        yield Button("Sell", id="action-sell")
-                        yield Button("Recycle", id="action-recycle")
-                    yield Button("Automatic", id="action-automatic")
-                    yield Static("", id="actions-spacer")
-                    with Horizontal(id="rule-management-actions"):
-                        yield Button("New", id="new-rule", variant="primary")
-                        yield Button("Delete", id="delete-rule", variant="warning")
-                        yield Button("Reset", id="reset-rules", variant="error")
-                    with Vertical(id="new-rule-panel", classes="is-hidden"):
-                        yield Input(
-                            placeholder="Item name",
-                            id="new-rule-name",
-                        )
-                        with Horizontal(id="new-rule-actions"):
-                            yield Button("Add rule", id="add-rule", variant="primary")
-                            yield Button("Cancel", id="cancel-add")
-                with Vertical(id="rules-reasons-panel"):
-                    yield Static(
-                        "Automatic Reasons", id="reasons-title", classes="section-title"
-                    )
-                    yield Static(id="rule-reasons")
+        with Horizontal(id="rules-topbar", classes="rule-title"):
+            yield Static("Review rules", id="rules-title")
+            yield Static(id="rules-save-chip", classes="is-saved")
+        with Horizontal(id="rules-filterbar"):
+            yield Input(placeholder="Search items", id="rules-search")
+            yield Button("Sort: Name", id="rules-sort")
+        yield Static(id="rules-columns", classes="rule-columns")
+        yield RuleOptionList(id="rules-list", classes="rule-list")
+        with Vertical(id="rules-details", classes="rule-details"):
+            yield Static(id="rule-selected")
+            yield Static(id="rule-reasons")
+        with Horizontal(id="rules-actions"):
+            with Horizontal(id="action-buttons"):
+                yield Button("Keep", id="action-keep")
+                yield Button("Sell", id="action-sell")
+                yield Button("Recycle", id="action-recycle")
+                yield Button("Use recommendation", id="action-automatic")
+            with Horizontal(id="rule-management-actions"):
+                yield Button("New", id="new-rule")
+                yield Button("Delete", id="delete-rule")
+                yield Button("Reset", id="reset-rules", variant="error")
+            yield Button("Back", id="back")
+        with Vertical(id="new-rule-panel", classes="is-hidden"):
+            yield Input(placeholder="Item name", id="new-rule-name")
+            with Horizontal(id="new-rule-actions"):
+                yield Button("Add rule", id="add-rule", variant="primary")
+                yield Button("Cancel", id="cancel-add")
         yield Footer()
 
     def on_mount(self) -> None:
@@ -695,47 +451,27 @@ class RulesScreen(AppScreen):
             indices, key=lambda idx: str(self.items[idx].get("name", "")).lower()
         )
 
-    def _refresh_list_summary(self) -> None:
-        changed_count = sum(
-            1 for is_modified in self.modified_map.values() if is_modified
-        )
-        sort_label = self.SORT_LABELS.get(self.sort_mode, self.sort_mode)
-        self.query_one("#rules-sort", Button).label = f"Sort: {sort_label}"
-        summary_parts = [
-            f"{len(self.filtered)}/{len(self.items)} shown",
-            f"{changed_count} custom",
-            f"sort {sort_label}",
-        ]
-        self.query_one("#rules-list-summary", Static).update(" | ".join(summary_parts))
-
-    def _list_name_limit(self, menu: OptionList) -> int:
-        if menu.size.width <= 0:
-            return 42
-        # Reserve space for list index, action badge, and override marker.
-        return max(18, menu.size.width - 26)
-
     def _refresh_list(self, *, preserve_scroll: bool = False) -> None:
         previous_selection = self.selected_index
         menu = self.query_one("#rules-list", OptionList)
         previous_scroll_y = menu.scroll_y if preserve_scroll else None
-        name_limit = self._list_name_limit(menu)
+        width = menu.scrollable_content_region.width - 2
+        self.query_one("#rules-columns", Static).update(
+            rule_columns("Item", "Current Action", "Rule Source", width)
+        )
         self._refresh_modified_map()
         filtered_indices = _filter_indices(self.items, self.search_query)
         self.filtered = self._sort_indices(filtered_indices)
         options = []
-        for list_index, item_index in enumerate(self.filtered):
+        for item_index in self.filtered:
             item = self.items[item_index]
-            action_label, action_style = _action_badge(item)
-            name_style = (
-                "bold #f59e0b" if self._is_modified_index(item_index) else "bold"
-            )
-            item_name = _truncate_label(str(item.get("name", "")), name_limit)
-            label = Text.assemble(
-                (f"{list_index + 1:>3} ", "dim"),
-                (item_name, name_style),
-                ("  ", ""),
-                (action_label, action_style),
-                (" · Custom" if self._is_modified_index(item_index) else "", "dim"),
+            custom = self._is_modified_index(item_index)
+            label = rule_columns(
+                str(item.get("name", "")),
+                (_normalized_action(item) or "skip").upper(),
+                "Custom" if custom else "Recommended",
+                width,
+                custom=custom,
             )
             options.append(Option(label, id=str(item_index)))
         menu.set_options(options)
@@ -762,10 +498,11 @@ class RulesScreen(AppScreen):
             )
 
         self._refresh_action_buttons()
-        self._refresh_list_summary()
+        sort_label = self.SORT_LABELS[self.sort_mode]
+        self.query_one("#rules-sort", Button).label = f"Sort: {sort_label}"
 
     def _set_add_mode(self, enabled: bool) -> None:
-        self.query_one("#rules-bottom", Horizontal).set_class(enabled, "is-adding")
+        self.set_class(enabled, "is-adding")
         panel = self.query_one("#new-rule-panel", Vertical)
         if enabled:
             panel.remove_class("is-hidden")
@@ -794,25 +531,17 @@ class RulesScreen(AppScreen):
 
         item = self.items[self.selected_index]
         name = str(item.get("name", ""))
-        name_style = (
-            "bold #f59e0b" if self._is_modified_index(self.selected_index) else "bold"
-        )
-        title.update(Text(name, style=name_style))
-
-        current_action = _normalized_action(item) or "skip"
-        self.current_action = current_action
-
+        base_item = self._base_item_for_item(item)
+        heading = name
+        if base_item is not None:
+            recommendation = (_normalized_action(base_item) or "skip").upper()
+            heading += f" · Recommended: {recommendation}"
+        title.update(Text(heading, style="bold"))
+        self.current_action = _normalized_action(item) or "skip"
         reason_lines, has_base_rule = self._base_reason_lines(item)
-        lines = []
-        if reason_lines:
-            lines.extend([f"- {reason}" for reason in reason_lines[:12]])
-            if len(reason_lines) > 12:
-                lines.append(f"- ... +{len(reason_lines) - 12} more")
-        elif has_base_rule:
-            lines.append("No automatic reasons recorded.")
-        else:
-            lines.append("Custom item.")
-        reasons.update("\n".join(lines))
+        if not reason_lines and has_base_rule:
+            reason_lines = ["No reasons recorded for this recommendation."]
+        reasons.update(Text("\n".join(reason_lines)))
         self._refresh_action_buttons()
 
     def _set_save_chip(
@@ -1107,13 +836,12 @@ class RulesScreen(AppScreen):
     def on_option_list_option_highlighted(
         self, event: OptionList.OptionHighlighted
     ) -> None:
-        if event.option_id is None:
+        if event.option_id is None or self.mode == "add":
             return
         try:
             self.selected_index = int(event.option_id)
         except ValueError:
             return
-        self.mode = "edit"
         self._refresh_details()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
@@ -1130,6 +858,7 @@ class RulesScreen(AppScreen):
             self._add_rule()
         elif button_id == "cancel-add":
             self.mode = "edit"
+            self._refresh_list(preserve_scroll=True)
             self._refresh_details()
             self.query_one("#rules-search", Input).focus()
         elif button_id == "new-rule":
@@ -1148,163 +877,108 @@ class RulesChangesScreen(AppScreen):
     BINDINGS = [*AppScreen.BINDINGS]
 
     DEFAULT_CSS = """
-    RulesChangesScreen {
-        padding: 1 2;
-    }
-
-    #changes-layout {
-        height: 1fr;
-    }
-
-    #changes-list {
-        width: 55%;
-    }
-
-    #changes-detail {
-        width: 45%;
-        padding-left: 1;
-    }
-
     #changes-actions {
-        margin-top: 1;
         height: auto;
-    }
-
-    .hint {
-        color: $text-muted;
     }
     """
 
-    def __init__(
-        self,
-        changes: List[RuleChange],
-        *,
-        item_count: int,
-        default_count: int,
-    ) -> None:
+    def __init__(self, changes: List[RuleChange]) -> None:
         super().__init__()
         self.changes = list(changes)
         self.filtered: List[int] = []
         self.search_query = ""
         self.selected_index: Optional[int] = None
-        self.item_count = item_count
-        self.default_count = default_count
 
     def compose(self) -> ComposeResult:
-        yield Static("Rule Changes", classes="menu-title")
-        yield Static(id="changes-summary", classes="hint")
-        yield Input(placeholder="Search changes by name or id", id="changes-search")
-        with Horizontal(id="changes-layout"):
-            yield OptionList(id="changes-list")
-            with Vertical(id="changes-detail"):
-                yield Static(id="changes-detail-body")
+        yield Static("Rule changes", classes="rule-title")
+        yield Input(placeholder="Search items", id="changes-search")
+        yield Static(id="changes-columns", classes="rule-columns")
+        yield RuleOptionList(id="changes-list", classes="rule-list")
+        yield Static(id="changes-detail-body", classes="rule-details")
         with Horizontal(id="changes-actions"):
             yield Button("Done", id="done", variant="primary")
         yield Footer()
 
     def on_mount(self) -> None:
         self._refresh_list()
-        self._refresh_details()
         if self.changes:
             self.query_one("#changes-list", OptionList).focus()
 
-    def action_back(self) -> None:
-        self.app.pop_screen()
+    def on_resize(self, _event: events.Resize) -> None:
+        if self.is_mounted:
+            self._refresh_list()
 
     def action_focus_search(self) -> None:
         self.query_one("#changes-search", Input).focus()
 
-    def _update_summary(self) -> None:
-        total_changes = len(self.changes)
-        showing = len(self.filtered)
-        base_total = self.default_count or self.item_count
-        summary = (
-            f"Changed rules: {total_changes} | "
-            f"Default items: {base_total} | "
-            f"Showing: {showing}"
-        )
-        self.query_one("#changes-summary", Static).update(summary)
-
     def _filter_indices(self) -> List[int]:
-        if not self.search_query:
-            return list(range(len(self.changes)))
-        q = self.search_query.lower().strip()
-        if not q:
-            return list(range(len(self.changes)))
-        matches: List[int] = []
-        for idx, change in enumerate(self.changes):
-            name = change.name.lower()
-            item_id = change.item_id.lower()
-            if q in name or (item_id and q in item_id):
-                matches.append(idx)
-        return matches
-
-    def _option_label(self, change: RuleChange, index: int) -> Text:
-        action = f"{change.before_action.upper()} -> {change.after_action.upper()}"
-        return Text.assemble(
-            (f"{index + 1:>3} ", "dim"),
-            (change.name, "bold"),
-            ("  ", ""),
-            (action, "cyan"),
-        )
+        query = self.search_query.casefold().strip()
+        return [
+            index
+            for index, change in enumerate(self.changes)
+            if not query
+            or query in change.name.casefold()
+            or query in change.item_id.casefold()
+        ]
 
     def _refresh_list(self) -> None:
         self.filtered = self._filter_indices()
         menu = self.query_one("#changes-list", OptionList)
-        options = []
-        for list_index, change_index in enumerate(self.filtered):
-            change = self.changes[change_index]
-            label = self._option_label(change, list_index)
-            options.append(Option(label, id=str(change_index)))
-        menu.set_options(options)
-        if options:
-            menu.highlighted = 0
-            self.selected_index = self.filtered[0]
+        width = menu.scrollable_content_region.width - 2
+        self.query_one("#changes-columns", Static).update(
+            rule_columns("Item", "Default Action", "Current Action", width)
+        )
+        menu.set_options(
+            Option(
+                rule_columns(
+                    self.changes[index].name,
+                    self.changes[index].before_action.upper(),
+                    self.changes[index].after_action.upper(),
+                    width,
+                ),
+                id=str(index),
+            )
+            for index in self.filtered
+        )
+        if self.filtered:
+            highlighted = (
+                self.filtered.index(self.selected_index)
+                if self.selected_index in self.filtered
+                else 0
+            )
+            menu.highlighted = highlighted
+            self.selected_index = self.filtered[highlighted]
         else:
             self.selected_index = None
-        self._update_summary()
+        self._refresh_details()
 
     def _refresh_details(self) -> None:
         detail = self.query_one("#changes-detail-body", Static)
         if self.selected_index is None:
-            detail.update(
-                "No changes match your filter."
-                if self.changes
-                else "No changes detected."
-            )
+            detail.update("No matching items." if self.changes else "No changes.")
             return
         change = self.changes[self.selected_index]
-        lines = [
-            f"Name: {change.name}",
-            f"ID: {change.item_id}",
-            f"Action: {change.before_action.upper()} -> {change.after_action.upper()}",
-        ]
-        visible_reasons = [
+        reasons = [
             reason for reason in change.reasons if not _should_hide_reason(reason)
         ]
-        if visible_reasons:
-            lines.append("Reasons:")
-            lines.extend([f"- {reason}" for reason in visible_reasons[:8]])
-            if len(visible_reasons) > 8:
-                lines.append(f"- ... +{len(visible_reasons) - 8} more")
-        else:
-            lines.append("Reasons: none recorded")
-        detail.update("\n".join(lines))
+        detail.update(
+            Text.assemble(
+                (f"{change.name}\n", "bold"),
+                "\n".join(reasons) or "No reasons recorded for this recommendation.",
+            )
+        )
 
     def on_input_changed(self, event: Input.Changed) -> None:
         if event.input.id == "changes-search":
             self.search_query = event.value
             self._refresh_list()
-            self._refresh_details()
 
-    def on_option_list_option_selected(self, event: OptionList.OptionSelected) -> None:
-        if event.option_id is None:
-            return
-        try:
+    def on_option_list_option_highlighted(
+        self, event: OptionList.OptionHighlighted
+    ) -> None:
+        if event.option_id is not None:
             self.selected_index = int(event.option_id)
-        except ValueError:
-            return
-        self._refresh_details()
+            self._refresh_details()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "done":
