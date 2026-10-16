@@ -35,7 +35,6 @@ DEFAULT_RULES_PATH = (
 TARGET_RELATIVE_FILES = (
     "src/autoscrapper/progress/data/items.json",
     "src/autoscrapper/progress/data/quests.json",
-    "src/autoscrapper/progress/data/quests_by_trader.json",
     "src/autoscrapper/progress/data/metadata.json",
     "src/autoscrapper/progress/data/metaforge_sources.json",
     "src/autoscrapper/items/items_rules.default.json",
@@ -224,7 +223,6 @@ def _update_dry_run(source_data_dir: Path) -> dict:
             [
                 temp_data_dir / "items.json",
                 temp_data_dir / "quests.json",
-                temp_data_dir / "quests_by_trader.json",
                 temp_data_dir / "metadata.json",
                 temp_data_dir / "metaforge_sources.json",
                 temp_rules_path,
@@ -233,10 +231,9 @@ def _update_dry_run(source_data_dir: Path) -> dict:
         mapped_after = {
             target_paths[0]: after_bytes[temp_data_dir / "items.json"],
             target_paths[1]: after_bytes[temp_data_dir / "quests.json"],
-            target_paths[2]: after_bytes[temp_data_dir / "quests_by_trader.json"],
-            target_paths[3]: after_bytes[temp_data_dir / "metadata.json"],
-            target_paths[4]: after_bytes[temp_data_dir / "metaforge_sources.json"],
-            target_paths[5]: after_bytes[temp_rules_path],
+            target_paths[2]: after_bytes[temp_data_dir / "metadata.json"],
+            target_paths[3]: after_bytes[temp_data_dir / "metaforge_sources.json"],
+            target_paths[4]: after_bytes[temp_rules_path],
         }
         changed_files = _diff_changed_files(
             before_bytes,

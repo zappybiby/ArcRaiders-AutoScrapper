@@ -49,6 +49,19 @@ def load_json(path: Path, default: Any) -> Any:
         return default
 
 
+def _quest_requirement_ids(quest: Mapping[str, object]) -> List[str]:
+    requirements = quest.get("requirements") or []
+    return sorted(
+        {
+            requirement["item_id"]
+            for requirement in requirements
+            if isinstance(requirement, dict)
+            and isinstance(requirement.get("item_id"), str)
+            and requirement["item_id"]
+        }
+    )
+
+
 def diff_quests(
     before_quests: Sequence[object], after_quests: Sequence[object]
 ) -> dict:
@@ -82,7 +95,6 @@ def diff_quests(
             "name": after_by_id[quest_id].get("name"),
             "trader": after_by_id[quest_id].get("trader"),
             "sortOrder": after_by_id[quest_id].get("sortOrder"),
-            "xp": after_by_id[quest_id].get("xp"),
         }
         for quest_id in added_ids
     ]
@@ -93,7 +105,6 @@ def diff_quests(
             "name": before_by_id[quest_id].get("name"),
             "trader": before_by_id[quest_id].get("trader"),
             "sortOrder": before_by_id[quest_id].get("sortOrder"),
-            "xp": before_by_id[quest_id].get("xp"),
         }
         for quest_id in removed_ids
     ]
@@ -103,9 +114,6 @@ def diff_quests(
         "name",
         "trader",
         "sortOrder",
-        "xp",
-        "requirements",
-        "rewardItemIds",
     )
     for quest_id in common_ids:
         before = before_by_id[quest_id]
@@ -117,6 +125,13 @@ def diff_quests(
                     "before": before.get(field),
                     "after": after.get(field),
                 }
+        before_requirements = _quest_requirement_ids(before)
+        after_requirements = _quest_requirement_ids(after)
+        if before_requirements != after_requirements:
+            changes["requirements"] = {
+                "before": before_requirements,
+                "after": after_requirements,
+            }
         if not changes:
             continue
         changed.append(

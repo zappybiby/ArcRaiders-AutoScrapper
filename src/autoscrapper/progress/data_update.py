@@ -411,7 +411,6 @@ def _map_metaforge_item(
     crafting_map: Dict[str, Dict[str, int]],
     recycle_map: Dict[str, Dict[str, int]],
 ) -> dict:
-    stat_block = metaforge_item.get("stat_block") or {}
     return {
         "id": metaforge_item.get("id"),
         "name": metaforge_item.get("name"),
@@ -422,12 +421,7 @@ def _map_metaforge_item(
             else None
         ),
         "value": metaforge_item.get("value") or 0,
-        "weightKg": stat_block.get("weight") or 0,
-        "stackSize": stat_block.get("stackSize") or 1,
-        "craftBench": metaforge_item.get("workbench") or None,
-        "updatedAt": metaforge_item.get("updated_at")
-        or datetime.now(timezone.utc).isoformat(),
-        "recipe": crafting_map.get(metaforge_item.get("id")) or None,
+        "recipe": list(crafting_map.get(metaforge_item.get("id"), {})) or None,
         "recyclesInto": recycle_map.get(metaforge_item.get("id")) or None,
     }
 
@@ -437,58 +431,16 @@ def _map_metaforge_quest(metaforge_quest: dict) -> dict:
     sort_order = position.get("y", metaforge_quest.get("sort_order", 0))
 
     required_items = metaforge_quest.get("required_items") or []
-    rewards = metaforge_quest.get("rewards") or []
-
-    reward_item_ids: List[str] = []
-    if isinstance(rewards, list):
-        for reward in rewards:
-            reward_item_id: Optional[str] = None
-            if isinstance(reward, dict):
-                reward_item_id = reward.get("item_id")
-                if not reward_item_id:
-                    reward_item = reward.get("item")
-                    if isinstance(reward_item, dict):
-                        reward_item_id = reward_item.get("id")
-                    elif isinstance(reward_item, str):
-                        reward_item_id = reward_item
-            elif isinstance(reward, str):
-                reward_item_id = reward
-
-            if isinstance(reward_item_id, str) and reward_item_id:
-                reward_item_ids.append(reward_item_id)
-
-    # Keep IDs stable while removing duplicates.
-    reward_item_ids = list(dict.fromkeys(reward_item_ids))
 
     return {
         "id": metaforge_quest.get("id"),
         "name": metaforge_quest.get("name"),
-        "objectives": metaforge_quest.get("objectives") or [],
-        "requirements": required_items,
-        "rewardItemIds": reward_item_ids,
-        "rewards": rewards,
+        "requirements": [
+            {"item_id": requirement.get("item_id")} for requirement in required_items
+        ],
         "trader": metaforge_quest.get("trader_name") or "Unknown",
-        "xp": metaforge_quest.get("xp") or 0,
         "sortOrder": sort_order,
     }
-
-
-def _build_quests_by_trader(quests: List[dict]) -> Dict[str, List[dict]]:
-    by_trader: Dict[str, List[dict]] = {}
-    for quest in quests:
-        trader = quest.get("trader") or "Unknown"
-        by_trader.setdefault(trader, []).append(
-            {
-                "id": quest.get("id"),
-                "name": quest.get("name"),
-                "sortOrder": quest.get("sortOrder", 0),
-            }
-        )
-
-    for trader, quests_list in by_trader.items():
-        quests_list.sort(key=lambda q: q.get("sortOrder") or 0)
-
-    return by_trader
 
 
 def update_data_snapshot(data_dir: Optional[Path] = None) -> dict:
@@ -518,15 +470,6 @@ def update_data_snapshot(data_dir: Optional[Path] = None) -> dict:
     )
     (data_dir / "quests.json").write_text(
         json.dumps(mapped_quests, indent=2), encoding="utf-8"
-    )
-
-    quests_by_trader = {
-        "generatedAt": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
-        "source": "quests.json",
-        "traders": _build_quests_by_trader(mapped_quests),
-    }
-    (data_dir / "quests_by_trader.json").write_text(
-        json.dumps(quests_by_trader, indent=2), encoding="utf-8"
     )
 
     metadata = {

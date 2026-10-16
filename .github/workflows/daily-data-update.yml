@@ -86,7 +86,6 @@ jobs:
           git add \
             src/autoscrapper/progress/data/items.json \
             src/autoscrapper/progress/data/quests.json \
-            src/autoscrapper/progress/data/quests_by_trader.json \
             src/autoscrapper/progress/data/metadata.json \
             src/autoscrapper/progress/data/metaforge_sources.json \
             src/autoscrapper/items/items_rules.default.json
