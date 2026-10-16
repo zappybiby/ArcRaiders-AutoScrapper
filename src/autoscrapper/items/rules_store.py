@@ -118,8 +118,6 @@ def load_base_rules(base: str | None = None) -> dict:
     if base != "progress":
         raise ValueError(f"Unknown rules base: {base}")
     settings = load_progress_settings()
-    if not has_saved_progress(settings):
-        return load_rules(DEFAULT_RULES_PATH)
     return generate_rules_from_active(
         settings.active_quests,
         settings.hideout_levels,

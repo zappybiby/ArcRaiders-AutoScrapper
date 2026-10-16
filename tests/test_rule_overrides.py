@@ -217,6 +217,12 @@ class RuleOverridesTests(RuleTestCase):
             )
             self.assertEqual({"Battery": "keep", "Wire": "sell"}, self.actions())
 
+            self.load_progress.return_value = ProgressSettings()
+            self.assertEqual({"Battery": "keep", "Wire": "keep"}, self.actions())
+            self.assertEqual(
+                {"battery": ["KEEP"], "wire": ["KEEP"]}, load_item_actions()
+            )
+
     def test_scanner_uses_merged_runtime_rules(self) -> None:
         rules_store.set_rule_action(self.battery, "keep")
         rules_store.set_rule_action(self.wire, None)
