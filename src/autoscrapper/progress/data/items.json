@@ -235,6 +235,15 @@
     "recyclesInto": null
   },
   {
+    "id": "amplified-anvil",
+    "name": "Amplified Anvil",
+    "type": "Weapon",
+    "rarity": "amplified",
+    "value": 20800,
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
     "id": "amplified-anvil-projectile-splitter",
     "name": "Amplified Anvil (Anvil Splitter)",
     "type": "Weapon",
@@ -11426,15 +11435,6 @@
     "type": "Blueprint",
     "rarity": "legendary",
     "value": 5000,
-    "recipe": null,
-    "recyclesInto": null
-  },
-  {
-    "id": "work-light",
-    "name": "Work Light",
-    "type": "Furniture",
-    "rarity": "common",
-    "value": 0,
     "recipe": null,
     "recyclesInto": null
   },
