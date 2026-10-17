@@ -7,39 +7,29 @@ from typing import Optional
 from .keybinds import DEFAULT_STOP_KEY, normalize_stop_key
 
 if sys.platform == "win32":
-    import ctypes
-    from ctypes import wintypes
-
     import pydirectinput as _pydirectinput
+    import win32api
+    import win32con
 
     _pydirectinput.FAILSAFE = False
     _pydirectinput.PAUSE = 0
 
-    _USER32 = ctypes.WinDLL("user32", use_last_error=True)
-    _GetAsyncKeyState = _USER32.GetAsyncKeyState
-    _GetAsyncKeyState.argtypes = [wintypes.INT]
-    _GetAsyncKeyState.restype = wintypes.SHORT
-
-    _VkKeyScanW = _USER32.VkKeyScanW
-    _VkKeyScanW.argtypes = [wintypes.WCHAR]
-    _VkKeyScanW.restype = wintypes.SHORT
-
     _SPECIAL_VK: dict[str, int] = {
-        "escape": 0x1B,
-        "enter": 0x0D,
-        "space": 0x20,
-        "tab": 0x09,
-        "backspace": 0x08,
-        "delete": 0x2E,
-        "insert": 0x2D,
-        "home": 0x24,
-        "end": 0x23,
-        "pageup": 0x21,
-        "pagedown": 0x22,
-        "left": 0x25,
-        "up": 0x26,
-        "right": 0x27,
-        "down": 0x28,
+        "escape": win32con.VK_ESCAPE,
+        "enter": win32con.VK_RETURN,
+        "space": win32con.VK_SPACE,
+        "tab": win32con.VK_TAB,
+        "backspace": win32con.VK_BACK,
+        "delete": win32con.VK_DELETE,
+        "insert": win32con.VK_INSERT,
+        "home": win32con.VK_HOME,
+        "end": win32con.VK_END,
+        "pageup": win32con.VK_PRIOR,
+        "pagedown": win32con.VK_NEXT,
+        "left": win32con.VK_LEFT,
+        "up": win32con.VK_UP,
+        "right": win32con.VK_RIGHT,
+        "down": win32con.VK_DOWN,
     }
 
     def _vk_code_for_stop_key(stop_key: str) -> Optional[int]:
@@ -50,11 +40,11 @@ if sys.platform == "win32":
         if key.startswith("f") and key[1:].isdigit():
             number = int(key[1:])
             if 1 <= number <= 12:
-                return 0x70 + (number - 1)
+                return win32con.VK_F1 + (number - 1)
         if len(key) == 1:
             if key.isalpha() or key.isdigit():
                 return ord(key.upper())
-            vk_scan = int(_VkKeyScanW(key))
+            vk_scan = win32api.VkKeyScan(key)
             if vk_scan == -1:
                 return None
             return vk_scan & 0xFF
@@ -64,7 +54,7 @@ if sys.platform == "win32":
         vk = _vk_code_for_stop_key(stop_key)
         if vk is None:
             vk = _SPECIAL_VK["escape"]
-        state = _GetAsyncKeyState(vk)
+        state = win32api.GetAsyncKeyState(vk)
         return bool(state & 0x8000) or bool(state & 0x0001)
 
     def moveTo(x: int, y: int, duration: float = 0.0) -> None:

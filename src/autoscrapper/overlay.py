@@ -10,7 +10,7 @@ import threading
 class ScanOverlay:
     """Keep Qt's event loop in a console-free child process."""
 
-    def __init__(self, hwnd: int, rect: tuple[int, int, int, int]) -> None:
+    def __init__(self, hwnd: int) -> None:
         self.ready = False
         self.error = ""
         self._closed = threading.Event()
@@ -24,9 +24,7 @@ class ScanOverlay:
             encoding="utf-8",
             creationflags=subprocess.CREATE_NO_WINDOW,
         )
-        threading.Thread(
-            target=self._run, args=({"hwnd": hwnd, "rect": rect},), daemon=True
-        ).start()
+        threading.Thread(target=self._run, args=({"hwnd": hwnd},), daemon=True).start()
 
     def _run(self, initial: dict) -> None:
         try:
