@@ -235,6 +235,15 @@
     "recyclesInto": null
   },
   {
+    "id": "amplified-anvil",
+    "name": "Amplified Anvil",
+    "type": "Weapon",
+    "rarity": "amplified",
+    "value": 20800,
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
     "id": "amplified-anvil-projectile-splitter",
     "name": "Amplified Anvil (Anvil Splitter)",
     "type": "Weapon",
@@ -9699,15 +9708,6 @@
     "recyclesInto": null
   },
   {
-    "id": "study-armchair",
-    "name": "Study Armchair",
-    "type": "Furniture",
-    "rarity": "uncommon",
-    "value": 0,
-    "recipe": null,
-    "recyclesInto": null
-  },
-  {
     "id": "study-armchair-res-armchair-01-a",
     "name": "Study Armchair",
     "type": "Furniture",
@@ -9717,11 +9717,11 @@
     "recyclesInto": null
   },
   {
-    "id": "study-armchair-design-res-armchair-01-a",
-    "name": "Study Armchair Design",
-    "type": "Design",
-    "rarity": "legendary",
-    "value": 5000,
+    "id": "study-armchair",
+    "name": "Study Armchair",
+    "type": "Furniture",
+    "rarity": "uncommon",
+    "value": 0,
     "recipe": null,
     "recyclesInto": null
   },
@@ -9730,6 +9730,15 @@
     "name": "Study Armchair Design",
     "type": "Design",
     "rarity": "uncommon",
+    "value": 5000,
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "study-armchair-design-res-armchair-01-a",
+    "name": "Study Armchair Design",
+    "type": "Design",
+    "rarity": "legendary",
     "value": 5000,
     "recipe": null,
     "recyclesInto": null
@@ -11426,15 +11435,6 @@
     "type": "Blueprint",
     "rarity": "legendary",
     "value": 5000,
-    "recipe": null,
-    "recyclesInto": null
-  },
-  {
-    "id": "work-light",
-    "name": "Work Light",
-    "type": "Furniture",
-    "rarity": "common",
-    "value": 0,
     "recipe": null,
     "recyclesInto": null
   },
