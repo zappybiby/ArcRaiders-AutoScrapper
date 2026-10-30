@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "generatedAt": "2026-10-14T18:11:56.905415Z",
+    "generatedAt": "2026-10-30T18:54:10.661173Z",
     "data": {
-      "lastUpdated": "2026-10-14T18:11:56.869701Z",
+      "lastUpdated": "2026-10-30T18:54:10.631670Z",
       "source": "https://metaforge.app/arc-raiders",
       "version": "autoscrapper-data-1"
     },
-    "itemCount": 1109,
+    "itemCount": 1307,
     "allQuestsCompleted": true
   },
   "items": [
@@ -57,7 +57,7 @@
       "value": 640,
       "action": "keep",
       "analysis": [
-        "Used in 2 crafting recipes",
+        "Used in 4 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -146,10 +146,11 @@
       "id": "alarm-clock",
       "name": "Alarm Clock",
       "value": 1000,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "Recycles into: 6x Plastic Parts, 1x Processor",
-        "Recycle value: Components (860 coins) worth less than Item (1000 coins)"
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -242,6 +243,17 @@
       "id": "amplification-module-mk-v",
       "name": "Amplification Module MK. V",
       "value": 7000,
+      "action": "keep",
+      "analysis": [
+        "Weapon - review based on your current loadout",
+        "Consider tier and your play style",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "amplified-anvil",
+      "name": "Amplified Anvil",
+      "value": 20800,
       "action": "keep",
       "analysis": [
         "Weapon - review based on your current loadout",
@@ -1303,6 +1315,16 @@
       ]
     },
     {
+      "id": "anniversary-panettone-backpack-attachment",
+      "name": "Anniversary Panettone (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "anomalia-outfit",
       "name": "Anomalia (Outfit)",
       "value": 0,
@@ -1369,16 +1391,6 @@
       "id": "anvil-recipe",
       "name": "Anvil Blueprint",
       "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Legendary rarity - extremely valuable",
-        "Keep all legendaries"
-      ]
-    },
-    {
-      "id": "anvil-splitter",
-      "name": "Anvil Splitter",
-      "value": 7000,
       "action": "keep",
       "analysis": [
         "Legendary rarity - extremely valuable",
@@ -1531,10 +1543,11 @@
       "id": "arc-synthetic-resin",
       "name": "ARC Synthetic Resin",
       "value": 1000,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "Recycles into: 14x Plastic Parts",
-        "Recycle value: Components (840 coins) worth less than Item (1000 coins)"
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -1733,6 +1746,16 @@
       "analysis": [
         "Legendary rarity - extremely valuable",
         "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "banshee-helmet",
+      "name": "Banshee Helmet (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -2348,6 +2371,16 @@
       ]
     },
     {
+      "id": "blue-eye-stripe-face-style",
+      "name": "Blue Eye Stripe (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "blue-gate-cellar-key",
       "name": "Blue Gate Cellar Key",
       "value": 100,
@@ -2445,6 +2478,16 @@
     {
       "id": "blue-yellow-aviator-color",
       "name": "Blue Yellow (Aviator Color)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "bob-hair",
+      "name": "Bob (Hair)",
       "value": 0,
       "action": "sell",
       "analysis": [
@@ -2902,8 +2945,8 @@
       "value": 640,
       "action": "sell",
       "analysis": [
-        "Recycles into: 8x Plastic Parts",
-        "Recycle value: Components (480 coins) worth less than Item (640 coins)"
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -2933,7 +2976,7 @@
       "value": 300,
       "action": "keep",
       "analysis": [
-        "Used in 5 crafting recipes",
+        "Used in 6 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -3013,8 +3056,28 @@
       ]
     },
     {
+      "id": "carbide-lamp-backpack-attachment",
+      "name": "Carbide Lamp (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "carriga-outfit",
       "name": "Carriga (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "carrion-helmet",
+      "name": "Carrion Helmet (Scrappy Outfit)",
       "value": 0,
       "action": "sell",
       "analysis": [
@@ -3196,6 +3259,26 @@
       ]
     },
     {
+      "id": "choo-choo-emote",
+      "name": "Choo-Choo (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "circular-saw-backpack-attachment",
+      "name": "Circular Saw (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "clinic-medical-cabinet",
       "name": "Clinic Medical Cabinet",
       "value": 0,
@@ -3268,8 +3351,8 @@
       "value": 640,
       "action": "sell",
       "analysis": [
-        "Recycles into: 3x Plastic Parts, 3x Rubber Parts",
-        "Recycle value: Components (330 coins) worth less than Item (640 coins)"
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -3331,8 +3414,8 @@
       "value": 1000,
       "action": "keep",
       "analysis": [
-        "Used in 1 crafting recipes",
-        "Rare crafting material",
+        "Rare rarity",
+        "May have future use - review carefully",
         "Override: treat 'Your Call' as Keep"
       ]
     },
@@ -3405,760 +3488,9 @@
       "value": 3000,
       "action": "keep",
       "analysis": [
-        "Used in 3 crafting recipes",
+        "Used in 4 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "complex-gun-parts-blueprint",
-      "name": "Complex Gun Parts Blueprint",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Legendary rarity - extremely valuable",
-        "Keep all legendaries"
-      ]
-    },
-    {
-      "id": "console-chest",
-      "name": "Console Chest",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "console-chest-design",
-      "name": "Console Chest Design",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "coolant",
-      "name": "Coolant",
-      "value": 1000,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 5x Chemicals, 2x Oil",
-        "Recycle value: Components (850 coins) worth less than Item (1000 coins)"
-      ]
-    },
-    {
-      "id": "cooling-coil",
-      "name": "Cooling Coil",
-      "value": 1000,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 6x Chemicals, 2x Steel Spring",
-        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
-      ]
-    },
-    {
-      "id": "cooling-fan",
-      "name": "Cooling Fan",
-      "value": 2000,
-      "action": "keep",
-      "analysis": [
-        "Needed for project: Expedition Project"
-      ]
-    },
-    {
-      "id": "corsaro-outfit",
-      "name": "Corsaro (Outfit)",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "cosmo-outfit",
-      "name": "Cosmo (Outfit)",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "cracked-bioscanner",
-      "name": "Cracked Bioscanner",
-      "value": 1000,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 3x Battery, 3x Rubber Parts",
-        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
-      ]
-    },
-    {
-      "id": "crash-mat",
-      "name": "Crash Mat",
-      "value": 1200,
-      "action": "keep",
-      "analysis": [
-        "Consumable item - grenades, healing items, etc.",
-        "Review based on your current inventory needs",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "crash-mat-blueprint",
-      "name": "Crash Mat Blueprint",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Legendary rarity - extremely valuable",
-        "Keep all legendaries"
-      ]
-    },
-    {
-      "id": "cresta-outfit",
-      "name": "Cresta (Outfit)",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "crimson-racer-aviator-colour",
-      "name": "Crimson Racer (Aviator Colour)",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "crude-explosives",
-      "name": "Crude Explosives",
-      "value": 270,
-      "action": "keep",
-      "analysis": [
-        "Used in 6 crafting recipes",
-        "Common crafting ingredient",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "crumpled-plastic-bottle",
-      "name": "Crumpled Plastic Bottle",
-      "value": 270,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 4x Plastic Parts",
-        "Recycle value: Components (240 coins) worth less than Item (270 coins)"
-      ]
-    },
-    {
-      "id": "dam-control-center-tower-key",
-      "name": "Dam Control Tower Key",
-      "value": 100,
-      "action": "keep",
-      "analysis": [
-        "Key - opens locked areas and containers",
-        "Review based on areas you want to access",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "dam-controlled-access-zone-key",
-      "name": "Dam Controlled Access Zone Key",
-      "value": 100,
-      "action": "keep",
-      "analysis": [
-        "Key - opens locked areas and containers",
-        "Review based on areas you want to access",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "dam-staff-room-key",
-      "name": "Dam Staff Room Key",
-      "value": 100,
-      "action": "keep",
-      "analysis": [
-        "Key - opens locked areas and containers",
-        "Review based on areas you want to access",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "dam-surveillance-key",
-      "name": "Dam Surveillance Key",
-      "value": 100,
-      "action": "keep",
-      "analysis": [
-        "Key - opens locked areas and containers",
-        "Review based on areas you want to access",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "dam-testing-annex-key",
-      "name": "Dam Testing Annex Key",
-      "value": 100,
-      "action": "keep",
-      "analysis": [
-        "Key - opens locked areas and containers",
-        "Review based on areas you want to access",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "dam-utility-key",
-      "name": "Dam Utility Key",
-      "value": 100,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "damaged-arc-motion-core",
-      "name": "Damaged ARC Motion Core",
-      "value": 640,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 2x ARC Alloy",
-        "Recycle value: Components (400 coins) worth less than Item (640 coins)"
-      ]
-    },
-    {
-      "id": "damaged-arc-powercell",
-      "name": "Damaged ARC Powercell",
-      "value": 293,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 1x ARC Alloy",
-        "Recycle value: Components (200 coins) worth less than Item (293 coins)"
-      ]
-    },
-    {
-      "id": "damaged-fireball-burner",
-      "name": "Damaged Fireball Burner",
-      "value": 270,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 1x ARC Alloy",
-        "Recycle value: Components (200 coins) worth less than Item (270 coins)"
-      ]
-    },
-    {
-      "id": "damaged-heat-sink",
-      "name": "Damaged Heat Sink",
-      "value": 1000,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 6x Metal Parts, 2x Wires",
-        "Recycle value: Components (850 coins) worth less than Item (1000 coins)"
-      ]
-    },
-    {
-      "id": "damaged-leaper-pulse-unit",
-      "name": "Damaged Leaper Pulse Unit",
-      "value": 1000,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "damaged-rocketeer-part",
-      "name": "Damaged Rocketeer Driver",
-      "value": 1000,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 3x ARC Alloy",
-        "Recycle value: Components (600 coins) worth less than Item (1000 coins)"
-      ]
-    },
-    {
-      "id": "damaged-snitch-scanner",
-      "name": "Damaged Snitch Scanner",
-      "value": 659,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "damaged-tick-pod",
-      "name": "Damaged Tick Pod",
-      "value": 270,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 1x ARC Alloy",
-        "Recycle value: Components (200 coins) worth less than Item (270 coins)"
-      ]
-    },
-    {
-      "id": "damaged-wasp-driver",
-      "name": "Damaged Wasp Driver",
-      "value": 270,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 1x ARC Alloy",
-        "Recycle value: Components (200 coins) worth less than Item (270 coins)"
-      ]
-    },
-    {
-      "id": "danaged-hornet-driver",
-      "name": "Damaged Hornet Driver",
-      "value": 640,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "dart-board",
-      "name": "Dart Board",
-      "value": 2000,
-      "action": "sell",
-      "analysis": [
-        "High value (2000 coins)",
-        "No crafting or upgrade use"
-      ]
-    },
-    {
-      "id": "deadline",
-      "name": "Deadline",
-      "value": 6000,
-      "action": "keep",
-      "analysis": [
-        "Consumable item - grenades, healing items, etc.",
-        "Review based on your current inventory needs",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "deadline-blueprint",
-      "name": "Deadline Blueprint",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Legendary rarity - extremely valuable",
-        "Keep all legendaries"
-      ]
-    },
-    {
-      "id": "deadwire-outfit",
-      "name": "Deadwire (Outfit)",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "defibrillator",
-      "name": "Defibrillator",
-      "value": 1000,
-      "action": "keep",
-      "analysis": [
-        "Consumable item - grenades, healing items, etc.",
-        "Review based on your current inventory needs",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "defibrillator-recipe",
-      "name": "Defibrillator Blueprint",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Legendary rarity - extremely valuable",
-        "Keep all legendaries"
-      ]
-    },
-    {
-      "id": "deflated-football",
-      "name": "Deflated Football",
-      "value": 1000,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 9x Fabric, 9x Rubber Parts",
-        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
-      ]
-    },
-    {
-      "id": "degraded-arc-rubber",
-      "name": "Degraded ARC Rubber",
-      "value": 640,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 11x Rubber Parts",
-        "Recycle value: Components (550 coins) worth less than Item (640 coins)"
-      ]
-    },
-    {
-      "id": "desk-lamp",
-      "name": "Desk Lamp",
-      "value": 2000,
-      "action": "sell",
-      "analysis": [
-        "High value (2000 coins)",
-        "No crafting or upgrade use"
-      ]
-    },
-    {
-      "id": "devotee-outfit",
-      "name": "Devotee (Outfit)",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "differential-microphone",
-      "name": "Differential Microphone",
-      "value": 1000,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "diner-ceiling-lamp",
-      "name": "Diner Ceiling Lamp",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "diner-ceiling-lamp-design",
-      "name": "Diner Ceiling Lamp Design",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "diner-cupboard",
-      "name": "Diner Cupboard",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "diner-cupboard-design",
-      "name": "Diner Cupboard Design",
-      "value": 5000,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "diner-shelf",
-      "name": "Diner Shelf",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "diner-shelf-design",
-      "name": "Diner Shelf Design",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "diner-sofa",
-      "name": "Diner Sofa",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "diner-sofa-design",
-      "name": "Diner Sofa Design",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "diner-stool",
-      "name": "Diner Stool",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "diner-stool-design",
-      "name": "Diner Stool Design",
-      "value": 5000,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "diner-table",
-      "name": "Diner Table",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "diner-table-design",
-      "name": "Diner Table Design",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "diving-googles",
-      "name": "Diving Goggles",
-      "value": 640,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 12x Rubber Parts",
-        "Recycle value: Components (600 coins) worth less than Item (640 coins)"
-      ]
-    },
-    {
-      "id": "dockmasters-detector",
-      "name": "Dockmaster's Detector",
-      "value": 1000,
-      "action": "keep",
-      "analysis": [
-        "Consumable item - grenades, healing items, etc.",
-        "Review based on your current inventory needs",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "dodger-s-note",
-      "name": "Dodger's Note",
-      "value": 100,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "dog-collar",
-      "name": "Dog Collar",
-      "value": 640,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 8x Fabric, 1x Metal Parts",
-        "Recycle value: Components (475 coins) worth less than Item (640 coins)"
-      ]
-    },
-    {
-      "id": "dolabra",
-      "name": "Dolabra",
-      "value": 27500,
-      "action": "keep",
-      "analysis": [
-        "Legendary rarity - extremely valuable",
-        "Keep all legendaries"
-      ]
-    },
-    {
-      "id": "dolabra-blueprint",
-      "name": "Dolabra Blueprint",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Legendary rarity - extremely valuable",
-        "Keep all legendaries"
-      ]
-    },
-    {
-      "id": "doodly-duck",
-      "name": "Doodly Duck",
-      "value": 3000,
-      "action": "sell",
-      "analysis": [
-        "High value (3000 coins)",
-        "No crafting or upgrade use"
-      ]
-    },
-    {
-      "id": "door-blocker",
-      "name": "Door Blocker",
-      "value": 270,
-      "action": "keep",
-      "analysis": [
-        "Consumable item - grenades, healing items, etc.",
-        "Review based on your current inventory needs",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "dragons-breath-stencil",
-      "name": "Dragon's Breath Stencil",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Legendary rarity - extremely valuable",
-        "Keep all legendaries"
-      ]
-    },
-    {
-      "id": "draped-debris-a",
-      "name": "Draped Debris A",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "draped-debris-a-design",
-      "name": "Draped Debris A Design",
-      "value": 5000,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "draped-debris-b",
-      "name": "Draped Debris B",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "draped-debris-b-design",
-      "name": "Draped Debris B Design",
-      "value": 5000,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "draped-debris-c",
-      "name": "Draped Debris C",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "draped-debris-c-design",
-      "name": "Draped Debris C Design",
-      "value": 5000,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "draped-debris-e",
-      "name": "Draped Debris E",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "draped-debris-e-design",
-      "name": "Draped Debris E Design",
-      "value": 5000,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "draped-debris-f",
-      "name": "Draped Debris F",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "draped-debris-f-design",
-      "name": "Draped Debris F Design",
-      "value": 5000,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
       ]
     },
     {
@@ -4187,8 +3519,8 @@
       "value": 640,
       "action": "sell",
       "analysis": [
-        "Recycles into: 9x Plastic Parts",
-        "Recycle value: Components (540 coins) worth less than Item (640 coins)"
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -4207,7 +3539,7 @@
       "value": 300,
       "action": "keep",
       "analysis": [
-        "Used in 11 crafting recipes",
+        "Used in 13 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -4729,12 +4061,22 @@
       ]
     },
     {
+      "id": "eyebrow-bandaid-face-style",
+      "name": "Eyebrow Bandaid (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "fabric",
       "name": "Fabric",
       "value": 50,
       "action": "keep",
       "analysis": [
-        "Used in 3 crafting recipes",
+        "Used in 4 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -4811,6 +4153,26 @@
       "analysis": [
         "High value (7000 coins)",
         "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "fancy-plate",
+      "name": "Fancy Plate",
+      "value": 7000,
+      "action": "sell",
+      "analysis": [
+        "High value (7000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "fax-machine-black-yellow-backpack-attachment",
+      "name": "Fax Machine - Black Yellow (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -4913,8 +4275,8 @@
       "value": 640,
       "action": "sell",
       "analysis": [
-        "Recycles into: 1x ARC Alloy, 1x Crude Explosives",
-        "Recycle value: Components (470 coins) worth less than Item (640 coins)"
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -5101,8 +4463,8 @@
       "value": 660,
       "action": "sell",
       "analysis": [
-        "Recycles into: 6x Plastic Parts, 6x Rubber Parts",
-        "Recycle value: Components (660 coins) worth less than Item (660 coins)"
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -5186,6 +4548,2865 @@
       ]
     },
     {
+      "id": "game-cosmetic-1018868796",
+      "name": "Film Reel (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1034527592",
+      "name": "Water Bottle (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1037776659",
+      "name": "Toy Plane (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1040748031",
+      "name": "Lizzy (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1041759434",
+      "name": "Salvager (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1054405158",
+      "name": "Yes (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1059828852",
+      "name": "Sprayed Eyes Red (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1059854545",
+      "name": "Low Bun (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1067564091",
+      "name": "Janitor Cap (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1079596485",
+      "name": "Shoes (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1095503944",
+      "name": "Ritual Staff (Raider Tool)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1124937991",
+      "name": "Face 17 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1130491934",
+      "name": "Basic (Raider Tool)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1136365171",
+      "name": "Vanguard Helmet (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1151095036",
+      "name": "Sorry (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1151290091",
+      "name": "Brigade Helmet (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-116152053",
+      "name": "Chattering Teeth (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1165317823",
+      "name": "Fist in Air (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1177897024",
+      "name": "Hit Chest (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1218474767",
+      "name": "Binoculars (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1246743456",
+      "name": "Smokey Eye Red (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1259101818",
+      "name": "Large Radiopack (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1267484126",
+      "name": "Batting Helmet (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1282584552",
+      "name": "Boo (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1323303762",
+      "name": "Face 03 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1329588726",
+      "name": "Bucket (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1338292578",
+      "name": "Squat (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1343271787",
+      "name": "Water Bottle Empty (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1350246447",
+      "name": "Road Flare (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1350601573",
+      "name": "Instant Film Camera (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1353146764",
+      "name": "Flight Recorder (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1360425568",
+      "name": "Messy Backslick (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1375139869",
+      "name": "Space Shuttle Keychain (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1411897210",
+      "name": "Face 13 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1439174795",
+      "name": "Fuel Canister (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1462643127",
+      "name": "Globe (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1535162451",
+      "name": "Rainy Day Hat (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1543288288",
+      "name": "Coffee Pot (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1560027855",
+      "name": "Thank you (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1572194966",
+      "name": "Electrician (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-159531742",
+      "name": "Hose (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1601220944",
+      "name": "Mine (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1612998293",
+      "name": "Moon Lander (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-162360068",
+      "name": "Skull Pantomime (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1652425496",
+      "name": "Aviator Glasses (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1655099382",
+      "name": "Car Air Freshener (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1667060404",
+      "name": "Mastery Medal (Backpack Charm)",
+      "value": 0,
+      "action": "keep",
+      "analysis": [
+        "Multiple rarities share this name; the scanner can’t distinguish between them."
+      ]
+    },
+    {
+      "id": "game-cosmetic-1703909321",
+      "name": "Brown (Scrappy Appearance)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1736796603",
+      "name": "Bonded Bolts (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1756165969",
+      "name": "Smokey Eye (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1795242302",
+      "name": "Austra White (Scrappy Appearance)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1798101245",
+      "name": "Lance's Mixtape (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1800014709",
+      "name": "Gauge Box (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1818144613",
+      "name": "Sideburns (Facial Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1832844325",
+      "name": "Fez (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1833458640",
+      "name": "Surgeon Hat (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1845388826",
+      "name": "Lip Scar (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1850185457",
+      "name": "Fish (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1885643106",
+      "name": "Right Here (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-190228872",
+      "name": "Antenna Attachment (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1906017095",
+      "name": "Empty Wine Bottle (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1936179156",
+      "name": "Salute (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1950873150",
+      "name": "Trap Controller (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1961280641",
+      "name": "Greet (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1968797101",
+      "name": "Face 06 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1977040370",
+      "name": "Team Up? (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1980044539",
+      "name": "Ayam Cemani (Scrappy Appearance)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-1995882061",
+      "name": "Toolbag (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-2013768215",
+      "name": "Henna (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-2014334926",
+      "name": "Pressure Gauge (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-2024611007",
+      "name": "Vintage Mic (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-203796977",
+      "name": "Fuel Jockey (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-2052748760",
+      "name": "Bowl Cut (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-2053872668",
+      "name": "Bandaid Nose (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-2060146068",
+      "name": "Waterskin (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-2069746413",
+      "name": "Whaler (Raider Tool)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-2082939526",
+      "name": "Mohawk (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-2094056094",
+      "name": "Tick Trophy (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-2094385158",
+      "name": "Can't Hear You (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-2099617945",
+      "name": "Sport Face Paint (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-2106480353",
+      "name": "Satellite Dish (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-2107249390",
+      "name": "Gel Patches (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-2130418374",
+      "name": "Middle Fade (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-215376868",
+      "name": "Punch Hands (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-220109490",
+      "name": "Toy Robot (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-231741991",
+      "name": "Sundial (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-231923225",
+      "name": "Slick Bob (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-237749844",
+      "name": "Gas Mask (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-242039238",
+      "name": "Kraken Tattoo (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-243510117",
+      "name": "Wasp Hunter Helmet (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-261883191",
+      "name": "Mullet (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-280071240",
+      "name": "Flippers (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-316059420",
+      "name": "Face 14 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-31802189",
+      "name": "Bomber Helmet (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-320523516",
+      "name": "Soot (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-348256746",
+      "name": "Leg Stretch (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-368717157",
+      "name": "Urchin Harvester (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-369175091",
+      "name": "Bobblehead (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-378128788",
+      "name": "Canteen (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-387386628",
+      "name": "Face 10 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-394203845",
+      "name": "Warm Up (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-413786447",
+      "name": "Tribal Eye (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-450395575",
+      "name": "Eye Stripe (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-460071158",
+      "name": "Green Eye Stripe (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-468851010",
+      "name": "Traveler (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-481981702",
+      "name": "Hornet Hunter (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-492856770",
+      "name": "Tribal Face Paint (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-511677369",
+      "name": "Record Player (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-516292676",
+      "name": "Braided Bun (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-519701803",
+      "name": "Eye Scar (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-520767834",
+      "name": "Field Phone (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-526307698",
+      "name": "Annoyed (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-545067017",
+      "name": "Glowsticks (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-570411026",
+      "name": "Spider Tattoo (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-582365160",
+      "name": "Hip Groove (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-596513427",
+      "name": "Scrolls (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-597103599",
+      "name": "Football (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-599821319",
+      "name": "Heel Click (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-603418267",
+      "name": "Angry (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-608353380",
+      "name": "Buff Rock (Scrappy Appearance)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-63564946",
+      "name": "I See You (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-660621190",
+      "name": "Backpack Adjust (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-70670259",
+      "name": "Wicker Basket (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-708946708",
+      "name": "Slit Throat (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-7092746",
+      "name": "Cauldron (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-720910232",
+      "name": "Receding (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-727271464",
+      "name": "Tribal Tattoo Red (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-729080409",
+      "name": "Harmonica (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-750281747",
+      "name": "Buzzcut (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-753285227",
+      "name": "Face 12 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-763263389",
+      "name": "Twig Trinket (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-778850628",
+      "name": "Royal Steed (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-789243574",
+      "name": "Bruiser (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-798853100",
+      "name": "Snake Tattoo (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-806183617",
+      "name": "Ceramic Vase (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-812819110",
+      "name": "Aviation Tag (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-821218707",
+      "name": "Check Compass (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-823869160",
+      "name": "Spotting Scope (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-824767767",
+      "name": "Anemometer (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-828500010",
+      "name": "Spinning Top (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-828819479",
+      "name": "Golden Rubber Duck (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-860043199",
+      "name": "Rubber Duck (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-872801003",
+      "name": "Anchor (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-876798988",
+      "name": "Ship Bell (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-886197932",
+      "name": "Field Kitchen (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-901790311",
+      "name": "Icebreaker (Raider Tool)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-922282065",
+      "name": "Just Stop (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-925016844",
+      "name": "Howl (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-932345099",
+      "name": "Engineer (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-934588462",
+      "name": "Weapons Case (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-951322671",
+      "name": "Fist Shakes (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-982910925",
+      "name": "Step Dance (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-985805630",
+      "name": "Cassette Player (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-998158721",
+      "name": "Face 05 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1010952123",
+      "name": "Bruised (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1019848832",
+      "name": "Game Console (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1031551887",
+      "name": "Brass Faucet (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1032970942",
+      "name": "Gardening Sheers (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1037098441",
+      "name": "Reliquary (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1071124101",
+      "name": "Spyglass Staff (Raider Tool)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1073127953",
+      "name": "Wire Spool (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1079473934",
+      "name": "Snowglobe (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1099728399",
+      "name": "Bucket (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1187017172",
+      "name": "Shark Bite (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1196575605",
+      "name": "Flirty Greeting (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1203612746",
+      "name": "Face 09 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1213451322",
+      "name": "Beekeeper (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1254761697",
+      "name": "Freckles (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1257736152",
+      "name": "Lance Keychain (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1264756154",
+      "name": "Glove Tug (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1273941139",
+      "name": "Beanie (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1302452813",
+      "name": "Sidecut Dreads (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1308477264",
+      "name": "Horns (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1319203648",
+      "name": "Cartographer (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n134743074",
+      "name": "Skull Paint (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1353065171",
+      "name": "Gourd (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1378660176",
+      "name": "Stubble Beard (Facial Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1411540088",
+      "name": "Trashpile Bag (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1423023010",
+      "name": "Thick Mustache (Facial Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1440156128",
+      "name": "Come Here (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1504118640",
+      "name": "Speckled (Scrappy Appearance)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1511325079",
+      "name": "Military Paint White (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1523188125",
+      "name": "Fish Trap (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1539991902",
+      "name": "Spaceship Souvenir (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1614697431",
+      "name": "Buoy (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1633960101",
+      "name": "Pumped Dance (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1639787022",
+      "name": "Torso Stretch (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1660878902",
+      "name": "Glitch Tattoo (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1662541338",
+      "name": "Baseball (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1666161734",
+      "name": "Long Afro (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n167875472",
+      "name": "Archeologist (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n168599984",
+      "name": "Soda Can (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n16860888",
+      "name": "Athlete (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1697100791",
+      "name": "Face 04 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1702458231",
+      "name": "Face 08 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1704403239",
+      "name": "Gilded Pickaxe (Raider Tool)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1710927261",
+      "name": "Hydraulic Pump (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1721654068",
+      "name": "Soccer Finals Ticket (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1739608943",
+      "name": "Scout Ahead (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n177288755",
+      "name": "Bone Saw (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1777081234",
+      "name": "Turban (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1777211369",
+      "name": "Finger Guns Wave (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1795091651",
+      "name": "Hand Signals (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1816511586",
+      "name": "Baby Chick Pendant (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1819662321",
+      "name": "Short Upswept (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1823783642",
+      "name": "Face 11 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1823908414",
+      "name": "Envoy (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1848363791",
+      "name": "Drum (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1856875974",
+      "name": "Tribal Eye Red (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1858538350",
+      "name": "French Braids (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1861238756",
+      "name": "Bandaid Cheek (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1881410282",
+      "name": "Spyglass (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1896442731",
+      "name": "Clap Prayer (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1953507044",
+      "name": "Portable Jammer (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1956270476",
+      "name": "Punching (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1961476439",
+      "name": "Radiopack (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n1976290323",
+      "name": "Right On (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n2007993821",
+      "name": "Scrappy Enamel Charm (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n2015849295",
+      "name": "Boxing Gloves (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n2034992061",
+      "name": "Eye Band (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n2041569455",
+      "name": "Pressurizer (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n204945116",
+      "name": "Pop Helmet (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n2057984878",
+      "name": "Hydrologist (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n2064468470",
+      "name": "Think About It (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n2084412649",
+      "name": "Face 16 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n2096955525",
+      "name": "Maps (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n21071780",
+      "name": "Welsummer (Scrappy Appearance)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n2112699586",
+      "name": "Astronaut Helmet (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n2118959779",
+      "name": "Lemons (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n2121438012",
+      "name": "Radio (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n2135940426",
+      "name": "Come On (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n2144213258",
+      "name": "Sextant (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n222608002",
+      "name": "Buh-bye! (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n2324538",
+      "name": "Stubble (Facial Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n270221946",
+      "name": "Power Pose (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n290382040",
+      "name": "Eyeliner (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n292337301",
+      "name": "Spit In Hands (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n300242042",
+      "name": "Huntsman (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n310857400",
+      "name": "Burn Scar (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n341295132",
+      "name": "Face 02 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n341608431",
+      "name": "Howdy (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n343262090",
+      "name": "Hot Air Balloon (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n34870170",
+      "name": "First Aid Kit (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n362837054",
+      "name": "Long Bangs (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n368932213",
+      "name": "Blue Forehead Paint (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n377517504",
+      "name": "Boat Hook (Raider Tool)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n394233447",
+      "name": "Military Paint (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n40690569",
+      "name": "Blanket Roll (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n460526838",
+      "name": "Sledgehammer (Raider Tool)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n462157271",
+      "name": "Hiker (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n465176259",
+      "name": "Short Wavy (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n47092790",
+      "name": "Memorialist (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n480123730",
+      "name": "Face 15 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n516654195",
+      "name": "Floppy Disk (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n523619343",
+      "name": "Grain Sack (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n525903057",
+      "name": "Fencer Glasses (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n529211046",
+      "name": "Formal Bow (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n533704534",
+      "name": "Rabbit's Foot (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n534054996",
+      "name": "Snowy Mountain Pick (Raider Tool)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n568636219",
+      "name": "Gas Canister (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n571723644",
+      "name": "Face 18 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n580824538",
+      "name": "Finger Gun Rapid Fire (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n630317570",
+      "name": "You Come At Me (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n649100412",
+      "name": "Radio Mountaineer (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n654234370",
+      "name": "Bastion Mace (Raider Tool)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n665137117",
+      "name": "Space Blaster (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n699326304",
+      "name": "Stapler (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n703890007",
+      "name": "Canned Tomatoes (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n734651836",
+      "name": "Speckled Face Art (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n766288644",
+      "name": "Full Beard (Facial Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n770518353",
+      "name": "Gladiator Helmet (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n785704548",
+      "name": "Fling Coin (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n79868038",
+      "name": "Fax Machine (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n820135418",
+      "name": "Space Wrench (Raider Tool)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n840204160",
+      "name": "Sailor (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n841372089",
+      "name": "Bird House (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n844083575",
+      "name": "Thruster Hammer (Raider Tool)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n860805204",
+      "name": "Beekeeper's Veil (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n866185106",
+      "name": "Sport Face Paint Blue (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n86979233",
+      "name": "Face 07 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n881132168",
+      "name": "Sprayed Eyes (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n8843796",
+      "name": "Antler Talisman (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n924349790",
+      "name": "Snow Rescue Kit (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n946156944",
+      "name": "Soldier (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n985581001",
+      "name": "Face 01 (Face)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "game-cosmetic-n991122640",
+      "name": "Vintage Toy Car (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "garlic-press",
       "name": "Garlic Press",
       "value": 1000,
@@ -5249,6 +7470,16 @@
       ]
     },
     {
+      "id": "gear-string-backpack-charm",
+      "name": "Gear String (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "gearshifter-outfit",
       "name": "Gearshifter (Outfit)",
       "value": 0,
@@ -5298,6 +7529,16 @@
         "Rare rarity",
         "May have future use - review carefully",
         "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "glacier-smasher-raider-tool",
+      "name": "Glacier Smasher (Raider Tool)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -5578,6 +7819,16 @@
       ]
     },
     {
+      "id": "handheld-lamp-backpack-charm",
+      "name": "Handheld Lamp (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "happy-jig-emote",
       "name": "Happy Jig (Emote)",
       "value": 0,
@@ -5616,6 +7867,26 @@
       "analysis": [
         "Recycles into: 7x Rubber Parts, 1x Speaker Component",
         "Recycle value: Components (850 coins) worth less than Item (1000 coins)"
+      ]
+    },
+    {
+      "id": "heart-emote",
+      "name": "Heart (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "hearthkeeper-backpack",
+      "name": "Hearthkeeper (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -5715,6 +7986,16 @@
       ]
     },
     {
+      "id": "high-ponytail-hair",
+      "name": "High Ponytail (Hair)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "high-voltage-exposure",
       "name": "High-Voltage Exposure",
       "value": 0,
@@ -5763,7 +8044,7 @@
       "value": 1000,
       "action": "keep",
       "analysis": [
-        "Used in 2 crafting recipes",
+        "Used in 3 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -5892,6 +8173,16 @@
       ]
     },
     {
+      "id": "ice-climber-raider-tool",
+      "name": "Ice Climber (Raider Tool)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "ice-cream-scooper",
       "name": "Ice Cream Scooper",
       "value": 640,
@@ -5902,8 +8193,28 @@
       ]
     },
     {
+      "id": "ice-giant-helmet",
+      "name": "Ice Giant Helmet (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "ice-giant-outfit",
       "name": "Ice Giant (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "ice-screws-backpack-charm",
+      "name": "Ice Screws (Backpack Charm)",
       "value": 0,
       "action": "sell",
       "analysis": [
@@ -6005,6 +8316,16 @@
       ]
     },
     {
+      "id": "infrared-transmitter-backpack-attachment",
+      "name": "Infrared Transmitter (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "insulation-roll",
       "name": "Insulation Roll",
       "value": 3000,
@@ -6080,6 +8401,16 @@
       ]
     },
     {
+      "id": "joystick-black-yellow-backpack-charm",
+      "name": "Joystick - Black Yellow (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "junior-outfit",
       "name": "Junior (Outfit)",
       "value": 0,
@@ -6117,6 +8448,16 @@
       "analysis": [
         "Legendary rarity - extremely valuable",
         "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "kabuki-face-paint-face-style",
+      "name": "Kabuki Face Paint (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -6161,6 +8502,16 @@
         "Weapon - review based on your current loadout",
         "Consider tier and your play style",
         "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "keyboard-black-yellow-backpack-attachment",
+      "name": "Keyboard - Black Yellow (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -6306,7 +8657,7 @@
     },
     {
       "id": "leviathans-crown-ship-model",
-      "name": "\u201cLeviathan's Crown\u201d Ship Model",
+      "name": "“Leviathan's Crown” Ship Model",
       "value": 10000,
       "action": "keep",
       "analysis": [
@@ -6429,13 +8780,33 @@
       ]
     },
     {
+      "id": "lithium-pack-backpack-attachment",
+      "name": "Lithium Pack (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "lone-survivor-backpack",
+      "name": "Lone Survivor (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "looting-mk-1",
       "name": "Looting Mk. 1",
       "value": 640,
       "action": "sell",
       "analysis": [
-        "Recycles into: 3x Plastic Parts, 3x Rubber Parts",
-        "Recycle value: Components (330 coins) worth less than Item (640 coins)"
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -6580,7 +8951,7 @@
       "value": 300,
       "action": "keep",
       "analysis": [
-        "Used in 6 crafting recipes",
+        "Used in 8 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -6602,6 +8973,16 @@
       "analysis": [
         "Recycles into: 1x Magnetic Accelerator, 1x Steel Spring",
         "Recycle value: Components (5800 coins) worth less than Item (6000 coins)"
+      ]
+    },
+    {
+      "id": "mailbox-backpack-attachment",
+      "name": "Mailbox (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -6645,13 +9026,22 @@
       ]
     },
     {
+      "id": "mask-fragment",
+      "name": "Mask Fragment",
+      "value": 7000,
+      "action": "sell",
+      "analysis": [
+        "High value (7000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
       "id": "mastery-medal-backpack-charm",
       "name": "Mastery Medal (Backpack Charm)",
       "value": 0,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
+        "Multiple rarities share this name; the scanner can’t distinguish between them."
       ]
     },
     {
@@ -6680,7 +9070,7 @@
       "value": 640,
       "action": "keep",
       "analysis": [
-        "Used in 34 crafting recipes",
+        "Used in 40 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -6702,7 +9092,7 @@
       "value": 700,
       "action": "keep",
       "analysis": [
-        "Used in 27 crafting recipes",
+        "Used in 23 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -6819,12 +9209,22 @@
       ]
     },
     {
+      "id": "mock-scared-emote",
+      "name": "Mock Scared (Emote)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "mod-components",
       "name": "Mod Components",
       "value": 1750,
       "action": "keep",
       "analysis": [
-        "Used in 14 crafting recipes",
+        "Used in 17 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -6843,11 +9243,10 @@
       "id": "moss",
       "name": "Moss",
       "value": 500,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Used in 1 crafting recipes",
-        "Rare crafting material",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 3x Assorted Seeds",
+        "Recycle value: Components (300 coins) worth less than Item (500 coins)"
       ]
     },
     {
@@ -6868,6 +9267,16 @@
         "Consumable item - grenades, healing items, etc.",
         "Review based on your current inventory needs",
         "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "mouse-black-yellow-backpack-charm",
+      "name": "Mouse - Black Yellow (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -6932,706 +9341,6 @@
       ]
     },
     {
-      "id": "muzzle-brake-i",
-      "name": "Muzzle Brake I",
-      "value": 640,
-      "action": "keep",
-      "analysis": [
-        "Weapon - review based on your current loadout",
-        "Consider tier and your play style",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "muzzle-brake-ii",
-      "name": "Muzzle Brake II",
-      "value": 2000,
-      "action": "keep",
-      "analysis": [
-        "Weapon - review based on your current loadout",
-        "Consider tier and your play style",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "muzzle-brake-ii-recipe",
-      "name": "Muzzle Brake II Blueprint",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Legendary rarity - extremely valuable",
-        "Keep all legendaries"
-      ]
-    },
-    {
-      "id": "muzzle-brake-iii",
-      "name": "Muzzle Brake III",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Weapon - review based on your current loadout",
-        "Consider tier and your play style",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "muzzle-brake-iii-recipe",
-      "name": "Muzzle Brake III Blueprint",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Legendary rarity - extremely valuable",
-        "Keep all legendaries"
-      ]
-    },
-    {
-      "id": "nascosto-outfit",
-      "name": "Nascosto (Outfit)",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "noisemaker",
-      "name": "Noisemaker",
-      "value": 640,
-      "action": "keep",
-      "analysis": [
-        "Consumable item - grenades, healing items, etc.",
-        "Review based on your current inventory needs",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "number-plate",
-      "name": "Number Plate",
-      "value": 270,
-      "action": "sell",
-      "analysis": [
-        "Recycles into: 3x Metal Parts",
-        "Recycle value: Components (225 coins) worth less than Item (270 coins)"
-      ]
-    },
-    {
-      "id": "nutrient-meter",
-      "name": "Nutrient Meter",
-      "value": 100,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "ochre-stencil",
-      "name": "Ochre Stencil",
-      "value": 5000,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "official-shutdown-documentation",
-      "name": "Official Shutdown Documentation",
-      "value": 100,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "oil",
-      "name": "Oil",
-      "value": 300,
-      "action": "keep",
-      "analysis": [
-        "Used in 3 crafting recipes",
-        "Common crafting ingredient",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "old-world-books",
-      "name": "Old World Books",
-      "value": 100,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "olives",
-      "name": "Olives",
-      "value": 640,
-      "action": "keep",
-      "analysis": [
-        "Required for hideout upgrade: Scrappy (Level 4)"
-      ]
-    },
-    {
-      "id": "ombra-outfit",
-      "name": "Ombra (Outfit)",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "orange-camo-origin-outfit",
-      "name": "Orange Camo (Origin Outfit)",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "origin-outfit",
-      "name": "Origin (Outfit)",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "ornate-den-bed",
-      "name": "Ornate Den Bed",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "ornate-den-bed-design",
-      "name": "Ornate Den Bed Design",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "ornate-den-shelf",
-      "name": "Ornate Den Shelf",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "ornate-den-shelf-design",
-      "name": "Ornate Den Shelf Design",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "ornate-stash",
-      "name": "Ornate Stash",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "ornate-stash-design",
-      "name": "Ornate Stash Design",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "ornate-wardrobe",
-      "name": "Ornate Wardrobe",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "ornate-wardrobe-design",
-      "name": "Ornate Wardrobe Design",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "osprey-i",
-      "name": "Osprey I",
-      "value": 7000,
-      "action": "keep",
-      "analysis": [
-        "Weapon - review based on your current loadout",
-        "Consider tier and your play style",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "osprey-ii",
-      "name": "Osprey II",
-      "value": 10000,
-      "action": "keep",
-      "analysis": [
-        "Weapon - review based on your current loadout",
-        "Consider tier and your play style",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "osprey-iii",
-      "name": "Osprey III",
-      "value": 13000,
-      "action": "keep",
-      "analysis": [
-        "Weapon - review based on your current loadout",
-        "Consider tier and your play style",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "osprey-iv",
-      "name": "Osprey IV",
-      "value": 17000,
-      "action": "keep",
-      "analysis": [
-        "Weapon - review based on your current loadout",
-        "Consider tier and your play style",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "osprey-recipe",
-      "name": "Osprey Blueprint",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Legendary rarity - extremely valuable",
-        "Keep all legendaries"
-      ]
-    },
-    {
-      "id": "padded-stock",
-      "name": "Padded Stock",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "padded-stock-recipe",
-      "name": "Padded Stock Blueprint",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Legendary rarity - extremely valuable",
-        "Keep all legendaries"
-      ]
-    },
-    {
-      "id": "painted-box",
-      "name": "Painted Box",
-      "value": 2000,
-      "action": "sell",
-      "analysis": [
-        "High value (2000 coins)",
-        "No crafting or upgrade use"
-      ]
-    },
-    {
-      "id": "patchwork-outfit",
-      "name": "Patchwork (Outfit)",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "patchwork-warden-color",
-      "name": "Patchwork (Warden Color)",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "patrol-car-key",
-      "name": "Patrol Car Key",
-      "value": 100,
-      "action": "keep",
-      "analysis": [
-        "Key - opens locked areas and containers",
-        "Review based on areas you want to access",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "patrol-outfit",
-      "name": "Patrol (Outfit)",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "pendola-pass-observatory-key",
-      "name": "Pendola Pass Observatory Key",
-      "value": 100,
-      "action": "keep",
-      "analysis": [
-        "Key - opens locked areas and containers",
-        "Review based on areas you want to access",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "pendola-pass-old-town-key",
-      "name": "Pendola Pass Old Town Key",
-      "value": 100,
-      "action": "keep",
-      "analysis": [
-        "Key - opens locked areas and containers",
-        "Review based on areas you want to access",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "pendola-pass-railyard-key",
-      "name": "Pendola Pass Railyard Key",
-      "value": 100,
-      "action": "keep",
-      "analysis": [
-        "Key - opens locked areas and containers",
-        "Review based on areas you want to access",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "pendola-pass-train-station-key",
-      "name": "Pendola Pass Train Station Key",
-      "value": 100,
-      "action": "keep",
-      "analysis": [
-        "Key - opens locked areas and containers",
-        "Review based on areas you want to access",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "photoelectric-cloak",
-      "name": "Photoelectric Cloak",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Consumable item - grenades, healing items, etc.",
-        "Review based on your current inventory needs",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "pilgrims-peak-security-code",
-      "name": "Pilgrim's Peak Security Code",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Key - opens locked areas and containers",
-        "Review based on areas you want to access",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "planks",
-      "name": "Planks",
-      "value": 100,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "plastic-parts",
-      "name": "Plastic Parts",
-      "value": 60,
-      "action": "keep",
-      "analysis": [
-        "Used in 19 crafting recipes",
-        "Common crafting ingredient",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "plastic-trash",
-      "name": "Plastic Trash",
-      "value": 640,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "playing-cards",
-      "name": "Playing Cards",
-      "value": 5000,
-      "action": "sell",
-      "analysis": [
-        "High value (5000 coins)",
-        "No crafting or upgrade use"
-      ]
-    },
-    {
-      "id": "pneumatic-actuator",
-      "name": "Pneumatic Actuator",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "polished-den-bed",
-      "name": "Polished Den Bed",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "polished-den-bed-design",
-      "name": "Polished Den Bed Design",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "polished-den-shelf",
-      "name": "Polished Den Shelf",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "polished-den-shelf-design",
-      "name": "Polished Den Shelf Design",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "polished-diner-chair",
-      "name": "Polished Diner Chair",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "polished-diner-chair-design",
-      "name": "Polished Diner Chair Design",
-      "value": 5000,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "polished-faculty-chair",
-      "name": "Polished Faculty Chair",
-      "value": 0,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "polished-faculty-chair-design",
-      "name": "Polished Faculty Chair Design",
-      "value": 5000,
-      "action": "sell",
-      "analysis": [
-        "No immediate use found",
-        "Safe to sell or recycle"
-      ]
-    },
-    {
-      "id": "polished-faculty-table",
-      "name": "Polished Faculty Table",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "polished-faculty-table-design",
-      "name": "Polished Faculty Table Design",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "polished-round-sofa",
-      "name": "Polished Round Sofa",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "polished-round-sofa-design",
-      "name": "Polished Round Sofa Design",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "polished-stash",
-      "name": "Polished Stash",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "polished-stash-design",
-      "name": "Polished Stash Design",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "polished-study-sofa",
-      "name": "Polished Study Sofa",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "polished-study-sofa-design",
-      "name": "Polished Study Sofa Design",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Epic rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "polished-wardrobe",
-      "name": "Polished Wardrobe",
-      "value": 0,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
-      "id": "polished-wardrobe-design",
-      "name": "Polished Wardrobe Design",
-      "value": 5000,
-      "action": "keep",
-      "analysis": [
-        "Rare rarity",
-        "May have future use - review carefully",
-        "Override: treat 'Your Call' as Keep"
-      ]
-    },
-    {
       "id": "polished-weapon-rack",
       "name": "Polished Weapon Rack",
       "value": 150,
@@ -7657,10 +9366,11 @@
       "id": "polluted-air-filter",
       "name": "Polluted Air Filter",
       "value": 1000,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "Recycles into: 6x Fabric, 2x Oil",
-        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -7669,8 +9379,8 @@
       "value": 640,
       "action": "sell",
       "analysis": [
-        "Recycles into: 1x Crude Explosives, 1x ARC Alloy",
-        "Recycle value: Components (470 coins) worth less than Item (640 coins)"
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -7749,7 +9459,7 @@
       "value": 5000,
       "action": "keep",
       "analysis": [
-        "Used in 2 crafting recipes",
+        "Used in 3 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -7855,7 +9565,7 @@
       "value": 500,
       "action": "keep",
       "analysis": [
-        "Used in 10 crafting recipes",
+        "Used in 12 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -7925,6 +9635,16 @@
     {
       "id": "purification-system-blueprint",
       "name": "Purification System Blueprint",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "purple-glam-face-style",
+      "name": "Purple Glam (Face Style)",
       "value": 0,
       "action": "sell",
       "analysis": [
@@ -8046,6 +9766,16 @@
       ]
     },
     {
+      "id": "railway-lantern",
+      "name": "Railway Lantern",
+      "value": 3000,
+      "action": "sell",
+      "analysis": [
+        "High value (3000 coins)",
+        "No crafting or upgrade use"
+      ]
+    },
+    {
       "id": "rascal",
       "name": "Rascal",
       "value": 7000,
@@ -8164,6 +9894,16 @@
       ]
     },
     {
+      "id": "reaver-tool-raider-tool",
+      "name": "Reaver Tool (Raider Tool)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "recorder",
       "name": "Recorder",
       "value": 1000,
@@ -8252,10 +9992,11 @@
       "id": "remote-control",
       "name": "Remote Control",
       "value": 1000,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "Recycles into: 7x Plastic Parts, 1x Sensors",
-        "Recycle value: Components (920 coins) worth less than Item (1000 coins)"
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -8277,6 +10018,16 @@
       "analysis": [
         "Legendary rarity - extremely valuable",
         "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "renegade-censer-backpack-attachment",
+      "name": "Renegade Censer (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -8321,6 +10072,16 @@
         "Weapon - review based on your current loadout",
         "Consider tier and your play style",
         "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "renzo-helmet",
+      "name": "Renzo Helmet (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -8526,6 +10287,16 @@
       ]
     },
     {
+      "id": "rock-salt",
+      "name": "Rock Salt",
+      "value": 640,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "rocket-thruster",
       "name": "Rocket Thruster",
       "value": 2000,
@@ -8558,10 +10329,11 @@
       "id": "rope",
       "name": "Rope",
       "value": 300,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "Recycles into: 5x Fabric",
-        "Recycle value: Components (250 coins) worth less than Item (300 coins)"
+        "Used in 3 crafting recipes",
+        "Common crafting ingredient",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -8688,10 +10460,11 @@
       "id": "ruined-riot-shield",
       "name": "Ruined Riot Shield",
       "value": 1000,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "Recycles into: 10x Plastic Parts, 6x Rubber Parts",
-        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -8806,6 +10579,16 @@
     {
       "id": "sandwalker-outfit",
       "name": "Sandwalker (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "scasso-raider-tool",
+      "name": "Scasso (Raider Tool)",
       "value": 0,
       "action": "sell",
       "analysis": [
@@ -8974,6 +10757,16 @@
       ]
     },
     {
+      "id": "sheriff-badge-backpack-charm",
+      "name": "Sheriff Badge (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "shield-recharger",
       "name": "Shield Recharger",
       "value": 520,
@@ -8987,6 +10780,16 @@
     {
       "id": "shield-stress-testing",
       "name": "Shield Stress Testing",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "short-dreads-hair",
+      "name": "Short Dreads (Hair)",
       "value": 0,
       "action": "sell",
       "analysis": [
@@ -9115,11 +10918,10 @@
       "id": "shredder-gyro",
       "name": "Shredder Gyro",
       "value": 2000,
-      "action": "keep",
+      "action": "recycle",
       "analysis": [
-        "Used in 1 crafting recipes",
-        "Rare crafting material",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 3x ARC Alloy, 3x Mechanical Components",
+        "Recycle value: Components (2520 coins) worth MORE than Item (2000 coins)"
       ]
     },
     {
@@ -9201,7 +11003,7 @@
       "value": 330,
       "action": "keep",
       "analysis": [
-        "Used in 21 crafting recipes",
+        "Used in 25 crafting recipes",
         "Common crafting ingredient",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -9231,6 +11033,16 @@
       "id": "skulker-targeter",
       "name": "Skulker Targeter",
       "value": 1000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "slickback-neat-hair",
+      "name": "Slickback Neat (Hair)",
+      "value": 0,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -9272,6 +11084,16 @@
       "id": "small-lab-cabinet-design",
       "name": "Small Lab Cabinet Design",
       "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "smelly-emote",
+      "name": "Smelly (Emote)",
+      "value": 0,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -9393,6 +11215,16 @@
       ]
     },
     {
+      "id": "spacecraft-module-backpack-attachment",
+      "name": "Spacecraft Module (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "spaceport-container-storage-key",
       "name": "Spaceport Container Storage Key",
       "value": 100,
@@ -9442,7 +11274,7 @@
       "value": 500,
       "action": "keep",
       "analysis": [
-        "Used in 2 crafting recipes",
+        "Used in 1 crafting recipes",
         "Rare crafting material",
         "Override: treat 'Your Call' as Keep"
       ]
@@ -9577,6 +11409,16 @@
       "analysis": [
         "High value (3000 coins)",
         "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "steamwright-backpack",
+      "name": "Steamwright (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -9752,6 +11594,16 @@
         "Weapon - review based on your current loadout",
         "Consider tier and your play style",
         "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "straw",
+      "name": "Straw (Scrappy Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -10255,8 +12107,8 @@
       "value": 640,
       "action": "sell",
       "analysis": [
-        "Recycles into: 3x Plastic Parts, 3x Rubber Parts",
-        "Recycle value: Components (330 coins) worth less than Item (640 coins)"
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -10547,8 +12399,8 @@
       "value": 1000,
       "action": "sell",
       "analysis": [
-        "Recycles into: 5x Plastic Parts, 3x Wires",
-        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+        "Recycles into: 3x Wires",
+        "Recycle value: Components (600 coins) worth less than Item (1000 coins)"
       ]
     },
     {
@@ -10677,6 +12529,16 @@
       ]
     },
     {
+      "id": "traffic-band-backpack-charm",
+      "name": "Traffic Band (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "trailblazer-grenade",
       "name": "Trailblazer",
       "value": 2200,
@@ -10705,6 +12567,26 @@
       "analysis": [
         "High value (1000 coins)",
         "No crafting or upgrade use"
+      ]
+    },
+    {
+      "id": "train-whistle-backpack-attachment",
+      "name": "Train Whistle (Backpack Attachment)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "tribal-sheep-face-face-style",
+      "name": "Tribal Sheep Face (Face Style)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -10795,10 +12677,11 @@
       "id": "turbo-pump",
       "name": "Turbo Pump",
       "value": 2000,
-      "action": "sell",
+      "action": "keep",
       "analysis": [
-        "Recycles into: 1x Mechanical Components, 3x Oil",
-        "Recycle value: Components (1540 coins) worth less than Item (2000 coins)"
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
@@ -10865,11 +12748,10 @@
       "id": "vaporizer-regulator",
       "name": "Vaporizer Regulator",
       "value": 6000,
-      "action": "keep",
+      "action": "sell",
       "analysis": [
-        "Used in 1 crafting recipes",
-        "Rare crafting material",
-        "Override: treat 'Your Call' as Keep"
+        "Recycles into: 1x Advanced Electrical Components, 2x ARC Circuitry",
+        "Recycle value: Components (3750 coins) worth less than Item (6000 coins)"
       ]
     },
     {
@@ -11311,10 +13193,21 @@
       "id": "water-pump",
       "name": "Water Pump",
       "value": 1000,
+      "action": "keep",
+      "analysis": [
+        "Rare rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "wave-emote",
+      "name": "Wave (Emote)",
+      "value": 0,
       "action": "sell",
       "analysis": [
-        "Recycles into: 4x Metal Parts, 2x Oil",
-        "Recycle value: Components (900 coins) worth less than Item (1000 coins)"
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -11351,6 +13244,26 @@
       "id": "weather-station-table-design",
       "name": "Weather Station Table Design",
       "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "welded-pickaxe-raider-tool",
+      "name": "Welded Pickaxe (Raider Tool)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "whistle-bundle-backpack-charm",
+      "name": "Whistle Bundle (Backpack Charm)",
+      "value": 0,
       "action": "sell",
       "analysis": [
         "No immediate use found",
@@ -11462,6 +13375,16 @@
       "id": "work-light-design",
       "name": "Work Light Design",
       "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "wreck-helmet",
+      "name": "Wreck Helmet (Scrappy Outfit)",
+      "value": 0,
       "action": "sell",
       "analysis": [
         "No immediate use found",
