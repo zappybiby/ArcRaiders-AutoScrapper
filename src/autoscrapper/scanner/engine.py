@@ -27,13 +27,11 @@ from ..interaction.ui_windows import (
     WindowSnapshot,
     WINDOW_TIMEOUT,
     abort_if_escape_pressed,
+    build_window_snapshot,
     capture_region,
     move_absolute,
     pause_action,
     wait_for_target_window,
-    window_display_info,
-    window_monitor_rect,
-    window_rect,
 )
 from ..ocr.inventory_vision import inventory_count_rect, ocr_inventory_count
 from ..ocr.tesseract import initialize_ocr
@@ -275,20 +273,17 @@ def scan_inventory(
                     timeout=window_timeout, stop_key=stop_key
                 )
 
-            _display_name, _display_size, work_area = window_display_info(window)
-            mon_left, mon_top, mon_right, mon_bottom = window_monitor_rect(window)
+            window_snapshot = build_window_snapshot(window)
 
-            win_left, win_top, win_width, win_height = window_rect(window)
-        else:
-            work_area = window_snapshot.work_area
-            mon_left = window_snapshot.mon_left
-            mon_top = window_snapshot.mon_top
-            mon_right = window_snapshot.mon_right
-            mon_bottom = window_snapshot.mon_bottom
-            win_left = window_snapshot.win_left
-            win_top = window_snapshot.win_top
-            win_width = window_snapshot.win_width
-            win_height = window_snapshot.win_height
+        work_area = window_snapshot.work_area
+        mon_left = window_snapshot.mon_left
+        mon_top = window_snapshot.mon_top
+        mon_right = window_snapshot.mon_right
+        mon_bottom = window_snapshot.mon_bottom
+        win_left = window_snapshot.win_left
+        win_top = window_snapshot.win_top
+        win_width = window_snapshot.win_width
+        win_height = window_snapshot.win_height
         win_right = win_left + win_width
         win_bottom = win_top + win_height
 

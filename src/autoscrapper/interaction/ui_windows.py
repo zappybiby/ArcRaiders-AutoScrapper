@@ -9,6 +9,7 @@ from typing import Optional, Tuple
 
 import mss
 import numpy as np
+import pymonctl as pmc
 import pywinctl as pwc
 
 from .inventory_grid import Cell
@@ -116,9 +117,27 @@ def build_window_snapshot(win: pwc.Window) -> WindowSnapshot:
     """
     Capture window bounds and display metadata for the current target window.
     """
-    _display_name, _display_size, work_area = window_display_info(win)
-    mon_left, mon_top, mon_right, mon_bottom = window_monitor_rect(win)
-    win_left, win_top, win_width, win_height = window_rect(win)
+    display_names = win.getDisplay()
+    if not display_names:
+        raise RuntimeError("Unable to determine which monitor the target window is on.")
+    if len(display_names) > 1:
+        joined = ", ".join(display_names)
+        raise RuntimeError(
+            f"Target window spans multiple monitors ({joined}); move it fully onto one display."
+        )
+
+    display_name = display_names[0]
+    monitor = pmc.findMonitorWithName(display_name)
+    if monitor is None:
+        raise RuntimeError(f"Unable to find monitor {display_name!r}.")
+    monitor_rect = monitor.rect
+    work_area = monitor.workarea
+    if monitor_rect is None or work_area is None:
+        raise RuntimeError(f"Unable to read bounds for monitor {display_name!r}.")
+
+    # Full monitor bounds include taskbars/docks, unlike the usable work area.
+    mon_left, mon_top, mon_right, mon_bottom = monitor_rect
+    win_left, win_top, win_width, win_height = win.box
     return WindowSnapshot(
         win_left=win_left,
         win_top=win_top,
@@ -166,63 +185,6 @@ def wait_for_target_window(
         sleep_with_abort(poll_interval, stop_key=stop_key)
 
     raise TimeoutError(f"Timed out waiting for active window {target_app!r}")
-
-
-def window_rect(win: pwc.Window) -> Tuple[int, int, int, int]:
-    """
-    (left, top, width, height) in screen coordinates for the window.
-    """
-    return int(win.left), int(win.top), int(win.width), int(win.height)
-
-
-def window_display_info(
-    win: pwc.Window,
-) -> Tuple[str, Tuple[int, int], Tuple[int, int, int, int]]:
-    """
-    Return (display name, display size, work area) and enforce that the window is on a single monitor.
-    """
-    display_names = win.getDisplay()
-    if not display_names:
-        raise RuntimeError("Unable to determine which monitor the target window is on.")
-    if len(display_names) > 1:
-        joined = ", ".join(display_names)
-        raise RuntimeError(
-            f"Target window spans multiple monitors ({joined}); move it fully onto one display."
-        )
-
-    display_name = display_names[0]
-    size = pwc.getScreenSize(display_name)
-    work_area = pwc.getWorkArea(display_name)
-    return display_name, size, work_area
-
-
-def window_monitor_rect(win: pwc.Window) -> Tuple[int, int, int, int]:
-    """
-    Return (left, top, right, bottom) bounds for the physical monitor containing
-    the window center.
-
-    This differs from the OS "work area", which excludes taskbars/docks and can
-    cause false warnings for borderless fullscreen windows.
-    """
-    win_left, win_top, win_width, win_height = window_rect(win)
-    center_x = win_left + (win_width // 2)
-    center_y = win_top + (win_height // 2)
-
-    sct = _get_mss()
-    monitors = getattr(sct, "monitors", None)
-    if not monitors or len(monitors) < 2:
-        raise RuntimeError("Unable to determine monitor bounds via mss.")
-
-    # Index 0 is the "all monitors" virtual rectangle.
-    for mon in monitors[1:]:
-        mon_left = int(mon["left"])
-        mon_top = int(mon["top"])
-        mon_right = mon_left + int(mon["width"])
-        mon_bottom = mon_top + int(mon["height"])
-        if mon_left <= center_x < mon_right and mon_top <= center_y < mon_bottom:
-            return mon_left, mon_top, mon_right, mon_bottom
-
-    raise RuntimeError("Unable to map target window to a monitor via mss.")
 
 
 def _get_mss() -> "MSSBase":
