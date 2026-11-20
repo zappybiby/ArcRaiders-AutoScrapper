@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "generatedAt": "2026-11-09T23:11:06.674054Z",
+    "generatedAt": "2026-11-20T21:34:32.909636Z",
     "data": {
-      "lastUpdated": "2026-11-09T23:11:06.631218Z",
+      "lastUpdated": "2026-11-20T21:34:32.863639Z",
       "source": "https://metaforge.app/arc-raiders",
       "version": "autoscrapper-data-1"
     },
-    "itemCount": 1512,
+    "itemCount": 1519,
     "allQuestsCompleted": true
   },
   "items": [
@@ -1733,6 +1733,16 @@
         "Consumable item - grenades, healing items, etc.",
         "Review based on your current inventory needs",
         "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
+      "id": "bandit-backpack",
+      "name": "Bandit (Backpack)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -8964,6 +8974,16 @@
       ]
     },
     {
+      "id": "golden-olive-stencil",
+      "name": "Golden Olive Stencil",
+      "value": 5000,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
       "id": "gothic-graffiti-aviator-color",
       "name": "Gothic Graffiti (Aviator Color)",
       "value": 0,
@@ -10334,6 +10354,17 @@
       ]
     },
     {
+      "id": "malocchio-stencil",
+      "name": "Malocchio Stencil",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
+      ]
+    },
+    {
       "id": "marano-market-buisness-card",
       "name": "Marano Market Business Card",
       "value": 100,
@@ -10725,6 +10756,16 @@
     {
       "id": "nascosto-outfit",
       "name": "Nascosto (Outfit)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
+      ]
+    },
+    {
+      "id": "nessuno-outfit",
+      "name": "Nessuno (Outfit)",
       "value": 0,
       "action": "sell",
       "analysis": [
@@ -11737,6 +11778,16 @@
       "analysis": [
         "Legendary rarity - extremely valuable",
         "Keep all legendaries"
+      ]
+    },
+    {
+      "id": "pump-oiler-backpack-charm",
+      "name": "Pump Oiler (Backpack Charm)",
+      "value": 0,
+      "action": "sell",
+      "analysis": [
+        "No immediate use found",
+        "Safe to sell or recycle"
       ]
     },
     {
@@ -14124,6 +14175,16 @@
       ]
     },
     {
+      "id": "sundog-stencil",
+      "name": "Sundog Stencil",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Legendary rarity - extremely valuable",
+        "Keep all legendaries"
+      ]
+    },
+    {
       "id": "surge-coil",
       "name": "Surge Coil",
       "value": 2100,
@@ -14350,6 +14411,17 @@
       "analysis": [
         "Recycles into: 11x Fabric",
         "Recycle value: Components (550 coins) worth less than Item (640 coins)"
+      ]
+    },
+    {
+      "id": "taurus-stencil",
+      "name": "Taurus Stencil",
+      "value": 5000,
+      "action": "keep",
+      "analysis": [
+        "Epic rarity",
+        "May have future use - review carefully",
+        "Override: treat 'Your Call' as Keep"
       ]
     },
     {
