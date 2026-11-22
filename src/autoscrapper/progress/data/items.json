@@ -1767,6 +1767,15 @@
     "recyclesInto": null
   },
   {
+    "id": "bandit-backpack",
+    "name": "Bandit (Backpack)",
+    "type": "Cosmetic",
+    "rarity": null,
+    "value": 0,
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
     "id": "banjo",
     "name": "Banjo",
     "type": "Quick Use",
@@ -6757,6 +6766,15 @@
     "recyclesInto": null
   },
   {
+    "id": "golden-olive-stencil",
+    "name": "Golden Olive Stencil",
+    "type": "Stencil",
+    "rarity": "uncommon",
+    "value": 5000,
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
     "id": "game-cosmetic-828819479",
     "name": "Golden Rubber Duck (Backpack Charm)",
     "type": "Cosmetic",
@@ -8535,6 +8553,15 @@
     "recyclesInto": null
   },
   {
+    "id": "malocchio-stencil",
+    "name": "Malocchio Stencil",
+    "type": "Stencil",
+    "rarity": "epic",
+    "value": 5000,
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
     "id": "game-cosmetic-n2096955525",
     "name": "Maps (Backpack Attachment)",
     "type": "Cosmetic",
@@ -8571,7 +8598,7 @@
     "recyclesInto": null
   },
   {
-    "id": "game-cosmetic-1667060404",
+    "id": "mastery-medal-backpack-charm",
     "name": "Mastery Medal (Backpack Charm)",
     "type": "Cosmetic",
     "rarity": null,
@@ -8580,7 +8607,7 @@
     "recyclesInto": null
   },
   {
-    "id": "mastery-medal-backpack-charm",
+    "id": "game-cosmetic-1667060404",
     "name": "Mastery Medal (Backpack Charm)",
     "type": "Cosmetic",
     "rarity": null,
@@ -9052,6 +9079,15 @@
     "id": "game-cosmetic-1275837188",
     "name": "Needs A Shower (Emote)",
     "type": "Cosmetic",
+    "rarity": null,
+    "value": 0,
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "nessuno-outfit",
+    "name": "Nessuno (Outfit)",
+    "type": "Outfits",
     "rarity": null,
     "value": 0,
     "recipe": null,
@@ -10264,6 +10300,15 @@
   {
     "id": "game-cosmetic-n1633960101",
     "name": "Pumped Dance (Emote)",
+    "type": "Cosmetic",
+    "rarity": null,
+    "value": 0,
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
+    "id": "pump-oiler-backpack-charm",
+    "name": "Pump Oiler (Backpack Charm)",
     "type": "Cosmetic",
     "rarity": null,
     "value": 0,
@@ -12930,19 +12975,19 @@
     "recyclesInto": null
   },
   {
-    "id": "study-armchair-res-armchair-01-a",
+    "id": "study-armchair",
     "name": "Study Armchair",
     "type": "Furniture",
-    "rarity": "legendary",
+    "rarity": "uncommon",
     "value": 0,
     "recipe": null,
     "recyclesInto": null
   },
   {
-    "id": "study-armchair",
+    "id": "study-armchair-res-armchair-01-a",
     "name": "Study Armchair",
     "type": "Furniture",
-    "rarity": "uncommon",
+    "rarity": "legendary",
     "value": 0,
     "recipe": null,
     "recyclesInto": null
@@ -13299,6 +13344,15 @@
     "recyclesInto": null
   },
   {
+    "id": "sundog-stencil",
+    "name": "Sundog Stencil",
+    "type": "Stencil",
+    "rarity": "legendary",
+    "value": 5000,
+    "recipe": null,
+    "recyclesInto": null
+  },
+  {
     "id": "surge-coil",
     "name": "Surge Coil",
     "type": "Quick Use",
@@ -13571,6 +13625,15 @@
     "recyclesInto": {
       "fabric": 11
     }
+  },
+  {
+    "id": "taurus-stencil",
+    "name": "Taurus Stencil",
+    "type": "Stencil",
+    "rarity": "epic",
+    "value": 5000,
+    "recipe": null,
+    "recyclesInto": null
   },
   {
     "id": "game-cosmetic-1977040370",
