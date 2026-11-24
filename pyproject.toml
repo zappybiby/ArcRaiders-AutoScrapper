@@ -25,8 +25,7 @@ dependencies = [
     "rich>=13.3.3",
     "textual>=6.0.0",
     "tessdata.fast-eng>=1.0.0",
-    "tesserocr>=2.13.0; sys_platform == 'linux'",
-    "tesserocr @ https://github.com/simonflueckiger/tesserocr-windows_build/releases/download/tesserocr-v2.11.0-tesseract-5.5.3/tesserocr-2.11.0-cp314-cp314-win_amd64.whl ; sys_platform == 'win32' and python_version == '3.14' and platform_machine == 'AMD64'",
+    "tesserocr>=2.13.0; sys_platform == 'linux' or (sys_platform == 'win32' and platform_machine == 'AMD64')",
 ]
 
 [project.optional-dependencies]
