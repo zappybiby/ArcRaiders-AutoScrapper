@@ -154,8 +154,8 @@ $uvVersionOutput = & $uvExe --version
 if ($LASTEXITCODE -ne 0) {
   throw "Couldn't check the uv version."
 }
-if ($uvVersionOutput -notmatch '^uv (\d+\.\d+\.\d+)(?:\s|$)' -or [version]$Matches[1] -lt [version]"0.9.8") {
-  throw "uv 0.9.8 or newer is required. Run uv self update (or update through your package manager), then re-run setup."
+if ($uvVersionOutput -notmatch '^uv (\d+\.\d+\.\d+)(?:\s|$)' -or [version]$Matches[1] -lt [version]"0.13.4") {
+  throw "uv 0.13.4 or newer is required. Run uv self update (or update through your package manager), then re-run setup."
 }
 
 # 2) Install the supported Python version and architecture
