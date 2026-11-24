@@ -9,6 +9,8 @@ import queue
 import sys
 import threading
 
+import win32con
+import win32gui
 from PySide6.QtCore import QRectF, Qt, QTimer
 from PySide6.QtGui import QColor, QFont, QFontMetricsF, QPainter
 from PySide6.QtWidgets import QApplication, QWidget
@@ -200,89 +202,56 @@ class OverlayWindow(QWidget):
 
 
 class _WindowsOverlay:
-    def __init__(self, window: OverlayWindow, target: int, rect: list[int]) -> None:
+    def __init__(self, window: OverlayWindow, target: int) -> None:
+        # Let QApplication establish its DPI awareness before PyWinCtl's imports.
+        import pywinctl as pwc
+
         self.window = window
-        self.target = target
-        self.user32 = ctypes.WinDLL("user32", use_last_error=True)
-        for name, args, result in (
-            ("IsWindow", [wintypes.HWND], wintypes.BOOL),
-            ("IsIconic", [wintypes.HWND], wintypes.BOOL),
-            ("GetForegroundWindow", [], wintypes.HWND),
-            (
-                "GetWindowRect",
-                [wintypes.HWND, ctypes.POINTER(wintypes.RECT)],
-                wintypes.BOOL,
-            ),
-            (
-                "SetWindowDisplayAffinity",
-                [wintypes.HWND, wintypes.DWORD],
-                wintypes.BOOL,
-            ),
-            (
-                "SetWindowPos",
-                [
-                    wintypes.HWND,
-                    wintypes.HWND,
-                    ctypes.c_int,
-                    ctypes.c_int,
-                    ctypes.c_int,
-                    ctypes.c_int,
-                    wintypes.UINT,
-                ],
-                wintypes.BOOL,
-            ),
-        ):
-            function = getattr(self.user32, name)
-            function.argtypes = args
-            function.restype = result
-        if not self.user32.IsWindow(target):
+        self.target = pwc.Window(target)
+        if not self.target.isAlive:
             raise RuntimeError("Game window no longer exists")
         self.hwnd = int(window.winId())
-        if not self.user32.SetWindowDisplayAffinity(self.hwnd, 0x11):
+
+        # Capture exclusion has no Qt or pywin32 wrapper.
+        user32 = ctypes.WinDLL("user32", use_last_error=True)
+        exclude_from_capture = user32.SetWindowDisplayAffinity
+        exclude_from_capture.argtypes = [wintypes.HWND, wintypes.DWORD]
+        exclude_from_capture.restype = wintypes.BOOL
+        if not exclude_from_capture(self.hwnd, 0x11):  # WDA_EXCLUDEFROMCAPTURE
             raise ctypes.WinError(ctypes.get_last_error())
-        self.rect: list[int] = []
-        self.position(rect)
+        self.rect: tuple[int, int, int, int] | None = None
         self.refresh()
 
-    def position(self, rect: list[int]) -> None:
+    def position(self, rect: tuple[int, int, int, int]) -> None:
         left, top, width, height = rect
         overlay_width, overlay_height = width // 3, height // 3
-        if not self.user32.SetWindowPos(
+        # Both APIs use native coordinates; QWidget geometry uses logical pixels.
+        win32gui.SetWindowPos(
             self.hwnd,
-            wintypes.HWND(-1),
+            win32con.HWND_TOPMOST,
             left + width - overlay_width,
             top,
             overlay_width,
             overlay_height,
-            0x0010,  # HWND_TOPMOST, SWP_NOACTIVATE
-        ):
-            raise ctypes.WinError(ctypes.get_last_error())
+            win32con.SWP_NOACTIVATE,
+        )
         self.rect = rect
 
     def refresh(self) -> None:
-        if not self.user32.IsWindow(self.target):
+        if not self.target.isAlive:
             self.window.close()
             QApplication.instance().quit()
             return
-        active = (
-            self.user32.GetForegroundWindow() == self.target
-            and not self.user32.IsIconic(self.target)
-        )
-        bounds = wintypes.RECT()
-        if not self.user32.IsIconic(self.target) and self.user32.GetWindowRect(
-            self.target, ctypes.byref(bounds)
-        ):
-            rect = [
-                bounds.left,
-                bounds.top,
-                bounds.right - bounds.left,
-                bounds.bottom - bounds.top,
-            ]
-            if rect != self.rect:
-                self.position(rect)
+        if self.target.isMinimized:
+            self.window.hide()
+            return
+        rect = tuple(self.target.box)
+        if rect != self.rect:
+            self.position(rect)
+        active = self.target.isActive
         if active and not self.window.isVisible():
             self.window.show()
-            self.position(self.rect)
+            self.position(rect)
         elif not active and self.window.isVisible():
             self.window.hide()
 
@@ -299,7 +268,7 @@ def main() -> None:
         initial = json.loads(sys.stdin.readline())
         app = QApplication([])
         window = OverlayWindow()
-        native = _WindowsOverlay(window, initial["hwnd"], initial["rect"])
+        native = _WindowsOverlay(window, initial["hwnd"])
         app.processEvents()
         _reply({"ready": True})
     except Exception as error:

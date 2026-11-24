@@ -288,15 +288,8 @@ class ScanScreen(Screen):
                 if not self._overlay_attempted:
                     self._overlay_attempted = True
                     self._overlay_hwnd = int(window.getHandle())
-                    initial = build_window_snapshot(window)
-                    rect = (
-                        initial.win_left,
-                        initial.win_top,
-                        initial.win_width,
-                        initial.win_height,
-                    )
                     try:
-                        self._overlay = ScanOverlay(self._overlay_hwnd, rect)
+                        self._overlay = ScanOverlay(self._overlay_hwnd)
                     except OSError as exc:
                         self._overlay_failed(str(exc))
                     return
