@@ -35,9 +35,16 @@ print_step() {
   echo "==> ${title}"
 }
 
+uv_is_supported() {
+  local version
+  version="$(uv --version)" || return 1
+  [[ "$version" =~ ^uv[[:space:]]+([0-9]+)\.([0-9]+)\.([0-9]+)([[:space:]]|$) ]] &&
+    (( BASH_REMATCH[1] > 0 || BASH_REMATCH[2] > 9 || (BASH_REMATCH[2] == 9 && BASH_REMATCH[3] >= 8) ))
+}
+
 # Run from repo root
-if [[ ! -f "pyproject.toml" ]]; then
-  echo "ERROR: Run this from the repo root (pyproject.toml not found)."
+if [[ ! -f pyproject.toml || ! scripts/setup-linux.sh -ef "${BASH_SOURCE[0]}" ]]; then
+  echo "ERROR: Run this script from its AutoScrapper repo root."
   exit 1
 fi
 
@@ -81,7 +88,9 @@ confirm_or_abort "Install these packages?"
 $SUDO "${install_cmd[@]}"
 
 # 2) Install uv (if missing)
-export PATH="$HOME/.local/bin:$PATH"
+if ! command -v uv >/dev/null 2>&1 || ! uv_is_supported; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
 if ! command -v uv >/dev/null 2>&1; then
   print_step "Step 2: Install uv (required)"
   UV_INSTALL_URL="https://astral.sh/uv/install.sh"
@@ -111,9 +120,7 @@ if ! command -v uv >/dev/null 2>&1; then
   exit 1
 fi
 
-UV_VERSION="$(uv --version)"
-if [[ ! "$UV_VERSION" =~ ^uv[[:space:]]+([0-9]+)\.([0-9]+)\.([0-9]+)([[:space:]]|$) ]] ||
-  (( BASH_REMATCH[1] == 0 && (BASH_REMATCH[2] < 9 || (BASH_REMATCH[2] == 9 && BASH_REMATCH[3] < 8)) )); then
+if ! uv_is_supported; then
   echo "ERROR: uv 0.9.8 or newer is required. Run uv self update (or update through your package manager), then re-run setup."
   exit 1
 fi
@@ -141,4 +148,4 @@ confirm_or_abort "Proceed with Step 4?"
 uv sync --python "${PYTHON_REQUEST}+gil"
 
 echo "Setup finished. Run:"
-echo "  uv run autoscrapper"
+printf '  %q run autoscrapper\n' "$(command -v uv)"
