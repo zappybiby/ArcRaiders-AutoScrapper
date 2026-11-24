@@ -148,9 +148,5 @@ echo "  uv sync --python \"${PYTHON_REQUEST}+gil\""
 confirm_or_abort "Proceed with Step 4?"
 uv sync --python "${PYTHON_REQUEST}+gil"
 
-if [[ "${XDG_SESSION_TYPE:-}" == "wayland" ]]; then
-  echo "For reliable game window detection, sign in to an X11 (Xorg) session before scanning."
-fi
-
 echo "Setup finished. Run:"
 printf '  %q run autoscrapper\n' "$(command -v uv)"
