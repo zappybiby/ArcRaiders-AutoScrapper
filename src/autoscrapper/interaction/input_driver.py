@@ -79,6 +79,9 @@ elif sys.platform.startswith("linux"):
     import threading
 
     from pynput import keyboard, mouse
+    from Xlib import X
+
+    from . import xwayland
 
     _MOUSE = mouse.Controller()
     _KEY_STATE: set[object] = set()
@@ -169,10 +172,21 @@ elif sys.platform.startswith("linux"):
                 return True
             return False
 
+    def request_mouse_control_if_needed() -> bool:
+        if xwayland.mouse_control_preauthorized():
+            return False
+        # XWayland grants access to the XTEST connection. A relative (0, 0)
+        # event uses pynput's connection without moving the pointer or clicking.
+        connection = _MOUSE._display
+        connection.xtest_fake_input(X.MotionNotify, detail=1, x=0, y=0)
+        connection.flush()
+        return True
+
     def moveTo(x: int, y: int, duration: float = 0.0) -> None:
         x = int(x)
         y = int(y)
         if duration <= 0:
+            xwayland.check_input()
             _MOUSE.position = (x, y)
             return
 
@@ -182,22 +196,27 @@ elif sys.platform.startswith("linux"):
         for i in range(1, steps + 1):
             nx = start_x + (x - start_x) * (i / steps)
             ny = start_y + (y - start_y) * (i / steps)
+            xwayland.check_input()
             _MOUSE.position = (int(nx), int(ny))
             time.sleep(sleep_time)
 
+    def _click(x: int, y: int, button: mouse.Button) -> None:
+        moveTo(x, y)
+        xwayland.check_click(_MOUSE, (x, y))
+        _MOUSE.click(button, 1)
+
     def leftClick(x: int, y: int) -> None:
-        _MOUSE.position = (int(x), int(y))
-        _MOUSE.click(mouse.Button.left, 1)
+        _click(x, y, mouse.Button.left)
 
     def rightClick(x: int, y: int) -> None:
-        _MOUSE.position = (int(x), int(y))
-        _MOUSE.click(mouse.Button.right, 1)
+        _click(x, y, mouse.Button.right)
 
     def vscroll(clicks: int, interval: float = 0.0) -> None:
         if clicks == 0:
             return
         step = 1 if clicks > 0 else -1
         for _ in range(abs(clicks)):
+            xwayland.check_input()
             _MOUSE.scroll(0, step)
             if interval > 0:
                 time.sleep(interval)

@@ -18,10 +18,12 @@ from textual.screen import Screen
 from textual.widgets import DataTable, Footer, Static
 
 from ..config import load_scan_settings
+from ..interaction import input_driver
 from ..interaction.keybinds import stop_key_label
 from ..interaction.ui_windows import (
     TARGET_APP,
     WINDOW_TIMEOUT,
+    XWAYLAND_SESSION,
     WindowSnapshot,
     build_window_snapshot,
     get_active_target_window,
@@ -174,6 +176,8 @@ class TextualScanProgress(ScanProgress):
 
 
 class ScanScreen(Screen):
+    _checked_mouse_access = False
+
     def __init__(self, *, dry_run: bool) -> None:
         super().__init__()
         self.dry_run = dry_run
@@ -280,10 +284,16 @@ class ScanScreen(Screen):
             )
             return
 
-        window = get_active_target_window()
-        if window is None:
-            return
         try:
+            if XWAYLAND_SESSION and not ScanScreen._checked_mouse_access:
+                ScanScreen._checked_mouse_access = True
+                if input_driver.request_mouse_control_if_needed():
+                    self.notify(
+                        "If your desktop asks, allow mouse control, then switch to ARC Raiders."
+                    )
+            window = get_active_target_window()
+            if window is None:
+                return
             if self._settings.overlay and sys.platform == "win32":
                 if not self._overlay_attempted:
                     self._overlay_attempted = True
