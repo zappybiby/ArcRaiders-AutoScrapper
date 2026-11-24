@@ -280,10 +280,10 @@ class ScanScreen(Screen):
             )
             return
 
-        window = get_active_target_window()
-        if window is None:
-            return
         try:
+            window = get_active_target_window()
+            if window is None:
+                return
             if self._settings.overlay and sys.platform == "win32":
                 if not self._overlay_attempted:
                     self._overlay_attempted = True

@@ -4,17 +4,30 @@ import os
 import sys
 import threading
 import time
+from contextlib import contextmanager
 from dataclasses import dataclass
-from typing import Optional, Tuple
+from typing import TYPE_CHECKING, Optional, Tuple
 
 import mss
 import numpy as np
-import pymonctl as pmc
-import pywinctl as pwc
 
 from .inventory_grid import Cell
 from . import input_driver as pdi
 from .keybinds import DEFAULT_STOP_KEY
+
+_XWAYLAND = sys.platform.startswith("linux") and (
+    os.environ.get("XDG_SESSION_TYPE", "").lower() == "wayland"
+    or (
+        not os.environ.get("XDG_SESSION_TYPE")
+        and bool(os.environ.get("WAYLAND_DISPLAY"))
+    )
+)
+if TYPE_CHECKING or not _XWAYLAND:
+    import pymonctl as pmc
+    import pywinctl as pwc
+
+if _XWAYLAND:
+    from . import xwayland
 
 
 # Target window
@@ -88,12 +101,26 @@ class WindowSnapshot:
     mon_top: int
     mon_right: int
     mon_bottom: int
+    xwayland_id: int | None = None
+
+    @contextmanager
+    def scan_session(self, safe_point: tuple[int, int], stop_key: str, timeout: float):
+        """Bind the window to the thread that runs the scan."""
+        if self.xwayland_id is None:
+            yield
+            return
+        bounds = (self.win_left, self.win_top, self.win_width, self.win_height)
+        with xwayland.scan_window(self.xwayland_id, bounds) as target:
+            pdi.prepare_pointer(target, safe_point, stop_key, timeout)
+            yield
 
 
-def get_active_target_window(target_app: str = TARGET_APP) -> Optional[pwc.Window]:
+def get_active_target_window(target_app: str = TARGET_APP) -> pwc.Window | int | None:
     """
     Return the active window if it matches the target app; otherwise None.
     """
+    if _XWAYLAND:
+        return xwayland.active_target(target_app)
     win = pwc.getActiveWindow()
     if win is None:
         return None
@@ -113,10 +140,14 @@ def get_active_target_window(target_app: str = TARGET_APP) -> Optional[pwc.Windo
     return None
 
 
-def build_window_snapshot(win: pwc.Window) -> WindowSnapshot:
+def build_window_snapshot(win: pwc.Window | int) -> WindowSnapshot:
     """
     Capture window bounds and display metadata for the current target window.
     """
+    if isinstance(win, int):
+        bounds, monitor, work_area = xwayland.window_geometry(win)
+        return WindowSnapshot(*bounds, work_area, *monitor, xwayland_id=win)
+
     display_names = win.getDisplay()
     if not display_names:
         raise RuntimeError("Unable to determine which monitor the target window is on.")
@@ -171,7 +202,7 @@ def wait_for_target_window(
     timeout: float = WINDOW_TIMEOUT,
     poll_interval: float = WINDOW_POLL_INTERVAL,
     stop_key: str = DEFAULT_STOP_KEY,
-) -> pwc.Window:
+) -> pwc.Window | int:
     """
     Wait until the active window belongs to the target process.
     """
@@ -233,6 +264,9 @@ def capture_region(region: Tuple[int, int, int, int]) -> np.ndarray:
     left, top, width, height = region
     if width <= 0 or height <= 0:
         raise ValueError(f"Invalid capture region size: width={width}, height={height}")
+
+    if _XWAYLAND:
+        return xwayland.capture_region(region)
 
     sct = _get_mss()
     bbox = {

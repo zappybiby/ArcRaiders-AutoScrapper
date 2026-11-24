@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import math
 import time
+from contextlib import ExitStack
 from pathlib import Path
 from typing import List, Optional, Tuple
 
@@ -260,7 +261,9 @@ def scan_inventory(
         if window_snapshot is None:
             progress_impl.set_phase("Waiting for Arc Raiders window…")
 
-    try:
+    with ExitStack() as scan:
+        if progress_impl is not None:
+            scan.callback(progress_impl.stop)
         window = None
         if window_snapshot is None:
             if progress_impl is not None:
@@ -310,6 +313,9 @@ def scan_inventory(
         safe_point_abs = (win_left + safe_point[0], win_top + safe_point[1])
         grid_center = grid_center_point(win_width, win_height)
         grid_center_abs = (win_left + grid_center[0], win_top + grid_center[1])
+        scan.enter_context(
+            window_snapshot.scan_session(safe_point_abs, stop_key, window_timeout)
+        )
         cells_per_page = Grid.COLS * Grid.ROWS
 
         stash_items, stash_count_text = _detect_inventory_count(
@@ -393,6 +399,3 @@ def scan_inventory(
         )
 
         return run_state.results, stats
-    finally:
-        if progress_impl is not None:
-            progress_impl.stop()
