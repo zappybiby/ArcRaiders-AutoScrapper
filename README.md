@@ -11,7 +11,7 @@ Automates Arc Raiders inventory actions (Sell/Recycle) using screen capture and 
 **This program does not hook into the game process, but there is no guarantee it will not be flagged by anti-cheat systems or violate the game’s Terms of Service. Use at your own risk.**
 
 ## Setup
-This repo uses `uv` to manage Python + dependencies.
+Both setup scripts use `uv` to install CPython 3.14 and the project dependencies. You can keep your system Python version.
 
 ### Clone the repo
 From a terminal:

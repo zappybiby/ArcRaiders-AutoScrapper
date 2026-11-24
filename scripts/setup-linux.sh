@@ -65,7 +65,8 @@ if command -v apt-get >/dev/null 2>&1; then
   $SUDO apt-get update
 
   install_cmd=(apt-get install -y build-essential linux-libc-dev pkg-config
-    libtesseract-dev libleptonica-dev x11-xserver-utils)
+    libtesseract-dev libleptonica-dev curl ca-certificates procps x11-xserver-utils
+    libxcb-randr0 libxcb-render0 libxcb-shm0 libxcb-xfixes0)
 elif command -v pacman >/dev/null 2>&1; then
   install_cmd=(pacman -S --needed base-devel linux-api-headers tesseract
     xorg-xrandr xorg-xset)
@@ -80,6 +81,7 @@ confirm_or_abort "Install these packages?"
 $SUDO "${install_cmd[@]}"
 
 # 2) Install uv (if missing)
+export PATH="$HOME/.local/bin:$PATH"
 if ! command -v uv >/dev/null 2>&1; then
   print_step "Step 2: Install uv (required)"
   UV_INSTALL_URL="https://astral.sh/uv/install.sh"
@@ -104,7 +106,6 @@ if ! command -v uv >/dev/null 2>&1; then
   fi
 fi
 
-export PATH="$HOME/.local/bin:$PATH"
 if ! command -v uv >/dev/null 2>&1; then
   echo "ERROR: uv is still not on PATH. Add ~/.local/bin to PATH and re-run."
   exit 1
@@ -119,12 +120,12 @@ fi
 
 # 3) Install the supported Python version
 PYTHON_VERSION="3.14"
-PYTHON_REQUEST="cpython-3.14+gil"
+PYTHON_REQUEST="cpython-${PYTHON_VERSION}"
 
 print_step "Step 3: Install and pin Python ${PYTHON_VERSION} (uv)"
 echo "Command to run:"
-echo "  uv python install \"${PYTHON_REQUEST}\""
-confirm_or_abort "Run: uv python install \"${PYTHON_REQUEST}\"?"
+echo "  uv python install ${PYTHON_REQUEST}"
+confirm_or_abort "Run: uv python install ${PYTHON_REQUEST}?"
 uv python install "$PYTHON_REQUEST"
 
 echo "Command to run:"
@@ -135,9 +136,9 @@ uv python pin "$PYTHON_VERSION"
 # 4) Install project dependencies with uv
 print_step "Step 4: Install project dependencies (uv sync)"
 echo "Command to run:"
-echo "  uv sync --python \"${PYTHON_REQUEST}\""
+echo "  uv sync --python \"${PYTHON_REQUEST}+gil\""
 confirm_or_abort "Proceed with Step 4?"
-uv sync --python "$PYTHON_REQUEST"
+uv sync --python "${PYTHON_REQUEST}+gil"
 
 echo "Setup finished. Run:"
 echo "  uv run autoscrapper"
