@@ -4,7 +4,7 @@ import os
 import sys
 import threading
 import time
-from contextlib import contextmanager
+from contextlib import nullcontext
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Optional, Tuple
 
@@ -15,18 +15,18 @@ from .inventory_grid import Cell
 from . import input_driver as pdi
 from .keybinds import DEFAULT_STOP_KEY
 
-_XWAYLAND = sys.platform.startswith("linux") and (
+XWAYLAND_SESSION = sys.platform.startswith("linux") and (
     os.environ.get("XDG_SESSION_TYPE", "").lower() == "wayland"
     or (
         not os.environ.get("XDG_SESSION_TYPE")
         and bool(os.environ.get("WAYLAND_DISPLAY"))
     )
 )
-if TYPE_CHECKING or not _XWAYLAND:
+if TYPE_CHECKING or not XWAYLAND_SESSION:
     import pymonctl as pmc
     import pywinctl as pwc
 
-if _XWAYLAND:
+if XWAYLAND_SESSION:
     from . import xwayland
 
 
@@ -103,23 +103,18 @@ class WindowSnapshot:
     mon_bottom: int
     xwayland_id: int | None = None
 
-    @contextmanager
-    def scan_session(self, safe_point: tuple[int, int], stop_key: str, timeout: float):
-        """Bind the window to the thread that runs the scan."""
+    def scan_session(self):
         if self.xwayland_id is None:
-            yield
-            return
+            return nullcontext()
         bounds = (self.win_left, self.win_top, self.win_width, self.win_height)
-        with xwayland.scan_window(self.xwayland_id, bounds) as target:
-            pdi.prepare_pointer(target, safe_point, stop_key, timeout)
-            yield
+        return xwayland.scan_window(self.xwayland_id, bounds)
 
 
 def get_active_target_window(target_app: str = TARGET_APP) -> pwc.Window | int | None:
     """
     Return the active window if it matches the target app; otherwise None.
     """
-    if _XWAYLAND:
+    if XWAYLAND_SESSION:
         return xwayland.active_target(target_app)
     win = pwc.getActiveWindow()
     if win is None:
@@ -265,7 +260,7 @@ def capture_region(region: Tuple[int, int, int, int]) -> np.ndarray:
     if width <= 0 or height <= 0:
         raise ValueError(f"Invalid capture region size: width={width}, height={height}")
 
-    if _XWAYLAND:
+    if XWAYLAND_SESSION:
         return xwayland.capture_region(region)
 
     sct = _get_mss()

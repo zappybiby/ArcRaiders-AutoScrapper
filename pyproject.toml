@@ -9,6 +9,7 @@ description = "Arc Raiders inventory autoscrapper"
 readme = "README.md"
 requires-python = ">=3.14,<3.15"
 dependencies = [
+    "cairocffi[xcb]>=1.7.1; sys_platform == 'linux'",
     "mss>=10.2.0",
     "numpy>=2.3.2",
     "opencv-python>=4.13.0.92; sys_platform != 'linux'",

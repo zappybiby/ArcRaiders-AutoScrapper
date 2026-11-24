@@ -2,12 +2,45 @@
 
 from __future__ import annotations
 
-from contextlib import closing, contextmanager
-from contextvars import ContextVar
+import csv
+import os
+import subprocess
+import sys
 import time
+from contextlib import ExitStack, closing, contextmanager
+from contextvars import ContextVar
 
+import cairocffi as cairo
 import numpy as np
+import xcffib.xproto
 from Xlib import X, Xatom, display, error
+
+
+def mouse_control_preauthorized() -> bool:
+    if "kde" not in os.environ.get("XDG_CURRENT_DESKTOP", "").lower().split(":"):
+        return False
+    read = ["kreadconfig6", "--file", "kwinrc", "--group", "Xwayland", "--key"]
+    try:
+        allowed = subprocess.run(
+            [*read, "XwaylandEisNoPrompt", "--type", "bool"],
+            capture_output=True,
+            timeout=1,
+        )
+        if allowed.returncode == 0:
+            return True
+        apps = subprocess.check_output(
+            [*read, "XwaylandEisNoPromptApps"],
+            stderr=subprocess.DEVNULL,
+            text=True,
+            timeout=1,
+        )
+    except OSError, subprocess.SubprocessError:
+        return False
+    # XWayland identifies its input client by the basename of argv[0].
+    names = next(
+        csv.reader([apps.rstrip("\n")], escapechar="\\", quoting=csv.QUOTE_NONE)
+    )
+    return os.path.basename(sys.orig_argv[0]) in names
 
 
 def _active_id(root, atom) -> int:
@@ -87,41 +120,15 @@ def window_geometry(xid: int):
 
 
 class _ScanWindow:
-    def __init__(self, connection, xid: int, bounds: tuple[int, int, int, int]):
+    def __init__(self, connection, window, bounds, surface):
         self.root = connection.screen().root
-        self.active_atom = connection.intern_atom("_NET_ACTIVE_WINDOW")
-        self.window = connection.create_resource_object("window", xid)
+        self.active_atom = connection.get_atom("_NET_ACTIVE_WINDOW")
+        self.window = window
         self.bounds = bounds
-
-        visual_id = self.window.get_attributes().visual
-        screen = connection.screen()
-        depth, visual = next(
-            (depth.depth, visual)
-            for depth in screen.allowed_depths
-            for visual in depth.visuals
-            if visual.visual_id == visual_id
-        )
-        info = connection.display.info
-        fmt = next(f for f in info.pixmap_formats if f.depth == depth)
-        if visual.visual_class != X.TrueColor or fmt.bits_per_pixel not in (16, 32):
-            raise RuntimeError(
-                f"Unsupported XWayland window pixel format ({depth}-bit depth, {fmt.bits_per_pixel} bits per pixel)."
-            )
-        self.masks = (visual.blue_mask, visual.green_mask, visual.red_mask)
-        byte_order = "<" if info.image_byte_order == X.LSBFirst else ">"
-        self.dtype = np.dtype(f"{byte_order}u{fmt.bits_per_pixel // 8}")
-        self.scanline_pad = fmt.scanline_pad
-        self.bgrx = (
-            byte_order == "<"
-            and self.dtype.itemsize == 4
-            and self.masks == (0xFF, 0xFF00, 0xFF0000)
-        )
-
-    def focused(self) -> bool:
-        return _active_id(self.root, self.active_atom) == self.window.id
+        self.surface = surface
 
     def check(self) -> None:
-        if not self.focused():
+        if _active_id(self.root, self.active_atom) != self.window.id:
             raise RuntimeError("The game lost focus. Refocus it and restart the scan.")
         if _bounds(self.root, self.window) != self.bounds:
             raise RuntimeError(
@@ -137,30 +144,20 @@ class _ScanWindow:
             raise ValueError(
                 f"Capture region {region} extends outside the game window."
             )
-        image = self.window.get_image(x, y, width, height, X.ZPixmap, 0xFFFFFFFF)
-        if self.bgrx:
-            return (
-                np.frombuffer(image.data, np.uint8)
-                .reshape(height, width, 4)[:, :, :3]
-                .copy()
-            )
-
-        pad_bytes = self.scanline_pad // 8
-        stride = (width * self.dtype.itemsize + pad_bytes - 1) // pad_bytes * pad_bytes
-        pixels = np.ndarray(
-            (height, width),
-            self.dtype,
-            image.data,
-            strides=(stride, self.dtype.itemsize),
-        ).astype(np.uint32)
-        result = np.empty((height, width, 3), dtype=np.uint8)
-        for i, mask in enumerate(self.masks):
-            shift = (mask & -mask).bit_length() - 1
-            maximum = mask >> shift
-            result[:, :, i] = (
-                ((pixels & mask) >> shift) * 255 + maximum // 2
-            ) // maximum
-        return result
+        # The game draws to this surface outside Cairo between captures.
+        self.surface.flush()
+        self.surface.mark_dirty()
+        image = cairo.ImageSurface(cairo.FORMAT_RGB24, width, height)
+        ctx = cairo.Context(image)
+        ctx.set_operator(cairo.OPERATOR_SOURCE)
+        ctx.set_source_surface(self.surface, -x, -y)
+        ctx.paint()
+        image.flush()
+        # Cairo RGB24 stores each pixel as the native integer 0x00RRGGBB.
+        pixels = np.frombuffer(image.get_data(), dtype=np.uint32).astype(
+            "<u4", copy=False
+        )
+        return pixels.view(np.uint8).reshape(height, width, 4)[:, :, :3].copy()
 
 
 _current: ContextVar[_ScanWindow | None] = ContextVar(
@@ -170,8 +167,24 @@ _current: ContextVar[_ScanWindow | None] = ContextVar(
 
 @contextmanager
 def scan_window(xid, bounds):
-    with closing(display.Display()) as connection:
-        target = _ScanWindow(connection, xid, bounds)
+    with closing(display.Display()) as connection, ExitStack() as resources:
+        window = connection.create_resource_object("window", xid)
+        xcb = xcffib.connect()
+        resources.callback(xcb.disconnect)
+        screen = xcb.get_setup().roots[xcb.pref_screen]
+        visual_id = window.get_attributes().visual
+        visual = next(
+            v
+            for d in screen.allowed_depths
+            for v in d.visuals
+            if v.visual_id == visual_id
+        )
+        surface = cairo.XCBSurface(xcb, xid, visual, *bounds[2:])
+        # Cairo caches its XCB device until it is finished, including across scans.
+        device = cairo.cairo.cairo_surface_get_device(surface._pointer)
+        resources.callback(cairo.cairo.cairo_device_finish, device)
+        resources.callback(surface.finish)
+        target = _ScanWindow(connection, window, bounds, surface)
         target.check()
         with _current.set(target):
             yield target
@@ -196,7 +209,7 @@ def check_click(mouse, point: tuple[int, int]) -> None:
     while not pointer_at(mouse.position, point):
         if time.monotonic() >= deadline:
             raise RuntimeError(
-                "The pointer did not reach the selected position in the game."
+                "The pointer did not reach the game position. Allow mouse control and restart the scan."
             )
         time.sleep(0.01)
         target.check()

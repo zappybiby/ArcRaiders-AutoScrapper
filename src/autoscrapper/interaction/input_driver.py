@@ -79,6 +79,7 @@ elif sys.platform.startswith("linux"):
     import threading
 
     from pynput import keyboard, mouse
+    from Xlib import X
 
     from . import xwayland
 
@@ -171,25 +172,15 @@ elif sys.platform.startswith("linux"):
                 return True
             return False
 
-    def prepare_pointer(target, point, stop_key: str, timeout: float) -> None:
-        # A harmless motion triggers the desktop's input permission prompt.
-        x, y = point
-        if xwayland.pointer_at(_MOUSE.position, point):
-            x += 4 if x + 4 < target.bounds[0] + target.bounds[2] else -4
-        destination = (x, y)
-        deadline = time.monotonic() + timeout
-        while time.monotonic() < deadline:
-            if key_pressed(stop_key):
-                raise KeyboardInterrupt(f"{stop_key} pressed")
-            if target.focused():
-                target.check()
-                _MOUSE.position = destination
-            time.sleep(0.05)
-            if target.focused() and xwayland.pointer_at(_MOUSE.position, destination):
-                return
-        raise RuntimeError(
-            "Unable to move the pointer. Allow input control and focus the game, then restart the scan."
-        )
+    def request_mouse_control_if_needed() -> bool:
+        if xwayland.mouse_control_preauthorized():
+            return False
+        # XWayland grants access to the XTEST connection. A relative (0, 0)
+        # event uses pynput's connection without moving the pointer or clicking.
+        connection = _MOUSE._display
+        connection.xtest_fake_input(X.MotionNotify, detail=1, x=0, y=0)
+        connection.flush()
+        return True
 
     def moveTo(x: int, y: int, duration: float = 0.0) -> None:
         x = int(x)

@@ -2,8 +2,10 @@ import os
 import shutil
 import subprocess
 import sys
+import tempfile
 import unittest
 from contextlib import closing
+from pathlib import Path
 from unittest.mock import patch
 
 
@@ -24,6 +26,9 @@ class XWaylandWindowTests(unittest.TestCase):
                 "-screen",
                 "1",
                 "320x240x16",
+                "-screen",
+                "2",
+                "320x240x30",
                 "-nolisten",
                 "tcp",
             ],
@@ -39,7 +44,7 @@ class XWaylandWindowTests(unittest.TestCase):
         from Xlib import X, Xatom, display
         from autoscrapper.interaction import xwayland
 
-        for screen in (0, 1):
+        for screen in (0, 1, 2):
             with (
                 self.subTest(screen=screen),
                 patch.dict(os.environ, DISPLAY=f"{self.display}.{screen}"),
@@ -75,8 +80,39 @@ class XWaylandWindowTests(unittest.TestCase):
                     self.assertTrue((frame[:, 0] == 0).all())
                     self.assertTrue((frame[:, 1:] == (0, 0, 255)).all())
                     self.assertTrue(frame.flags.c_contiguous)
+                    blue = d.screen().default_colormap.alloc_named_color("blue").pixel
+                    w.fill_rectangle(w.create_gc(foreground=blue), 7, 4, 5, 3)
+                    d.sync()
+                    updated = xwayland.capture_region((47, 29, 5, 3))
+                    self.assertTrue((updated == (255, 0, 0)).all())
                 with self.assertRaisesRegex(RuntimeError, "active scan"):
                     xwayland.capture_region((46, 29, 6, 3))
+
+    @unittest.skipUnless(shutil.which("kreadconfig6"), "requires KConfig")
+    def test_remembered_mouse_access_matches_the_input_client(self):
+        with (
+            tempfile.TemporaryDirectory() as directory,
+            patch.dict(
+                os.environ,
+                DISPLAY=self.display,
+                XDG_CURRENT_DESKTOP="KDE",
+                XDG_CONFIG_HOME=directory,
+                XDG_CONFIG_DIRS=directory,
+            ),
+            patch.object(sys, "orig_argv", ["/test/venv/bin/python"]),
+        ):
+            from autoscrapper.interaction import xwayland
+
+            config = Path(directory, "kwinrc")
+            for rule, expected in (
+                ("", False),
+                ("XwaylandEisNoPromptApps=another-python", False),
+                ("XwaylandEisNoPromptApps=other,python", True),
+                ("XwaylandEisNoPrompt=true", True),
+            ):
+                with self.subTest(rule=rule):
+                    config.write_text("[Xwayland]\n" + rule + "\n", encoding="utf-8")
+                    self.assertEqual(xwayland.mouse_control_preauthorized(), expected)
 
     def test_input_rechecks_original_window_and_bounds(self):
         from Xlib import X, Xatom, display

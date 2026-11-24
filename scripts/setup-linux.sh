@@ -74,9 +74,9 @@ if command -v apt-get >/dev/null 2>&1; then
   # build-essential pulls in linux-libc-dev. Requesting it directly can trigger a kernel upgrade.
   install_cmd=(apt-get install -y build-essential pkg-config
     libtesseract-dev libleptonica-dev curl ca-certificates procps x11-xserver-utils
-    libxcb-randr0 libxcb-render0 libxcb-shm0 libxcb-xfixes0)
+    libcairo2 libxcb-randr0 libxcb-render0 libxcb-shm0 libxcb-xfixes0)
 elif command -v pacman >/dev/null 2>&1; then
-  install_cmd=(pacman -S --needed base-devel linux-api-headers tesseract
+  install_cmd=(pacman -S --needed base-devel linux-api-headers tesseract cairo
     xorg-xrandr xorg-xset)
 else
   echo "ERROR: This installer requires apt-get or pacman."

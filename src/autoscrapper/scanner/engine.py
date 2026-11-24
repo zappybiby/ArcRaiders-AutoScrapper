@@ -313,9 +313,7 @@ def scan_inventory(
         safe_point_abs = (win_left + safe_point[0], win_top + safe_point[1])
         grid_center = grid_center_point(win_width, win_height)
         grid_center_abs = (win_left + grid_center[0], win_top + grid_center[1])
-        scan.enter_context(
-            window_snapshot.scan_session(safe_point_abs, stop_key, window_timeout)
-        )
+        scan.enter_context(window_snapshot.scan_session())
         cells_per_page = Grid.COLS * Grid.ROWS
 
         stash_items, stash_count_text = _detect_inventory_count(
