@@ -31,7 +31,8 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 ```
 
 ### Linux
-**From the repo root, run the setup script**
+
+On Debian, Ubuntu, or Arch Linux, run the setup script from the repo root. The scanner requires X11 or XWayland.
 
 `bash scripts/setup-linux.sh`
 

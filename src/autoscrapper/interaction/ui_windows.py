@@ -225,14 +225,8 @@ def window_monitor_rect(win: pwc.Window) -> Tuple[int, int, int, int]:
     raise RuntimeError("Unable to map target window to a monitor via mss.")
 
 
-def _get_mss() -> "MSSBase":
-    """
-    Lazily create a thread-local MSS instance for screen capture.
-
-    MSS stores platform capture handles in thread-local storage internally.
-    Reusing one MSS instance across threads on Windows can fail with errors like
-    missing `srcdc`, so each thread keeps its own instance.
-    """
+def _get_mss() -> mss.MSS:
+    """Lazily create a screen capture instance for the current thread."""
     if sys.platform not in ("win32", "linux"):
         raise RuntimeError(
             "Screen capture requires Windows or Linux; this build targets X11/XWayland."
@@ -240,7 +234,7 @@ def _get_mss() -> "MSSBase":
 
     sct = getattr(_MSS_LOCAL, "instance", None)
     if sct is None:
-        sct = mss.mss()
+        sct = mss.MSS()
         _MSS_LOCAL.instance = sct
     return sct
 

@@ -56,26 +56,28 @@ if [[ "${EUID:-$(id -u)}" -ne 0 ]]; then
   fi
 fi
 
-# 1) System prerequisites
-# - build-essential/linux-headers: commonly needed when a dependency must compile (e.g., evdev via pynput)
-# - tesseract/leptonica/pkg-config: required to build/link tesserocr on Linux
-KERNEL_HEADERS_PKG="linux-headers-$(uname -r)"
-print_step "Step 1: Install system prerequisites (apt)"
-echo "Command to run:"
-echo "  $SUDO apt-get update"
-confirm_or_abort "Run apt-get update?"
-$SUDO apt-get update
+# evdev uses Linux input headers. PyMonCtl calls xrandr during startup.
+print_step "Step 1: Install system prerequisites"
+if command -v apt-get >/dev/null 2>&1; then
+  echo "Command to run:"
+  echo "  $SUDO apt-get update"
+  confirm_or_abort "Run apt-get update?"
+  $SUDO apt-get update
+
+  install_cmd=(apt-get install -y build-essential linux-libc-dev pkg-config
+    libtesseract-dev libleptonica-dev x11-xserver-utils)
+elif command -v pacman >/dev/null 2>&1; then
+  install_cmd=(pacman -S --needed base-devel linux-api-headers tesseract
+    xorg-xrandr xorg-xset)
+else
+  echo "ERROR: This installer requires apt-get or pacman."
+  exit 1
+fi
 
 echo "Command to run:"
-echo "  $SUDO apt-get install -y build-essential ${KERNEL_HEADERS_PKG} pkg-config tesseract-ocr libtesseract-dev libleptonica-dev"
-confirm_or_abort "Run apt-get install?"
-$SUDO apt-get install -y \
-  build-essential \
-  "$KERNEL_HEADERS_PKG" \
-  pkg-config \
-  tesseract-ocr \
-  libtesseract-dev \
-  libleptonica-dev
+echo "  $SUDO ${install_cmd[*]}"
+confirm_or_abort "Install these packages?"
+$SUDO "${install_cmd[@]}"
 
 # 2) Install uv (if missing)
 if ! command -v uv >/dev/null 2>&1; then
