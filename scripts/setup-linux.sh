@@ -49,7 +49,7 @@ if [[ ! -f pyproject.toml || ! scripts/setup-linux.sh -ef "${BASH_SOURCE[0]}" ]]
 fi
 
 if [[ -n "${WSL_INTEROP-}" || -n "${WSL_DISTRO_NAME-}" ]] || grep -qi microsoft /proc/version 2>/dev/null; then
-  echo "ERROR: WSL is not supported. Run this on a native Linux install (X11/XWayland)."
+  echo "ERROR: WSL is not supported. Run this on a native Linux install."
   exit 1
 fi
 
@@ -71,7 +71,8 @@ if command -v apt-get >/dev/null 2>&1; then
   confirm_or_abort "Run apt-get update?"
   $SUDO apt-get update
 
-  install_cmd=(apt-get install -y build-essential linux-libc-dev pkg-config
+  # build-essential pulls in linux-libc-dev. Requesting it directly can upgrade the Pop!_OS kernel.
+  install_cmd=(apt-get install -y build-essential pkg-config
     libtesseract-dev libleptonica-dev curl ca-certificates procps x11-xserver-utils
     libxcb-randr0 libxcb-render0 libxcb-shm0 libxcb-xfixes0)
 elif command -v pacman >/dev/null 2>&1; then
@@ -146,6 +147,10 @@ echo "Command to run:"
 echo "  uv sync --python \"${PYTHON_REQUEST}+gil\""
 confirm_or_abort "Proceed with Step 4?"
 uv sync --python "${PYTHON_REQUEST}+gil"
+
+if [[ "${XDG_SESSION_TYPE:-}" == "wayland" ]]; then
+  echo "For reliable game window detection, sign in to an X11 (Xorg) session before scanning."
+fi
 
 echo "Setup finished. Run:"
 printf '  %q run autoscrapper\n' "$(command -v uv)"
