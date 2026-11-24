@@ -39,7 +39,7 @@ uv_is_supported() {
   local version
   version="$(uv --version)" || return 1
   [[ "$version" =~ ^uv[[:space:]]+([0-9]+)\.([0-9]+)\.([0-9]+)([[:space:]]|$) ]] &&
-    (( BASH_REMATCH[1] > 0 || BASH_REMATCH[2] > 9 || (BASH_REMATCH[2] == 9 && BASH_REMATCH[3] >= 8) ))
+    (( BASH_REMATCH[1] > 0 || BASH_REMATCH[2] > 13 || (BASH_REMATCH[2] == 13 && BASH_REMATCH[3] >= 4) ))
 }
 
 # Run from repo root
@@ -122,7 +122,7 @@ if ! command -v uv >/dev/null 2>&1; then
 fi
 
 if ! uv_is_supported; then
-  echo "ERROR: uv 0.9.8 or newer is required. Run uv self update (or update through your package manager), then re-run setup."
+  echo "ERROR: uv 0.13.4 or newer is required. Run uv self update (or update through your package manager), then re-run setup."
   exit 1
 fi
 
