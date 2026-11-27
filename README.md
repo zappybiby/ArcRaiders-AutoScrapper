@@ -11,7 +11,7 @@ Automates Arc Raiders inventory actions (Sell/Recycle) using screen capture and 
 **This program does not hook into the game process, but there is no guarantee it will not be flagged by anti-cheat systems or violate the game’s Terms of Service. Use at your own risk.**
 
 ## Setup
-This repo uses `uv` to manage Python + dependencies.
+AutoScrapper supports Python 3.14+ and uses `uv` to manage dependencies.
 
 ### Clone the repo
 From a terminal:

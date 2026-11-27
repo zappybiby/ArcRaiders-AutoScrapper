@@ -7,7 +7,7 @@ name = "autoscrapper"
 version = "0.1.0"
 description = "Arc Raiders inventory autoscrapper"
 readme = "README.md"
-requires-python = ">=3.14,<3.15"
+requires-python = ">=3.14"
 dependencies = [
     "cairocffi[xcb]>=1.7.1; sys_platform == 'linux'",
     "mss>=10.2.0",

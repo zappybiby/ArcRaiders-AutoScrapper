@@ -127,7 +127,7 @@ if ! uv_is_supported; then
 fi
 
 # 3) Install the supported Python version
-PYTHON_VERSION="3.14"
+PYTHON_VERSION="3.15"
 PYTHON_REQUEST="cpython-${PYTHON_VERSION}"
 
 print_step "Step 3: Install and pin Python ${PYTHON_VERSION} (uv)"

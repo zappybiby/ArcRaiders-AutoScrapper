@@ -159,8 +159,8 @@ if ($uvVersionOutput -notmatch '^uv (\d+\.\d+\.\d+)(?:\s|$)' -or [version]$Match
 }
 
 # 2) Install the supported Python version and architecture
-$PythonVersion = "3.14"
-$PythonRequest = "cpython-3.14-windows-x86_64-none"
+$PythonVersion = "3.15"
+$PythonRequest = "cpython-$PythonVersion-windows-x86_64-none"
 Confirm-OrAbort (Confirm-Step `
   -Title "Step 2: Install Python $PythonVersion (64-bit)" `
   -Commands @('& "' + $uvExe + '" python install ' + $PythonRequest) `
