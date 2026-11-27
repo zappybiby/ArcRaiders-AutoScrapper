@@ -79,7 +79,50 @@
     "Deciphering_The_Data": "Deciphering The Data",
     "Groundbreaking": "Groundbreaking",
     "On_Deaf_Ears": "On Deaf Ears",
-    "On_The_Map": "On The Map"
+    "On_The_Map": "On The Map",
+    "Test_Case": "Test Case",
+    "A_Rising_Tide": "A Rising Tide",
+    "A_Dead_End": "A Dead End",
+    "Worth_Your_Salt": "Worth Your Salt",
+    "Keeping_An_Eye_Out": "Keeping an Eye Out",
+    "Stable_Housing": "Stable Housing",
+    "Dust_On_The_Wires": "Dust on the Wires",
+    "Fragmented_Logs": "Fragmented Logs",
+    "Outstanding_Balance": "Outstanding Balance",
+    "Furtive_Meetings": "Furtive Meetings",
+    "Clamoring_For_Attention": "Clamoring for Attention",
+    "Waking_The_Grid": "Waking the Grid",
+    "Settled_In_Full": "Settled in Full",
+    "Last_Entry": "Last Entry",
+    "Battening_Down": "Battening Down",
+    "Shoring_Up_Defenses": "Shoring Up Defenses",
+    "Collision_Course": "Collision Course",
+    "Line_In_The_Sand": "Line in the Sand",
+    "Safe_Harbor": "Safe Harbor",
+    "A_Wrench_In_The_Works": "A Wrench in the Works",
+    "Exploring_Pendola_Pass": "Exploring Pendola Pass",
+    "Tracks_Of_The_Beast": "Tracks of the Beast",
+    "Sizing_Things_Up": "Sizing Things Up",
+    "Belly_Of_The_Beast": "Belly of the Beast",
+    "Bait_Fetch_Blast": "Bait, Fetch, Blast",
+    "Wires_Crossed": "Wires Crossed",
+    "Ruins_And_Reverberations": "Ruins and Reverberations",
+    "To_The_Skies": "To The Skies",
+    "Boarding_The_Frigate": "Boarding the Frigate",
+    "Disrupting_The_Frigate": "Disrupting the Frigate",
+    "Nothing_Ventured": "Nothing Ventured",
+    "Nothing_Gained": "Nothing Gained",
+    "Clean_Hands": "Clean Hands",
+    "Taking_Stock": "Taking Stock",
+    "A_Path_Not_Yours": "A Path Not Yours",
+    "Divided": "Divided",
+    "The_First_Nomads": "The First Nomads",
+    "Celestes_Childhood_Drawings": "Celeste’s Childhood Drawings",
+    "Celestes_Teenage_Rebellion": "Celeste's Teenage Rebellion",
+    "Home_To_Roost": "Home to Roost",
+    "Someone_Elses_Shoes": "Someone Else's Shoes",
+    "Empathetic_Prototypes": "Empathetic Prototypes",
+    "When_Everything_Falls": "When Everything Falls"
   },
   "edges": [
     [
@@ -411,12 +454,212 @@
       "Groundbreaking"
     ],
     [
-      "Groundbreaking",
+      "On_Deaf_Ears",
+      "On_The_Map"
+    ],
+    [
+      "The_Trifecta",
+      "Dormant_Barons"
+    ],
+    [
+      "After_Rain_Comes",
+      "Water_Troubles"
+    ],
+    [
+      "Water_Troubles",
+      "Into_The_Fray"
+    ],
+    [
+      "Off_The_Radar",
+      "A_First_Foothold"
+    ],
+    [
+      "The_League",
+      "Test_Case"
+    ],
+    [
+      "A_Dead_End",
+      "A_Rising_Tide"
+    ],
+    [
+      "Out_Of_The_Shadows",
+      "Combat_Recon"
+    ],
+    [
+      "Worth_Your_Salt",
       "On_Deaf_Ears"
     ],
     [
-      "On_Deaf_Ears",
-      "On_The_Map"
+      "Snap_And_Salvage",
+      "On_Deaf_Ears"
+    ],
+    [
+      "Groundbreaking",
+      "A_Dead_End"
+    ],
+    [
+      "Groundbreaking",
+      "Worth_Your_Salt"
+    ],
+    [
+      "The_Clean_Dream",
+      "Keeping_An_Eye_Out"
+    ],
+    [
+      "With_A_View",
+      "Stable_Housing"
+    ],
+    [
+      "The_Trifecta",
+      "Dust_On_The_Wires"
+    ],
+    [
+      "Dust_On_The_Wires",
+      "Fragmented_Logs"
+    ],
+    [
+      "A_Dead_End",
+      "Fragmented_Logs"
+    ],
+    [
+      "The_Clean_Dream",
+      "Outstanding_Balance"
+    ],
+    [
+      "Fragmented_Logs",
+      "Furtive_Meetings"
+    ],
+    [
+      "Dormant_Barons",
+      "Clamoring_For_Attention"
+    ],
+    [
+      "Dust_On_The_Wires",
+      "Waking_The_Grid"
+    ],
+    [
+      "Outstanding_Balance",
+      "Settled_In_Full"
+    ],
+    [
+      "Furtive_Meetings",
+      "Last_Entry"
+    ],
+    [
+      "Off_The_Radar",
+      "Battening_Down"
+    ],
+    [
+      "Off_The_Radar",
+      "Shoring_Up_Defenses"
+    ],
+    [
+      "Safe_Passage",
+      "Collision_Course"
+    ],
+    [
+      "Last_Entry",
+      "Line_In_The_Sand"
+    ],
+    [
+      "Line_In_The_Sand",
+      "Safe_Harbor"
+    ],
+    [
+      "Safe_Harbor",
+      "A_Wrench_In_The_Works"
+    ],
+    [
+      "Off_The_Radar",
+      "Exploring_Pendola_Pass"
+    ],
+    [
+      "Exploring_Pendola_Pass",
+      "Tracks_Of_The_Beast"
+    ],
+    [
+      "Off_The_Radar",
+      "Sizing_Things_Up"
+    ],
+    [
+      "Sizing_Things_Up",
+      "Belly_Of_The_Beast"
+    ],
+    [
+      "Tracks_Of_The_Beast",
+      "Belly_Of_The_Beast"
+    ],
+    [
+      "Tracks_Of_The_Beast",
+      "Bait_Fetch_Blast"
+    ],
+    [
+      "Exploring_Pendola_Pass",
+      "Wires_Crossed"
+    ],
+    [
+      "Wires_Crossed",
+      "Ruins_And_Reverberations"
+    ],
+    [
+      "Off_The_Radar",
+      "To_The_Skies"
+    ],
+    [
+      "Off_The_Radar",
+      "Boarding_The_Frigate"
+    ],
+    [
+      "Boarding_The_Frigate",
+      "Disrupting_The_Frigate"
+    ],
+    [
+      "Nothing_Ventured",
+      "Nothing_Gained"
+    ],
+    [
+      "Off_The_Radar",
+      "Clean_Hands"
+    ],
+    [
+      "Clean_Hands",
+      "Taking_Stock"
+    ],
+    [
+      "Taking_Stock",
+      "A_Path_Not_Yours"
+    ],
+    [
+      "Ruins_And_Reverberations",
+      "Divided"
+    ],
+    [
+      "A_Path_Not_Yours",
+      "Divided"
+    ],
+    [
+      "Shoring_Up_Defenses",
+      "Celestes_Childhood_Drawings"
+    ],
+    [
+      "Celestes_Childhood_Drawings",
+      "Celestes_Teenage_Rebellion"
+    ],
+    [
+      "A_Wrench_In_The_Works",
+      "Home_To_Roost"
+    ],
+    [
+      "Home_To_Roost",
+      "Someone_Elses_Shoes"
+    ],
+    [
+      "Someone_Elses_Shoes",
+      "Empathetic_Prototypes"
+    ],
+    [
+      "Empathetic_Prototypes",
+      "When_Everything_Falls"
     ]
   ]
 }
